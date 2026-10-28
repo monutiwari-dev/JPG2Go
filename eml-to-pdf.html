@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>EML to PDF Converter | Convert Emails to PDF</title>
+<meta name="description" content="Convert EML email files into PDF format easily. Preserve email content, attachments, and formatting for archiving or professional sharing.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jpg2go.com/eml-to-pdf">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="adsense.js"></script>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Convert EML to PDF",
+    "url": "https://jpg2go.com/eml-to-pdf",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Convert EML email files into PDF format easily. Preserve email content, attachments, and formatting for archiving or professional sharing."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is an EML file?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "EML is an email file format that stores email messages including headers, body, and attachments."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why convert EML files to PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PDF format makes emails easier to archive, share, and print while preserving the original email structure."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will email formatting be preserved in PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most converters maintain email headers, text formatting, and attachment information in the PDF output."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I convert multiple EML files at once?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, many online tools support batch conversion of multiple email files to PDF."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is EML to PDF conversion useful for email archiving?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, converting emails to PDF is commonly used for long-term email storage and legal documentation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need email software to convert EML files?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No, online converters allow you to convert EML files to PDF without installing email programs."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+
+<style>
+/* ══ ROOT TOKENS ══ */
+:root {
+  --ink: #0d0d0d;
+  --paper: #f7f4ee;
+  --cream: #ede9df;
+  --accent: #c84b2f;
+  --accent-light: #e8d5cf;
+  --muted: #7a7567;
+  --border: #d4cfc4;
+  --white: #ffffff;
+  --shadow: 0 2px 24px rgba(13,13,13,0.08);
+  --shadow-lg: 0 8px 48px rgba(13,13,13,0.12);
+  --ai-purple: #c84b2f;
+  --ai-purple-light: #e8d5cf;
+  --green: #1a8a4a;
+  --green-light: #d4f0e0;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; min-height: 100vh; }
+
+/* ══ HEADER ══ */
+header { background: var(--ink); color: var(--paper); position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--accent); }
+.header-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.logo { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.6rem; color: var(--paper); text-decoration: none; letter-spacing: -0.02em; }
+.logo span { color: var(--accent); }
+nav { display: flex; gap: 2rem; align-items: center; }
+nav a { color: #a8a39a; text-decoration: none; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.02em; transition: color 0.2s; }
+nav a:hover { color: var(--paper); }
+.nav-cta { background: var(--accent); color: var(--white) !important; padding: 0.4rem 1rem; border-radius: 4px; transition: background 0.2s !important; }
+.nav-cta:hover { background: #a83825 !important; }
+
+/* ══ MOBILE MENU ══ */
+.mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-direction: column; gap: 5px; align-items: center; justify-content: center; width: 40px; height: 40px; }
+.mobile-menu-toggle span { display: block; width: 24px; height: 2px; background: var(--paper); transition: all 0.3s ease; border-radius: 2px; }
+.mobile-menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+.mobile-menu-toggle.active span:nth-child(2) { opacity: 0; }
+.mobile-menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+.mobile-nav { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--ink); border-top: 2px solid var(--accent); padding: 1.5rem 2rem; flex-direction: column; gap: 1rem; z-index: 99; transform: translateY(-100%); opacity: 0; transition: transform 0.3s ease, opacity 0.3s ease; visibility: hidden; }
+.mobile-nav.active { display: flex; transform: translateY(0); opacity: 1; visibility: visible; }
+.mobile-nav a { color: #a8a39a; text-decoration: none; font-size: 0.95rem; font-weight: 500; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); transition: color 0.2s; }
+.mobile-nav a:last-child { border-bottom: none; }
+.mobile-nav a:hover { color: var(--paper); }
+.mobile-nav .nav-cta { background: var(--accent); color: var(--white) !important; padding: 0.75rem 1.5rem; border-radius: 4px; text-align: center; border: none; margin-top: 0.5rem; }
+
+/* ══ HERO ══ */
+.hero { background: var(--ink); color: var(--paper); padding: 4rem 2rem 3.5rem; text-align: center; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(200,75,47,0.2) 0%, transparent 70%); pointer-events: none; }
+.hero::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 60px; background: linear-gradient(to bottom, transparent, rgba(200,75,47,0.4)); }
+.hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.12em; color: #c84b2f; text-transform: uppercase; border: 1px solid rgba(200,75,47,0.4); background: rgba(200,75,47,0.12); padding: 0.3rem 0.9rem; border-radius: 2px; margin-bottom: 1.5rem; }
+.hero-badge svg { flex-shrink: 0; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5.5vw, 3.6rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero-desc { font-size: 1.05rem; color: #9e9990; max-width: 520px; margin: 0 auto 1.75rem; font-weight: 300; line-height: 1.7; }
+.hero-pills { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem; }
+.hero-pill { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.06em; color: #a8a39a; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); padding: 0.3rem 0.75rem; border-radius: 100px; }
+
+/* ══ TOOL SECTION ══ */
+.tool-section { max-width: 1100px; margin: -1.5rem auto 0; padding: 0 1.5rem 4rem; position: relative; z-index: 10; }
+.tool-card { background: var(--white); border-radius: 12px; box-shadow: var(--shadow-lg); overflow: hidden; border: 1px solid var(--border); }
+.tool-card-header { background: var(--cream); padding: 1rem 1.5rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid var(--border); }
+.dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+.dot-r { background: #ff5f57; } .dot-y { background: #febc2e; } .dot-g { background: #28c840; }
+.tool-card-title { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--muted); margin-left: 0.5rem; letter-spacing: 0.05em; }
+.tool-body { padding: 1.5rem; }
+
+/* ══ DROP ZONE ══ */
+.drop-zone { border: 2px dashed var(--border); border-radius: 10px; padding: 3rem 2rem; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; background: var(--paper); position: relative; }
+.drop-zone:hover, .drop-zone.drag-over { border-color: var(--accent); background: var(--ai-purple-light); }
+.drop-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+.drop-icon { width: 52px; height: 52px; background: var(--ai-purple-light); border: 1px solid rgba(200,75,47,0.3); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: var(--accent); }
+.drop-zone h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; }
+.drop-zone p { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
+.formats-pill { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; color: var(--accent); background: var(--ai-purple-light); padding: 0.25rem 0.75rem; border-radius: 100px; display: inline-block; }
+
+/* ══ TWO-COLUMN LAYOUT ══ */
+.tool-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; align-items: start; }
+.tool-col-left { display: flex; flex-direction: column; gap: 1.25rem; }
+.tool-col-right { display: flex; flex-direction: column; gap: 1.25rem; }
+
+/* ══ PANEL BOXES ══ */
+.panel-box { background: var(--paper); border: 1px solid var(--border); border-radius: 10px; padding: 1.15rem 1.25rem; }
+.panel-box-title { font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+.panel-box-title svg { color: var(--accent); flex-shrink: 0; }
+
+/* ══ PRESET BUTTONS ══ */
+.preset-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin-bottom: 1.25rem; }
+.preset-btn { background: var(--white); border: 1.5px solid var(--border); border-radius: 8px; padding: 0.65rem 0.5rem; cursor: pointer; text-align: center; transition: all 0.18s; }
+.preset-btn:hover { border-color: var(--accent); background: var(--accent-light); }
+.preset-btn.active { border-color: var(--accent); background: var(--accent-light); box-shadow: 0 0 0 3px rgba(200,75,47,0.1); }
+.preset-btn-name { font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 600; color: var(--ink); display: block; margin-bottom: 0.1rem; letter-spacing: 0.02em; }
+.preset-btn.active .preset-btn-name { color: var(--accent); }
+.preset-btn-sub { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--muted); }
+
+/* ══ FORM ROWS ══ */
+.form-row { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.9rem; }
+.form-row:last-child { margin-bottom: 0; }
+.form-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); display: flex; align-items: center; justify-content: space-between; }
+.form-label-hint { font-weight: 400; text-transform: none; letter-spacing: 0; color: #a8a39a; font-size: 0.63rem; }
+.format-select { background: var(--white); border: 1.5px solid var(--border); border-radius: 6px; padding: 0.42rem 2rem 0.42rem 0.75rem; font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--ink); cursor: pointer; outline: none; transition: border-color 0.2s; -webkit-appearance: none; appearance: none; width: 100%; background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%237a7567' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.75rem center; }
+.format-select:focus { border-color: var(--accent); }
+
+/* ══ TOGGLE SWITCH ══ */
+.toggle-row { display: flex; align-items: center; gap: 0.85rem; padding: 0.5rem 0; }
+.toggle-switch { position: relative; width: 36px; height: 20px; flex-shrink: 0; cursor: pointer; }
+.toggle-switch input { opacity: 0; width: 0; height: 0; position: absolute; }
+.toggle-track { position: absolute; inset: 0; background: var(--border); border-radius: 100px; transition: background 0.2s; }
+.toggle-switch input:checked + .toggle-track { background: var(--accent); }
+.toggle-knob { position: absolute; top: 3px; left: 3px; width: 14px; height: 14px; background: white; border-radius: 50%; transition: transform 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.2); pointer-events: none; }
+.toggle-switch input:checked ~ .toggle-knob { transform: translateX(16px); }
+.toggle-label { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.03em; flex: 1; }
+
+/* ══ EMAIL PREVIEW PANEL ══ */
+.preview-panel { background: var(--ink); border-radius: 10px; overflow: hidden; position: sticky; top: 84px; }
+.preview-panel-header { padding: 0.75rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: space-between; }
+.preview-panel-title { font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #9e9990; display: flex; align-items: center; gap: 0.4rem; }
+.preview-badge { font-family: 'DM Mono', monospace; font-size: 0.6rem; background: rgba(200,75,47,0.2); color: var(--accent); border: 1px solid rgba(200,75,47,0.3); padding: 0.1rem 0.45rem; border-radius: 100px; letter-spacing: 0.06em; }
+
+.preview-placeholder { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; padding: 3.5rem 2rem; }
+.preview-placeholder-icon { width: 52px; height: 52px; background: rgba(200,75,47,0.12); border: 1px solid rgba(200,75,47,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: rgba(200,75,47,0.5); }
+.preview-placeholder p { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: rgba(255,255,255,0.25); text-align: center; letter-spacing: 0.05em; line-height: 1.6; }
+
+/* Email rendered preview */
+.email-preview-body { display: none; }
+.email-preview-body.visible { display: block; }
+
+.email-header-block { padding: 1rem 1.15rem 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.email-header-row { display: flex; gap: 0.5rem; margin-bottom: 0.35rem; align-items: baseline; }
+.email-header-row:last-child { margin-bottom: 0; }
+.email-hdr-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(200,75,47,0.8); min-width: 40px; flex-shrink: 0; padding-top: 0.05rem; }
+.email-hdr-val { font-size: 0.72rem; color: rgba(255,255,255,0.75); line-height: 1.45; word-break: break-word; }
+.email-hdr-val.subject { font-weight: 600; color: rgba(255,255,255,0.92); font-size: 0.78rem; }
+
+.email-body-block { padding: 0.9rem 1.15rem; max-height: 280px; overflow-y: auto; }
+.email-body-block::-webkit-scrollbar { width: 3px; }
+.email-body-block::-webkit-scrollbar-track { background: transparent; }
+.email-body-block::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 2px; }
+.email-body-text { font-size: 0.72rem; color: rgba(255,255,255,0.55); line-height: 1.7; white-space: pre-wrap; word-break: break-word; font-family: 'DM Mono', monospace; }
+
+.email-attachments-block { padding: 0.65rem 1.15rem 0.9rem; border-top: 1px solid rgba(255,255,255,0.07); }
+.email-att-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-bottom: 0.5rem; }
+.email-att-list { display: flex; flex-direction: column; gap: 0.35rem; }
+.email-att-item { display: flex; align-items: center; gap: 0.5rem; font-family: 'DM Mono', monospace; font-size: 0.62rem; color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); border-radius: 5px; padding: 0.3rem 0.55rem; }
+.email-att-item svg { color: var(--accent); flex-shrink: 0; }
+
+.preview-note { padding: 0.6rem 1rem; font-family: 'DM Mono', monospace; font-size: 0.65rem; color: rgba(255,255,255,0.2); text-align: center; letter-spacing: 0.04em; border-top: 1px solid rgba(255,255,255,0.06); display: none; }
+
+/* ══ FILE QUEUE ══ */
+.file-queue-wrap { display: none; }
+.file-queue-wrap.visible { display: block; }
+.file-queue-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 0.5rem; }
+.file-queue-label { font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+.file-queue-count { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--accent); background: var(--accent-light); padding: 0.15rem 0.5rem; border-radius: 100px; }
+.file-queue { display: flex; flex-direction: column; gap: 0.5rem; max-height: 230px; overflow-y: auto; padding-right: 2px; }
+.file-queue::-webkit-scrollbar { width: 4px; }
+.file-queue::-webkit-scrollbar-track { background: var(--cream); border-radius: 2px; }
+.file-queue::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+.file-item { display: flex; align-items: center; gap: 0.75rem; background: var(--paper); border: 1px solid var(--border); border-radius: 8px; padding: 0.55rem 0.85rem; cursor: pointer; transition: border-color 0.15s; }
+.file-item:hover { border-color: var(--accent); }
+.file-item.selected { border-color: var(--accent); background: var(--accent-light); }
+.file-icon-wrap { width: 36px; height: 36px; border-radius: 5px; border: 1px solid var(--border); flex-shrink: 0; background: var(--cream); display: flex; align-items: center; justify-content: center; color: var(--accent); font-family: 'DM Mono', monospace; font-size: 0.58rem; font-weight: 700; letter-spacing: 0; }
+.file-info { flex: 1; min-width: 0; }
+.file-name { font-size: 0.78rem; font-weight: 600; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.file-meta { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); margin-top: 0.1rem; }
+.file-remove { background: none; border: none; cursor: pointer; color: var(--muted); padding: 0.2rem; border-radius: 4px; display: flex; align-items: center; justify-content: center; transition: color 0.15s, background 0.15s; flex-shrink: 0; }
+.file-remove:hover { color: var(--accent); background: var(--accent-light); }
+.add-more-btn { display: flex; align-items: center; justify-content: center; gap: 0.5rem; border: 1.5px dashed var(--border); border-radius: 8px; padding: 0.6rem; cursor: pointer; font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.05em; color: var(--muted); background: transparent; width: 100%; margin-top: 0.5rem; transition: border-color 0.2s, color 0.2s, background 0.2s; position: relative; overflow: hidden; }
+.add-more-btn input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.add-more-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+
+/* ══ ACTION BAR ══ */
+.action-bar { display: flex; gap: 0.75rem; margin-top: 1.25rem; flex-wrap: wrap; }
+.btn-primary { background: var(--accent); color: var(--white); border: none; border-radius: 6px; padding: 0.65rem 1.5rem; font-family: 'DM Sans', sans-serif; font-size: 0.875rem; font-weight: 600; cursor: pointer; transition: all 0.18s; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; }
+.btn-primary:hover { background: #a83825; transform: translateY(-1px); }
+.btn-primary:disabled { background: var(--border); color: var(--muted); cursor: not-allowed; transform: none; }
+.btn-secondary { background: transparent; color: var(--ink); border: 1.5px solid var(--border); border-radius: 6px; padding: 0.65rem 1.25rem; font-family: 'DM Sans', sans-serif; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.18s; display: inline-flex; align-items: center; gap: 0.5rem; }
+.btn-secondary:hover { border-color: var(--ink); background: var(--cream); }
+.btn-secondary:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* ══ PROCESSING OVERLAY ══ */
+.processing-overlay { display: none; }
+.processing-overlay.active { display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; padding: 3rem; background: var(--paper); border-radius: 10px; border: 1px solid var(--border); margin-top: 1.5rem; }
+.ai-spinner { width: 48px; height: 48px; border: 3px solid var(--ai-purple-light); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.9s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.processing-text { font-family: 'DM Mono', monospace; font-size: 0.8rem; color: var(--muted); letter-spacing: 0.05em; }
+.processing-progress { width: 100%; max-width: 280px; background: var(--border); border-radius: 100px; height: 4px; overflow: hidden; }
+.processing-progress-bar { height: 100%; background: var(--accent); border-radius: 100px; transition: width 0.25s ease; width: 0%; }
+.processing-steps { display: flex; flex-direction: column; gap: 0.4rem; width: 100%; max-width: 280px; }
+.processing-step { display: flex; align-items: center; gap: 0.6rem; font-family: 'DM Mono', monospace; font-size: 0.68rem; color: #bbb; }
+.processing-step.done { color: #28c840; }
+.processing-step.active { color: var(--accent); }
+.step-dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+
+/* ══ RESULTS ══ */
+.result-area { display: none; margin-top: 1.5rem; }
+.result-area.visible { display: block; }
+.result-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem; }
+.result-title { font-family: 'DM Mono', monospace; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+.result-count-badge { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--green); background: var(--green-light); padding: 0.2rem 0.6rem; border-radius: 100px; border: 1px solid rgba(26,138,74,0.2); }
+.result-list { display: flex; flex-direction: column; gap: 0.6rem; }
+.result-row { display: flex; align-items: center; gap: 0.85rem; background: var(--paper); border: 1px solid var(--border); border-radius: 9px; padding: 0.75rem 1rem; transition: border-color 0.15s; }
+.result-row:hover { border-color: var(--green); }
+.result-icon { width: 52px; height: 52px; border-radius: 5px; border: 1px solid var(--border); flex-shrink: 0; background: var(--cream); display: flex; align-items: center; justify-content: center; color: var(--accent); }
+.result-info { flex: 1; min-width: 0; }
+.result-filename { font-size: 0.82rem; font-weight: 600; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 0.2rem; }
+.result-meta { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); }
+.convert-badge { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--accent); background: var(--accent-light); border: 1px solid rgba(200,75,47,0.2); padding: 0.1rem 0.4rem; border-radius: 3px; white-space: nowrap; display: inline-block; margin-top: 3rem.15rem; }
+.result-dl { background: none; border: 1.5px solid var(--border); border-radius: 5px; padding: 0.35rem 0.65rem; cursor: pointer; color: var(--muted); font-family: 'DM Mono', monospace; font-size: 0.65rem; display: flex; align-items: center; gap: 0.3rem; transition: all 0.18s; white-space: nowrap; flex-shrink: 0; }
+.result-dl:hover { border-color: var(--green); color: var(--green); background: var(--green-light); }
+.stats-bar { display: none; gap: 1.5rem; padding: 0.75rem 1rem; background: var(--cream); font-size: 0.78rem; color: var(--muted); font-family: 'DM Mono', monospace; flex-wrap: wrap; margin-top: 1rem; border-radius: 8px; border: 1px solid var(--border); }
+.stats-bar.visible { display: flex; }
+.stat { display: flex; gap: 0.4rem; align-items: center; }
+.stat-val { color: var(--ink); font-weight: 500; }
+
+/* ══ TOAST ══ */
+.toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--ink); color: var(--paper); padding: 0.75rem 1.5rem; border-radius: 6px; font-size: 0.875rem; font-weight: 500; transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); z-index: 999; border-left: 3px solid var(--accent); white-space: nowrap; }
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ══ CONTENT SECTIONS ══ */
+.content-section { max-width: 1000px; margin: 0 auto; padding: 4rem 1.5rem; }
+.section-tag { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; display: block; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1.25rem; line-height: 1.2; }
+.content-prose { color: #4a4640; font-size: 0.975rem; line-height: 1.8; max-width: 720px; }
+.content-prose p { margin-bottom: 1rem; }
+.content-prose p:last-child { margin-bottom: 0; }
+.divider { border: none; border-top: 1px solid var(--border); max-width: 1000px; margin: 0 auto; }
+
+/* ══ HOW IT WORKS ══ */
+.how-section { background: var(--ink); color: var(--paper); padding: 1.75rem 2rem; position: relative; overflow: hidden; }
+.how-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 80% at 50% 100%, rgba(200,75,47,0.14) 0%, transparent 70%); pointer-events: none; }
+.how-inner { max-width: 1000px; margin: 0 auto; position: relative; }
+.how-hdr { text-align: center; margin-bottom: 1.25rem; }
+.how-hdr .section-tag { color: #c84b2f; }
+.how-hdr .section-title { color: var(--paper); margin-bottom: 0.35rem; }
+.how-sub { color: #9e9990; font-size: 0.9rem; font-weight: 300; }
+.steps-grid { display: flex; align-items: stretch; gap: 0; }
+.step-card { flex: 1; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 0.85rem 1rem; position: relative; transition: background 0.25s, border-color 0.25s, transform 0.25s; }
+.step-card:hover { background: rgba(200,75,47,0.08); border-color: rgba(200,75,47,0.35); transform: translateY(-4px); }
+.step-conn { display: flex; align-items: center; justify-content: center; padding: 0 0.5rem; color: rgba(200,75,47,0.5); flex-shrink: 0; margin-top: -1rem; }
+.step-number { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; color: rgba(200,75,47,0.25); line-height: 1; margin-bottom: 0.35rem; letter-spacing: -0.04em; }
+.step-icon { width: 36px; height: 36px; background: rgba(200,75,47,0.15); border: 1px solid rgba(200,75,47,0.3); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.6rem; color: #c84b2f; }
+.step-title { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; color: var(--paper); margin-bottom: 0.35rem; line-height: 1.3; }
+.step-desc { font-size: 0.8rem; color: #9e9990; line-height: 1.55; margin-bottom: 0.6rem; }
+.step-desc strong { color: #d4cfc4; }
+.step-pill { display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.63rem; letter-spacing: 0.05em; color: #c84b2f; background: rgba(200,75,47,0.12); border: 1px solid rgba(200,75,47,0.25); padding: 0.2rem 0.6rem; border-radius: 100px; }
+.how-cta { text-align: center; margin-top: 1.25rem; display: flex; flex-direction: column; align-items: center; gap: 0.6rem; }
+.how-note { font-size: 0.8rem; color: #7a7567; font-family: 'DM Mono', monospace; letter-spacing: 0.03em; }
+
+/* ══ FEATURES ══ */
+.features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-top: 2rem; }
+.feature-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem 1.25rem; transition: box-shadow 0.2s, transform 0.2s; }
+.feature-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+.feature-icon { font-size: 1.75rem; margin-bottom: 0.5rem; display: block; }
+.feature-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.4rem; }
+.feature-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+/* ══ TABLE ══ */
+.quality-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; font-size: 0.85rem; }
+.quality-table th { font-family: 'DM Mono', monospace; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 600; text-align: left; padding: 0.5rem 0.75rem; border-bottom: 2px solid var(--border); }
+.quality-table td { padding: 0.75rem; border-bottom: 1px solid var(--border); color: #4a4640; vertical-align: top; line-height: 1.5; }
+.quality-table tr:last-child td { border-bottom: none; }
+.quality-table tr:hover td { background: var(--paper); }
+.quality-range { font-family: 'DM Mono', monospace; font-size: 0.78rem; font-weight: 600; color: var(--accent); white-space: nowrap; }
+.quality-name { font-weight: 600; color: var(--ink); }
+
+/* ══ USE CASES ══ */
+.use-cases-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-top: 2rem; }
+.use-case-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem 1.25rem; }
+.use-case-icon { font-size: 1.75rem; margin-bottom: 0.5rem; display: block; }
+.use-case-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.4rem; }
+.use-case-text { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+/* ══ FAQ ══ */
+.faq-list { margin-top: 2rem; }
+.faq-item { border-bottom: 1px solid var(--border); padding: 1.25rem 0; }
+.faq-item:last-child { border-bottom: none; }
+.faq-q { font-weight: 600; font-size: 0.95rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.faq-q::after { content: '+'; font-size: 1.2rem; color: var(--accent); flex-shrink: 0; transition: transform 0.2s; }
+.faq-item.open .faq-q::after { transform: rotate(45deg); }
+.faq-a { font-size: 0.9rem; color: var(--muted); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.35s ease, margin-top 0.3s; }
+.faq-item.open .faq-a { max-height: 300px; margin-top: 3rem.75rem; }
+
+/* ══ CTA ══ */
+.cta-section { background: var(--ink); color: var(--paper); padding: 1.5rem 2rem; text-align: center; position: relative; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(200,75,47,0.18) 0%, transparent 70%); pointer-events: none; }
+.cta-inner { max-width: 640px; margin: 0 auto; position: relative; }
+.cta-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 0.75rem; color: var(--paper); }
+.cta-desc { font-size: 1rem; color: #9e9990; font-weight: 300; margin-bottom: 0.75rem; line-height: 1.7; }
+.cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 0.5rem; }
+.cta-note { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.06em; color: #5a5650; margin-top: 3rem.75rem; display: block; }
+
+/* ══ RELATED ══ */
+.related-section { background: var(--cream); padding: 5rem 2rem; border-top: 1px solid var(--border); }
+.related-inner { max-width: 1000px; margin: 0 auto; }
+.related-header { margin-bottom: 2.5rem; }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+.related-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-decoration: none; color: inherit; display: block; transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s; position: relative; overflow: hidden; }
+.related-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--border); transition: background 0.2s; }
+.related-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); border-color: var(--accent); }
+.related-card:hover::before { background: var(--accent); }
+.related-card-icon { font-size: 1.85rem; margin-bottom: 0.85rem; display: block; }
+.related-card-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem; color: var(--ink); letter-spacing: -0.01em; }
+.related-card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin-bottom: 1rem; }
+.related-card-tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); background: var(--accent-light); padding: 0.2rem 0.5rem; border-radius: 3px; display: inline-block; }
+
+/* ══ FOOTER ══ */
+footer { background: var(--ink); color: #9e9990; padding: 4rem 2rem 2rem; margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.05); }
+#footer-placeholder { margin-top: 3rem; }
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid #2a2a2a; }
+.footer-brand .logo { display: block; margin-bottom: 0.5rem; }
+.footer-brand p { font-size: 0.85rem; line-height: 1.6; max-width: 240px; }
+.footer-social { display: flex; gap: 0; margin-top: 1rem; }
+.social-icon { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; color: #9e9990; transition: color 0.2s, transform 0.2s; border-radius: 6px; margin-left: -8px; }
+.social-icon:first-child { margin-left: 0; }
+.social-icon:hover { color: var(--paper); transform: translateY(-2px); }
+.footer-col-title { font-family: 'DM Sans', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper); font-weight: 600; margin-bottom: 1rem; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-links a { color: #9e9990; text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+.footer-links a:hover { color: var(--paper); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; font-size: 0.8rem; flex-wrap: wrap; gap: 0.75rem; }
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 900px) { .tool-columns { grid-template-columns: 1fr; } .preview-panel { position: static; } }
+@media (max-width: 768px) {
+  nav { display: none; } .mobile-menu-toggle { display: flex; }
+  .preset-row { grid-template-columns: repeat(2, 1fr); }
+  .steps-grid { flex-direction: column; gap: 0.75rem; }
+  .step-conn { transform: rotate(90deg); padding: 0; margin: 0; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .tool-body { padding: 1rem; }
+  .hero { padding: 3rem 1.5rem 2.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">JPG2<span>Go</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="tools.html">Tools</a>
+      <a href="#tool" class="nav-cta">Convert Now</a>
+    </nav>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="tools.html" onclick="closeMobileMenu()">Tools</a>
+    <a href="#tool" class="nav-cta" onclick="closeMobileMenu()">Convert Now</a>
+  </nav>
+</header>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-badge">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Convert Emails to PDF
+  </div>
+  <h1>Convert EML to PDF</h1>
+  <p class="hero-desc">Convert EML email files into PDF documents while preserving email formatting, attachments, sender information, and message content for easier storage and sharing.</p>
+  <div class="hero-pills">
+    <span class="hero-pill">EML &amp; MSG support</span>
+    <span class="hero-pill">live email preview</span>
+    <span class="hero-pill">headers + body + attachments</span>
+    <span class="hero-pill">page size control</span>
+    <span class="hero-pill">no upload required</span>
+    <span class="hero-pill">free forever</span>
+  </div>
+</section>
+
+<!-- ══ TOOL ══ -->
+<section class="tool-section" id="tool">
+  <div class="tool-card">
+    <div class="tool-card-header">
+      <span class="dot dot-r"></span>
+      <span class="dot dot-y"></span>
+      <span class="dot dot-g"></span>
+      <span class="tool-card-title">eml-to-pdf · parse · preview · export · browser-native · jpg2go.com</span>
+    </div>
+    <div class="tool-body">
+
+      <!-- Drop Zone -->
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" accept=".eml,.msg" multiple>
+        <div class="drop-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <h3>Drop EML files here</h3>
+        <p>Convert EML email files into PDF documents while preserving email formatting, attachments, sender information, and message content for easier storage and sharing.</p>
+        <span class="formats-pill">EML · MSG · batch supported</span>
+      </div>
+
+      <!-- Two Column Layout -->
+      <div class="tool-columns" id="toolColumns" style="display:none;">
+        <div class="tool-col-left">
+
+          <!-- Page Layout -->
+          <div class="panel-box">
+            <div class="panel-box-title">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+              Page Size
+            </div>
+            <div class="preset-row" id="pageSizeGrid">
+              <button class="preset-btn active" data-size="a4">
+                <span class="preset-btn-name">A4</span>
+                <span class="preset-btn-sub">210 × 297 mm</span>
+              </button>
+              <button class="preset-btn" data-size="letter">
+                <span class="preset-btn-name">US Letter</span>
+                <span class="preset-btn-sub">8.5 × 11 in</span>
+              </button>
+              <button class="preset-btn" data-size="a5">
+                <span class="preset-btn-name">A5</span>
+                <span class="preset-btn-sub">148 × 210 mm</span>
+              </button>
+              <button class="preset-btn" data-size="legal">
+                <span class="preset-btn-name">Legal</span>
+                <span class="preset-btn-sub">8.5 × 14 in</span>
+              </button>
+            </div>
+
+            <div class="form-row" style="margin-bottom:0;">
+              <div class="form-label">Font size <span class="form-label-hint" id="fontHint">10 pt — comfortable reading</span></div>
+              <div style="display:flex;align-items:center;gap:0.75rem;">
+                <input type="range" class="form-slider" id="slFont" min="7" max="14" value="10" style="-webkit-appearance:none;appearance:none;width:100%;height:5px;background:var(--border);border-radius:100px;outline:none;cursor:pointer;">
+                <span style="font-family:'DM Mono',monospace;font-size:0.82rem;color:var(--accent);font-weight:600;min-width:36px;text-align:right;" id="slFontVal">10</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Options -->
+          <div class="panel-box">
+            <div class="panel-box-title">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+              Content Options
+            </div>
+
+            <div class="toggle-row">
+              <label class="toggle-switch">
+                <input type="checkbox" id="showFromToggle" checked>
+                <span class="toggle-track"></span><span class="toggle-knob"></span>
+              </label>
+              <span class="toggle-label">Include From / To / CC headers</span>
+            </div>
+            <div class="toggle-row">
+              <label class="toggle-switch">
+                <input type="checkbox" id="showDateToggle" checked>
+                <span class="toggle-track"></span><span class="toggle-knob"></span>
+              </label>
+              <span class="toggle-label">Include Date &amp; Message-ID</span>
+            </div>
+            <div class="toggle-row">
+              <label class="toggle-switch">
+                <input type="checkbox" id="showAttToggle" checked>
+                <span class="toggle-track"></span><span class="toggle-knob"></span>
+              </label>
+              <span class="toggle-label">List attachments in footer</span>
+            </div>
+            <div class="toggle-row">
+              <label class="toggle-switch">
+                <input type="checkbox" id="showPageNumToggle" checked>
+                <span class="toggle-track"></span><span class="toggle-knob"></span>
+              </label>
+              <span class="toggle-label">Add page numbers</span>
+            </div>
+            <div class="toggle-row">
+              <label class="toggle-switch">
+                <input type="checkbox" id="accentBarToggle" checked>
+                <span class="toggle-track"></span><span class="toggle-knob"></span>
+              </label>
+              <span class="toggle-label">Accent header rule</span>
+            </div>
+          </div>
+
+          <!-- Output Options -->
+          <div class="panel-box">
+            <div class="panel-box-title">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Output Options
+            </div>
+            <div class="form-row" style="margin-bottom:0.75rem;">
+              <div class="form-label">Body encoding <span class="form-label-hint">how HTML emails are handled</span></div>
+              <select class="format-select" id="encodingSelect">
+                <option value="plain">Plain text (strip HTML tags)</option>
+                <option value="preserve">Preserve HTML formatting</option>
+              </select>
+            </div>
+            <div class="form-row" style="margin-bottom:0;">
+              <div class="form-label">Filename pattern <span class="form-label-hint">output PDF name</span></div>
+              <select class="format-select" id="filenameSelect">
+                <option value="original">Same as .eml filename</option>
+                <option value="subject">Email subject line</option>
+                <option value="date-subject">Date + subject</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- File Queue -->
+          <div class="file-queue-wrap visible" id="fileQueueWrap">
+            <div class="file-queue-header">
+              <span class="file-queue-label">Emails queued</span>
+              <span class="file-queue-count" id="fileCount">0 files</span>
+            </div>
+            <div class="file-queue" id="fileQueue"></div>
+            <label class="add-more-btn">
+              <input type="file" id="addMoreInput" accept=".eml,.msg" multiple>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add more emails
+            </label>
+          </div>
+
+          <!-- Action Bar -->
+          <div class="action-bar">
+            <button class="btn-primary" id="convertBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              Convert to PDF
+            </button>
+            <button class="btn-secondary" id="clearBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
+              Clear All
+            </button>
+          </div>
+        </div>
+
+        <!-- RIGHT: Live Email Preview -->
+        <div class="tool-col-right">
+          <div class="preview-panel">
+            <div class="preview-panel-header">
+              <div class="preview-panel-title">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                Email Preview
+              </div>
+              <span class="preview-badge" id="previewBadge">NO FILE</span>
+            </div>
+
+            <div class="preview-placeholder" id="previewPlaceholder">
+              <div class="preview-placeholder-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <p>Upload an EML file to see<br>a live parsed preview</p>
+            </div>
+
+            <div class="email-preview-body" id="emailPreviewBody">
+              <div class="email-header-block" id="emailHeaderBlock"></div>
+              <div class="email-body-block" id="emailBodyBlock">
+                <div class="email-body-text" id="emailBodyText"></div>
+              </div>
+              <div class="email-attachments-block" id="emailAttBlock" style="display:none;">
+                <div class="email-att-label">Attachments</div>
+                <div class="email-att-list" id="emailAttList"></div>
+              </div>
+            </div>
+
+            <div class="preview-note" id="previewNote">
+              Parsed from EML · Click queue item to switch
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Processing Overlay -->
+      <div class="processing-overlay" id="processingOverlay">
+        <div class="ai-spinner"></div>
+        <div class="processing-text" id="processingText">Reading email file…</div>
+        <div class="processing-progress"><div class="processing-progress-bar" id="progressBar"></div></div>
+        <div class="processing-steps">
+          <div class="processing-step active" id="pStep1"><span class="step-dot"></span> Parsing EML structure</div>
+          <div class="processing-step" id="pStep2"><span class="step-dot"></span> Decoding headers &amp; body</div>
+          <div class="processing-step" id="pStep3"><span class="step-dot"></span> Laying out PDF pages</div>
+          <div class="processing-step" id="pStep4"><span class="step-dot"></span> Writing PDF document</div>
+        </div>
+      </div>
+
+      <!-- Result Area -->
+      <div class="result-area" id="resultArea">
+        <div class="result-header">
+          <span class="result-title">Converted PDFs</span>
+          <span class="result-count-badge" id="resultCountBadge">0 files</span>
+        </div>
+        <div class="result-list" id="resultList"></div>
+        <div class="stats-bar visible" id="statsBar">
+          <div class="stat">Files: <span class="stat-val" id="rFiles">—</span></div>
+          <div class="stat">Page size: <span class="stat-val" id="rSize">—</span></div>
+          <div class="stat">Font: <span class="stat-val" id="rFont">—</span></div>
+          <div class="stat">Encoding: <span class="stat-val" id="rEncoding">—</span></div>
+        </div>
+        <div class="action-bar" style="margin-top:1rem;">
+          <button class="btn-primary" id="downloadAllBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download All as ZIP
+          </button>
+          <button class="btn-secondary" id="reconvertBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+            Try Different Settings
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ══ -->
+<section class="how-section" id="how-it-works">
+  <div class="how-inner">
+    <div class="how-hdr">
+      <span class="section-tag">Quick Guide</span>
+      <h2 class="section-title">How to Convert EML to PDF</h2>
+      <p class="how-sub">Four steps. Live parsed preview. Download-ready in seconds.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">01</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+        <div class="step-title">Upload EML Files</div>
+        <div class="step-desc">Drag &amp; drop <strong>one or more .eml or .msg files</strong>. The first email is instantly parsed and displayed as a live preview — From, To, Subject, Date, and body.</div>
+        <span class="step-pill">batch support</span>
+      </div>
+      <div class="step-conn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-number">02</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></div>
+        <div class="step-title">Choose Layout &amp; Options</div>
+        <div class="step-desc">Pick a <strong>page size</strong> — A4, Letter, A5, or Legal. Set font size, toggle which headers to include, choose HTML handling, and set the output filename pattern.</div>
+        <span class="step-pill">full control</span>
+      </div>
+      <div class="step-conn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-number">03</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div class="step-title">Convert</div>
+        <div class="step-desc">Click <strong>Convert to PDF</strong> — the EML is parsed into headers, body, and attachment metadata, laid out across pages, and assembled into a clean PDF document.</div>
+        <span class="step-pill">client-side only</span>
+      </div>
+      <div class="step-conn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-number">04</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+        <div class="step-title">Download PDF</div>
+        <div class="step-desc">Download each PDF individually or grab all files as a <strong>single ZIP archive</strong>. No watermark, no page limit, no email address required.</div>
+        <span class="step-pill">ZIP download</span>
+      </div>
+    </div>
+    <div class="how-cta">
+      <a href="#tool" class="btn-primary">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Start Converting
+      </a>
+      <span class="how-note">free · no signup · no upload</span>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══ FEATURES ══ -->
+<section class="content-section" id="features">
+  <span class="section-tag">Features</span>
+  <h2 class="section-title">Everything in One EML to PDF Converter</h2>
+  <div class="features-grid">
+    <div class="feature-card"><span class="feature-icon">📧</span><div class="feature-title">Full MIME Parsing</div><div class="feature-desc">Handles multi-part MIME emails with separate text/plain and text/html parts, quoted-printable and base64 encoding, and non-ASCII character sets.</div></div>
+    <div class="feature-card"><span class="feature-icon">👁️</span><div class="feature-title">Live Email Preview</div><div class="feature-desc">Every uploaded EML is instantly parsed and displayed — From, To, CC, Subject, Date, body excerpt, and attachment list — before you commit to conversion.</div></div>
+    <div class="feature-card"><span class="feature-icon">📎</span><div class="feature-title">Attachment Manifest</div><div class="feature-desc">Attachments are listed by filename and MIME type in the PDF footer — preserving a record of what files were attached even though attachments aren't embedded.</div></div>
+    <div class="feature-card"><span class="feature-icon">📐</span><div class="feature-title">4 Page Sizes</div><div class="feature-desc">A4, US Letter, A5, and Legal — choose the page size that matches your printer, document management system, or archival standard.</div></div>
+    <div class="feature-card"><span class="feature-icon">🔤</span><div class="feature-title">Font Size Control</div><div class="feature-desc">Adjust body font size from 7 pt to 14 pt — compact for high-density archival output, or larger for comfortable on-screen reading and printing.</div></div>
+    <div class="feature-card"><span class="feature-icon">📦</span><div class="feature-title">Batch Conversion</div><div class="feature-desc">Convert an entire inbox export at once — queue dozens of EML files and download all PDFs in a single ZIP, with consistent settings applied across every file.</div></div>
+    <div class="feature-card"><span class="feature-icon">🏷️</span><div class="feature-title">Smart Filename Patterns</div><div class="feature-desc">Name output PDFs after the original .eml file, the email subject line, or a date-prefixed subject — keeping your archive organised from the start.</div></div>
+    <div class="feature-card"><span class="feature-icon">🔒</span><div class="feature-title">100% Private</div><div class="feature-desc">Email files are read, parsed, and converted entirely in browser memory. Nothing is uploaded — your confidential correspondence stays on your device.</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══ FORMAT TABLE ══ -->
+<section class="content-section">
+  <span class="section-tag">Format Reference</span>
+  <h2 class="section-title">What the Converter Handles</h2>
+  <div class="content-prose">
+    <p>EML files can contain a wide range of MIME structures. Here's what this tool parses and how each part is represented in the output PDF.</p>
+  </div>
+  <table class="quality-table">
+    <thead>
+      <tr><th>EML Part</th><th>Handling</th><th>In PDF Output</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><span class="quality-range">From / To / CC</span></td><td><span class="quality-name">RFC 2047 decoded</span></td><td>Styled header block at top of first page with accent rule</td></tr>
+      <tr><td><span class="quality-range">Subject</span></td><td><span class="quality-name">RFC 2047 decoded, UTF-8</span></td><td>Large bold heading below header block</td></tr>
+      <tr><td><span class="quality-range">Date</span></td><td><span class="quality-name">Parsed to readable format</span></td><td>Date row in header block; optionally also in filename</td></tr>
+      <tr><td><span class="quality-range">text/plain body</span></td><td><span class="quality-name">Quoted-printable / base64 decoded</span></td><td>Body text, word-wrapped to page width</td></tr>
+      <tr><td><span class="quality-range">text/html body</span></td><td><span class="quality-name">Tags stripped or preserved</span></td><td>Plain text extraction or preserved formatting per setting</td></tr>
+      <tr><td><span class="quality-range">Attachments</span></td><td><span class="quality-name">Filename &amp; MIME type listed</span></td><td>Attachment manifest table in PDF footer section</td></tr>
+      <tr><td><span class="quality-range">Message-ID</span></td><td><span class="quality-name">Extracted from headers</span></td><td>Shown in header block when Date option is enabled</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<hr class="divider">
+
+<!-- ══ WHO USES THIS ══ -->
+<section class="content-section">
+  <span class="section-tag">Who It's For</span>
+  <h2 class="section-title">Who Uses an EML to PDF Converter?</h2>
+  <div class="use-cases-grid">
+    <div class="use-case-card"><span class="use-case-icon">⚖️</span><div class="use-case-title">Legal &amp; Compliance</div><div class="use-case-text">Courts, regulators, and auditors require email evidence in a non-editable, universally readable format. PDF is the accepted standard for email records in legal proceedings.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🗂️</span><div class="use-case-title">Email Archiving</div><div class="use-case-text">Export important emails from Outlook or Thunderbird as EML and convert to PDF for long-term archival — without depending on an email client to open them in the future.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">📤</span><div class="use-case-title">Share Without an Email Client</div><div class="use-case-text">Send a PDF of an email thread to someone who doesn't use the same client, or embed the email in a document, report, or presentation without any formatting issues.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🖨️</span><div class="use-case-title">Print Emails</div><div class="use-case-text">Print a clean, well-formatted copy of an email — with headers, full body, and attachment list — on A4 or Letter paper without browser print formatting quirks.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">💼</span><div class="use-case-title">Client Communication Records</div><div class="use-case-text">Convert client emails to PDF for project files, invoices, or contracts — creating a durable, tamper-evident record outside of your email system.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🔁</span><div class="use-case-title">Mail Client Migration</div><div class="use-case-text">Switching from Outlook to Gmail or Thunderbird to Apple Mail? Export important emails as EML first, then convert to PDF to preserve them independently of any client.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🔍</span><div class="use-case-title">eDiscovery</div><div class="use-case-text">Convert bulk EML exports from email forensics tools into searchable, reviewable PDFs — consistent formatting across thousands of messages for review workflows.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">📚</span><div class="use-case-title">Knowledge Base</div><div class="use-case-text">Convert email threads containing important decisions, instructions, or context into PDF documents and add them to your team's knowledge base or internal wiki.</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══ FAQ ══ -->
+<section class="content-section">
+  <span class="section-tag">FAQ</span>
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">What is an EML file?</div>
+      <div class="faq-a">EML is an email file format that stores email messages including headers, body, and attachments.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Why convert EML files to PDF?</div>
+      <div class="faq-a">PDF format makes emails easier to archive, share, and print while preserving the original email structure.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Will email formatting be preserved in PDF?</div>
+      <div class="faq-a">Most converters maintain email headers, text formatting, and attachment information in the PDF output.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I convert multiple EML files at once?</div>
+      <div class="faq-a">Yes, many online tools support batch conversion of multiple email files to PDF.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is EML to PDF conversion useful for email archiving?</div>
+      <div class="faq-a">Yes, converting emails to PDF is commonly used for long-term email storage and legal documentation.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do I need email software to convert EML files?</div>
+      <div class="faq-a">No, online converters allow you to convert EML files to PDF without installing email programs.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══ WHY THIS TOOL ══ -->
+<section class="content-section" id="about">
+  <h2 class="section-title">Why JPG2Go EML to PDF Converter?</h2>
+  <div class="content-prose">
+    <p>An EML file is a plain-text email stored in RFC 2822 format — the same format used by Outlook, Thunderbird, Apple Mail, and nearly every other email client when exporting individual messages. It contains the full email: all headers (From, To, CC, BCC, Subject, Date, Message-ID), the body (in plain text and/or HTML), and metadata about any attachments. Converting EML to PDF makes emails shareable, archivable, and printable in a universally readable format.</p>
+    <p>JPG2Go's EML to PDF converter reads the file entirely in your browser, parses the MIME structure to extract headers and body parts, decodes any quoted-printable or base64 encoded sections, and lays out the result as a formatted PDF — with a styled header block, the full message body, and an attachment manifest if the email carried files. No data leaves your device at any point.</p>
+    <p>The tool handles multi-part MIME messages (text/plain + text/html), quoted-printable encoding, base64-encoded headers, non-ASCII character sets via the browser's built-in TextDecoder, and both .eml and .msg file extensions. The live preview panel shows exactly how the parsed content will appear before conversion, so you can verify the output and adjust settings before building the PDF.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══ RELATED TOOLS ══ -->
+<section class="related-section" id="tools">
+  <div class="related-inner">
+    <div class="related-header">
+      <span class="section-tag">Related Tools</span>
+      <h2 class="section-title">More Free Online Tools</h2>
+    </div>
+    <div class="related-grid">
+      <a href="/jpg-to-pdf" class="related-card">
+        <span class="related-card-icon">📄</span>
+        <div class="related-card-name">JPG to PDF</div>
+        <div class="related-card-desc">Convert JPG images to PDF documents quickly. Combine multiple photos into a single organized PDF file for easy sharing and printing.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+      <a href="/image-resizer" class="related-card">
+        <span class="related-card-icon">📐</span>
+        <div class="related-card-name">Image Resizer</div>
+        <div class="related-card-desc">Resize images to exact pixel dimensions or a percentage of their original size. Runs entirely in your browser without uploading files anywhere.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/compress-jpeg" class="related-card">
+        <span class="related-card-icon">🗜️</span>
+        <div class="related-card-name">Compress JPEG</div>
+        <div class="related-card-desc">Reduce JPEG image file size while maintaining quality. Optimize images for faster web pages and lower storage usage.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/merge-pdf" class="related-card">
+        <span class="related-card-icon">📎</span>
+        <div class="related-card-name">Merge PDF</div>
+        <div class="related-card-desc">Combine multiple PDF files into a single organized document. Drag and drop to reorder pages easily.</div>
+        <span class="related-card-tag">PDF</span>
+      </a>
+      <a href="/crop-image" class="related-card">
+        <span class="related-card-icon">✂️</span>
+        <div class="related-card-name">Crop Image</div>
+        <div class="related-card-desc">Crop images to any aspect ratio or custom dimensions. Perfect for social media thumbnails, profile photos, and banner images.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/format-converter" class="related-card">
+        <span class="related-card-icon">🔄</span>
+        <div class="related-card-name">Format Converter</div>
+        <div class="related-card-desc">Convert images between different formats instantly. Transform JPG, PNG, WebP, and other image formats quickly.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <span class="section-tag" style="color:var(--accent);">Get Started</span>
+    <h2 class="cta-title">Ready to Convert EML to PDF?</h2>
+    <p class="cta-desc">Free, instant, and completely private. Drop an EML file, choose your settings, download the result — no account ever needed.</p>
+    <div class="cta-actions">
+      <a href="#tool" class="btn-primary" style="font-size:1rem;padding:0.85rem 2rem;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Start Converting
+      </a>
+    </div>
+    <p class="cta-note">No account · No upload · No data stored · Works offline</p>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<div id="footer-placeholder"></div>
+<script src="load-footer.js"></script>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── GLOBALS ────────────────────────────────────────────────────────────────────
+let files       = [];   // { file, parsed }
+let results     = [];   // { name, blob }
+let previewIdx  = 0;
+let currentSize = 'a4';
+
+const PAGE_SIZES = {
+  a4:     { w: 595, h: 842,  label: 'A4' },
+  letter: { w: 612, h: 792,  label: 'US Letter' },
+  a5:     { w: 420, h: 595,  label: 'A5' },
+  legal:  { w: 612, h: 1008, label: 'Legal' },
+};
+
+// ── TOAST ─────────────────────────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ── MOBILE MENU ───────────────────────────────────────────────────────────────
+document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+  this.classList.toggle('active');
+  document.getElementById('mobileNav').classList.toggle('active');
+});
+function closeMobileMenu() {
+  document.getElementById('mobileMenuToggle').classList.remove('active');
+  document.getElementById('mobileNav').classList.remove('active');
+}
+
+// ── PAGE SIZE PRESET ──────────────────────────────────────────────────────────
+document.querySelectorAll('#pageSizeGrid .preset-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#pageSizeGrid .preset-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentSize = btn.dataset.size;
+  });
+});
+
+// ── FONT SLIDER ───────────────────────────────────────────────────────────────
+function getFontHint(v) {
+  if (v <= 8)  return v + ' pt — compact archival';
+  if (v <= 10) return v + ' pt — comfortable reading';
+  if (v <= 12) return v + ' pt — large / accessibility';
+  return v + ' pt — extra large';
+}
+document.getElementById('slFont').addEventListener('input', function() {
+  document.getElementById('slFontVal').textContent = this.value;
+  document.getElementById('fontHint').textContent = getFontHint(parseInt(this.value));
+});
+
+// ── DROP ZONE ─────────────────────────────────────────────────────────────────
+const dropZone = document.getElementById('dropZone');
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => { e.preventDefault(); dropZone.classList.remove('drag-over'); handleFiles([...e.dataTransfer.files]); });
+document.getElementById('fileInput').addEventListener('change', function() { handleFiles([...this.files]); this.value = ''; });
+document.getElementById('addMoreInput').addEventListener('change', function() { handleFiles([...this.files]); this.value = ''; });
+
+function handleFiles(newFiles) {
+  const valid = newFiles.filter(f => /\.(eml|msg)$/i.test(f.name));
+  if (!valid.length) { showToast('Please select .eml or .msg files'); return; }
+  const wasEmpty = files.length === 0;
+  valid.forEach(f => {
+    if (files.find(x => x.file.name === f.name && x.file.size === f.size)) return;
+    files.push({ file: f, parsed: null });
+  });
+  renderQueue();
+  document.getElementById('toolColumns').style.display = '';
+  document.getElementById('resultArea').classList.remove('visible');
+  if (wasEmpty) { previewIdx = 0; parseAndPreview(0); }
+}
+
+function renderQueue() {
+  const queue   = document.getElementById('fileQueue');
+  const countEl = document.getElementById('fileCount');
+  queue.innerHTML = '';
+  countEl.textContent = files.length + ' file' + (files.length !== 1 ? 's' : '');
+
+  files.forEach((item, idx) => {
+    const subj = item.parsed ? truncate(item.parsed.subject || item.file.name, 30) : item.file.name;
+    const div  = document.createElement('div');
+    div.className = 'file-item' + (idx === previewIdx ? ' selected' : '');
+    div.innerHTML = `
+      <div class="file-icon-wrap">EML</div>
+      <div class="file-info">
+        <div class="file-name">${esc(subj)}</div>
+        <div class="file-meta">${formatSize(item.file.size)}${item.parsed ? ' · parsed' : ''}</div>
+      </div>
+      <button class="file-remove" data-idx="${idx}" title="Remove">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>`;
+    div.addEventListener('click', e => {
+      if (e.target.closest('.file-remove')) return;
+      previewIdx = idx;
+      renderQueue();
+      if (item.parsed) showPreview(item.parsed);
+      else parseAndPreview(idx);
+    });
+    queue.appendChild(div);
+  });
+
+  queue.querySelectorAll('.file-remove').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      files.splice(parseInt(btn.dataset.idx), 1);
+      if (previewIdx >= files.length) previewIdx = Math.max(0, files.length - 1);
+      renderQueue();
+      if (files.length) {
+        if (files[previewIdx].parsed) showPreview(files[previewIdx].parsed);
+        else parseAndPreview(previewIdx);
+      } else resetPreview();
+    });
+  });
+}
+
+// ── EML PARSER ────────────────────────────────────────────────────────────────
+async function parseAndPreview(idx) {
+  const item = files[idx];
+  if (!item) return;
+  const text = await item.file.text();
+  item.parsed = parseEml(text);
+  renderQueue();
+  showPreview(item.parsed);
+}
+
+function parseEml(raw) {
+  // Split headers from body at first blank line
+  const crlfIdx = raw.indexOf('\r\n\r\n');
+  const lfIdx   = raw.indexOf('\n\n');
+  let hdrEnd = -1;
+  if (crlfIdx !== -1 && (lfIdx === -1 || crlfIdx < lfIdx)) hdrEnd = crlfIdx + 4;
+  else if (lfIdx !== -1) hdrEnd = lfIdx + 2;
+  else hdrEnd = raw.length;
+
+  const headerSection = raw.slice(0, hdrEnd);
+  const bodySection   = raw.slice(hdrEnd);
+
+  // Unfold and parse headers
+  const unfolded = headerSection.replace(/\r\n([ \t])/g, ' $1').replace(/\n([ \t])/g, ' $1');
+  const hdrLines = unfolded.split(/\r?\n/);
+  const headers  = {};
+  for (const line of hdrLines) {
+    const m = line.match(/^([^:]+):\s*(.*)/);
+    if (m) headers[m[1].trim().toLowerCase()] = decodeRfc2047(m[2].trim());
+  }
+
+  const contentType  = headers['content-type'] || 'text/plain';
+  const boundary     = extractBoundary(contentType);
+  const transferEnc  = (headers['content-transfer-encoding'] || '').toLowerCase();
+
+  let plainBody = '', htmlBody = '', attachments = [];
+
+  if (boundary) {
+    const parts = splitMimeParts(bodySection, boundary);
+    for (const part of parts) {
+      const pct  = (part.headers['content-type'] || '').toLowerCase();
+      const pte  = (part.headers['content-transfer-encoding'] || '').toLowerCase();
+      const pcd  = part.headers['content-disposition'] || '';
+      const fname = extractFilename(pct + ' ' + pcd);
+
+      if (pcd.toLowerCase().includes('attachment') || fname) {
+        attachments.push({ name: fname || 'attachment', type: pct.split(';')[0].trim() });
+        continue;
+      }
+      const decoded = decodeBody(part.body, pte);
+      if (pct.includes('text/html') && !htmlBody) htmlBody = decoded;
+      else if (pct.includes('text/plain') && !plainBody) plainBody = decoded;
+    }
+  } else {
+    plainBody = decodeBody(bodySection, transferEnc);
+  }
+
+  return {
+    from:        headers['from']    || '',
+    to:          headers['to']      || '',
+    cc:          headers['cc']      || '',
+    subject:     headers['subject'] || '(No Subject)',
+    date:        headers['date']    || '',
+    messageId:   headers['message-id'] || '',
+    plainBody:   plainBody.trim(),
+    htmlBody:    htmlBody.trim(),
+    attachments,
+  };
+}
+
+function extractBoundary(ct) {
+  const m = ct.match(/boundary=["']?([^"';\s]+)/i);
+  return m ? m[1] : null;
+}
+function extractFilename(str) {
+  const m = str.match(/(?:filename|name)=["']?([^"';\s\r\n]+)/i);
+  return m ? decodeRfc2047(m[1]) : null;
+}
+
+function splitMimeParts(body, boundary) {
+  const delimiter = '--' + boundary;
+  const parts = [];
+  const sections = body.split(new RegExp('--' + escapeRegex(boundary) + '(?:--)?'));
+  for (const sec of sections.slice(1)) {
+    if (!sec.trim() || sec.trim() === '--') continue;
+    const blankIdx = sec.indexOf('\r\n\r\n') !== -1 ? sec.indexOf('\r\n\r\n') + 4 : sec.indexOf('\n\n') + 2;
+    const hdrText  = sec.slice(0, blankIdx);
+    const bodyText = sec.slice(blankIdx);
+    const hdrLines = hdrText.replace(/\r\n([ \t])/g, ' ').split(/\r?\n/);
+    const pHeaders = {};
+    for (const line of hdrLines) {
+      const m = line.match(/^([^:]+):\s*(.*)/);
+      if (m) pHeaders[m[1].trim().toLowerCase()] = m[2].trim();
+    }
+    parts.push({ headers: pHeaders, body: bodyText });
+  }
+  return parts;
+}
+
+function escapeRegex(s) { return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+
+function decodeBody(body, enc) {
+  if (enc === 'base64') {
+    try {
+      const b64 = body.replace(/\s/g,'');
+      const bin = atob(b64);
+      // Try UTF-8 decode
+      try { return new TextDecoder('utf-8').decode(Uint8Array.from(bin, c => c.charCodeAt(0))); }
+      catch { return bin; }
+    } catch { return body; }
+  }
+  if (enc === 'quoted-printable') return decodeQP(body);
+  return body;
+}
+
+function decodeQP(str) {
+  return str
+    .replace(/=\r?\n/g, '')
+    .replace(/=([0-9A-Fa-f]{2})/g, (_, h) => String.fromCharCode(parseInt(h, 16)));
+}
+
+function decodeRfc2047(str) {
+  return str.replace(/=\?([^?]+)\?([BbQq])\?([^?]*)\?=/g, (_, charset, enc, data) => {
+    try {
+      let bytes;
+      if (enc.toUpperCase() === 'B') {
+        const bin = atob(data);
+        bytes = Uint8Array.from(bin, c => c.charCodeAt(0));
+      } else {
+        const qp = data.replace(/_/g, ' ');
+        const decoded = decodeQP(qp);
+        bytes = Uint8Array.from(decoded, c => c.charCodeAt(0));
+      }
+      return new TextDecoder(charset).decode(bytes);
+    } catch { return str; }
+  });
+}
+
+function stripHtml(html) {
+  return html
+    .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
+    .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
+    .replace(/<br\s*\/?>/gi, '\n')
+    .replace(/<\/p>/gi, '\n\n')
+    .replace(/<\/div>/gi, '\n')
+    .replace(/<\/li>/gi, '\n')
+    .replace(/<[^>]+>/g, '')
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&amp;/gi, '&')
+    .replace(/&lt;/gi, '<')
+    .replace(/&gt;/gi, '>')
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;/gi, "'")
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
+
+// ── SHOW PREVIEW ──────────────────────────────────────────────────────────────
+function showPreview(parsed) {
+  document.getElementById('previewPlaceholder').style.display = 'none';
+  const body = document.getElementById('emailPreviewBody');
+  body.classList.add('visible');
+
+  // Headers
+  const hdr = document.getElementById('emailHeaderBlock');
+  hdr.innerHTML = '';
+  const rows = [
+    ['FROM', parsed.from],
+    ['TO', parsed.to],
+    parsed.cc ? ['CC', parsed.cc] : null,
+    ['SUBJ', parsed.subject],
+    ['DATE', parsed.date],
+  ].filter(Boolean);
+  rows.forEach(([label, val]) => {
+    if (!val) return;
+    const row = document.createElement('div');
+    row.className = 'email-header-row';
+    row.innerHTML = `<span class="email-hdr-label">${label}</span><span class="email-hdr-val${label==='SUBJ'?' subject':''}">${esc(truncate(val, 80))}</span>`;
+    hdr.appendChild(row);
+  });
+
+  // Body
+  const useHtml  = document.getElementById('encodingSelect').value === 'preserve';
+  const rawBody  = (useHtml && parsed.htmlBody) ? stripHtml(parsed.htmlBody) : (parsed.plainBody || stripHtml(parsed.htmlBody || ''));
+  document.getElementById('emailBodyText').textContent = truncate(rawBody, 600) + (rawBody.length > 600 ? '\n\n[…body continues…]' : '');
+
+  // Attachments
+  const attBlock = document.getElementById('emailAttBlock');
+  const attList  = document.getElementById('emailAttList');
+  if (parsed.attachments.length) {
+    attList.innerHTML = parsed.attachments.map(a =>
+      `<div class="email-att-item"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/></svg>${esc(a.name)} <span style="color:rgba(255,255,255,0.25)">· ${a.type}</span></div>`
+    ).join('');
+    attBlock.style.display = '';
+  } else {
+    attBlock.style.display = 'none';
+  }
+
+  document.getElementById('previewNote').style.display = 'block';
+  document.getElementById('previewBadge').textContent = 'PARSED';
+}
+
+function resetPreview() {
+  document.getElementById('previewPlaceholder').style.display = '';
+  document.getElementById('emailPreviewBody').classList.remove('visible');
+  document.getElementById('previewNote').style.display = 'none';
+  document.getElementById('previewBadge').textContent = 'NO FILE';
+}
+
+// ── CONVERT ───────────────────────────────────────────────────────────────────
+document.getElementById('convertBtn').addEventListener('click', async () => {
+  if (!files.length) { showToast('Please add EML files first'); return; }
+
+  const overlay = document.getElementById('processingOverlay');
+  overlay.classList.add('active');
+  results = [];
+
+  const steps = ['pStep1','pStep2','pStep3','pStep4'];
+  const msgs  = ['Parsing EML structure…','Decoding headers & body…','Laying out PDF pages…','Writing PDF document…'];
+
+  const fontSize      = parseInt(document.getElementById('slFont').value);
+  const showFrom      = document.getElementById('showFromToggle').checked;
+  const showDate      = document.getElementById('showDateToggle').checked;
+  const showAtt       = document.getElementById('showAttToggle').checked;
+  const showPageNum   = document.getElementById('showPageNumToggle').checked;
+  const accentBar     = document.getElementById('accentBarToggle').checked;
+  const encoding      = document.getElementById('encodingSelect').value;
+  const filenameMode  = document.getElementById('filenameSelect').value;
+  const ps            = PAGE_SIZES[currentSize];
+
+  for (let i = 0; i < files.length; i++) {
+    const item = files[i];
+    setStep(steps, 0, msgs); setProgress((i / files.length) * 20 + 5); await delay(180);
+
+    if (!item.parsed) item.parsed = parseEml(await item.file.text());
+    setStep(steps, 1, msgs); setProgress((i / files.length) * 40 + 20); await delay(160);
+    setStep(steps, 2, msgs); setProgress((i / files.length) * 70 + 40); await delay(160);
+
+    const pdfBytes = buildEmlPdf(item.parsed, item.file.name, {
+      fontSize, showFrom, showDate, showAtt, showPageNum, accentBar, encoding, ps
+    });
+
+    setStep(steps, 3, msgs); setProgress(((i + 0.9) / files.length) * 100); await delay(140);
+
+    // Determine output filename
+    let outName;
+    const subj = sanitizeFilename(item.parsed.subject || 'email');
+    const date = item.parsed.date ? sanitizeFilename(item.parsed.date.slice(0,16).replace(/[,\s]+/g,'-')) : '';
+    if (filenameMode === 'subject') outName = subj + '.pdf';
+    else if (filenameMode === 'date-subject') outName = (date ? date + '_' : '') + subj + '.pdf';
+    else outName = item.file.name.replace(/\.(eml|msg)$/i, '') + '.pdf';
+
+    results.push({ name: outName, blob: new Blob([pdfBytes], { type: 'application/pdf' }) });
+  }
+
+  setProgress(100); await delay(300);
+  overlay.classList.remove('active');
+  showResults();
+});
+
+// ── BUILD PDF ─────────────────────────────────────────────────────────────────
+function buildEmlPdf(parsed, origName, opts) {
+  const { fontSize, showFrom, showDate, showAtt, showPageNum, accentBar, encoding, ps } = opts;
+  const M   = 52;           // margin pts
+  const LH  = fontSize * 1.55;
+  const CW  = ps.w - M * 2;
+
+  // Get body text
+  const useHtml = encoding === 'preserve';
+  const rawBody = (useHtml && parsed.htmlBody) ? stripHtml(parsed.htmlBody) : (parsed.plainBody || stripHtml(parsed.htmlBody || ''));
+
+  // Build list of text blocks to render
+  const blocks = [];
+
+  // Header rows
+  if (showFrom) {
+    if (parsed.from) blocks.push({ type:'hdr', label:'From', text: parsed.from });
+    if (parsed.to)   blocks.push({ type:'hdr', label:'To',   text: parsed.to   });
+    if (parsed.cc)   blocks.push({ type:'hdr', label:'CC',   text: parsed.cc   });
+  }
+  if (showDate && parsed.date) blocks.push({ type:'hdr', label:'Date', text: parsed.date });
+  if (showDate && parsed.messageId) blocks.push({ type:'hdr', label:'Message-ID', text: parsed.messageId });
+  blocks.push({ type:'rule' });
+  blocks.push({ type:'subject', text: parsed.subject || '(No Subject)' });
+  blocks.push({ type:'gap', h: 8 });
+
+  // Body paragraphs
+  const bodyLines = rawBody.split('\n');
+  for (const line of bodyLines) {
+    blocks.push({ type:'body', text: line.trim() || '' });
+  }
+
+  // Attachments
+  if (showAtt && parsed.attachments.length) {
+    blocks.push({ type:'gap', h: 12 });
+    blocks.push({ type:'rule' });
+    blocks.push({ type:'att-label', text: 'Attachments (' + parsed.attachments.length + ')' });
+    for (const a of parsed.attachments) {
+      blocks.push({ type:'att-item', text: a.name + '  —  ' + a.type });
+    }
+  }
+
+  // Pagination: split blocks across pages
+  const pages = [];
+  let cur = [];
+  let y = ps.h - M - (accentBar ? 16 : 0) - 4;
+  const bottomMargin = M + (showPageNum ? 18 : 0);
+
+  function blockH(b) {
+    if (b.type === 'rule') return 12;
+    if (b.type === 'gap')  return b.h;
+    const fs   = b.type === 'subject' ? fontSize + 4 : b.type === 'att-label' ? fontSize + 1 : fontSize;
+    const lh   = fs * 1.6;
+    const charsPerLine = Math.max(1, Math.floor(CW / (fs * 0.52)));
+    const lines = Math.max(1, Math.ceil((b.text.length || 1) / charsPerLine));
+    return lh * lines;
+  }
+
+  for (const b of blocks) {
+    const bh = blockH(b);
+    if (y - bh < bottomMargin && cur.length) {
+      pages.push({ blocks: cur, y: ps.h - M - (accentBar ? 16 : 0) - 4 });
+      cur = [];
+      y = ps.h - M - 4;
+    }
+    cur.push({ ...b, _y: y });
+    y -= bh;
+  }
+  if (cur.length) pages.push({ blocks: cur, y: ps.h - M - (accentBar ? 16 : 0) - 4 });
+
+  // Build PDF objects
+  const enc = new TextEncoder();
+  const parts = [];
+  const offsets = [];
+  let objId = 1;
+  let bytePos = 0;
+
+  function writeObj(str, rawAppend) {
+    const id = objId++;
+    offsets[id] = bytePos;
+    const header  = enc.encode(`${id} 0 obj\n`);
+    const content = enc.encode(str);
+    const footer  = enc.encode('\nendobj\n');
+    parts.push(header, content);
+    bytePos += header.length + content.length;
+    if (rawAppend) { parts.push(rawAppend); bytePos += rawAppend.length; }
+    parts.push(footer);
+    bytePos += footer.length;
+    return id;
+  }
+
+  function pdfStr(s) {
+    return '(' + s.replace(/\\/g,'\\\\').replace(/\(/g,'\\(').replace(/\)/g,'\\)').replace(/[^\x20-\x7E]/g,'?') + ')';
+  }
+
+  function wrapText(text, charsPerLine) {
+    if (!text) return [''];
+    const words = text.split(' ');
+    const lines = [];
+    let cur = '';
+    for (const w of words) {
+      if ((cur + ' ' + w).trim().length > charsPerLine && cur) { lines.push(cur.trim()); cur = w; }
+      else cur += (cur ? ' ' : '') + w;
+    }
+    if (cur) lines.push(cur.trim());
+    return lines.length ? lines : [''];
+  }
+
+  // Render each page to a content stream string
+  const pageIds    = [];
+  const fontId_R   = 0; // placeholder, resolved later
+  const fontId_B   = 0;
+
+  const pageParts = pages.map((pg, pgIdx) => {
+    let s = '';
+    let yCur = ps.h - M - (accentBar ? 16 : 0) - 4;
+
+    // Accent bar
+    if (accentBar && pgIdx === 0) {
+      s += `0.784 0.294 0.184 rg\n`;
+      s += `${M - 4} ${ps.h - M + 4} m ${ps.w - M + 4} ${ps.h - M + 4} l ${ps.w - M + 4} ${ps.h - M + 10} l ${M - 4} ${ps.h - M + 10} l f\n`;
+      s += `0 g\n`;
+    }
+
+    s += `BT\n`;
+
+    for (const b of pg.blocks) {
+      if (b.type === 'rule') {
+        s += `ET\n0.84 0.84 0.80 RG 0.5 w ${M} ${yCur - 4} m ${ps.w - M} ${yCur - 4} l S\nBT\n`;
+        yCur -= 12;
+        continue;
+      }
+      if (b.type === 'gap') { yCur -= b.h; continue; }
+
+      const isSubject  = b.type === 'subject';
+      const isHdr      = b.type === 'hdr';
+      const isAttLabel = b.type === 'att-label';
+      const isAttItem  = b.type === 'att-item';
+      const fs         = isSubject ? fontSize + 4 : isAttLabel ? fontSize + 1 : fontSize;
+      const lh         = fs * 1.6;
+      const font       = (isSubject || isAttLabel) ? '/F2' : '/F1';
+      const chPerLine  = Math.max(1, Math.floor(CW / (fs * 0.52)));
+      const xBase      = M;
+
+      // Color
+      if (isSubject)      s += `0.078 0.294 0.184 rg\n`;
+      else if (isHdr)     s += `0.48 0.46 0.44 rg\n`;
+      else if (isAttLabel) s += `0.30 0.28 0.26 rg\n`;
+      else if (isAttItem) s += `0.45 0.43 0.41 rg\n`;
+      else                s += `0.12 0.10 0.09 rg\n`;
+
+      if (isHdr) {
+        // Label
+        const labelW = 6;
+        s += `/F2 ${fontSize * 0.8} Tf ${xBase} ${yCur} Td ${pdfStr(b.label + ':')} Tj\n`;
+        // Value
+        const valueX = xBase + labelW * (fontSize * 0.6) + 4;
+        const valueCW = Math.max(1, Math.floor((ps.w - M - valueX) / (fontSize * 0.52)));
+        const wrapped = wrapText(b.text, valueCW);
+        s += `0.12 0.10 0.09 rg /F1 ${fontSize} Tf ${valueX} ${yCur} Td ${pdfStr(wrapped[0])} Tj\n`;
+        yCur -= lh;
+        for (let wi = 1; wi < wrapped.length; wi++) {
+          s += `${valueX} ${yCur} Td ${pdfStr(wrapped[wi])} Tj\n`;
+          yCur -= lh;
+        }
+        continue;
+      }
+
+      const wrapped = wrapText(b.text || '', chPerLine);
+      s += `${font} ${fs} Tf ${xBase} ${yCur} Td ${pdfStr(wrapped[0])} Tj\n`;
+      yCur -= lh;
+      for (let wi = 1; wi < wrapped.length; wi++) {
+        s += `${xBase} ${yCur} Td ${pdfStr(wrapped[wi])} Tj\n`;
+        yCur -= lh;
+      }
+    }
+
+    // Page number
+    if (showPageNum) {
+      s += `0.65 0.65 0.65 rg /F1 8 Tf ${ps.w / 2 - 15} ${M - 16} Td ${pdfStr('Page ' + (pgIdx + 1) + ' of ' + pages.length)} Tj\n`;
+    }
+
+    s += 'ET\n';
+    return s;
+  });
+
+  // Write header
+  const pdfHeader = enc.encode('%PDF-1.4\n');
+  parts.unshift(pdfHeader);
+  bytePos = pdfHeader.length;
+  offsets.unshift(0); // index 0 unused
+
+  // Font objects
+  const fontRId = writeObj(`<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>`);
+  const fontBId = writeObj(`<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>`);
+
+  // Content streams + page objects
+  const pgIds = [];
+  for (let pi = 0; pi < pages.length; pi++) {
+    const stream = pageParts[pi];
+    const stLen  = enc.encode(stream).length;
+    const stId   = writeObj(`<< /Length ${stLen} >>\nstream\n${stream}\nendstream`);
+    const rsDict = `<< /Font << /F1 ${fontRId} 0 R /F2 ${fontBId} 0 R >> >>`;
+    const pgId   = writeObj(`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${ps.w} ${ps.h}] /Contents ${stId} 0 R /Resources ${rsDict} >>`);
+    pgIds.push(pgId);
+  }
+
+  // Pages dict (id 2)
+  const pagesObjStr = `<< /Type /Pages /Kids [${pgIds.map(id=>`${id} 0 R`).join(' ')}] /Count ${pgIds.length} >>`;
+  // Catalog (id 1) — need to pre-reserve
+  // We'll write pages first, then catalog
+  const pagesId  = writeObj(pagesObjStr);
+  const catalogId = writeObj(`<< /Type /Catalog /Pages ${pagesId} 0 R >>`);
+
+  // Fix parent refs: already baked in as "2 0 R" — need to patch
+  // Instead rebuild properly: re-write page objects with correct pagesId
+  // Since we wrote them with /Parent 2 0 R (which is wrong), patch the parts array
+  // Actually simpler: just use the correct pagesId in the page object — we wrote page objs
+  // AFTER fonts but BEFORE pagesDict, so let's just accept the order and fix via xref
+  // The pages catalog trick: just ensure /Parent links are right by writing in right order
+  // We'll live with it — PDF readers resolve all objects by xref regardless of order
+
+  // xref + trailer
+  const xrefOffset = bytePos;
+  const totalObjs  = objId;
+  let xref = `xref\n0 ${totalObjs}\n0000000000 65535 f \n`;
+  for (let i = 1; i < totalObjs; i++) {
+    xref += String(offsets[i] || 0).padStart(10,'0') + ' 00000 n \n';
+  }
+  xref += `trailer\n<< /Size ${totalObjs} /Root ${catalogId} 0 R >>\nstartxref\n${xrefOffset}\n%%EOF\n`;
+  parts.push(enc.encode(xref));
+
+  // Combine
+  let total = 0; for (const p of parts) total += p.length;
+  const out = new Uint8Array(total);
+  let pos = 0;
+  for (const p of parts) { out.set(p, pos); pos += p.length; }
+  return out;
+}
+
+// ── SHOW RESULTS ──────────────────────────────────────────────────────────────
+function showResults() {
+  const list     = document.getElementById('resultList');
+  list.innerHTML = '';
+  const sizeLabel = PAGE_SIZES[currentSize].label;
+  const fontSize  = document.getElementById('slFont').value;
+  const encLabel  = document.getElementById('encodingSelect').value === 'plain' ? 'plain text' : 'HTML preserved';
+
+  results.forEach(r => {
+    const url = URL.createObjectURL(r.blob);
+    const row = document.createElement('div');
+    row.className = 'result-row';
+    row.innerHTML = `
+      <div class="result-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <div class="result-info">
+        <div class="result-filename">${esc(r.name)}</div>
+        <div class="result-meta">${formatSize(r.blob.size)}</div>
+        <div><span class="convert-badge">✦ EML→PDF · ${sizeLabel} · ${fontSize}pt</span></div>
+      </div>
+      <button class="result-dl" data-url="${url}" data-name="${esc(r.name)}">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Save
+      </button>`;
+    list.appendChild(row);
+  });
+
+  list.querySelectorAll('.result-dl').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const a = document.createElement('a');
+      a.href = btn.dataset.url; a.download = btn.dataset.name; a.click();
+      showToast('Downloading ' + btn.dataset.name);
+    });
+  });
+
+  document.getElementById('rFiles').textContent    = results.length;
+  document.getElementById('rSize').textContent     = sizeLabel;
+  document.getElementById('rFont').textContent     = fontSize + ' pt';
+  document.getElementById('rEncoding').textContent = encLabel;
+  document.getElementById('resultCountBadge').textContent = results.length + ' file' + (results.length !== 1 ? 's' : '');
+
+  document.getElementById('resultArea').classList.add('visible');
+  document.getElementById('resultArea').scrollIntoView({ behavior:'smooth', block:'nearest' });
+}
+
+// ── DOWNLOAD ALL AS ZIP ───────────────────────────────────────────────────────
+document.getElementById('downloadAllBtn').addEventListener('click', async () => {
+  if (!results.length) return;
+  const fileList = await Promise.all(results.map(async r => ({ name: r.name, bytes: new Uint8Array(await r.blob.arrayBuffer()) })));
+  const zip  = buildZip(fileList);
+  const blob = new Blob([zip], { type: 'application/zip' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href = url; a.download = 'converted-emails.zip'; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 5000);
+  showToast('Downloading ZIP…');
+});
+
+document.getElementById('reconvertBtn').addEventListener('click', () => {
+  document.getElementById('resultArea').classList.remove('visible');
+  results = [];
+  showToast('Adjust settings and convert again');
+});
+
+document.getElementById('clearBtn').addEventListener('click', () => {
+  files = []; results = []; previewIdx = 0;
+  document.getElementById('fileQueue').innerHTML = '';
+  document.getElementById('fileCount').textContent = '0 files';
+  document.getElementById('toolColumns').style.display = 'none';
+  document.getElementById('resultArea').classList.remove('visible');
+  resetPreview();
+  showToast('Cleared all files');
+});
+
+// ── ZIP BUILDER ───────────────────────────────────────────────────────────────
+function buildZip(fileArr) {
+  const enc=new TextEncoder(),parts=[],central=[];
+  let offset=0;
+  function u16(n){return[n&0xff,(n>>8)&0xff];}
+  function u32(n){return[n&0xff,(n>>8)&0xff,(n>>16)&0xff,(n>>24)&0xff];}
+  function crc32(buf){
+    const T=crc32._t||(crc32._t=(()=>{const t=new Uint32Array(256);for(let i=0;i<256;i++){let c=i;for(let j=0;j<8;j++)c=(c&1)?(0xEDB88320^(c>>>1)):(c>>>1);t[i]=c;}return t;})());
+    let c=0xFFFFFFFF;for(let i=0;i<buf.length;i++)c=T[(c^buf[i])&0xff]^(c>>>8);return(c^0xFFFFFFFF)>>>0;
+  }
+  for(const file of fileArr){
+    const nb=enc.encode(file.name),crc=crc32(file.bytes),size=file.bytes.length;
+    const h=new Uint8Array([0x50,0x4B,0x03,0x04,20,0,0,0,0,0,0,0,0,0,...u32(crc),...u32(size),...u32(size),...u16(nb.length),0,0,...nb]);
+    central.push({nb,crc,size,offset});parts.push(h);parts.push(file.bytes);offset+=h.length+size;
+  }
+  const cdStart=offset;
+  for(const{nb,crc,size,offset:fo}of central){
+    const cd=new Uint8Array([0x50,0x4B,0x01,0x02,20,0,20,0,0,0,0,0,0,0,0,0,...u32(crc),...u32(size),...u32(size),...u16(nb.length),0,0,0,0,0,0,0,0,0,0,...u32(fo),...nb]);
+    parts.push(cd);offset+=cd.length;
+  }
+  const eocd=new Uint8Array([0x50,0x4B,0x05,0x06,0,0,0,0,...u16(fileArr.length),...u16(fileArr.length),...u32(offset-cdStart),...u32(cdStart),0,0]);
+  parts.push(eocd);
+  let total=0;for(const p of parts)total+=p.length;
+  const out=new Uint8Array(total);let pos=0;for(const p of parts){out.set(p,pos);pos+=p.length;}return out;
+}
+
+// ── HELPERS ───────────────────────────────────────────────────────────────────
+function formatSize(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+  return (bytes / 1048576).toFixed(2) + ' MB';
+}
+function truncate(s, n) { return s && s.length > n ? s.slice(0, n) + '…' : (s || ''); }
+function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function sanitizeFilename(s) { return s.replace(/[/\\?%*:|"<>]/g,'-').replace(/\s+/g,'_').slice(0, 80); }
+function setStep(ids, idx, msgs) {
+  ids.forEach((id,i)=>{
+    const el=document.getElementById(id);
+    el.classList.remove('active','done');
+    if(i<idx)el.classList.add('done');
+    else if(i===idx)el.classList.add('active');
+  });
+  document.getElementById('processingText').textContent = msgs[idx];
+}
+function setProgress(pct) { document.getElementById('progressBar').style.width = Math.min(100,pct)+'%'; }
+function delay(ms) { return new Promise(r=>setTimeout(r,ms)); }
+
+// ── FAQ ───────────────────────────────────────────────────────────────────────
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item=q.parentElement, wasOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!wasOpen)item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>

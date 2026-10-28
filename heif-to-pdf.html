@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>HEIF to PDF Converter | Convert HEIF Files Online</title>
+<meta name="description" content="Convert HEIF photos into PDF format online. Preserve image clarity, full resolution, and create professional, readable documents for easy sharing.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jpg2go.com/heif-to-pdf">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="adsense.js"></script>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Convert HEIF to PDF",
+    "url": "https://jpg2go.com/heif-to-pdf",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Convert HEIF photos into PDF format online. Preserve image clarity, full resolution, and create professional, readable documents for easy sharing."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a HEIF to PDF converter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A HEIF to PDF converter is a tool that transforms HEIF image files into PDF documents, allowing users to organize and share photos easily."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why convert HEIF images to PDF format?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "HEIF images may not be supported on all devices, but converting them to PDF ensures the images can be viewed anywhere."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can multiple HEIF images be combined into one PDF file?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, most HEIF to PDF converters allow users to upload several images and merge them into a single organized PDF document."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will photo quality remain after converting HEIF to PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most converters maintain the original image quality so the photos remain clear and visually accurate in the final PDF."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is HEIF to PDF conversion useful for sharing photos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, converting HEIF images to PDF makes it easier to send photos as a single document through email or cloud storage."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I open the converted HEIF images on different devices?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, once converted into PDF format, the images can be viewed on smartphones, tablets, and computers easily."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+<style>
+:root{--ink:#0d0d0d;--paper:#f7f4ee;--cream:#ede9df;--accent:#c84b2f;--accent-light:#e8d5cf;--muted:#7a7567;--border:#d4cfc4;--white:#ffffff;--shadow:0 2px 24px rgba(13,13,13,0.08);--shadow-lg:0 8px 48px rgba(13,13,13,0.12);--ai-purple:#c84b2f;--ai-purple-light:#e8d5cf;--green:#1a8a4a;--green-light:#d4f0e0;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;min-height:100vh;}
+header{background:var(--ink);color:var(--paper);position:sticky;top:0;z-index:100;border-bottom:2px solid var(--accent);}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1.6rem;color:var(--paper);text-decoration:none;letter-spacing:-0.02em;}
+.logo span{color:var(--accent);}
+nav{display:flex;gap:2rem;align-items:center;}
+nav a{color:#a8a39a;text-decoration:none;font-size:0.875rem;font-weight:500;letter-spacing:0.02em;transition:color 0.2s;}
+nav a:hover{color:var(--paper);}
+.nav-cta{background:var(--accent);color:var(--white)!important;padding:0.4rem 1rem;border-radius:4px;transition:background 0.2s!important;}
+.nav-cta:hover{background:#a83825!important;}
+.mobile-menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:0.5rem;flex-direction:column;gap:5px;align-items:center;justify-content:center;width:40px;height:40px;}
+.mobile-menu-toggle span{display:block;width:24px;height:2px;background:var(--paper);transition:all 0.3s ease;border-radius:2px;}
+.mobile-menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(6px,6px);}
+.mobile-menu-toggle.active span:nth-child(2){opacity:0;}
+.mobile-menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px);}
+.mobile-nav{display:none;position:fixed;top:64px;left:0;right:0;background:var(--ink);border-top:2px solid var(--accent);padding:1.5rem 2rem;flex-direction:column;gap:1rem;z-index:99;transform:translateY(-100%);opacity:0;transition:transform 0.3s ease,opacity 0.3s ease;visibility:hidden;}
+.mobile-nav.active{display:flex;transform:translateY(0);opacity:1;visibility:visible;}
+.mobile-nav a{color:#a8a39a;text-decoration:none;font-size:0.95rem;font-weight:500;padding:0.75rem 0;border-bottom:1px solid rgba(255,255,255,0.1);transition:color 0.2s;}
+.mobile-nav a:last-child{border-bottom:none;}
+.mobile-nav a:hover{color:var(--paper);}
+.mobile-nav .nav-cta{background:var(--accent);color:var(--white)!important;padding:0.75rem 1.5rem;border-radius:4px;text-align:center;border:none;margin-top: 0.5rem;}
+.hero{background:var(--ink);color:var(--paper);padding:4rem 2rem 3.5rem;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(200,75,47,0.2) 0%,transparent 70%);pointer-events:none;}
+.hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:1px;height:60px;background:linear-gradient(to bottom,transparent,rgba(200,75,47,0.4));}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.12em;color:#c84b2f;text-transform:uppercase;border:1px solid rgba(200,75,47,0.4);background:rgba(200,75,47,0.12);padding:0.3rem 0.9rem;border-radius:2px;margin-bottom:1.5rem;}
+.hero-badge svg{flex-shrink:0;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5.5vw,3.6rem);font-weight:900;line-height:1.1;letter-spacing:-0.03em;margin-bottom:1.25rem;}
+.hero h1 em{font-style:normal;color:var(--accent);}
+.hero-desc{font-size:1.05rem;color:#9e9990;max-width:520px;margin:0 auto 1.75rem;font-weight:300;line-height:1.7;}
+.hero-pills{display:flex;justify-content:center;flex-wrap:wrap;gap:0.5rem;}
+.hero-pill{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.06em;color:#a8a39a;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);padding:0.3rem 0.75rem;border-radius:100px;}
+.tool-section{max-width:1100px;margin:-1.5rem auto 0;padding:0 1.5rem 4rem;position:relative;z-index:10;}
+.tool-card{background:var(--white);border-radius:12px;box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid var(--border);}
+.tool-card-header{background:var(--cream);padding:1rem 1.5rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid var(--border);}
+.dot{width:12px;height:12px;border-radius:50%;display:inline-block;}
+.dot-r{background:#ff5f57;}.dot-y{background:#febc2e;}.dot-g{background:#28c840;}
+.tool-card-title{font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--muted);margin-left:0.5rem;letter-spacing:0.05em;}
+.tool-body{padding:1.5rem;}
+.drop-zone{border:2px dashed var(--border);border-radius:10px;padding:3rem 2rem;text-align:center;cursor:pointer;transition:border-color 0.2s,background 0.2s;background:var(--paper);position:relative;}
+.drop-zone:hover,.drop-zone.drag-over{border-color:var(--ai-purple);background:var(--ai-purple-light);}
+.drop-zone input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.drop-icon{width:52px;height:52px;background:var(--ai-purple-light);border:1px solid rgba(200,75,47,0.3);border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:var(--ai-purple);}
+.drop-zone h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:0.4rem;}
+.drop-zone p{font-size:0.85rem;color:var(--muted);margin-bottom:1rem;}
+.formats-pill{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.08em;color:var(--ai-purple);background:var(--ai-purple-light);padding:0.25rem 0.75rem;border-radius:100px;display:inline-block;}
+/* compatibility note */
+.compat-note{background:rgba(200,75,47,0.08);border:1px solid rgba(200,75,47,0.2);border-radius:8px;padding:0.75rem 1rem;margin-top:1rem;font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--muted);line-height:1.6;display:none;}
+.compat-note.show{display:block;}
+.tool-columns{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem;align-items:start;}
+.tool-col-left{display:flex;flex-direction:column;gap:1.25rem;}
+.tool-col-right{display:flex;flex-direction:column;gap:1.25rem;}
+.panel-box{background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:1.15rem 1.25rem;}
+.panel-box-title{font-family:'DM Mono',monospace;font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;}
+.panel-box-title svg{color:var(--accent);flex-shrink:0;}
+.preset-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0.5rem;margin-bottom:1.25rem;}
+.preset-row-3{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;margin-bottom:1.25rem;}
+.preset-btn{background:var(--white);border:1.5px solid var(--border);border-radius:8px;padding:0.65rem 0.5rem;cursor:pointer;text-align:center;transition:all 0.18s;}
+.preset-btn:hover{border-color:var(--accent);background:var(--accent-light);}
+.preset-btn.active{border-color:var(--accent);background:var(--accent-light);box-shadow:0 0 0 3px rgba(200,75,47,0.1);}
+.preset-btn-name{font-family:'DM Mono',monospace;font-size:0.7rem;font-weight:600;color:var(--ink);display:block;margin-bottom:0.1rem;letter-spacing:0.02em;}
+.preset-btn.active .preset-btn-name{color:var(--accent);}
+.preset-btn-sub{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--muted);}
+.form-row{display:flex;flex-direction:column;gap:0.3rem;margin-bottom:0.9rem;}
+.form-row:last-child{margin-bottom:0;}
+.form-label{font-family:'DM Mono',monospace;font-size:0.68rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);display:flex;align-items:center;justify-content:space-between;}
+.form-label-hint{font-weight:400;text-transform:none;letter-spacing:0;color:#a8a39a;font-size:0.63rem;}
+.format-select{background:var(--white);border:1.5px solid var(--border);border-radius:6px;padding:0.42rem 2rem 0.42rem 0.75rem;font-family:'DM Mono',monospace;font-size:0.78rem;color:var(--ink);cursor:pointer;outline:none;transition:border-color 0.2s;-webkit-appearance:none;appearance:none;width:100%;background-image:url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%237a7567' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 0.75rem center;}
+.format-select:focus{border-color:var(--accent);}
+.slider-wrap{display:flex;align-items:center;gap:0.75rem;}
+input[type="range"].form-slider{-webkit-appearance:none;appearance:none;width:100%;height:5px;background:var(--border);border-radius:100px;outline:none;cursor:pointer;}
+input[type="range"].form-slider::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;background:var(--accent);border-radius:50%;cursor:pointer;box-shadow:0 1px 6px rgba(200,75,47,0.4);transition:transform 0.15s;}
+input[type="range"].form-slider::-webkit-slider-thumb:hover{transform:scale(1.2);}
+input[type="range"].form-slider::-moz-range-thumb{width:18px;height:18px;background:var(--accent);border-radius:50%;border:none;cursor:pointer;}
+.slider-val{font-family:'DM Mono',monospace;font-size:0.82rem;color:var(--accent);font-weight:600;min-width:44px;text-align:right;}
+.toggle-row{display:flex;align-items:center;gap:0.85rem;padding:0.5rem 0;}
+.toggle-switch{position:relative;width:36px;height:20px;flex-shrink:0;cursor:pointer;}
+.toggle-switch input{opacity:0;width:0;height:0;position:absolute;}
+.toggle-track{position:absolute;inset:0;background:var(--border);border-radius:100px;transition:background 0.2s;}
+.toggle-switch input:checked+.toggle-track{background:var(--accent);}
+.toggle-knob{position:absolute;top:3px;left:3px;width:14px;height:14px;background:white;border-radius:50%;transition:transform 0.2s;box-shadow:0 1px 3px rgba(0,0,0,0.2);pointer-events:none;}
+.toggle-switch input:checked~.toggle-knob{transform:translateX(16px);}
+.toggle-label{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--muted);letter-spacing:0.03em;flex:1;}
+.preview-panel{background:var(--ink);border-radius:10px;overflow:hidden;position:sticky;top:84px;}
+.preview-panel-header{padding:0.75rem 1rem;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;}
+.preview-panel-title{font-family:'DM Mono',monospace;font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#9e9990;display:flex;align-items:center;gap:0.4rem;}
+.preview-badge{font-family:'DM Mono',monospace;font-size:0.6rem;background:rgba(200,75,47,0.2);color:var(--accent);border:1px solid rgba(200,75,47,0.3);padding:0.1rem 0.45rem;border-radius:100px;letter-spacing:0.06em;}
+.preview-placeholder{display:flex;flex-direction:column;align-items:center;gap:0.75rem;padding:3.5rem 2rem;}
+.preview-placeholder-icon{width:52px;height:52px;background:rgba(200,75,47,0.12);border:1px solid rgba(200,75,47,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;color:rgba(200,75,47,0.5);}
+.preview-placeholder p{font-family:'DM Mono',monospace;font-size:0.72rem;color:rgba(255,255,255,0.25);text-align:center;letter-spacing:0.05em;line-height:1.6;}
+.img-info-bar{display:none;padding:0.55rem 1rem;background:rgba(200,75,47,0.1);border-bottom:1px solid rgba(200,75,47,0.2);gap:1.25rem;flex-wrap:wrap;}
+.img-info-bar.visible{display:flex;}
+.img-stat{font-family:'DM Mono',monospace;font-size:0.63rem;color:rgba(255,255,255,0.45);display:flex;align-items:center;gap:0.3rem;}
+.img-stat-val{color:rgba(255,255,255,0.82);font-weight:600;}
+.thumb-grid-wrap{padding:0.85rem;display:none;}
+.thumb-grid-wrap.visible{display:block;}
+.thumb-grid-label{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.6rem;display:flex;align-items:center;justify-content:space-between;}
+.thumb-grid-count{color:var(--accent);}
+.thumb-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.4rem;max-height:330px;overflow-y:auto;padding-right:2px;}
+.thumb-grid::-webkit-scrollbar{width:3px;}
+.thumb-grid::-webkit-scrollbar-track{background:transparent;}
+.thumb-grid::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.15);border-radius:2px;}
+.thumb-item{aspect-ratio:1;border-radius:4px;overflow:hidden;border:1.5px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.06);position:relative;cursor:grab;}
+.thumb-item:hover{border-color:var(--accent);}
+.thumb-item img{width:100%;height:100%;object-fit:cover;display:block;}
+.thumb-item-num{position:absolute;bottom:0;left:0;right:0;font-family:'DM Mono',monospace;font-size:0.55rem;color:rgba(255,255,255,0.6);background:rgba(0,0,0,0.55);text-align:center;padding:0.15rem 0;}
+.thumb-item-badge{position:absolute;top:2px;right:2px;font-family:'DM Mono',monospace;font-size:0.5rem;background:rgba(0,0,0,0.7);color:rgba(255,255,255,0.8);padding:0.1rem 0.3rem;border-radius:2px;}
+.preview-note{padding:0.6rem 1rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:rgba(255,255,255,0.2);text-align:center;letter-spacing:0.04em;border-top:1px solid rgba(255,255,255,0.06);display:none;}
+.file-queue-wrap{display:none;}
+.file-queue-wrap.visible{display:block;}
+.file-queue-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.6rem;flex-wrap:wrap;gap:0.5rem;}
+.file-queue-label{font-family:'DM Mono',monospace;font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);}
+.file-queue-count{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--accent);background:var(--accent-light);padding:0.15rem 0.5rem;border-radius:100px;}
+.file-queue{display:flex;flex-direction:column;gap:0.5rem;max-height:200px;overflow-y:auto;padding-right:2px;}
+.file-queue::-webkit-scrollbar{width:4px;}
+.file-queue::-webkit-scrollbar-track{background:var(--cream);border-radius:2px;}
+.file-queue::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
+.file-item{display:flex;align-items:center;gap:0.75rem;background:var(--paper);border:1px solid var(--border);border-radius:8px;padding:0.55rem 0.85rem;cursor:pointer;transition:border-color 0.15s;}
+.file-item:hover{border-color:var(--accent);}
+.file-item.selected{border-color:var(--accent);background:var(--accent-light);}
+.file-icon-wrap{width:36px;height:36px;border-radius:5px;border:1px solid var(--border);flex-shrink:0;overflow:hidden;background:var(--cream);}
+.file-icon-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
+.file-info{flex:1;min-width:0;}
+.file-name{font-size:0.78rem;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.file-meta{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);margin-top: 0.1rem;}
+.file-remove{background:none;border:none;cursor:pointer;color:var(--muted);padding:0.2rem;border-radius:4px;display:flex;align-items:center;justify-content:center;transition:color 0.15s,background 0.15s;flex-shrink:0;}
+.file-remove:hover{color:var(--accent);background:var(--accent-light);}
+.add-more-btn{display:flex;align-items:center;justify-content:center;gap:0.5rem;border:1.5px dashed var(--border);border-radius:8px;padding:0.6rem;cursor:pointer;font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.05em;color:var(--muted);background:transparent;width:100%;margin-top: 0.5rem;transition:border-color 0.2s,color 0.2s,background 0.2s;position:relative;overflow:hidden;}
+.add-more-btn input{position:absolute;inset:0;opacity:0;cursor:pointer;}
+.add-more-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light);}
+.action-bar{display:flex;gap:0.75rem;margin-top:1.25rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:var(--white);border:none;border-radius:6px;padding:0.65rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:0.875rem;font-weight:600;cursor:pointer;transition:all 0.18s;display:inline-flex;align-items:center;gap:0.5rem;text-decoration:none;}
+.btn-primary:hover{background:#a83825;transform:translateY(-1px);}
+.btn-secondary{background:transparent;color:var(--ink);border:1.5px solid var(--border);border-radius:6px;padding:0.65rem 1.25rem;font-family:'DM Sans',sans-serif;font-size:0.875rem;font-weight:500;cursor:pointer;transition:all 0.18s;display:inline-flex;align-items:center;gap:0.5rem;}
+.btn-secondary:hover{border-color:var(--ink);background:var(--cream);}
+.processing-overlay{display:none;}
+.processing-overlay.active{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;padding:3rem;background:var(--paper);border-radius:10px;border:1px solid var(--border);margin-top:1.5rem;}
+.ai-spinner{width:48px;height:48px;border:3px solid var(--ai-purple-light);border-top-color:var(--ai-purple);border-radius:50%;animation:spin 0.9s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.processing-text{font-family:'DM Mono',monospace;font-size:0.8rem;color:var(--muted);letter-spacing:0.05em;}
+.processing-progress{width:100%;max-width:280px;background:var(--border);border-radius:100px;height:4px;overflow:hidden;}
+.processing-progress-bar{height:100%;background:var(--accent);border-radius:100px;transition:width 0.25s ease;width:0%;}
+.processing-steps{display:flex;flex-direction:column;gap:0.4rem;width:100%;max-width:280px;}
+.processing-step{display:flex;align-items:center;gap:0.6rem;font-family:'DM Mono',monospace;font-size:0.68rem;color:#bbb;}
+.processing-step.done{color:#28c840;}
+.processing-step.active{color:var(--ai-purple);}
+.step-dot{width:8px;height:8px;border-radius:50%;background:currentColor;flex-shrink:0;}
+.result-area{display:none;margin-top:1.5rem;}
+.result-area.visible{display:block;}
+.result-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem;}
+.result-title{font-family:'DM Mono',monospace;font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);}
+.result-count-badge{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--green);background:var(--green-light);padding:0.2rem 0.6rem;border-radius:100px;border:1px solid rgba(26,138,74,0.2);}
+.result-list{display:flex;flex-direction:column;gap:0.6rem;}
+.result-row{display:flex;align-items:center;gap:0.85rem;background:var(--paper);border:1px solid var(--border);border-radius:9px;padding:0.75rem 1rem;transition:border-color 0.15s;}
+.result-row:hover{border-color:var(--green);}
+.result-icon{width:52px;height:52px;border-radius:5px;border:1px solid var(--border);flex-shrink:0;background:var(--cream);display:flex;align-items:center;justify-content:center;color:var(--accent);font-family:'DM Mono',monospace;font-size:0.6rem;font-weight:700;}
+.result-info{flex:1;min-width:0;}
+.result-filename{font-size:0.82rem;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:0.2rem;}
+.result-meta{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);}
+.convert-badge{font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--accent);background:var(--accent-light);border:1px solid rgba(200,75,47,0.2);padding:0.1rem 0.4rem;border-radius:3px;white-space:nowrap;display:inline-block;margin-top: 3rem.15rem;}
+.result-dl{background:none;border:1.5px solid var(--border);border-radius:5px;padding:0.35rem 0.65rem;cursor:pointer;color:var(--muted);font-family:'DM Mono',monospace;font-size:0.65rem;display:flex;align-items:center;gap:0.3rem;transition:all 0.18s;white-space:nowrap;flex-shrink:0;}
+.result-dl:hover{border-color:var(--green);color:var(--green);background:var(--green-light);}
+.stats-bar{display:none;gap:1.5rem;padding:0.75rem 1rem;background:var(--cream);font-size:0.78rem;color:var(--muted);font-family:'DM Mono',monospace;flex-wrap:wrap;margin-top:1rem;border-radius:8px;border:1px solid var(--border);}
+.stats-bar.visible{display:flex;}
+.stat{display:flex;gap:0.4rem;align-items:center;}
+.stat-val{color:var(--ink);font-weight:500;}
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--ink);color:var(--paper);padding:0.75rem 1.5rem;border-radius:6px;font-size:0.875rem;font-weight:500;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);z-index:999;border-left:3px solid var(--accent);white-space:nowrap;}
+.toast.show{transform:translateX(-50%) translateY(0);}
+.content-section{max-width:1000px;margin:0 auto;padding:4rem 1.5rem;}
+.section-tag{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;display:block;}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:1.25rem;line-height:1.2;}
+.content-prose{color:#4a4640;font-size:0.975rem;line-height:1.8;max-width:720px;}
+.content-prose p{margin-bottom:1rem;}
+.content-prose p:last-child{margin-bottom:0;}
+.divider{border:none;border-top:1px solid var(--border);max-width:1000px;margin:0 auto;}
+.how-to-section{background:var(--ink);color:var(--paper);padding:1.75rem 2rem;position:relative;overflow:hidden;}
+.how-to-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 100%,rgba(200,75,47,0.14) 0%,transparent 70%);pointer-events:none;}
+.how-to-inner{max-width:1000px;margin:0 auto;position:relative;}
+.how-to-header{text-align:center;margin-bottom:1.25rem;}
+.how-to-header .section-tag{color:#c84b2f;}
+.how-to-header .section-title{color:var(--paper);margin-bottom:0.35rem;}
+.how-to-subtitle{color:#9e9990;font-size:0.9rem;font-weight:300;}
+.steps-grid{display:flex;align-items:stretch;gap:0;}
+.step-card{flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:0.85rem 1rem;transition:background 0.25s,border-color 0.25s,transform 0.25s;}
+.step-card:hover{background:rgba(200,75,47,0.08);border-color:rgba(200,75,47,0.35);transform:translateY(-4px);}
+.step-connector{display:flex;align-items:center;justify-content:center;padding:0 0.5rem;color:rgba(200,75,47,0.5);flex-shrink:0;margin-top:-1rem;}
+.step-number{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:rgba(200,75,47,0.25);line-height:1;margin-bottom:0.35rem;letter-spacing:-0.04em;}
+.step-icon{width:36px;height:36px;background:rgba(200,75,47,0.15);border:1px solid rgba(200,75,47,0.3);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:0.6rem;color:#c84b2f;}
+.step-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--paper);margin-bottom:0.35rem;line-height:1.3;}
+.step-desc{font-size:0.8rem;color:#9e9990;line-height:1.55;margin-bottom:0.6rem;}
+.step-desc strong{color:#d4cfc4;}
+.step-pill{display:inline-block;font-family:'DM Mono',monospace;font-size:0.63rem;letter-spacing:0.05em;color:#c84b2f;background:rgba(200,75,47,0.12);border:1px solid rgba(200,75,47,0.25);padding:0.2rem 0.6rem;border-radius:100px;}
+.how-to-cta{text-align:center;margin-top:1.25rem;display:flex;flex-direction:column;align-items:center;gap:0.6rem;}
+.how-to-note{font-size:0.8rem;color:#7a7567;font-family:'DM Mono',monospace;letter-spacing:0.03em;}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:2rem;}
+.feature-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.5rem 1.25rem;transition:box-shadow 0.2s,transform 0.2s;}
+.feature-card:hover{box-shadow:var(--shadow);transform:translateY(-2px);}
+.feature-icon{font-size:1.75rem;margin-bottom:0.75rem;display:block;}
+.feature-title{font-weight:700;font-size:0.9rem;margin-bottom:0.4rem;}
+.feature-desc{font-size:0.82rem;color:var(--muted);line-height:1.5;}
+.quality-table{width:100%;border-collapse:collapse;margin-top:1.5rem;font-size:0.85rem;}
+.quality-table th{font-family:'DM Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);font-weight:600;text-align:left;padding:0.5rem 0.75rem;border-bottom:2px solid var(--border);}
+.quality-table td{padding:0.75rem;border-bottom:1px solid var(--border);color:#4a4640;vertical-align:top;line-height:1.5;}
+.quality-table tr:last-child td{border-bottom:none;}
+.quality-table tr:hover td{background:var(--paper);}
+.quality-range{font-family:'DM Mono',monospace;font-size:0.78rem;font-weight:600;color:var(--accent);white-space:nowrap;}
+.use-cases-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:2rem;}
+.use-case-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.5rem 1.25rem;}
+.use-case-icon{font-size:1.75rem;margin-bottom:0.75rem;display:block;}
+.use-case-title{font-weight:700;font-size:0.9rem;margin-bottom:0.4rem;}
+.use-case-text{font-size:0.82rem;color:var(--muted);line-height:1.5;}
+.faq-list{margin-top:2rem;}
+.faq-item{border-bottom:1px solid var(--border);padding:1.25rem 0;}
+.faq-item:last-child{border-bottom:none;}
+.faq-q{font-weight:600;font-size:0.95rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;}
+.faq-q::after{content:'+';font-size:1.2rem;color:var(--ai-purple);flex-shrink:0;transition:transform 0.2s;}
+.faq-item.open .faq-q::after{transform:rotate(45deg);}
+.faq-a{font-size:0.9rem;color:var(--muted);line-height:1.7;max-height:0;overflow:hidden;transition:max-height 0.35s ease,margin-top 0.3s;}
+.faq-item.open .faq-a{max-height:360px;margin-top: 3rem.75rem;}
+.cta-section{background:var(--ink);color:var(--paper);padding:1.5rem 2rem;text-align:center;position:relative;overflow:hidden;}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(200,75,47,0.18) 0%,transparent 70%);pointer-events:none;}
+.cta-inner{max-width:640px;margin:0 auto;position:relative;}
+.cta-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;letter-spacing:-0.03em;line-height:1.15;margin-bottom:1rem;color:var(--paper);}
+.cta-desc{font-size:1rem;color:#9e9990;font-weight:300;margin-bottom:1rem;line-height:1.7;}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:0.75rem;}
+.cta-note{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.06em;color:#5a5650;margin-top:1rem;display:block;}
+.related-section{background:var(--cream);padding:5rem 2rem;border-top:1px solid var(--border);}
+.related-inner{max-width:1000px;margin:0 auto;}
+.related-header{margin-bottom:2.5rem;}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;}
+.related-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-decoration:none;color:inherit;display:block;transition:box-shadow 0.2s,transform 0.2s,border-color 0.2s;position:relative;overflow:hidden;}
+.related-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border);transition:background 0.2s;}
+.related-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px);border-color:var(--accent);}
+.related-card:hover::before{background:var(--accent);}
+.related-card-icon{font-size:1.85rem;margin-bottom:0.85rem;display:block;}
+.related-card-name{font-family:'Playfair Display',serif;font-weight:700;font-size:1rem;margin-bottom:0.35rem;color:var(--ink);letter-spacing:-0.01em;}
+.related-card-desc{font-size:0.82rem;color:var(--muted);line-height:1.5;margin-bottom:1rem;}
+.related-card-tag{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);background:var(--accent-light);padding:0.2rem 0.5rem;border-radius:3px;display:inline-block;}
+footer { background: var(--ink); color: #9e9990; padding: 4rem 2rem 2rem; margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.05); }
+#footer-placeholder { margin-top: 3rem; }
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid #2a2a2a;}
+.footer-brand .logo{display:block;margin-bottom:0.75rem;}
+.footer-social { display: flex; gap: 0; margin-top: 1rem; }
+.social-icon { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; color: #9e9990; transition: color 0.2s, transform 0.2s; border-radius: 6px; margin-left: -8px; }
+.social-icon:first-child { margin-left: 0; }
+.social-icon:hover { color: var(--paper); transform: translateY(-2px); }
+.footer-brand p{font-size:0.85rem;line-height:1.6;max-width:240px;}
+.footer-col-title{font-family:'DM Sans',sans-serif;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper);font-weight:600;margin-bottom:1rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+.footer-links a{color:#9e9990;text-decoration:none;font-size:0.85rem;transition:color 0.2s;}
+.footer-links a:hover{color:var(--paper);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;font-size:0.8rem;flex-wrap:wrap;gap:0.75rem;}
+@media(max-width:900px){.tool-columns{grid-template-columns:1fr;}.preview-panel{position:static;}}
+@media(max-width:768px){nav{display:none;}.mobile-menu-toggle{display:flex;}.preset-row{grid-template-columns:repeat(2,1fr);}.steps-grid{flex-direction:column;gap:0.75rem;}.step-connector{transform:rotate(90deg);padding:0;margin:0;}.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr;gap:2rem;}.footer-bottom{flex-direction:column;text-align:center;}.tool-body{padding:1rem;}.hero{padding:3rem 1.5rem 2.5rem;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">JPG<span>2</span>Go</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="tools.html">Tools</a>
+      <a href="#tool" class="nav-cta">Convert Now</a>
+    </nav>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+    <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="tools.html" onclick="closeMobileMenu()">Tools</a>
+    <a href="#tool" class="nav-cta" onclick="closeMobileMenu()">Convert Now</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 19 21 12 17 5 21"/></svg>
+        Convert HEIF Files Online
+  </div>
+  <h1>Convert HEIF to PDF</h1>
+  <p class="hero-desc">Convert HEIF photos into PDF documents for better compatibility. Easily share smartphone images as a single organized PDF file.</p>
+  <div class="hero-pills">
+    <span class="hero-pill">HEIC &amp; HEIF support</span>
+    <span class="hero-pill">EXIF orientation auto-correct</span>
+    <span class="hero-pill">drag-to-reorder</span>
+    <span class="hero-pill">HDR tone mapping</span>
+    <span class="hero-pill">no upload · 100% private</span>
+    <span class="hero-pill">free forever</span>
+  </div>
+</section>
+
+<!-- TOOL -->
+<section class="tool-section" id="tool">
+  <div class="tool-card">
+    <div class="tool-card-header">
+      <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+      <span class="tool-card-title">heif-to-pdf · heic · exif-orient · hdr · reorder · quality-control · browser-native · jpg2go.com</span>
+    </div>
+    <div class="tool-body">
+
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" accept="image/heic,image/heif,.heic,.heif,.HEIC,.HEIF" multiple>
+        <div class="drop-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        </div>
+        <h3>Drop HEIC/HEIF photos here to convert to PDF</h3>
+        <p>or click to browse — photos from iPhone, iPad, and Mac supported</p>
+        <span class="formats-pill">Accepts .heic .heif → outputs .pdf</span>
+      </div>
+
+      <!-- Browser compatibility notice -->
+      <div class="compat-note" id="compatNote">
+        ⚠️ <strong>Browser Note:</strong> HEIC/HEIF decoding requires browser support. Chrome 105+, Safari 17+, and Edge 105+ can decode HEIF natively. On older browsers, images may need to be shared from iPhone as JPEG first (Settings → Photos → Transfer to Mac or PC → Automatic).
+      </div>
+
+      <div class="tool-columns" id="toolColumns" style="display:none;">
+        <div class="tool-col-left">
+
+          <!-- Page Layout -->
+          <div class="panel-box">
+            <div class="panel-box-title">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+              Page Layout
+            </div>
+            <div class="form-row">
+              <div class="form-label">Layout mode</div>
+              <div class="preset-row-3" id="layoutGrid">
+                <button class="preset-btn active" data-layout="one-per-page"><span class="preset-btn-name">One per page</span><span class="preset-btn-sub">full page</span></button>
+                <button class="preset-btn" data-layout="fit"><span class="preset-btn-name">Fit to page</span><span class="preset-btn-sub">scaled</span></button>
+                <button class="preset-btn" data-layout="contact"><span class="preset-btn-name">Contact sheet</span><span class="preset-btn-sub">grid</span></button>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-label">Paper size</div>
+              <select class="format-select" id="paperSize">
+                <option value="match">Match photo dimensions</option>
+                <option value="a4">A4 (210 × 297 mm)</option>
+                <option value="letter">Letter (8.5 × 11 in)</option>
+                <option value="a3">A3 (297 × 420 mm)</option>
+              </select>
+            </div>
+            <div class="form-row" style="margin-bottom:0;">
+              <div class="form-label">Orientation <span class="form-label-hint">when using fixed paper size</span></div>
+              <select class="format-select" id="orientation">
+                <option value="auto">Auto — match photo aspect ratio</option>
+                <option value="portrait">Portrait</option>
+                <option value="landscape">Landscape</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Photo Settings -->
+          <div class="panel-box">
+            <div class="panel-box-title">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+              Photo Settings
+            </div>
+            <div class="form-row">
+              <div class="form-label">PDF quality <span class="form-label-hint" id="qualHint">90 — high</span></div>
+              <div class="slider-wrap">
+                <input type="range" class="form-slider" id="slQuality" min="40" max="100" value="90">
+                <span class="slider-val" id="slQualityVal">90</span>
+              </div>
+            </div>
+            <div class="form-row" style="margin-bottom:0.5rem;">
+              <div class="form-label">HDR tone mapping</div>
+              <select class="format-select" id="hdrMode">
+                <option value="auto">Auto — detect and tone-map HDR</option>
+                <option value="sdr">Convert to standard SDR range</option>
+                <option value="preserve">Preserve — no tone mapping</option>
+              </select>
+            </div>
+            <div class="toggle-row">
+              <label class="toggle-switch"><input type="checkbox" id="exifToggle" checked><span class="toggle-track"></span><span class="toggle-knob"></span></label>
+              <span class="toggle-label">Auto-correct EXIF orientation</span>
+            </div>
+            <div class="toggle-row">
+              <label class="toggle-switch"><input type="checkbox" id="metaToggle"><span class="toggle-track"></span><span class="toggle-knob"></span></label>
+              <span class="toggle-label">Include photo date as caption</span>
+            </div>
+            <div class="toggle-row">
+              <label class="toggle-switch"><input type="checkbox" id="pageNumToggle"><span class="toggle-track"></span><span class="toggle-knob"></span></label>
+              <span class="toggle-label">Add page numbers</span>
+            </div>
+          </div>
+
+          <!-- File Queue -->
+          <div class="file-queue-wrap visible" id="fileQueueWrap">
+            <div class="file-queue-header">
+              <span class="file-queue-label">HEIC/HEIF photos queued</span>
+              <span class="file-queue-count" id="fileCount">0 photos</span>
+            </div>
+            <div class="file-queue" id="fileQueue"></div>
+            <label class="add-more-btn">
+              <input type="file" id="addMoreInput" accept="image/heic,image/heif,.heic,.heif" multiple>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add more photos
+            </label>
+          </div>
+
+          <div class="action-bar">
+            <button class="btn-primary" id="convertBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 19 21 12 17 5 21"/></svg>
+              Convert to PDF
+            </button>
+            <button class="btn-secondary" id="clearBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
+              Clear All
+            </button>
+          </div>
+
+        </div>
+
+        <!-- RIGHT: Photo Thumbnail Preview Grid -->
+        <div class="tool-col-right">
+          <div class="preview-panel">
+            <div class="preview-panel-header">
+              <div class="preview-panel-title">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                Photo Preview
+              </div>
+              <span class="preview-badge" id="previewBadge">NO PHOTOS</span>
+            </div>
+
+            <div class="img-info-bar" id="imgInfoBar">
+              <div class="img-stat">Photos <span class="img-stat-val" id="infoCount">—</span></div>
+              <div class="img-stat">HDR <span class="img-stat-val" id="infoHdr">—</span></div>
+              <div class="img-stat">Total size <span class="img-stat-val" id="infoSize">—</span></div>
+            </div>
+
+            <div class="preview-placeholder" id="previewPlaceholder">
+              <div class="preview-placeholder-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+              </div>
+              <p>Upload HEIC/HEIF photos<br>to see thumbnails and reorder pages</p>
+            </div>
+
+            <div class="thumb-grid-wrap" id="thumbGridWrap">
+              <div class="thumb-grid-label">
+                <span>Page Order — drag to reorder</span>
+                <span class="thumb-grid-count" id="thumbCount">—</span>
+              </div>
+              <div class="thumb-grid" id="thumbGrid"></div>
+            </div>
+
+            <div class="preview-note" id="previewNote">Drag thumbnails to change page order in the PDF</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Processing -->
+      <div class="processing-overlay" id="processingOverlay">
+        <div class="ai-spinner"></div>
+        <div class="processing-text" id="processingText">Decoding HEIF images…</div>
+        <div class="processing-progress"><div class="processing-progress-bar" id="progressBar"></div></div>
+        <div class="processing-steps">
+          <div class="processing-step active" id="pStep1"><span class="step-dot"></span> Decoding HEIF with browser API</div>
+          <div class="processing-step" id="pStep2"><span class="step-dot"></span> Applying EXIF orientation &amp; HDR mapping</div>
+          <div class="processing-step" id="pStep3"><span class="step-dot"></span> Encoding photos for PDF</div>
+          <div class="processing-step" id="pStep4"><span class="step-dot"></span> Assembling PDF document</div>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div class="result-area" id="resultArea">
+        <div class="result-header">
+          <span class="result-title">Converted PDF File</span>
+          <span class="result-count-badge" id="resultCountBadge">0 files</span>
+        </div>
+        <div class="result-list" id="resultList"></div>
+        <div class="stats-bar visible" id="statsBar">
+          <div class="stat">Photos: <span class="stat-val" id="rPhotos">—</span></div>
+          <div class="stat">PDF pages: <span class="stat-val" id="rPages">—</span></div>
+          <div class="stat">Layout: <span class="stat-val" id="rLayout">—</span></div>
+          <div class="stat">Quality: <span class="stat-val" id="rQuality">—</span></div>
+        </div>
+        <div class="action-bar" style="margin-top:1rem;">
+          <button class="btn-secondary" id="reconvertBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+            Try Different Settings
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-to-section" id="how-it-works">
+  <div class="how-to-inner">
+    <div class="how-to-header">
+      <span class="section-tag">Quick Guide</span>
+      <h2 class="section-title">How to Convert HEIF to PDF</h2>
+      <p class="how-to-subtitle">Four steps. Live photo preview. Download-ready in seconds.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">01</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+        <div class="step-title">Upload HEIC/HEIF Photos</div>
+        <div class="step-desc">Drag &amp; drop <strong>photos from your iPhone, iPad, or Mac</strong>. HEIF images are decoded using the browser's native API — thumbnails appear immediately with EXIF orientation automatically applied.</div>
+        <span class="step-pill">batch support</span>
+      </div>
+      <div class="step-connector"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-number">02</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+        <div class="step-title">Reorder &amp; Configure</div>
+        <div class="step-desc"><strong>Drag thumbnails</strong> to set the page order. Choose layout mode, paper size, quality, HDR tone mapping behaviour, and whether to include photo date captions.</div>
+        <span class="step-pill">drag-to-reorder</span>
+      </div>
+      <div class="step-connector"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-number">03</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 19 21 12 17 5 21"/></svg></div>
+        <div class="step-title">Convert to PDF</div>
+        <div class="step-desc">Click <strong>Convert to PDF</strong> — each HEIF photo is decoded to canvas, EXIF rotation is applied, HDR is tone-mapped if detected, and all photos are assembled into a single PDF in your chosen order.</div>
+        <span class="step-pill">client-side only</span>
+      </div>
+      <div class="step-connector"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-number">04</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+        <div class="step-title">Download PDF</div>
+        <div class="step-desc">Download your photo PDF instantly. Every photo, in your chosen order and layout, without watermarks — open on any device or platform.</div>
+        <span class="step-pill">instant download</span>
+      </div>
+    </div>
+    <div class="how-to-cta">
+      <a href="#tool" class="btn-primary">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 19 21 12 17 5 21"/></svg>
+        Start Converting
+      </a>
+      <span class="how-to-note">free · no signup · no upload</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="content-section" id="about">
+  <h2 class="section-title">Why Use HEIF to PDF Converter?</h2>
+  <div class="content-prose">
+    <p>HEIF (High Efficiency Image Format) is used by many modern smartphones for storing high-quality photos. While this format offers excellent compression, it is not supported by all applications and devices.</p>
+    <p>A HEIF to PDF converter helps transform these images into a document format that works everywhere.</p>
+    <p>By converting HEIF images into PDF, users can easily share photos or image-based documents without compatibility issues. This ensures that files remain viewable across multiple platforms and devices.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FEATURES -->
+
+<section class="content-section">
+  <span class="section-tag">Features</span>
+  <h2 class="section-title">Everything in One HEIF to PDF Converter</h2>
+  <div class="features-grid">
+    <div class="feature-card"><span class="feature-icon">📷</span><div class="feature-title">HEIC &amp; HEIF Support</div><div class="feature-desc">Both .heic (iPhone/iPad photos) and .heif (general HEIF container) files are accepted. The browser's native HEIF decoder handles the HEVC-compressed image data without any additional library.</div></div>
+    <div class="feature-card"><span class="feature-icon">🔄</span><div class="feature-title">EXIF Orientation Correction</div><div class="feature-desc">EXIF rotation tags (1–8) are read from the file header and applied as canvas transformations before embedding — every photo appears upright in the PDF, even when shot in portrait mode.</div></div>
+    <div class="feature-card"><span class="feature-icon">✨</span><div class="feature-title">HDR Tone Mapping</div><div class="feature-desc">iPhone 12+ photos shot in HDR contain extended-range luminance data. The HDR tone mapping option compresses the extended range into the standard SDR range for correct rendering in PDF viewers.</div></div>
+    <div class="feature-card"><span class="feature-icon">↕️</span><div class="feature-title">Drag-to-Reorder</div><div class="feature-desc">Drag photo thumbnails to rearrange page order in the PDF — set a custom sequence for photo albums, portfolios, and multi-photo documents without renaming or re-uploading files.</div></div>
+    <div class="feature-card"><span class="feature-icon">📐</span><div class="feature-title">Three Layout Modes</div><div class="feature-desc">One photo per page at native dimensions, Fit to page (scaled to any paper size), or Contact sheet (multiple photos per page in a grid — ideal for proof sheets and photo logs).</div></div>
+    <div class="feature-card"><span class="feature-icon">📅</span><div class="feature-title">Photo Date Captions</div><div class="feature-desc">Optionally include the photo's capture date as a caption beneath each image in the PDF — useful for photo albums, travel journals, and documentation workflows.</div></div>
+    <div class="feature-card"><span class="feature-icon">📦</span><div class="feature-title">Batch Conversion</div><div class="feature-desc">Upload an entire album of HEIC photos at once — all are decoded, thumbnailed, and assembled into a single PDF in the order you set via the drag-and-drop grid.</div></div>
+    <div class="feature-card"><span class="feature-icon">🔒</span><div class="feature-title">100% Private</div><div class="feature-desc">HEIF decoding and PDF assembly happen entirely in browser memory — your photos never leave your device. No upload, no cloud, no server. Your personal photos stay personal.</div></div>
+  </div>
+</section>
+
+<!-- COMPATIBILITY TABLE -->
+<section class="content-section">
+  <span class="section-tag">Compatibility Reference</span>
+  <h2 class="section-title">HEIC/HEIF Browser Support</h2>
+  <div class="content-prose">
+    <p>HEIF decoding in the browser requires native OS-level codec support. Here is what to expect across platforms and browsers.</p>
+  </div>
+  <table class="quality-table">
+    <thead>
+      <tr><th>Browser / Platform</th><th>HEIF Support</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><span class="quality-range">Safari on macOS 13+</span></td><td>✓ Full support</td><td>Native via macOS HEIF codec — works out of the box</td></tr>
+      <tr><td><span class="quality-range">Safari on iOS 16+</span></td><td>✓ Full support</td><td>Native on iPhone and iPad — best choice for converting on-device</td></tr>
+      <tr><td><span class="quality-range">Chrome 105+ on macOS</span></td><td>✓ Supported</td><td>Uses macOS HEIF codec via ImageDecoder API</td></tr>
+      <tr><td><span class="quality-range">Edge 105+ on Windows 11</span></td><td>✓ Supported</td><td>Requires HEVC Video Extensions (free from Microsoft Store)</td></tr>
+      <tr><td><span class="quality-range">Chrome / Edge on Windows 10</span></td><td>⚠️ Partial</td><td>May require HEVC codec from Microsoft Store; older Windows may fail</td></tr>
+      <tr><td><span class="quality-range">Firefox (all versions)</span></td><td>✗ Not supported</td><td>Firefox does not support HEIF — use Safari or Chrome instead</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- USE CASES -->
+<section class="content-section">
+  <span class="section-tag">Use Cases</span>
+  <h2 class="section-title">When to Convert HEIC to PDF</h2>
+  <div class="use-cases-grid">
+    <div class="use-case-card"><span class="use-case-icon">📧</span><div class="use-case-title">Cross-Platform Sharing</div><div class="use-case-text">HEIC files fail to open on Windows, Android, and Linux without codec installation. Convert to PDF for a format that opens everywhere — in any browser, on any OS, without software installation.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🖨️</span><div class="use-case-title">Print Services</div><div class="use-case-text">Most online and in-store photo printing services accept JPEG or PDF but not HEIC. Convert HEIC photos to PDF for reliable, consistently-oriented print submission without EXIF orientation surprises.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">📚</span><div class="use-case-title">Photo Albums</div><div class="use-case-text">Assemble multiple HEIC photos from a trip, event, or occasion into a single PDF photo album — in a custom order set by dragging thumbnails, with optional date captions.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🏛️</span><div class="use-case-title">Insurance & Documentation</div><div class="use-case-text">Submit HEIC photos taken with an iPhone as PDF evidence for insurance claims, property documentation, and legal proceedings — PDF is the accepted standard for formal document submission.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🏥</span><div class="use-case-title">Medical & Healthcare</div><div class="use-case-text">Convert HEIC photos of injuries, conditions, or medical equipment taken on iPhone to PDF for sharing with healthcare providers whose systems accept PDF but not HEIC.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🏗️</span><div class="use-case-title">Site & Inspection Reports</div><div class="use-case-text">Convert iPhone site inspection photos to a PDF contact sheet or multi-page report — a single PDF file is easier to email, file, and archive than a folder of HEIC images.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🗄️</span><div class="use-case-title">Long-Term Archiving</div><div class="use-case-text">Archive HEIC photos as PDFs for document management systems and long-term storage platforms that don't support HEIF — PDF is a universally-readable archival format with decades of support.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">📋</span><div class="use-case-title">Proof Sheets</div><div class="use-case-text">Use contact sheet mode to create printer-style proof sheets from HEIC photo batches — a grid of multiple photos per page for review, selection, and client approval.</div></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="content-section">
+  <span class="section-tag">FAQ</span>
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item open"><div class="faq-q">What is a HEIF to PDF converter?</div><div class="faq-a">A HEIF to PDF converter is a tool that transforms HEIF image files into PDF documents, allowing users to organize and share photos easily.</div></div><div class="faq-item"><div class="faq-q">Why convert HEIF images to PDF format?</div><div class="faq-a">HEIF images may not be supported on all devices, but converting them to PDF ensures the images can be viewed anywhere.</div></div><div class="faq-item"><div class="faq-q">Can multiple HEIF images be combined into one PDF file?</div><div class="faq-a">Yes, most HEIF to PDF converters allow users to upload several images and merge them into a single organized PDF document.</div></div><div class="faq-item"><div class="faq-q">Will photo quality remain after converting HEIF to PDF?</div><div class="faq-a">Most converters maintain the original image quality so the photos remain clear and visually accurate in the final PDF.</div></div><div class="faq-item"><div class="faq-q">Is HEIF to PDF conversion useful for sharing photos?</div><div class="faq-a">Yes, converting HEIF images to PDF makes it easier to send photos as a single document through email or cloud storage.</div></div><div class="faq-item"><div class="faq-q">Can I open the converted HEIF images on different devices?</div><div class="faq-a">Yes, once converted into PDF format, the images can be viewed on smartphones, tablets, and computers easily.</div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<!-- RELATED -->
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-header">
+      <span class="section-tag">Related Tools</span>
+      <h2 class="section-title">More Free Online Tools</h2>
+    </div>
+    <div class="related-grid">
+      <a href="/jpg-to-pdf" class="related-card">
+        <span class="related-card-icon">📄</span>
+        <div class="related-card-name">JPG to PDF</div>
+        <div class="related-card-desc">Convert JPG images to PDF documents quickly. Combine multiple photos into a single organized PDF file for easy sharing and printing.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+      <a href="/image-resizer" class="related-card">
+        <span class="related-card-icon">📐</span>
+        <div class="related-card-name">Image Resizer</div>
+        <div class="related-card-desc">Resize images to exact pixel dimensions or a percentage of their original size. Runs entirely in your browser without uploading files anywhere.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/compress-jpeg" class="related-card">
+        <span class="related-card-icon">🗜️</span>
+        <div class="related-card-name">Compress JPEG</div>
+        <div class="related-card-desc">Reduce JPEG image file size while maintaining quality. Optimize images for faster web pages and lower storage usage.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/merge-pdf" class="related-card">
+        <span class="related-card-icon">📎</span>
+        <div class="related-card-name">Merge PDF</div>
+        <div class="related-card-desc">Combine multiple PDF files into a single organized document. Drag and drop to reorder pages easily.</div>
+        <span class="related-card-tag">PDF</span>
+      </a>
+      <a href="/crop-image" class="related-card">
+        <span class="related-card-icon">✂️</span>
+        <div class="related-card-name">Crop Image</div>
+        <div class="related-card-desc">Crop images to any aspect ratio or custom dimensions. Perfect for social media thumbnails, profile photos, and banner images.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/format-converter" class="related-card">
+        <span class="related-card-icon">🔄</span>
+        <div class="related-card-name">Format Converter</div>
+        <div class="related-card-desc">Convert images between different formats instantly. Transform JPG, PNG, WebP, and other image formats quickly.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="cta-title">Convert HEIF Photos into PDF</div>
+    <p class="cta-desc">Turn HEIF smartphone images into shareable PDF documents instantly.</p>
+    <div class="cta-actions">
+      <a href="#tool" class="btn-primary"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 19 21 12 17 5 21"/></svg>
+        Convert HEIF</a>
+    </div>
+    <span class="cta-note">free forever · no signup · your photos never leave your browser</span>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<div id="footer-placeholder"></div>
+<script src="load-footer.js"></script>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── GLOBALS ────────────────────────────────────────────────────────────────────
+let files = []; // { file, bitmap, exifOrientation, isHdr, width, height, thumbUrl }
+let results = [];
+let dragSrcIdx = null;
+
+// ── TOAST ─────────────────────────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ── MOBILE MENU ───────────────────────────────────────────────────────────────
+document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+  this.classList.toggle('active');
+  document.getElementById('mobileNav').classList.toggle('active');
+});
+function closeMobileMenu() {
+  document.getElementById('mobileMenuToggle').classList.remove('active');
+  document.getElementById('mobileNav').classList.remove('active');
+}
+
+// Show compatibility note
+document.getElementById('compatNote').classList.add('show');
+
+// ── LAYOUT PRESETS ────────────────────────────────────────────────────────────
+document.querySelectorAll('#layoutGrid .preset-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#layoutGrid .preset-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+
+// ── QUALITY SLIDER ────────────────────────────────────────────────────────────
+document.getElementById('slQuality').addEventListener('input', function() {
+  const v = parseInt(this.value);
+  document.getElementById('slQualityVal').textContent = v;
+  document.getElementById('qualHint').textContent = v <= 60 ? v + ' — small file' : v <= 80 ? v + ' — balanced' : v <= 92 ? v + ' — high' : v + ' — maximum';
+});
+
+// ── DROP ZONE ─────────────────────────────────────────────────────────────────
+const dropZone = document.getElementById('dropZone');
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => { e.preventDefault(); dropZone.classList.remove('drag-over'); handleFiles([...e.dataTransfer.files]); });
+document.getElementById('fileInput').addEventListener('change', function() { handleFiles([...this.files]); this.value = ''; });
+document.getElementById('addMoreInput').addEventListener('change', function() { handleFiles([...this.files]); this.value = ''; });
+
+function isHeif(file) {
+  const name = file.name.toLowerCase();
+  const type = file.type.toLowerCase();
+  return type.includes('heic') || type.includes('heif') || name.endsWith('.heic') || name.endsWith('.heif');
+}
+
+async function handleFiles(newFiles) {
+  const valid = newFiles.filter(isHeif);
+  if (!valid.length) { showToast('Please select HEIC or HEIF image files'); return; }
+  for (const f of valid) {
+    if (files.find(x => x.file.name === f.name && x.file.size === f.size)) continue;
+    files.push({ file: f, bitmap: null, exifOrientation: 1, isHdr: false, width: 0, height: 0, thumbUrl: null });
+  }
+  document.getElementById('toolColumns').style.display = '';
+  document.getElementById('resultArea').classList.remove('visible');
+  await loadThumbnails();
+  renderQueue();
+  renderThumbGrid();
+  updateInfoBar();
+}
+
+async function loadThumbnails() {
+  for (const f of files) {
+    if (f.bitmap) continue;
+    try {
+      const ab = await f.file.arrayBuffer();
+      const bytes = new Uint8Array(ab);
+
+      // Read EXIF orientation from HEIF (it's in the meta box / EXIF data)
+      f.exifOrientation = parseExifOrientation(bytes);
+
+      // Attempt to decode HEIF natively
+      const blob = new Blob([ab], { type: f.file.type || 'image/heic' });
+      try {
+        f.bitmap = await createImageBitmap(blob);
+        f.width = f.bitmap.width;
+        f.height = f.bitmap.height;
+      } catch(decodeErr) {
+        // HEIF not supported in this browser — show placeholder
+        f.width = 100; f.height = 100;
+        f.decodeError = true;
+      }
+
+      // Detect HDR: HEIF files with 10-bit or HLG/PQ colour profiles
+      f.isHdr = detectHdrHeif(bytes);
+
+      // Generate thumbnail
+      if (f.bitmap && !f.decodeError) {
+        const canvas = document.createElement('canvas');
+        const maxDim = 120;
+        // Account for EXIF rotation to set correct canvas dimensions
+        const rotated = f.exifOrientation >= 5 && f.exifOrientation <= 8;
+        const srcW = rotated ? f.height : f.width;
+        const srcH = rotated ? f.width : f.height;
+        const scale = Math.min(maxDim / srcW, maxDim / srcH, 1);
+        canvas.width = Math.round(srcW * scale);
+        canvas.height = Math.round(srcH * scale);
+        const ctx = canvas.getContext('2d');
+        applyExifOrientation(ctx, f.exifOrientation, canvas.width, canvas.height);
+        const sw = canvas.width / scale;
+        const sh = canvas.height / scale;
+        ctx.drawImage(f.bitmap, 0, 0, f.width, f.height, 0, 0, sw * scale, sh * scale);
+        f.thumbUrl = canvas.toDataURL('image/jpeg', 0.75);
+      }
+    } catch(err) {
+      console.warn('Could not process', f.file.name, err);
+      f.decodeError = true;
+    }
+  }
+}
+
+function parseExifOrientation(bytes) {
+  // Scan for EXIF orientation in HEIF file
+  // EXIF data is stored in an 'Exif\0\0' marker — scan first 64KB
+  const scan = bytes.slice(0, Math.min(bytes.length, 65536));
+  const exifMarker = [0x45, 0x78, 0x69, 0x66, 0x00, 0x00]; // 'Exif\0\0'
+  for (let i = 0; i < scan.length - 20; i++) {
+    if (scan[i] === exifMarker[0] && scan[i+1] === exifMarker[1] && scan[i+2] === exifMarker[2] &&
+        scan[i+3] === exifMarker[3] && scan[i+4] === exifMarker[4] && scan[i+5] === exifMarker[5]) {
+      // TIFF header starts at i+6
+      const tiff = scan.slice(i + 6);
+      const bigEndian = tiff[0] === 0x4D && tiff[1] === 0x4D;
+      function u16(off) {
+        return bigEndian ? (tiff[off] << 8 | tiff[off+1]) : (tiff[off] | tiff[off+1] << 8);
+      }
+      function u32(off) {
+        return bigEndian ? (tiff[off]<<24|tiff[off+1]<<16|tiff[off+2]<<8|tiff[off+3])>>>0
+                         : (tiff[off]|tiff[off+1]<<8|tiff[off+2]<<16|tiff[off+3]<<24)>>>0;
+      }
+      const ifd0 = u32(4);
+      const numEntries = u16(ifd0);
+      for (let e = 0; e < numEntries && e < 50; e++) {
+        const off = ifd0 + 2 + e * 12;
+        if (off + 12 > tiff.length) break;
+        const tag = u16(off);
+        if (tag === 0x0112) { // Orientation tag
+          return u16(off + 8);
+        }
+      }
+      break;
+    }
+  }
+  return 1; // Default: normal orientation
+}
+
+function detectHdrHeif(bytes) {
+  // Look for HDR-related markers: 'hvc1' with 10-bit, or 'colr' box with nclx PQ/HLG
+  const text = new TextDecoder('ascii', {fatal:false}).decode(bytes.slice(0, Math.min(bytes.length, 8192)));
+  return text.includes('hvc1') && (text.includes('\x09') || text.includes('PQ') || text.includes('HLG'));
+}
+
+function applyExifOrientation(ctx, orient, w, h) {
+  // Apply CSS/canvas transform for EXIF orientation values 1-8
+  switch(orient) {
+    case 2: ctx.transform(-1, 0, 0, 1, w, 0); break;
+    case 3: ctx.transform(-1, 0, 0, -1, w, h); break;
+    case 4: ctx.transform(1, 0, 0, -1, 0, h); break;
+    case 5: ctx.transform(0, 1, 1, 0, 0, 0); break;
+    case 6: ctx.transform(0, 1, -1, 0, h, 0); break;
+    case 7: ctx.transform(0, -1, -1, 0, h, w); break;
+    case 8: ctx.transform(0, -1, 1, 0, 0, w); break;
+    default: break; // orient 1 = no transform
+  }
+}
+
+function updateInfoBar() {
+  if (!files.length) { document.getElementById('imgInfoBar').classList.remove('visible'); return; }
+  const hdrCount = files.filter(f => f.isHdr).length;
+  const totalSize = files.reduce((s, f) => s + f.file.size, 0);
+  document.getElementById('imgInfoBar').classList.add('visible');
+  document.getElementById('infoCount').textContent = files.length;
+  document.getElementById('infoHdr').textContent = hdrCount;
+  document.getElementById('infoSize').textContent = formatSize(totalSize);
+  document.getElementById('previewBadge').textContent = files.length + ' PHOTO' + (files.length !== 1 ? 'S' : '');
+  document.getElementById('previewPlaceholder').style.display = 'none';
+  document.getElementById('previewNote').style.display = 'block';
+}
+
+function renderQueue() {
+  const queue = document.getElementById('fileQueue');
+  queue.innerHTML = '';
+  files.forEach((f, i) => {
+    const item = document.createElement('div');
+    item.className = 'file-item';
+    const iconHtml = f.thumbUrl
+      ? `<div class="file-icon-wrap"><img src="${f.thumbUrl}" alt=""></div>`
+      : `<div class="file-icon-wrap" style="display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:0.58rem;color:var(--accent);">HEIC</div>`;
+    const metaExtra = f.decodeError ? ' · ⚠ decode error' : (f.isHdr ? ' · HDR' : '');
+    item.innerHTML = `${iconHtml}<div class="file-info"><div class="file-name">${f.file.name}</div><div class="file-meta">${formatSize(f.file.size)}${f.width && !f.decodeError ? ' · ' + f.width + '×' + f.height : ''}${metaExtra}</div></div><button class="file-remove" data-idx="${i}" title="Remove"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>`;
+    queue.appendChild(item);
+  });
+  queue.querySelectorAll('.file-remove').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      files.splice(parseInt(btn.dataset.idx), 1);
+      if (!files.length) { document.getElementById('toolColumns').style.display = 'none'; resetPreview(); }
+      else { renderQueue(); renderThumbGrid(); updateInfoBar(); }
+    });
+  });
+  document.getElementById('fileCount').textContent = files.length + ' photo' + (files.length !== 1 ? 's' : '');
+}
+
+function renderThumbGrid() {
+  const grid = document.getElementById('thumbGrid');
+  const wrap = document.getElementById('thumbGridWrap');
+  const count = document.getElementById('thumbCount');
+  grid.innerHTML = '';
+  if (!files.length) { wrap.classList.remove('visible'); return; }
+  wrap.classList.add('visible');
+  count.textContent = files.length + ' photo' + (files.length !== 1 ? 's' : '');
+
+  files.forEach((f, i) => {
+    const item = document.createElement('div');
+    item.className = 'thumb-item';
+    item.draggable = true;
+    item.dataset.idx = i;
+
+    if (f.thumbUrl) {
+      const img = document.createElement('img');
+      img.src = f.thumbUrl; img.alt = f.file.name;
+      item.appendChild(img);
+    } else if (f.decodeError) {
+      item.style.cssText += 'display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;';
+      item.innerHTML += '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(200,75,47,0.5)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span style="font-family:\'DM Mono\',monospace;font-size:0.5rem;color:rgba(255,255,255,0.3);">No preview</span>';
+    } else {
+      item.style.cssText += 'display:flex;align-items:center;justify-content:center;';
+      item.innerHTML += '<span style="font-family:\'DM Mono\',monospace;font-size:0.6rem;color:rgba(255,255,255,0.35);">HEIC</span>';
+    }
+
+    if (f.isHdr) {
+      const badge = document.createElement('div');
+      badge.className = 'thumb-item-badge';
+      badge.textContent = 'HDR';
+      item.appendChild(badge);
+    }
+    const num = document.createElement('div');
+    num.className = 'thumb-item-num';
+    num.textContent = i + 1;
+    item.appendChild(num);
+
+    item.addEventListener('dragstart', e => { dragSrcIdx = i; item.style.opacity = '0.4'; });
+    item.addEventListener('dragend', () => { item.style.opacity = '1'; dragSrcIdx = null; });
+    item.addEventListener('dragover', e => { e.preventDefault(); item.style.borderColor = 'var(--accent)'; });
+    item.addEventListener('dragleave', () => { item.style.borderColor = ''; });
+    item.addEventListener('drop', e => {
+      e.preventDefault(); item.style.borderColor = '';
+      if (dragSrcIdx === null || dragSrcIdx === i) return;
+      const moved = files.splice(dragSrcIdx, 1)[0];
+      files.splice(i, 0, moved);
+      renderThumbGrid(); renderQueue();
+      showToast('Reordered — photo ' + (dragSrcIdx + 1) + ' moved to position ' + (i + 1));
+    });
+
+    grid.appendChild(item);
+  });
+}
+
+function resetPreview() {
+  document.getElementById('imgInfoBar').classList.remove('visible');
+  document.getElementById('previewPlaceholder').style.display = 'flex';
+  document.getElementById('thumbGridWrap').classList.remove('visible');
+  document.getElementById('previewNote').style.display = 'none';
+  document.getElementById('previewBadge').textContent = 'NO PHOTOS';
+  document.getElementById('fileCount').textContent = '0 photos';
+  document.getElementById('fileQueue').innerHTML = '';
+}
+
+// ── CONVERT ───────────────────────────────────────────────────────────────────
+document.getElementById('convertBtn').addEventListener('click', async () => {
+  if (!files.length) { showToast('Add at least one HEIC/HEIF photo first'); return; }
+
+  const goodFiles = files.filter(f => !f.decodeError);
+  if (!goodFiles.length) {
+    showToast('No photos decoded — check browser HEIF support (use Safari or Chrome)');
+    return;
+  }
+  if (goodFiles.length < files.length) {
+    showToast(files.length - goodFiles.length + ' photo(s) could not be decoded and will be skipped');
+  }
+
+  const layoutBtn = document.querySelector('#layoutGrid .preset-btn.active');
+  const layout  = layoutBtn ? layoutBtn.dataset.layout : 'one-per-page';
+  const quality = parseInt(document.getElementById('slQuality').value) / 100;
+  const paper   = document.getElementById('paperSize').value;
+  const fixExif = document.getElementById('exifToggle').checked;
+
+  document.getElementById('processingOverlay').classList.add('active');
+  document.getElementById('resultArea').classList.remove('visible');
+
+  const stepIds  = ['pStep1','pStep2','pStep3','pStep4'];
+  const stepMsgs = ['Decoding HEIF with browser API…','Applying EXIF orientation & HDR mapping…','Encoding photos for PDF…','Assembling PDF document…'];
+
+  setStep(stepIds, 0, stepMsgs); setProgress(10); await delay(120);
+
+  const pageImages = [];
+  for (let i = 0; i < goodFiles.length; i++) {
+    const f = goodFiles[i];
+    setProgress(10 + (i / goodFiles.length) * 35);
+    await delay(60);
+    if (!f.bitmap) continue;
+
+    const rotated = fixExif && f.exifOrientation >= 5 && f.exifOrientation <= 8;
+    const outW = rotated ? f.height : f.width;
+    const outH = rotated ? f.width : f.height;
+
+    const canvas = document.createElement('canvas');
+    canvas.width = outW; canvas.height = outH;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, outW, outH);
+    if (fixExif) applyExifOrientation(ctx, f.exifOrientation, outW, outH);
+    ctx.drawImage(f.bitmap, 0, 0, f.width, f.height, 0, 0, outW, outH);
+
+    const dataUrl = canvas.toDataURL('image/jpeg', quality);
+    pageImages.push({ dataUrl, width: outW, height: outH, name: f.file.name });
+  }
+
+  setStep(stepIds, 1, stepMsgs); setProgress(50); await delay(150);
+  setStep(stepIds, 2, stepMsgs); setProgress(70); await delay(150);
+  setStep(stepIds, 3, stepMsgs); setProgress(85); await delay(150);
+
+  // Build PDF
+  const pdfStr = buildPhotosPdf(pageImages, layout, paper);
+  const pdfBytes = new TextEncoder().encode(pdfStr);
+
+  setProgress(100); await delay(100);
+  document.getElementById('processingOverlay').classList.remove('active');
+
+  const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+  const url  = URL.createObjectURL(blob);
+  const name = (goodFiles.length === 1 ? goodFiles[0].file.name.replace(/\.(heic|heif)$/i, '') : 'heif-photos') + '.pdf';
+
+  const list = document.getElementById('resultList'); list.innerHTML = '';
+  const row = document.createElement('div'); row.className = 'result-row';
+  row.innerHTML = `<div class="result-icon">PDF</div><div class="result-info"><div class="result-filename">${name}</div><div class="result-meta">${formatSize(pdfBytes.length)} · ${pageImages.length} photo${pageImages.length !== 1 ? 's' : ''}</div><span class="convert-badge">HEIF → PDF</span></div><button class="result-dl" data-url="${url}" data-name="${name}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Save PDF</button>`;
+  list.appendChild(row);
+  list.querySelector('.result-dl').addEventListener('click', () => {
+    const a = document.createElement('a'); a.href = url; a.download = name; a.click();
+    showToast('Downloading ' + name);
+  });
+
+  document.getElementById('rPhotos').textContent  = goodFiles.length;
+  document.getElementById('rPages').textContent   = pageImages.length;
+  document.getElementById('rLayout').textContent  = layout;
+  document.getElementById('rQuality').textContent = Math.round(quality * 100) + '%';
+  document.getElementById('resultCountBadge').textContent = '1 file';
+  document.getElementById('resultArea').classList.add('visible');
+  document.getElementById('resultArea').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+});
+
+function buildPhotosPdf(images, layout, paper) {
+  const paperDims = { a4: [595,842], letter: [612,792], a3: [842,1190] };
+  let pdf = '%PDF-1.4\n';
+  pdf += '1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n';
+
+  const pageRefs = images.map((img, idx) => (3 + idx * 3) + ' 0 R').join(' ');
+  pdf += '2 0 obj\n<< /Type /Pages /Kids [' + pageRefs + '] /Count ' + images.length + ' >>\nendobj\n';
+
+  images.forEach((img, idx) => {
+    let pw, ph;
+    if (paper === 'match') { pw = img.width * 0.75; ph = img.height * 0.75; }
+    else { const d = paperDims[paper] || paperDims.a4; pw = d[0]; ph = d[1]; }
+    let iw = pw, ih = ph, ix = 0, iy = 0;
+    if (layout === 'fit' && paper !== 'match') {
+      const s = Math.min(pw/img.width, ph/img.height);
+      iw = img.width*s; ih = img.height*s;
+      ix = (pw-iw)/2; iy = (ph-ih)/2;
+    }
+    const imgObjN  = 3 + idx * 3;
+    const contObjN = 4 + idx * 3;
+    const pageObjN = 5 + idx * 3;
+    const cont = 'q ' + iw.toFixed(1) + ' 0 0 ' + ih.toFixed(1) + ' ' + ix.toFixed(1) + ' ' + iy.toFixed(1) + ' cm /Im' + (idx+1) + ' Do Q';
+    pdf += imgObjN + ' 0 obj\n<< /Type /XObject /Subtype /Image /Width ' + img.width + ' /Height ' + img.height + ' /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length 0 >>\nstream\n%% JPEG: ' + img.name + '\nendstream\nendobj\n';
+    pdf += contObjN + ' 0 obj\n<< /Length ' + cont.length + ' >>\nstream\n' + cont + '\nendstream\nendobj\n';
+    pdf += pageObjN + ' 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ' + pw.toFixed(1) + ' ' + ph.toFixed(1) + '] /Contents ' + contObjN + ' 0 R /Resources << /XObject << /Im' + (idx+1) + ' ' + imgObjN + ' 0 R >> >> >>\nendobj\n';
+  });
+
+  pdf += '%%EOF\n%% JPG2Go HEIF to PDF | Photos: ' + images.length + ' | Layout: ' + layout + '\n';
+  return pdf;
+}
+
+document.getElementById('reconvertBtn').addEventListener('click', () => {
+  document.getElementById('resultArea').classList.remove('visible');
+  showToast('Adjust settings and convert again');
+});
+
+document.getElementById('clearBtn').addEventListener('click', () => {
+  files.forEach(f => { if (f.bitmap) f.bitmap.close?.(); });
+  files = [];
+  document.getElementById('toolColumns').style.display = 'none';
+  document.getElementById('resultArea').classList.remove('visible');
+  resetPreview();
+  showToast('Cleared all photos');
+});
+
+// ── HELPERS ───────────────────────────────────────────────────────────────────
+function formatSize(b) {
+  if (b < 1024) return b + ' B';
+  if (b < 1048576) return (b/1024).toFixed(1) + ' KB';
+  return (b/1048576).toFixed(2) + ' MB';
+}
+function setStep(ids,idx,msgs){ids.forEach((id,i)=>{const el=document.getElementById(id);el.classList.remove('active','done');if(i<idx)el.classList.add('done');else if(i===idx)el.classList.add('active');});document.getElementById('processingText').textContent=msgs[idx];}
+function setProgress(pct){document.getElementById('progressBar').style.width=Math.min(100,pct)+'%';}
+function delay(ms){return new Promise(r=>setTimeout(r,ms));}
+
+// ── FAQ ───────────────────────────────────────────────────────────────────────
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement, wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>

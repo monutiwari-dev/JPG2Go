@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>Protect PDF Online | Add Password to PDF File</title>
+<meta name="description" content="Add password protection to PDF files online. Keep documents secure, prevent unauthorized access, and share files safely with confidence.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jpg2go.com/protect-pdf">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="adsense.js"></script>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Protect PDF Files",
+    "url": "https://jpg2go.com/protect-pdf",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Add password protection to PDF files online. Keep documents secure, prevent unauthorized access, and share files safely with confidence."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does a Protect PDF tool do?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Protect PDF tool adds password security to a PDF document so that only authorized users can open it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why should I protect a PDF file with a password?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Password protection helps keep confidential information safe from unauthorized access."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I add both viewing and editing restrictions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, some tools allow you to set permissions that restrict editing, copying, or printing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is password protection for PDF files secure?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Strong encryption methods help keep PDF documents protected when a password is applied."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can protected PDFs be shared safely online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, sharing password-protected PDFs ensures that only people with the password can access the document."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is protecting a PDF file free online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Many online tools provide free options to add password protection to PDF documents."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+
+<style>
+:root{--ink:#0d0d0d;--paper:#f7f4ee;--cream:#ede9df;--accent:#c84b2f;--accent-light:#e8d5cf;--muted:#7a7567;--border:#d4cfc4;--white:#ffffff;--shadow:0 2px 24px rgba(13,13,13,.08);--shadow-lg:0 8px 48px rgba(13,13,13,.12);--green:#1a8a4a;--green-light:#d4f0e0;--blue:#1e50a2;--blue-light:#dde8f7}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;min-height:100vh}
+
+/* ── HEADER ── */
+header{background:var(--ink);color:var(--paper);position:sticky;top:0;z-index:100;border-bottom:2px solid var(--accent)}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1.6rem;color:var(--paper);text-decoration:none;letter-spacing:-.02em}
+.logo span{color:var(--accent)}
+nav{display:flex;gap:2rem;align-items:center}
+nav a{color:#a8a39a;text-decoration:none;font-size:.875rem;font-weight:500;letter-spacing:.02em;transition:color .2s}
+nav a:hover{color:var(--paper)}
+.nav-cta{background:var(--accent);color:var(--white)!important;padding:.4rem 1rem;border-radius:4px;transition:background .2s!important}
+.nav-cta:hover{background:#a83825!important}
+.mobile-menu-toggle {display:none;background:none;border:none;cursor:pointer;padding:.5rem;flex-direction:column;gap:5px;align-items:center;justify-content:center;width:40px;height:40px}
+.mobile-menu-toggle span{display:block;width:24px;height:2px;background:var(--paper);transition:all .3s;border-radius:2px}
+.mobile-menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(6px,6px)}
+.mobile-menu-toggle.active span:nth-child(2){opacity:0}
+.mobile-menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
+.mobile-nav {display:none;position:fixed;top:64px;left:0;right:0;background:var(--ink);border-top:2px solid var(--accent);padding:1.5rem 2rem;flex-direction:column;gap:1rem;z-index:99;transform:translateY(-100%);opacity:0;transition:transform .3s,opacity .3s;visibility:hidden}
+.mobile-nav.active{display:flex;transform:translateY(0);opacity:1;visibility:visible}
+.mobile-nav a{color:#a8a39a;text-decoration:none;font-size:.95rem;font-weight:500;padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.1);transition:color .2s}
+.mobile-nav a:last-child{border-bottom:none}
+.mobile-nav a:hover{color:var(--paper)}
+.mobile-nav .nav-cta{background:var(--accent);color:var(--white)!important;padding:.75rem 1.5rem;border-radius:4px;text-align:center;border:none;margin-top:.5rem}
+
+/* ── HERO ── */
+.hero{background:var(--ink);color:var(--paper);padding:4rem 2rem 3.5rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(200,75,47,.2) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:1px;height:60px;background:linear-gradient(to bottom,transparent,rgba(200,75,47,.4))}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.12em;color:#c84b2f;text-transform:uppercase;border:1px solid rgba(200,75,47,.4);background:rgba(200,75,47,.12);padding:.3rem .9rem;border-radius:2px;margin-bottom:1.5rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5.5vw,3.6rem);font-weight:900;line-height:1.1;letter-spacing:-.03em;margin-bottom:1.25rem}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-desc{font-size:1.05rem;color:#9e9990;max-width:520px;margin:0 auto 1.75rem;font-weight:300;line-height:1.7}
+.hero-pills{display:flex;justify-content:center;flex-wrap:wrap;gap:.5rem}
+.hero-pill{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.06em;color:#a8a39a;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:.3rem .75rem;border-radius:100px}
+
+/* ── TOOL CARD ── */
+.tool-section{max-width:1000px;margin:-1.5rem auto 0;padding:0 1.5rem 4rem;position:relative;z-index:10}
+.tool-card{background:var(--white);border-radius:12px;box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid var(--border)}
+.tool-card-header{background:var(--cream);padding:1rem 1.5rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid var(--border)}
+.dot{width:12px;height:12px;border-radius:50%;display:inline-block}
+.dot-r{background:#ff5f57}.dot-y{background:#febc2e}.dot-g{background:#28c840}
+.tc-title{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--muted);margin-left:.5rem;letter-spacing:.05em}
+.tool-body{padding:1.5rem}
+
+/* ── DROP ZONE ── */
+.drop-zone{border:2px dashed var(--border);border-radius:10px;padding:2rem 2rem;margin-bottom:2rem;border-bottom:1px solid rgba(255,255,255,0.05);text-align:center;cursor:pointer;transition:border-color .2s,background .2s;background:var(--paper);position:relative}
+.drop-zone:hover,.drop-zone.drag-over{border-color:var(--accent);background:var(--accent-light)}
+.drop-zone input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.drop-icon{width:52px;height:52px;background:var(--accent-light);border:1px solid rgba(200,75,47,.3);border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:var(--accent)}
+.drop-zone h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:.4rem}
+.drop-zone p{font-size:.85rem;color:var(--muted);margin-bottom:0.75rem;color:var(--paper)}
+.formats-pill{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.08em;color:var(--accent);background:var(--accent-light);padding:.25rem .75rem;border-radius:100px;display:inline-block}
+
+/* ── FILE BAR ── */
+.file-bar{display:none;align-items:center;gap:.75rem;background:var(--paper);border:1.5px solid var(--border);border-radius:9px;padding:.65rem .9rem;margin-top:1.1rem}
+.file-bar.on{display:flex}
+.fb-icon{color:var(--accent);flex-shrink:0}
+.fb-info{flex:1;min-width:0}
+.fb-name{font-size:.83rem;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fb-meta{font-family:'DM Mono',monospace;font-size:.64rem;color:var(--muted);margin-top:.1rem}
+.fb-remove{background:none;border:none;cursor:pointer;color:var(--muted);padding:.25rem;border-radius:4px;display:flex;align-items:center;transition:color .15s,background .15s;flex-shrink:0}
+.fb-remove:hover{color:var(--accent);background:var(--accent-light)}
+
+/* ── OPTIONS PANEL ── */
+.opts-panel{display:none;margin-top:1.4rem}
+.opts-panel.on{display:block}
+
+.opts-section{margin-bottom:1.4rem}
+.opts-section:last-child{margin-bottom:0}
+.opts-label{font-family:'DM Mono',monospace;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+.opts-label-badge{font-family:'DM Mono',monospace;font-size:.6rem;background:var(--accent-light);color:var(--accent);padding:.1rem .45rem;border-radius:100px;border:1px solid rgba(200,75,47,.2);font-weight:500}
+.opts-label-badge.optional{background:var(--cream);color:var(--muted);border-color:var(--border)}
+
+/* Password fields */
+.pw-grid{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-bottom:.6rem}
+.pw-field{display:flex;flex-direction:column;gap:.3rem}
+.pw-lbl{font-family:'DM Mono',monospace;font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.pw-wrap{position:relative}
+.pw-input{width:100%;background:var(--paper);border:1.5px solid var(--border);border-radius:7px;padding:.5rem .75rem;padding-right:2.5rem;font-family:'DM Mono',monospace;font-size:.85rem;color:var(--ink);outline:none;transition:border-color .2s}
+.pw-input:focus{border-color:var(--accent)}
+.pw-input.pw-mismatch{border-color:#f87171}
+.pw-toggle{position:absolute;right:.5rem;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted);padding:.2rem;display:flex;align-items:center;justify-content:center;transition:color .15s}
+.pw-toggle:hover{color:var(--ink)}
+.pw-strength{display:flex;gap:.25rem;margin-top:.35rem}
+.pw-strength-bar{flex:1;height:3px;border-radius:100px;background:var(--border);transition:background .2s}
+.pw-hint{font-family:'DM Mono',monospace;font-size:.61rem;color:var(--muted);margin-top:.25rem}
+.pw-hint.warn{color:#f87171}
+.pw-hint.ok{color:var(--green)}
+
+/* Encryption selector */
+.enc-tabs{display:flex;gap:0;background:var(--paper);border:1.5px solid var(--border);border-radius:8px;padding:3px;width:fit-content;margin-bottom:.65rem}
+.enc-tab{font-family:'DM Mono',monospace;font-size:.71rem;font-weight:500;letter-spacing:.04em;color:var(--muted);background:transparent;border:none;padding:.38rem .95rem;border-radius:6px;cursor:pointer;transition:all .18s;display:flex;align-items:center;gap:.35rem}
+.enc-tab.active{background:var(--white);color:var(--accent);box-shadow:0 1px 4px rgba(13,13,13,.1);font-weight:600}
+.enc-note{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--muted);line-height:1.5}
+
+/* Permissions grid */
+.perm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.5rem}
+.perm-item{display:flex;align-items:flex-start;gap:.6rem;background:var(--paper);border:1.5px solid var(--border);border-radius:8px;padding:.6rem .75rem;cursor:pointer;transition:border-color .15s,background .15s;user-select:none}
+.perm-item:hover{border-color:rgba(200,75,47,.4);background:#fff}
+.perm-item.checked{border-color:var(--accent);background:var(--accent-light)}
+.perm-cb{width:16px;height:16px;border:1.5px solid var(--border);border-radius:3px;flex-shrink:0;margin-top:.12rem;display:flex;align-items:center;justify-content:center;transition:all .15s;background:#fff}
+.perm-item.checked .perm-cb{background:var(--accent);border-color:var(--accent)}
+.perm-item.checked .perm-cb::after{content:'';display:block;width:8px;height:5px;border-left:1.5px solid #fff;border-bottom:1.5px solid #fff;transform:rotate(-45deg) translate(1px,-1px)}
+.perm-text{flex:1;min-width:0}
+.perm-name{font-size:.8rem;font-weight:600;color:var(--ink);line-height:1.2}
+.perm-desc{font-family:'DM Mono',monospace;font-size:.6rem;color:var(--muted);margin-top:.15rem;line-height:1.4}
+
+/* ── BUTTONS ── */
+.action-bar{display:flex;gap:.75rem;margin-top:1.4rem;flex-wrap:wrap}
+.btn-p{background:var(--accent);color:var(--white);border:none;border-radius:6px;padding:.65rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:.875rem;font-weight:600;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;white-space:nowrap}
+.btn-p:hover{background:#a83825;transform:translateY(-1px)}
+.btn-p:disabled{background:var(--border);color:var(--muted);cursor:not-allowed;transform:none}
+.btn-s{background:transparent;color:var(--ink);border:1.5px solid var(--border);border-radius:6px;padding:.65rem 1.25rem;font-family:'DM Sans',sans-serif;font-size:.875rem;font-weight:500;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:.5rem;white-space:nowrap}
+.btn-s:hover{border-color:var(--ink);background:var(--cream)}
+
+/* ── PROGRESS ── */
+.prog-wrap{display:none;margin-top:1.5rem;flex-direction:column;align-items:center;gap:.85rem;background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:2rem}
+.prog-wrap.on{display:flex}
+.prog-spinner{width:44px;height:44px;border:3px solid var(--accent-light);border-top-color:var(--accent);border-radius:50%;animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.prog-lbl{font-family:'DM Mono',monospace;font-size:.78rem;color:var(--muted);text-align:center}
+.prog-bar-wrap{width:100%;max-width:300px;background:var(--border);border-radius:100px;height:5px;overflow:hidden}
+.prog-bar{height:100%;background:var(--accent);border-radius:100px;transition:width .35s ease;width:0%}
+.prog-steps{display:flex;flex-direction:column;gap:.35rem;width:100%;max-width:300px}
+.pstep{display:flex;align-items:center;gap:.5rem;font-family:'DM Mono',monospace;font-size:.65rem;color:#bbb;transition:color .2s}
+.pstep.active{color:var(--accent)}.pstep.done{color:var(--green)}
+.pstep-dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0}
+
+/* ── RESULT ── */
+.result-area{display:none;margin-top:1.5rem}
+.result-area.on{display:block}
+.result-box{background:var(--paper);border:1.5px solid var(--green);border-radius:10px;padding:1.35rem 1.5rem;display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap}
+.result-icon{width:52px;height:52px;background:var(--green-light);border:1px solid rgba(26,138,74,.25);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0}
+.result-info{flex:1;min-width:140px}
+.result-fname{font-weight:700;font-size:.95rem;color:var(--ink);margin-bottom:.2rem;word-break:break-all}
+.result-meta{font-family:'DM Mono',monospace;font-size:.67rem;color:var(--muted)}
+.result-btns{display:flex;gap:.6rem;flex-wrap:wrap}
+
+/* ── SECURITY SUMMARY ── */
+.sec-summary{background:var(--blue-light);border:1px solid rgba(30,80,162,.2);border-radius:8px;padding:.85rem 1rem;margin-top:1rem;display:none}
+.sec-summary.on{display:block}
+.sec-summary-title{font-family:'DM Mono',monospace;font-size:.67rem;font-weight:600;text-transform:uppercase;letter-spacing:.09em;color:var(--blue);margin-bottom:.55rem;display:flex;align-items:center;gap:.4rem}
+.sec-chips{display:flex;flex-wrap:wrap;gap:.35rem}
+.sec-chip{font-family:'DM Mono',monospace;font-size:.63rem;color:var(--blue);background:#fff;border:1px solid rgba(30,80,162,.2);padding:.2rem .55rem;border-radius:100px;display:flex;align-items:center;gap:.3rem}
+.sec-chip svg{flex-shrink:0}
+
+/* ── ERROR ── */
+.err-box{display:none;margin-top:1.25rem;background:#fff8f8;border:1.5px solid #fca5a5;border-radius:8px;padding:.9rem 1.1rem}
+.err-box.on{display:block}
+.err-box p{font-size:.85rem;color:#dc2626;line-height:1.6}
+
+/* ── CONTENT SECTIONS ── */
+.content-section{max-width:1000px;margin:0 auto;padding:4rem 1.5rem}
+.section-tag{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem;display:block}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;letter-spacing:-.02em;margin-bottom:1.25rem;line-height:1.2}
+.content-prose{color:#4a4640;font-size:.975rem;line-height:1.8;max-width:720px}
+.content-prose p{margin-bottom:1rem}
+.content-prose p:last-child{margin-bottom:0}
+hr.divider{border:none;border-top:1px solid var(--border);max-width:1000px;margin:0 auto}
+
+/* HOW IT WORKS */
+.how-section{background:var(--ink);color:var(--paper);padding:2rem;position:relative;overflow:hidden}
+.how-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 100%,rgba(200,75,47,.14) 0%,transparent 70%);pointer-events:none}
+.how-inner{max-width:1000px;margin:0 auto;position:relative}
+.how-hdr{text-align:center;margin-bottom:1.5rem}
+.how-hdr .section-tag{color:#c84b2f}
+.how-hdr .section-title{color:var(--paper);margin-bottom:.3rem}
+.how-sub{color:#9e9990;font-size:.9rem;font-weight:300}
+.steps-grid{display:flex;align-items:stretch;gap:0}
+.step-card{flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:.9rem 1rem;transition:background .25s,border-color .25s,transform .25s}
+.step-card:hover{background:rgba(200,75,47,.08);border-color:rgba(200,75,47,.35);transform:translateY(-4px)}
+.step-conn{display:flex;align-items:center;justify-content:center;padding:0 .5rem;color:rgba(200,75,47,.5);flex-shrink:0;margin-top:-.75rem}
+.step-num{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:rgba(200,75,47,.25);line-height:1;margin-bottom:.3rem}
+.step-ico{width:36px;height:36px;background:rgba(200,75,47,.15);border:1px solid rgba(200,75,47,.3);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:.55rem;color:#c84b2f}
+.step-ttl{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:var(--paper);margin-bottom:.3rem}
+.step-dsc{font-size:.8rem;color:#9e9990;line-height:1.55;margin-bottom:.55rem}
+.step-dsc strong{color:#d4cfc4}
+.step-pill{display:inline-block;font-family:'DM Mono',monospace;font-size:.62rem;color:#c84b2f;background:rgba(200,75,47,.12);border:1px solid rgba(200,75,47,.25);padding:.18rem .55rem;border-radius:100px}
+.how-cta{text-align:center;margin-top:1.5rem;display:flex;flex-direction:column;align-items:center;gap:.55rem}
+.how-note{font-size:.8rem;color:#7a7567;font-family:'DM Mono',monospace}
+
+/* GRIDS */
+.features-grid,.use-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(218px,1fr));gap:1rem;margin-top:2rem}
+.feature-card,.use-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.4rem 1.2rem;transition:box-shadow .2s,transform .2s}
+.feature-card:hover,.use-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.f-ico,.u-ico{font-size:1.75rem;margin-bottom:.7rem;display:block}
+.f-title,.u-title{font-weight:700;font-size:.9rem;margin-bottom:.35rem}
+.f-desc,.u-desc{font-size:.82rem;color:var(--muted);line-height:1.5}
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-top:2rem}
+.tip-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.2rem;transition:box-shadow .2s,transform .2s}
+.tip-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.tip-name{font-weight:700;font-size:.9rem;margin-bottom:.3rem;color:var(--ink)}
+.tip-tag{font-family:'DM Mono',monospace;font-size:.74rem;color:var(--accent);background:var(--accent-light);padding:.2rem .5rem;border-radius:4px;display:inline-block;margin-bottom:.5rem}
+.tip-desc{font-size:.82rem;color:var(--muted);line-height:1.5}
+
+/* ENCRYPTION COMPARISON TABLE */
+.enc-table-wrap{margin-top:2rem;overflow-x:auto}
+.enc-table{width:100%;border-collapse:collapse;font-size:.85rem}
+.enc-table th{font-family:'DM Mono',monospace;font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);text-align:left;padding:.65rem 1rem;border-bottom:2px solid var(--border);background:var(--cream)}
+.enc-table td{padding:.6rem 1rem;border-bottom:1px solid var(--border);color:#4a4640;vertical-align:top}
+.enc-table tr:last-child td{border-bottom:none}
+.enc-table tr:hover td{background:var(--paper)}
+.enc-table .mono{font-family:'DM Mono',monospace;font-size:.78rem;color:var(--accent)}
+.enc-table .check{color:var(--green);font-weight:700}
+.enc-table .cross{color:#dc2626;font-weight:700}
+
+/* FAQ */
+.faq-list{margin-top:2rem}
+.faq-item{border-bottom:1px solid var(--border);padding:1.25rem 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-weight:600;font-size:.95rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-q::after{content:'+';font-size:1.2rem;color:var(--accent);flex-shrink:0;transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-size:.9rem;color:var(--muted);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .3s ease,margin-top .3s}
+.faq-item.open .faq-a{max-height:350px;margin-top:.75rem}
+
+/* CTA */
+.cta-section{background:var(--ink);color:var(--paper);padding:1.5rem 2rem;border-bottom:1px solid rgba(255,255,255,0.05);text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(200,75,47,.18) 0%,transparent 70%);pointer-events:none}
+.cta-inner{max-width:640px;margin:0 auto;position:relative}
+.cta-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-bottom:0.75rem;color:var(--paper)}
+.cta-desc{font-size:1rem;color:#9e9990;font-weight:300;margin-bottom:0.75rem;line-height:1.7}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:0.5rem}
+.cta-note{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.06em;color:#5a5650;margin-top:0.75rem;display:block}
+
+/* BUTTONS */
+.btn-primary{background:var(--accent);color:var(--white);border:none;border-radius:6px;padding:0.65rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:0.875rem;font-weight:600;cursor:pointer;transition:all 0.18s;display:inline-flex;align-items:center;gap:0.5rem;text-decoration:none}
+.btn-primary:hover{background:#a83825;transform:translateY(-1px)}
+
+/* RELATED */
+.related-section { background: var(--cream); padding: 5rem 2rem; border-top: 1px solid var(--border); }
+.related-inner { max-width: 1000px; margin: 0 auto; }
+.related-header { margin-bottom: 2.5rem; }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+.related-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-decoration: none; color: inherit; display: block; transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s; position: relative; overflow: hidden; }
+.related-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--border); transition: background 0.2s; }
+.related-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); border-color: var(--accent); }
+.related-card:hover::before { background: var(--accent); }
+.related-card-icon { font-size: 1.85rem; margin-bottom: 0.85rem; display: block; }
+.related-card-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem; color: var(--ink); letter-spacing: -0.01em; }
+.related-card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin-bottom: 1rem; }
+.related-card-tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); background: var(--accent-light); padding: 0.2rem 0.5rem; border-radius: 3px; display: inline-block; }
+
+/* FOOTER */
+footer{background:var(--ink);color:#9e9990;padding:4rem 2rem 2rem;margin-top:3rem;border-top:1px solid rgba(255,255,255,0.05)}
+.footer-inner{max-width:1200px;
+  margin-top: 0;
+  border-top: 1px solid rgba(255,255,255,0.05);margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid #2a2a2a}
+.footer-brand .logo{display:block;margin-bottom:.75rem}
+.footer-brand p{font-size:.85rem;line-height:1.6;max-width:240px}
+.footer-social{display:flex;margin-top:1rem}
+.social-icon{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;color:#9e9990;transition:color .2s,transform .2s}
+.social-icon:hover{color:var(--paper);transform:translateY(-2px)}
+.footer-col-title{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--paper);font-weight:600;margin-bottom:0.75rem;color:var(--paper)}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.footer-links a{color:#9e9990;text-decoration:none;font-size:.85rem;transition:color .2s}
+.footer-links a:hover{color:var(--paper)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;font-size:.8rem;flex-wrap:wrap;gap:.75rem}
+
+/* TOAST */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--ink);color:var(--paper);padding:.75rem 1.5rem;border-radius:6px;font-size:.875rem;font-weight:500;transition:transform .3s cubic-bezier(.34,1.56,.64,1);z-index:999;border-left:3px solid var(--accent);white-space:nowrap;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeUp .6s ease both}
+.delay-1{animation-delay:.1s}
+
+@media(max-width:768px){nav{display:none}.mobile-menu-toggle {display:flex}.steps-grid{flex-direction:column}.step-conn{transform:rotate(90deg);padding:.25rem 0}.footer-grid{grid-template-columns:1fr 1fr}.pw-grid{grid-template-columns:1fr}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr;gap:2rem}.footer-bottom{flex-direction:column;text-align:center}.result-box{flex-direction:column;text-align:center}.result-btns{justify-content:center}.perm-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">JPG2<span>Go</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="tools.html">Tools</a>
+      <a href="#tool" class="nav-cta">Convert Now</a>
+    </nav>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="tools.html" onclick="closeMobileMenu()">Tools</a>
+    <a href="#tool" class="nav-cta" onclick="closeMobileMenu()">Convert Now</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="fade-up">
+    <div class="hero-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Add Password to PDF File
+    </div>
+    <h1>Protect PDF Files</h1>
+    <p class="hero-desc">Protect your PDF documents by adding password encryption to prevent unauthorized access and keep sensitive information secure.</p>
+    <div class="hero-pills">
+      <span class="hero-pill">Open Password</span>
+      <span class="hero-pill">Permission Controls</span>
+      <span class="hero-pill">128-bit &amp; 256-bit AES</span>
+      <span class="hero-pill">Password Strength Meter</span>
+      <span class="hero-pill">100% Private</span>
+    </div>
+  </div>
+</section>
+
+<!-- TOOL -->
+<section class="tool-section" id="tool">
+  <div class="tool-card fade-up delay-1">
+    <div class="tool-card-header">
+      <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+      <span class="tc-title">protect-pdf · aes-256 · permission-control · pdf-lib · zero upload</span>
+    </div>
+    <div class="tool-body">
+
+      <!-- Drop Zone -->
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" accept="application/pdf,.pdf">
+        <div class="drop-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>Drop your PDF here to protect it</h3>
+        <p>Protect your PDF documents by adding password encryption to prevent unauthorized access and keep sensitive information secure.</p>
+        <span class="formats-pill">PDF · single file · any size</span>
+      </div>
+
+      <!-- File Bar -->
+      <div class="file-bar" id="fileBar">
+        <span class="fb-icon">
+          <svg width="20" height="24" viewBox="0 0 24 28" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
+        </span>
+        <div class="fb-info">
+          <div class="fb-name" id="fbName">—</div>
+          <div class="fb-meta" id="fbMeta">—</div>
+        </div>
+        <button class="fb-remove" id="fbRemove" aria-label="Remove file">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <!-- Options Panel -->
+      <div class="opts-panel" id="optsPanel">
+
+        <!-- 1. Open Password -->
+        <div class="opts-section">
+          <div class="opts-label">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Open Password
+            <span class="opts-label-badge">required to open</span>
+          </div>
+          <div class="pw-grid">
+            <div class="pw-field">
+              <span class="pw-lbl">Password</span>
+              <div class="pw-wrap">
+                <input class="pw-input" id="pw1" type="password" placeholder="Enter password…" autocomplete="new-password">
+                <button class="pw-toggle" id="pw1Toggle" aria-label="Show/hide password" tabindex="-1">
+                  <svg id="pw1Eye" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+              </div>
+              <div class="pw-strength" id="pwStrength">
+                <div class="pw-strength-bar" id="psb1"></div>
+                <div class="pw-strength-bar" id="psb2"></div>
+                <div class="pw-strength-bar" id="psb3"></div>
+                <div class="pw-strength-bar" id="psb4"></div>
+              </div>
+              <div class="pw-hint" id="pwHint">Enter a password to protect this PDF</div>
+            </div>
+            <div class="pw-field">
+              <span class="pw-lbl">Confirm Password</span>
+              <div class="pw-wrap">
+                <input class="pw-input" id="pw2" type="password" placeholder="Repeat password…" autocomplete="new-password">
+                <button class="pw-toggle" id="pw2Toggle" aria-label="Show/hide password" tabindex="-1">
+                  <svg id="pw2Eye" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+              </div>
+              <div class="pw-hint" id="pw2Hint"> </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Encryption Level -->
+        <div class="opts-section">
+          <div class="opts-label">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Encryption Level
+          </div>
+          <div class="enc-tabs">
+            <button class="enc-tab active" data-enc="128">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              128-bit AES
+            </button>
+            <button class="enc-tab" data-enc="256">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              256-bit AES
+            </button>
+          </div>
+          <div class="enc-note" id="encNote">128-bit AES (PDF 1.4–1.6 compatible) — works with all PDF readers. Recommended for general use.</div>
+        </div>
+
+        <!-- 3. Permissions -->
+        <div class="opts-section">
+          <div class="opts-label">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            Restrict Permissions
+            <span class="opts-label-badge optional">optional</span>
+          </div>
+          <div class="perm-grid" id="permGrid">
+            <div class="perm-item" data-perm="printing">
+              <span class="perm-cb"></span>
+              <div class="perm-text">
+                <div class="perm-name">Block Printing</div>
+                <div class="perm-desc">Prevent readers from printing the document</div>
+              </div>
+            </div>
+            <div class="perm-item" data-perm="copying">
+              <span class="perm-cb"></span>
+              <div class="perm-text">
+                <div class="perm-name">Block Copying</div>
+                <div class="perm-desc">Prevent text &amp; image selection and copying</div>
+              </div>
+            </div>
+            <div class="perm-item" data-perm="modifying">
+              <span class="perm-cb"></span>
+              <div class="perm-text">
+                <div class="perm-name">Block Editing</div>
+                <div class="perm-desc">Prevent document modifications and annotations</div>
+              </div>
+            </div>
+            <div class="perm-item" data-perm="annotating">
+              <span class="perm-cb"></span>
+              <div class="perm-text">
+                <div class="perm-name">Block Annotations</div>
+                <div class="perm-desc">Prevent adding comments, highlights, or stamps</div>
+              </div>
+            </div>
+            <div class="perm-item" data-perm="fillingForms">
+              <span class="perm-cb"></span>
+              <div class="perm-text">
+                <div class="perm-name">Block Form Filling</div>
+                <div class="perm-desc">Prevent entering data into PDF form fields</div>
+              </div>
+            </div>
+            <div class="perm-item" data-perm="contentAccessibility">
+              <span class="perm-cb"></span>
+              <div class="perm-text">
+                <div class="perm-name">Block Accessibility</div>
+                <div class="perm-desc">Prevent screen readers from extracting content</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Security summary -->
+        <div class="sec-summary" id="secSummary">
+          <div class="sec-summary-title">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Protection Summary
+          </div>
+          <div class="sec-chips" id="secChips"></div>
+        </div>
+
+        <!-- Actions -->
+        <div class="action-bar">
+          <button class="btn-p" id="protectBtn" disabled>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Protect PDF
+          </button>
+          <button class="btn-s" id="clearBtn" style="display:none">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
+            New File
+          </button>
+        </div>
+
+        <!-- Progress -->
+        <div class="prog-wrap" id="progWrap">
+          <div class="prog-spinner"></div>
+          <div class="prog-lbl" id="progLbl">Preparing…</div>
+          <div class="prog-bar-wrap"><div class="prog-bar" id="progBar"></div></div>
+          <div class="prog-steps">
+            <div class="pstep" id="ps1"><span class="pstep-dot"></span>Loading PDF</div>
+            <div class="pstep" id="ps2"><span class="pstep-dot"></span>Applying encryption</div>
+            <div class="pstep" id="ps3"><span class="pstep-dot"></span>Setting permissions</div>
+            <div class="pstep" id="ps4"><span class="pstep-dot"></span>Writing protected PDF</div>
+          </div>
+        </div>
+
+        <!-- Error -->
+        <div class="err-box" id="errBox"><p id="errText"></p></div>
+
+        <!-- Result -->
+        <div class="result-area" id="resultArea">
+          <div class="result-box">
+            <div class="result-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><polyline points="9 17 12 20 15 17"/></svg>
+            </div>
+            <div class="result-info">
+              <div class="result-fname" id="resultFname">document-protected.pdf</div>
+              <div class="result-meta" id="resultMeta">—</div>
+            </div>
+            <div class="result-btns">
+              <button class="btn-p" id="downloadBtn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download Protected PDF
+              </button>
+              <button class="btn-s" id="protectAgainBtn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                Protect Another
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /opts-panel -->
+    </div><!-- /tool-body -->
+  </div><!-- /tool-card -->
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how-it-works">
+  <div class="how-inner">
+    <div class="how-hdr">
+      <span class="section-tag">Quick Guide</span>
+      <h2 class="section-title">How to Password-Protect a PDF</h2>
+      <p class="how-sub">Three steps. No software. No account.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+        <div class="step-ttl">Upload Your PDF</div>
+        <div class="step-dsc">Drop or select <strong>any PDF file</strong>. It loads directly in your browser — nothing is sent to a server at any point.</div>
+        <span class="step-pill">single PDF file</span>
+      </div>
+      <div class="step-conn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <div class="step-ttl">Set Password &amp; Options</div>
+        <div class="step-dsc">Enter and confirm a <strong>password</strong>, choose 128-bit or 256-bit AES encryption, and optionally block printing, copying, or editing.</div>
+        <span class="step-pill">aes-128 or aes-256</span>
+      </div>
+      <div class="step-conn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+        <div class="step-ttl">Download Protected PDF</div>
+        <div class="step-dsc">Click <strong>Protect PDF</strong>. The encrypted file downloads directly from your browser — no server, no waiting, no email link.</div>
+        <span class="step-pill">instant download</span>
+      </div>
+    </div>
+    <div class="how-cta">
+      <a href="#tool" class="btn-p">Protect a PDF Now</a>
+      <span class="how-note">free · no signup · no upload · no watermark</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHY THIS TOOL -->
+<section class="content-section" id="about">
+  <h2 class="section-title">Why Use Protect PDF Tool?</h2>
+  <div class="content-prose">
+    <p>A Protect PDF tool helps secure documents by adding password protection and restricting unauthorized access. When sensitive information is stored in a PDF file, protecting it ensures that only authorized users can open or modify the document.</p>
+    <p>This feature is particularly useful for documents such as financial records, contracts, reports, and confidential files that require controlled access.</p>
+    <p>By applying security settings, users can prevent editing, copying, or printing of the document. Protecting PDFs adds an extra layer of digital security that helps safeguard important information from misuse or unauthorized sharing.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FEATURES -->
+
+<section class="content-section" id="features">
+  <span class="section-tag">Features</span>
+  <h2 class="section-title">Everything in One Protector</h2>
+  <div class="features-grid">
+    <div class="feature-card"><span class="f-ico">🔐</span><div class="f-title">AES Encryption</div><div class="f-desc">Choose 128-bit AES for broad compatibility or 256-bit AES for maximum security. Both are industry-standard encryption algorithms.</div></div>
+    <div class="feature-card"><span class="f-ico">🛡️</span><div class="f-title">Permission Controls</div><div class="f-desc">Independently block printing, copying, editing, annotation, form filling, and accessibility extraction on a per-document basis.</div></div>
+    <div class="feature-card"><span class="f-ico">💪</span><div class="f-title">Password Strength Meter</div><div class="f-desc">A live 4-bar strength indicator scores your password as you type so you can make an informed choice before locking the file.</div></div>
+    <div class="feature-card"><span class="f-ico">👁️</span><div class="f-title">Show/Hide Password</div><div class="f-desc">Toggle password visibility in both fields to avoid typos before committing — crucial when the file will be immediately locked.</div></div>
+    <div class="feature-card"><span class="f-ico">🔒</span><div class="f-title">100% Private</div><div class="f-desc">Your PDF and your password never leave your device. All encryption is local — no server, no cloud, no analytics on your files.</div></div>
+    <div class="feature-card"><span class="f-ico">⚡</span><div class="f-title">Instant Output</div><div class="f-desc">No upload queue, no server processing, no email link. The protected PDF downloads directly from your browser the moment encryption is complete.</div></div>
+    <div class="feature-card"><span class="f-ico">📋</span><div class="f-title">Protection Summary</div><div class="f-desc">A live summary chip strip updates as you configure options, confirming exactly what encryption and restrictions will be applied before you proceed.</div></div>
+    <div class="feature-card"><span class="f-ico">💸</span><div class="f-title">Free Forever</div><div class="f-desc">No subscription, no credits, no watermark. JPG2Go is free for everyone, always.</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ENCRYPTION COMPARISON -->
+<section class="content-section">
+  <span class="section-tag">Reference</span>
+  <h2 class="section-title">128-bit vs 256-bit AES — Which to Choose?</h2>
+  <div class="prose"><p>Both options produce strongly encrypted PDFs that cannot be opened without the password. The choice depends on your compatibility requirements and security level needed.</p></div>
+  <div class="enc-table-wrap">
+    <table class="enc-table">
+      <thead><tr><th>Feature</th><th>128-bit AES</th><th>256-bit AES</th></tr></thead>
+      <tbody>
+        <tr><td>PDF Standard</td><td class="mono">PDF 1.4 – 1.6</td><td class="mono">PDF 2.0 (Acrobat X+)</td></tr>
+        <tr><td>Compatible Readers</td><td>All readers, including very old ones (Acrobat 5+)</td><td>Acrobat X, Foxit, modern readers</td></tr>
+        <tr><td>Key Length</td><td>128 bits</td><td>256 bits</td></tr>
+        <tr><td>Security Level</td><td>High — sufficient for most business use</td><td>Maximum — recommended for sensitive documents</td></tr>
+        <tr><td>Brute-Force Resistance</td><td class="check">Strong with a good password</td><td class="check">Extremely strong — practically unbreakable</td></tr>
+        <tr><td>Recommended for</td><td>General documents, broad sharing, legacy systems</td><td>Confidential contracts, legal, financial, medical</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- WHO USES THIS -->
+<section class="content-section">
+  <span class="section-tag">Who It's For</span>
+  <h2 class="section-title">Who Uses a PDF Protector?</h2>
+  <div class="use-grid">
+    <div class="use-card"><span class="u-ico">📝</span><div class="u-title">Contracts &amp; Agreements</div><div class="u-desc">Protect signed contracts before emailing them — prevent unauthorised editing while allowing the recipient to read and print.</div></div>
+    <div class="use-card"><span class="u-ico">💰</span><div class="u-title">Financial Documents</div><div class="u-desc">Encrypt bank statements, tax returns, payslips, and invoices containing sensitive personal or financial information.</div></div>
+    <div class="use-card"><span class="u-ico">🏥</span><div class="u-title">Medical Records</div><div class="u-desc">Add a password to patient records, test results, or prescriptions before sharing with other providers or patients.</div></div>
+    <div class="use-card"><span class="u-ico">🎓</span><div class="u-title">Exam Papers</div><div class="u-desc">Distribute exam papers to invigilators with an open password revealed only at exam time, preventing early access.</div></div>
+    <div class="use-card"><span class="u-ico">📸</span><div class="u-title">Portfolio &amp; IP</div><div class="u-desc">Block copying and printing on a design or photography portfolio PDF so recipients can view but not redistribute your work.</div></div>
+    <div class="use-card"><span class="u-ico">🏢</span><div class="u-title">Internal Reports</div><div class="u-desc">Restrict editing and annotation on a board or management report PDF to ensure the final version is not inadvertently modified.</div></div>
+    <div class="use-card"><span class="u-ico">⚖️</span><div class="u-title">Legal Documents</div><div class="u-desc">Protect affidavits, pleadings, and legal correspondence to prevent tampering and unauthorised duplication.</div></div>
+    <div class="use-card"><span class="u-ico">🧾</span><div class="u-title">E-books &amp; Reports</div><div class="u-desc">Sell or share premium PDF content with a password, and block copying so the text cannot be extracted and republished.</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- TIPS -->
+<section class="content-section">
+  <span class="section-tag">Pro Tips</span>
+  <h2 class="section-title">Password-Protect PDFs the Right Way</h2>
+  <div class="tips-grid">
+    <div class="tip-card">
+      <div class="tip-name">Use a Strong, Unique Password</div>
+      <div class="tip-tag">tip → security</div>
+      <div class="tip-desc">AES-256 is practically unbreakable — but a weak password makes it trivial to crack. Use at least 12 characters mixing uppercase, lowercase, numbers, and symbols. Avoid dictionary words, names, or dates. The strength meter will guide you.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">Store the Password Securely</div>
+      <div class="tip-tag">tip → recovery</div>
+      <div class="tip-desc">There is no way to recover a forgotten password — the document will be permanently inaccessible. Store the password in a password manager (Bitwarden, 1Password, etc.) before distributing the protected PDF. Never send the password in the same email as the file.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">Choose 256-bit for Sensitive Documents</div>
+      <div class="tip-tag">tip → encryption level</div>
+      <div class="tip-desc">For legal, financial, medical, or confidential content, choose 256-bit AES. It provides maximum protection and is the current standard for high-security PDF encryption. Only use 128-bit if you need compatibility with Acrobat 5–9 era readers.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">Block Copy, Not Just Open</div>
+      <div class="tip-tag">tip → permissions</div>
+      <div class="tip-desc">An open password prevents unauthorised viewing — but an authorised recipient could still copy your text to another document. If you want to prevent text extraction, enable "Block Copying" in addition to the password.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">Send Password Separately</div>
+      <div class="tip-tag">tip → distribution</div>
+      <div class="tip-desc">Never email the password in the same message as the protected PDF. If that email is intercepted, the protection is meaningless. Send the password via a separate channel — SMS, phone call, or a different encrypted messaging app.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">Keep an Unprotected Master Copy</div>
+      <div class="tip-tag">tip → workflow</div>
+      <div class="tip-desc">Always retain an unprotected original of your PDF. Once a PDF is password-protected and you forget the password, the content is permanently unrecoverable. Protect a copy, not the only copy.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FAQ -->
+<section class="content-section" id="faq">
+  <span class="section-tag">FAQ</span>
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">What does a Protect PDF tool do?</div>
+      <div class="faq-a">A Protect PDF tool adds password security to a PDF document so that only authorized users can open it.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Why should I protect a PDF file with a password?</div>
+      <div class="faq-a">Password protection helps keep confidential information safe from unauthorized access.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I add both viewing and editing restrictions?</div>
+      <div class="faq-a">Yes, some tools allow you to set permissions that restrict editing, copying, or printing.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is password protection for PDF files secure?</div>
+      <div class="faq-a">Strong encryption methods help keep PDF documents protected when a password is applied.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can protected PDFs be shared safely online?</div>
+      <div class="faq-a">Yes, sharing password-protected PDFs ensures that only people with the password can access the document.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is protecting a PDF file free online?</div>
+      <div class="faq-a">Many online tools provide free options to add password protection to PDF documents.</div>
+    </div>
+  </div>
+</section>
+
+<!-- RELATED TOOLS -->
+<section class="related-section" id="tools">
+  <div class="related-inner">
+    <div class="related-header">
+      <span class="section-tag">Related Tools</span>
+      <h2 class="section-title">More Free Online Tools</h2>
+    </div>
+    <div class="related-grid">
+      <a href="/jpg-to-pdf" class="related-card">
+        <span class="related-card-icon">📄</span>
+        <div class="related-card-name">JPG to PDF</div>
+        <div class="related-card-desc">Convert JPG images to PDF documents quickly. Combine multiple photos into a single organized PDF file for easy sharing and printing.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+      <a href="/image-resizer" class="related-card">
+        <span class="related-card-icon">📐</span>
+        <div class="related-card-name">Image Resizer</div>
+        <div class="related-card-desc">Resize images to exact pixel dimensions or a percentage of their original size. Runs entirely in your browser without uploading files anywhere.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/compress-jpeg" class="related-card">
+        <span class="related-card-icon">🗜️</span>
+        <div class="related-card-name">Compress JPEG</div>
+        <div class="related-card-desc">Reduce JPEG image file size while maintaining quality. Optimize images for faster web pages and lower storage usage.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/merge-pdf" class="related-card">
+        <span class="related-card-icon">📎</span>
+        <div class="related-card-name">Merge PDF</div>
+        <div class="related-card-desc">Combine multiple PDF files into a single organized document. Drag and drop to reorder pages easily.</div>
+        <span class="related-card-tag">PDF</span>
+      </a>
+      <a href="/crop-image" class="related-card">
+        <span class="related-card-icon">✂️</span>
+        <div class="related-card-name">Crop Image</div>
+        <div class="related-card-desc">Crop images to any aspect ratio or custom dimensions. Perfect for social media thumbnails, profile photos, and banner images.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/format-converter" class="related-card">
+        <span class="related-card-icon">🔄</span>
+        <div class="related-card-name">Format Converter</div>
+        <div class="related-card-desc">Convert images between different formats instantly. Transform JPG, PNG, WebP, and other image formats quickly.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <span class="section-tag" style="color:var(--accent);">Get Started</span>
+    <h2 class="cta-title">Secure Your PDF with Password Protection</h2>
+    <p class="cta-desc">Protect sensitive documents by adding password security and preventing unauthorized access to your PDF files.</p>
+    <div class="cta-actions">
+      <a href="#tool" class="btn-primary" style="font-size:1rem;padding:0.85rem 2rem;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Protect PDF</a>
+    </div>
+    <p class="cta-note">No account · No upload · No data stored · Works offline</p>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<div id="footer-placeholder"></div>
+<script src="load-footer.js"></script>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══ STATE ════════════════════════════════════════════════════════
+let srcFile   = null;
+let srcBuf    = null;
+let encLevel  = 128;            // 128 or 256
+let blockedPerms = new Set();   // set of perm keys that are BLOCKED
+let resultBlob   = null;
+let encSupported = false;
+
+// ═══ HELPERS ══════════════════════════════════════════════════════
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+function fmtSize(b) {
+  if (b < 1024) return b + ' B';
+  if (b < 1048576) return (b/1024).toFixed(1) + ' KB';
+  return (b/1048576).toFixed(2) + ' MB';
+}
+function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
+function setP(pct, msg) {
+  document.getElementById('progBar').style.width = pct + '%';
+  if (msg !== undefined) document.getElementById('progLbl').textContent = msg;
+}
+function setStep(idx) {
+  ['ps1','ps2','ps3','ps4'].forEach((id, i) => {
+    const el = document.getElementById(id);
+    el.classList.remove('active','done');
+    if (i < idx) el.classList.add('done');
+    else if (i === idx) el.classList.add('active');
+  });
+}
+
+// ═══ MOBILE MENU ══════════════════════════════════════════════════
+document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+  this.classList.toggle('active');
+  document.getElementById('mobileNav').classList.toggle('active');
+});
+
+// ═══ FILE INPUT ════════════════════════════════════════════════════
+const dropZone = document.getElementById('dropZone');
+document.getElementById('fileInput').addEventListener('change', e => {
+  if (e.target.files[0]) loadFile(e.target.files[0]);
+  e.target.value = '';
+});
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault(); dropZone.classList.remove('drag-over');
+  const f = Array.from(e.dataTransfer.files).find(f => f.type === 'application/pdf' || f.name.toLowerCase().endsWith('.pdf'));
+  if (f) loadFile(f); else toast('Please drop a PDF file');
+});
+
+async function loadFile(f) {
+  if (f.type !== 'application/pdf' && !f.name.toLowerCase().endsWith('.pdf')) {
+    toast('Please select a PDF file'); return;
+  }
+  if (f.size === 0) { toast('That PDF is empty (0 bytes)'); return; }
+  srcFile = f;
+  try {
+    srcBuf = await f.arrayBuffer();
+  } catch (e) {
+    srcFile = null; srcBuf = null;
+    toast('Could not read that file'); 
+    console.error(e);
+    return;
+  }
+
+  document.getElementById('fbName').textContent = f.name;
+  document.getElementById('fbMeta').textContent = fmtSize(f.size) + ' · PDF';
+  document.getElementById('fileBar').classList.add('on');
+  document.getElementById('optsPanel').classList.add('on');
+  document.getElementById('clearBtn').style.display = '';
+  dropZone.style.display = 'none';
+  document.getElementById('resultArea').classList.remove('on');
+  document.getElementById('errBox').classList.remove('on');
+  resultBlob = null;
+  checkReady();
+  toast('"' + f.name + '" loaded');
+}
+
+document.getElementById('fbRemove').addEventListener('click', resetTool);
+
+function resetTool() {
+  srcFile = null; srcBuf = null; resultBlob = null;
+  document.getElementById('fileBar').classList.remove('on');
+  document.getElementById('optsPanel').classList.remove('on');
+  document.getElementById('clearBtn').style.display = 'none';
+  dropZone.style.display = '';
+  document.getElementById('resultArea').classList.remove('on');
+  document.getElementById('errBox').classList.remove('on');
+  document.getElementById('pw1').value = '';
+  document.getElementById('pw2').value = '';
+  updateStrength('');
+  updatePw2Hint();
+  checkReady();
+  updateSummary();
+  toast('Cleared');
+}
+
+// ═══ PASSWORD FIELDS ══════════════════════════════════════════════
+// Show/hide toggles
+function makeEyeToggle(inputId, btnId) {
+  document.getElementById(btnId).addEventListener('click', () => {
+    const inp = document.getElementById(inputId);
+    inp.type = inp.type === 'password' ? 'text' : 'password';
+  });
+}
+makeEyeToggle('pw1','pw1Toggle');
+makeEyeToggle('pw2','pw2Toggle');
+
+// Strength meter
+document.getElementById('pw1').addEventListener('input', () => {
+  updateStrength(document.getElementById('pw1').value);
+  updatePw2Hint();
+  checkReady();
+  updateSummary();
+});
+document.getElementById('pw2').addEventListener('input', () => {
+  updatePw2Hint();
+  checkReady();
+});
+
+function scorePassword(pw) {
+  if (!pw) return 0;
+  let score = 0;
+  if (pw.length >= 8)  score++;
+  if (pw.length >= 12) score++;
+  if (/[A-Z]/.test(pw) && /[a-z]/.test(pw)) score++;
+  if (/[0-9]/.test(pw)) score++;
+  if (/[^A-Za-z0-9]/.test(pw)) score++;
+  return Math.min(4, score);
+}
+
+const STRENGTH_COLORS = ['','#f87171','#fb923c','#facc15','var(--green)'];
+const STRENGTH_LABELS = ['','Weak — use a longer password','Fair — add numbers or symbols','Good — consider adding symbols','Strong password'];
+
+function updateStrength(pw) {
+  const s = scorePassword(pw);
+  ['psb1','psb2','psb3','psb4'].forEach((id, i) => {
+    document.getElementById(id).style.background = i < s ? STRENGTH_COLORS[s] : 'var(--border)';
+  });
+  const hint = document.getElementById('pwHint');
+  if (!pw) {
+    hint.textContent = 'Enter a password to protect this PDF';
+    hint.className = 'pw-hint';
+  } else {
+    hint.textContent = STRENGTH_LABELS[s];
+    hint.className = 'pw-hint' + (s <= 1 ? ' warn' : s >= 3 ? ' ok' : '');
+  }
+}
+
+function updatePw2Hint() {
+  const v1 = document.getElementById('pw1').value;
+  const v2 = document.getElementById('pw2').value;
+  const hint = document.getElementById('pw2Hint');
+  const inp2 = document.getElementById('pw2');
+  if (!v2) { hint.textContent = ' '; hint.className = 'pw-hint'; inp2.classList.remove('pw-mismatch'); return; }
+  if (v1 === v2) { hint.textContent = 'Passwords match ✓'; hint.className = 'pw-hint ok'; inp2.classList.remove('pw-mismatch'); }
+  else           { hint.textContent = 'Passwords do not match'; hint.className = 'pw-hint warn'; inp2.classList.add('pw-mismatch'); }
+}
+
+function checkReady() {
+  const pw1 = document.getElementById('pw1').value;
+  const pw2 = document.getElementById('pw2').value;
+  const ok  = encSupported && srcFile && pw1.length > 0 && pw1 === pw2;
+  document.getElementById('protectBtn').disabled = !ok;
+}
+
+// ═══ ENCRYPTION SUPPORT CHECK ═══════════════════════════════════════
+function detectEncryptionSupport() {
+  try {
+    if (!window.PDFLib || !PDFLib.PDFDocument) return false;
+    // pdf-lib 1.17.1 (CDN) does NOT reliably support writing encrypted PDFs.
+    // Some builds may expose encrypt(), but password-protected output is not guaranteed.
+    return (typeof PDFLib.PDFDocument.prototype.encrypt === 'function');
+  } catch (_) {
+    return false;
+  }
+}
+
+// ═══ ENCRYPTION TABS ══════════════════════════════════════════════
+const ENC_NOTES = {
+  128: '128-bit AES (PDF 1.4–1.6) — compatible with all PDF readers including old ones (Acrobat 5+). Recommended for general use.',
+  256: '256-bit AES (PDF 2.0) — maximum security. Supported by Acrobat X and all modern PDF readers. Recommended for sensitive documents.'
+};
+document.querySelectorAll('.enc-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.enc-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    encLevel = parseInt(tab.dataset.enc);
+    document.getElementById('encNote').textContent = ENC_NOTES[encLevel];
+    updateSummary();
+  });
+});
+
+// ═══ PERMISSION CHECKBOXES ════════════════════════════════════════
+document.querySelectorAll('.perm-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const perm = item.dataset.perm;
+    if (blockedPerms.has(perm)) { blockedPerms.delete(perm); item.classList.remove('checked'); }
+    else                        { blockedPerms.add(perm);    item.classList.add('checked'); }
+    updateSummary();
+  });
+});
+
+// ═══ SECURITY SUMMARY ═════════════════════════════════════════════
+const PERM_LABELS = {
+  printing:            'No printing',
+  copying:             'No copying',
+  modifying:           'No editing',
+  annotating:          'No annotations',
+  fillingForms:        'No forms',
+  contentAccessibility:'No accessibility'
+};
+
+function updateSummary() {
+  const pw1   = document.getElementById('pw1').value;
+  const chips = document.getElementById('secChips');
+  const box   = document.getElementById('secSummary');
+
+  if (!pw1 && blockedPerms.size === 0) { box.classList.remove('on'); return; }
+  box.classList.add('on');
+
+  const parts = [];
+  if (pw1) parts.push({ icon: '🔐', label: 'Password protected' });
+  parts.push({ icon: '🛡️', label: `AES-${encLevel}` });
+  blockedPerms.forEach(p => parts.push({ icon: '🚫', label: PERM_LABELS[p] }));
+
+  chips.innerHTML = parts.map(p =>
+    `<span class="sec-chip"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>${p.icon} ${p.label}</span>`
+  ).join('');
+}
+
+// ═══ PROTECT ══════════════════════════════════════════════════════
+document.getElementById('protectBtn').addEventListener('click', doProtect);
+
+async function doProtect() {
+  if (!srcBuf || !srcFile) return;
+  const pw = document.getElementById('pw1').value;
+  if (!pw) { toast('Please enter a password'); return; }
+
+  if (!window.PDFLib) { toast('pdf-lib is still loading — please wait and try again'); return; }
+  if (!encSupported) {
+    document.getElementById('errBox').classList.add('on');
+    document.getElementById('errText').textContent =
+      'Password-protecting PDFs is not supported in this browser build yet (pdf-lib encryption is unavailable). ' +
+      'This tool cannot generate a truly encrypted PDF right now. Please use a desktop tool (Acrobat, Preview, qpdf) for encryption.';
+    toast('Encryption not supported in this build');
+    return;
+  }
+
+  document.getElementById('progWrap').classList.add('on');
+  document.getElementById('resultArea').classList.remove('on');
+  document.getElementById('errBox').classList.remove('on');
+  document.getElementById('protectBtn').disabled = true;
+  resultBlob = null;
+  setP(0); setStep(0);
+  await wait(50);
+
+  try {
+    // Step 1 — load PDF
+    setStep(0); setP(10, 'Loading PDF…');
+    await wait(40);
+    const pdfDoc = await PDFLib.PDFDocument.load(srcBuf, { ignoreEncryption: true });
+    setP(35);
+
+    // Step 2 — build encryption options
+    setStep(1); setP(45, 'Applying encryption…');
+    await wait(40);
+
+    // Build permissions: pdf-lib PDFDocument.encrypt takes {userPassword, ownerPassword, permissions}
+    // permissions is an object with boolean flags — true = ALLOW, false = DENY
+    const permsObj = {
+      printing:            !blockedPerms.has('printing'),
+      modifying:           !blockedPerms.has('modifying'),
+      copying:             !blockedPerms.has('copying'),
+      annotating:          !blockedPerms.has('annotating'),
+      fillingForms:        !blockedPerms.has('fillingForms'),
+      contentAccessibility:!blockedPerms.has('contentAccessibility'),
+      documentAssembly:    true,
+      printingHighQuality: !blockedPerms.has('printing'),
+    };
+
+    // Step 3 — set permissions label in UI
+    setStep(2); setP(62, 'Setting permissions…');
+    await wait(30);
+
+    // Step 4 — encrypt & save
+    setStep(3); setP(75, 'Writing protected PDF…');
+    await wait(30);
+
+    // pdf-lib encrypt uses owner/user password model
+    // userPassword = open password, ownerPassword = blank (owner has full access)
+    const encryptionOpts = {
+      userPassword:  pw,
+      ownerPassword: pw + '_owner_' + Math.random().toString(36).slice(2),
+      permissions:   permsObj,
+    };
+
+    // NOTE: pdf-lib encryption support varies by build; guard + fail loudly if unsupported.
+    let pdfBytes;
+    if (typeof pdfDoc.encrypt === 'function') {
+      await pdfDoc.encrypt(encryptionOpts);
+      pdfBytes = await pdfDoc.save();
+    } else {
+      throw new Error('PDF encryption is not supported by this pdf-lib build');
+    }
+
+    setP(100, 'Done!');
+    await wait(100);
+
+    resultBlob = new Blob([pdfBytes], { type: 'application/pdf' });
+    const baseName = srcFile.name.replace(/\.pdf$/i, '');
+    const fname = baseName + '-protected.pdf';
+
+    document.getElementById('resultFname').textContent = fname;
+    const permCount = blockedPerms.size;
+    document.getElementById('resultMeta').textContent =
+      fmtSize(pdfBytes.length) +
+      ` · AES-${encLevel} encrypted` +
+      (permCount > 0 ? ` · ${permCount} restriction${permCount > 1 ? 's' : ''} applied` : '');
+
+    document.getElementById('progWrap').classList.remove('on');
+    document.getElementById('resultArea').classList.add('on');
+    document.getElementById('resultArea').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    toast('PDF protected with AES-' + encLevel + '!');
+
+  } catch (err) {
+    document.getElementById('progWrap').classList.remove('on');
+    document.getElementById('errBox').classList.add('on');
+    document.getElementById('errText').textContent =
+      'Protection failed: ' + (err.message || String(err)) +
+      '. If the file is already password-protected, remove the password first, then try again.';
+    toast('Protection failed — see error above');
+    console.error(err);
+  }
+
+  checkReady(); // re-enable button
+  document.getElementById('protectBtn').disabled = false;
+}
+
+// Initialize support state + messaging
+encSupported = detectEncryptionSupport();
+if (!encSupported) {
+  document.getElementById('encNote').textContent =
+    'Heads up: real PDF password encryption is not supported in this build yet. This page will not generate an actually encrypted PDF.';
+  document.getElementById('pwHint').textContent =
+    'This tool is currently unavailable: PDF encryption not supported in-browser yet.';
+  document.getElementById('pwHint').className = 'pw-hint warn';
+}
+checkReady();
+updateSummary();
+
+// ═══ DOWNLOAD ═════════════════════════════════════════════════════
+document.getElementById('downloadBtn').addEventListener('click', () => {
+  if (!resultBlob || !srcFile) return;
+  const fname = srcFile.name.replace(/\.pdf$/i, '') + '-protected.pdf';
+  const url   = URL.createObjectURL(resultBlob);
+  const a     = document.createElement('a');
+  a.href = url; a.download = fname; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 8000);
+  toast('Downloading ' + fname + '…');
+});
+
+// ═══ PROTECT AGAIN / CLEAR ════════════════════════════════════════
+document.getElementById('protectAgainBtn').addEventListener('click', resetTool);
+document.getElementById('clearBtn').addEventListener('click', resetTool);
+
+// ═══ FAQ ══════════════════════════════════════════════════════════
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement; const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+function closeMobileMenu() {
+  document.getElementById('mobileMenuToggle').classList.remove('active');
+  document.getElementById('mobileNav').classList.remove('active');
+}
+</script>
+</body>
+</html>

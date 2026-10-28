@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>Privacy Policy | JP2Go Image & PDF Tools Website</title>
+<meta name="description" content="Learn how JP2Go collects, stores, and protects user information while providing secure online tools for image processing and document conversion.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jpg2go.com/privacy-policy">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="adsense.js"></script>
+<style>
+:root {
+  --ink: #0d0d0d;
+  --paper: #f7f4ee;
+  --cream: #ede9df;
+  --accent: #c84b2f;
+  --accent-light: #e8d5cf;
+  --muted: #7a7567;
+  --border: #d4cfc4;
+  --white: #ffffff;
+  --shadow: 0 2px 24px rgba(13,13,13,0.08);
+  --shadow-lg: 0 8px 48px rgba(13,13,13,0.12);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; min-height: 100vh; }
+
+/* HEADER */
+header { background: var(--ink); color: var(--paper); position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--accent); }
+.header-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.logo { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.6rem; color: var(--paper); text-decoration: none; letter-spacing: -0.02em; }
+.logo span { color: var(--accent); }
+nav { display: flex; gap: 2rem; align-items: center; }
+nav a { color: #a8a39a; text-decoration: none; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.02em; transition: color 0.2s; }
+nav a:hover { color: var(--paper); }
+.nav-cta { background: var(--accent); color: var(--white) !important; padding: 0.4rem 1rem; border-radius: 4px; transition: background 0.2s !important; }
+.nav-cta:hover { background: #a83825 !important; }
+.mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-direction: column; gap: 5px; align-items: center; justify-content: center; width: 40px; height: 40px; }
+.mobile-menu-toggle span { display: block; width: 24px; height: 2px; background: var(--paper); transition: all 0.3s ease; border-radius: 2px; }
+.mobile-menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+.mobile-menu-toggle.active span:nth-child(2) { opacity: 0; }
+.mobile-menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+.mobile-nav { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--ink); border-top: 2px solid var(--accent); padding: 1.5rem 2rem; flex-direction: column; gap: 1rem; z-index: 99; transform: translateY(-100%); opacity: 0; transition: transform 0.3s ease, opacity 0.3s ease; visibility: hidden; }
+.mobile-nav.active { display: flex; transform: translateY(0); opacity: 1; visibility: visible; }
+.mobile-nav a { color: #a8a39a; text-decoration: none; font-size: 0.95rem; font-weight: 500; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); transition: color 0.2s; }
+.mobile-nav a:last-child { border-bottom: none; }
+.mobile-nav a:hover { color: var(--paper); }
+.mobile-nav .nav-cta { background: var(--accent); color: var(--white) !important; padding: 0.75rem 1.5rem; border-radius: 4px; text-align: center; border: none; margin-top: 0.5rem; }
+
+/* PAGE HERO */
+.page-hero { background: var(--ink); color: var(--paper); padding: 5rem 2rem 4.5rem; text-align: center; position: relative; overflow: hidden; }
+.page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(200,75,47,0.18) 0%, transparent 70%); pointer-events: none; }
+.hero-label { display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.15em; color: var(--accent); text-transform: uppercase; border: 1px solid rgba(200,75,47,0.4); padding: 0.25rem 0.75rem; border-radius: 2px; margin-bottom: 1.5rem; }
+.page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5.5vw, 3.6rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
+.page-hero h1 em { font-style: normal; color: var(--accent); }
+.page-hero-meta { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1.5rem; flex-wrap: wrap; }
+.page-hero-meta span { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.08em; color: #7a7567; display: flex; align-items: center; gap: 0.4rem; }
+.page-hero-meta span::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); display: inline-block; }
+
+/* LAYOUT */
+.policy-layout { max-width: 1060px; margin: 0 auto; padding: 4rem 1.5rem 5rem; display: grid; grid-template-columns: 220px 1fr; gap: 4rem; align-items: start; }
+
+/* SIDEBAR TOC */
+.toc { position: sticky; top: 88px; }
+.toc-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; display: block; }
+.toc-list { list-style: none; display: flex; flex-direction: column; gap: 0; border-left: 2px solid var(--border); }
+.toc-list li a { display: block; padding: 0.45rem 0.75rem; font-size: 0.82rem; color: var(--muted); text-decoration: none; transition: color 0.18s, border-color 0.18s; border-left: 2px solid transparent; margin-left: -2px; line-height: 1.4; }
+.toc-list li a:hover { color: var(--ink); border-left-color: var(--accent); }
+.toc-list li a.active { color: var(--accent); border-left-color: var(--accent); font-weight: 600; }
+
+/* POLICY CONTENT */
+.policy-content {}
+.policy-section { margin-bottom: 3.5rem; scroll-margin-top: 88px; }
+.policy-section:last-child { margin-bottom: 0; }
+.section-tag { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; display: block; }
+.policy-section h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1.25rem; line-height: 1.25; color: var(--ink); padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+.policy-prose { color: #4a4640; font-size: 0.95rem; line-height: 1.85; }
+.policy-prose p { margin-bottom: 1rem; }
+.policy-prose p:last-child { margin-bottom: 0; }
+.policy-prose strong { color: var(--ink); font-weight: 600; }
+.policy-prose a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; transition: opacity 0.2s; }
+.policy-prose a:hover { opacity: 0.75; }
+.policy-prose ul { list-style: none; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.5rem; }
+.policy-prose ul li { padding-left: 1.25rem; position: relative; }
+.policy-prose ul li::before { content: ''; position: absolute; left: 0; top: 0.6em; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+
+/* HIGHLIGHT BOX */
+.highlight-box { background: var(--accent-light); border: 1px solid rgba(200,75,47,0.25); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; padding: 1.25rem 1.5rem; margin: 1.5rem 0; }
+.highlight-box p { color: var(--ink); font-size: 0.92rem; line-height: 1.75; margin: 0; }
+.highlight-box strong { font-weight: 700; }
+
+/* INFO TABLE */
+.info-table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.875rem; }
+.info-table th { text-align: left; font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding: 0.6rem 1rem; background: var(--cream); border-bottom: 2px solid var(--border); }
+.info-table td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); color: #4a4640; vertical-align: top; line-height: 1.6; }
+.info-table tr:last-child td { border-bottom: none; }
+.info-table tr:hover td { background: var(--paper); }
+.info-table .td-label { font-weight: 600; color: var(--ink); white-space: nowrap; }
+.tag-none { font-family: 'DM Mono', monospace; font-size: 0.68rem; background: #d4f5d4; color: #1a6b1a; padding: 0.15rem 0.5rem; border-radius: 3px; letter-spacing: 0.05em; }
+.tag-limited { font-family: 'DM Mono', monospace; font-size: 0.68rem; background: #fef3cd; color: #7a5b00; padding: 0.15rem 0.5rem; border-radius: 3px; letter-spacing: 0.05em; }
+
+/* LAST UPDATED STRIP */
+.last-updated { background: var(--cream); border: 1px solid var(--border); border-radius: 8px; padding: 0.875rem 1.25rem; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 0.75rem; font-size: 0.82rem; color: var(--muted); }
+.last-updated svg { color: var(--accent); flex-shrink: 0; }
+.last-updated strong { color: var(--ink); }
+
+/* FOOTER */
+footer { background: var(--ink); color: #9e9990; padding: 4rem 2rem 2rem; }
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid #2a2a2a; }
+.footer-brand .logo { display: block; margin-bottom: 0.75rem; }
+.footer-brand p { font-size: 0.85rem; line-height: 1.6; max-width: 240px; }
+.footer-social { display: flex; gap: 0; margin-top: 1rem; }
+.social-icon { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; color: #9e9990; transition: color 0.2s, transform 0.2s; border-radius: 6px; margin-left: -8px; }
+.social-icon:first-child { margin-left: 0; }
+.social-icon:hover { color: var(--paper); transform: translateY(-2px); }
+.footer-col-title { font-family: 'DM Sans', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper); font-weight: 600; margin-bottom: 1rem; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-links a { color: #9e9990; text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+.footer-links a:hover { color: var(--paper); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; font-size: 0.8rem; flex-wrap: wrap; gap: 0.75rem; }
+.divider { border: none; border-top: 1px solid var(--border); max-width: 1060px; margin: 0 auto; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.fade-up { animation: fadeUp 0.55s ease both; }
+
+@media (max-width: 860px) {
+  .policy-layout { grid-template-columns: 1fr; gap: 0; }
+  .toc { display: none; }
+}
+@media (max-width: 768px) {
+  nav { display: none; }
+  .mobile-menu-toggle { display: flex; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .page-hero { padding: 3.5rem 1.25rem 3rem; }
+  .info-table { display: block; overflow-x: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">JPG2<span>Go</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="tools.html">Tools</a>
+      <a href="index.html#tool" class="nav-cta">Convert Now</a>
+    </nav>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="tools.html" onclick="closeMobileMenu()">Tools</a>
+    <a href="index.html#tool" class="nav-cta" onclick="closeMobileMenu()">Convert Now</a>
+  </nav>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="fade-up">
+    <span class="hero-label">Legal · Privacy Policy</span>
+    <h1>Your <em>Privacy,</em> Explained.</h1>
+    <p>Read our privacy policy to understand how we collect, use, and protect your data while using our online tools.</p>
+    <div class="page-hero-meta">
+      <span>Effective: 1 March 2026</span>
+      <span>Last updated: 1 March 2026</span>
+      <span>Jurisdiction: Global</span>
+    </div>
+  </div>
+</section>
+
+<!-- POLICY BODY -->
+<div class="policy-layout">
+
+  <!-- SIDEBAR TOC -->
+  <aside class="toc" aria-label="Table of contents">
+    <span class="toc-label">On this page</span>
+    <ul class="toc-list">
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#data-collected">Data We Collect</a></li>
+      <li><a href="#image-processing">Image Processing</a></li>
+      <li><a href="#cookies">Cookies &amp; Storage</a></li>
+      <li><a href="#third-parties">Third-Party Services</a></li>
+      <li><a href="#analytics">Analytics</a></li>
+      <li><a href="#your-rights">Your Rights</a></li>
+      <li><a href="#childrens-privacy">Children's Privacy</a></li>
+      <li><a href="#changes">Policy Changes</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="policy-content">
+
+    <div class="last-updated">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      <span>This policy was last updated on <strong>1 March 2026</strong>. If you have questions, email us at <a href="mailto:privacy@imgconv.tools" style="color:var(--accent);">privacy@imgconv.tools</a>.</span>
+    </div>
+
+    <!-- 1. OVERVIEW -->
+    <section class="policy-section" id="overview">
+      <span class="section-tag">01</span>
+      <h2>Overview</h2>
+      <div class="policy-prose">
+        <p>JPG2Go ("we", "our", or "the Service") is a free, browser-based image conversion tool available at <strong>imgconv.tools</strong>. This Privacy Policy explains what information we collect, why we collect it, how we use it, and what rights you have in relation to it.</p>
+        <p>Read our privacy policy to understand how we collect, use, and protect your data while using our online tools.</p>
+      </div>
+      <div class="highlight-box">
+        <p><strong>Your image files are never uploaded to any server, never stored, and never transmitted to us or any third party.</strong> All image processing happens locally in your browser using the HTML5 Canvas API. We have no technical ability to access, view, or retain your images — because they never leave your device.</p>
+      </div>
+      <div class="policy-prose">
+        <p>This policy applies to all visitors of imgconv.tools regardless of location. By using JPG2Go you acknowledge that you have read and understood this policy.</p>
+      </div>
+    </section>
+
+    <hr class="divider" style="margin: 0 0 3.5rem;">
+
+    <!-- 2. DATA COLLECTED -->
+    <section class="policy-section" id="data-collected">
+      <span class="section-tag">02</span>
+      <h2>Data We Collect</h2>
+      <div class="policy-prose">
+        <p>JPG2Go collects minimal data. The table below summarises every category of data that may be associated with a visit to imgconv.tools, what we collect from it, and why.</p>
+      </div>
+      <table class="info-table">
+        <thead>
+          <tr>
+            <th>Data Category</th>
+            <th>What We Collect</th>
+            <th>Collected?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-label">Image files</td>
+            <td>Files you select or drop into the converter</td>
+            <td><span class="tag-none">NOT COLLECTED</span></td>
+          </tr>
+          <tr>
+            <td class="td-label">Image metadata</td>
+            <td>EXIF data, filenames, dimensions, file sizes</td>
+            <td><span class="tag-none">NOT COLLECTED</span></td>
+          </tr>
+          <tr>
+            <td class="td-label">Account information</td>
+            <td>Name, email address, password</td>
+            <td><span class="tag-none">NOT COLLECTED</span></td>
+          </tr>
+          <tr>
+            <td class="td-label">Server access logs</td>
+            <td>IP address, browser type, requested URL, timestamp</td>
+            <td><span class="tag-limited">STANDARD LOGS</span></td>
+          </tr>
+          <tr>
+            <td class="td-label">Cookies</td>
+            <td>Session identifiers, preference tokens</td>
+            <td><span class="tag-none">NOT USED</span></td>
+          </tr>
+          <tr>
+            <td class="td-label">Usage behaviour</td>
+            <td>Which buttons were clicked, conversion counts, formats used</td>
+            <td><span class="tag-none">NOT COLLECTED</span></td>
+          </tr>
+          <tr>
+            <td class="td-label">Payment data</td>
+            <td>Credit card numbers, billing address</td>
+            <td><span class="tag-none">NOT COLLECTED</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="policy-prose">
+        <p><strong>Standard server access logs</strong> are automatically generated by our hosting provider when any HTTP request is made to imgconv.tools — for example, when a browser fetches the HTML page, the stylesheet, or the web font. These logs contain your IP address, browser user-agent string, the URL requested, and a timestamp. They are retained for up to 30 days for security and infrastructure purposes and are not used for advertising or profiling.</p>
+      </div>
+    </section>
+
+    <hr class="divider" style="margin: 0 0 3.5rem;">
+
+    <!-- 3. IMAGE PROCESSING -->
+    <section class="policy-section" id="image-processing">
+      <span class="section-tag">03</span>
+      <h2>Image Processing</h2>
+      <div class="policy-prose">
+        <p>This section explains in technical detail how JPG2Go handles image files to make clear why no image data is ever transmitted to us.</p>
+        <p>When you select or drop an image onto JPG2Go, the following happens entirely within your browser's memory:</p>
+        <ul>
+          <li>Your browser reads the file from your local filesystem using the <strong>File API</strong> (<code>FileReader</code> / <code>URL.createObjectURL</code>). No network request is made at this step.</li>
+          <li>A thumbnail preview is generated by drawing the image into an off-screen <strong>HTMLImageElement</strong>. The Blob URL used for this is revoked immediately after rendering to release memory.</li>
+          <li>On conversion, the image is drawn onto an off-screen <strong>HTMLCanvasElement</strong> at its native pixel dimensions. <code>HTMLCanvasElement.toBlob()</code> re-encodes the pixel data into the selected output format using the browser's built-in codec.</li>
+          <li>The resulting Blob is attached to a programmatically created anchor element and downloaded directly to your device via your browser's standard file-save mechanism.</li>
+        </ul>
+        <p>At no point in this pipeline does any image data leave your browser's sandbox. JPG2Go's server serves only the initial HTML, CSS, and JavaScript files. Once those files have loaded, all conversion activity is offline-capable and entirely local.</p>
+      </div>
+    </section>
+
+    <hr class="divider" style="margin: 0 0 3.5rem;">
+
+    <!-- 4. COOKIES -->
+    <section class="policy-section" id="cookies">
+      <span class="section-tag">04</span>
+      <h2>Cookies &amp; Local Storage</h2>
+      <div class="policy-prose">
+        <p>JPG2Go does not set any first-party cookies. We do not use <code>document.cookie</code>, <code>localStorage</code>, <code>sessionStorage</code>, or <code>IndexedDB</code> to store any information about you or your usage.</p>
+        <p>Google Fonts (the only third-party resource loaded by JPG2Go) may set a cookie as part of its font-delivery infrastructure. This is controlled by Google's own Privacy Policy. You can prevent Google Fonts from loading by disabling JavaScript in your browser; the page will fall back to system sans-serif fonts and all conversion functionality will continue to work normally.</p>
+        <p>Because we set no cookies, JPG2Go does not display a cookie consent banner. There is nothing to consent to on our end.</p>
+      </div>
+    </section>
+
+    <hr class="divider" style="margin: 0 0 3.5rem;">
+
+    <!-- 5. THIRD PARTIES -->
+    <section class="policy-section" id="third-parties">
+      <span class="section-tag">05</span>
+      <h2>Third-Party Services</h2>
+      <div class="policy-prose">
+        <p>JPG2Go loads exactly one external resource from a third-party domain: the Google Fonts API, used to serve the Playfair Display, DM Mono, and DM Sans typefaces. When your browser requests these fonts, a standard HTTP request is made to <code>fonts.googleapis.com</code> and <code>fonts.gstatic.com</code>. Google's Privacy Policy governs how that request is handled.</p>
+        <p>We do not:</p>
+        <ul>
+          <li>Load any advertising networks, demand-side platforms, or retargeting pixels.</li>
+          <li>Embed tracking scripts from Meta, Google Ads, TikTok, or any other advertising platform.</li>
+          <li>Use third-party analytics services such as Google Analytics, Mixpanel, Amplitude, or Hotjar.</li>
+          <li>Load any CDN-hosted JavaScript libraries that could exfiltrate data.</li>
+          <li>Integrate with any social login providers (Facebook, Google, Apple).</li>
+        </ul>
+        <p>We do not sell, rent, trade, or share your personal data with any third party for commercial purposes. There are no commercial data-sharing arrangements in place because we do not collect data that would be valuable for such purposes.</p>
+      </div>
+    </section>
+
+    <hr class="divider" style="margin: 0 0 3.5rem;">
+
+    <!-- 6. ANALYTICS -->
+    <section class="policy-section" id="analytics">
+      <span class="section-tag">06</span>
+      <h2>Analytics</h2>
+      <div class="policy-prose">
+        <p>JPG2Go does not use any third-party behavioural analytics platform. We do not track which pages you visit after leaving our site, how long you spend on specific elements, or what conversion actions you take within the tool.</p>
+        <p>If we introduce aggregate, privacy-preserving analytics in the future (for example, a self-hosted solution that counts page views without identifying individual visitors), we will update this policy before doing so and will not introduce any analytics that identify individual users, correlate sessions, or share data with third parties.</p>
+      </div>
+    </section>
+
+    <hr class="divider" style="margin: 0 0 3.5rem;">
+
+    <!-- 7. YOUR RIGHTS -->
+    <section class="policy-section" id="your-rights">
+      <span class="section-tag">07</span>
+      <h2>Your Rights</h2>
+      <div class="policy-prose">
+        <p>Depending on your jurisdiction, you may have rights including: access to personal data we hold about you, correction of inaccurate data, erasure of your data, restriction of processing, and the right to object to processing.</p>
+        <p>In practice, because JPG2Go does not collect personal data beyond standard server access logs (which contain your IP address and are retained for 30 days), there is very little data to exercise rights over. Specifically:</p>
+        <ul>
+          <li><strong>Right of access:</strong> Server access logs containing your IP address may exist for up to 30 days. You may request a copy by emailing <a href="mailto:privacy@imgconv.tools">privacy@imgconv.tools</a>.</li>
+          <li><strong>Right to erasure:</strong> You may request deletion of any server logs referencing your IP address. Requests are processed within 30 days.</li>
+          <li><strong>Right to object:</strong> You may object to processing of access log data. We will consider and respond to such requests within 30 days.</li>
+          <li><strong>GDPR (EU/EEA residents):</strong> You may lodge a complaint with your local supervisory authority if you believe your rights have been violated.</li>
+          <li><strong>CCPA (California residents):</strong> We do not sell personal information. California residents may exercise their rights by contacting us at the address below.</li>
+        </ul>
+        <p>To exercise any of these rights, email <a href="mailto:privacy@imgconv.tools">privacy@imgconv.tools</a> with the subject line "Privacy Rights Request".</p>
+      </div>
+    </section>
+
+    <hr class="divider" style="margin: 0 0 3.5rem;">
+
+    <!-- 8. CHILDREN'S PRIVACY -->
+    <section class="policy-section" id="childrens-privacy">
+      <span class="section-tag">08</span>
+      <h2>Children's Privacy</h2>
+      <div class="policy-prose">
+        <p>JPG2Go is a general-purpose utility tool with no age restrictions on use. Because we do not collect personal data beyond standard server logs, and require no account creation, there is no mechanism by which we knowingly collect personal information from children under the age of 13 (or under 16 in the EU/EEA under GDPR).</p>
+        <p>If you believe a child has provided us with personal information, please contact us at <a href="mailto:privacy@imgconv.tools">privacy@imgconv.tools</a> and we will take steps to delete it promptly.</p>
+      </div>
+    </section>
+
+    <hr class="divider" style="margin: 0 0 3.5rem;">
+
+    <!-- 9. CHANGES -->
+    <section class="policy-section" id="changes">
+      <span class="section-tag">09</span>
+      <h2>Policy Changes</h2>
+      <div class="policy-prose">
+        <p>We may update this Privacy Policy from time to time. When we make material changes — such as collecting a new category of data or engaging a new third-party service — we will update the "Last updated" date at the top of this page and, where appropriate, post a notice on the imgconv.tools homepage.</p>
+        <p>We commit to never introducing data collection practices that are materially more privacy-invasive than what is described in this policy without providing clear notice and, where required by law, obtaining consent.</p>
+      </div>
+    </section>
+
+    <hr class="divider" style="margin: 0 0 3.5rem;">
+
+    <!-- 10. CONTACT -->
+    <section class="policy-section" id="contact">
+      <span class="section-tag">10</span>
+      <h2>Contact</h2>
+      <div class="policy-prose">
+        <p>If you have questions about this Privacy Policy, wish to exercise your data rights, or want to report a privacy concern, please contact us:</p>
+        <ul>
+          <li><strong>Email:</strong> <a href="mailto:privacy@imgconv.tools">privacy@imgconv.tools</a></li>
+          <li><strong>Website:</strong> <a href="https://imgconv.tools">imgconv.tools</a></li>
+          <li><strong>Response time:</strong> We aim to respond to all privacy-related enquiries within 5 business days.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<div id="footer-placeholder"></div>
+<script src="load-footer.js"></script>
+
+<script>
+const mobileToggle = document.getElementById('mobileMenuToggle');
+const mobileNav    = document.getElementById('mobileNav');
+function toggleMobileMenu(e) { e.stopPropagation(); mobileToggle.classList.toggle('active'); mobileNav.classList.toggle('active'); }
+function closeMobileMenu()   { mobileToggle.classList.remove('active'); mobileNav.classList.remove('active'); }
+mobileToggle.addEventListener('click', toggleMobileMenu);
+document.addEventListener('click', e => { if (!mobileNav.contains(e.target) && !mobileToggle.contains(e.target)) closeMobileMenu(); });
+
+// Active TOC highlight on scroll
+const sections = document.querySelectorAll('.policy-section');
+const tocLinks = document.querySelectorAll('.toc-list a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

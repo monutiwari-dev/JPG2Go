@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>CBR to PDF Converter | Convert CBR Files Online</title>
+<meta name="description" content="Convert CBR comic archives to PDF documents online. Maintain page sequence, high-quality images, and create easy-to-read files for digital comics.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jpg2go.com/cbr-to-pdf">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="adsense.js"></script>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Convert CBR to PDF",
+    "url": "https://jpg2go.com/cbr-to-pdf",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Convert CBR comic archives to PDF documents online. Maintain page sequence, high-quality images, and create easy-to-read files for digital comics."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a CBR file format?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A CBR file is a comic book archive format that stores sequential image pages inside a compressed file."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why convert CBR files to PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PDF files are easier to open on most devices without needing special comic reader software."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will the comic pages stay in order after conversion?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, a good CBR to PDF converter preserves the original page order of the comic."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I read comics on mobile after converting to PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, once converted to PDF you can read comics using any PDF reader on smartphones or tablets."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do CBR to PDF converters reduce image quality?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most tools keep the original image resolution to maintain comic artwork quality."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is it possible to convert large CBR files online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Many online converters support large comic files and process them quickly without complicated steps."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+
+<style>
+:root{--ink:#0d0d0d;--paper:#f7f4ee;--cream:#ede9df;--accent:#c84b2f;--accent-light:#e8d5cf;--muted:#7a7567;--border:#d4cfc4;--white:#ffffff;--shadow:0 2px 24px rgba(13,13,13,.08);--shadow-lg:0 8px 48px rgba(13,13,13,.12);--green:#1a8a4a;--green-light:#d4f0e0;--amber:#b45309;--amber-light:#fef3c7}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;min-height:100vh}
+
+/* ── HEADER ── */
+header{background:var(--ink);color:var(--paper);position:sticky;top:0;z-index:100;border-bottom:2px solid var(--accent)}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1.6rem;color:var(--paper);text-decoration:none;letter-spacing:-.02em}
+.logo span{color:var(--accent)}
+nav{display:flex;gap:2rem;align-items:center}
+nav a{color:#a8a39a;text-decoration:none;font-size:.875rem;font-weight:500;letter-spacing:.02em;transition:color .2s}
+nav a:hover{color:var(--paper)}
+.nav-cta{background:var(--accent);color:var(--white)!important;padding:.4rem 1rem;border-radius:4px;transition:background .2s!important}
+.nav-cta:hover{background:#a83825!important}
+.mobile-menu-toggle {display:none;background:none;border:none;cursor:pointer;padding:.5rem;flex-direction:column;gap:5px;align-items:center;justify-content:center;width:40px;height:40px}
+.mobile-menu-toggle span{display:block;width:24px;height:2px;background:var(--paper);transition:all .3s;border-radius:2px}
+.mobile-menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(6px,6px)}
+.mobile-menu-toggle.active span:nth-child(2){opacity:0}
+.mobile-menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
+.mobile-nav {display:none;position:fixed;top:64px;left:0;right:0;background:var(--ink);border-top:2px solid var(--accent);padding:1.5rem 2rem;flex-direction:column;gap:1rem;z-index:99;transform:translateY(-100%);opacity:0;transition:transform .3s,opacity .3s;visibility:hidden}
+.mobile-nav.active{display:flex;transform:translateY(0);opacity:1;visibility:visible}
+.mobile-nav a{color:#a8a39a;text-decoration:none;font-size:.95rem;font-weight:500;padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.1);transition:color .2s}
+.mobile-nav a:last-child{border-bottom:none}
+.mobile-nav a:hover{color:var(--paper)}
+.mobile-nav .nav-cta{background:var(--accent);color:var(--white)!important;padding:.75rem 1.5rem;border-radius:4px;text-align:center;border:none;margin-top:.5rem}
+
+/* ── HERO ── */
+.hero{background:var(--ink);color:var(--paper);padding:4rem 2rem 3.5rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(200,75,47,.2) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:1px;height:60px;background:linear-gradient(to bottom,transparent,rgba(200,75,47,.4))}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.12em;color:#c84b2f;text-transform:uppercase;border:1px solid rgba(200,75,47,.4);background:rgba(200,75,47,.12);padding:.3rem .9rem;border-radius:2px;margin-bottom:1.5rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5.5vw,3.6rem);font-weight:900;line-height:1.1;letter-spacing:-.03em;margin-bottom:1.25rem}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-desc{font-size:1.05rem;color:#9e9990;max-width:520px;margin:0 auto 1.75rem;font-weight:300;line-height:1.7}
+.hero-pills{display:flex;justify-content:center;flex-wrap:wrap;gap:.5rem}
+.hero-pill{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.06em;color:#a8a39a;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:.3rem .75rem;border-radius:100px}
+
+/* ── TOOL CARD ── */
+.tool-section{max-width:1000px;margin:-1.5rem auto 0;padding:0 1.5rem 4rem;position:relative;z-index:10}
+.tool-card{background:var(--white);border-radius:12px;box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid var(--border)}
+.tool-card-header{background:var(--cream);padding:1rem 1.5rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid var(--border)}
+.dot{width:12px;height:12px;border-radius:50%;display:inline-block}
+.dot-r{background:#ff5f57}.dot-y{background:#febc2e}.dot-g{background:#28c840}
+.tc-title{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--muted);margin-left:.5rem;letter-spacing:.05em}
+.tool-body{padding:1.5rem}
+
+/* ── DROP ZONE ── */
+.drop-zone{border:2px dashed var(--border);border-radius:10px;padding:2rem 2rem;margin-bottom:2rem;border-bottom:1px solid rgba(255,255,255,0.05);text-align:center;cursor:pointer;transition:border-color .2s,background .2s;background:var(--paper);position:relative}
+.drop-zone:hover,.drop-zone.drag-over{border-color:var(--accent);background:var(--accent-light)}
+.drop-zone input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.drop-icon{width:52px;height:52px;background:var(--accent-light);border:1px solid rgba(200,75,47,.3);border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:var(--accent)}
+.drop-zone h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:.4rem}
+.drop-zone p{font-size:.85rem;color:var(--muted);margin-bottom:0.75rem;color:var(--paper)}
+.formats-pill{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.08em;color:var(--accent);background:var(--accent-light);padding:.25rem .75rem;border-radius:100px;display:inline-block}
+
+/* ── FILE BAR ── */
+.file-bar{display:none;align-items:center;gap:.75rem;background:var(--paper);border:1.5px solid var(--border);border-radius:9px;padding:.65rem .9rem;margin-top:1.1rem}
+.file-bar.on{display:flex}
+.fb-icon{color:var(--accent);flex-shrink:0}
+.fb-info{flex:1;min-width:0}
+.fb-name{font-size:.83rem;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fb-meta{font-family:'DM Mono',monospace;font-size:.64rem;color:var(--muted);margin-top:.1rem}
+.fb-type-badge{font-family:'DM Mono',monospace;font-size:.62rem;padding:.18rem .5rem;border-radius:100px;border:1px solid;display:inline-flex;align-items:center;gap:.3rem;flex-shrink:0;font-weight:600}
+.fb-type-badge.cbz{color:var(--green);background:var(--green-light);border-color:rgba(26,138,74,.25)}
+.fb-type-badge.cbr{color:var(--amber);background:var(--amber-light);border-color:rgba(180,83,9,.25)}
+.fb-remove{background:none;border:none;cursor:pointer;color:var(--muted);padding:.25rem;border-radius:4px;display:flex;align-items:center;transition:color .15s,background .15s;flex-shrink:0}
+.fb-remove:hover{color:var(--accent);background:var(--accent-light)}
+
+/* ── RAR WARNING ── */
+.rar-warn{display:none;align-items:flex-start;gap:.75rem;background:var(--amber-light);border:1px solid rgba(180,83,9,.2);border-radius:9px;padding:.85rem 1rem;margin-top:1rem}
+.rar-warn.on{display:flex}
+.rar-warn-icon{color:var(--amber);flex-shrink:0;margin-top:.05rem}
+.rar-warn p{font-size:.83rem;color:#78350f;line-height:1.6}
+.rar-warn strong{color:#92400e}
+
+/* ── PAGE PREVIEW GRID ── */
+.preview-section{display:none;margin-top:1.4rem}
+.preview-section.on{display:block}
+.preview-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;flex-wrap:wrap;gap:.5rem}
+.preview-label{font-family:'DM Mono',monospace;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.preview-badge{font-family:'DM Mono',monospace;font-size:.67rem;color:var(--accent);background:var(--accent-light);padding:.18rem .55rem;border-radius:100px;border:1px solid rgba(200,75,47,.2)}
+.preview-hint{font-family:'DM Mono',monospace;font-size:.63rem;color:var(--muted);margin-bottom:.85rem;display:flex;align-items:center;gap:.4rem}
+.preview-hint svg{opacity:.45;flex-shrink:0}
+
+.page-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:.55rem;margin-bottom:1.1rem;max-height:400px;overflow-y:auto;padding-right:.25rem}
+.page-grid::-webkit-scrollbar{width:5px}
+.page-grid::-webkit-scrollbar-track{background:var(--paper);border-radius:100px}
+.page-grid::-webkit-scrollbar-thumb{background:var(--border);border-radius:100px}
+
+.page-tile{position:relative;border-radius:8px;overflow:hidden;border:1.5px solid var(--border);background:var(--cream);cursor:grab;user-select:none;transition:border-color .15s,box-shadow .15s;aspect-ratio:0.7}
+.page-tile:hover{border-color:rgba(200,75,47,.45);box-shadow:0 2px 10px rgba(13,13,13,.1)}
+.page-tile.is-dragging{opacity:.3;border-style:dashed}
+.page-tile.drop-target{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-light)}
+.page-tile img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.page-tile-num{position:absolute;top:.3rem;left:.3rem;font-family:'DM Mono',monospace;font-size:.58rem;font-weight:700;background:rgba(13,13,13,.72);color:#fff;padding:.1rem .35rem;border-radius:3px;line-height:1.4;pointer-events:none}
+.page-tile-remove{position:absolute;top:.3rem;right:.3rem;width:18px;height:18px;border-radius:50%;background:rgba(220,38,38,.85);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .15s;color:#fff}
+.page-tile:hover .page-tile-remove{opacity:1}
+.page-tile-name{position:absolute;bottom:0;left:0;right:0;font-family:'DM Mono',monospace;font-size:.54rem;background:rgba(13,13,13,.65);color:#fff;padding:.2rem .35rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;pointer-events:none}
+
+/* ── OPTIONS ── */
+.opts-row{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.1rem;align-items:flex-end}
+.opt-field{display:flex;flex-direction:column;gap:.3rem}
+.opt-lbl{font-family:'DM Mono',monospace;font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
+.opt-select{background:var(--paper);border:1.5px solid var(--border);border-radius:6px;padding:.42rem .75rem;font-family:'DM Mono',monospace;font-size:.8rem;color:var(--ink);outline:none;transition:border-color .2s;cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%237a7567' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .6rem center;padding-right:2rem;min-width:160px}
+.opt-select:focus{border-color:var(--accent)}
+.filename-row{display:flex;align-items:center;gap:.5rem}
+.filename-input{background:var(--paper);border:1.5px solid var(--border);border-radius:6px;padding:.42rem .75rem;font-family:'DM Mono',monospace;font-size:.8rem;color:var(--ink);outline:none;transition:border-color .2s;flex:1;min-width:130px;max-width:240px}
+.filename-input:focus{border-color:var(--accent)}
+.filename-ext{font-family:'DM Mono',monospace;font-size:.8rem;color:var(--muted)}
+
+/* ── STATS BAR ── */
+.stats-bar{display:flex;gap:1.5rem;flex-wrap:wrap;background:var(--cream);border-radius:8px;padding:.65rem 1rem;margin-bottom:1.1rem}
+.stat{font-family:'DM Mono',monospace;font-size:.69rem;color:var(--muted)}
+.stat strong{color:var(--ink);font-weight:700}
+
+/* ── BUTTONS ── */
+.action-bar{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn-p{background:var(--accent);color:var(--white);border:none;border-radius:6px;padding:.65rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:.875rem;font-weight:600;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;white-space:nowrap}
+.btn-p:hover{background:#a83825;transform:translateY(-1px)}
+.btn-p:disabled{background:var(--border);color:var(--muted);cursor:not-allowed;transform:none}
+.btn-s{background:transparent;color:var(--ink);border:1.5px solid var(--border);border-radius:6px;padding:.65rem 1.25rem;font-family:'DM Sans',sans-serif;font-size:.875rem;font-weight:500;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:.5rem;white-space:nowrap}
+.btn-s:hover{border-color:var(--ink);background:var(--cream)}
+
+/* ── PROGRESS ── */
+.prog-wrap{display:none;margin-top:1.5rem;flex-direction:column;align-items:center;gap:.85rem;background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:2rem}
+.prog-wrap.on{display:flex}
+.prog-spinner{width:44px;height:44px;border:3px solid var(--accent-light);border-top-color:var(--accent);border-radius:50%;animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.prog-lbl{font-family:'DM Mono',monospace;font-size:.78rem;color:var(--muted);text-align:center}
+.prog-bar-wrap{width:100%;max-width:300px;background:var(--border);border-radius:100px;height:5px;overflow:hidden}
+.prog-bar{height:100%;background:var(--accent);border-radius:100px;transition:width .35s ease;width:0%}
+.prog-steps{display:flex;flex-direction:column;gap:.35rem;width:100%;max-width:300px}
+.pstep{display:flex;align-items:center;gap:.5rem;font-family:'DM Mono',monospace;font-size:.65rem;color:#bbb;transition:color .2s}
+.pstep.active{color:var(--accent)}.pstep.done{color:var(--green)}
+.pstep-dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0}
+
+/* ── RESULT ── */
+.result-area{display:none;margin-top:1.5rem}
+.result-area.on{display:block}
+.result-box{background:var(--paper);border:1.5px solid var(--green);border-radius:10px;padding:1.35rem 1.5rem;display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap}
+.result-icon{width:52px;height:52px;background:var(--green-light);border:1px solid rgba(26,138,74,.25);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0}
+.result-info{flex:1;min-width:140px}
+.result-fname{font-weight:700;font-size:.95rem;color:var(--ink);margin-bottom:.2rem;word-break:break-all}
+.result-meta{font-family:'DM Mono',monospace;font-size:.67rem;color:var(--muted)}
+.result-btns{display:flex;gap:.6rem;flex-wrap:wrap}
+
+/* ── ERROR ── */
+.err-box{display:none;margin-top:1.25rem;background:#fff8f8;border:1.5px solid #fca5a5;border-radius:8px;padding:.9rem 1.1rem}
+.err-box.on{display:block}
+.err-box p{font-size:.85rem;color:#dc2626;line-height:1.6}
+
+/* ── CONTENT ── */
+.content-section{max-width:1000px;margin:0 auto;padding:4rem 1.5rem}
+.section-tag{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem;display:block}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;letter-spacing:-.02em;margin-bottom:1.25rem;line-height:1.2}
+.prose{color:#4a4640;font-size:.975rem;line-height:1.8;max-width:720px}
+.prose p{margin-bottom:1rem;color:#4a4640}
+.prose p:last-child{margin-bottom:0}
+hr.divider{border:none;border-top:1px solid var(--border);max-width:1000px;margin:0 auto}
+
+/* HOW IT WORKS */
+.how-section{background:var(--ink);color:var(--paper);padding:2rem;position:relative;overflow:hidden}
+.how-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 100%,rgba(200,75,47,.14) 0%,transparent 70%);pointer-events:none}
+.how-inner{max-width:1000px;margin:0 auto;position:relative}
+.how-hdr{text-align:center;margin-bottom:1.5rem}
+.how-hdr .section-tag{color:#c84b2f}
+.how-hdr .section-title{color:var(--paper);margin-bottom:.3rem}
+.how-sub{color:#9e9990;font-size:.9rem;font-weight:300}
+.steps-grid{display:flex;align-items:stretch;gap:0}
+.step-card{flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:.9rem 1rem;transition:background .25s,border-color .25s,transform .25s}
+.step-card:hover{background:rgba(200,75,47,.08);border-color:rgba(200,75,47,.35);transform:translateY(-4px)}
+.step-conn{display:flex;align-items:center;justify-content:center;padding:0 .5rem;color:rgba(200,75,47,.5);flex-shrink:0;margin-top:-.75rem}
+.step-num{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:rgba(200,75,47,.25);line-height:1;margin-bottom:.3rem}
+.step-ico{width:36px;height:36px;background:rgba(200,75,47,.15);border:1px solid rgba(200,75,47,.3);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:.55rem;color:#c84b2f}
+.step-ttl{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:var(--paper);margin-bottom:.3rem}
+.step-dsc{font-size:.8rem;color:#9e9990;line-height:1.55;margin-bottom:.55rem}
+.step-dsc strong{color:#d4cfc4}
+.step-pill{display:inline-block;font-family:'DM Mono',monospace;font-size:.62rem;color:#c84b2f;background:rgba(200,75,47,.12);border:1px solid rgba(200,75,47,.25);padding:.18rem .55rem;border-radius:100px}
+.how-cta{text-align:center;margin-top:1.5rem;display:flex;flex-direction:column;align-items:center;gap:.55rem}
+.how-note{font-size:.8rem;color:#7a7567;font-family:'DM Mono',monospace}
+
+/* FORMAT TABLE */
+.fmt-table-wrap{margin-top:2rem;overflow-x:auto}
+.fmt-table{width:100%;border-collapse:collapse;font-size:.85rem}
+.fmt-table th{font-family:'DM Mono',monospace;font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);text-align:left;padding:.65rem 1rem;border-bottom:2px solid var(--border);background:var(--cream)}
+.fmt-table td{padding:.6rem 1rem;border-bottom:1px solid var(--border);color:#4a4640;vertical-align:top}
+.fmt-table tr:last-child td{border-bottom:none}
+.fmt-table tr:hover td{background:var(--paper)}
+.fmt-table .mono{font-family:'DM Mono',monospace;font-size:.78rem;color:var(--accent)}
+.fmt-table .check{color:var(--green);font-weight:700}
+.fmt-table .cross{color:#dc2626;font-weight:700}
+
+/* GRIDS */
+.features-grid,.use-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(218px,1fr));gap:1rem;margin-top:2rem}
+.feature-card,.use-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.4rem 1.2rem;transition:box-shadow .2s,transform .2s}
+.feature-card:hover,.use-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.f-ico,.u-ico{font-size:1.75rem;margin-bottom:.7rem;display:block}
+.f-title,.u-title{font-weight:700;font-size:.9rem;margin-bottom:.35rem}
+.f-desc,.u-desc{font-size:.82rem;color:var(--muted);line-height:1.5}
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-top:2rem}
+.tip-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.2rem;transition:box-shadow .2s,transform .2s}
+.tip-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.tip-name{font-weight:700;font-size:.9rem;margin-bottom:.3rem;color:var(--ink)}
+.tip-tag{font-family:'DM Mono',monospace;font-size:.74rem;color:var(--accent);background:var(--accent-light);padding:.2rem .5rem;border-radius:4px;display:inline-block;margin-bottom:.5rem}
+.tip-desc{font-size:.82rem;color:var(--muted);line-height:1.5}
+
+/* FAQ */
+.faq-list{margin-top:2rem}
+.faq-item{border-bottom:1px solid var(--border);padding:1.25rem 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-weight:600;font-size:.95rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-q::after{content:'+';font-size:1.2rem;color:var(--accent);flex-shrink:0;transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-size:.9rem;color:var(--muted);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .3s ease,margin-top .3s}
+.faq-item.open .faq-a{max-height:360px;margin-top:.75rem}
+
+/* CTA */
+.cta-section{background:var(--ink);color:var(--paper);padding:1.5rem 2rem;border-bottom:1px solid rgba(255,255,255,0.05);text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(200,75,47,.18) 0%,transparent 70%);pointer-events:none}
+.cta-inner{max-width:640px;margin:0 auto;position:relative}
+.cta-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-bottom:0.75rem;color:var(--paper)}
+.cta-desc{font-size:1rem;color:#9e9990;font-weight:300;margin-bottom:0.75rem;line-height:1.7}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:0.5rem}
+.cta-note{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.06em;color:#5a5650;margin-top:0.75rem;display:block}
+
+/* BUTTONS */
+.btn-primary{background:var(--accent);color:var(--white);border:none;border-radius:6px;padding:0.65rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:0.875rem;font-weight:600;cursor:pointer;transition:all 0.18s;display:inline-flex;align-items:center;gap:0.5rem;text-decoration:none}
+.btn-primary:hover{background:#a83825;transform:translateY(-1px)}
+
+/* RELATED */
+.related-section { background: var(--cream); padding: 5rem 2rem; border-top: 1px solid var(--border); }
+.related-inner { max-width: 1000px; margin: 0 auto; }
+.related-header { margin-bottom: 2.5rem; }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+.related-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-decoration: none; color: inherit; display: block; transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s; position: relative; overflow: hidden; }
+.related-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--border); transition: background 0.2s; }
+.related-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); border-color: var(--accent); }
+.related-card:hover::before { background: var(--accent); }
+.related-card-icon { font-size: 1.85rem; margin-bottom: 0.85rem; display: block; }
+.related-card-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem; color: var(--ink); letter-spacing: -0.01em; }
+.related-card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin-bottom: 1rem; }
+.related-card-tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); background: var(--accent-light); padding: 0.2rem 0.5rem; border-radius: 3px; display: inline-block; }
+
+/* FOOTER */
+footer{background:var(--ink);color:#9e9990;padding:4rem 2rem 2rem;margin-top:3rem;border-top:1px solid rgba(255,255,255,0.05)}
+.footer-inner{max-width:1200px;
+  margin-top: 0;
+  border-top: 1px solid rgba(255,255,255,0.05);margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid #2a2a2a}
+.footer-brand .logo{display:block;margin-bottom:.75rem}
+.footer-brand p{font-size:.85rem;line-height:1.6;max-width:240px}
+.footer-social{display:flex;margin-top:1rem}
+.social-icon{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;color:#9e9990;transition:color .2s,transform .2s}
+.social-icon:hover{color:var(--paper);transform:translateY(-2px)}
+.footer-col-title{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--paper);font-weight:600;margin-bottom:0.75rem;color:var(--paper)}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.footer-links a{color:#9e9990;text-decoration:none;font-size:.85rem;transition:color .2s}
+.footer-links a:hover{color:var(--paper)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;font-size:.8rem;flex-wrap:wrap;gap:.75rem}
+
+/* TOAST */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--ink);color:var(--paper);padding:.75rem 1.5rem;border-radius:6px;font-size:.875rem;font-weight:500;transition:transform .3s cubic-bezier(.34,1.56,.64,1);z-index:999;border-left:3px solid var(--accent);white-space:nowrap;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeUp .6s ease both}
+.delay-1{animation-delay:.1s}
+
+@media(max-width:768px){nav{display:none}.mobile-menu-toggle {display:flex}.steps-grid{flex-direction:column}.step-conn{transform:rotate(90deg);padding:.25rem 0}.footer-grid{grid-template-columns:1fr 1fr}.page-grid{grid-template-columns:repeat(auto-fill,minmax(80px,1fr))}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr;gap:2rem}.footer-bottom{flex-direction:column;text-align:center}.result-box{flex-direction:column;text-align:center}.result-btns{justify-content:center}.opts-row{flex-direction:column;gap:.85rem}}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">JPG2<span>Go</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="tools.html">Tools</a>
+      <a href="#tool" class="nav-cta">Convert Now</a>
+    </nav>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="tools.html" onclick="closeMobileMenu()">Tools</a>
+    <a href="#tool" class="nav-cta" onclick="closeMobileMenu()">Convert Now</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="fade-up">
+    <div class="hero-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h6M3 15h6"/></svg>
+            Convert CBR Files Online
+    </div>
+    <h1>Convert CBR to PDF</h1>
+    <p class="hero-desc">Convert CBR comic book archive files into easy-to-read PDF documents online while maintaining original page order, image clarity, and smooth viewing across devices.</p>
+    <div class="hero-pills">
+      <span class="hero-pill">CBZ · CBR</span>
+      <span class="hero-pill">Page Preview Grid</span>
+      <span class="hero-pill">Drag-to-Reorder</span>
+      <span class="hero-pill">Fit · Fill · Cover</span>
+      <span class="hero-pill">100% Private</span>
+    </div>
+  </div>
+</section>
+
+<!-- TOOL -->
+<section class="tool-section" id="tool">
+  <div class="tool-card fade-up delay-1">
+    <div class="tool-card-header">
+      <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+      <span class="tc-title">cbr-to-pdf · cbz · jszip + pdf-lib · page-preview · drag-to-reorder · zero upload</span>
+    </div>
+    <div class="tool-body">
+
+      <!-- Drop Zone -->
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" accept=".cbz,.cbr,.zip">
+        <div class="drop-icon">
+          <!-- Comic book icon: pages stacked -->
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="2" width="13" height="20" rx="1.5"/><path d="M7 2v20"/><path d="M17 6h3v14a1 1 0 0 1-1 1h-2"/><line x1="10" y1="6" x2="14" y2="6"/><line x1="10" y1="10" x2="14" y2="10"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+        </div>
+        <h3>Drop your CBZ or CBR file here</h3>
+        <p>Convert CBR comic book archive files into easy-to-read PDF documents online while maintaining original page order, image clarity, and smooth viewing across devices.</p>
+        <span class="formats-pill">CBZ · CBR (ZIP-based) → PDF</span>
+      </div>
+
+      <!-- RAR warning (shown for .cbr files that can't be parsed) -->
+      <div class="rar-warn" id="rarWarn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="rar-warn-icon"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16" stroke-width="3"/></svg>
+        <p><strong>RAR-compressed CBR detected.</strong> CBR files using RAR compression cannot be decoded in the browser — RAR is a proprietary format with no client-side JavaScript library available. To convert this file, rename it from <code>.cbr</code> to <code>.cbz</code> after re-archiving the pages as a ZIP, or use a desktop tool like Calibre or ComicRack to convert to CBZ first, then come back here.</p>
+      </div>
+
+      <!-- File Bar -->
+      <div class="file-bar" id="fileBar">
+        <span class="fb-icon">
+          <svg width="20" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="2" width="13" height="20" rx="1.5"/><path d="M7 2v20"/><line x1="10" y1="6" x2="14" y2="6"/><line x1="10" y1="10" x2="14" y2="10"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+        </span>
+        <div class="fb-info">
+          <div class="fb-name" id="fbName">—</div>
+          <div class="fb-meta" id="fbMeta">—</div>
+        </div>
+        <span class="fb-type-badge" id="fbTypeBadge">CBZ</span>
+        <button class="fb-remove" id="fbRemove" aria-label="Remove file">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <!-- Preview + Options -->
+      <div class="preview-section" id="previewSection">
+
+        <div class="preview-header">
+          <span class="preview-label">Comic Pages</span>
+          <span class="preview-badge" id="previewBadge">0 pages</span>
+        </div>
+        <div class="preview-hint">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16" stroke-width="3"/></svg>
+          Drag thumbnails to reorder pages — the sequence shown becomes the PDF page order
+        </div>
+
+        <!-- Page grid -->
+        <div class="page-grid" id="pageGrid"></div>
+
+        <!-- Stats -->
+        <div class="stats-bar">
+          <div class="stat">Pages: <strong id="statPages">0</strong></div>
+          <div class="stat">Format: <strong id="statFormat">—</strong></div>
+          <div class="stat">Skipped: <strong id="statSkipped">0</strong></div>
+          <div class="stat">Image size total: <strong id="statSize">—</strong></div>
+        </div>
+
+        <!-- Options -->
+        <div class="opts-row">
+          <div class="opt-field">
+            <span class="opt-lbl">Page Size</span>
+            <select class="opt-select" id="pageSizeSelect">
+              <option value="fit" selected>Fit to image (original)</option>
+              <option value="a4">A4 (210 × 297 mm)</option>
+              <option value="letter">US Letter (8.5 × 11 in)</option>
+              <option value="a5">A5 (148 × 210 mm)</option>
+              <option value="tablet">Tablet (768 × 1024 pt)</option>
+            </select>
+          </div>
+          <div class="opt-field">
+            <span class="opt-lbl">Image Fit</span>
+            <select class="opt-select" id="imgFitSelect">
+              <option value="contain" selected>Fit (preserve aspect ratio)</option>
+              <option value="fill">Fill (stretch to page)</option>
+              <option value="cover">Cover (crop to fill)</option>
+            </select>
+          </div>
+          <div class="opt-field">
+            <span class="opt-lbl">Orientation</span>
+            <select class="opt-select" id="orientSelect">
+              <option value="auto" selected>Auto (per page)</option>
+              <option value="portrait">Force Portrait</option>
+              <option value="landscape">Force Landscape</option>
+            </select>
+          </div>
+          <div class="opt-field">
+            <span class="opt-lbl">Output Filename</span>
+            <div class="filename-row">
+              <input class="filename-input" id="filenameInput" type="text" value="comic" maxlength="80">
+              <span class="filename-ext">.pdf</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="action-bar">
+          <button class="btn-p" id="convertBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Convert to PDF
+          </button>
+          <button class="btn-s" id="clearBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
+            Clear
+          </button>
+        </div>
+
+        <!-- Progress -->
+        <div class="prog-wrap" id="progWrap">
+          <div class="prog-spinner"></div>
+          <div class="prog-lbl" id="progLbl">Opening archive…</div>
+          <div class="prog-bar-wrap"><div class="prog-bar" id="progBar"></div></div>
+          <div class="prog-steps">
+            <div class="pstep" id="ps1"><span class="pstep-dot"></span>Reading comic archive</div>
+            <div class="pstep" id="ps2"><span class="pstep-dot"></span>Decoding page images</div>
+            <div class="pstep" id="ps3"><span class="pstep-dot"></span>Laying out PDF pages</div>
+            <div class="pstep" id="ps4"><span class="pstep-dot"></span>Writing PDF file</div>
+          </div>
+        </div>
+
+        <!-- Error -->
+        <div class="err-box" id="errBox"><p id="errText"></p></div>
+
+        <!-- Result -->
+        <div class="result-area" id="resultArea">
+          <div class="result-box">
+            <div class="result-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 12 18 15 15"/><line x1="12" y1="12" x2="12" y2="18"/></svg>
+            </div>
+            <div class="result-info">
+              <div class="result-fname" id="resultFname">comic.pdf</div>
+              <div class="result-meta" id="resultMeta">—</div>
+            </div>
+            <div class="result-btns">
+              <button class="btn-p" id="downloadBtn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download PDF
+              </button>
+              <button class="btn-s" id="convertAgainBtn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                Convert Again
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /preview-section -->
+    </div><!-- /tool-body -->
+  </div><!-- /tool-card -->
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how-it-works">
+  <div class="how-inner">
+    <div class="how-hdr">
+      <span class="section-tag">Quick Guide</span>
+      <h2 class="section-title">How to Convert CBR / CBZ to PDF</h2>
+      <p class="how-sub">Three steps. No software. No account.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+        <div class="step-ttl">Upload Your Comic</div>
+        <div class="step-dsc">Drop or select a <strong>CBZ or CBR file</strong>. The archive is opened in-browser — your file never leaves your device.</div>
+        <span class="step-pill">CBZ · CBR (ZIP-based)</span>
+      </div>
+      <div class="step-conn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h6M3 15h6"/></svg></div>
+        <div class="step-ttl">Preview &amp; Reorder</div>
+        <div class="step-dsc">Every comic page appears as a <strong>thumbnail</strong>. Drag to reorder if needed. Choose page size, fit mode, and output filename.</div>
+        <span class="step-pill">drag · page size · fit mode</span>
+      </div>
+      <div class="step-conn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+        <div class="step-ttl">Download PDF</div>
+        <div class="step-dsc">Click <strong>Convert to PDF</strong> and a perfectly laid-out PDF downloads instantly — one comic page per PDF page, in your chosen order.</div>
+        <span class="step-pill">instant download</span>
+      </div>
+    </div>
+    <div class="how-cta">
+      <a href="#tool" class="btn-p">Convert a Comic Now</a>
+      <span class="how-note">free · no signup · no upload · no watermark</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHY THIS TOOL -->
+<section class="content-section" id="about">
+  <h2 class="section-title">Why Use CBZ to PDF Converter?</h2>
+  <div class="prose">
+    <p>CBZ files are commonly used to store digital comic books, but not every device or application supports this format. A CBZ to PDF Converter makes it easier to access your comics by converting them into a widely supported PDF file that can be opened on almost any device.</p>
+    <p>Another advantage of converting CBZ files to PDF is improved convenience when reading or sharing comic collections. PDF format keeps the original comic pages organized and allows users to view them smoothly on computers, tablets, and smartphones.</p>
+    <p>Whether you want better compatibility, easier sharing, or a more flexible reading experience, a CBZ to PDF converter provides a quick and reliable way to transform comic archives into accessible documents.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FEATURES -->
+
+<section class="content-section" id="features">
+  <span class="section-tag">Features</span>
+  <h2 class="section-title">Everything in One Converter</h2>
+  <div class="features-grid">
+    <div class="feature-card"><span class="f-ico">📚</span><div class="f-title">CBZ &amp; CBR Support</div><div class="f-desc">Opens CBZ and ZIP-based CBR files natively. Detects RAR-compressed CBR and provides a clear resolution path.</div></div>
+    <div class="feature-card"><span class="f-ico">🖼️</span><div class="f-title">Full Page Preview</div><div class="f-desc">Every comic page is displayed as a thumbnail immediately so you can check content and order before converting.</div></div>
+    <div class="feature-card"><span class="f-ico">↕️</span><div class="f-title">Drag-to-Reorder Pages</div><div class="f-desc">Drag thumbnails to any position — useful when filenames are inconsistent or pages need to be re-sequenced.</div></div>
+    <div class="feature-card"><span class="f-ico">📐</span><div class="f-title">Page Layout Options</div><div class="f-desc">Fit to image (original dimensions), A4, US Letter, A5, or Tablet — each with portrait, landscape, or auto orientation.</div></div>
+    <div class="feature-card"><span class="f-ico">🔲</span><div class="f-title">Image Fit Modes</div><div class="f-desc">Contain (letterboxed), Fill (stretched), or Cover (cropped) — control exactly how each page fills its PDF canvas.</div></div>
+    <div class="feature-card"><span class="f-ico">🔒</span><div class="f-title">100% Private</div><div class="f-desc">Your comic files never leave your device. All extraction and PDF creation runs locally in the browser.</div></div>
+    <div class="feature-card"><span class="f-ico">⚡</span><div class="f-title">Natural Page Sort</div><div class="f-desc">Pages are sorted by filename using natural order — page-10 comes after page-9, not before page-2.</div></div>
+    <div class="feature-card"><span class="f-ico">💸</span><div class="f-title">Free Forever</div><div class="f-desc">No subscription, no credits, no watermark on the output. JPG2Go is free for everyone, always.</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- WHO USES THIS -->
+<section class="content-section">
+  <span class="section-tag">Who It's For</span>
+  <h2 class="section-title">Who Uses a CBR / CBZ to PDF Converter?</h2>
+  <div class="use-grid">
+    <div class="use-card"><span class="u-ico">📱</span><div class="u-title">E-Reader Compatibility</div><div class="u-desc">Most e-readers (Kindle, Kobo, reMarkable) don't support CBR/CBZ but natively open PDFs. Convert to read comics on any device.</div></div>
+    <div class="use-card"><span class="u-ico">📤</span><div class="u-title">Email &amp; Sharing</div><div class="u-desc">PDF is universally understood — share comics with people who don't have a comic reader app without worrying about format support.</div></div>
+    <div class="use-card"><span class="u-ico">🖨️</span><div class="u-title">Print at Home</div><div class="u-desc">Print a digitised comic to paper. A4 or Letter PDF pages sized correctly for your printer, with the right orientation per page.</div></div>
+    <div class="use-card"><span class="u-ico">📚</span><div class="u-title">Personal Archive</div><div class="u-desc">Consolidate your comic library as PDFs for long-term storage — PDF is a more durable, searchable, and widely-supported format.</div></div>
+    <div class="use-card"><span class="u-ico">📖</span><div class="u-title">PDF Annotation</div><div class="u-desc">Annotate, highlight, or add notes to comic pages using any PDF reader — not possible in raw CBR/CBZ format.</div></div>
+    <div class="use-card"><span class="u-ico">🔐</span><div class="u-title">Password Protect Comics</div><div class="u-desc">Convert to PDF, then use Protect PDF to add a password — useful for restricting access to personal or commissioned content.</div></div>
+    <div class="use-card"><span class="u-ico">🗜️</span><div class="u-title">Reduce File Size</div><div class="u-desc">After converting, run the PDF through Compress PDF to produce a more compact version for sharing or storing on limited-space devices.</div></div>
+    <div class="use-card"><span class="u-ico">🔗</span><div class="u-title">Merge Multiple Issues</div><div class="u-desc">Convert several comic issues to PDF, then use Merge PDF to combine them into one collected volume document.</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- TIPS -->
+<section class="content-section">
+  <span class="section-tag">Pro Tips</span>
+  <h2 class="section-title">Get the Best Comic PDF Results</h2>
+  <div class="tips-grid">
+    <div class="tip-card">
+      <div class="tip-name">Use "Fit to Image" for Authentic Reading</div>
+      <div class="tip-tag">tip → page size</div>
+      <div class="tip-desc">For reading on screen, "Fit to image" is almost always the best choice — each PDF page exactly matches the original comic page dimensions. No letterboxing, no scaling, no white margins. The reader app handles zoom. Only use A4 or Letter if you're printing.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">CBR Not Opening? Try Renaming to CBZ</div>
+      <div class="tip-tag">tip → CBR files</div>
+      <div class="tip-desc">Many CBR files labelled as RAR are actually ZIP archives with the wrong extension. Try renaming your file from <code>.cbr</code> to <code>.cbz</code> and uploading again. If it opens, the file was always ZIP-based. If it still fails, it's genuinely RAR-compressed and needs desktop conversion first.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">Auto Orientation for Mixed-Direction Comics</div>
+      <div class="tip-tag">tip → orientation</div>
+      <div class="tip-desc">Manga volumes often mix portrait-oriented story pages with landscape-oriented double-page spreads. Set Orientation to "Auto" and each page will be oriented based on its own aspect ratio — tall pages become portrait, wide spreads become landscape — giving the most natural reading experience.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">Check Page Order in the Preview</div>
+      <div class="tip-tag">tip → page order</div>
+      <div class="tip-desc">Always glance at the thumbnail grid before converting. Filenames inside some archives use inconsistent padding (page1, page2... page10) that can cause page-10 to appear before page-2 in raw sort. The tool uses natural sort to fix this, but verifying the preview takes two seconds and prevents a bad conversion.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">Compress After Converting</div>
+      <div class="tip-tag">tip → file size</div>
+      <div class="tip-desc">High-resolution comic scans produce large PDFs. If the result is too large for your e-reader or for sharing, run it through the Compress PDF tool after downloading. Typical comic PDFs compress 30–60% at perceptually lossless quality.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">Convert RAR-CBR with Calibre</div>
+      <div class="tip-tag">tip → RAR files</div>
+      <div class="tip-desc">For genuine RAR-compressed CBR files, the free desktop app Calibre (calibre-ebook.com) can convert CBR → CBZ in one click: Add books → Convert → Output format: CBZ. Once you have the CBZ, come back here to convert it to PDF in the browser.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FAQ -->
+<section class="content-section" id="faq">
+  <span class="section-tag">FAQ</span>
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">What is a CBR file format?</div>
+      <div class="faq-a">A CBR file is a comic book archive format that stores sequential image pages inside a compressed file.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Why convert CBR files to PDF?</div>
+      <div class="faq-a">PDF files are easier to open on most devices without needing special comic reader software.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Will the comic pages stay in order after conversion?</div>
+      <div class="faq-a">Yes, a good CBR to PDF converter preserves the original page order of the comic.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I read comics on mobile after converting to PDF?</div>
+      <div class="faq-a">Yes, once converted to PDF you can read comics using any PDF reader on smartphones or tablets.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do CBR to PDF converters reduce image quality?</div>
+      <div class="faq-a">Most tools keep the original image resolution to maintain comic artwork quality.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is it possible to convert large CBR files online?</div>
+      <div class="faq-a">Many online converters support large comic files and process them quickly without complicated steps.</div>
+    </div>
+  </div>
+</section>
+
+<!-- RELATED TOOLS -->
+<section class="related-section" id="tools">
+  <div class="related-inner">
+    <div class="related-header">
+      <span class="section-tag">Related Tools</span>
+      <h2 class="section-title">More Free Online Tools</h2>
+    </div>
+    <div class="related-grid">
+      <a href="/jpg-to-pdf" class="related-card">
+        <span class="related-card-icon">📄</span>
+        <div class="related-card-name">JPG to PDF</div>
+        <div class="related-card-desc">Convert JPG images to PDF documents quickly. Combine multiple photos into a single organized PDF file for easy sharing and printing.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+      <a href="/image-resizer" class="related-card">
+        <span class="related-card-icon">📐</span>
+        <div class="related-card-name">Image Resizer</div>
+        <div class="related-card-desc">Resize images to exact pixel dimensions or a percentage of their original size. Runs entirely in your browser without uploading files anywhere.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/compress-jpeg" class="related-card">
+        <span class="related-card-icon">🗜️</span>
+        <div class="related-card-name">Compress JPEG</div>
+        <div class="related-card-desc">Reduce JPEG image file size while maintaining quality. Optimize images for faster web pages and lower storage usage.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/merge-pdf" class="related-card">
+        <span class="related-card-icon">📎</span>
+        <div class="related-card-name">Merge PDF</div>
+        <div class="related-card-desc">Combine multiple PDF files into a single organized document. Drag and drop to reorder pages easily.</div>
+        <span class="related-card-tag">PDF</span>
+      </a>
+      <a href="/crop-image" class="related-card">
+        <span class="related-card-icon">✂️</span>
+        <div class="related-card-name">Crop Image</div>
+        <div class="related-card-desc">Crop images to any aspect ratio or custom dimensions. Perfect for social media thumbnails, profile photos, and banner images.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/format-converter" class="related-card">
+        <span class="related-card-icon">🔄</span>
+        <div class="related-card-name">Format Converter</div>
+        <div class="related-card-desc">Convert images between different formats instantly. Transform JPG, PNG, WebP, and other image formats quickly.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <span class="section-tag" style="color:var(--accent);">Get Started</span>
+    <h2 class="cta-title">Ready to Convert CBR / CBZ to PDF?</h2>
+    <p class="cta-desc">Free, instant, and completely private. Drop a comic archive, preview pages, download the result — no account ever needed.</p>
+    <div class="cta-actions">
+      <a href="#tool" class="btn-primary" style="font-size:1rem;padding:0.85rem 2rem;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/></svg>
+        Start Converting
+      </a>
+    </div>
+    <p class="cta-note">No account · No upload · No data stored · Works offline</p>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<div id="footer-placeholder"></div>
+<script src="load-footer.js"></script>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══ STATE ════════════════════════════════════════════════════════
+let pages = [];      // [{id, name, blob, dataUrl, w, h, mime}]
+let uid = 0;
+let resultBlob = null;
+let dragSrcId = null;
+let archiveFormat = 'cbz'; // 'cbz' or 'cbr'
+
+// Page sizes in PDF points (72pt = 1 inch)
+const PAGE_SIZES = {
+  a4:     [595.28, 841.89],
+  letter: [612,    792   ],
+  a5:     [419.53, 595.28],
+  tablet: [768,    1024  ],
+};
+
+// ═══ HELPERS ══════════════════════════════════════════════════════
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+function fmtSize(b) {
+  if (b < 1024) return b + ' B';
+  if (b < 1048576) return (b/1024).toFixed(1) + ' KB';
+  return (b/1048576).toFixed(2) + ' MB';
+}
+function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
+function setP(pct, msg) {
+  document.getElementById('progBar').style.width = pct + '%';
+  if (msg !== undefined) document.getElementById('progLbl').textContent = msg;
+}
+function setStep(idx) {
+  ['ps1','ps2','ps3','ps4'].forEach((id, i) => {
+    const el = document.getElementById(id);
+    el.classList.remove('active','done');
+    if (i < idx) el.classList.add('done');
+    else if (i === idx) el.classList.add('active');
+  });
+}
+function isImageFile(name) {
+  return /\.(jpe?g|png|webp)$/i.test(name);
+}
+function blobToDataUrl(blob) {
+  return new Promise((res, rej) => {
+    const r = new FileReader();
+    r.onload = e => res(e.target.result);
+    r.onerror = rej;
+    r.readAsDataURL(blob);
+  });
+}
+function getImageDims(dataUrl) {
+  return new Promise(res => {
+    const img = new Image();
+    img.onload = () => res({ w: img.naturalWidth, h: img.naturalHeight });
+    img.onerror = () => res({ w: 800, h: 1200 });
+    img.src = dataUrl;
+  });
+}
+// Natural sort comparator
+function naturalCompare(a, b) {
+  return a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
+}
+// Check if a buffer starts with RAR magic bytes: 52 61 72 21 = "Rar!"
+function isRarBuffer(buf) {
+  const bytes = new Uint8Array(buf, 0, 8);
+  return bytes[0] === 0x52 && bytes[1] === 0x61 && bytes[2] === 0x72 && bytes[3] === 0x21;
+}
+
+// ═══ MOBILE MENU ══════════════════════════════════════════════════
+document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+  this.classList.toggle('active');
+  document.getElementById('mobileNav').classList.toggle('active');
+});
+
+// ═══ FILE INPUT ════════════════════════════════════════════════════
+const dropZone = document.getElementById('dropZone');
+document.getElementById('fileInput').addEventListener('change', e => {
+  if (e.target.files[0]) loadFile(e.target.files[0]);
+  e.target.value = '';
+});
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault(); dropZone.classList.remove('drag-over');
+  const f = Array.from(e.dataTransfer.files).find(f =>
+    /\.(cbz|cbr|zip)$/i.test(f.name)
+  );
+  if (f) loadFile(f); else toast('Please drop a CBZ, CBR, or ZIP file');
+});
+
+async function loadFile(file) {
+  if (!/\.(cbz|cbr|zip)$/i.test(file.name)) {
+    toast('Please select a CBZ, CBR, or ZIP file'); return;
+  }
+  if (!window.JSZip) { toast('JSZip is still loading — please wait a moment'); return; }
+
+  // Reset everything
+  resetTool(false);
+  document.getElementById('rarWarn').classList.remove('on');
+
+  const ext = file.name.split('.').pop().toLowerCase();
+  archiveFormat = (ext === 'cbr') ? 'cbr' : 'cbz';
+
+  // Read buffer for RAR detection
+  const buf = await file.arrayBuffer();
+
+  // Check RAR magic bytes
+  if (isRarBuffer(buf)) {
+    document.getElementById('rarWarn').classList.add('on');
+    document.getElementById('fbName').textContent = file.name;
+    document.getElementById('fbMeta').textContent = fmtSize(file.size) + ' · RAR archive (not supported)';
+    document.getElementById('fileBar').classList.add('on');
+    const badge = document.getElementById('fbTypeBadge');
+    badge.textContent = 'RAR'; badge.className = 'fb-type-badge cbr';
+    dropZone.style.display = 'none';
+    toast('RAR-compressed CBR detected — see instructions above');
+    return;
+  }
+
+  // Try to open with JSZip
+  try {
+    const zip = await JSZip.loadAsync(buf);
+
+    // Collect image files, sorted naturally
+    const imgFiles = [];
+    let skippedCount = 0;
+    zip.forEach((relPath, entry) => {
+      if (entry.dir) return;
+      const baseName = relPath.split('/').pop();
+      if (baseName.startsWith('.') || baseName.startsWith('__')) { skippedCount++; return; }
+      if (isImageFile(baseName)) {
+        imgFiles.push({ relPath, entry });
+      } else {
+        skippedCount++;
+      }
+    });
+    imgFiles.sort((a, b) => naturalCompare(a.relPath, b.relPath));
+
+    if (!imgFiles.length) {
+      toast('No images found in this archive');
+      return;
+    }
+
+    // Update file bar
+    document.getElementById('fbName').textContent = file.name;
+    document.getElementById('fbMeta').textContent = fmtSize(file.size) + ' · ' + archiveFormat.toUpperCase() + ' archive';
+    document.getElementById('fileBar').classList.add('on');
+    const badge = document.getElementById('fbTypeBadge');
+    badge.textContent = archiveFormat.toUpperCase();
+    badge.className = 'fb-type-badge ' + (archiveFormat === 'cbr' ? 'cbr' : 'cbz');
+    dropZone.style.display = 'none';
+
+    // Default output filename from archive name (strip extension)
+    document.getElementById('filenameInput').value = file.name.replace(/\.(cbz|cbr|zip)$/i, '');
+
+    // Load images into state
+    for (const { relPath, entry } of imgFiles) {
+      const blob = await entry.async('blob');
+      const mime = /\.png$/i.test(relPath) ? 'image/png'
+                 : /\.webp$/i.test(relPath) ? 'image/webp'
+                 : 'image/jpeg';
+      const typedBlob = new Blob([blob], { type: mime });
+      const dataUrl = await blobToDataUrl(typedBlob);
+      const { w, h } = await getImageDims(dataUrl);
+      pages.push({
+        id: uid++,
+        name: relPath.split('/').pop(),
+        blob: typedBlob,
+        dataUrl, w, h, mime
+      });
+    }
+
+    // Update stats & show preview
+    document.getElementById('statSkipped').textContent = skippedCount;
+    document.getElementById('statFormat').textContent  = archiveFormat.toUpperCase() + ' (ZIP-based)';
+    document.getElementById('previewSection').classList.add('on');
+    renderGrid();
+    updateStats();
+    toast(pages.length + ' page' + (pages.length !== 1 ? 's' : '') + ' found in archive');
+
+  } catch(err) {
+    toast('Could not open archive: ' + err.message);
+    console.error(err);
+  }
+}
+
+// ═══ RENDER GRID ══════════════════════════════════════════════════
+function renderGrid() {
+  const grid = document.getElementById('pageGrid');
+  grid.innerHTML = '';
+  pages.forEach((pg, idx) => {
+    const tile = document.createElement('div');
+    tile.className = 'page-tile';
+    tile.dataset.id = pg.id;
+    tile.draggable = true;
+    tile.innerHTML = `
+      <img src="${pg.dataUrl}" alt="Page ${idx+1}" loading="lazy">
+      <span class="page-tile-num">${idx + 1}</span>
+      <button class="page-tile-remove" data-id="${pg.id}" title="Remove page">
+        <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <span class="page-tile-name">${pg.name}</span>`;
+
+    tile.querySelector('.page-tile-remove').addEventListener('click', e => {
+      e.stopPropagation();
+      const id = parseInt(e.currentTarget.dataset.id);
+      pages = pages.filter(p => p.id !== id);
+      if (!pages.length) { resetTool(true); return; }
+      renderGrid(); updateStats();
+    });
+
+    bindTileDrag(tile);
+    grid.appendChild(tile);
+  });
+  document.getElementById('previewBadge').textContent = pages.length + ' page' + (pages.length !== 1 ? 's' : '');
+}
+
+// ═══ TILE DRAG REORDER ════════════════════════════════════════════
+function bindTileDrag(tile) {
+  tile.addEventListener('dragstart', e => {
+    dragSrcId = parseInt(tile.dataset.id);
+    tile.classList.add('is-dragging');
+    e.dataTransfer.effectAllowed = 'move';
+  });
+  tile.addEventListener('dragend', () => {
+    document.querySelectorAll('.page-tile').forEach(t => t.classList.remove('is-dragging','drop-target'));
+  });
+  tile.addEventListener('dragover', e => {
+    e.preventDefault(); e.dataTransfer.dropEffect = 'move';
+    document.querySelectorAll('.page-tile').forEach(t => t.classList.remove('drop-target'));
+    if (parseInt(tile.dataset.id) !== dragSrcId) tile.classList.add('drop-target');
+  });
+  tile.addEventListener('drop', e => {
+    e.preventDefault();
+    const toId = parseInt(tile.dataset.id);
+    if (dragSrcId === toId) return;
+    const fromIdx = pages.findIndex(p => p.id === dragSrcId);
+    const toIdx   = pages.findIndex(p => p.id === toId);
+    const [moved] = pages.splice(fromIdx, 1);
+    pages.splice(toIdx, 0, moved);
+    renderGrid();
+  });
+}
+
+// ═══ STATS ════════════════════════════════════════════════════════
+function updateStats() {
+  document.getElementById('statPages').textContent = pages.length;
+  document.getElementById('statSize').textContent  = fmtSize(pages.reduce((s, p) => s + (p.blob.size || 0), 0));
+}
+
+// ═══ CONVERT ══════════════════════════════════════════════════════
+document.getElementById('convertBtn').addEventListener('click', doConvert);
+
+async function doConvert() {
+  if (!pages.length) { toast('No pages to convert'); return; }
+  if (!window.PDFLib) { toast('pdf-lib is still loading — please wait'); return; }
+
+  const pageSizeKey = document.getElementById('pageSizeSelect').value;
+  const fitMode     = document.getElementById('imgFitSelect').value;
+  const orientation = document.getElementById('orientSelect').value;
+
+  document.getElementById('progWrap').classList.add('on');
+  document.getElementById('resultArea').classList.remove('on');
+  document.getElementById('errBox').classList.remove('on');
+  document.getElementById('convertBtn').disabled = true;
+  resultBlob = null;
+  setP(0); setStep(0);
+  await wait(50);
+
+  try {
+    setStep(0); setP(8, 'Reading comic archive…');
+    await wait(30);
+
+    const pdfDoc = await PDFLib.PDFDocument.create();
+
+    // Step 2: embed images
+    setStep(1); setP(18, 'Decoding page images…');
+    await wait(30);
+
+    const embedded = [];
+    for (let i = 0; i < pages.length; i++) {
+      setP(18 + Math.round((i / pages.length) * 34), `Decoding page ${i+1} of ${pages.length}…`);
+      const pg = pages[i];
+      try {
+        let embImg;
+        if (pg.mime === 'image/png') {
+          const bytes = await pg.blob.arrayBuffer();
+          embImg = await pdfDoc.embedPng(bytes);
+        } else if (pg.mime === 'image/webp') {
+          const jpegBytes = await webpToJpeg(pg.dataUrl);
+          embImg = await pdfDoc.embedJpg(jpegBytes);
+        } else {
+          const bytes = await pg.blob.arrayBuffer();
+          embImg = await pdfDoc.embedJpg(bytes);
+        }
+        embedded.push({ embImg, srcW: pg.w, srcH: pg.h });
+      } catch(imgErr) {
+        console.warn('Skipping page', pg.name, imgErr);
+        embedded.push(null);
+      }
+      await wait(4);
+    }
+
+    // Step 3: lay out pages
+    setStep(2); setP(54, 'Laying out PDF pages…');
+    await wait(30);
+
+    for (let i = 0; i < embedded.length; i++) {
+      setP(54 + Math.round((i / embedded.length) * 28), `Adding page ${i+1}…`);
+      const item = embedded[i];
+      if (!item) continue;
+      const { embImg, srcW, srcH } = item;
+
+      let pageW, pageH;
+      if (pageSizeKey === 'fit') {
+        pageW = srcW; pageH = srcH;
+      } else {
+        [pageW, pageH] = PAGE_SIZES[pageSizeKey];
+        const imgLandscape = srcW > srcH;
+        const useOrient = orientation === 'auto'
+          ? (imgLandscape ? 'landscape' : 'portrait')
+          : orientation;
+        if (useOrient === 'landscape' && pageW < pageH) [pageW, pageH] = [pageH, pageW];
+        else if (useOrient === 'portrait' && pageW > pageH) [pageW, pageH] = [pageH, pageW];
+      }
+
+      const page = pdfDoc.addPage([pageW, pageH]);
+      const scaleX = pageW / srcW;
+      const scaleY = pageH / srcH;
+      let drawX, drawY, drawW, drawH;
+
+      if (fitMode === 'fill') {
+        drawW = pageW; drawH = pageH; drawX = 0; drawY = 0;
+      } else if (fitMode === 'cover') {
+        const s = Math.max(scaleX, scaleY);
+        drawW = srcW * s; drawH = srcH * s;
+        drawX = (pageW - drawW) / 2; drawY = (pageH - drawH) / 2;
+      } else {
+        // contain
+        const s = Math.min(scaleX, scaleY);
+        drawW = srcW * s; drawH = srcH * s;
+        drawX = (pageW - drawW) / 2; drawY = (pageH - drawH) / 2;
+      }
+
+      page.drawImage(embImg, { x: drawX, y: drawY, width: drawW, height: drawH });
+      await wait(2);
+    }
+
+    // Step 4: write
+    setStep(3); setP(84, 'Writing PDF…');
+    await wait(30);
+
+    const pdfBytes = await pdfDoc.save();
+    setP(100, 'Done!');
+    await wait(100);
+
+    resultBlob = new Blob([pdfBytes], { type: 'application/pdf' });
+    const fname = (document.getElementById('filenameInput').value.trim() || 'comic') + '.pdf';
+    const pageCount = pdfDoc.getPageCount();
+
+    document.getElementById('resultFname').textContent = fname;
+    document.getElementById('resultMeta').textContent  =
+      fmtSize(pdfBytes.length) + ' · ' + pageCount + ' page' + (pageCount !== 1 ? 's' : '') +
+      ' · converted from ' + archiveFormat.toUpperCase();
+
+    document.getElementById('progWrap').classList.remove('on');
+    document.getElementById('resultArea').classList.add('on');
+    document.getElementById('resultArea').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    toast('PDF created — ' + pageCount + ' pages');
+
+  } catch(err) {
+    document.getElementById('progWrap').classList.remove('on');
+    document.getElementById('errBox').classList.add('on');
+    document.getElementById('errText').textContent = 'Conversion failed: ' + (err.message || String(err));
+    toast('Conversion failed — see error above');
+    console.error(err);
+  }
+
+  document.getElementById('convertBtn').disabled = false;
+}
+
+// WebP → JPEG via Canvas (pdf-lib doesn't support WebP natively)
+function webpToJpeg(dataUrl) {
+  return new Promise((res, rej) => {
+    const img = new Image();
+    img.onload = () => {
+      const cv = document.createElement('canvas');
+      cv.width = img.naturalWidth; cv.height = img.naturalHeight;
+      cv.getContext('2d').drawImage(img, 0, 0);
+      cv.toBlob(blob => {
+        if (!blob) { rej(new Error('Canvas toBlob failed')); return; }
+        blob.arrayBuffer().then(res).catch(rej);
+      }, 'image/jpeg', 0.94);
+    };
+    img.onerror = rej;
+    img.src = dataUrl;
+  });
+}
+
+// ═══ DOWNLOAD ═════════════════════════════════════════════════════
+document.getElementById('downloadBtn').addEventListener('click', () => {
+  if (!resultBlob) return;
+  const fname = (document.getElementById('filenameInput').value.trim() || 'comic') + '.pdf';
+  const url = URL.createObjectURL(resultBlob);
+  const a = document.createElement('a');
+  a.href = url; a.download = fname; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 8000);
+  toast('Downloading ' + fname + '…');
+});
+
+// ═══ CONVERT AGAIN / CLEAR ════════════════════════════════════════
+document.getElementById('convertAgainBtn').addEventListener('click', () => {
+  document.getElementById('resultArea').classList.remove('on');
+  resultBlob = null;
+  toast('Adjust settings and convert again');
+});
+document.getElementById('clearBtn').addEventListener('click', () => resetTool(true));
+document.getElementById('fbRemove').addEventListener('click', () => resetTool(true));
+
+function resetTool(showDrop) {
+  pages = []; uid = 0; resultBlob = null; dragSrcId = null;
+  document.getElementById('fileBar').classList.remove('on');
+  document.getElementById('previewSection').classList.remove('on');
+  document.getElementById('resultArea').classList.remove('on');
+  document.getElementById('errBox').classList.remove('on');
+  document.getElementById('progWrap').classList.remove('on');
+  document.getElementById('rarWarn').classList.remove('on');
+  document.getElementById('pageGrid').innerHTML = '';
+  if (showDrop) {
+    dropZone.style.display = '';
+    toast('Cleared');
+  }
+}
+
+// ═══ FAQ ══════════════════════════════════════════════════════════
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement; const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+function closeMobileMenu() {
+  document.getElementById('mobileMenuToggle').classList.remove('active');
+  document.getElementById('mobileNav').classList.remove('active');
+}
+</script>
+</body>
+</html>

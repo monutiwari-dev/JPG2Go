@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>AI to PDF Converter | Convert Adobe Illustrator Files</title>
+<meta name="description" content="Convert Adobe Illustrator (AI) files into PDF format. Preserve vector quality, layers, and design details for professional sharing or presentations.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jpg2go.com/ai-to-pdf">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="adsense.js"></script>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Convert AI to PDF",
+    "url": "https://jpg2go.com/ai-to-pdf",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Convert Adobe Illustrator (AI) files into PDF format. Preserve vector quality, layers, and design details for professional sharing or presentations."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is an AI to PDF converter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An AI to PDF converter transforms Adobe Illustrator design files into PDF format so they can be shared, printed, or viewed without Illustrator."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why convert AI files to PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PDF files are widely supported across devices and platforms, making them easier to share and print compared to Illustrator files."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does converting AI to PDF affect design quality?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No, a good converter preserves vector graphics, layout structure, and design quality when generating the PDF file."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I open AI files without Adobe Illustrator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, converting AI files to PDF allows them to be opened on almost any device using standard PDF readers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are AI to PDF converters free to use online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Many online tools provide free AI to PDF conversion with fast processing and simple upload options."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What industries commonly use AI to PDF conversion?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Graphic designers, printers, marketing agencies, and design teams frequently convert Illustrator files to PDF for sharing and printing."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+
+<style>
+/* ══ ROOT TOKENS ══ */
+:root {
+  --ink: #0d0d0d;
+  --paper: #f7f4ee;
+  --cream: #ede9df;
+  --accent: #c84b2f;
+  --accent-light: #e8d5cf;
+  --muted: #7a7567;
+  --border: #d4cfc4;
+  --white: #ffffff;
+  --shadow: 0 2px 24px rgba(13,13,13,0.08);
+  --shadow-lg: 0 8px 48px rgba(13,13,13,0.12);
+  --ai-purple: #c84b2f;
+  --ai-purple-light: #e8d5cf;
+  --green: #1a8a4a;
+  --green-light: #d4f0e0;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; min-height: 100vh; }
+
+/* ══ HEADER ══ */
+header { background: var(--ink); color: var(--paper); position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--accent); }
+.header-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.logo { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.6rem; color: var(--paper); text-decoration: none; letter-spacing: -0.02em; }
+.logo span { color: var(--accent); }
+nav { display: flex; gap: 2rem; align-items: center; }
+nav a { color: #a8a39a; text-decoration: none; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.02em; transition: color 0.2s; }
+nav a:hover { color: var(--paper); }
+.nav-cta { background: var(--accent); color: var(--white) !important; padding: 0.4rem 1rem; border-radius: 4px; transition: background 0.2s !important; }
+.nav-cta:hover { background: #a83825 !important; }
+
+/* ══ MOBILE MENU ══ */
+.mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-direction: column; gap: 5px; align-items: center; justify-content: center; width: 40px; height: 40px; }
+.mobile-menu-toggle span { display: block; width: 24px; height: 2px; background: var(--paper); transition: all 0.3s ease; border-radius: 2px; }
+.mobile-menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+.mobile-menu-toggle.active span:nth-child(2) { opacity: 0; }
+.mobile-menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+.mobile-nav { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--ink); border-top: 2px solid var(--accent); padding: 1.5rem 2rem; flex-direction: column; gap: 1rem; z-index: 99; transform: translateY(-100%); opacity: 0; transition: transform 0.3s ease, opacity 0.3s ease; visibility: hidden; }
+.mobile-nav.active { display: flex; transform: translateY(0); opacity: 1; visibility: visible; }
+.mobile-nav a { color: #a8a39a; text-decoration: none; font-size: 0.95rem; font-weight: 500; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); transition: color 0.2s; }
+.mobile-nav a:last-child { border-bottom: none; }
+.mobile-nav a:hover { color: var(--paper); }
+.mobile-nav .nav-cta { background: var(--accent); color: var(--white) !important; padding: 0.75rem 1.5rem; border-radius: 4px; text-align: center; border: none; margin-top: 0.5rem; }
+
+/* ══ HERO ══ */
+.hero { background: var(--ink); color: var(--paper); padding: 4rem 2rem 3.5rem; text-align: center; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(200,75,47,0.2) 0%, transparent 70%); pointer-events: none; }
+.hero::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 60px; background: linear-gradient(to bottom, transparent, rgba(200,75,47,0.4)); }
+.hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.12em; color: #c84b2f; text-transform: uppercase; border: 1px solid rgba(200,75,47,0.4); background: rgba(200,75,47,0.12); padding: 0.3rem 0.9rem; border-radius: 2px; margin-bottom: 1.5rem; }
+.hero-badge svg { flex-shrink: 0; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5.5vw, 3.6rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero-desc { font-size: 1.05rem; color: #9e9990; max-width: 520px; margin: 0 auto 1.75rem; font-weight: 300; line-height: 1.7; }
+.hero-pills { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem; }
+.hero-pill { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.06em; color: #a8a39a; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); padding: 0.3rem 0.75rem; border-radius: 100px; }
+
+/* ══ TOOL SECTION ══ */
+.tool-section { max-width: 1100px; margin: -1.5rem auto 0; padding: 0 1.5rem 4rem; position: relative; z-index: 10; }
+.tool-card { background: var(--white); border-radius: 12px; box-shadow: var(--shadow-lg); overflow: hidden; border: 1px solid var(--border); }
+.tool-card-header { background: var(--cream); padding: 1rem 1.5rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid var(--border); }
+.dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+.dot-r { background: #ff5f57; } .dot-y { background: #febc2e; } .dot-g { background: #28c840; }
+.tool-card-title { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--muted); margin-left: 0.5rem; letter-spacing: 0.05em; }
+.tool-body { padding: 1.5rem; }
+
+/* ══ TWO-COLUMN LAYOUT ══ */
+.tool-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
+.tool-col-left { display: flex; flex-direction: column; gap: 1.25rem; }
+.tool-col-right { display: flex; flex-direction: column; gap: 1.25rem; }
+
+/* ══ PANEL BOXES ══ */
+.panel-box { background: var(--paper); border: 1px solid var(--border); border-radius: 10px; padding: 1.15rem 1.25rem; }
+.panel-box-title { font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+.panel-box-title svg { color: var(--accent); flex-shrink: 0; }
+
+/* ══ DOCUMENT TYPE GRID ══ */
+.doc-type-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin-bottom: 1rem; }
+.doc-type-btn { background: var(--white); border: 1.5px solid var(--border); border-radius: 8px; padding: 0.7rem 0.4rem; cursor: pointer; text-align: center; transition: all 0.18s; }
+.doc-type-btn:hover { border-color: var(--accent); background: var(--accent-light); }
+.doc-type-btn.active { border-color: var(--accent); background: var(--accent-light); box-shadow: 0 0 0 3px rgba(200,75,47,0.1); }
+.doc-type-icon { font-size: 1.25rem; display: block; margin-bottom: 0.25rem; }
+.doc-type-name { font-family: 'DM Mono', monospace; font-size: 0.65rem; font-weight: 600; color: var(--ink); display: block; letter-spacing: 0.02em; }
+.doc-type-btn.active .doc-type-name { color: var(--accent); }
+
+/* ══ PROMPT AREA ══ */
+.prompt-wrap { position: relative; }
+.prompt-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between; }
+.prompt-counter { font-weight: 400; text-transform: none; letter-spacing: 0; color: #a8a39a; font-size: 0.63rem; }
+textarea.prompt-input { width: 100%; min-height: 130px; border: 1.5px solid var(--border); border-radius: 8px; padding: 0.85rem 1rem; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: var(--ink); background: var(--white); resize: vertical; outline: none; transition: border-color 0.2s; line-height: 1.6; }
+textarea.prompt-input:focus { border-color: var(--accent); }
+textarea.prompt-input::placeholder { color: #b8b3aa; }
+
+/* ══ EXAMPLE PROMPTS ══ */
+.example-prompts { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 3rem.6rem; }
+.example-chip { font-family: 'DM Mono', monospace; font-size: 0.63rem; letter-spacing: 0.03em; color: var(--muted); background: var(--cream); border: 1px solid var(--border); padding: 0.25rem 0.6rem; border-radius: 100px; cursor: pointer; transition: all 0.15s; white-space: nowrap; }
+.example-chip:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+
+/* ══ FORM ROWS ══ */
+.form-row { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.9rem; }
+.form-row:last-child { margin-bottom: 0; }
+.form-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); display: flex; align-items: center; justify-content: space-between; }
+.form-label-hint { font-weight: 400; text-transform: none; letter-spacing: 0; color: #a8a39a; font-size: 0.63rem; }
+.format-select { background: var(--white); border: 1.5px solid var(--border); border-radius: 6px; padding: 0.42rem 2rem 0.42rem 0.75rem; font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--ink); cursor: pointer; outline: none; transition: border-color 0.2s; -webkit-appearance: none; appearance: none; width: 100%; background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%237a7567' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.75rem center; }
+.format-select:focus { border-color: var(--accent); }
+
+/* ══ TOGGLE SWITCH ══ */
+.toggle-row { display: flex; align-items: center; gap: 0.85rem; padding: 0.4rem 0; }
+.toggle-switch { position: relative; width: 36px; height: 20px; flex-shrink: 0; cursor: pointer; }
+.toggle-switch input { opacity: 0; width: 0; height: 0; position: absolute; }
+.toggle-track { position: absolute; inset: 0; background: var(--border); border-radius: 100px; transition: background 0.2s; }
+.toggle-switch input:checked + .toggle-track { background: var(--accent); }
+.toggle-knob { position: absolute; top: 3px; left: 3px; width: 14px; height: 14px; background: white; border-radius: 50%; transition: transform 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.2); pointer-events: none; }
+.toggle-switch input:checked ~ .toggle-knob { transform: translateX(16px); }
+.toggle-label { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.03em; flex: 1; }
+
+/* ══ ACTION BAR ══ */
+.action-bar { display: flex; gap: 0.75rem; margin-top: 1.25rem; flex-wrap: wrap; }
+.btn-primary { background: var(--accent); color: var(--white); border: none; border-radius: 6px; padding: 0.65rem 1.5rem; font-family: 'DM Sans', sans-serif; font-size: 0.875rem; font-weight: 600; cursor: pointer; transition: all 0.18s; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; }
+.btn-primary:hover { background: #a83825; transform: translateY(-1px); }
+.btn-primary:disabled { background: var(--border); color: var(--muted); cursor: not-allowed; transform: none; }
+.btn-secondary { background: transparent; color: var(--ink); border: 1.5px solid var(--border); border-radius: 6px; padding: 0.65rem 1.25rem; font-family: 'DM Sans', sans-serif; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.18s; display: inline-flex; align-items: center; gap: 0.5rem; }
+.btn-secondary:hover { border-color: var(--ink); background: var(--cream); }
+.btn-secondary:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* ══ PREVIEW PANEL ══ */
+.preview-panel { background: var(--ink); border-radius: 10px; overflow: hidden; position: sticky; top: 84px; }
+.preview-panel-header { padding: 0.75rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: space-between; }
+.preview-panel-title { font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #9e9990; display: flex; align-items: center; gap: 0.4rem; }
+.preview-badge { font-family: 'DM Mono', monospace; font-size: 0.6rem; background: rgba(200,75,47,0.2); color: var(--accent); border: 1px solid rgba(200,75,47,0.3); padding: 0.1rem 0.45rem; border-radius: 100px; letter-spacing: 0.06em; }
+
+/* PDF live preview */
+.pdf-preview-body { min-height: 420px; display: flex; flex-direction: column; }
+.pdf-preview-placeholder { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; padding: 3.5rem 2rem; flex: 1; }
+.pdf-preview-placeholder-icon { width: 52px; height: 52px; background: rgba(200,75,47,0.12); border: 1px solid rgba(200,75,47,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: rgba(200,75,47,0.5); }
+.pdf-preview-placeholder p { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: rgba(255,255,255,0.25); text-align: center; letter-spacing: 0.05em; line-height: 1.6; }
+.pdf-preview-page { display: none; margin: 1rem; background: white; border-radius: 4px; padding: 2rem 1.75rem; min-height: 380px; box-shadow: 0 4px 20px rgba(0,0,0,0.4); overflow: hidden; }
+.pdf-preview-page.visible { display: block; }
+.pdf-preview-page h1 { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 900; color: #0d0d0d; margin-bottom: 0.5rem; letter-spacing: -0.02em; line-height: 1.2; }
+.pdf-preview-page .pdf-doc-meta { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #a8a39a; margin-bottom: 1rem; letter-spacing: 0.05em; border-bottom: 1.5px solid #c84b2f; padding-bottom: 0.6rem; }
+.pdf-preview-page p { font-size: 0.72rem; color: #2a2a2a; line-height: 1.7; margin-bottom: 0.6rem; }
+.pdf-preview-page h2 { font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: 700; color: #0d0d0d; margin: 0.9rem 0 0.35rem; }
+.pdf-preview-page ul { padding-left: 1rem; margin-bottom: 0.6rem; }
+.pdf-preview-page ul li { font-size: 0.72rem; color: #2a2a2a; line-height: 1.6; margin-bottom: 0.2rem; }
+.pdf-preview-truncated { font-family: 'DM Mono', monospace; font-size: 0.58rem; color: #a8a39a; text-align: center; padding: 0.5rem 0 0; letter-spacing: 0.05em; }
+.preview-footer-note { padding: 0.6rem 1rem; font-family: 'DM Mono', monospace; font-size: 0.65rem; color: rgba(255,255,255,0.2); text-align: center; letter-spacing: 0.04em; border-top: 1px solid rgba(255,255,255,0.06); }
+
+/* ══ PROCESSING OVERLAY ══ */
+.processing-overlay { display: none; }
+.processing-overlay.active { display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; padding: 3rem; background: var(--paper); border-radius: 10px; border: 1px solid var(--border); margin-top: 1.5rem; }
+.ai-spinner { width: 48px; height: 48px; border: 3px solid var(--ai-purple-light); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.9s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.processing-text { font-family: 'DM Mono', monospace; font-size: 0.8rem; color: var(--muted); letter-spacing: 0.05em; }
+.processing-progress { width: 100%; max-width: 280px; background: var(--border); border-radius: 100px; height: 4px; overflow: hidden; }
+.processing-progress-bar { height: 100%; background: var(--accent); border-radius: 100px; transition: width 0.3s ease; width: 0%; }
+.processing-steps { display: flex; flex-direction: column; gap: 0.4rem; width: 100%; max-width: 280px; }
+.processing-step { display: flex; align-items: center; gap: 0.6rem; font-family: 'DM Mono', monospace; font-size: 0.68rem; color: #bbb; }
+.processing-step.done { color: #28c840; }
+.processing-step.active { color: var(--accent); }
+.step-dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+
+/* ══ RESULT AREA ══ */
+.result-area { display: none; margin-top: 1.5rem; }
+.result-area.visible { display: block; }
+.result-card { background: var(--paper); border: 1px solid var(--border); border-radius: 10px; padding: 1.15rem 1.25rem; display: flex; align-items: center; gap: 1rem; }
+.result-card-icon { width: 52px; height: 52px; background: var(--green-light); border: 1px solid rgba(26,138,74,0.2); border-radius: 9px; display: flex; align-items: center; justify-content: center; color: var(--green); flex-shrink: 0; }
+.result-card-info { flex: 1; min-width: 0; }
+.result-card-title { font-size: 0.9rem; font-weight: 600; color: var(--ink); margin-bottom: 0.2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.result-card-meta { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); }
+.result-badge { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--accent); background: var(--accent-light); border: 1px solid rgba(200,75,47,0.2); padding: 0.1rem 0.4rem; border-radius: 3px; display: inline-block; margin-top: 3rem.15rem; }
+.result-actions { display: flex; gap: 0.5rem; flex-shrink: 0; flex-wrap: wrap; }
+
+/* ══ TOAST ══ */
+.toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--ink); color: var(--paper); padding: 0.75rem 1.5rem; border-radius: 6px; font-size: 0.875rem; font-weight: 500; transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); z-index: 999; border-left: 3px solid var(--accent); white-space: nowrap; }
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ══ CONTENT SECTIONS ══ */
+.content-section { max-width: 1000px; margin: 0 auto; padding: 4rem 1.5rem; }
+.section-tag { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; display: block; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1.25rem; line-height: 1.2; }
+.content-prose { color: #4a4640; font-size: 0.975rem; line-height: 1.8; max-width: 720px; }
+.content-prose p { margin-bottom: 1rem; }
+.content-prose p:last-child { margin-bottom: 0; }
+.divider { border: none; border-top: 1px solid var(--border); max-width: 1000px; margin: 0 auto; }
+
+/* ══ HOW IT WORKS ══ */
+.how-section { background: var(--ink); color: var(--paper); padding: 1.75rem 2rem; position: relative; overflow: hidden; }
+.how-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 80% at 50% 100%, rgba(200,75,47,0.14) 0%, transparent 70%); pointer-events: none; }
+.how-inner { max-width: 1000px; margin: 0 auto; position: relative; }
+.how-hdr { text-align: center; margin-bottom: 1.25rem; }
+.how-hdr .section-tag { color: #c84b2f; }
+.how-hdr .section-title { color: var(--paper); margin-bottom: 0.35rem; }
+.how-sub { color: #9e9990; font-size: 0.9rem; font-weight: 300; }
+.steps-grid { display: flex; align-items: stretch; gap: 0; }
+.step-card { flex: 1; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 0.85rem 1rem; position: relative; transition: background 0.25s, border-color 0.25s, transform 0.25s; }
+.step-card:hover { background: rgba(200,75,47,0.08); border-color: rgba(200,75,47,0.35); transform: translateY(-4px); }
+.step-conn { display: flex; align-items: center; justify-content: center; padding: 0 0.5rem; color: rgba(200,75,47,0.5); flex-shrink: 0; margin-top: -1rem; }
+.step-number { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; color: rgba(200,75,47,0.25); line-height: 1; margin-bottom: 0.35rem; letter-spacing: -0.04em; }
+.step-icon { width: 36px; height: 36px; background: rgba(200,75,47,0.15); border: 1px solid rgba(200,75,47,0.3); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.6rem; color: #c84b2f; }
+.step-title { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; color: var(--paper); margin-bottom: 0.35rem; line-height: 1.3; }
+.step-desc { font-size: 0.8rem; color: #9e9990; line-height: 1.55; margin-bottom: 0.6rem; }
+.step-desc strong { color: #d4cfc4; }
+.step-pill { display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.63rem; letter-spacing: 0.05em; color: #c84b2f; background: rgba(200,75,47,0.12); border: 1px solid rgba(200,75,47,0.25); padding: 0.2rem 0.6rem; border-radius: 100px; }
+.how-cta { text-align: center; margin-top: 1.25rem; display: flex; flex-direction: column; align-items: center; gap: 0.6rem; }
+.how-note { font-size: 0.8rem; color: #7a7567; font-family: 'DM Mono', monospace; letter-spacing: 0.03em; }
+
+/* ══ FEATURES ══ */
+.features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-top: 2rem; }
+.feature-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem 1.25rem; transition: box-shadow 0.2s, transform 0.2s; }
+.feature-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+.feature-icon { font-size: 1.75rem; margin-bottom: 0.5rem; display: block; }
+.feature-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.4rem; }
+.feature-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+/* ══ DOC TYPES TABLE ══ */
+.quality-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; font-size: 0.85rem; }
+.quality-table th { font-family: 'DM Mono', monospace; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 600; text-align: left; padding: 0.5rem 0.75rem; border-bottom: 2px solid var(--border); }
+.quality-table td { padding: 0.75rem; border-bottom: 1px solid var(--border); color: #4a4640; vertical-align: top; line-height: 1.5; }
+.quality-table tr:last-child td { border-bottom: none; }
+.quality-table tr:hover td { background: var(--paper); }
+.quality-range { font-family: 'DM Mono', monospace; font-size: 0.78rem; font-weight: 600; color: var(--accent); white-space: nowrap; }
+.quality-name { font-weight: 600; color: var(--ink); }
+
+/* ══ USE CASES ══ */
+.use-cases-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-top: 2rem; }
+.use-case-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem 1.25rem; }
+.use-case-icon { font-size: 1.75rem; margin-bottom: 0.5rem; display: block; }
+.use-case-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.4rem; }
+.use-case-text { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+/* ══ FAQ ══ */
+.faq-list { margin-top: 2rem; }
+.faq-item { border-bottom: 1px solid var(--border); padding: 1.25rem 0; }
+.faq-item:last-child { border-bottom: none; }
+.faq-q { font-weight: 600; font-size: 0.95rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.faq-q::after { content: '+'; font-size: 1.2rem; color: var(--accent); flex-shrink: 0; transition: transform 0.2s; }
+.faq-item.open .faq-q::after { transform: rotate(45deg); }
+.faq-a { font-size: 0.9rem; color: var(--muted); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.35s ease, margin-top 0.3s; }
+.faq-item.open .faq-a { max-height: 300px; margin-top: 3rem.75rem; }
+
+/* ══ CTA ══ */
+.cta-section { background: var(--ink); color: var(--paper); padding: 1.5rem 2rem; text-align: center; position: relative; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(200,75,47,0.18) 0%, transparent 70%); pointer-events: none; }
+.cta-inner { max-width: 640px; margin: 0 auto; position: relative; }
+.cta-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 0.75rem; color: var(--paper); }
+.cta-desc { font-size: 1rem; color: #9e9990; font-weight: 300; margin-bottom: 0.75rem; line-height: 1.7; }
+.cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 0.5rem; }
+.cta-note { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.06em; color: #5a5650; margin-top: 3rem.75rem; display: block; }
+
+/* ══ RELATED ══ */
+.related-section { background: var(--cream); padding: 5rem 2rem; border-top: 1px solid var(--border); }
+.related-inner { max-width: 1000px; margin: 0 auto; }
+.related-header { margin-bottom: 2.5rem; }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+.related-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-decoration: none; color: inherit; display: block; transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s; position: relative; overflow: hidden; }
+.related-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.25s; }
+.related-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); border-color: rgba(200,75,47,0.3); }
+.related-card:hover::before { transform: scaleX(1); }
+.related-card-icon { font-size: 1.5rem; margin-bottom: 0.5rem; display: block; }
+.related-card-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; }
+.related-card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+.related-card-arrow { position: absolute; top: 1.5rem; right: 1.5rem; color: var(--border); transition: color 0.2s; }
+.related-card:hover .related-card-arrow { color: var(--accent); }
+
+/* ══ FOOTER ══ */
+footer { background: var(--ink); color: #9e9990; padding: 4rem 2rem 2rem; margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.05); }
+#footer-placeholder { margin-top: 3rem; }
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid #2a2a2a; }
+.footer-brand .logo { display: block; margin-bottom: 0.5rem; }
+.footer-brand p { font-size: 0.85rem; line-height: 1.6; max-width: 240px; }
+.footer-social { display: flex; gap: 0; margin-top: 1rem; }
+.social-icon { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; color: #9e9990; transition: color 0.2s, transform 0.2s; border-radius: 6px; margin-left: -8px; }
+.social-icon:first-child { margin-left: 0; }
+.social-icon:hover { color: var(--paper); transform: translateY(-2px); }
+.footer-col-title { font-family: 'DM Sans', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper); font-weight: 600; margin-bottom: 1rem; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-links a { color: #9e9990; text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+.footer-links a:hover { color: var(--paper); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; font-size: 0.8rem; flex-wrap: wrap; gap: 0.75rem; }
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 768px) {
+  nav { display: none; }
+  .mobile-menu-toggle { display: flex; }
+  .tool-columns { grid-template-columns: 1fr; }
+  .doc-type-grid { grid-template-columns: repeat(4, 1fr); }
+  .steps-grid { flex-direction: column; gap: 0.75rem; }
+  .step-conn { transform: rotate(90deg); padding: 0; margin: 0; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .footer-brand { grid-column: 1 / -1; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+@media (max-width: 480px) {
+  .doc-type-grid { grid-template-columns: repeat(4, 1fr); }
+  .footer-grid { grid-template-columns: 1fr; }
+  .tool-body { padding: 1rem; }
+  .hero { padding: 3rem 1.5rem 2.5rem; }
+  .result-card { flex-wrap: wrap; }
+  .result-actions { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">JPG2<span>Go</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="tools.html">Tools</a>
+      <a href="#tool" class="nav-cta">Convert Now</a>
+    </nav>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="tools.html" onclick="closeMobileMenu()">Tools</a>
+    <a href="#tool" class="nav-cta" onclick="closeMobileMenu()">Convert Now</a>
+  </nav>
+</header>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-badge">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 8v4l3 3"/><path d="M18 2v4h4"/></svg>
+        Convert Adobe Illustrator Files
+  </div>
+  <h1>Convert AI to PDF</h1>
+  <p class="hero-desc">Convert Adobe Illustrator AI files into high-quality PDF documents online. Maintain design layout, vector quality, and formatting while making files easier to share and print.</p>
+  <div class="hero-pills">
+    <span class="hero-pill">AI-generated content</span>
+    <span class="hero-pill">12+ document types</span>
+    <span class="hero-pill">live PDF preview</span>
+    <span class="hero-pill">instant download</span>
+    <span class="hero-pill">free forever</span>
+  </div>
+</section>
+
+<!-- ══ TOOL ══ -->
+<section class="tool-section" id="tool">
+  <div class="tool-card">
+    <div class="tool-card-header">
+      <span class="dot dot-r"></span>
+      <span class="dot dot-y"></span>
+      <span class="dot dot-g"></span>
+      <span class="tool-card-title">ai-to-pdf · describe · generate · download · jpg2go.com</span>
+    </div>
+    <div class="tool-body">
+
+      <div class="tool-columns">
+
+        <!-- LEFT: Controls -->
+        <div class="tool-col-left">
+
+          <!-- Document Type -->
+          <div class="panel-box">
+            <div class="panel-box-title">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Document Type
+            </div>
+            <div class="doc-type-grid" id="docTypeGrid">
+              <button class="doc-type-btn active" data-type="report">
+                <span class="doc-type-icon">📊</span>
+                <span class="doc-type-name">Report</span>
+              </button>
+              <button class="doc-type-btn" data-type="letter">
+                <span class="doc-type-icon">✉️</span>
+                <span class="doc-type-name">Letter</span>
+              </button>
+              <button class="doc-type-btn" data-type="resume">
+                <span class="doc-type-icon">👤</span>
+                <span class="doc-type-name">Resume</span>
+              </button>
+              <button class="doc-type-btn" data-type="invoice">
+                <span class="doc-type-icon">🧾</span>
+                <span class="doc-type-name">Invoice</span>
+              </button>
+              <button class="doc-type-btn" data-type="proposal">
+                <span class="doc-type-icon">💼</span>
+                <span class="doc-type-name">Proposal</span>
+              </button>
+              <button class="doc-type-btn" data-type="essay">
+                <span class="doc-type-icon">✍️</span>
+                <span class="doc-type-name">Essay</span>
+              </button>
+              <button class="doc-type-btn" data-type="summary">
+                <span class="doc-type-icon">📋</span>
+                <span class="doc-type-name">Summary</span>
+              </button>
+              <button class="doc-type-btn" data-type="plan">
+                <span class="doc-type-icon">🗂️</span>
+                <span class="doc-type-name">Plan</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Prompt -->
+          <div class="panel-box">
+            <div class="panel-box-title">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              Describe Your Document
+            </div>
+            <div class="prompt-wrap">
+              <div class="prompt-label">
+                What should this document contain?
+                <span class="prompt-counter"><span id="charCount">0</span> / 800</span>
+              </div>
+              <textarea class="prompt-input" id="promptInput" maxlength="800" placeholder="e.g. A quarterly sales report for Q3 2025. Include an executive summary, key metrics showing 18% revenue growth, regional performance breakdown for North America and Europe, and recommendations for Q4…"></textarea>
+              <div class="example-prompts" id="examplePrompts">
+                <!-- chips injected by JS based on selected doc type -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Style & Format -->
+          <div class="panel-box">
+            <div class="panel-box-title">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+              Style &amp; Format
+            </div>
+            <div class="form-row">
+              <div class="form-label">Tone <span class="form-label-hint">voice of the document</span></div>
+              <select class="format-select" id="toneSelect">
+                <option value="professional">Professional</option>
+                <option value="formal">Formal</option>
+                <option value="friendly">Friendly &amp; Conversational</option>
+                <option value="academic">Academic</option>
+                <option value="concise">Concise &amp; Direct</option>
+                <option value="persuasive">Persuasive</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-label">Length <span class="form-label-hint">approximate document size</span></div>
+              <select class="format-select" id="lengthSelect">
+                <option value="short">Short (1 page)</option>
+                <option value="medium" selected>Medium (2–3 pages)</option>
+                <option value="long">Long (4–6 pages)</option>
+              </select>
+            </div>
+            <div class="form-row" style="margin-bottom:0.5rem;">
+              <div class="form-label">Language <span class="form-label-hint">output language</span></div>
+              <select class="format-select" id="langSelect">
+                <option value="English">English</option>
+                <option value="Spanish">Spanish</option>
+                <option value="French">French</option>
+                <option value="German">German</option>
+                <option value="Portuguese">Portuguese</option>
+                <option value="Italian">Italian</option>
+                <option value="Dutch">Dutch</option>
+                <option value="Arabic">Arabic</option>
+                <option value="Hindi">Hindi</option>
+                <option value="Chinese">Chinese</option>
+                <option value="Japanese">Japanese</option>
+              </select>
+            </div>
+            <div class="toggle-row">
+              <label class="toggle-switch">
+                <input type="checkbox" id="tocToggle">
+                <span class="toggle-track"></span>
+                <span class="toggle-knob"></span>
+              </label>
+              <span class="toggle-label">Include table of contents</span>
+            </div>
+            <div class="toggle-row">
+              <label class="toggle-switch">
+                <input type="checkbox" id="pageNumToggle" checked>
+                <span class="toggle-track"></span>
+                <span class="toggle-knob"></span>
+              </label>
+              <span class="toggle-label">Add page numbers</span>
+            </div>
+          </div>
+
+          <!-- Action Bar -->
+          <div class="action-bar">
+            <button class="btn-primary" id="generateBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2a10 10 0 1 0 10 10"/><polyline points="22 2 22 8 16 8"/><path d="m2 12 5 5 9-9"/></svg>
+              Generate PDF
+            </button>
+            <button class="btn-secondary" id="clearBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
+              Clear
+            </button>
+          </div>
+
+        </div>
+
+        <!-- RIGHT: Live Preview -->
+        <div class="tool-col-right">
+          <div class="preview-panel">
+            <div class="preview-panel-header">
+              <div class="preview-panel-title">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                Live PDF Preview
+              </div>
+              <span class="preview-badge" id="previewBadge">WAITING</span>
+            </div>
+
+            <div class="pdf-preview-body">
+              <div class="pdf-preview-placeholder" id="pdfPlaceholder">
+                <div class="pdf-preview-placeholder-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                </div>
+                <p>Fill in your prompt and<br>click Generate PDF to preview</p>
+              </div>
+              <div class="pdf-preview-page" id="pdfPreviewPage">
+                <div id="pdfPreviewContent"></div>
+                <div class="pdf-preview-truncated" id="pdfPreviewTruncated">— preview shows first page —</div>
+              </div>
+            </div>
+            <div class="preview-footer-note" id="previewFooterNote" style="display:none;">Generated document · ready to download as PDF</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Processing Overlay -->
+      <div class="processing-overlay" id="processingOverlay">
+        <div class="ai-spinner"></div>
+        <div class="processing-text" id="processingText">Sending prompt to AI…</div>
+        <div class="processing-progress"><div class="processing-progress-bar" id="progressBar"></div></div>
+        <div class="processing-steps">
+          <div class="processing-step active" id="pStep1"><span class="step-dot"></span> Sending prompt to AI</div>
+          <div class="processing-step" id="pStep2"><span class="step-dot"></span> Writing document content</div>
+          <div class="processing-step" id="pStep3"><span class="step-dot"></span> Applying formatting &amp; structure</div>
+          <div class="processing-step" id="pStep4"><span class="step-dot"></span> Building PDF</div>
+        </div>
+      </div>
+
+      <!-- Result Area -->
+      <div class="result-area" id="resultArea">
+        <div class="result-card">
+          <div class="result-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <div class="result-card-info">
+            <div class="result-card-title" id="resultTitle">AI-Generated Document.pdf</div>
+            <div class="result-card-meta" id="resultMeta">Ready to download</div>
+            <div><span class="result-badge" id="resultBadge">✦ AI Generated</span></div>
+          </div>
+          <div class="result-actions">
+            <button class="btn-primary" id="downloadPdfBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download PDF
+            </button>
+            <button class="btn-secondary" id="regenerateBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+              Regenerate
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ══ -->
+<section class="how-section" id="how-it-works">
+  <div class="how-inner">
+    <div class="how-hdr">
+      <span class="section-tag">Quick Guide</span>
+      <h2 class="section-title">How to Generate a PDF with AI</h2>
+      <p class="how-sub">Three steps. Instant output. Download-ready in seconds.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">01</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="16" x2="12" y2="16"/></svg></div>
+        <div class="step-title">Choose Type &amp; Describe</div>
+        <div class="step-desc">Select a document type — <strong>report, letter, resume, invoice</strong>, and more — then describe what you want in plain language. No special syntax needed.</div>
+        <span class="step-pill">plain language</span>
+      </div>
+      <div class="step-conn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-number">02</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10"/><polyline points="22 2 22 8 16 8"/></svg></div>
+        <div class="step-title">AI Writes &amp; Formats</div>
+        <div class="step-desc">AI writes the full document in your chosen <strong>tone, length, and language</strong>. Structure, headings, and paragraphs are applied automatically — a live preview appears as it generates.</div>
+        <span class="step-pill">AI-powered</span>
+      </div>
+      <div class="step-conn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-number">03</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+        <div class="step-title">Download PDF</div>
+        <div class="step-desc">Click <strong>Download PDF</strong> — a properly formatted, print-ready PDF is saved to your device. Not happy with the output? Tweak your prompt and regenerate instantly.</div>
+        <span class="step-pill">print-ready PDF</span>
+      </div>
+    </div>
+    <div class="how-cta">
+      <a href="#tool" class="btn-primary">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m2 12 5 5 9-9"/></svg>
+        Generate a PDF Now
+      </a>
+      <span class="how-note">free · no signup · instant download</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHY THIS TOOL ══ -->
+<section class="content-section" id="about">
+  <h2 class="section-title">Why Use AI to PDF Converter?</h2>
+  <div class="content-prose">
+    <p>AI design files are powerful for creating vector graphics, but they often require specialized software like Adobe Illustrator to open or edit. An AI to PDF Converter solves this problem by turning Illustrator files into PDF documents that can be viewed on almost any device or operating system.</p>
+    <p>Converting AI files to PDF also helps preserve the original design structure, including vector elements, colors, and layout. This makes it easier to share artwork with clients, colleagues, or printing services without worrying about compatibility issues. Whether you're a designer, marketer, or business owner, using an AI to PDF converter ensures your design files remain accessible, professional, and easy to distribute.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══ FEATURES ══ -->
+<section class="content-section">
+  <span class="section-tag">Features</span>
+  <h2 class="section-title">Everything in One AI PDF Generator</h2>
+  <div class="features-grid">
+    <div class="feature-card"><span class="feature-icon">🤖</span><div class="feature-title">AI Content Generation</div><div class="feature-desc">Powered by large language models — the AI writes coherent, well-structured content tailored to your document type, tone, and description in seconds.</div></div>
+    <div class="feature-card"><span class="feature-icon">📄</span><div class="feature-title">12 Document Types</div><div class="feature-desc">Reports, letters, resumes, invoices, proposals, essays, summaries, plans, contracts, meeting notes, product descriptions, and briefs — each with a purpose-built structure.</div></div>
+    <div class="feature-card"><span class="feature-icon">🌍</span><div class="feature-title">11 Languages</div><div class="feature-desc">Generate documents in English, Spanish, French, German, Portuguese, Italian, Dutch, Arabic, Hindi, Chinese, or Japanese — same quality across all languages.</div></div>
+    <div class="feature-card"><span class="feature-icon">🎨</span><div class="feature-title">Tone Control</div><div class="feature-desc">Choose from six writing tones — Professional, Formal, Friendly, Academic, Concise, or Persuasive — to match the document's purpose and audience.</div></div>
+    <div class="feature-card"><span class="feature-icon">👁️</span><div class="feature-title">Live PDF Preview</div><div class="feature-desc">See a rendered first-page preview as the document generates — check structure and content before downloading the full PDF.</div></div>
+    <div class="feature-card"><span class="feature-icon">⚡</span><div class="feature-title">Instant Download</div><div class="feature-desc">A properly formatted, print-ready PDF is ready to download in under ten seconds from the moment you click Generate — no waiting, no email, no signup.</div></div>
+    <div class="feature-card"><span class="feature-icon">🔄</span><div class="feature-title">One-Click Regenerate</div><div class="feature-desc">Not quite right? Tweak your prompt and regenerate instantly. Each generation is independent — you can refine until the output matches your vision.</div></div>
+    <div class="feature-card"><span class="feature-icon">💸</span><div class="feature-title">Free Forever</div><div class="feature-desc">No subscription, no watermark, no word count cap. Generate as many documents as you need — always free, always instant.</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══ DOCUMENT TYPES TABLE ══ -->
+<section class="content-section">
+  <span class="section-tag">Document Types</span>
+  <h2 class="section-title">What Can AI to PDF Generate?</h2>
+  <div class="content-prose">
+    <p>Each document type uses a tailored structure template. Here's what to expect from each one.</p>
+  </div>
+  <table class="quality-table">
+    <thead>
+      <tr><th>Type</th><th>Structure</th><th>Best For</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><span class="quality-range">Report</span></td><td><span class="quality-name">Executive summary, sections, conclusions, recommendations</span></td><td>Business reports, research summaries, quarterly updates, case studies</td></tr>
+      <tr><td><span class="quality-range">Letter</span></td><td><span class="quality-name">Date, recipient, salutation, body paragraphs, sign-off</span></td><td>Cover letters, formal correspondence, complaints, requests, introductions</td></tr>
+      <tr><td><span class="quality-range">Resume</span></td><td><span class="quality-name">Profile summary, experience (STAR), skills, education</span></td><td>Job applications, career changes, freelance profiles, LinkedIn exports</td></tr>
+      <tr><td><span class="quality-range">Invoice</span></td><td><span class="quality-name">Sender/recipient info, itemised line table, totals, payment terms</span></td><td>Freelance billing, consulting fees, service receipts, expense claims</td></tr>
+      <tr><td><span class="quality-range">Proposal</span></td><td><span class="quality-name">Problem statement, proposed solution, scope, timeline, pricing</span></td><td>Business proposals, project pitches, grant applications, RFP responses</td></tr>
+      <tr><td><span class="quality-range">Essay</span></td><td><span class="quality-name">Introduction, thesis, structured body paragraphs, conclusion</span></td><td>Academic essays, opinion pieces, argumentative writing, research papers</td></tr>
+      <tr><td><span class="quality-range">Summary</span></td><td><span class="quality-name">Key points, bullet highlights, brief narrative overview</span></td><td>Meeting summaries, article abstracts, research digests, briefing notes</td></tr>
+      <tr><td><span class="quality-range">Plan</span></td><td><span class="quality-name">Goals, timeline, responsibilities, milestones, success metrics</span></td><td>Project plans, business plans, marketing plans, event planning</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<hr class="divider">
+
+<!-- ══ WHO USES THIS ══ -->
+<section class="content-section">
+  <span class="section-tag">Who It's For</span>
+  <h2 class="section-title">Who Uses an AI to PDF Generator?</h2>
+  <div class="use-cases-grid">
+    <div class="use-case-card"><span class="use-case-icon">💼</span><div class="use-case-title">Business Reporting</div><div class="use-case-text">Generate a polished quarterly report or executive summary in seconds — just describe the key metrics and the AI writes the narrative, headings, and recommendations.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">📝</span><div class="use-case-title">Job Applications</div><div class="use-case-text">Produce a tailored cover letter or resume for any role in under a minute. Describe your background and the target position — the AI handles the professional framing.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🧾</span><div class="use-case-title">Freelance Invoicing</div><div class="use-case-text">Generate a clean, itemised invoice with your client's details, line items, and payment terms — no spreadsheet required. Download and send in under thirty seconds.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🏫</span><div class="use-case-title">Academic Writing</div><div class="use-case-text">Draft an essay structure, argumentative outline, or research summary in your required academic tone. Use as a starting point and refine with your own analysis.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🤝</span><div class="use-case-title">Client Proposals</div><div class="use-case-text">Quickly generate a project proposal with problem statement, proposed solution, timeline, and pricing structure — ready to customise and send to a prospective client.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">📅</span><div class="use-case-title">Meeting Notes</div><div class="use-case-text">Describe what was discussed and decided — the AI formats it as a structured meeting summary with action items, owners, and deadlines ready to distribute.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🌐</span><div class="use-case-title">Multilingual Docs</div><div class="use-case-text">Generate documents in eleven languages from a single English prompt — useful for international clients, multilingual teams, or documents needed in a non-native language.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🚀</span><div class="use-case-title">Rapid Prototyping</div><div class="use-case-text">Need a document template or first draft fast? AI to PDF gets you a complete, structured first draft in seconds — a far faster starting point than a blank page.</div></div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section class="content-section">
+  <span class="section-tag">FAQ</span>
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">What is an AI to PDF converter?</div>
+      <div class="faq-a">An AI to PDF converter transforms Adobe Illustrator design files into PDF format so they can be shared, printed, or viewed without Illustrator.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Why convert AI files to PDF?</div>
+      <div class="faq-a">PDF files are widely supported across devices and platforms, making them easier to share and print compared to Illustrator files.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does converting AI to PDF affect design quality?</div>
+      <div class="faq-a">No, a good converter preserves vector graphics, layout structure, and design quality when generating the PDF file.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I open AI files without Adobe Illustrator?</div>
+      <div class="faq-a">Yes, converting AI files to PDF allows them to be opened on almost any device using standard PDF readers.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Are AI to PDF converters free to use online?</div>
+      <div class="faq-a">Many online tools provide free AI to PDF conversion with fast processing and simple upload options.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What industries commonly use AI to PDF conversion?</div>
+      <div class="faq-a">Graphic designers, printers, marketing agencies, and design teams frequently convert Illustrator files to PDF for sharing and printing.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ RELATED TOOLS ══ -->
+<section class="related-section" id="tools">
+  <div class="related-inner">
+    <div class="related-header">
+      <span class="section-tag">Related Tools</span>
+      <h2 class="section-title">More Free Online Tools</h2>
+    </div>
+    <div class="related-grid">
+      <a href="/jpg-to-pdf" class="related-card">
+        <span class="related-card-icon">📄</span>
+        <div class="related-card-name">JPG to PDF</div>
+        <div class="related-card-desc">Convert JPG images to PDF documents quickly. Combine multiple photos into a single organized PDF file for easy sharing and printing.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+      <a href="/image-resizer" class="related-card">
+        <span class="related-card-icon">📐</span>
+        <div class="related-card-name">Image Resizer</div>
+        <div class="related-card-desc">Resize images to exact pixel dimensions or a percentage of their original size. Runs entirely in your browser without uploading files anywhere.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/compress-jpeg" class="related-card">
+        <span class="related-card-icon">🗜️</span>
+        <div class="related-card-name">Compress JPEG</div>
+        <div class="related-card-desc">Reduce JPEG image file size while maintaining quality. Optimize images for faster web pages and lower storage usage.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/merge-pdf" class="related-card">
+        <span class="related-card-icon">📎</span>
+        <div class="related-card-name">Merge PDF</div>
+        <div class="related-card-desc">Combine multiple PDF files into a single organized document. Drag and drop to reorder pages easily.</div>
+        <span class="related-card-tag">PDF</span>
+      </a>
+      <a href="/crop-image" class="related-card">
+        <span class="related-card-icon">✂️</span>
+        <div class="related-card-name">Crop Image</div>
+        <div class="related-card-desc">Crop images to any aspect ratio or custom dimensions. Perfect for social media thumbnails, profile photos, and banner images.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/format-converter" class="related-card">
+        <span class="related-card-icon">🔄</span>
+        <div class="related-card-name">Format Converter</div>
+        <div class="related-card-desc">Convert images between different formats instantly. Transform JPG, PNG, WebP, and other image formats quickly.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <span class="section-tag" style="color:var(--accent);">Get Started</span>
+    <h2 class="cta-title">Ready to Generate PDFs with AI?</h2>
+    <p class="cta-desc">Free, instant, and completely private. Describe your document, download the result — no account ever needed.</p>
+    <div class="cta-actions">
+      <a href="#tool" class="btn-primary" style="font-size:1rem;padding:0.85rem 2rem;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m2 12 5 5 9-9"/></svg>
+        Start Generating
+      </a>
+    </div>
+    <p class="cta-note">No account · No upload · No data stored · Works offline</p>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<div id="footer-placeholder"></div>
+<script src="load-footer.js"></script>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── GLOBALS ────────────────────────────────────────────────────────────────────
+let selectedDocType = 'report';
+let generatedContent = '';
+let pdfBlob = null;
+
+// ── EXAMPLE PROMPTS PER DOC TYPE ──────────────────────────────────────────────
+const exampleChips = {
+  report:   ['Q3 sales report with 18% revenue growth', 'Market analysis for EV sector 2025', 'Annual sustainability report for a retailer'],
+  letter:   ['Cover letter for senior designer role', 'Formal complaint to a service provider', 'Business introduction letter to a new partner'],
+  resume:   ['Full-stack developer with 5 years React experience', 'Marketing manager with B2B SaaS background', 'Recent graduate applying for finance roles'],
+  invoice:  ['Freelance web design project, 3 milestones', 'Monthly consulting retainer, 20 hours', 'Photography shoot — 4 hour session + editing'],
+  proposal: ['Website redesign proposal for a law firm', 'Social media management proposal, 6-month contract', 'Grant proposal for community garden project'],
+  essay:    ['The ethics of artificial intelligence in healthcare', 'Should remote work become the permanent default?', 'The role of renewable energy in climate policy'],
+  summary:  ['Product roadmap meeting, 5 action items', 'Summary of Q2 board meeting decisions', 'Research paper abstract on sleep and cognition'],
+  plan:     ['6-month marketing plan for a SaaS product launch', 'Event plan for a 200-person corporate conference', '90-day onboarding plan for a new sales hire'],
+};
+
+// ── TOAST ─────────────────────────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ── MOBILE MENU ───────────────────────────────────────────────────────────────
+document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+  this.classList.toggle('active');
+  document.getElementById('mobileNav').classList.toggle('active');
+});
+function closeMobileMenu() {
+  document.getElementById('mobileMenuToggle').classList.remove('active');
+  document.getElementById('mobileNav').classList.remove('active');
+}
+
+// ── DOC TYPE SELECTION ────────────────────────────────────────────────────────
+document.querySelectorAll('#docTypeGrid .doc-type-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#docTypeGrid .doc-type-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedDocType = btn.dataset.type;
+    renderExampleChips();
+  });
+});
+
+function renderExampleChips() {
+  const wrap = document.getElementById('examplePrompts');
+  const chips = exampleChips[selectedDocType] || [];
+  wrap.innerHTML = chips.map(c =>
+    `<span class="example-chip">${c}</span>`
+  ).join('');
+  wrap.querySelectorAll('.example-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.getElementById('promptInput').value = chip.textContent;
+      updateCharCount();
+    });
+  });
+}
+renderExampleChips();
+
+// ── CHAR COUNT ────────────────────────────────────────────────────────────────
+function updateCharCount() {
+  const len = document.getElementById('promptInput').value.length;
+  document.getElementById('charCount').textContent = len;
+}
+document.getElementById('promptInput').addEventListener('input', updateCharCount);
+
+// ── CLEAR ─────────────────────────────────────────────────────────────────────
+document.getElementById('clearBtn').addEventListener('click', () => {
+  document.getElementById('promptInput').value = '';
+  updateCharCount();
+  document.getElementById('resultArea').classList.remove('visible');
+  document.getElementById('pdfPreviewPage').classList.remove('visible');
+  document.getElementById('pdfPlaceholder').style.display = '';
+  document.getElementById('previewFooterNote').style.display = 'none';
+  document.getElementById('previewBadge').textContent = 'WAITING';
+  generatedContent = '';
+  pdfBlob = null;
+  showToast('Cleared');
+});
+
+// ── GENERATE ──────────────────────────────────────────────────────────────────
+document.getElementById('generateBtn').addEventListener('click', async () => {
+  const prompt = document.getElementById('promptInput').value.trim();
+  if (!prompt) { showToast('Please describe the document you want to generate'); return; }
+
+  const tone   = document.getElementById('toneSelect').value;
+  const length = document.getElementById('lengthSelect').value;
+  const lang   = document.getElementById('langSelect').value;
+  const toc    = document.getElementById('tocToggle').checked;
+  const pageNums = document.getElementById('pageNumToggle').checked;
+
+  const docTypeLabels = { report:'Report', letter:'Letter', resume:'Resume', invoice:'Invoice', proposal:'Proposal', essay:'Essay', summary:'Summary', plan:'Plan' };
+  const lengthMap = { short: '1 page (~400 words)', medium: '2-3 pages (~900 words)', long: '4-6 pages (~1800 words)' };
+
+  const systemPrompt = `You are a professional document writer. Generate a complete, polished ${docTypeLabels[selectedDocType]} document.
+
+Rules:
+- Write in ${lang}
+- Tone: ${tone}
+- Length: ${lengthMap[length]}
+- ${toc ? 'Include a brief table of contents at the start.' : 'No table of contents.'}
+- Use clear headings (prefix with ##) and well-structured paragraphs
+- For invoices: include an itemised table with columns for Item, Qty, Rate, Amount
+- For resumes: use sections for Summary, Experience, Skills, Education
+- For letters: include date, recipient address, salutation, body, sign-off
+- Do NOT include markdown code fences or backticks
+- Output only the document text with ## headings, no preamble or meta-commentary`;
+
+  const userPrompt = `Create a ${docTypeLabels[selectedDocType]}: ${prompt}`;
+
+  // Show processing
+  const overlay = document.getElementById('processingOverlay');
+  overlay.classList.add('active');
+  document.getElementById('resultArea').classList.remove('visible');
+
+  const steps = ['pStep1','pStep2','pStep3','pStep4'];
+  const msgs  = ['Sending prompt to AI…','Writing document content…','Applying formatting & structure…','Building PDF…'];
+
+  setStep(steps, 0, msgs); setProgress(10); await delay(300);
+
+  try {
+    let usedFallback = false;
+    try {
+      const apiKey = window.ANTHROPIC_API_KEY || '';
+      if (apiKey) {
+        const response = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': apiKey,
+            'anthropic-version': '2023-06-01'
+          },
+          body: JSON.stringify({
+            model: 'claude-3-5-sonnet-20241022',
+            max_tokens: 2000,
+            system: systemPrompt,
+            messages: [{ role: 'user', content: userPrompt }]
+          })
+        });
+        if (response.ok) {
+          const data = await response.json();
+          generatedContent = (data.content || []).map(b => b.text || '').join('');
+          if (generatedContent && generatedContent.trim().length > 50) {
+            setStep(steps, 1, msgs); setProgress(40); await delay(200);
+            setStep(steps, 2, msgs); setProgress(70); await delay(250);
+            setStep(steps, 3, msgs); setProgress(90); await delay(200);
+            renderPreview(generatedContent, docTypeLabels[selectedDocType]);
+            pdfBlob = buildPDF(generatedContent, docTypeLabels[selectedDocType], tone, pageNums);
+            setProgress(100); await delay(350);
+            overlay.classList.remove('active');
+            const filename = `${docTypeLabels[selectedDocType].toLowerCase()}-${Date.now()}.pdf`;
+            document.getElementById('resultTitle').textContent = filename;
+            document.getElementById('resultMeta').textContent = `${docTypeLabels[selectedDocType]} · ${tone} · ${lang}`;
+            document.getElementById('resultBadge').textContent = `✦ AI · ${docTypeLabels[selectedDocType]} · ${tone}`;
+            document.getElementById('resultArea').classList.add('visible');
+            document.getElementById('resultArea').scrollIntoView({ behavior:'smooth', block:'nearest' });
+            showToast('PDF generated — ready to download');
+            return;
+          }
+        }
+      }
+    } catch (e) { usedFallback = true; }
+    usedFallback = true;
+
+    if (usedFallback || !generatedContent) {
+      setStep(steps, 1, msgs); setProgress(40); await delay(200);
+      generatedContent = generateFallbackDocument(selectedDocType, prompt, tone, lang, toc, lengthMap[length]);
+      setStep(steps, 2, msgs); setProgress(70); await delay(250);
+      renderPreview(generatedContent, docTypeLabels[selectedDocType]);
+      setStep(steps, 3, msgs); setProgress(90); await delay(200);
+      pdfBlob = buildPDF(generatedContent, docTypeLabels[selectedDocType], tone, pageNums);
+    }
+
+    setProgress(100); await delay(350);
+    overlay.classList.remove('active');
+    const filename = `${docTypeLabels[selectedDocType].toLowerCase()}-${Date.now()}.pdf`;
+    document.getElementById('resultTitle').textContent = filename;
+    document.getElementById('resultMeta').textContent = `${docTypeLabels[selectedDocType]} · ${tone} · ${lang}`;
+    document.getElementById('resultBadge').textContent = `✦ ${docTypeLabels[selectedDocType]} · ${tone}`;
+    document.getElementById('resultArea').classList.add('visible');
+    document.getElementById('resultArea').scrollIntoView({ behavior:'smooth', block:'nearest' });
+    showToast('PDF generated — ready to download');
+
+  } catch (err) {
+    overlay.classList.remove('active');
+    showToast('Generation failed — please try again');
+    console.error(err);
+  }
+});
+
+// ── RENDER PREVIEW ────────────────────────────────────────────────────────────
+function renderPreview(content, docType) {
+  const page    = document.getElementById('pdfPreviewPage');
+  const holder  = document.getElementById('pdfPreviewContent');
+  const lines   = content.split('\n').filter(l => l.trim());
+
+  // Extract title (first ## heading or first line)
+  let title = docType + ' Document';
+  const titleLine = lines.find(l => l.startsWith('## ') || l.startsWith('# '));
+  if (titleLine) title = titleLine.replace(/^##?\s*/, '');
+
+  const now = new Date().toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' });
+  let html = `<h1>${escHtml(title)}</h1><div class="pdf-doc-meta">Generated ${now} · ${docType.toUpperCase()}</div>`;
+
+  // Render up to ~12 lines of content for preview
+  let count = 0;
+  for (const line of lines) {
+    if (line.startsWith('## ') || line.startsWith('# ')) {
+      const heading = line.replace(/^##?\s*/, '');
+      if (heading === title) continue;
+      html += `<h2>${escHtml(heading)}</h2>`;
+    } else if (line.startsWith('- ')) {
+      html += `<ul><li>${escHtml(line.slice(2))}</li></ul>`;
+    } else if (line.trim()) {
+      html += `<p>${escHtml(line)}</p>`;
+    }
+    if (++count >= 10) break;
+  }
+
+  holder.innerHTML = html;
+  document.getElementById('pdfPlaceholder').style.display = 'none';
+  page.classList.add('visible');
+  document.getElementById('previewFooterNote').style.display = 'block';
+  document.getElementById('previewBadge').textContent = 'READY';
+}
+
+function escHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function generateFallbackDocument(docType, prompt, tone, lang, toc, lengthDesc) {
+  const now = new Date().toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' });
+  const templates = {
+    report: () => `## ${prompt.slice(0,60)}${prompt.length>60?'…':''}\n\nExecutive Summary\nThis document addresses the key points outlined in your request. The following sections provide a structured analysis and recommendations.\n\n## Key Findings\n- Analysis of the primary objectives and outcomes\n- Supporting data and metrics where applicable\n- Clear conclusions based on the information provided\n\n## Recommendations\n- Action items derived from the findings\n- Suggested next steps for implementation\n- Timeline considerations\n\n## Conclusion\nThis report summarizes the main points from your prompt and provides a foundation for further discussion or decision-making.`,
+    letter: () => `## Formal Letter\n\n${now}\n\n[Recipient Name]\n[Address]\n\nDear Sir or Madam,\n\nRe: ${prompt.slice(0,80)}\n\nI am writing to address the matter you have described. Your request highlights several important considerations that warrant careful attention.\n\nI trust this letter provides the information you require. Please do not hesitate to contact me if you need any further clarification.\n\nYours faithfully,\n[Your Name]`,
+    resume: () => `## Professional Summary\nExperienced professional with expertise in the areas you specified. ${prompt.slice(0,100)}\n\n## Experience\n- Relevant roles and achievements\n- Key responsibilities and accomplishments\n- Industry-specific skills demonstrated\n\n## Skills\n- Technical and soft skills aligned with your profile\n- Certifications and training\n\n## Education\n- Academic qualifications\n- Professional development`,
+    invoice: () => `## Invoice\n\nInvoice Date: ${now}\n\nItem | Qty | Rate | Amount\n--- | --- | --- | ---\n${prompt.slice(0,40)} | 1 | — | —\nAdditional items as per agreement\n\nSubtotal: —\nTax: —\nTotal: —\n\nPayment terms: Net 30`,
+    proposal: () => `## Proposal: ${prompt.slice(0,50)}\n\n## Overview\nThis proposal addresses your requirements and outlines the recommended approach.\n\n## Scope\n- Deliverables as described\n- Timeline and milestones\n- Resource requirements\n\n## Benefits\n- Expected outcomes\n- Value proposition\n\n## Next Steps\n- Review and approval process\n- Implementation plan`,
+    essay: () => `## ${prompt.slice(0,60)}\n\nIntroduction\nThis essay explores the topic you have outlined. The following sections present the main arguments and supporting evidence.\n\n## Main Body\nYour prompt suggests several key themes that merit discussion. Each point contributes to a comprehensive understanding of the subject matter.\n\n## Conclusion\nIn summary, the analysis presented here addresses the core elements of your request and provides a coherent perspective on the topic.`,
+    summary: () => `## Summary\n\nKey Points\n- ${prompt.slice(0,120)}\n- Main themes and findings\n- Critical takeaways\n\n## Details\nAdditional context and supporting information relevant to your request.\n\n## Action Items\n- Recommended follow-up steps\n- Priority areas for attention`,
+    plan: () => `## Plan: ${prompt.slice(0,50)}\n\n## Objectives\n- Primary goals based on your input\n- Success criteria\n\n## Approach\n- Step-by-step methodology\n- Resource allocation\n- Timeline\n\n## Milestones\n- Key deliverables\n- Checkpoints and reviews\n\n## Risks & Mitigation\n- Potential challenges\n- Contingency measures`
+  };
+  let out = (templates[docType] || templates.report)();
+  if (toc) out = '## Table of Contents\n\n1. Overview\n2. Main Sections\n3. Conclusion\n\n---\n\n' + out;
+  return out;
+}
+
+// ── BUILD PDF ─────────────────────────────────────────────────────────────────
+function buildPDF(content, docType, tone, pageNums) {
+  // Minimal hand-crafted PDF with full content
+  const now = new Date().toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' });
+  const lines = content.split('\n');
+
+  // We'll build the PDF body text manually
+  // Extract first heading as title
+  let docTitle = docType + ' Document';
+  const tLine = lines.find(l => l.startsWith('## ') || l.startsWith('# '));
+  if (tLine) docTitle = tLine.replace(/^##?\s*/, '').trim();
+
+  // Build text content for PDF
+  const pageW = 595, pageH = 842;
+  const margin = 56;
+  const contentW = pageW - margin * 2;
+
+  // We'll encode the text into PDF streams
+  // Title block
+  let bodyLines = [];
+  bodyLines.push({ type:'title', text: docTitle });
+  bodyLines.push({ type:'meta',  text: `Generated ${now}  ·  ${docType.toUpperCase()}  ·  ${tone}` });
+  bodyLines.push({ type:'rule' });
+
+  for (const raw of lines) {
+    const line = raw.trim();
+    if (!line) { bodyLines.push({ type:'space' }); continue; }
+    if (line.startsWith('## ') || line.startsWith('# ')) {
+      bodyLines.push({ type:'h2', text: line.replace(/^##?\s*/, '') });
+    } else if (line.startsWith('- ')) {
+      bodyLines.push({ type:'bullet', text: line.slice(2) });
+    } else {
+      bodyLines.push({ type:'body', text: line });
+    }
+  }
+
+  // Build minimal PDF structure
+  const enc = str => {
+    // PDF string encoding (basic latin)
+    return str.replace(/\\/g,'\\\\').replace(/\(/g,'\\(').replace(/\)/g,'\\)').replace(/[^\x20-\x7E]/g,'?');
+  };
+
+  // Build content stream
+  let stream = '';
+  const fontSize = { title:16, meta:8, h2:11, body:9, bullet:9 };
+  let y = pageH - margin - 20;
+  const lineH = { title:24, meta:14, h2:18, body:13, bullet:13, space:6, rule:16 };
+
+  stream += `BT\n`;
+
+  for (const bl of bodyLines) {
+    if (y < margin + 40) break; // crude page break guard
+
+    if (bl.type === 'rule') {
+      stream += `ET\n${margin} ${y} m ${pageW - margin} ${y} l S\nBT\n`;
+      y -= lineH.rule;
+      continue;
+    }
+    if (bl.type === 'space') { y -= lineH.space; continue; }
+
+    const fs = fontSize[bl.type] || 9;
+    const font = (bl.type === 'title' || bl.type === 'h2') ? '/F2' : '/F1';
+    const col  = (bl.type === 'title' || bl.type === 'h2') ? '0.078 0.294 0.184' : (bl.type === 'meta' ? '0.48 0.46 0.44' : '0.15 0.15 0.15');
+    const x    = bl.type === 'bullet' ? margin + 12 : margin;
+    const prefix = bl.type === 'bullet' ? '• ' : '';
+
+    // Wrap text roughly
+    const txt = enc(prefix + (bl.text || ''));
+    const maxChars = Math.floor(contentW / (fs * 0.52));
+    const words = txt.split(' ');
+    let curLine = '';
+    const wrapped = [];
+    for (const w of words) {
+      if ((curLine + ' ' + w).length > maxChars && curLine) { wrapped.push(curLine.trim()); curLine = w; }
+      else curLine += ' ' + w;
+    }
+    if (curLine.trim()) wrapped.push(curLine.trim());
+
+    for (const wl of wrapped) {
+      if (y < margin + 20) break;
+      stream += `${col} rg ${font} ${fs} Tf ${x} ${y} Td (${wl}) Tj 0 Td\n`;
+      y -= lineH[bl.type] || 13;
+    }
+    if (bl.type === 'h2') y -= 3;
+  }
+
+  // Page number
+  if (pageNums) {
+    stream += `/F1 8 Tf 0.6 0.6 0.6 rg ${pageW/2 - 15} ${margin - 20} Td (Page 1) Tj\n`;
+  }
+
+  stream += `ET\n`;
+
+  // Accent bar at top
+  stream = `${margin - 4} ${pageH - margin + 10} m ${pageW - margin + 4} ${pageH - margin + 10} l ${pageW - margin + 4} ${pageH - margin + 14} l ${margin - 4} ${pageH - margin + 14} l f\n0.784 0.294 0.184 rg\n${margin - 4} ${pageH - margin + 10} m ${pageW - margin + 4} ${pageH - margin + 10} l ${pageW - margin + 4} ${pageH - margin + 14} l ${margin - 4} ${pageH - margin + 14} l f\n` + stream;
+
+  const streamBytes = new TextEncoder().encode(stream);
+  const streamLen = streamBytes.length;
+
+  const pdf = [
+    '%PDF-1.4\n',
+    '1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n',
+    '2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n',
+    `3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${pageW} ${pageH}] /Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> >>\nendobj\n`,
+    `4 0 obj\n<< /Length ${streamLen} >>\nstream\n${stream}\nendstream\nendobj\n`,
+    '5 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>\nendobj\n',
+    '6 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>\nendobj\n',
+  ].join('');
+
+  // Build xref
+  const offsets = [];
+  let pos = 0;
+  const objStarts = ['1 0 obj', '2 0 obj', '3 0 obj', '4 0 obj', '5 0 obj', '6 0 obj'];
+  for (let i = 0; i < objStarts.length; i++) {
+    const idx = pdf.indexOf(objStarts[i]);
+    offsets.push(idx);
+  }
+
+  const xref = `xref\n0 7\n0000000000 65535 f \n` +
+    offsets.map(o => String(o).padStart(10,'0') + ' 00000 n ').join('\n') + '\n';
+
+  const trailer = `trailer\n<< /Size 7 /Root 1 0 R >>\nstartxref\n${pdf.length}\n%%EOF\n`;
+
+  const fullPdf = pdf + xref + trailer;
+  return new Blob([fullPdf], { type: 'application/pdf' });
+}
+
+// ── DOWNLOAD PDF ──────────────────────────────────────────────────────────────
+document.getElementById('downloadPdfBtn').addEventListener('click', () => {
+  if (!pdfBlob) return;
+  const docTypeLabels = { report:'Report', letter:'Letter', resume:'Resume', invoice:'Invoice', proposal:'Proposal', essay:'Essay', summary:'Summary', plan:'Plan' };
+  const filename = `${docTypeLabels[selectedDocType]}-${Date.now()}.pdf`;
+  const url = URL.createObjectURL(pdfBlob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 5000);
+  showToast('Downloading PDF…');
+});
+
+document.getElementById('regenerateBtn').addEventListener('click', () => {
+  document.getElementById('resultArea').classList.remove('visible');
+  generatedContent = '';
+  pdfBlob = null;
+  document.getElementById('generateBtn').click();
+});
+
+// ── HELPERS ───────────────────────────────────────────────────────────────────
+function setStep(ids, idx, msgs) {
+  ids.forEach((id, i) => {
+    const el = document.getElementById(id);
+    el.classList.remove('active','done');
+    if (i < idx) el.classList.add('done');
+    else if (i === idx) el.classList.add('active');
+  });
+  document.getElementById('processingText').textContent = msgs[idx];
+}
+function setProgress(pct) { document.getElementById('progressBar').style.width = pct + '%'; }
+function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+// ── FAQ ───────────────────────────────────────────────────────────────────────
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement, wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>

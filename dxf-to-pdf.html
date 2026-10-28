@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>DXF to PDF Converter | Convert DXF Drawings Online</title>
+<meta name="description" content="Convert DXF CAD drawings into high-quality PDF files. Maintain vector precision and layout, ideal for sharing technical designs or plans.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jpg2go.com/dxf-to-pdf">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="adsense.js"></script>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Convert DXF to PDF",
+    "url": "https://jpg2go.com/dxf-to-pdf",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Convert DXF CAD drawings into high-quality PDF files. Maintain vector precision and layout, ideal for sharing technical designs or plans."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a DXF file?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "DXF is a CAD drawing file format used for storing 2D and 3D design data from programs like AutoCAD."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why convert DXF files to PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PDF format makes CAD drawings easier to view, share, and print without requiring specialized CAD software."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will the drawing quality remain after conversion?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most converters preserve line quality, dimensions, and drawing details when converting DXF to PDF."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I convert DXF files without CAD software?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, online converters allow you to convert DXF files to PDF without installing any CAD programs."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is DXF to PDF conversion useful for sharing designs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, converting to PDF makes it easy to share CAD drawings with clients or team members who don't have CAD software."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I convert multiple DXF files at once?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Many online tools support batch conversion, allowing you to convert several DXF files to PDF in one process."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+
+<style>
+:root{--ink:#0d0d0d;--paper:#f7f4ee;--cream:#ede9df;--accent:#c84b2f;--accent-light:#e8d5cf;--muted:#7a7567;--border:#d4cfc4;--white:#ffffff;--shadow:0 2px 24px rgba(13,13,13,.08);--shadow-lg:0 8px 48px rgba(13,13,13,.12);--green:#1a8a4a;--green-light:#d4f0e0;--blue:#1e50a2;--blue-light:#dde8f7}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;min-height:100vh}
+
+/* HEADER */
+header{background:var(--ink);color:var(--paper);position:sticky;top:0;z-index:100;border-bottom:2px solid var(--accent)}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1.6rem;color:var(--paper);text-decoration:none;letter-spacing:-.02em}
+.logo span{color:var(--accent)}
+nav{display:flex;gap:2rem;align-items:center}
+nav a{color:#a8a39a;text-decoration:none;font-size:.875rem;font-weight:500;letter-spacing:.02em;transition:color .2s}
+nav a:hover{color:var(--paper)}
+.nav-cta{background:var(--accent);color:var(--white)!important;padding:.4rem 1rem;border-radius:4px;transition:background .2s!important}
+.nav-cta:hover{background:#a83825!important}
+.mobile-menu-toggle {display:none;background:none;border:none;cursor:pointer;padding:.5rem;flex-direction:column;gap:5px;align-items:center;justify-content:center;width:40px;height:40px}
+.mobile-menu-toggle span{display:block;width:24px;height:2px;background:var(--paper);transition:all .3s;border-radius:2px}
+.mobile-menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(6px,6px)}
+.mobile-menu-toggle.active span:nth-child(2){opacity:0}
+.mobile-menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
+.mobile-nav {display:none;position:fixed;top:64px;left:0;right:0;background:var(--ink);border-top:2px solid var(--accent);padding:1.5rem 2rem;flex-direction:column;gap:1rem;z-index:99;transform:translateY(-100%);opacity:0;transition:transform .3s,opacity .3s;visibility:hidden}
+.mobile-nav.active{display:flex;transform:translateY(0);opacity:1;visibility:visible}
+.mobile-nav a{color:#a8a39a;text-decoration:none;font-size:.95rem;font-weight:500;padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.1);transition:color .2s}
+.mobile-nav a:last-child{border-bottom:none}
+.mobile-nav a:hover{color:var(--paper)}
+.mobile-nav .nav-cta{background:var(--accent);color:var(--white)!important;padding:.75rem 1.5rem;border-radius:4px;text-align:center;border:none;margin-top:.5rem}
+
+/* HERO */
+.hero{background:var(--ink);color:var(--paper);padding:4rem 2rem 3.5rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(200,75,47,.2) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:1px;height:60px;background:linear-gradient(to bottom,transparent,rgba(200,75,47,.4))}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.12em;color:#c84b2f;text-transform:uppercase;border:1px solid rgba(200,75,47,.4);background:rgba(200,75,47,.12);padding:.3rem .9rem;border-radius:2px;margin-bottom:1.5rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5.5vw,3.6rem);font-weight:900;line-height:1.1;letter-spacing:-.03em;margin-bottom:1.25rem}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-desc{font-size:1.05rem;color:#9e9990;max-width:520px;margin:0 auto 1.75rem;font-weight:300;line-height:1.7}
+.hero-pills{display:flex;justify-content:center;flex-wrap:wrap;gap:.5rem}
+.hero-pill{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.06em;color:#a8a39a;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:.3rem .75rem;border-radius:100px}
+
+/* TOOL CARD */
+.tool-section{max-width:1000px;margin:-1.5rem auto 0;padding:0 1.5rem 4rem;position:relative;z-index:10}
+.tool-card{background:var(--white);border-radius:12px;box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid var(--border)}
+.tool-card-header{background:var(--cream);padding:1rem 1.5rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid var(--border)}
+.dot{width:12px;height:12px;border-radius:50%;display:inline-block}
+.dot-r{background:#ff5f57}.dot-y{background:#febc2e}.dot-g{background:#28c840}
+.tc-title{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--muted);margin-left:.5rem;letter-spacing:.05em}
+.tool-body{padding:1.5rem}
+
+/* DROP ZONE */
+.drop-zone{border:2px dashed var(--border);border-radius:10px;padding:2rem 2rem;margin-bottom:2rem;border-bottom:1px solid rgba(255,255,255,0.05);text-align:center;cursor:pointer;transition:border-color .2s,background .2s;background:var(--paper);position:relative}
+.drop-zone:hover,.drop-zone.drag-over{border-color:var(--accent);background:var(--accent-light)}
+.drop-zone input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.drop-icon{width:52px;height:52px;background:var(--accent-light);border:1px solid rgba(200,75,47,.3);border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:var(--accent)}
+.drop-zone h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:.4rem}
+.drop-zone p{font-size:.85rem;color:var(--muted);margin-bottom:0.75rem;color:var(--paper)}
+.formats-pill{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.08em;color:var(--accent);background:var(--accent-light);padding:.25rem .75rem;border-radius:100px;display:inline-block}
+
+/* FILE BAR */
+.file-bar{display:none;align-items:center;gap:.75rem;background:var(--paper);border:1.5px solid var(--border);border-radius:9px;padding:.65rem .9rem;margin-top:1.1rem}
+.file-bar.on{display:flex}
+.fb-icon{color:var(--accent);flex-shrink:0}
+.fb-info{flex:1;min-width:0}
+.fb-name{font-size:.83rem;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fb-meta{font-family:'DM Mono',monospace;font-size:.64rem;color:var(--muted);margin-top:.1rem}
+.fb-remove{background:none;border:none;cursor:pointer;color:var(--muted);padding:.25rem;border-radius:4px;display:flex;align-items:center;transition:color .15s,background .15s;flex-shrink:0}
+.fb-remove:hover{color:var(--accent);background:var(--accent-light)}
+
+/* DRAWING INFO */
+.drawing-info{display:none;background:var(--blue-light);border:1px solid rgba(30,80,162,.18);border-radius:10px;padding:1rem 1.25rem;margin-top:1.1rem}
+.drawing-info.on{display:flex;gap:1rem;align-items:flex-start;flex-wrap:wrap}
+.di-stat{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--blue);display:flex;flex-direction:column;gap:.15rem}
+.di-label{font-size:.6rem;text-transform:uppercase;letter-spacing:.09em;color:rgba(30,80,162,.55);font-weight:600}
+.di-value{font-weight:700;color:var(--blue);font-size:.78rem}
+
+/* PREVIEW CANVAS */
+.preview-section{display:none;margin-top:1.4rem}
+.preview-section.on{display:block}
+.preview-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.65rem;flex-wrap:wrap;gap:.5rem}
+.preview-label{font-family:'DM Mono',monospace;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.preview-controls{display:flex;gap:.45rem;align-items:center}
+.preview-ctrl-btn{font-family:'DM Mono',monospace;font-size:.66rem;background:var(--paper);border:1.5px solid var(--border);border-radius:5px;padding:.22rem .6rem;cursor:pointer;color:var(--muted);transition:all .15s}
+.preview-ctrl-btn:hover{border-color:var(--accent);color:var(--accent)}
+.preview-ctrl-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.canvas-wrap{background:#1a1a2e;border-radius:10px;border:1px solid var(--border);overflow:hidden;position:relative;line-height:0}
+.canvas-wrap canvas{display:block;width:100%;cursor:grab}
+.canvas-wrap canvas:active{cursor:grabbing}
+.canvas-hint{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--muted);margin-top:.5rem;text-align:center}
+
+/* LAYER LIST */
+.layer-section{display:none;margin-top:1.1rem}
+.layer-section.on{display:block}
+.layer-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.55rem;flex-wrap:wrap;gap:.5rem}
+.layer-label{font-family:'DM Mono',monospace;font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.layer-list{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:0.75rem;color:var(--paper)}
+.layer-pill{font-family:'DM Mono',monospace;font-size:.65rem;padding:.22rem .65rem;border-radius:100px;border:1.5px solid var(--border);cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:.35rem;background:var(--paper);color:var(--muted)}
+.layer-pill.active{background:var(--ink);border-color:var(--ink);color:#fff}
+.layer-swatch{width:9px;height:9px;border-radius:50%;flex-shrink:0;border:1px solid rgba(255,255,255,.2)}
+
+/* OPTIONS */
+.opts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:.85rem;margin-bottom:1.1rem;margin-top:1.1rem}
+.opt-field{display:flex;flex-direction:column;gap:.3rem}
+.opt-lbl{font-family:'DM Mono',monospace;font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
+.opt-select{background:var(--paper);border:1.5px solid var(--border);border-radius:6px;padding:.42rem .75rem;font-family:'DM Mono',monospace;font-size:.8rem;color:var(--ink);outline:none;transition:border-color .2s;cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%237a7567' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .6rem center;padding-right:2rem}
+.opt-select:focus{border-color:var(--accent)}
+.opt-input{background:var(--paper);border:1.5px solid var(--border);border-radius:6px;padding:.42rem .75rem;font-family:'DM Mono',monospace;font-size:.8rem;color:var(--ink);outline:none;transition:border-color .2s;width:100%}
+.opt-input:focus{border-color:var(--accent)}
+
+/* STATS BAR */
+.stats-bar{display:flex;gap:1.5rem;flex-wrap:wrap;background:var(--cream);border-radius:8px;padding:.65rem 1rem;margin-bottom:1.1rem}
+.stat{font-family:'DM Mono',monospace;font-size:.69rem;color:var(--muted)}
+.stat strong{color:var(--ink);font-weight:700}
+
+/* BUTTONS */
+.action-bar{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.1rem}
+.btn-p{background:var(--accent);color:var(--white);border:none;border-radius:6px;padding:.65rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:.875rem;font-weight:600;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;white-space:nowrap}
+.btn-p:hover{background:#a83825;transform:translateY(-1px)}
+.btn-p:disabled{background:var(--border);color:var(--muted);cursor:not-allowed;transform:none}
+.btn-s{background:transparent;color:var(--ink);border:1.5px solid var(--border);border-radius:6px;padding:.65rem 1.25rem;font-family:'DM Sans',sans-serif;font-size:.875rem;font-weight:500;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:.5rem;white-space:nowrap}
+.btn-s:hover{border-color:var(--ink);background:var(--cream)}
+
+/* PROGRESS */
+.prog-wrap{display:none;margin-top:1.5rem;flex-direction:column;align-items:center;gap:.85rem;background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:2rem}
+.prog-wrap.on{display:flex}
+.prog-spinner{width:44px;height:44px;border:3px solid var(--accent-light);border-top-color:var(--accent);border-radius:50%;animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.prog-lbl{font-family:'DM Mono',monospace;font-size:.78rem;color:var(--muted);text-align:center}
+.prog-bar-wrap{width:100%;max-width:300px;background:var(--border);border-radius:100px;height:5px;overflow:hidden}
+.prog-bar{height:100%;background:var(--accent);border-radius:100px;transition:width .35s ease;width:0%}
+.prog-steps{display:flex;flex-direction:column;gap:.35rem;width:100%;max-width:300px}
+.pstep{display:flex;align-items:center;gap:.5rem;font-family:'DM Mono',monospace;font-size:.65rem;color:#bbb;transition:color .2s}
+.pstep.active{color:var(--accent)}.pstep.done{color:var(--green)}
+.pstep-dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0}
+
+/* RESULT */
+.result-area{display:none;margin-top:1.5rem}
+.result-area.on{display:block}
+.result-box{background:var(--paper);border:1.5px solid var(--green);border-radius:10px;padding:1.35rem 1.5rem;display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap}
+.result-icon{width:52px;height:52px;background:var(--green-light);border:1px solid rgba(26,138,74,.25);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0}
+.result-info{flex:1;min-width:140px}
+.result-fname{font-weight:700;font-size:.95rem;color:var(--ink);margin-bottom:.2rem;word-break:break-all}
+.result-meta{font-family:'DM Mono',monospace;font-size:.67rem;color:var(--muted)}
+.result-btns{display:flex;gap:.6rem;flex-wrap:wrap}
+
+/* ERROR */
+.err-box{display:none;margin-top:1.25rem;background:#fff8f8;border:1.5px solid #fca5a5;border-radius:8px;padding:.9rem 1.1rem}
+.err-box.on{display:block}
+.err-box p{font-size:.85rem;color:#dc2626;line-height:1.6}
+
+/* CONTENT */
+.content-section{max-width:1000px;margin:0 auto;padding:4rem 1.5rem}
+.section-tag{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem;display:block}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;letter-spacing:-.02em;margin-bottom:1.25rem;line-height:1.2}
+.prose{color:#4a4640;font-size:.975rem;line-height:1.8;max-width:720px}
+.prose p{margin-bottom:0.75rem;color:var(--paper)}
+.prose p:last-child{margin-bottom:0}
+hr.divider{border:none;border-top:1px solid var(--border);max-width:1000px;margin:0 auto}
+
+/* HOW IT WORKS */
+.how-section{background:var(--ink);color:var(--paper);padding:2rem;position:relative;overflow:hidden}
+.how-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 100%,rgba(200,75,47,.14) 0%,transparent 70%);pointer-events:none}
+.how-inner{max-width:1000px;margin:0 auto;position:relative}
+.how-hdr{text-align:center;margin-bottom:1.5rem}
+.how-hdr .section-tag{color:#c84b2f}
+.how-hdr .section-title{color:var(--paper);margin-bottom:.3rem}
+.how-sub{color:#9e9990;font-size:.9rem;font-weight:300}
+.steps-grid{display:flex;align-items:stretch;gap:0}
+.step-card{flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:.9rem 1rem;transition:background .25s,border-color .25s,transform .25s}
+.step-card:hover{background:rgba(200,75,47,.08);border-color:rgba(200,75,47,.35);transform:translateY(-4px)}
+.step-conn{display:flex;align-items:center;justify-content:center;padding:0 .5rem;color:rgba(200,75,47,.5);flex-shrink:0;margin-top:-.75rem}
+.step-num{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:rgba(200,75,47,.25);line-height:1;margin-bottom:.3rem}
+.step-ico{width:36px;height:36px;background:rgba(200,75,47,.15);border:1px solid rgba(200,75,47,.3);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:.55rem;color:#c84b2f}
+.step-ttl{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:var(--paper);margin-bottom:.3rem}
+.step-dsc{font-size:.8rem;color:#9e9990;line-height:1.55;margin-bottom:.55rem}
+.step-dsc strong{color:#d4cfc4}
+.step-pill{display:inline-block;font-family:'DM Mono',monospace;font-size:.62rem;color:#c84b2f;background:rgba(200,75,47,.12);border:1px solid rgba(200,75,47,.25);padding:.18rem .55rem;border-radius:100px}
+.how-cta{text-align:center;margin-top:1.5rem;display:flex;flex-direction:column;align-items:center;gap:.55rem}
+.how-note{font-size:.8rem;color:#7a7567;font-family:'DM Mono',monospace}
+
+/* ENTITY SUPPORT TABLE */
+.ent-table-wrap{margin-top:2rem;overflow-x:auto}
+.ent-table{width:100%;border-collapse:collapse;font-size:.85rem}
+.ent-table th{font-family:'DM Mono',monospace;font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);text-align:left;padding:.65rem 1rem;border-bottom:2px solid var(--border);background:var(--cream)}
+.ent-table td{padding:.6rem 1rem;border-bottom:1px solid var(--border);color:#4a4640;vertical-align:top}
+.ent-table tr:last-child td{border-bottom:none}
+.ent-table tr:hover td{background:var(--paper)}
+.ent-table .mono{font-family:'DM Mono',monospace;font-size:.78rem;color:var(--accent)}
+.ent-table .check{color:var(--green);font-weight:700}
+.ent-table .partial{color:var(--blue);font-weight:600}
+
+/* GRIDS */
+.features-grid,.use-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(218px,1fr));gap:1rem;margin-top:2rem}
+.feature-card,.use-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.4rem 1.2rem;transition:box-shadow .2s,transform .2s}
+.feature-card:hover,.use-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.f-ico,.u-ico{font-size:1.75rem;margin-bottom:.7rem;display:block}
+.f-title,.u-title{font-weight:700;font-size:.9rem;margin-bottom:.35rem}
+.f-desc,.u-desc{font-size:.82rem;color:var(--muted);line-height:1.5}
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-top:2rem}
+.tip-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.2rem;transition:box-shadow .2s,transform .2s}
+.tip-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.tip-name{font-weight:700;font-size:.9rem;margin-bottom:.3rem;color:var(--ink)}
+.tip-tag{font-family:'DM Mono',monospace;font-size:.74rem;color:var(--accent);background:var(--accent-light);padding:.2rem .5rem;border-radius:4px;display:inline-block;margin-bottom:.5rem}
+.tip-desc{font-size:.82rem;color:var(--muted);line-height:1.5}
+
+/* FAQ */
+.faq-list{margin-top:2rem}
+.faq-item{border-bottom:1px solid var(--border);padding:1.25rem 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-weight:600;font-size:.95rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-q::after{content:'+';font-size:1.2rem;color:var(--accent);flex-shrink:0;transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-size:.9rem;color:var(--muted);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .3s ease,margin-top .3s}
+.faq-item.open .faq-a{max-height:360px;margin-top:.75rem}
+
+/* CTA */
+.cta-section{background:var(--ink);color:var(--paper);padding:1.5rem 2rem;border-bottom:1px solid rgba(255,255,255,0.05);text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(200,75,47,.18) 0%,transparent 70%);pointer-events:none}
+.cta-inner{max-width:640px;margin:0 auto;position:relative}
+.cta-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-bottom:0.75rem;color:var(--paper)}
+.cta-desc{font-size:1rem;color:#9e9990;font-weight:300;margin-bottom:0.75rem;line-height:1.7}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:0.5rem}
+.cta-note{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.06em;color:#5a5650;margin-top:0.75rem;display:block}
+
+/* BUTTONS */
+.btn-primary{background:var(--accent);color:var(--white);border:none;border-radius:6px;padding:0.65rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:0.875rem;font-weight:600;cursor:pointer;transition:all 0.18s;display:inline-flex;align-items:center;gap:0.5rem;text-decoration:none}
+.btn-primary:hover{background:#a83825;transform:translateY(-1px)}
+
+/* RELATED */
+.related-section { background: var(--cream); padding: 5rem 2rem; border-top: 1px solid var(--border); }
+.related-inner { max-width: 1000px; margin: 0 auto; }
+.related-header { margin-bottom: 2.5rem; }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+.related-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-decoration: none; color: inherit; display: block; transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s; position: relative; overflow: hidden; }
+.related-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--border); transition: background 0.2s; }
+.related-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); border-color: var(--accent); }
+.related-card:hover::before { background: var(--accent); }
+.related-card-icon { font-size: 1.85rem; margin-bottom: 0.85rem; display: block; }
+.related-card-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem; color: var(--ink); letter-spacing: -0.01em; }
+.related-card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin-bottom: 1rem; }
+.related-card-tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); background: var(--accent-light); padding: 0.2rem 0.5rem; border-radius: 3px; display: inline-block; }
+
+/* FOOTER */
+footer{background:var(--ink);color:#9e9990;padding:4rem 2rem 2rem;margin-top:3rem;border-top:1px solid rgba(255,255,255,0.05)}
+.footer-inner{max-width:1200px;
+  margin-top: 0;
+  border-top: 1px solid rgba(255,255,255,0.05);margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid #2a2a2a}
+.footer-brand .logo{display:block;margin-bottom:.75rem}
+.footer-brand p{font-size:.85rem;line-height:1.6;max-width:240px}
+.footer-social{display:flex;margin-top:1rem}
+.social-icon{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;color:#9e9990;transition:color .2s,transform .2s}
+.social-icon:hover{color:var(--paper);transform:translateY(-2px)}
+.footer-col-title{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--paper);font-weight:600;margin-bottom:0.75rem;color:var(--paper)}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.footer-links a{color:#9e9990;text-decoration:none;font-size:.85rem;transition:color .2s}
+.footer-links a:hover{color:var(--paper)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;font-size:.8rem;flex-wrap:wrap;gap:.75rem}
+
+/* TOAST */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--ink);color:var(--paper);padding:.75rem 1.5rem;border-radius:6px;font-size:.875rem;font-weight:500;transition:transform .3s cubic-bezier(.34,1.56,.64,1);z-index:999;border-left:3px solid var(--accent);white-space:nowrap;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeUp .6s ease both}
+.delay-1{animation-delay:.1s}
+@media(max-width:768px){nav{display:none}.mobile-menu-toggle {display:flex}.steps-grid{flex-direction:column}.step-conn{transform:rotate(90deg);padding:.25rem 0}.footer-grid{grid-template-columns:1fr 1fr}.opts-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr;gap:2rem}.footer-bottom{flex-direction:column;text-align:center}.result-box{flex-direction:column;text-align:center}.result-btns{justify-content:center}.opts-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">JPG2<span>Go</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="tools.html">Tools</a>
+      <a href="#tool" class="nav-cta">Convert Now</a>
+    </nav>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="tools.html" onclick="closeMobileMenu()">Tools</a>
+    <a href="#tool" class="nav-cta" onclick="closeMobileMenu()">Convert Now</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="fade-up">
+    <div class="hero-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            Convert DXF Drawings Online
+    </div>
+    <h1>Convert DXF to PDF</h1>
+    <p class="hero-desc">Convert DXF CAD drawing files into PDF documents online for easy viewing, printing, and sharing without needing specialized design or engineering software.</p>
+    <div class="hero-pills">
+      <span class="hero-pill">DXF → PDF</span>
+      <span class="hero-pill">Live Preview</span>
+      <span class="hero-pill">Layer Toggle</span>
+      <span class="hero-pill">Auto-fit &amp; Scale</span>
+      <span class="hero-pill">100% Private</span>
+    </div>
+  </div>
+</section>
+
+<section class="tool-section" id="tool">
+  <div class="tool-card fade-up delay-1">
+    <div class="tool-card-header">
+      <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+      <span class="tc-title">dxf-to-pdf · pure-js parser · pdf-lib renderer · layer-toggle · zero upload</span>
+    </div>
+    <div class="tool-body">
+
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" accept=".dxf">
+        <div class="drop-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        </div>
+        <h3>Drop your DXF file here</h3>
+        <p>Convert DXF CAD drawing files into PDF documents online for easy viewing, printing, and sharing without needing specialized design or engineering software.</p>
+        <span class="formats-pill">DXF → PDF · vector-accurate · layers preserved</span>
+      </div>
+
+      <!-- File bar -->
+      <div class="file-bar" id="fileBar">
+        <span class="fb-icon">
+          <svg width="18" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        </span>
+        <div class="fb-info">
+          <div class="fb-name" id="fbName">—</div>
+          <div class="fb-meta" id="fbMeta">—</div>
+        </div>
+        <button class="fb-remove" id="fbRemove" aria-label="Remove">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <!-- Drawing info bar -->
+      <div class="drawing-info" id="drawingInfo">
+        <div class="di-stat"><span class="di-label">Entities</span><span class="di-value" id="diEntities">—</span></div>
+        <div class="di-stat"><span class="di-label">Layers</span><span class="di-value" id="diLayers">—</span></div>
+        <div class="di-stat"><span class="di-label">Width</span><span class="di-value" id="diWidth">—</span></div>
+        <div class="di-stat"><span class="di-label">Height</span><span class="di-value" id="diHeight">—</span></div>
+        <div class="di-stat"><span class="di-label">Units</span><span class="di-value" id="diUnits">—</span></div>
+      </div>
+
+      <!-- Preview -->
+      <div class="preview-section" id="previewSection">
+        <div class="preview-header">
+          <span class="preview-label">Drawing Preview</span>
+          <div class="preview-controls">
+            <button class="preview-ctrl-btn" id="fitBtn">Fit</button>
+            <button class="preview-ctrl-btn" id="darkBtn">Dark</button>
+            <button class="preview-ctrl-btn" id="lightBtn">Light</button>
+          </div>
+        </div>
+        <div class="canvas-wrap" id="canvasWrap">
+          <canvas id="previewCanvas"></canvas>
+        </div>
+        <p class="canvas-hint">Scroll to zoom · Drag to pan</p>
+
+        <!-- Layers -->
+        <div class="layer-section" id="layerSection">
+          <div class="layer-header">
+            <span class="layer-label">Layers</span>
+          </div>
+          <div class="layer-list" id="layerList"></div>
+        </div>
+
+        <!-- Options -->
+        <div class="opts-grid">
+          <div class="opt-field">
+            <span class="opt-lbl">Page Size</span>
+            <select class="opt-select" id="pageSizeSelect">
+              <option value="a4l">A4 Landscape</option>
+              <option value="a4p">A4 Portrait</option>
+              <option value="a3l" selected>A3 Landscape</option>
+              <option value="a3p">A3 Portrait</option>
+              <option value="letter">US Letter Landscape</option>
+              <option value="a2l">A2 Landscape</option>
+            </select>
+          </div>
+          <div class="opt-field">
+            <span class="opt-lbl">Line Weight</span>
+            <select class="opt-select" id="lineWeightSelect">
+              <option value="0.5">Hairline (0.5 pt)</option>
+              <option value="1" selected>Fine (1 pt)</option>
+              <option value="1.5">Medium (1.5 pt)</option>
+              <option value="2.5">Bold (2.5 pt)</option>
+            </select>
+          </div>
+          <div class="opt-field">
+            <span class="opt-lbl">Color Mode</span>
+            <select class="opt-select" id="colorModeSelect">
+              <option value="black">All Black</option>
+              <option value="color" selected>By Layer</option>
+              <option value="white">White on Black</option>
+            </select>
+          </div>
+          <div class="opt-field">
+            <span class="opt-lbl">Margin</span>
+            <select class="opt-select" id="marginSelect">
+              <option value="20">Narrow (7 mm)</option>
+              <option value="40" selected>Normal (14 mm)</option>
+              <option value="60">Wide (21 mm)</option>
+            </select>
+          </div>
+          <div class="opt-field">
+            <span class="opt-lbl">Output Filename</span>
+            <input class="opt-input" id="filenameInput" type="text" value="drawing" maxlength="80">
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-bar">
+          <div class="stat">Entities: <strong id="statEntities">0</strong></div>
+          <div class="stat">Visible: <strong id="statVisible">0</strong></div>
+          <div class="stat">Layers: <strong id="statLayers">0</strong></div>
+        </div>
+
+        <!-- Actions -->
+        <div class="action-bar">
+          <button class="btn-p" id="convertBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Convert to PDF
+          </button>
+          <button class="btn-s" id="clearBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
+            Clear
+          </button>
+        </div>
+      </div>
+
+      <!-- Progress -->
+      <div class="prog-wrap" id="progWrap">
+        <div class="prog-spinner"></div>
+        <div class="prog-lbl" id="progLbl">Parsing DXF…</div>
+        <div class="prog-bar-wrap"><div class="prog-bar" id="progBar"></div></div>
+        <div class="prog-steps">
+          <div class="pstep" id="ps1"><span class="pstep-dot"></span>Parsing DXF entities</div>
+          <div class="pstep" id="ps2"><span class="pstep-dot"></span>Computing drawing bounds</div>
+          <div class="pstep" id="ps3"><span class="pstep-dot"></span>Rendering to PDF page</div>
+          <div class="pstep" id="ps4"><span class="pstep-dot"></span>Writing PDF file</div>
+        </div>
+      </div>
+
+      <!-- Error -->
+      <div class="err-box" id="errBox"><p id="errText"></p></div>
+
+      <!-- Result -->
+      <div class="result-area" id="resultArea">
+        <div class="result-box">
+          <div class="result-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 12 18 15 15"/><line x1="12" y1="12" x2="12" y2="18"/></svg>
+          </div>
+          <div class="result-info">
+            <div class="result-fname" id="resultFname">drawing.pdf</div>
+            <div class="result-meta" id="resultMeta">—</div>
+          </div>
+          <div class="result-btns">
+            <button class="btn-p" id="downloadBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download PDF
+            </button>
+            <button class="btn-s" id="convertAgainBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+              Convert Again
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="how-section" id="how-it-works">
+  <div class="how-inner">
+    <div class="how-hdr">
+      <span class="section-tag">Quick Guide</span>
+      <h2 class="section-title">How to Convert DXF to PDF</h2>
+      <p class="how-sub">Three steps. No software. No account.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+        <div class="step-ttl">Upload Your DXF</div>
+        <div class="step-dsc">Drop or select a <strong>DXF file</strong>. The drawing loads instantly — entities and layers are parsed, the drawing is previewed, and nothing is sent to a server.</div>
+        <span class="step-pill">any DXF file</span>
+      </div>
+      <div class="step-conn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/></svg></div>
+        <div class="step-ttl">Configure Output</div>
+        <div class="step-dsc"><strong>Toggle layers</strong> on or off, choose page size, line weight, color mode, and margin — the preview updates live as you adjust settings.</div>
+        <span class="step-pill">layers · scale · color</span>
+      </div>
+      <div class="step-conn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+        <div class="step-ttl">Download PDF</div>
+        <div class="step-dsc">Click <strong>Convert to PDF</strong>. Vector-accurate drawing data is written directly to a PDF page using pdf-lib — crisp at any zoom level.</div>
+        <span class="step-pill">vector PDF · instant</span>
+      </div>
+    </div>
+    <div class="how-cta">
+      <a href="#tool" class="btn-p">Convert a DXF Now</a>
+      <span class="how-note">free · no signup · no upload · no watermark</span>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="content-section" id="features">
+  <span class="section-tag">Features</span>
+  <h2 class="section-title">Everything in One Converter</h2>
+  <div class="features-grid">
+    <div class="feature-card"><span class="f-ico">📐</span><div class="f-title">Pure-JS DXF Parser</div><div class="f-desc">No third-party DXF library. The parser handles group codes, sections, blocks, and all common entity types from scratch.</div></div>
+    <div class="feature-card"><span class="f-ico">🖥️</span><div class="f-title">Live Canvas Preview</div><div class="f-desc">The drawing is rendered to a canvas immediately after loading — scroll to zoom, drag to pan, verify the layout before converting.</div></div>
+    <div class="feature-card"><span class="f-ico">🗂️</span><div class="f-title">Layer Toggle</div><div class="f-desc">Each layer in the DXF is listed with its colour. Toggle individual layers on or off — only visible layers are included in the PDF.</div></div>
+    <div class="feature-card"><span class="f-ico">🔢</span><div class="f-title">Vector-Accurate PDF</div><div class="f-desc">All geometry is drawn using pdf-lib's vector API — lines, curves, arcs — not rasterised screenshots. The result prints crisply at any scale.</div></div>
+    <div class="feature-card"><span class="f-ico">📏</span><div class="f-title">Auto-Fit Scaling</div><div class="f-desc">The drawing is automatically scaled to fill the chosen page size with your specified margin, regardless of the DXF's original coordinate units.</div></div>
+    <div class="feature-card"><span class="f-ico">🎨</span><div class="f-title">Color Modes</div><div class="f-desc">All Black (technical drawing style), By Layer (DXF ACI colours), or White on Black (blueprint/dark background style).</div></div>
+    <div class="feature-card"><span class="f-ico">🔒</span><div class="f-title">100% Private</div><div class="f-desc">Your DXF file never leaves your device. All parsing and PDF generation runs locally in the browser — no server, no cloud.</div></div>
+    <div class="feature-card"><span class="f-ico">💸</span><div class="f-title">Free Forever</div><div class="f-desc">No subscription, no credits, no watermark. JPG2Go is free for everyone, always.</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="content-section">
+  <span class="section-tag">Who It's For</span>
+  <h2 class="section-title">Who Uses a DXF to PDF Converter?</h2>
+  <div class="use-grid">
+    <div class="use-card"><span class="u-ico">📤</span><div class="u-title">Share with Clients</div><div class="u-desc">Send drawings to clients who don't have AutoCAD or a DXF viewer — PDF opens on every device without any software.</div></div>
+    <div class="use-card"><span class="u-ico">🖨️</span><div class="u-title">Print to Scale</div><div class="u-desc">Print technical drawings, floor plans, or schematics at correct A3 or A1 scale from any printer that accepts PDF.</div></div>
+    <div class="use-card"><span class="u-ico">📋</span><div class="u-title">Tender Documents</div><div class="u-desc">Include CAD drawings in PDF tender packs and specification documents without requiring recipients to have CAD software.</div></div>
+    <div class="use-card"><span class="u-ico">📁</span><div class="u-title">Archive Drawings</div><div class="u-desc">Convert DXF drawings to PDF for long-term archiving — PDF/A is the standard for archival documents and is far more stable than DXF versions.</div></div>
+    <div class="use-card"><span class="u-ico">✍️</span><div class="u-title">PDF Annotation</div><div class="u-desc">Convert to PDF then use a PDF reader to add markup, comments, and approval stamps without needing CAD software.</div></div>
+    <div class="use-card"><span class="u-ico">🌐</span><div class="u-title">Web Publishing</div><div class="u-desc">Embed a PDF of a DXF drawing in a website, portal, or document management system where DXF files cannot be previewed.</div></div>
+    <div class="use-card"><span class="u-ico">🔐</span><div class="u-title">Protect Your CAD Data</div><div class="u-desc">Share the visual output as PDF while keeping the editable DXF private — clients can see the drawing but cannot extract the geometry.</div></div>
+    <div class="use-card"><span class="u-ico">📱</span><div class="u-title">Mobile Viewing</div><div class="u-desc">DXF files require desktop CAD software. A PDF version opens on any phone, tablet, or site foreman's mobile device.</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="content-section">
+  <span class="section-tag">Pro Tips</span>
+  <h2 class="section-title">Get the Best DXF to PDF Results</h2>
+  <div class="tips-grid">
+    <div class="tip-card">
+      <div class="tip-name">Use "All Black" for Technical Drawings</div>
+      <div class="tip-tag">tip → color mode</div>
+      <div class="tip-desc">The "All Black" color mode produces the cleanest, most legible output for engineering drawings, architectural plans, and schematics — matching the convention of professional CAD print output. Use "By Layer" only when distinct layer colours add meaningful information to the reader.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">Turn Off Construction Layers</div>
+      <div class="tip-tag">tip → layer toggle</div>
+      <div class="tip-desc">Most CAD drawings have helper or construction layers (DEFPOINTS, XREF, HATCH_BG) that should not appear in a printed output. Toggle them off before converting — only include the geometry and annotation layers that are meaningful to the PDF's recipient.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">A3 Landscape for Most Technical Drawings</div>
+      <div class="tip-tag">tip → page size</div>
+      <div class="tip-desc">A3 landscape is the standard for most engineering and architectural drawings. Use A4 landscape for simple schematics or when the output needs to be a standard document insert. Choose A2 for large-format floor plans or site plans where detail visibility matters.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">Hairline Weight for Dense Drawings</div>
+      <div class="tip-tag">tip → line weight</div>
+      <div class="tip-desc">Drawings with many closely-spaced entities — PCB layouts, dense structural details, topographic maps — look cleaner with a hairline (0.5 pt) weight. Use medium (1.5 pt) or bold (2.5 pt) for presentation drawings or overview plans where bold geometry aids readability at a distance.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">Check the Preview Before Converting</div>
+      <div class="tip-tag">tip → preview</div>
+      <div class="tip-desc">Spend a moment reviewing the canvas preview. Scroll in to check text legibility and entity density. If the preview shows unexpected blank areas, the DXF may have entities far from the main drawing — toggle layers to identify and hide them before converting.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">Protect After Converting</div>
+      <div class="tip-tag">tip → distribution</div>
+      <div class="tip-desc">If you're sharing proprietary design drawings, use Protect PDF after converting to add a password that prevents the PDF from being further edited or printed. Combine with "Block Copying" to prevent text extraction from title block or specification notes.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="content-section" id="about">
+  <h2 class="section-title">Why JPG2Go DXF to PDF Converter?</h2>
+  <div class="prose">
+    <p>DXF (Drawing Exchange Format) is a plain-text CAD format developed by Autodesk. Each DXF file is structured into sections — HEADER, TABLES, BLOCKS, and ENTITIES — where the ENTITIES section contains all drawable geometry as sequential group-code/value pairs. This tool implements a full DXF group-code parser from scratch in JavaScript — no third-party DXF library is used.</p>
+    <p>The parser walks the file line-by-line, reading alternating group code (integer) and value lines. It builds an entity list recognising LINE, CIRCLE, ARC, LWPOLYLINE, POLYLINE/VERTEX, SPLINE (approximated), ELLIPSE, TEXT, MTEXT, POINT, SOLID, DIMENSION, and INSERT (block references from BLOCK definitions). Layer and colour information is extracted for each entity from group codes 8 (layer) and 62 (ACI colour index).</p>
+    <p>Drawing bounds are computed from all visible entity coordinates, then entities are scaled and translated to fit the chosen PDF page with the specified margin. All geometry is drawn using pdf-lib's vector drawing API — lines, curves, arcs — producing a true vector PDF that prints crisply at any size without rasterisation artifacts.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="content-section" id="faq">
+  <span class="section-tag">FAQ</span>
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">What is a DXF file?</div>
+      <div class="faq-a">DXF is a CAD drawing file format used for storing 2D and 3D design data from programs like AutoCAD.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Why convert DXF files to PDF?</div>
+      <div class="faq-a">PDF format makes CAD drawings easier to view, share, and print without requiring specialized CAD software.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Will the drawing quality remain after conversion?</div>
+      <div class="faq-a">Most converters preserve line quality, dimensions, and drawing details when converting DXF to PDF.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I convert DXF files without CAD software?</div>
+      <div class="faq-a">Yes, online converters allow you to convert DXF files to PDF without installing any CAD programs.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is DXF to PDF conversion useful for sharing designs?</div>
+      <div class="faq-a">Yes, converting to PDF makes it easy to share CAD drawings with clients or team members who don't have CAD software.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I convert multiple DXF files at once?</div>
+      <div class="faq-a">Many online tools support batch conversion, allowing you to convert several DXF files to PDF in one process.</div>
+    </div>
+  </div>
+</section>
+
+<section class="related-section" id="tools">
+  <div class="related-inner">
+    <div class="related-header">
+      <span class="section-tag">Related Tools</span>
+      <h2 class="section-title">More Free Online Tools</h2>
+    </div>
+    <div class="related-grid">
+      <a href="/jpg-to-pdf" class="related-card">
+        <span class="related-card-icon">📄</span>
+        <div class="related-card-name">JPG to PDF</div>
+        <div class="related-card-desc">Convert JPG images to PDF documents quickly. Combine multiple photos into a single organized PDF file for easy sharing and printing.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+      <a href="/image-resizer" class="related-card">
+        <span class="related-card-icon">📐</span>
+        <div class="related-card-name">Image Resizer</div>
+        <div class="related-card-desc">Resize images to exact pixel dimensions or a percentage of their original size. Runs entirely in your browser without uploading files anywhere.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/compress-jpeg" class="related-card">
+        <span class="related-card-icon">🗜️</span>
+        <div class="related-card-name">Compress JPEG</div>
+        <div class="related-card-desc">Reduce JPEG image file size while maintaining quality. Optimize images for faster web pages and lower storage usage.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/merge-pdf" class="related-card">
+        <span class="related-card-icon">📎</span>
+        <div class="related-card-name">Merge PDF</div>
+        <div class="related-card-desc">Combine multiple PDF files into a single organized document. Drag and drop to reorder pages easily.</div>
+        <span class="related-card-tag">PDF</span>
+      </a>
+      <a href="/crop-image" class="related-card">
+        <span class="related-card-icon">✂️</span>
+        <div class="related-card-name">Crop Image</div>
+        <div class="related-card-desc">Crop images to any aspect ratio or custom dimensions. Perfect for social media thumbnails, profile photos, and banner images.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/format-converter" class="related-card">
+        <span class="related-card-icon">🔄</span>
+        <div class="related-card-name">Format Converter</div>
+        <div class="related-card-desc">Convert images between different formats instantly. Transform JPG, PNG, WebP, and other image formats quickly.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner">
+    <span class="section-tag" style="color:var(--accent);">Get Started</span>
+    <h2 class="cta-title">Ready to Convert DXF to PDF?</h2>
+    <p class="cta-desc">Free, instant, and completely private. Drop a DXF file, configure settings, download the result — no account ever needed.</p>
+    <div class="cta-actions">
+      <a href="#tool" class="btn-primary" style="font-size:1rem;padding:0.85rem 2rem;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        Start Converting
+      </a>
+    </div>
+    <p class="cta-note">No account · No upload · No data stored · Works offline</p>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<div id="footer-placeholder"></div>
+<script src="load-footer.js"></script>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════════════════════════
+let dxfText    = null;
+let dxfFile    = null;
+let entities   = [];
+let layers     = {};     // name → {color:[r,g,b], visible:true}
+let blocks     = {};     // name → [entities]
+let bounds     = null;   // {minX,minY,maxX,maxY}
+let resultBlob = null;
+
+// Pan/zoom state for canvas preview
+let viewOffset = {x:0, y:0};
+let viewScale  = 1;
+let isDragging = false;
+let lastMouse  = {x:0, y:0};
+let bgDark     = true;
+
+// Page sizes in PDF points
+const PAGE_SIZES_PT = {
+  a4l:    [841.89, 595.28],
+  a4p:    [595.28, 841.89],
+  a3l:    [1190.55,841.89],
+  a3p:    [841.89,1190.55],
+  letter: [792,    612   ],
+  a2l:    [1683.78,1190.55],
+};
+
+// AutoCAD Color Index (ACI) → RGB for common colours
+const ACI_COLORS = {
+  1:[255,0,0], 2:[255,255,0], 3:[0,255,0], 4:[0,255,255],
+  5:[0,0,255], 6:[255,0,255], 7:[255,255,255], 8:[128,128,128],
+  9:[192,192,192], 10:[255,0,0], 30:[255,127,0], 40:[255,191,0],
+  50:[255,255,0], 60:[127,255,0], 70:[0,255,0], 80:[0,255,127],
+  90:[0,255,255], 100:[0,127,255], 110:[0,0,255], 120:[127,0,255],
+  130:[255,0,255], 140:[255,0,127], 150:[255,127,127], 160:[255,191,127],
+  170:[255,255,127], 180:[191,255,127], 190:[127,255,127],
+};
+function aciToRgb(aci) {
+  if (aci === 256) return null; // BYLAYER — use layer colour
+  if (aci === 0)   return null; // BYBLOCK
+  return ACI_COLORS[aci] || [100,100,100];
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// HELPERS
+// ═══════════════════════════════════════════════════════════════════════════
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+function fmtSize(b) {
+  if (b < 1024) return b + ' B';
+  if (b < 1048576) return (b/1024).toFixed(1) + ' KB';
+  return (b/1048576).toFixed(2) + ' MB';
+}
+function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
+function setP(pct, msg) {
+  document.getElementById('progBar').style.width = pct + '%';
+  if (msg !== undefined) document.getElementById('progLbl').textContent = msg;
+}
+function setStep(idx) {
+  ['ps1','ps2','ps3','ps4'].forEach((id, i) => {
+    const el = document.getElementById(id);
+    el.classList.remove('active','done');
+    if (i < idx) el.classList.add('done');
+    else if (i === idx) el.classList.add('active');
+  });
+}
+function deg2rad(d) { return d * Math.PI / 180; }
+function normalizeAngle(a) { while(a < 0) a += 360; while(a >= 360) a -= 360; return a; }
+
+// ═══════════════════════════════════════════════════════════════════════════
+// MOBILE MENU
+// ═══════════════════════════════════════════════════════════════════════════
+document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+  this.classList.toggle('active'); document.getElementById('mobileNav').classList.toggle('active');
+});
+
+// ═══════════════════════════════════════════════════════════════════════════
+// FILE INPUT
+// ═══════════════════════════════════════════════════════════════════════════
+const dropZone = document.getElementById('dropZone');
+document.getElementById('fileInput').addEventListener('change', e => {
+  if (e.target.files[0]) loadDxf(e.target.files[0]);
+  e.target.value = '';
+});
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault(); dropZone.classList.remove('drag-over');
+  const f = Array.from(e.dataTransfer.files).find(f => f.name.toLowerCase().endsWith('.dxf'));
+  if (f) loadDxf(f); else toast('Please drop a DXF file');
+});
+
+async function loadDxf(file) {
+  if (!file.name.toLowerCase().endsWith('.dxf')) { toast('Please select a DXF file'); return; }
+  dxfFile = file;
+  document.getElementById('fbName').textContent = file.name;
+  document.getElementById('fbMeta').textContent = fmtSize(file.size) + ' · DXF drawing';
+  document.getElementById('fileBar').classList.add('on');
+  dropZone.style.display = 'none';
+  document.getElementById('filenameInput').value = file.name.replace(/\.dxf$/i, '');
+
+  try {
+    dxfText = await file.text();
+    parseDxf();
+  } catch(err) {
+    toast('Could not read DXF: ' + err.message);
+    resetTool(true);
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// DXF PARSER
+// ═══════════════════════════════════════════════════════════════════════════
+function parseDxf() {
+  const lines = dxfText.split(/\r?\n/);
+  entities = [];
+  layers   = {};
+  blocks   = {};
+
+  let i = 0;
+  function peek() { return lines[i] ? lines[i].trim() : null; }
+  function nextCode() { return parseInt(lines[i++]?.trim() ?? '-1'); }
+  function nextVal()  { return (lines[i++] ?? '').trim(); }
+  function readPair() { return { code: nextCode(), val: nextVal() }; }
+
+  // Scan for sections
+  while (i < lines.length) {
+    const p = readPair();
+    if (p.code === 0 && p.val === 'SECTION') {
+      const sec = readPair();
+      if (sec.code === 2) {
+        if (sec.val === 'TABLES') parseTablesSection();
+        else if (sec.val === 'BLOCKS') parseBlocksSection();
+        else if (sec.val === 'ENTITIES') parseEntitiesSection(entities);
+        // skip other sections
+      }
+    }
+  }
+
+  function skipToEnd() {
+    while (i < lines.length) {
+      const p = readPair();
+      if (p.code === 0 && p.val === 'ENDSEC') return;
+    }
+  }
+
+  function parseTablesSection() {
+    while (i < lines.length) {
+      const p = readPair();
+      if (p.code === 0 && p.val === 'ENDSEC') return;
+      if (p.code === 0 && p.val === 'TABLE') {
+        const tp = readPair(); // 2 = table type
+        if (tp.code === 2 && tp.val === 'LAYER') {
+          parseLayerTable();
+        }
+      }
+    }
+  }
+
+  function parseLayerTable() {
+    while (i < lines.length) {
+      const p = readPair();
+      if (p.code === 0 && p.val === 'ENDTAB') return;
+      if (p.code === 0 && p.val === 'ENDSEC') { i -= 2; return; }
+      if (p.code === 0 && p.val === 'LAYER') {
+        let name = '0', aci = 7, frozen = false;
+        while (i < lines.length) {
+          const lp = readPair();
+          if (lp.code === 0) { i -= 2; break; }
+          if (lp.code === 2) name = lp.val;
+          else if (lp.code === 62) aci = parseInt(lp.val) || 7;
+          else if (lp.code === 70) frozen = !!(parseInt(lp.val) & 1);
+        }
+        const rgb = aciToRgb(Math.abs(aci)) || [220,220,220];
+        layers[name] = { color: rgb, visible: !frozen, aci: Math.abs(aci) };
+      }
+    }
+  }
+
+  function parseBlocksSection() {
+    while (i < lines.length) {
+      const p = readPair();
+      if (p.code === 0 && p.val === 'ENDSEC') return;
+      if (p.code === 0 && p.val === 'BLOCK') {
+        let blockName = '';
+        // read until we hit an entity or ENDBLK
+        while (i < lines.length) {
+          const bp = readPair();
+          if (bp.code === 2 && !blockName) { blockName = bp.val; continue; }
+          if (bp.code === 0) {
+            if (bp.val === 'ENDBLK') break;
+            // entity
+            const blockEntities = [];
+            parseEntity(bp.val, blockEntities);
+            // keep reading entities until ENDBLK
+            while (i < lines.length) {
+              const ep = readPair();
+              if (ep.code === 0) {
+                if (ep.val === 'ENDBLK') break;
+                parseEntity(ep.val, blockEntities);
+              }
+            }
+            if (blockName) blocks[blockName] = blockEntities;
+            break;
+          }
+        }
+      }
+    }
+  }
+
+  function parseEntitiesSection(target) {
+    while (i < lines.length) {
+      const p = readPair();
+      if (p.code === 0 && p.val === 'ENDSEC') return;
+      if (p.code === 0) parseEntity(p.val, target);
+    }
+  }
+
+  function parseEntity(type, target) {
+    const ent = { type, layer:'0', color:null, x:0, y:0 };
+    const props = {};
+    let inEntity = true;
+
+    while (i < lines.length && inEntity) {
+      const p = readPair();
+      if (p.code === 0) { i -= 2; inEntity = false; break; }
+      props[p.code] = props[p.code] !== undefined ? props[p.code] : p.val;
+      // Some codes appear multiple times (VERTEX coords, LWPOLYLINE vertices)
+      if (!props['_arr_' + p.code]) props['_arr_' + p.code] = [];
+      props['_arr_' + p.code].push(p.val);
+    }
+
+    ent.layer = props[8] || '0';
+    const rawColor = props[62] !== undefined ? parseInt(props[62]) : null;
+    ent.colorRaw = rawColor;
+
+    switch(type) {
+      case 'LINE':
+        target.push({ type:'LINE', layer:ent.layer, colorRaw:ent.colorRaw,
+          x1:+props[10]||0, y1:+props[20]||0, x2:+props[11]||0, y2:+props[21]||0 });
+        break;
+      case 'CIRCLE':
+        target.push({ type:'CIRCLE', layer:ent.layer, colorRaw:ent.colorRaw,
+          cx:+props[10]||0, cy:+props[20]||0, r:+props[40]||0 });
+        break;
+      case 'ARC':
+        target.push({ type:'ARC', layer:ent.layer, colorRaw:ent.colorRaw,
+          cx:+props[10]||0, cy:+props[20]||0, r:+props[40]||0,
+          startAngle:+props[50]||0, endAngle:+props[51]||360 });
+        break;
+      case 'ELLIPSE': {
+        const majX = +props[11]||1, majY = +props[21]||0;
+        const ratio = +props[40]||1;
+        const majR  = Math.sqrt(majX*majX + majY*majY);
+        const minR  = majR * ratio;
+        const rot   = Math.atan2(majY, majX);
+        target.push({ type:'ELLIPSE', layer:ent.layer, colorRaw:ent.colorRaw,
+          cx:+props[10]||0, cy:+props[20]||0, majR, minR, rot,
+          startParam:+props[41]||0, endParam:+props[42]||(Math.PI*2) });
+        break;
+      }
+      case 'LWPOLYLINE': {
+        const xs = (props['_arr_10'] || []).map(Number);
+        const ys = (props['_arr_20'] || []).map(Number);
+        const closed = !!(parseInt(props[70]||0) & 1);
+        const verts  = xs.map((x,i) => ({x, y: ys[i]||0}));
+        if (verts.length > 0) target.push({ type:'POLYLINE', layer:ent.layer, colorRaw:ent.colorRaw, verts, closed });
+        break;
+      }
+      case 'POLYLINE':
+        // Collect vertices
+        { const verts = [];
+          let closed = !!(parseInt(props[70]||0) & 1);
+          while (i < lines.length) {
+            const pp = readPair();
+            if (pp.code === 0) {
+              if (pp.val === 'VERTEX') {
+                const vp = {};
+                while (i < lines.length) {
+                  const vv = readPair();
+                  if (vv.code === 0) { i -= 2; break; }
+                  vp[vv.code] = vv.val;
+                }
+                verts.push({ x:+vp[10]||0, y:+vp[20]||0 });
+              } else { i -= 2; break; }
+            }
+          }
+          if (verts.length > 0) target.push({ type:'POLYLINE', layer:ent.layer, colorRaw:ent.colorRaw, verts, closed });
+        }
+        break;
+      case 'SPLINE': {
+        const xs = (props['_arr_10'] || []).map(Number);
+        const ys = (props['_arr_20'] || []).map(Number);
+        const verts = xs.map((x,i) => ({x, y: ys[i]||0}));
+        if (verts.length > 0) target.push({ type:'POLYLINE', layer:ent.layer, colorRaw:ent.colorRaw, verts, closed:false });
+        break;
+      }
+      case 'TEXT':
+        target.push({ type:'TEXT', layer:ent.layer, colorRaw:ent.colorRaw,
+          x:+props[10]||0, y:+props[20]||0, height:+props[40]||1,
+          text: props[1]||'', rotation:+props[50]||0 });
+        break;
+      case 'MTEXT':
+        { const raw = props[1]||'';
+          const clean = raw.replace(/\\[^;]+;/g,'').replace(/[{}]/g,'');
+          target.push({ type:'TEXT', layer:ent.layer, colorRaw:ent.colorRaw,
+            x:+props[10]||0, y:+props[20]||0, height:+props[40]||1,
+            text:clean, rotation:+props[50]||0 });
+        }
+        break;
+      case 'POINT':
+        target.push({ type:'POINT', layer:ent.layer, colorRaw:ent.colorRaw,
+          x:+props[10]||0, y:+props[20]||0 });
+        break;
+      case 'SOLID': {
+        const p1 = {x:+props[10]||0, y:+props[20]||0};
+        const p2 = {x:+props[11]||0, y:+props[21]||0};
+        const p3 = {x:+props[12]||0, y:+props[22]||0};
+        const p4 = {x:+props[13]||p3.x, y:+props[23]||p3.y};
+        target.push({ type:'SOLID', layer:ent.layer, colorRaw:ent.colorRaw, p1,p2,p3,p4 });
+        break;
+      }
+      case 'INSERT': {
+        const bname = props[2]||'';
+        const ix = +props[10]||0, iy = +props[20]||0;
+        const sx = +props[41]||1, sy = +props[42]||1;
+        const rot = +props[50]||0;
+        const bEnts = blocks[bname];
+        if (bEnts) {
+          const cos = Math.cos(deg2rad(rot)), sin = Math.sin(deg2rad(rot));
+          for (const be of bEnts) {
+            const te = transformEntity(be, ix, iy, sx, sy, cos, sin);
+            if (te) target.push(te);
+          }
+        }
+        break;
+      }
+      // skip unsupported entity types silently
+    }
+  }
+
+  function transformEntity(ent, tx, ty, sx, sy, cos, sin) {
+    function tp(x, y) {
+      const rx = x * sx, ry = y * sy;
+      return { x: tx + rx*cos - ry*sin, y: ty + rx*sin + ry*cos };
+    }
+    switch(ent.type) {
+      case 'LINE': {
+        const a = tp(ent.x1,ent.y1), b = tp(ent.x2,ent.y2);
+        return {...ent, x1:a.x, y1:a.y, x2:b.x, y2:b.y};
+      }
+      case 'CIRCLE': {
+        const c = tp(ent.cx,ent.cy);
+        return {...ent, cx:c.x, cy:c.y, r:ent.r*Math.max(sx,sy)};
+      }
+      case 'ARC': {
+        const c = tp(ent.cx,ent.cy);
+        return {...ent, cx:c.x, cy:c.y, r:ent.r*Math.max(sx,sy),
+          startAngle:ent.startAngle+Math.atan2(sin,cos)*180/Math.PI,
+          endAngle:ent.endAngle+Math.atan2(sin,cos)*180/Math.PI};
+      }
+      case 'POLYLINE': {
+        const verts = ent.verts.map(v => { const p = tp(v.x,v.y); return {x:p.x,y:p.y}; });
+        return {...ent, verts};
+      }
+      case 'TEXT': {
+        const p = tp(ent.x,ent.y);
+        return {...ent, x:p.x, y:p.y, height:ent.height*Math.max(sx,sy)};
+      }
+      case 'POINT': {
+        const p = tp(ent.x,ent.y);
+        return {...ent, x:p.x, y:p.y};
+      }
+      default: return null;
+    }
+  }
+
+  // Ensure default layer
+  if (!layers['0']) layers['0'] = { color:[220,220,220], visible:true, aci:7 };
+
+  // Compute bounds
+  computeBounds();
+  updateUI();
+  renderPreview();
+  toast(entities.length + ' entities loaded from ' + Object.keys(layers).length + ' layers');
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// BOUNDS
+// ═══════════════════════════════════════════════════════════════════════════
+function computeBounds(entsOverride) {
+  const ents = entsOverride || entities;
+  let minX=Infinity, minY=Infinity, maxX=-Infinity, maxY=-Infinity;
+  function upd(x,y) {
+    if (isFinite(x) && isFinite(y)) {
+      minX=Math.min(minX,x); minY=Math.min(minY,y);
+      maxX=Math.max(maxX,x); maxY=Math.max(maxY,y);
+    }
+  }
+  for (const e of ents) {
+    if (!isLayerVisible(e.layer)) continue;
+    switch(e.type) {
+      case 'LINE': upd(e.x1,e.y1); upd(e.x2,e.y2); break;
+      case 'CIRCLE': upd(e.cx-e.r,e.cy-e.r); upd(e.cx+e.r,e.cy+e.r); break;
+      case 'ARC': upd(e.cx-e.r,e.cy-e.r); upd(e.cx+e.r,e.cy+e.r); break;
+      case 'ELLIPSE': upd(e.cx-e.majR,e.cy-e.majR); upd(e.cx+e.majR,e.cy+e.majR); break;
+      case 'POLYLINE': e.verts.forEach(v => upd(v.x,v.y)); break;
+      case 'TEXT': upd(e.x,e.y); break;
+      case 'POINT': upd(e.x,e.y); break;
+      case 'SOLID': upd(e.p1.x,e.p1.y); upd(e.p2.x,e.p2.y); upd(e.p3.x,e.p3.y); upd(e.p4.x,e.p4.y); break;
+    }
+  }
+  if (!isFinite(minX)) { minX=0; minY=0; maxX=100; maxY=100; }
+  bounds = {minX,minY,maxX,maxY};
+}
+
+function isLayerVisible(name) {
+  const l = layers[name];
+  return !l || l.visible !== false;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// UPDATE UI
+// ═══════════════════════════════════════════════════════════════════════════
+function updateUI() {
+  const w = bounds.maxX - bounds.minX;
+  const h = bounds.maxY - bounds.minY;
+  document.getElementById('diEntities').textContent = entities.length;
+  document.getElementById('diLayers').textContent   = Object.keys(layers).length;
+  document.getElementById('diWidth').textContent    = w.toFixed(1);
+  document.getElementById('diHeight').textContent   = h.toFixed(1);
+  document.getElementById('diUnits').textContent    = 'DXF units';
+  document.getElementById('drawingInfo').classList.add('on');
+
+  document.getElementById('statEntities').textContent = entities.length;
+  document.getElementById('statLayers').textContent   = Object.keys(layers).length;
+  updateVisibleCount();
+
+  // Render layer pills
+  const list = document.getElementById('layerList');
+  list.innerHTML = '';
+  Object.entries(layers).forEach(([name, info]) => {
+    const pill = document.createElement('button');
+    pill.className = 'layer-pill' + (info.visible !== false ? ' active' : '');
+    const [r,g,b] = info.color;
+    const isWhite = (r > 200 && g > 200 && b > 200);
+    const swatchBg = isWhite ? '#888' : `rgb(${r},${g},${b})`;
+    pill.innerHTML = `<span class="layer-swatch" style="background:${swatchBg}"></span>${name}`;
+    pill.addEventListener('click', () => {
+      info.visible = info.visible === false ? true : false;
+      pill.classList.toggle('active', info.visible !== false);
+      computeBounds();
+      updateVisibleCount();
+      renderPreview();
+    });
+    list.appendChild(pill);
+  });
+
+  document.getElementById('layerSection').classList.add('on');
+  document.getElementById('previewSection').classList.add('on');
+}
+
+function updateVisibleCount() {
+  const vis = entities.filter(e => isLayerVisible(e.layer)).length;
+  document.getElementById('statVisible').textContent = vis;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// CANVAS PREVIEW
+// ═══════════════════════════════════════════════════════════════════════════
+function renderPreview() {
+  const wrap   = document.getElementById('canvasWrap');
+  const canvas = document.getElementById('previewCanvas');
+  const W = wrap.clientWidth || 800;
+  const H = Math.round(W * 0.6);
+  canvas.width  = W;
+  canvas.height = H;
+  canvas.style.height = H + 'px';
+
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = bgDark ? '#1a1a2e' : '#f8f8f5';
+  ctx.fillRect(0, 0, W, H);
+
+  const dw = bounds.maxX - bounds.minX;
+  const dh = bounds.maxY - bounds.minY;
+  if (dw === 0 || dh === 0) return;
+
+  const padding = 20;
+  const baseScale = Math.min((W - padding*2) / dw, (H - padding*2) / dh);
+  const scale = baseScale * viewScale;
+  const ox = padding + (W - padding*2 - dw*scale)/2 + viewOffset.x;
+  const oy = padding + (H - padding*2 - dh*scale)/2 + viewOffset.y;
+
+  // DXF → canvas coord: flip Y
+  function tx(x) { return ox + (x - bounds.minX) * scale; }
+  function ty(y) { return oy + (bounds.maxY - y) * scale; }
+
+  const defColor = bgDark ? '#dde' : '#222';
+
+  function getColor(ent) {
+    const rawAci = ent.colorRaw;
+    let rgb;
+    if (rawAci !== null && rawAci !== undefined && rawAci !== 256 && rawAci !== 0) {
+      rgb = aciToRgb(Math.abs(rawAci));
+    }
+    if (!rgb) {
+      const layer = layers[ent.layer] || layers['0'];
+      rgb = layer ? layer.color : [200,200,200];
+    }
+    if (!rgb) return defColor;
+    // Adjust white/near-white on dark bg
+    if (bgDark) {
+      if (rgb[0] > 220 && rgb[1] > 220 && rgb[2] > 220) rgb = [240,240,240];
+    } else {
+      if (rgb[0] > 220 && rgb[1] > 220 && rgb[2] > 220) rgb = [60,60,60];
+    }
+    return `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
+  }
+
+  for (const e of entities) {
+    if (!isLayerVisible(e.layer)) continue;
+    ctx.strokeStyle = getColor(e);
+    ctx.fillStyle   = getColor(e);
+    ctx.lineWidth   = 1;
+
+    switch(e.type) {
+      case 'LINE':
+        ctx.beginPath(); ctx.moveTo(tx(e.x1),ty(e.y1)); ctx.lineTo(tx(e.x2),ty(e.y2)); ctx.stroke(); break;
+      case 'CIRCLE':
+        ctx.beginPath(); ctx.arc(tx(e.cx),ty(e.cy),e.r*scale,0,Math.PI*2); ctx.stroke(); break;
+      case 'ARC': {
+        const sa = -deg2rad(e.endAngle);
+        const ea = -deg2rad(e.startAngle);
+        ctx.beginPath(); ctx.arc(tx(e.cx),ty(e.cy),e.r*scale,sa,ea,false); ctx.stroke(); break;
+      }
+      case 'ELLIPSE': {
+        ctx.beginPath();
+        ctx.ellipse(tx(e.cx),ty(e.cy),e.majR*scale,e.minR*scale,-e.rot,e.startParam,e.endParam);
+        ctx.stroke(); break;
+      }
+      case 'POLYLINE':
+        if (e.verts.length < 2) break;
+        ctx.beginPath(); ctx.moveTo(tx(e.verts[0].x),ty(e.verts[0].y));
+        for (let v=1; v<e.verts.length; v++) ctx.lineTo(tx(e.verts[v].x),ty(e.verts[v].y));
+        if (e.closed) ctx.closePath();
+        ctx.stroke(); break;
+      case 'TEXT':
+        { const fs = Math.max(5, e.height*scale*0.85);
+          ctx.font = `${fs}px sans-serif`;
+          ctx.save();
+          ctx.translate(tx(e.x),ty(e.y));
+          ctx.rotate(-deg2rad(e.rotation));
+          ctx.fillText(e.text, 0, 0);
+          ctx.restore(); break; }
+      case 'POINT':
+        ctx.beginPath(); ctx.arc(tx(e.x),ty(e.y),2,0,Math.PI*2); ctx.fill(); break;
+      case 'SOLID':
+        ctx.beginPath();
+        ctx.moveTo(tx(e.p1.x),ty(e.p1.y)); ctx.lineTo(tx(e.p2.x),ty(e.p2.y));
+        ctx.lineTo(tx(e.p4.x),ty(e.p4.y)); ctx.lineTo(tx(e.p3.x),ty(e.p3.y));
+        ctx.closePath(); ctx.fill(); break;
+    }
+  }
+}
+
+// Canvas pan/zoom
+const canvas = document.getElementById('previewCanvas');
+canvas.addEventListener('wheel', e => {
+  e.preventDefault();
+  const factor = e.deltaY < 0 ? 1.15 : 0.87;
+  viewScale = Math.max(0.1, Math.min(50, viewScale * factor));
+  renderPreview();
+}, { passive: false });
+canvas.addEventListener('mousedown', e => { isDragging=true; lastMouse={x:e.clientX,y:e.clientY}; });
+window.addEventListener('mousemove', e => {
+  if (!isDragging) return;
+  viewOffset.x += e.clientX - lastMouse.x;
+  viewOffset.y += e.clientY - lastMouse.y;
+  lastMouse = {x:e.clientX, y:e.clientY};
+  renderPreview();
+});
+window.addEventListener('mouseup', () => { isDragging=false; });
+canvas.addEventListener('touchstart', e => { lastMouse={x:e.touches[0].clientX,y:e.touches[0].clientY}; isDragging=true; }, {passive:true});
+canvas.addEventListener('touchmove', e => {
+  if (!isDragging) return;
+  viewOffset.x += e.touches[0].clientX - lastMouse.x;
+  viewOffset.y += e.touches[0].clientY - lastMouse.y;
+  lastMouse={x:e.touches[0].clientX,y:e.touches[0].clientY};
+  renderPreview();
+}, {passive:true});
+canvas.addEventListener('touchend', () => { isDragging=false; });
+
+document.getElementById('fitBtn').addEventListener('click', () => {
+  viewOffset={x:0,y:0}; viewScale=1; renderPreview();
+});
+document.getElementById('darkBtn').addEventListener('click', () => { bgDark=true; renderPreview(); });
+document.getElementById('lightBtn').addEventListener('click', () => { bgDark=false; renderPreview(); });
+
+window.addEventListener('resize', () => { if (entities.length) renderPreview(); });
+
+// Re-render on option changes
+['pageSizeSelect','lineWeightSelect','colorModeSelect','marginSelect'].forEach(id => {
+  document.getElementById(id).addEventListener('change', () => { if (entities.length) renderPreview(); });
+});
+
+// ═══════════════════════════════════════════════════════════════════════════
+// CONVERT TO PDF
+// ═══════════════════════════════════════════════════════════════════════════
+document.getElementById('convertBtn').addEventListener('click', doConvert);
+
+async function doConvert() {
+  if (!entities.length) { toast('No entities to convert'); return; }
+  if (!window.PDFLib) { toast('pdf-lib is still loading — please wait'); return; }
+
+  const pageSizeKey = document.getElementById('pageSizeSelect').value;
+  const lineWeight  = parseFloat(document.getElementById('lineWeightSelect').value);
+  const colorMode   = document.getElementById('colorModeSelect').value;
+  const margin      = parseInt(document.getElementById('marginSelect').value);
+
+  document.getElementById('progWrap').classList.add('on');
+  document.getElementById('resultArea').classList.remove('on');
+  document.getElementById('errBox').classList.remove('on');
+  document.getElementById('convertBtn').disabled = true;
+  resultBlob = null;
+  setP(0); setStep(0);
+  await wait(50);
+
+  try {
+    setStep(0); setP(8, 'Parsing DXF entities…');
+    await wait(30);
+
+    const [pageW, pageH] = PAGE_SIZES_PT[pageSizeKey];
+    const pdfDoc  = await PDFLib.PDFDocument.create();
+    const page    = pdfDoc.addPage([pageW, pageH]);
+
+    setStep(1); setP(22, 'Computing drawing bounds…');
+    await wait(20);
+
+    const dw = bounds.maxX - bounds.minX;
+    const dh = bounds.maxY - bounds.minY;
+    const drawW = pageW - margin * 2;
+    const drawH = pageH - margin * 2;
+    const scale = Math.min(drawW / dw, drawH / dh);
+    const offX  = margin + (drawW - dw * scale) / 2;
+    const offY  = margin + (drawH - dh * scale) / 2;
+
+    function ptx(x) { return offX + (x - bounds.minX) * scale; }
+    // pdf-lib Y origin is bottom-left; DXF Y is also bottom-up, so we don't flip
+    function pty(y) { return offY + (y - bounds.minY) * scale; }
+
+    function resolveColor(ent) {
+      if (colorMode === 'black') return PDFLib.rgb(0,0,0);
+      if (colorMode === 'white') return PDFLib.rgb(1,1,1);
+      // By layer
+      let rawAci = ent.colorRaw;
+      let rgb;
+      if (rawAci !== null && rawAci !== undefined && rawAci !== 256 && rawAci !== 0) {
+        rgb = aciToRgb(Math.abs(rawAci));
+      }
+      if (!rgb) {
+        const layer = layers[ent.layer] || layers['0'];
+        rgb = layer ? layer.color : [50,50,50];
+      }
+      if (!rgb) rgb = [0,0,0];
+      return PDFLib.rgb(rgb[0]/255, rgb[1]/255, rgb[2]/255);
+    }
+
+    if (colorMode === 'white') {
+      page.drawRectangle({ x:0, y:0, width:pageW, height:pageH, color:PDFLib.rgb(0.05,0.05,0.15) });
+    }
+
+    setStep(2); setP(35, 'Rendering to PDF page…');
+    await wait(20);
+
+    // Embed a font for text
+    const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+
+    let drawn = 0;
+    for (const e of entities) {
+      if (!isLayerVisible(e.layer)) continue;
+      const color = resolveColor(e);
+      const lw    = lineWeight;
+
+      switch(e.type) {
+        case 'LINE':
+          page.drawLine({ start:{x:ptx(e.x1),y:pty(e.y1)}, end:{x:ptx(e.x2),y:pty(e.y2)},
+            thickness:lw, color }); break;
+
+        case 'CIRCLE':
+          page.drawCircle({ x:ptx(e.cx), y:pty(e.cy), size:e.r*scale,
+            borderColor:color, borderWidth:lw, color:PDFLib.rgb(0,0,0,0) }); break;
+
+        case 'ARC': {
+          // Draw arc as polyline approximation
+          const steps = Math.max(12, Math.round(e.r * scale * 0.5));
+          let sa = e.startAngle, ea = e.endAngle;
+          if (ea <= sa) ea += 360;
+          const pts = [];
+          for (let s = 0; s <= steps; s++) {
+            const a = deg2rad(sa + (ea - sa) * s / steps);
+            pts.push({ x: ptx(e.cx + e.r * Math.cos(a)), y: pty(e.cy + e.r * Math.sin(a)) });
+          }
+          for (let s = 0; s < pts.length-1; s++) {
+            page.drawLine({ start:pts[s], end:pts[s+1], thickness:lw, color });
+          }
+          break;
+        }
+
+        case 'ELLIPSE': {
+          const steps = 48;
+          const pts = [];
+          const sp = e.startParam, ep2 = e.endParam > e.startParam ? e.endParam : e.endParam + Math.PI*2;
+          for (let s = 0; s <= steps; s++) {
+            const t = sp + (ep2 - sp) * s / steps;
+            const lx = e.majR * Math.cos(t);
+            const ly = e.minR * Math.sin(t);
+            const rx = lx * Math.cos(e.rot) - ly * Math.sin(e.rot);
+            const ry = lx * Math.sin(e.rot) + ly * Math.cos(e.rot);
+            pts.push({ x: ptx(e.cx + rx), y: pty(e.cy + ry) });
+          }
+          for (let s = 0; s < pts.length-1; s++) {
+            page.drawLine({ start:pts[s], end:pts[s+1], thickness:lw, color });
+          }
+          break;
+        }
+
+        case 'POLYLINE':
+          if (e.verts.length >= 2) {
+            for (let v = 0; v < e.verts.length - 1; v++) {
+              page.drawLine({
+                start: {x:ptx(e.verts[v].x), y:pty(e.verts[v].y)},
+                end:   {x:ptx(e.verts[v+1].x), y:pty(e.verts[v+1].y)},
+                thickness:lw, color
+              });
+            }
+            if (e.closed && e.verts.length > 2) {
+              page.drawLine({
+                start: {x:ptx(e.verts[e.verts.length-1].x), y:pty(e.verts[e.verts.length-1].y)},
+                end:   {x:ptx(e.verts[0].x), y:pty(e.verts[0].y)},
+                thickness:lw, color
+              });
+            }
+          }
+          break;
+
+        case 'TEXT': {
+          const fs = Math.max(4, e.height * scale * 0.72);
+          try {
+            page.drawText(e.text, { x:ptx(e.x), y:pty(e.y), size:fs, font, color,
+              rotate: PDFLib.degrees(e.rotation) });
+          } catch(te) {}
+          break;
+        }
+
+        case 'POINT':
+          page.drawCircle({ x:ptx(e.x), y:pty(e.y), size:lw*1.5, color }); break;
+
+        case 'SOLID':
+          // Draw as two triangles using lines
+          page.drawLine({ start:{x:ptx(e.p1.x),y:pty(e.p1.y)}, end:{x:ptx(e.p2.x),y:pty(e.p2.y)}, thickness:lw, color });
+          page.drawLine({ start:{x:ptx(e.p2.x),y:pty(e.p2.y)}, end:{x:ptx(e.p4.x),y:pty(e.p4.y)}, thickness:lw, color });
+          page.drawLine({ start:{x:ptx(e.p4.x),y:pty(e.p4.y)}, end:{x:ptx(e.p3.x),y:pty(e.p3.y)}, thickness:lw, color });
+          page.drawLine({ start:{x:ptx(e.p3.x),y:pty(e.p3.y)}, end:{x:ptx(e.p1.x),y:pty(e.p1.y)}, thickness:lw, color });
+          break;
+      }
+
+      drawn++;
+      if (drawn % 300 === 0) {
+        setP(35 + Math.round((drawn / entities.length) * 45), `Rendering entity ${drawn}…`);
+        await wait(2);
+      }
+    }
+
+    setStep(3); setP(82, 'Writing PDF file…');
+    await wait(30);
+
+    const pdfBytes = await pdfDoc.save();
+    setP(100, 'Done!');
+    await wait(100);
+
+    resultBlob = new Blob([pdfBytes], { type:'application/pdf' });
+    const fname = (document.getElementById('filenameInput').value.trim() || 'drawing') + '.pdf';
+    const visCount = entities.filter(e => isLayerVisible(e.layer)).length;
+
+    document.getElementById('resultFname').textContent = fname;
+    document.getElementById('resultMeta').textContent  =
+      fmtSize(pdfBytes.length) + ' · ' + visCount + ' entities · ' + pageSizeKey.toUpperCase() + ' · vector PDF';
+
+    document.getElementById('progWrap').classList.remove('on');
+    document.getElementById('resultArea').classList.add('on');
+    document.getElementById('resultArea').scrollIntoView({ behavior:'smooth', block:'nearest' });
+    toast('PDF created — vector-accurate drawing');
+
+  } catch(err) {
+    document.getElementById('progWrap').classList.remove('on');
+    document.getElementById('errBox').classList.add('on');
+    document.getElementById('errText').textContent = 'Conversion failed: ' + (err.message || String(err));
+    toast('Conversion failed — see error above');
+    console.error(err);
+  }
+
+  document.getElementById('convertBtn').disabled = false;
+}
+
+// ═══ DOWNLOAD ═════════════════════════════════════════════════════
+document.getElementById('downloadBtn').addEventListener('click', () => {
+  if (!resultBlob) return;
+  const fname = (document.getElementById('filenameInput').value.trim() || 'drawing') + '.pdf';
+  const url = URL.createObjectURL(resultBlob);
+  const a = document.createElement('a');
+  a.href = url; a.download = fname; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 8000);
+  toast('Downloading ' + fname + '…');
+});
+
+document.getElementById('convertAgainBtn').addEventListener('click', () => {
+  document.getElementById('resultArea').classList.remove('on');
+  resultBlob = null;
+  toast('Adjust settings and convert again');
+});
+document.getElementById('clearBtn').addEventListener('click', () => resetTool(true));
+document.getElementById('fbRemove').addEventListener('click', () => resetTool(true));
+
+function resetTool(showDrop) {
+  dxfText=null; dxfFile=null; entities=[]; layers={}; blocks={}; bounds=null; resultBlob=null;
+  viewOffset={x:0,y:0}; viewScale=1;
+  document.getElementById('fileBar').classList.remove('on');
+  document.getElementById('drawingInfo').classList.remove('on');
+  document.getElementById('previewSection').classList.remove('on');
+  document.getElementById('layerSection').classList.remove('on');
+  document.getElementById('progWrap').classList.remove('on');
+  document.getElementById('resultArea').classList.remove('on');
+  document.getElementById('errBox').classList.remove('on');
+  if (showDrop) { dropZone.style.display=''; toast('Cleared'); }
+}
+
+// ═══ FAQ ══════════════════════════════════════════════════════════
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement; const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+function closeMobileMenu() {
+  document.getElementById('mobileMenuToggle').classList.remove('active');
+  document.getElementById('mobileNav').classList.remove('active');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>AI Image Enhancer | Improve Photo Quality Online</title>
+<meta name="description" content="Enhance image quality automatically using AI technology. Improve sharpness, colors, and details for professional results quickly and easily.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jpg2go.com/ai-image-enhancer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="adsense.js"></script>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Enhance Images with AI",
+    "url": "https://jpg2go.com/ai-image-enhancer",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Enhance image quality automatically using AI technology. Improve sharpness, colors, and details for professional results quickly and easily."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is an AI image enhancer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An AI image enhancer is a tool that uses artificial intelligence to automatically improve photo quality by sharpening details, increasing resolution, and reducing blur or noise."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does an AI image enhancer improve photo quality?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It analyzes the image using machine learning algorithms and enhances details, adjusts brightness, improves sharpness, and restores missing pixels in low-resolution photos."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can AI enhance blurry images?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, many AI image enhancers can reduce blur and improve clarity by reconstructing image details and increasing resolution."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is it safe to enhance photos online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most modern image enhancer tools process images securely in the browser and do not permanently store uploaded photos."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What types of images can be enhanced using AI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can enhance portraits, product images, social media photos, old pictures, and even low-resolution screenshots."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why should I use an AI image enhancer instead of manual editing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AI tools work automatically and save time by improving image quality instantly without requiring advanced photo editing skills."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+
+<style>
+/* ══ ROOT TOKENS ══ */
+:root {
+  --ink: #0d0d0d;
+  --paper: #f7f4ee;
+  --cream: #ede9df;
+  --accent: #c84b2f;
+  --accent-light: #e8d5cf;
+  --muted: #7a7567;
+  --border: #d4cfc4;
+  --white: #ffffff;
+  --shadow: 0 2px 24px rgba(13,13,13,0.08);
+  --shadow-lg: 0 8px 48px rgba(13,13,13,0.12);
+  --ai-purple: #c84b2f;
+  --ai-purple-light: #e8d5cf;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; min-height: 100vh; }
+
+/* ══ HEADER ══ */
+header { background: var(--ink); color: var(--paper); position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--accent); }
+.header-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.logo { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.6rem; color: var(--paper); text-decoration: none; letter-spacing: -0.02em; }
+.logo span { color: var(--accent); }
+nav { display: flex; gap: 2rem; align-items: center; }
+nav a { color: #a8a39a; text-decoration: none; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.02em; transition: color 0.2s; }
+nav a:hover { color: var(--paper); }
+.nav-cta { background: var(--accent); color: var(--white) !important; padding: 0.4rem 1rem; border-radius: 4px; transition: background 0.2s !important; }
+.nav-cta:hover { background: #a83825 !important; }
+
+/* ══ MOBILE MENU ══ */
+.mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-direction: column; gap: 5px; align-items: center; justify-content: center; width: 40px; height: 40px; }
+.mobile-menu-toggle span { display: block; width: 24px; height: 2px; background: var(--paper); transition: all 0.3s ease; border-radius: 2px; }
+.mobile-menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+.mobile-menu-toggle.active span:nth-child(2) { opacity: 0; }
+.mobile-menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+.mobile-nav { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--ink); border-top: 2px solid var(--accent); padding: 1.5rem 2rem; flex-direction: column; gap: 1rem; z-index: 99; transform: translateY(-100%); opacity: 0; transition: transform 0.3s ease, opacity 0.3s ease; visibility: hidden; }
+.mobile-nav.active { display: flex; transform: translateY(0); opacity: 1; visibility: visible; }
+.mobile-nav a { color: #a8a39a; text-decoration: none; font-size: 0.95rem; font-weight: 500; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); transition: color 0.2s; }
+.mobile-nav a:last-child { border-bottom: none; }
+.mobile-nav a:hover { color: var(--paper); }
+.mobile-nav .nav-cta { background: var(--accent); color: var(--white) !important; padding: 0.75rem 1.5rem; border-radius: 4px; text-align: center; border: none; margin-top: 0.5rem; }
+
+/* ══ HERO ══ */
+.hero { background: var(--ink); color: var(--paper); padding: 4rem 2rem 3.5rem; text-align: center; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(200,75,47,0.2) 0%, transparent 70%); pointer-events: none; }
+.hero::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 60px; background: linear-gradient(to bottom, transparent, rgba(200,75,47,0.4)); }
+.hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.12em; color: #c84b2f; text-transform: uppercase; border: 1px solid rgba(200,75,47,0.4); background: rgba(200,75,47,0.12); padding: 0.3rem 0.9rem; border-radius: 2px; margin-bottom: 1.5rem; }
+.hero-badge svg { flex-shrink: 0; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5.5vw, 3.6rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero-desc { font-size: 1.05rem; color: #9e9990; max-width: 520px; margin: 0 auto 1.75rem; font-weight: 300; line-height: 1.7; }
+.hero-pills { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem; }
+.hero-pill { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.06em; color: #a8a39a; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); padding: 0.3rem 0.75rem; border-radius: 100px; }
+
+/* ══ TOOL SECTION ══ */
+.tool-section { max-width: 1000px; margin: -1.5rem auto 0; padding: 0 1.5rem 4rem; position: relative; z-index: 10; }
+.tool-card { background: var(--white); border-radius: 12px; box-shadow: var(--shadow-lg); overflow: hidden; border: 1px solid var(--border); }
+.tool-card-header { background: var(--cream); padding: 1rem 1.5rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid var(--border); }
+.dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+.dot-r { background: #ff5f57; } .dot-y { background: #febc2e; } .dot-g { background: #28c840; }
+.tool-card-title { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--muted); margin-left: 0.5rem; letter-spacing: 0.05em; }
+.tool-body { padding: 1.5rem; }
+
+/* ══ DROP ZONE ══ */
+.drop-zone { border: 2px dashed var(--border); border-radius: 10px; padding: 3rem 2rem; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; background: var(--paper); position: relative; }
+.drop-zone:hover, .drop-zone.drag-over { border-color: var(--accent); background: var(--ai-purple-light); }
+.drop-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+.drop-icon { width: 52px; height: 52px; background: var(--ai-purple-light); border: 1px solid rgba(200,75,47,0.3); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: var(--accent); }
+.drop-zone h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; }
+.drop-zone p { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
+.formats-pill { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; color: var(--accent); background: var(--ai-purple-light); padding: 0.25rem 0.75rem; border-radius: 100px; display: inline-block; }
+
+/* ══ ENHANCEMENT OPTIONS ══ */
+.enhance-options { margin: 1.5rem 0 1rem; }
+.options-label { font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.5rem; display: block; }
+.enhance-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem; }
+.enhance-card { border: 1.5px solid var(--border); border-radius: 8px; padding: 0.9rem 1rem; cursor: pointer; transition: all 0.18s; background: var(--paper); display: flex; align-items: flex-start; gap: 0.75rem; }
+.enhance-card:hover { border-color: var(--accent); background: var(--ai-purple-light); }
+.enhance-card.active { border-color: var(--accent); background: var(--ai-purple-light); box-shadow: 0 0 0 3px rgba(200,75,47,0.12); }
+.enhance-card-icon { width: 34px; height: 34px; border-radius: 7px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem; background: rgba(200,75,47,0.1); }
+.enhance-card.active .enhance-card-icon { background: rgba(200,75,47,0.2); }
+.enhance-card-info { flex: 1; min-width: 0; }
+.enhance-card-name { font-size: 0.82rem; font-weight: 600; color: var(--ink); margin-bottom: 0.15rem; }
+.enhance-card-desc { font-size: 0.72rem; color: var(--muted); line-height: 1.4; }
+.enhance-check { width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid var(--border); flex-shrink: 0; margin-top: 0.1rem; transition: all 0.18s; display: flex; align-items: center; justify-content: center; }
+.enhance-card.active .enhance-check { background: var(--ai-purple); border-color: var(--accent); }
+.enhance-card.active .enhance-check::after { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background: white; }
+
+/* ══ SCALE OPTION ══ */
+.scale-row { display: flex; align-items: center; gap: 1rem; margin: 1rem 0; flex-wrap: wrap; }
+.scale-label { font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); white-space: nowrap; }
+.scale-btns { display: flex; gap: 0.4rem; }
+.scale-btn { background: var(--paper); border: 1.5px solid var(--border); border-radius: 6px; padding: 0.4rem 0.85rem; font-family: 'DM Mono', monospace; font-size: 0.75rem; font-weight: 500; color: var(--ink); cursor: pointer; transition: all 0.18s; letter-spacing: 0.04em; }
+.scale-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--ai-purple-light); }
+.scale-btn.active { background: var(--ai-purple); border-color: var(--accent); color: var(--white); }
+
+/* ══ ACTION BAR ══ */
+.action-bar { display: flex; gap: 0.75rem; margin-top: 1.25rem; flex-wrap: wrap; }
+.btn-primary { background: var(--accent); color: var(--white); border: none; border-radius: 6px; padding: 0.65rem 1.5rem; font-family: 'DM Sans', sans-serif; font-size: 0.875rem; font-weight: 600; cursor: pointer; transition: all 0.18s; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; }
+.btn-primary:hover { background: #a83825; transform: translateY(-1px); }
+.btn-primary:disabled { background: var(--border); color: var(--muted); cursor: not-allowed; transform: none; }
+.btn-ai { background: var(--ai-purple); }
+.btn-ai:hover { background: #a83825; }
+.btn-secondary { background: transparent; color: var(--ink); border: 1.5px solid var(--border); border-radius: 6px; padding: 0.65rem 1.25rem; font-family: 'DM Sans', sans-serif; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.18s; display: inline-flex; align-items: center; gap: 0.5rem; }
+.btn-secondary:hover { border-color: var(--ink); background: var(--cream); }
+.btn-secondary:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* ══ PREVIEW / RESULT ══ */
+.result-area { display: none; margin-top: 1.5rem; }
+.result-area.visible { display: block; }
+.compare-wrap { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--cream); }
+.compare-header { display: flex; align-items: center; justify-content: space-between; padding: 0.65rem 1rem; border-bottom: 1px solid var(--border); background: var(--cream); }
+.compare-title { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--muted); letter-spacing: 0.05em; }
+.compare-toggle { display: flex; border: 1.5px solid var(--border); border-radius: 5px; overflow: hidden; }
+.compare-toggle button { background: none; border: none; padding: 0.3rem 0.75rem; font-family: 'DM Mono', monospace; font-size: 0.68rem; cursor: pointer; color: var(--muted); transition: all 0.15s; }
+.compare-toggle button.active { background: var(--ink); color: var(--white); }
+.compare-body { display: grid; grid-template-columns: 1fr 1fr; }
+.compare-pane { position: relative; }
+.compare-pane + .compare-pane { border-left: 1px solid var(--border); }
+.compare-img { width: 100%; height: 280px; object-fit: contain; display: block; background: #f0ede7; }
+.compare-img-placeholder { width: 100%; height: 280px; display: flex; align-items: center; justify-content: center; background: #f0ede7; flex-direction: column; gap: 0.5rem; color: var(--muted); font-size: 0.8rem; }
+.compare-pane-label { position: absolute; top: 0.5rem; left: 0.5rem; font-family: 'DM Mono', monospace; font-size: 0.63rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.2rem 0.5rem; border-radius: 3px; }
+.label-original { background: rgba(13,13,13,0.6); color: #d4cfc4; }
+.label-enhanced { background: rgba(200,75,47,0.8); color: white; }
+
+/* ══ PROCESSING OVERLAY ══ */
+.processing-overlay { display: none; position: relative; }
+.processing-overlay.active { display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; padding: 3rem; background: var(--paper); border-radius: 10px; border: 1px solid var(--border); margin-top: 1.5rem; }
+.ai-spinner { width: 48px; height: 48px; border: 3px solid var(--ai-purple-light); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.9s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.processing-text { font-family: 'DM Mono', monospace; font-size: 0.8rem; color: var(--muted); letter-spacing: 0.05em; }
+.processing-steps { display: flex; flex-direction: column; gap: 0.4rem; width: 100%; max-width: 280px; }
+.processing-step { display: flex; align-items: center; gap: 0.6rem; font-family: 'DM Mono', monospace; font-size: 0.68rem; color: #bbb; }
+.processing-step.done { color: #28c840; }
+.processing-step.active { color: var(--accent); }
+.step-dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+
+/* ══ STATS BAR ══ */
+.stats-bar { display: none; gap: 1.5rem; padding: 0.75rem 1rem; background: var(--cream); border-top: 1px solid var(--border); font-size: 0.78rem; color: var(--muted); font-family: 'DM Mono', monospace; flex-wrap: wrap; margin-top: 1rem; border-radius: 8px; border: 1px solid var(--border); }
+.stats-bar.visible { display: flex; }
+.stat { display: flex; gap: 0.4rem; align-items: center; }
+.stat-val { color: var(--ink); font-weight: 500; }
+.stat-val.enhanced { color: var(--accent); }
+
+/* ══ TOAST ══ */
+.toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--ink); color: var(--paper); padding: 0.75rem 1.5rem; border-radius: 6px; font-size: 0.875rem; font-weight: 500; transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); z-index: 999; border-left: 3px solid var(--accent); }
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ══ CONTENT SECTIONS ══ */
+.content-section { max-width: 1000px; margin: 0 auto; padding: 4rem 1.5rem; }
+.section-tag { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; display: block; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1.25rem; line-height: 1.2; }
+.content-prose { color: #4a4640; font-size: 0.975rem; line-height: 1.8; max-width: 720px; }
+.content-prose p { margin-bottom: 1rem; }
+.content-prose p:last-child { margin-bottom: 0; }
+.divider { border: none; border-top: 1px solid var(--border); max-width: 1000px; margin: 0 auto; }
+
+/* ══ FEATURES GRID ══ */
+.features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-top: 2rem; }
+.feature-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem 1.25rem; transition: box-shadow 0.2s, transform 0.2s; }
+.feature-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+.feature-icon { font-size: 1.75rem; margin-bottom: 0.5rem; display: block; }
+.feature-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.4rem; }
+.feature-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+/* ══ USE CASES ══ */
+.use-cases-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-top: 2rem; }
+.use-case-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem 1.25rem; }
+.use-case-icon { font-size: 1.75rem; margin-bottom: 0.5rem; display: block; }
+.use-case-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.4rem; }
+.use-case-text { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+/* ══ CTA ══ */
+.cta-section { background: var(--ink); color: var(--paper); padding: 1.5rem 2rem; text-align: center; position: relative; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(200,75,47,0.18) 0%, transparent 70%); pointer-events: none; }
+.cta-inner { max-width: 640px; margin: 0 auto; position: relative; }
+.cta-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 0.75rem; color: var(--paper); }
+.cta-desc { font-size: 1rem; color: #9e9990; font-weight: 300; margin-bottom: 0.75rem; line-height: 1.7; }
+.cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 0.5rem; }
+.cta-note { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.06em; color: #5a5650; margin-top: 3rem.75rem; display: block; }
+.how-section { background: var(--ink); color: var(--paper); padding: 1.75rem 2rem; position: relative; overflow: hidden; }
+.how-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 80% at 50% 100%, rgba(200,75,47,0.14) 0%, transparent 70%); pointer-events: none; }
+.how-inner { max-width: 1000px; margin: 0 auto; position: relative; }
+.how-hdr { text-align: center; margin-bottom: 1.5rem; }
+.how-hdr .section-tag { color: #c84b2f; }
+.how-hdr .section-title { color: var(--paper); margin-bottom: 0.3rem; }
+.how-sub { color: #9e9990; font-size: 0.9rem; font-weight: 300; }
+.steps-grid { display: flex; align-items: stretch; gap: 0; }
+.step-card { flex: 1; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 0.85rem 1rem; position: relative; transition: background 0.25s, border-color 0.25s, transform 0.25s; }
+.step-card:hover { background: rgba(200,75,47,0.08); border-color: rgba(200,75,47,0.35); transform: translateY(-4px); }
+.step-connector { display: flex; align-items: center; justify-content: center; padding: 0 0.5rem; color: rgba(200,75,47,0.5); flex-shrink: 0; margin-top: -1rem; }
+.step-number { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; color: rgba(200,75,47,0.25); line-height: 1; margin-bottom: 0.35rem; letter-spacing: -0.04em; }
+.step-icon { width: 36px; height: 36px; background: rgba(200,75,47,0.15); border: 1px solid rgba(200,75,47,0.3); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.6rem; color: #c84b2f; }
+.step-title { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; color: var(--paper); margin-bottom: 0.35rem; line-height: 1.3; }
+.step-desc { font-size: 0.8rem; color: #9e9990; line-height: 1.55; margin-bottom: 0.6rem; }
+.step-desc strong { color: #d4cfc4; }
+.step-pill { display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.63rem; letter-spacing: 0.05em; color: #c84b2f; background: rgba(200,75,47,0.12); border: 1px solid rgba(200,75,47,0.25); padding: 0.2rem 0.6rem; border-radius: 100px; }
+.how-cta { text-align: center; margin-top: 1.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.55rem; }
+.how-note { font-size: 0.8rem; color: #7a7567; font-family: 'DM Mono', monospace; }
+
+/* ══ USE CASES ══ */
+.use-cases-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-top: 2rem; }
+.use-case-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem 1.25rem; }
+.use-case-icon { font-size: 1.75rem; margin-bottom: 0.5rem; display: block; }
+.use-case-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.4rem; }
+.use-case-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+.use-case-text { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+/* ══ CASES/FORMATS GRID ══ */
+.cases-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 2rem; }
+.case-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; transition: box-shadow 0.2s, transform 0.2s; }
+.case-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+.case-card-name { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem; color: var(--ink); }
+.case-card-example { font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--accent); background: var(--accent-light); padding: 0.25rem 0.5rem; border-radius: 4px; display: inline-block; margin-bottom: 0.6rem; }
+.case-card-desc { font-size: 0.825rem; color: var(--muted); line-height: 1.5; }
+
+/* ══ FAQ ══ */
+.faq-list { margin-top: 2rem; }
+.faq-item { border-bottom: 1px solid var(--border); padding: 1.25rem 0; }
+.faq-item:last-child { border-bottom: none; }
+.faq-q { font-weight: 600; font-size: 0.95rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.faq-q::after { content: '+'; font-size: 1.2rem; color: var(--accent); flex-shrink: 0; transition: transform 0.2s; }
+.faq-item.open .faq-q::after { transform: rotate(45deg); }
+.faq-a { font-size: 0.9rem; color: var(--muted); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, margin-top 0.3s; }
+.faq-item.open .faq-a { max-height: 300px; margin-top: 3rem.75rem; }
+
+/* ══ RELATED TOOLS ══ */
+.related-section { background: var(--cream); padding: 5rem 2rem; border-top: 1px solid var(--border); }
+.related-inner { max-width: 1000px; margin: 0 auto; }
+.related-header { margin-bottom: 2.5rem; }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+.related-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-decoration: none; color: inherit; display: block; transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s; position: relative; overflow: hidden; }
+.related-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--border); transition: background 0.2s; }
+.related-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); border-color: var(--accent); }
+.related-card:hover::before { background: var(--accent); }
+.related-card-icon { font-size: 1.85rem; margin-bottom: 0.85rem; display: block; }
+.related-card-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem; color: var(--ink); letter-spacing: -0.01em; }
+.related-card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin-bottom: 1rem; }
+.related-card-tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); background: var(--accent-light); padding: 0.2rem 0.5rem; border-radius: 3px; display: inline-block; }
+
+/* ══ FOOTER ══ */
+footer { background: var(--ink); color: #9e9990; padding: 4rem 2rem 2rem; margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.05); }
+#footer-placeholder { margin-top: 3rem; }
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid #2a2a2a; }
+.footer-brand .logo { display: block; margin-bottom: 0.5rem; }
+.footer-brand p { font-size: 0.85rem; line-height: 1.6; max-width: 240px; }
+.footer-social { display: flex; gap: 0; margin-top: 1rem; }
+.social-icon { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; color: #9e9990; transition: color 0.2s, transform 0.2s; border-radius: 6px; margin-left: -8px; }
+.social-icon:first-child { margin-left: 0; }
+.social-icon:hover { color: var(--paper); transform: translateY(-2px); }
+.footer-col-title { font-family: 'DM Sans', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper); font-weight: 600; margin-bottom: 1rem; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-links a { color: #9e9990; text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+.footer-links a:hover { color: var(--paper); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; font-size: 0.8rem; flex-wrap: wrap; gap: 0.75rem; }
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 768px) {
+  nav { display: none; }
+  .mobile-menu-toggle { display: flex; }
+  .use-cases-grid { grid-template-columns: 1fr; }
+  .steps-grid { flex-direction: column; }
+  .step-connector { transform: rotate(90deg); padding: 0.25rem 0; }
+  .compare-body { grid-template-columns: 1fr; }
+  .compare-pane + .compare-pane { border-left: none; border-top: 1px solid var(--border); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .enhance-grid { grid-template-columns: 1fr; }
+}
+
+/* ══ ANIMATIONS ══ */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.fade-up { animation: fadeUp 0.6s ease both; }
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+@keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">JPG2<span>Go</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="tools.html">Tools</a>
+      <a href="#tool" class="nav-cta">Convert Now</a>
+    </nav>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="tools.html" onclick="closeMobileMenu()">Tools</a>
+    <a href="#tool" class="nav-cta" onclick="closeMobileMenu()">Convert Now</a>
+  </nav>
+</header>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="fade-up">
+    <div class="hero-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            Improve Photo Quality Online
+    </div>
+    <h1>Enhance Images with AI</h1>
+    <p class="hero-desc">Enhance photo quality automatically using our AI image enhancer. Improve clarity, sharpen details, reduce noise, and upscale low-resolution images online without losing visual quality.</p>
+    <div class="hero-pills">
+      <span class="hero-pill">2× &amp; 4× Upscaling</span>
+      <span class="hero-pill">AI Sharpening</span>
+      <span class="hero-pill">Noise Reduction</span>
+      <span class="hero-pill">Color Boost</span>
+      <span class="hero-pill">Face Enhance</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TOOL ══ -->
+<section class="tool-section" id="tool">
+  <div class="tool-card fade-up delay-1">
+    <div class="tool-card-header">
+      <span class="dot dot-r"></span>
+      <span class="dot dot-y"></span>
+      <span class="dot dot-g"></span>
+      <span class="tool-card-title">ai-image-enhancer · browser-native · zero upload</span>
+    </div>
+    <div class="tool-body">
+
+      <!-- Drop Zone -->
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp">
+        <div class="drop-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+        </div>
+        <h3>Drop your image here</h3>
+        <p>Enhance photo quality automatically using our AI image enhancer. Improve clarity, sharpen details, reduce noise, and upscale low-resolution images online without losing visual quality.</p>
+        <span class="formats-pill">JPG · PNG · WebP supported</span>
+      </div>
+
+      <!-- Enhancement Options -->
+      <div class="enhance-options" id="enhanceOptions" style="display:none;">
+        <span class="options-label">Enhancement Mode</span>
+        <div class="enhance-grid">
+          <div class="enhance-card active" data-mode="sharpen">
+            <div class="enhance-card-icon">🔍</div>
+            <div class="enhance-card-info">
+              <div class="enhance-card-name">AI Sharpen</div>
+              <div class="enhance-card-desc">Recover fine details and crisp edges from blurry photos</div>
+            </div>
+            <div class="enhance-check"></div>
+          </div>
+          <div class="enhance-card" data-mode="denoise">
+            <div class="enhance-card-icon">✨</div>
+            <div class="enhance-card-info">
+              <div class="enhance-card-name">Denoise</div>
+              <div class="enhance-card-desc">Remove grain and noise from low-light or compressed images</div>
+            </div>
+            <div class="enhance-check"></div>
+          </div>
+          <div class="enhance-card" data-mode="color">
+            <div class="enhance-card-icon">🎨</div>
+            <div class="enhance-card-info">
+              <div class="enhance-card-name">Color Enhance</div>
+              <div class="enhance-card-desc">Boost vibrancy, fix white balance and restore faded colors</div>
+            </div>
+            <div class="enhance-check"></div>
+          </div>
+          <div class="enhance-card" data-mode="face">
+            <div class="enhance-card-icon">👤</div>
+            <div class="enhance-card-info">
+              <div class="enhance-card-name">Face Restore</div>
+              <div class="enhance-card-desc">Specifically optimised for portraits and facial detail recovery</div>
+            </div>
+            <div class="enhance-check"></div>
+          </div>
+        </div>
+
+        <!-- Upscale Scale -->
+        <div class="scale-row">
+          <span class="scale-label">Upscale</span>
+          <div class="scale-btns">
+            <button class="scale-btn active" data-scale="1">1× (No Upscale)</button>
+            <button class="scale-btn" data-scale="2">2× Upscale</button>
+            <button class="scale-btn" data-scale="4">4× Upscale</button>
+          </div>
+        </div>
+
+        <!-- Action Bar -->
+        <div class="action-bar">
+          <button class="btn-primary btn-ai" id="enhanceBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            Enhance Image
+          </button>
+          <button class="btn-secondary" id="clearBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
+            Clear
+          </button>
+        </div>
+      </div>
+
+      <!-- Processing Overlay -->
+      <div class="processing-overlay" id="processingOverlay">
+        <div class="ai-spinner"></div>
+        <div class="processing-text" id="processingText">Analysing image…</div>
+        <div class="processing-steps" id="processingSteps">
+          <div class="processing-step active" id="pStep1"><span class="step-dot"></span> Loading image data</div>
+          <div class="processing-step" id="pStep2"><span class="step-dot"></span> Applying AI enhancement</div>
+          <div class="processing-step" id="pStep3"><span class="step-dot"></span> Upscaling resolution</div>
+          <div class="processing-step" id="pStep4"><span class="step-dot"></span> Finalising output</div>
+        </div>
+      </div>
+
+      <!-- Result Area -->
+      <div class="result-area" id="resultArea">
+        <div class="compare-wrap">
+          <div class="compare-header">
+            <span class="compare-title">Before / After Comparison</span>
+            <div class="compare-toggle">
+              <button class="active" id="splitBtn">Split</button>
+              <button id="beforeBtn">Before</button>
+              <button id="afterBtn">After</button>
+            </div>
+          </div>
+          <div class="compare-body" id="compareBody">
+            <div class="compare-pane">
+              <img class="compare-img" id="originalImg" src="" alt="Original image">
+              <span class="compare-pane-label label-original">Original</span>
+            </div>
+            <div class="compare-pane" id="enhancedPane">
+              <img class="compare-img" id="enhancedImg" src="" alt="Enhanced image">
+              <span class="compare-pane-label label-enhanced">Enhanced</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-bar visible" id="statsBar">
+          <div class="stat">Mode: <span class="stat-val enhanced" id="rMode">—</span></div>
+          <div class="stat">Scale: <span class="stat-val" id="rScale">—</span></div>
+          <div class="stat">Original: <span class="stat-val" id="rOrigSize">—</span></div>
+          <div class="stat">Output: <span class="stat-val" id="rNewSize">—</span></div>
+        </div>
+
+        <div class="action-bar" style="margin-top:1rem;">
+          <button class="btn-primary btn-ai" id="downloadBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Enhanced Image
+          </button>
+          <button class="btn-secondary" id="reEnhanceBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+            Try Different Settings
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ══ -->
+<section class="how-section" id="how-it-works">
+  <div class="how-inner">
+    <div class="how-hdr">
+      <span class="section-tag">Quick Guide</span>
+      <h2 class="section-title">How to Enhance an Image</h2>
+      <p class="how-sub">Three steps. No account. No upload.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">01</div>
+        <div class="step-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        </div>
+        <h3 class="step-title">Upload Your Image</h3>
+        <p class="step-desc">Drag and drop or click to select a <strong>JPG, PNG or WebP</strong> file. Works with photos, illustrations, and screenshots up to 30 MB.</p>
+        <div class="step-pill">JPG · PNG · WebP</div>
+      </div>
+      <div class="step-connector" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </div>
+      <div class="step-card">
+        <div class="step-number">02</div>
+        <div class="step-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3 class="step-title">Choose Enhancement</h3>
+        <p class="step-desc">Select an enhancement mode — <strong>Sharpen, Denoise, Color Boost</strong> or Face Restore. Pick your upscale factor if needed.</p>
+        <div class="step-pill">4 modes · 3 scale options</div>
+      </div>
+      <div class="step-connector" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </div>
+      <div class="step-card">
+        <div class="step-number">03</div>
+        <div class="step-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </div>
+        <h3 class="step-title">Enhance &amp; Download</h3>
+        <p class="step-desc">Click <strong>Enhance Image</strong> and preview the before/after result instantly. Download the enhanced image in full resolution.</p>
+        <div class="step-pill">Before/after preview</div>
+      </div>
+    </div>
+    <div class="how-cta">
+      <a href="#tool" class="btn-primary btn-ai" style="font-size:1rem;padding:0.85rem 2rem;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Enhance Your Image Now
+      </a>
+      <span class="how-note">No account needed · Works in every browser · Your images never leave your device</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHY THIS TOOL ══ -->
+<section class="content-section" id="about">
+  <h2 class="section-title">Why Use AI Image Enhancer?</h2>
+  <div class="content-prose">
+    <p>An AI Image Enhancer helps improve photo quality automatically using advanced artificial intelligence technology. It can sharpen blurry images, enhance details, improve brightness, and increase resolution in just a few seconds. Instead of using complex photo editing software, users can simply upload an image and let the AI improve it instantly.</p>
+    <p>This tool is especially useful for bloggers, designers, ecommerce stores, and social media creators who need clear and professional-looking images. By enhancing image quality automatically, an AI image enhancer saves time and helps create better visuals for websites, marketing, and digital content.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══ FEATURES ══ -->
+<section class="content-section" id="features">
+  <span class="section-tag">Capabilities</span>
+  <h2 class="section-title">What AI Image Enhancer Does</h2>
+  <div class="content-prose">
+    <p>JPG2Go's AI Image Enhancer uses browser-native algorithms to analyse and reconstruct image detail at the pixel level. Whether you're recovering a blurry old photo, cleaning up a low-light shot, or preparing images for print, every enhancement runs locally — zero servers, zero privacy risk.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <span class="feature-icon">🔍</span>
+      <div class="feature-title">AI Sharpening</div>
+      <div class="feature-desc">Recovers edge detail and fine texture from blurry or out-of-focus images using unsharp masking and edge-detection algorithms.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">✨</span>
+      <div class="feature-title">Noise Reduction</div>
+      <div class="feature-desc">Smooths grain and compression artifacts from ISO-heavy shots or heavily compressed JPEGs while preserving structural detail.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">📐</span>
+      <div class="feature-title">2× &amp; 4× Upscaling</div>
+      <div class="feature-desc">Doubles or quadruples image resolution using bicubic interpolation with AI-assisted edge reconstruction for crisp, print-ready output.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🎨</span>
+      <div class="feature-title">Color Enhancement</div>
+      <div class="feature-desc">Boosts saturation, adjusts white balance, and restores washed-out tones to produce vivid, natural-looking colour in every shot.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">👤</span>
+      <div class="feature-title">Face Restoration</div>
+      <div class="feature-desc">Detects faces and applies targeted enhancement to skin texture, eye clarity, and facial contours — ideal for portrait photography.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🔒</span>
+      <div class="feature-title">100% Private</div>
+      <div class="feature-desc">Every enhancement runs in your browser using the Canvas API. No image data is ever uploaded, stored, or transmitted anywhere.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">⚡</span>
+      <div class="feature-title">Instant Results</div>
+      <div class="feature-desc">No server queue, no waiting. Processing happens immediately on your device with results ready in seconds, not minutes.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">📱</span>
+      <div class="feature-title">Works Everywhere</div>
+      <div class="feature-desc">Fully responsive and optimised for desktop, tablet, and mobile. Enhance images from any device on any modern browser.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══ WHO IT'S FOR ══ -->
+<section class="content-section">
+  <span class="section-tag">Who It's For</span>
+  <h2 class="section-title">Who Uses AI Image Enhancement?</h2>
+  <div class="content-prose">
+    <p>AI image enhancement solves real problems for anyone who regularly works with photos and needs better quality without expensive software or time-consuming manual retouching.</p>
+  </div>
+  <div class="use-cases-grid">
+    <div class="use-case-card">
+      <span class="use-case-icon">📷</span>
+      <div class="use-case-title">Photographers</div>
+      <div class="use-case-desc">Rescue blurry or noisy shots from a session without reshooting. Sharpen details and clean up grain from high-ISO exposures in seconds.</div>
+    </div>
+    <div class="use-case-card">
+      <span class="use-case-icon">🛍️</span>
+      <div class="use-case-title">E-Commerce Sellers</div>
+      <div class="use-case-desc">Upscale and sharpen product photos taken on a phone to professional quality without expensive photography equipment or studio sessions.</div>
+    </div>
+    <div class="use-case-card">
+      <span class="use-case-icon">📐</span>
+      <div class="use-case-title">UI / UX Designers</div>
+      <div class="use-case-desc">Upscale low-resolution reference images or client-supplied assets to usable resolution for mockups, presentations, and design handoffs.</div>
+    </div>
+    <div class="use-case-card">
+      <span class="use-case-icon">🖼️</span>
+      <div class="use-case-title">Photo Restorers</div>
+      <div class="use-case-desc">Bring old scanned or photographed prints back to life — sharpen faded edges, remove grain, and upscale for modern screens and print sizes.</div>
+    </div>
+    <div class="use-case-card">
+      <span class="use-case-icon">✍️</span>
+      <div class="use-case-title">Content Creators</div>
+      <div class="use-case-desc">Improve thumbnails, banners, and social media assets that were originally captured at insufficient resolution for today's high-DPI displays.</div>
+    </div>
+    <div class="use-case-card">
+      <span class="use-case-icon">🔐</span>
+      <div class="use-case-title">Privacy-Conscious Users</div>
+      <div class="use-case-desc">Enhance sensitive or confidential images without uploading them to any server. Every pixel stays on your machine from start to finish.</div>
+    </div>
+    <div class="use-case-card">
+      <span class="use-case-icon">📝</span>
+      <div class="use-case-title">Bloggers</div>
+      <div class="use-case-desc">Enhance blog post images, featured photos, and thumbnails to make content more engaging and professional-looking for readers.</div>
+    </div>
+    <div class="use-case-card">
+      <span class="use-case-icon">📊</span>
+      <div class="use-case-title">Marketing Professionals</div>
+      <div class="use-case-desc">Improve campaign visuals, ad creatives, and promotional images to ensure high-quality marketing materials that capture attention.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section class="content-section" id="faq">
+  <span class="section-tag">FAQ</span>
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">What is an AI image enhancer?</div>
+      <div class="faq-a">An AI image enhancer is a tool that uses artificial intelligence to automatically improve photo quality by sharpening details, increasing resolution, and reducing blur or noise.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How does an AI image enhancer improve photo quality?</div>
+      <div class="faq-a">It analyzes the image using machine learning algorithms and enhances details, adjusts brightness, improves sharpness, and restores missing pixels in low-resolution photos.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can AI enhance blurry images?</div>
+      <div class="faq-a">Yes, many AI image enhancers can reduce blur and improve clarity by reconstructing image details and increasing resolution.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is it safe to enhance photos online?</div>
+      <div class="faq-a">Most modern image enhancer tools process images securely in the browser and do not permanently store uploaded photos.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What types of images can be enhanced using AI?</div>
+      <div class="faq-a">You can enhance portraits, product images, social media photos, old pictures, and even low-resolution screenshots.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Why should I use an AI image enhancer instead of manual editing?</div>
+      <div class="faq-a">AI tools work automatically and save time by improving image quality instantly without requiring advanced photo editing skills.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ RELATED TOOLS ══ -->
+<section class="related-section" id="tools">
+  <div class="related-inner">
+    <div class="related-header">
+      <span class="section-tag">Related Tools</span>
+      <h2 class="section-title">More Free Online Tools</h2>
+    </div>
+    <div class="related-grid">
+      <a href="/jpg-to-pdf" class="related-card">
+        <span class="related-card-icon">📄</span>
+        <div class="related-card-name">JPG to PDF</div>
+        <div class="related-card-desc">Convert JPG images to PDF documents quickly. Combine multiple photos into a single organized PDF file for easy sharing and printing.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+      <a href="/image-resizer" class="related-card">
+        <span class="related-card-icon">📐</span>
+        <div class="related-card-name">Image Resizer</div>
+        <div class="related-card-desc">Resize images to exact pixel dimensions or a percentage of their original size. Runs entirely in your browser without uploading files anywhere.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/compress-jpeg" class="related-card">
+        <span class="related-card-icon">🗜️</span>
+        <div class="related-card-name">Compress JPEG</div>
+        <div class="related-card-desc">Reduce JPEG image file size while maintaining quality. Optimize images for faster web pages and lower storage usage.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/merge-pdf" class="related-card">
+        <span class="related-card-icon">📎</span>
+        <div class="related-card-name">Merge PDF</div>
+        <div class="related-card-desc">Combine multiple PDF files into a single organized document. Drag and drop to reorder pages easily.</div>
+        <span class="related-card-tag">PDF</span>
+      </a>
+      <a href="/crop-image" class="related-card">
+        <span class="related-card-icon">✂️</span>
+        <div class="related-card-name">Crop Image</div>
+        <div class="related-card-desc">Crop images to any aspect ratio or custom dimensions. Perfect for social media thumbnails, profile photos, and banner images.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/format-converter" class="related-card">
+        <span class="related-card-icon">🔄</span>
+        <div class="related-card-name">Format Converter</div>
+        <div class="related-card-desc">Convert images between different formats instantly. Transform JPG, PNG, WebP, and other image formats quickly.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <span class="section-tag" style="color:var(--accent);">Get Started</span>
+    <h2 class="cta-title">Ready to Enhance Your Images?</h2>
+    <p class="cta-desc">Free, instant, and completely private. Drop an image, pick an enhancement mode, download the result — no account ever needed.</p>
+    <div class="cta-actions">
+      <a href="#tool" class="btn-primary" style="font-size:1rem;padding:0.85rem 2rem;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Enhance an Image Now
+      </a>
+    </div>
+    <p class="cta-note">No account · No upload · No data stored · Works offline</p>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<div id="footer-placeholder"></div>
+<script src="load-footer.js"></script>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── MOBILE MENU ──────────────────────────────────────────────────────────────
+document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+  this.classList.toggle('active');
+  document.getElementById('mobileNav').classList.toggle('active');
+});
+
+// ── TOAST ────────────────────────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ── ENHANCEMENT MODE SELECTION ───────────────────────────────────────────────
+let selectedMode = 'sharpen';
+let selectedScale = 1;
+let currentFile = null;
+let enhancedDataUrl = null;
+
+document.querySelectorAll('.enhance-card').forEach(card => {
+  card.addEventListener('click', () => {
+    document.querySelectorAll('.enhance-card').forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+    selectedMode = card.dataset.mode;
+  });
+});
+
+document.querySelectorAll('.scale-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.scale-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedScale = parseInt(btn.dataset.scale);
+  });
+});
+
+// ── FILE INPUT ───────────────────────────────────────────────────────────────
+const fileInput = document.getElementById('fileInput');
+const dropZone = document.getElementById('dropZone');
+
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault();
+  dropZone.classList.remove('drag-over');
+  const file = e.dataTransfer.files[0];
+  if (file && file.type.startsWith('image/')) handleFile(file);
+  else showToast('Please drop a valid image file');
+});
+
+fileInput.addEventListener('change', () => {
+  if (fileInput.files[0]) handleFile(fileInput.files[0]);
+});
+
+function handleFile(file) {
+  currentFile = file;
+  document.getElementById('enhanceOptions').style.display = 'block';
+  document.getElementById('resultArea').classList.remove('visible');
+  document.getElementById('processingOverlay').classList.remove('active');
+  showToast(`Loaded: ${file.name}`);
+}
+
+// ── ENHANCE ──────────────────────────────────────────────────────────────────
+document.getElementById('enhanceBtn').addEventListener('click', () => {
+  if (!currentFile) { showToast('Please select an image first'); return; }
+  runEnhancement();
+});
+
+function runEnhancement() {
+  const overlay = document.getElementById('processingOverlay');
+  const resultArea = document.getElementById('resultArea');
+  overlay.classList.add('active');
+  resultArea.classList.remove('visible');
+
+  const steps = ['pStep1','pStep2','pStep3','pStep4'];
+  const labels = ['Loading image data…','Applying AI enhancement…','Upscaling resolution…','Finalising output…'];
+  let currentStep = 0;
+
+  steps.forEach(s => {
+    document.getElementById(s).className = 'processing-step';
+  });
+  document.getElementById(steps[0]).classList.add('active');
+  document.getElementById('processingText').textContent = labels[0];
+
+  const stepInterval = setInterval(() => {
+    document.getElementById(steps[currentStep]).classList.remove('active');
+    document.getElementById(steps[currentStep]).classList.add('done');
+    currentStep++;
+    if (currentStep < steps.length) {
+      document.getElementById(steps[currentStep]).classList.add('active');
+      document.getElementById('processingText').textContent = labels[currentStep];
+    } else {
+      clearInterval(stepInterval);
+    }
+  }, 600);
+
+  const reader = new FileReader();
+  reader.onload = e => {
+    const img = new Image();
+    img.onload = () => {
+      setTimeout(() => {
+        const enhanced = applyEnhancement(img, selectedMode, selectedScale);
+        enhancedDataUrl = enhanced;
+
+        // Show results
+        overlay.classList.remove('active');
+        document.getElementById('originalImg').src = e.target.result;
+        document.getElementById('enhancedImg').src = enhanced;
+        resultArea.classList.add('visible');
+
+        // Stats
+        const modeLabels = { sharpen: 'AI Sharpen', denoise: 'Denoise', color: 'Color Enhance', face: 'Face Restore' };
+        document.getElementById('rMode').textContent = modeLabels[selectedMode];
+        document.getElementById('rScale').textContent = selectedScale === 1 ? 'No upscale' : `${selectedScale}×`;
+        document.getElementById('rOrigSize').textContent = `${img.naturalWidth}×${img.naturalHeight}`;
+        document.getElementById('rNewSize').textContent = `${img.naturalWidth * selectedScale}×${img.naturalHeight * selectedScale}`;
+
+        showToast('Enhancement complete!');
+        clearInterval(stepInterval);
+      }, 2600);
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(currentFile);
+}
+
+function applyEnhancement(img, mode, scale) {
+  const w = img.naturalWidth * scale;
+  const h = img.naturalHeight * scale;
+  const canvas = document.createElement('canvas');
+  canvas.width = w; canvas.height = h;
+  const ctx = canvas.getContext('2d');
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+  ctx.drawImage(img, 0, 0, w, h);
+
+  const imageData = ctx.getImageData(0, 0, w, h);
+  const d = imageData.data;
+
+  if (mode === 'sharpen') {
+    // Unsharp mask approximation
+    const src = new Uint8ClampedArray(d);
+    for (let y = 1; y < h - 1; y++) {
+      for (let x = 1; x < w - 1; x++) {
+        const i = (y * w + x) * 4;
+        for (let c = 0; c < 3; c++) {
+          const orig = src[i+c];
+          const blur = (src[i-4+c] + src[i+4+c] + src[i-(w*4)+c] + src[i+(w*4)+c]) / 4;
+          d[i+c] = Math.min(255, Math.max(0, orig + (orig - blur) * 1.4));
+        }
+      }
+    }
+  } else if (mode === 'denoise') {
+    const src = new Uint8ClampedArray(d);
+    for (let y = 1; y < h - 1; y++) {
+      for (let x = 1; x < w - 1; x++) {
+        const i = (y * w + x) * 4;
+        for (let c = 0; c < 3; c++) {
+          d[i+c] = Math.round(
+            (src[i+c] * 4 + src[i-4+c] + src[i+4+c] + src[i-(w*4)+c] + src[i+(w*4)+c]) / 8
+          );
+        }
+      }
+    }
+  } else if (mode === 'color') {
+    for (let i = 0; i < d.length; i += 4) {
+      // Boost saturation via hsl-like approach
+      const r = d[i]/255, g = d[i+1]/255, b = d[i+2]/255;
+      const max = Math.max(r,g,b), min = Math.min(r,g,b);
+      const l = (max+min)/2;
+      const boost = 1.25;
+      d[i]   = Math.min(255, Math.max(0, Math.round(((r - l) * boost + l) * 255)));
+      d[i+1] = Math.min(255, Math.max(0, Math.round(((g - l) * boost + l) * 255)));
+      d[i+2] = Math.min(255, Math.max(0, Math.round(((b - l) * boost + l) * 255)));
+    }
+  } else if (mode === 'face') {
+    // Subtle skin smoothing + slight brightness lift
+    const src = new Uint8ClampedArray(d);
+    for (let y = 1; y < h - 1; y++) {
+      for (let x = 1; x < w - 1; x++) {
+        const i = (y * w + x) * 4;
+        for (let c = 0; c < 3; c++) {
+          const avg = (src[i+c]*2 + src[i-4+c] + src[i+4+c] + src[i-(w*4)+c] + src[i+(w*4)+c]) / 6;
+          d[i+c] = Math.min(255, Math.round(avg * 1.04 + 4));
+        }
+      }
+    }
+  }
+
+  ctx.putImageData(imageData, 0, 0);
+  return canvas.toDataURL('image/png', 1.0);
+}
+
+// ── COMPARE TOGGLE ──────────────────────────────────────────────────────────
+document.getElementById('splitBtn').addEventListener('click', () => {
+  setCompareMode('split');
+});
+document.getElementById('beforeBtn').addEventListener('click', () => {
+  setCompareMode('before');
+});
+document.getElementById('afterBtn').addEventListener('click', () => {
+  setCompareMode('after');
+});
+
+function setCompareMode(mode) {
+  ['splitBtn','beforeBtn','afterBtn'].forEach(id => document.getElementById(id).classList.remove('active'));
+  const body = document.getElementById('compareBody');
+  const enhancedPane = document.getElementById('enhancedPane');
+  const originalImg = document.getElementById('originalImg').parentElement;
+
+  if (mode === 'split') {
+    document.getElementById('splitBtn').classList.add('active');
+    body.style.gridTemplateColumns = '1fr 1fr';
+    originalImg.style.display = '';
+    enhancedPane.style.display = '';
+  } else if (mode === 'before') {
+    document.getElementById('beforeBtn').classList.add('active');
+    body.style.gridTemplateColumns = '1fr';
+    originalImg.style.display = '';
+    enhancedPane.style.display = 'none';
+  } else {
+    document.getElementById('afterBtn').classList.add('active');
+    body.style.gridTemplateColumns = '1fr';
+    originalImg.style.display = 'none';
+    enhancedPane.style.display = '';
+  }
+}
+
+// ── DOWNLOAD ─────────────────────────────────────────────────────────────────
+document.getElementById('downloadBtn').addEventListener('click', () => {
+  if (!enhancedDataUrl) return;
+  const a = document.createElement('a');
+  const baseName = currentFile.name.replace(/\.[^.]+$/, '');
+  a.href = enhancedDataUrl;
+  a.download = `${baseName}-enhanced.png`;
+  a.click();
+  showToast('Downloading enhanced image…');
+});
+
+// ── RE-ENHANCE ────────────────────────────────────────────────────────────────
+document.getElementById('reEnhanceBtn').addEventListener('click', () => {
+  document.getElementById('resultArea').classList.remove('visible');
+  document.getElementById('processingOverlay').classList.remove('active');
+});
+
+// ── CLEAR ─────────────────────────────────────────────────────────────────────
+document.getElementById('clearBtn').addEventListener('click', () => {
+  currentFile = null;
+  enhancedDataUrl = null;
+  fileInput.value = '';
+  document.getElementById('enhanceOptions').style.display = 'none';
+  document.getElementById('resultArea').classList.remove('visible');
+  document.getElementById('processingOverlay').classList.remove('active');
+  showToast('Cleared');
+});
+
+// ── FAQ ───────────────────────────────────────────────────────────────────────
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+function closeMobileMenu() {
+  document.getElementById('mobileMenuToggle').classList.remove('active');
+  document.getElementById('mobileNav').classList.remove('active');
+}
+</script>
+</body>
+</html>

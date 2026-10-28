@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>PDF to RTF Converter | Convert PDFs to Editable Text</title>
+<meta name="description" content="Convert PDF documents into editable RTF files. Preserve text formatting, layout, and structure for easy editing, sharing, or professional use.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jpg2go.com/pdf-to-rtf">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="adsense.js"></script>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Convert PDF to RTF",
+    "url": "https://jpg2go.com/pdf-to-rtf",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Convert PDF documents into editable RTF files. Preserve text formatting, layout, and structure for easy editing, sharing, or professional use."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does a PDF to RTF converter do?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A PDF to RTF converter changes PDF documents into Rich Text Format files that can be edited in many word processors."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why convert PDF files to RTF format?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RTF files allow users to edit text easily while maintaining basic formatting."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which software can open RTF files?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RTF files can be opened in Microsoft Word, Google Docs, LibreOffice, and many other text editors."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will the text layout remain after conversion?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most converters attempt to keep paragraph structure and formatting during conversion."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is RTF format useful for editing documents?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, RTF is a simple and flexible format that works across many platforms."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can images from a PDF appear in the RTF file?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Some converters preserve images, but results may vary depending on the document."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+
+<style>
+/* ══ ROOT TOKENS ══ */
+:root {
+  --ink: #0d0d0d;
+  --paper: #f7f4ee;
+  --cream: #ede9df;
+  --accent: #c84b2f;
+  --accent-light: #e8d5cf;
+  --muted: #7a7567;
+  --border: #d4cfc4;
+  --white: #ffffff;
+  --shadow: 0 2px 24px rgba(13,13,13,0.08);
+  --shadow-lg: 0 8px 48px rgba(13,13,13,0.12);
+  --ai-purple: #c84b2f;
+  --ai-purple-light: #e8d5cf;
+  --green: #1a8a4a;
+  --green-light: #d4f0e0;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; min-height: 100vh; }
+
+/* ══ HEADER ══ */
+header { background: var(--ink); color: var(--paper); position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--accent); }
+.header-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.logo { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.6rem; color: var(--paper); text-decoration: none; letter-spacing: -0.02em; }
+.logo span { color: var(--accent); }
+nav { display: flex; gap: 2rem; align-items: center; }
+nav a { color: #a8a39a; text-decoration: none; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.02em; transition: color 0.2s; }
+nav a:hover { color: var(--paper); }
+.nav-cta { background: var(--accent); color: var(--white) !important; padding: 0.4rem 1rem; border-radius: 4px; transition: background 0.2s !important; }
+.nav-cta:hover { background: #a83825 !important; }
+
+/* ══ MOBILE MENU ══ */
+.mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-direction: column; gap: 5px; align-items: center; justify-content: center; width: 40px; height: 40px; }
+.mobile-menu-toggle span { display: block; width: 24px; height: 2px; background: var(--paper); transition: all 0.3s ease; border-radius: 2px; }
+.mobile-menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+.mobile-menu-toggle.active span:nth-child(2) { opacity: 0; }
+.mobile-menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+.mobile-nav { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--ink); border-top: 2px solid var(--accent); padding: 1.5rem 2rem; flex-direction: column; gap: 1rem; z-index: 99; transform: translateY(-100%); opacity: 0; transition: transform 0.3s ease, opacity 0.3s ease; visibility: hidden; }
+.mobile-nav.active { display: flex; transform: translateY(0); opacity: 1; visibility: visible; }
+.mobile-nav a { color: #a8a39a; text-decoration: none; font-size: 0.95rem; font-weight: 500; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); transition: color 0.2s; }
+.mobile-nav a:last-child { border-bottom: none; }
+.mobile-nav a:hover { color: var(--paper); }
+.mobile-nav .nav-cta { background: var(--accent); color: var(--white) !important; padding: 0.75rem 1.5rem; border-radius: 4px; text-align: center; border: none; margin-top: 0.5rem; }
+
+/* ══ HERO ══ */
+.hero { background: var(--ink); color: var(--paper); padding: 4rem 2rem 3.5rem; text-align: center; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(200,75,47,0.2) 0%, transparent 70%); pointer-events: none; }
+.hero::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 60px; background: linear-gradient(to bottom, transparent, rgba(200,75,47,0.4)); }
+.hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.12em; color: #c84b2f; text-transform: uppercase; border: 1px solid rgba(200,75,47,0.4); background: rgba(200,75,47,0.12); padding: 0.3rem 0.9rem; border-radius: 2px; margin-bottom: 1.5rem; }
+.hero-badge svg { flex-shrink: 0; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5.5vw, 3.6rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero-desc { font-size: 1.05rem; color: #9e9990; max-width: 520px; margin: 0 auto 1.75rem; font-weight: 300; line-height: 1.7; }
+.hero-pills { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem; }
+.hero-pill { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.06em; color: #a8a39a; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); padding: 0.3rem 0.75rem; border-radius: 100px; }
+
+/* ══ TOOL SECTION ══ */
+.tool-section { max-width: 1100px; margin: -1.5rem auto 0; padding: 0 1.5rem 4rem; position: relative; z-index: 10; }
+.tool-card { background: var(--white); border-radius: 12px; box-shadow: var(--shadow-lg); overflow: hidden; border: 1px solid var(--border); }
+.tool-card-header { background: var(--cream); padding: 1rem 1.5rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid var(--border); }
+.dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+.dot-r { background: #ff5f57; } .dot-y { background: #febc2e; } .dot-g { background: #28c840; }
+.tool-card-title { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--muted); margin-left: 0.5rem; letter-spacing: 0.05em; }
+.tool-body { padding: 1.5rem; }
+
+/* ══ DROP ZONE ══ */
+.drop-zone { border: 2px dashed var(--border); border-radius: 10px; padding: 3rem 2rem; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; background: var(--paper); position: relative; }
+.drop-zone:hover, .drop-zone.drag-over { border-color: var(--ai-purple); background: var(--ai-purple-light); }
+.drop-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+.drop-icon { width: 52px; height: 52px; background: var(--ai-purple-light); border: 1px solid rgba(200,75,47,0.3); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: var(--ai-purple); }
+.drop-zone h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; }
+.drop-zone p { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
+.formats-pill { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; color: var(--ai-purple); background: var(--ai-purple-light); padding: 0.25rem 0.75rem; border-radius: 100px; display: inline-block; }
+
+/* ══ TWO-COLUMN LAYOUT ══ */
+.tool-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; align-items: start; }
+.tool-col-left { display: flex; flex-direction: column; gap: 1.25rem; }
+.tool-col-right { display: flex; flex-direction: column; gap: 1.25rem; }
+
+/* ══ PANEL BOXES ══ */
+.panel-box { background: var(--paper); border: 1px solid var(--border); border-radius: 10px; padding: 1.15rem 1.25rem; }
+.panel-box-title { font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+.panel-box-title svg { color: var(--accent); flex-shrink: 0; }
+
+/* ══ PRESET BUTTONS ══ */
+.preset-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin-bottom: 1.25rem; }
+.preset-btn { background: var(--white); border: 1.5px solid var(--border); border-radius: 8px; padding: 0.65rem 0.5rem; cursor: pointer; text-align: center; transition: all 0.18s; }
+.preset-btn:hover { border-color: var(--accent); background: var(--accent-light); }
+.preset-btn.active { border-color: var(--accent); background: var(--accent-light); box-shadow: 0 0 0 3px rgba(200,75,47,0.1); }
+.preset-btn-name { font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 600; color: var(--ink); display: block; margin-bottom: 0.1rem; letter-spacing: 0.02em; }
+.preset-btn.active .preset-btn-name { color: var(--accent); }
+.preset-btn-sub { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--muted); }
+
+/* ══ FORM ROWS ══ */
+.form-row { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.9rem; }
+.form-row:last-child { margin-bottom: 0; }
+.form-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); display: flex; align-items: center; justify-content: space-between; }
+.form-label-hint { font-weight: 400; text-transform: none; letter-spacing: 0; color: #a8a39a; font-size: 0.63rem; }
+.slider-wrap { display: flex; align-items: center; gap: 0.75rem; }
+input[type="range"].form-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 5px; background: var(--border); border-radius: 100px; outline: none; cursor: pointer; }
+input[type="range"].form-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; background: var(--accent); border-radius: 50%; cursor: pointer; box-shadow: 0 1px 6px rgba(200,75,47,0.4); transition: transform 0.15s; }
+input[type="range"].form-slider::-webkit-slider-thumb:hover { transform: scale(1.2); }
+input[type="range"].form-slider::-moz-range-thumb { width: 18px; height: 18px; background: var(--accent); border-radius: 50%; border: none; cursor: pointer; }
+.slider-val { font-family: 'DM Mono', monospace; font-size: 0.82rem; color: var(--accent); font-weight: 600; min-width: 44px; text-align: right; }
+.format-select { background: var(--white); border: 1.5px solid var(--border); border-radius: 6px; padding: 0.42rem 2rem 0.42rem 0.75rem; font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--ink); cursor: pointer; outline: none; transition: border-color 0.2s; -webkit-appearance: none; appearance: none; width: 100%; background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%237a7567' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.75rem center; }
+.format-select:focus { border-color: var(--accent); }
+
+/* ══ TOGGLE SWITCH ══ */
+.toggle-row { display: flex; align-items: center; gap: 0.85rem; padding: 0.5rem 0; }
+.toggle-switch { position: relative; width: 36px; height: 20px; flex-shrink: 0; cursor: pointer; }
+.toggle-switch input { opacity: 0; width: 0; height: 0; position: absolute; }
+.toggle-track { position: absolute; inset: 0; background: var(--border); border-radius: 100px; transition: background 0.2s; }
+.toggle-switch input:checked + .toggle-track { background: var(--accent); }
+.toggle-knob { position: absolute; top: 3px; left: 3px; width: 14px; height: 14px; background: white; border-radius: 50%; transition: transform 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.2); pointer-events: none; }
+.toggle-switch input:checked ~ .toggle-knob { transform: translateX(16px); }
+.toggle-label { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.03em; flex: 1; }
+
+/* ══ PAGE THUMBNAIL PREVIEW PANEL ══ */
+.preview-panel { background: var(--ink); border-radius: 10px; overflow: hidden; position: sticky; top: 84px; }
+.preview-panel-header { padding: 0.75rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: space-between; }
+.preview-panel-title { font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #9e9990; display: flex; align-items: center; gap: 0.4rem; }
+.preview-badge { font-family: 'DM Mono', monospace; font-size: 0.6rem; background: rgba(200,75,47,0.2); color: var(--accent); border: 1px solid rgba(200,75,47,0.3); padding: 0.1rem 0.45rem; border-radius: 100px; letter-spacing: 0.06em; }
+.preview-placeholder { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; padding: 3.5rem 2rem; }
+.preview-placeholder-icon { width: 52px; height: 52px; background: rgba(200,75,47,0.12); border: 1px solid rgba(200,75,47,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: rgba(200,75,47,0.5); }
+.preview-placeholder p { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: rgba(255,255,255,0.25); text-align: center; letter-spacing: 0.05em; line-height: 1.6; }
+
+/* Info bar */
+.pdf-info-bar { display: none; padding: 0.55rem 1rem; background: rgba(200,75,47,0.1); border-bottom: 1px solid rgba(200,75,47,0.2); gap: 1.25rem; flex-wrap: wrap; }
+.pdf-info-bar.visible { display: flex; }
+.pdf-stat { font-family: 'DM Mono', monospace; font-size: 0.63rem; color: rgba(255,255,255,0.45); display: flex; align-items: center; gap: 0.3rem; }
+.pdf-stat-val { color: rgba(255,255,255,0.82); font-weight: 600; }
+
+/* Page thumbnail grid */
+.page-strip-wrap { padding: 0.85rem; display: none; }
+.page-strip-wrap.visible { display: block; }
+.page-strip-label { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 0.6rem; display: flex; align-items: center; justify-content: space-between; }
+.page-strip-count { color: var(--accent); }
+.page-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.4rem; max-height: 330px; overflow-y: auto; padding-right: 2px; }
+.page-strip::-webkit-scrollbar { width: 3px; }
+.page-strip::-webkit-scrollbar-track { background: transparent; }
+.page-strip::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+.page-thumb { aspect-ratio: 3/4; border-radius: 4px; overflow: hidden; border: 1.5px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.06); position: relative; cursor: pointer; transition: border-color 0.15s; }
+.page-thumb:hover { border-color: var(--accent); }
+.page-thumb canvas { width: 100%; height: 100%; display: block; object-fit: contain; }
+.page-thumb-num { position: absolute; bottom: 0; left: 0; right: 0; font-family: 'DM Mono', monospace; font-size: 0.55rem; color: rgba(255,255,255,0.6); background: rgba(0,0,0,0.55); text-align: center; padding: 0.15rem 0; letter-spacing: 0.04em; }
+.preview-note { padding: 0.6rem 1rem; font-family: 'DM Mono', monospace; font-size: 0.65rem; color: rgba(255,255,255,0.2); text-align: center; letter-spacing: 0.04em; border-top: 1px solid rgba(255,255,255,0.06); display: none; }
+
+/* ══ LIGHTBOX ══ */
+#lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 200; align-items: center; justify-content: center; cursor: zoom-out; }
+#lightboxCanvas { max-width: 90vw; max-height: 90vh; border-radius: 4px; box-shadow: 0 8px 48px rgba(0,0,0,0.6); }
+
+/* ══ FILE QUEUE ══ */
+.file-queue-wrap { display: none; }
+.file-queue-wrap.visible { display: block; }
+.file-queue-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 0.5rem; }
+.file-queue-label { font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+.file-queue-count { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--accent); background: var(--accent-light); padding: 0.15rem 0.5rem; border-radius: 100px; }
+.file-queue { display: flex; flex-direction: column; gap: 0.5rem; max-height: 220px; overflow-y: auto; padding-right: 2px; }
+.file-queue::-webkit-scrollbar { width: 4px; }
+.file-queue::-webkit-scrollbar-track { background: var(--cream); border-radius: 2px; }
+.file-queue::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+.file-item { display: flex; align-items: center; gap: 0.75rem; background: var(--paper); border: 1px solid var(--border); border-radius: 8px; padding: 0.55rem 0.85rem; cursor: pointer; transition: border-color 0.15s; }
+.file-item:hover { border-color: var(--accent); }
+.file-item.selected { border-color: var(--accent); background: var(--accent-light); }
+.file-icon-wrap { width: 36px; height: 36px; border-radius: 5px; border: 1px solid var(--border); flex-shrink: 0; background: var(--cream); display: flex; align-items: center; justify-content: center; color: var(--accent); font-family: 'DM Mono', monospace; font-size: 0.6rem; font-weight: 700; }
+.file-info { flex: 1; min-width: 0; }
+.file-name { font-size: 0.78rem; font-weight: 600; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.file-meta { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); margin-top: 0.1rem; }
+.file-remove { background: none; border: none; cursor: pointer; color: var(--muted); padding: 0.2rem; border-radius: 4px; display: flex; align-items: center; justify-content: center; transition: color 0.15s, background 0.15s; flex-shrink: 0; }
+.file-remove:hover { color: var(--accent); background: var(--accent-light); }
+.add-more-btn { display: flex; align-items: center; justify-content: center; gap: 0.5rem; border: 1.5px dashed var(--border); border-radius: 8px; padding: 0.6rem; cursor: pointer; font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.05em; color: var(--muted); background: transparent; width: 100%; margin-top: 0.5rem; transition: border-color 0.2s, color 0.2s, background 0.2s; position: relative; overflow: hidden; }
+.add-more-btn input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.add-more-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+
+/* ══ ACTION BAR ══ */
+.action-bar { display: flex; gap: 0.75rem; margin-top: 1.25rem; flex-wrap: wrap; }
+.btn-primary { background: var(--accent); color: var(--white); border: none; border-radius: 6px; padding: 0.65rem 1.5rem; font-family: 'DM Sans', sans-serif; font-size: 0.875rem; font-weight: 600; cursor: pointer; transition: all 0.18s; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; }
+.btn-primary:hover { background: #a83825; transform: translateY(-1px); }
+.btn-primary:disabled { background: var(--border); color: var(--muted); cursor: not-allowed; transform: none; }
+.btn-secondary { background: transparent; color: var(--ink); border: 1.5px solid var(--border); border-radius: 6px; padding: 0.65rem 1.25rem; font-family: 'DM Sans', sans-serif; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.18s; display: inline-flex; align-items: center; gap: 0.5rem; }
+.btn-secondary:hover { border-color: var(--ink); background: var(--cream); }
+.btn-secondary:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* ══ PROCESSING OVERLAY ══ */
+.processing-overlay { display: none; }
+.processing-overlay.active { display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; padding: 3rem; background: var(--paper); border-radius: 10px; border: 1px solid var(--border); margin-top: 1.5rem; }
+.ai-spinner { width: 48px; height: 48px; border: 3px solid var(--ai-purple-light); border-top-color: var(--ai-purple); border-radius: 50%; animation: spin 0.9s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.processing-text { font-family: 'DM Mono', monospace; font-size: 0.8rem; color: var(--muted); letter-spacing: 0.05em; }
+.processing-progress { width: 100%; max-width: 280px; background: var(--border); border-radius: 100px; height: 4px; overflow: hidden; }
+.processing-progress-bar { height: 100%; background: var(--accent); border-radius: 100px; transition: width 0.25s ease; width: 0%; }
+.processing-steps { display: flex; flex-direction: column; gap: 0.4rem; width: 100%; max-width: 280px; }
+.processing-step { display: flex; align-items: center; gap: 0.6rem; font-family: 'DM Mono', monospace; font-size: 0.68rem; color: #bbb; }
+.processing-step.done { color: #28c840; }
+.processing-step.active { color: var(--ai-purple); }
+.step-dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+
+/* ══ RESULTS ══ */
+.result-area { display: none; margin-top: 1.5rem; }
+.result-area.visible { display: block; }
+.result-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem; }
+.result-title { font-family: 'DM Mono', monospace; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+.result-count-badge { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--green); background: var(--green-light); padding: 0.2rem 0.6rem; border-radius: 100px; border: 1px solid rgba(26,138,74,0.2); }
+.result-list { display: flex; flex-direction: column; gap: 0.6rem; }
+.result-row { display: flex; align-items: center; gap: 0.85rem; background: var(--paper); border: 1px solid var(--border); border-radius: 9px; padding: 0.75rem 1rem; transition: border-color 0.15s; }
+.result-row:hover { border-color: var(--green); }
+.result-icon { width: 52px; height: 52px; border-radius: 5px; border: 1px solid var(--border); flex-shrink: 0; background: var(--cream); display: flex; align-items: center; justify-content: center; color: var(--accent); font-family: 'DM Mono', monospace; font-size: 0.6rem; font-weight: 700; }
+.result-info { flex: 1; min-width: 0; }
+.result-filename { font-size: 0.82rem; font-weight: 600; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 0.2rem; }
+.result-meta { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); }
+.convert-badge { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--accent); background: var(--accent-light); border: 1px solid rgba(200,75,47,0.2); padding: 0.1rem 0.4rem; border-radius: 3px; white-space: nowrap; display: inline-block; margin-top: 3rem.15rem; }
+.result-dl { background: none; border: 1.5px solid var(--border); border-radius: 5px; padding: 0.35rem 0.65rem; cursor: pointer; color: var(--muted); font-family: 'DM Mono', monospace; font-size: 0.65rem; display: flex; align-items: center; gap: 0.3rem; transition: all 0.18s; white-space: nowrap; flex-shrink: 0; }
+.result-dl:hover { border-color: var(--green); color: var(--green); background: var(--green-light); }
+.stats-bar { display: none; gap: 1.5rem; padding: 0.75rem 1rem; background: var(--cream); font-size: 0.78rem; color: var(--muted); font-family: 'DM Mono', monospace; flex-wrap: wrap; margin-top: 1rem; border-radius: 8px; border: 1px solid var(--border); }
+.stats-bar.visible { display: flex; }
+.stat { display: flex; gap: 0.4rem; align-items: center; }
+.stat-val { color: var(--ink); font-weight: 500; }
+
+/* ══ TOAST ══ */
+.toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--ink); color: var(--paper); padding: 0.75rem 1.5rem; border-radius: 6px; font-size: 0.875rem; font-weight: 500; transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); z-index: 999; border-left: 3px solid var(--accent); white-space: nowrap; }
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ══ CONTENT SECTIONS ══ */
+.content-section { max-width: 1000px; margin: 0 auto; padding: 4rem 1.5rem; }
+.section-tag { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; display: block; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1.25rem; line-height: 1.2; }
+.content-prose { color: #4a4640; font-size: 0.975rem; line-height: 1.8; max-width: 720px; }
+.content-prose p { margin-bottom: 1rem; }
+.content-prose p:last-child { margin-bottom: 0; }
+.divider { border: none; border-top: 1px solid var(--border); max-width: 1000px; margin: 0 auto; }
+
+/* ══ HOW IT WORKS ══ */
+.how-to-section { background: var(--ink); color: var(--paper); padding: 1.75rem 2rem; position: relative; overflow: hidden; }
+.how-to-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 80% at 50% 100%, rgba(200,75,47,0.14) 0%, transparent 70%); pointer-events: none; }
+.how-to-inner { max-width: 1000px; margin: 0 auto; position: relative; }
+.how-to-header { text-align: center; margin-bottom: 1.25rem; }
+.how-to-header .section-tag { color: #c84b2f; }
+.how-to-header .section-title { color: var(--paper); margin-bottom: 0.35rem; }
+.how-to-subtitle { color: #9e9990; font-size: 0.9rem; font-weight: 300; }
+.steps-grid { display: flex; align-items: stretch; gap: 0; }
+.step-card { flex: 1; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 0.85rem 1rem; position: relative; transition: background 0.25s, border-color 0.25s, transform 0.25s; }
+.step-card:hover { background: rgba(200,75,47,0.08); border-color: rgba(200,75,47,0.35); transform: translateY(-4px); }
+.step-connector { display: flex; align-items: center; justify-content: center; padding: 0 0.5rem; color: rgba(200,75,47,0.5); flex-shrink: 0; margin-top: -1rem; }
+.step-number { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; color: rgba(200,75,47,0.25); line-height: 1; margin-bottom: 0.35rem; letter-spacing: -0.04em; }
+.step-icon { width: 36px; height: 36px; background: rgba(200,75,47,0.15); border: 1px solid rgba(200,75,47,0.3); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.6rem; color: #c84b2f; }
+.step-title { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; color: var(--paper); margin-bottom: 0.35rem; line-height: 1.3; }
+.step-desc { font-size: 0.8rem; color: #9e9990; line-height: 1.55; margin-bottom: 0.6rem; }
+.step-desc strong { color: #d4cfc4; }
+.step-pill { display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.63rem; letter-spacing: 0.05em; color: #c84b2f; background: rgba(200,75,47,0.12); border: 1px solid rgba(200,75,47,0.25); padding: 0.2rem 0.6rem; border-radius: 100px; }
+.how-to-cta { text-align: center; margin-top: 1.25rem; display: flex; flex-direction: column; align-items: center; gap: 0.6rem; }
+.how-to-note { font-size: 0.8rem; color: #7a7567; font-family: 'DM Mono', monospace; letter-spacing: 0.03em; }
+
+/* ══ FEATURES ══ */
+.features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-top: 2rem; }
+.feature-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem 1.25rem; transition: box-shadow 0.2s, transform 0.2s; }
+.feature-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+.feature-icon { font-size: 1.75rem; margin-bottom: 0.75rem; display: block; }
+.feature-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.4rem; }
+.feature-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+/* ══ TABLE ══ */
+.quality-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; font-size: 0.85rem; }
+.quality-table th { font-family: 'DM Mono', monospace; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 600; text-align: left; padding: 0.5rem 0.75rem; border-bottom: 2px solid var(--border); }
+.quality-table td { padding: 0.75rem; border-bottom: 1px solid var(--border); color: #4a4640; vertical-align: top; line-height: 1.5; }
+.quality-table tr:last-child td { border-bottom: none; }
+.quality-table tr:hover td { background: var(--paper); }
+.quality-range { font-family: 'DM Mono', monospace; font-size: 0.78rem; font-weight: 600; color: var(--accent); white-space: nowrap; }
+.quality-name { font-weight: 600; color: var(--ink); }
+
+/* ══ USE CASES ══ */
+.use-cases-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-top: 2rem; }
+.use-case-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem 1.25rem; }
+.use-case-icon { font-size: 1.75rem; margin-bottom: 0.75rem; display: block; }
+.use-case-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.4rem; }
+.use-case-text { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+/* ══ FAQ ══ */
+.faq-list { margin-top: 2rem; }
+.faq-item { border-bottom: 1px solid var(--border); padding: 1.25rem 0; }
+.faq-item:last-child { border-bottom: none; }
+.faq-q { font-weight: 600; font-size: 0.95rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.faq-q::after { content: '+'; font-size: 1.2rem; color: var(--ai-purple); flex-shrink: 0; transition: transform 0.2s; }
+.faq-item.open .faq-q::after { transform: rotate(45deg); }
+.faq-a { font-size: 0.9rem; color: var(--muted); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.35s ease, margin-top 0.3s; }
+.faq-item.open .faq-a { max-height: 320px; margin-top: 3rem.75rem; }
+
+/* ══ CTA ══ */
+.cta-section { background: var(--ink); color: var(--paper); padding: 1.5rem 2rem; text-align: center; position: relative; overflow: hidden; }
+.cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(200,75,47,0.18) 0%, transparent 70%); pointer-events: none; }
+.cta-inner { max-width: 640px; margin: 0 auto; position: relative; }
+.cta-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 1rem; color: var(--paper); }
+.cta-desc { font-size: 1rem; color: #9e9990; font-weight: 300; margin-bottom: 1rem; line-height: 1.7; }
+.cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 0.75rem; }
+.cta-note { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.06em; color: #5a5650; margin-top: 1rem; display: block; }
+
+/* ══ RELATED ══ */
+.related-section { background: var(--cream); padding: 5rem 2rem; border-top: 1px solid var(--border); }
+.related-inner { max-width: 1000px; margin: 0 auto; }
+.related-header { margin-bottom: 2.5rem; }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+.related-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-decoration: none; color: inherit; display: block; transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s; position: relative; overflow: hidden; }
+.related-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--border); transition: background 0.2s; }
+.related-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); border-color: var(--accent); }
+.related-card:hover::before { background: var(--accent); }
+.related-card-icon { font-size: 1.85rem; margin-bottom: 0.85rem; display: block; }
+.related-card-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem; color: var(--ink); letter-spacing: -0.01em; }
+.related-card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin-bottom: 1rem; }
+.related-card-tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); background: var(--accent-light); padding: 0.2rem 0.5rem; border-radius: 3px; display: inline-block; }
+
+/* ══ FOOTER ══ */
+footer { background: var(--ink); color: #9e9990; padding: 4rem 2rem 2rem; margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.05); }
+#footer-placeholder { margin-top: 3rem; }
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid #2a2a2a; }
+.footer-brand .logo { display: block; margin-bottom: 0.75rem; }
+.footer-brand p { font-size: 0.85rem; line-height: 1.6; max-width: 240px; }
+.footer-social { display: flex; gap: 0; margin-top: 1rem; }
+.social-icon { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; color: #9e9990; transition: color 0.2s, transform 0.2s; border-radius: 6px; margin-left: -8px; }
+.social-icon:first-child { margin-left: 0; }
+.social-icon:hover { color: var(--paper); transform: translateY(-2px); }
+.footer-col-title { font-family: 'DM Sans', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper); font-weight: 600; margin-bottom: 1rem; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-links a { color: #9e9990; text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+.footer-links a:hover { color: var(--paper); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; font-size: 0.8rem; flex-wrap: wrap; gap: 0.75rem; }
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 900px) { .tool-columns { grid-template-columns: 1fr; } .preview-panel { position: static; } }
+@media (max-width: 768px) {
+  nav { display: none; } .mobile-menu-toggle { display: flex; }
+  .preset-row { grid-template-columns: repeat(2, 1fr); }
+  .steps-grid { flex-direction: column; gap: 0.75rem; }
+  .step-connector { transform: rotate(90deg); padding: 0; margin: 0; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .tool-body { padding: 1rem; }
+  .hero { padding: 3rem 1.5rem 2.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">JPG2<span>Go</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="tools.html">Tools</a>
+      <a href="#tool" class="nav-cta">Convert Now</a>
+    </nav>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="tools.html" onclick="closeMobileMenu()">Tools</a>
+    <a href="#tool" class="nav-cta" onclick="closeMobileMenu()">Convert Now</a>
+  </nav>
+</header>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-badge">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 19 21 12 17 5 21"/></svg>
+        Convert PDFs to Editable Text
+  </div>
+  <h1>Convert PDF to RTF</h1>
+  <p class="hero-desc">Convert PDF files into editable RTF documents so you can easily modify text using various word processing programs.</p>
+  <div class="hero-pills">
+    <span class="hero-pill">one SVG per page</span>
+    <span class="hero-pill">72–600 DPI</span>
+    <span class="hero-pill">page range selection</span>
+    <span class="hero-pill">live thumbnail grid</span>
+    <span class="hero-pill">batch conversion</span>
+    <span class="hero-pill">free forever</span>
+  </div>
+</section>
+
+<!-- ══ TOOL ══ -->
+<section class="tool-section" id="tool">
+  <div class="tool-card">
+    <div class="tool-card-header">
+      <span class="dot dot-r"></span>
+      <span class="dot dot-y"></span>
+      <span class="dot dot-g"></span>
+      <span class="tool-card-title">pdf-to-svg · render · per-page · dpi-control · batch · browser-native · jpg2go.com</span>
+    </div>
+    <div class="tool-body">
+
+      <!-- Drop Zone -->
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" accept="application/pdf,.pdf" multiple>
+        <div class="drop-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>Drop PDF files here</h3>
+        <p>Convert PDF files into editable RTF documents so you can easily modify text using various word processing programs.</p>
+        <span class="formats-pill">PDF only · batch supported</span>
+      </div>
+
+      <!-- Two Column Layout -->
+      <div class="tool-columns" id="toolColumns" style="display:none;">
+        <div class="tool-col-left">
+
+          <!-- DPI Presets -->
+          <div class="panel-box">
+            <div class="panel-box-title">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              Render Quality
+            </div>
+            <div class="preset-row" id="dpiPresetGrid">
+              <button class="preset-btn" data-dpi="72">
+                <span class="preset-btn-name">Screen</span>
+                <span class="preset-btn-sub">72 dpi</span>
+              </button>
+              <button class="preset-btn active" data-dpi="150">
+                <span class="preset-btn-name">Web</span>
+                <span class="preset-btn-sub">150 dpi</span>
+              </button>
+              <button class="preset-btn" data-dpi="300">
+                <span class="preset-btn-name">Print</span>
+                <span class="preset-btn-sub">300 dpi</span>
+              </button>
+              <button class="preset-btn" data-dpi="600">
+                <span class="preset-btn-name">HiRes</span>
+                <span class="preset-btn-sub">600 dpi</span>
+              </button>
+            </div>
+
+            <div class="form-row">
+              <div class="form-label">DPI <span class="form-label-hint" id="dpiHint">150 dpi — web / screen</span></div>
+              <div class="slider-wrap">
+                <input type="range" class="form-slider" id="slDpi" min="72" max="600" step="6" value="150">
+                <span class="slider-val" id="slDpiVal">150</span>
+              </div>
+            </div>
+
+            <div class="form-row" style="margin-bottom:0;">
+              <div class="form-label">Image quality <span class="form-label-hint" id="qualHint">90 — high</span></div>
+              <div class="slider-wrap">
+                <input type="range" class="form-slider" id="slQuality" min="40" max="100" value="90">
+                <span class="slider-val" id="slQualityVal">90</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Page Options -->
+          <div class="panel-box">
+            <div class="panel-box-title">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+              Page Options
+            </div>
+
+            <div class="form-row">
+              <div class="form-label">Page range <span class="form-label-hint" id="rangeHint">all pages</span></div>
+              <div style="display:flex; gap:0.5rem; align-items:center;">
+                <input type="number" id="pageFrom" min="1" placeholder="From" style="flex:1;padding:0.4rem 0.6rem;border:1.5px solid var(--border);border-radius:6px;font-family:'DM Mono',monospace;font-size:0.78rem;outline:none;background:var(--white);color:var(--ink);transition:border-color 0.2s;">
+                <span style="font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--muted);">–</span>
+                <input type="number" id="pageTo" min="1" placeholder="To" style="flex:1;padding:0.4rem 0.6rem;border:1.5px solid var(--border);border-radius:6px;font-family:'DM Mono',monospace;font-size:0.78rem;outline:none;background:var(--white);color:var(--ink);transition:border-color 0.2s;">
+              </div>
+            </div>
+
+            <div class="form-row" style="margin-bottom:0.5rem;">
+              <div class="form-label">Background <span class="form-label-hint">SVG page background</span></div>
+              <select class="format-select" id="bgSelect">
+                <option value="white">White</option>
+                <option value="transparent">Transparent</option>
+                <option value="black">Black</option>
+              </select>
+            </div>
+
+            <div class="toggle-row">
+              <label class="toggle-switch">
+                <input type="checkbox" id="embedToggle" checked>
+                <span class="toggle-track"></span><span class="toggle-knob"></span>
+              </label>
+              <span class="toggle-label">Embed image as base64 (self-contained)</span>
+            </div>
+            <div class="toggle-row">
+              <label class="toggle-switch">
+                <input type="checkbox" id="pageNumToggle">
+                <span class="toggle-track"></span><span class="toggle-knob"></span>
+              </label>
+              <span class="toggle-label">Add page number label</span>
+            </div>
+          </div>
+
+          <!-- File Queue -->
+          <div class="file-queue-wrap visible" id="fileQueueWrap">
+            <div class="file-queue-header">
+              <span class="file-queue-label">PDFs queued</span>
+              <span class="file-queue-count" id="fileCount">0 files</span>
+            </div>
+            <div class="file-queue" id="fileQueue"></div>
+            <label class="add-more-btn">
+              <input type="file" id="addMoreInput" accept="application/pdf,.pdf" multiple>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add more PDFs
+            </label>
+          </div>
+
+          <!-- Action Bar -->
+          <div class="action-bar">
+            <button class="btn-primary" id="convertBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 19 21 12 17 5 21"/></svg>
+              Convert to SVG
+            </button>
+            <button class="btn-secondary" id="clearBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
+              Clear All
+            </button>
+          </div>
+        </div>
+
+        <!-- RIGHT: Page Thumbnail Preview -->
+        <div class="tool-col-right">
+          <div class="preview-panel">
+            <div class="preview-panel-header">
+              <div class="preview-panel-title">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                Page Preview
+              </div>
+              <span class="preview-badge" id="previewBadge">NO FILE</span>
+            </div>
+
+            <div class="pdf-info-bar" id="pdfInfoBar">
+              <div class="pdf-stat">Pages <span class="pdf-stat-val" id="infoPages">—</span></div>
+              <div class="pdf-stat">Size <span class="pdf-stat-val" id="infoSize">—</span></div>
+              <div class="pdf-stat">DPI <span class="pdf-stat-val" id="infoDpi">—</span></div>
+            </div>
+
+            <div class="preview-placeholder" id="previewPlaceholder">
+              <div class="preview-placeholder-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              </div>
+              <p>Upload a PDF to see<br>all pages as thumbnails</p>
+            </div>
+
+            <div class="page-strip-wrap" id="pageStripWrap">
+              <div class="page-strip-label">
+                <span>Pages</span>
+                <span class="page-strip-count" id="pageStripCount">—</span>
+              </div>
+              <div class="page-strip" id="pageStrip"></div>
+            </div>
+
+            <div class="preview-note" id="previewNote">Click thumbnail to zoom · Scroll for more pages</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Processing Overlay -->
+      <div class="processing-overlay" id="processingOverlay">
+        <div class="ai-spinner"></div>
+        <div class="processing-text" id="processingText">Loading PDF…</div>
+        <div class="processing-progress"><div class="processing-progress-bar" id="progressBar"></div></div>
+        <div class="processing-steps">
+          <div class="processing-step active" id="pStep1"><span class="step-dot"></span> Parsing PDF structure</div>
+          <div class="processing-step" id="pStep2"><span class="step-dot"></span> Rendering pages to canvas</div>
+          <div class="processing-step" id="pStep3"><span class="step-dot"></span> Building RTF document</div>
+          <div class="processing-step" id="pStep4"><span class="step-dot"></span> Packaging RTF files</div>
+        </div>
+      </div>
+
+      <!-- Result Area -->
+      <div class="result-area" id="resultArea">
+        <div class="result-header">
+          <span class="result-title">Converted RTF Files</span>
+          <span class="result-count-badge" id="resultCountBadge">0 files</span>
+        </div>
+        <div class="result-list" id="resultList"></div>
+        <div class="stats-bar visible" id="statsBar">
+          <div class="stat">RTF files: <span class="stat-val" id="rFiles">—</span></div>
+          <div class="stat">DPI: <span class="stat-val" id="rDpi">—</span></div>
+          <div class="stat">Quality: <span class="stat-val" id="rQuality">—</span></div>
+          <div class="stat">Background: <span class="stat-val" id="rBg">—</span></div>
+        </div>
+        <div class="action-bar" style="margin-top:1rem;">
+          <button class="btn-primary" id="downloadAllBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download All as ZIP
+          </button>
+          <button class="btn-secondary" id="reconvertBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+            Try Different Settings
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ══ -->
+<section class="how-to-section" id="how-it-works">
+  <div class="how-to-inner">
+    <div class="how-to-header">
+      <span class="section-tag">Quick Guide</span>
+      <h2 class="section-title">How to Convert PDF to RTF</h2>
+      <p class="how-to-subtitle">Four steps. AI-powered extraction. Download-ready in seconds.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">01</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+        <div class="step-title">Upload PDFs</div>
+        <div class="step-desc">Drag &amp; drop <strong>one or more PDF files</strong>. Every page is rendered as a thumbnail in the live preview grid — verify page count and layout before converting.</div>
+        <span class="step-pill">batch support</span>
+      </div>
+      <div class="step-connector"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-number">02</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></div>
+        <div class="step-title">Choose Quality &amp; Options</div>
+        <div class="step-desc">Pick a <strong>DPI preset</strong> — Screen (72), Web (150), Print (300), HiRes (600). Set page range, background colour, and whether to embed image data in the SVG.</div>
+        <span class="step-pill">full control</span>
+      </div>
+      <div class="step-connector"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-number">03</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 19 21 12 17 5 21"/></svg></div>
+        <div class="step-title">Convert</div>
+        <div class="step-desc">Click <strong>Convert to RTF</strong> — Click  — AI analyses your PDF content, extracts text and basic formatting, and assembles a clean Rich Text Format file ready for editing in any word processor.</div>
+        <span class="step-pill">client-side only</span>
+      </div>
+      <div class="step-connector"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-number">04</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+        <div class="step-title">Download RTF Files</div>
+        <div class="step-desc">Download individual RTF files or grab the full set as a <strong>ZIP archive</strong>. Files are named to match the original PDFs. No watermark, no page cap, ever.</div>
+        <span class="step-pill">ZIP download</span>
+      </div>
+    </div>
+    <div class="how-to-cta">
+      <a href="#tool" class="btn-primary">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 19 21 12 17 5 21"/></svg>
+        Start Converting
+      </a>
+      <span class="how-to-note">free · no signup · no upload</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section class="content-section" id="about">
+  <h2 class="section-title">Why Use PDF to RTF Converter?</h2>
+  <div class="content-prose">
+    <p>A PDF to RTF converter provides a simple way to transform static PDF files into editable documents. RTF (Rich Text Format) is compatible with many word processors and maintains basic formatting such as paragraphs, headings, and lists.</p>
+    <p>Once the file is converted, users can edit the content, update information, or reuse text without needing to retype everything manually.</p>
+    <p>This tool is especially useful for people who need to modify existing documents while keeping the original structure and formatting as intact as possible.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══ FEATURES ══ -->
+<section class="content-section">
+  <span class="section-tag">Features</span>
+  <h2 class="section-title">Everything in One PDF to RTF Converter</h2>
+  <div class="features-grid">
+    <div class="feature-card"><span class="feature-icon">📃</span><div class="feature-title">Universal Format</div><div class="feature-desc">RTF is supported by every major word processor — Microsoft Word, LibreOffice, OpenOffice, Apple Pages, Google Docs, WordPad, and hundreds more. No compatibility issues, ever.</div></div>
+    <div class="feature-card"><span class="feature-icon">📋</span><div class="feature-title">Structure Preservation</div><div class="feature-desc">Headings, paragraphs, bold, italic, and basic list formatting from the PDF are extracted and mapped to RTF equivalents — producing clean, readable output.</div></div>
+    <div class="feature-card"><span class="feature-icon">🔓</span><div class="feature-title">Fully Editable Output</div><div class="feature-desc">The RTF file is fully editable — open in any word processor and start editing immediately. No locked fields, no read-only restrictions, no format gymnastics.</div></div>
+    <div class="feature-card"><span class="feature-icon">📦</span><div class="feature-title">Batch Conversion</div><div class="feature-desc">Queue multiple PDFs and convert them all in one pass — each file produces a separate RTF document, all collected in a single ZIP archive for download.</div></div>
+    <div class="feature-card"><span class="feature-icon">🌐</span><div class="feature-title">Maximum Compatibility</div><div class="feature-desc">RTF is a plain-text format with universal support — it works in every operating system, every word processor, and every document management system without plugins or converters.</div></div>
+    <div class="feature-card"><span class="feature-icon">📑</span><div class="feature-title">Page Range Selection</div><div class="feature-desc">Convert only the pages you need — enter a From/To range to extract a chapter, section, or specific content block from a large PDF.</div></div>
+    <div class="feature-card"><span class="feature-icon">🗂️</span><div class="feature-title">Version Control Friendly</div><div class="feature-desc">RTF files are plain text with markup — they diff cleanly in Git and other version control systems, making them ideal for document change tracking workflows.</div></div>
+    <div class="feature-card"><span class="feature-icon">🔒</span><div class="feature-title">100% Private</div><div class="feature-desc">Your PDF content is processed entirely in your browser — your document never leaves your device. No upload, no cloud processing, no data retention.</div></div>
+  </div>
+</section>
+
+<!-- ══ DPI TABLE ══ -->
+<section class="content-section">
+  <span class="section-tag">DPI Reference</span>
+  <h2 class="section-title">PDF to RTF: What Gets Preserved</h2>
+  <div class="content-prose">
+    <p>RTF supports a broad range of formatting elements. Here is what to expect when converting different types of PDF content to RTF.</p>
+  </div>
+  <table class="quality-table">
+    <thead>
+      <tr><th>Preset</th><th>DPI</th><th>Canvas at A4</th><th>Best For</th><th>RTF Output Quality</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><span class="quality-range">Screen</span></td><td><span class="quality-name">72</span></td><td>595 × 842 px</td><td>Low-resolution web thumbnails, quick previews</td><td>50–150 KB</td></tr>
+      <tr><td><span class="quality-range">Web</span></td><td><span class="quality-name">150</span></td><td>1240 × 1754 px</td><td>Web pages, presentations, digital documents</td><td>150–500 KB</td></tr>
+      <tr><td><span class="quality-range">Print</span></td><td><span class="quality-name">300</span></td><td>2480 × 3508 px</td><td>Print-ready assets, crisp desktop display</td><td>500 KB – 2 MB</td></tr>
+      <tr><td><span class="quality-range">HiRes</span></td><td><span class="quality-name">600</span></td><td>4961 × 7016 px</td><td>Large-format display, archival, max sharpness</td><td>2–8 MB</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ══ USE CASES ══ -->
+<section class="content-section">
+  <span class="section-tag">Use Cases</span>
+  <h2 class="section-title">When to Convert PDF to RTF</h2>
+  <div class="use-cases-grid">
+    <div class="use-case-card"><span class="use-case-icon">✏️</span><div class="use-case-title">Editing Locked PDFs</div><div class="use-case-text">PDFs are not designed for editing. Converting to RTF gives you a fully editable version of the document content — open in any word processor and start editing immediately.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🌐</span><div class="use-case-title">Cross-Platform Editing</div><div class="use-case-text">RTF works on Windows, macOS, Linux, iOS, and Android — across every word processor. If you need to edit a PDF on any device with any software, RTF is the most universally compatible choice.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">📧</span><div class="use-case-title">Email & Sharing</div><div class="use-case-text">RTF files are compact and universally openable — ideal for sending editable documents to recipients who may not have Microsoft Word or a specific word processor installed.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🔄</span><div class="use-case-title">Format Migration</div><div class="use-case-text">Migrating from a PDF archive to an editable document repository? RTF conversion produces clean, editable files that can be further processed, reformatted, or converted to DOCX, ODT, or any other format.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🗂️</span><div class="use-case-title">Version Control</div><div class="use-case-text">RTF is a plain-text format — diff tools, Git, and version control systems handle RTF files cleanly. Convert PDFs to RTF for document change tracking and collaborative editing workflows.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">📚</span><div class="use-case-title">Legacy System Compatibility</div><div class="use-case-text">Older document management systems, CMS platforms, and enterprise tools often have better RTF support than DOCX or ODT. Convert PDFs to RTF for maximum legacy system compatibility.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🏥</span><div class="use-case-title">Healthcare & Legal</div><div class="use-case-text">Many healthcare and legal document systems accept RTF as an input format for electronic health records and case management systems. Convert PDFs to RTF for compliant document submission.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">✂️</span><div class="use-case-title">Content Extraction</div><div class="use-case-text">Use the page range selector to extract a specific section — a contract clause, a policy statement, or a table — from a large PDF as an editable RTF file.</div></div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section class="content-section">
+  <span class="section-tag">FAQ</span>
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">What does a PDF to RTF converter do?</div>
+      <div class="faq-a">A PDF to RTF converter changes PDF documents into Rich Text Format files that can be edited in many word processors.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Why convert PDF files to RTF format?</div>
+      <div class="faq-a">RTF files allow users to edit text easily while maintaining basic formatting.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Which software can open RTF files?</div>
+      <div class="faq-a">RTF files can be opened in Microsoft Word, Google Docs, LibreOffice, and many other text editors.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Will the text layout remain after conversion?</div>
+      <div class="faq-a">Most converters attempt to keep paragraph structure and formatting during conversion.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is RTF format useful for editing documents?</div>
+      <div class="faq-a">Yes, RTF is a simple and flexible format that works across many platforms.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can images from a PDF appear in the RTF file?</div>
+      <div class="faq-a">Some converters preserve images, but results may vary depending on the document.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ RELATED ══ -->
+
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-header">
+      <span class="section-tag">Related Tools</span>
+      <h2 class="section-title">More Free Online Tools</h2>
+    </div>
+    <div class="related-grid">
+      <a href="/jpg-to-pdf" class="related-card">
+        <span class="related-card-icon">📄</span>
+        <div class="related-card-name">JPG to PDF</div>
+        <div class="related-card-desc">Convert JPG images to PDF documents quickly. Combine multiple photos into a single organized PDF file for easy sharing and printing.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+      <a href="/image-resizer" class="related-card">
+        <span class="related-card-icon">📐</span>
+        <div class="related-card-name">Image Resizer</div>
+        <div class="related-card-desc">Resize images to exact pixel dimensions or a percentage of their original size. Runs entirely in your browser without uploading files anywhere.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/compress-jpeg" class="related-card">
+        <span class="related-card-icon">🗜️</span>
+        <div class="related-card-name">Compress JPEG</div>
+        <div class="related-card-desc">Reduce JPEG image file size while maintaining quality. Optimize images for faster web pages and lower storage usage.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/merge-pdf" class="related-card">
+        <span class="related-card-icon">📎</span>
+        <div class="related-card-name">Merge PDF</div>
+        <div class="related-card-desc">Combine multiple PDF files into a single organized document. Drag and drop to reorder pages easily.</div>
+        <span class="related-card-tag">PDF</span>
+      </a>
+      <a href="/crop-image" class="related-card">
+        <span class="related-card-icon">✂️</span>
+        <div class="related-card-name">Crop Image</div>
+        <div class="related-card-desc">Crop images to any aspect ratio or custom dimensions. Perfect for social media thumbnails, profile photos, and banner images.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/format-converter" class="related-card">
+        <span class="related-card-icon">🔄</span>
+        <div class="related-card-name">Format Converter</div>
+        <div class="related-card-desc">Convert images between different formats instantly. Transform JPG, PNG, WebP, and other image formats quickly.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="cta-title">Convert PDF into Editable RTF Files</div>
+    <p class="cta-desc">Turn your PDF files into RTF format and edit them easily using compatible word processors.</p>
+    <div class="cta-actions">
+      <a href="#tool" class="btn-primary"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 19 21 12 17 5 21"/></svg>
+        Convert to RTF</a>
+    </div>
+    <span class="cta-note">free forever · no signup · your files never leave your browser</span>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<!-- ══ FOOTER ══ -->
+<div id="footer-placeholder"></div>
+<script src="load-footer.js"></script>
+
+<div class="toast" id="toast"></div>
+
+<!-- ══ LIGHTBOX ══ -->
+<div id="lightbox">
+  <canvas id="lightboxCanvas"></canvas>
+</div>
+
+<!-- PDF.js from CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+</script>
+
+<script>
+// ── GLOBALS ────────────────────────────────────────────────────────────────────
+let files      = [];   // { file, pdfDoc, pageCount }
+let results    = [];   // { name, rtfStr, size }
+let previewIdx = 0;
+let currentDpi = 150;
+let currentLoadToken = 0;
+
+function sanitizeFilename(name) {
+  const base = String(name || 'file')
+    .replace(/[\\\/:*?"<>|]+/g, '-')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return base || 'file';
+}
+
+function escRtf(s) {
+  // RTF escapes: backslash, braces; convert newlines to \line
+  return String(s || '')
+    .replace(/\\/g, '\\\\')
+    .replace(/{/g, '\\{')
+    .replace(/}/g, '\\}')
+    .replace(/\r\n|\r|\n/g, '\\line ');
+}
+
+function buildRtfFromPlainText(plainText, title) {
+  const body = String(plainText || '')
+    .split(/\n{2,}/)
+    .map(p => p.trim())
+    .filter(Boolean)
+    .map(p => escRtf(p) + '\\par ')
+    .join('\n');
+  const safeTitle = escRtf(title || 'Converted document');
+  return `{\\rtf1\\ansi\\deff0\n` +
+    `{\\fonttbl{\\f0\\fswiss Arial;}}\n` +
+    `\\fs24\\b ${safeTitle}\\b0\\par\n` +
+    `${body}\n` +
+    `}`;
+}
+
+// ── TOAST ─────────────────────────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ── MOBILE MENU ───────────────────────────────────────────────────────────────
+document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+  this.classList.toggle('active');
+  document.getElementById('mobileNav').classList.toggle('active');
+});
+function closeMobileMenu() {
+  document.getElementById('mobileMenuToggle').classList.remove('active');
+  document.getElementById('mobileNav').classList.remove('active');
+}
+
+// ── DPI PRESETS ───────────────────────────────────────────────────────────────
+document.querySelectorAll('#dpiPresetGrid .preset-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#dpiPresetGrid .preset-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentDpi = parseInt(btn.dataset.dpi);
+    document.getElementById('slDpi').value = currentDpi;
+    document.getElementById('slDpiVal').textContent = currentDpi;
+    document.getElementById('dpiHint').textContent = getDpiHint(currentDpi);
+    document.getElementById('infoDpi').textContent = currentDpi + ' dpi';
+  });
+});
+
+function getDpiHint(v) {
+  if (v <= 96)  return v + ' dpi — screen thumbnail';
+  if (v <= 150) return v + ' dpi — web / screen';
+  if (v <= 300) return v + ' dpi — print quality';
+  return v + ' dpi — professional print';
+}
+function getQualHint(v) {
+  if (v <= 60) return v + ' — small file';
+  if (v <= 80) return v + ' — balanced';
+  if (v <= 92) return v + ' — high';
+  return v + ' — maximum';
+}
+
+document.getElementById('slDpi').addEventListener('input', function() {
+  currentDpi = parseInt(this.value);
+  document.getElementById('slDpiVal').textContent = currentDpi;
+  document.getElementById('dpiHint').textContent  = getDpiHint(currentDpi);
+  document.getElementById('infoDpi').textContent  = currentDpi + ' dpi';
+  // sync preset buttons
+  document.querySelectorAll('#dpiPresetGrid .preset-btn').forEach(b => {
+    b.classList.toggle('active', parseInt(b.dataset.dpi) === currentDpi);
+  });
+});
+
+document.getElementById('slQuality').addEventListener('input', function() {
+  document.getElementById('slQualityVal').textContent = this.value;
+  document.getElementById('qualHint').textContent     = getQualHint(parseInt(this.value));
+});
+
+// ── PAGE RANGE ────────────────────────────────────────────────────────────────
+function updateRangeHint() {
+  const from = parseInt(document.getElementById('pageFrom').value);
+  const to   = parseInt(document.getElementById('pageTo').value);
+  if (!from && !to) { document.getElementById('rangeHint').textContent = 'all pages'; return; }
+  if (from && !to)  { document.getElementById('rangeHint').textContent = 'from page ' + from; return; }
+  if (!from && to)  { document.getElementById('rangeHint').textContent = 'up to page ' + to; return; }
+  document.getElementById('rangeHint').textContent = 'pages ' + from + '–' + to;
+}
+document.getElementById('pageFrom').addEventListener('input', updateRangeHint);
+document.getElementById('pageTo').addEventListener('input', updateRangeHint);
+
+// ── DROP ZONE ─────────────────────────────────────────────────────────────────
+const dropZone = document.getElementById('dropZone');
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => { e.preventDefault(); dropZone.classList.remove('drag-over'); handleFiles([...e.dataTransfer.files]); });
+document.getElementById('fileInput').addEventListener('change', function() { handleFiles([...this.files]); this.value = ''; });
+document.getElementById('addMoreInput').addEventListener('change', function() { handleFiles([...this.files]); this.value = ''; });
+
+function handleFiles(newFiles) {
+  const valid = newFiles.filter(f => f.type === 'application/pdf' || f.name.toLowerCase().endsWith('.pdf'));
+  if (!valid.length) { showToast('Please select PDF files'); return; }
+  const wasEmpty = files.length === 0;
+  valid.forEach(f => {
+    if (f.size === 0) return;
+    if (files.find(x => x.file.name === f.name && x.file.size === f.size)) return;
+    files.push({ file: f, pdfDoc: null, pageCount: 0 });
+  });
+  if (!files.length) { showToast('No valid PDFs (empty files were skipped)'); return; }
+  renderQueue();
+  document.getElementById('toolColumns').style.display = '';
+  document.getElementById('resultArea').classList.remove('visible');
+  if (wasEmpty) { previewIdx = 0; loadAndPreview(0); }
+}
+
+function renderQueue() {
+  const queue   = document.getElementById('fileQueue');
+  const countEl = document.getElementById('fileCount');
+  queue.innerHTML = '';
+  countEl.textContent = files.length + ' file' + (files.length !== 1 ? 's' : '');
+
+  files.forEach((item, idx) => {
+    const div = document.createElement('div');
+    div.className = 'file-item' + (idx === previewIdx ? ' selected' : '');
+    div.innerHTML = `
+      <div class="file-icon-wrap">PDF</div>
+      <div class="file-info">
+        <div class="file-name">${item.file.name}</div>
+        <div class="file-meta">${formatSize(item.file.size)}${item.pageCount ? ' · ' + item.pageCount + ' pages' : ''}</div>
+      </div>
+      <button class="file-remove" data-idx="${idx}" title="Remove">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>`;
+    div.addEventListener('click', e => {
+      if (e.target.closest('.file-remove')) return;
+      previewIdx = idx;
+      renderQueue();
+      if (item.pdfDoc) showThumbnails(item);
+      else loadAndPreview(idx);
+    });
+    queue.appendChild(div);
+  });
+
+  queue.querySelectorAll('.file-remove').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      files.splice(parseInt(btn.dataset.idx), 1);
+      if (previewIdx >= files.length) previewIdx = Math.max(0, files.length - 1);
+      renderQueue();
+      if (files.length) {
+        if (files[previewIdx].pdfDoc) showThumbnails(files[previewIdx]);
+        else loadAndPreview(previewIdx);
+      } else resetPreview();
+    });
+  });
+}
+
+// ── LOAD + PREVIEW ────────────────────────────────────────────────────────────
+async function loadAndPreview(idx) {
+  const item = files[idx];
+  if (!item) return;
+  const loadToken = ++currentLoadToken;
+  try {
+    const arrayBuffer = await item.file.arrayBuffer();
+    if (loadToken !== currentLoadToken) return;
+    item.pdfDoc = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+    if (loadToken !== currentLoadToken) return;
+    item.pageCount = item.pdfDoc.numPages;
+    if (!item.pageCount || item.pageCount <= 0) throw new Error('PDF has no pages');
+    renderQueue();
+    document.getElementById('infoPages').textContent = item.pageCount;
+    document.getElementById('infoSize').textContent  = formatSize(item.file.size);
+    document.getElementById('infoDpi').textContent   = currentDpi + ' dpi';
+    document.getElementById('pdfInfoBar').classList.add('visible');
+    showThumbnails(item);
+    showToast(item.pageCount + ' pages found — ' + item.file.name);
+  } catch (err) {
+    const msg = (err && (err.message || String(err))) || 'Unknown error';
+    const isPassword = err?.name === 'PasswordException' || /password/i.test(msg);
+    showToast(isPassword ? 'This PDF is password-protected — unlock it first' : 'Could not read PDF: ' + msg);
+    console.error(err);
+  }
+}
+
+async function showThumbnails(item) {
+  const strip    = document.getElementById('pageStrip');
+  const countEl  = document.getElementById('pageStripCount');
+  const wrap     = document.getElementById('pageStripWrap');
+  const ph       = document.getElementById('previewPlaceholder');
+  const note     = document.getElementById('previewNote');
+
+  strip.innerHTML = '';
+  const total = item.pdfDoc.numPages;
+  countEl.textContent = total + ' page' + (total !== 1 ? 's' : '');
+  document.getElementById('previewBadge').textContent = total + ' PGS';
+
+  // Render thumbnails at 72dpi (small)
+  const thumbScale = 72 / 72; // 1.0 at 72dpi
+  for (let p = 1; p <= total; p++) {
+    const page   = await item.pdfDoc.getPage(p);
+    const vp     = page.getViewport({ scale: thumbScale });
+    const c      = document.createElement('canvas');
+    c.width      = vp.width;
+    c.height     = vp.height;
+    await page.render({ canvasContext: c.getContext('2d'), viewport: vp }).promise;
+
+    const thumbDiv = document.createElement('div');
+    thumbDiv.className = 'page-thumb';
+    thumbDiv.innerHTML = `<div class="page-thumb-num">${p}</div>`;
+    thumbDiv.insertBefore(c, thumbDiv.firstChild);
+    const pNum = p;
+    thumbDiv.addEventListener('click', () => openLightbox(item, pNum));
+    strip.appendChild(thumbDiv);
+  }
+
+  ph.style.display = 'none';
+  wrap.classList.add('visible');
+  note.style.display = 'block';
+}
+
+async function openLightbox(item, pageNum) {
+  const page  = await item.pdfDoc.getPage(pageNum);
+  const scale = Math.min(window.innerWidth * 0.9 / page.getViewport({ scale: 1 }).width, 2);
+  const vp    = page.getViewport({ scale });
+  const c     = document.getElementById('lightboxCanvas');
+  c.width     = vp.width; c.height = vp.height;
+  await page.render({ canvasContext: c.getContext('2d'), viewport: vp }).promise;
+  document.getElementById('lightbox').style.display = 'flex';
+}
+document.getElementById('lightbox').addEventListener('click', () => {
+  document.getElementById('lightbox').style.display = 'none';
+});
+
+function resetPreview() {
+  document.getElementById('pageStrip').innerHTML = '';
+  document.getElementById('pageStripWrap').classList.remove('visible');
+  document.getElementById('previewPlaceholder').style.display = '';
+  document.getElementById('previewNote').style.display = 'none';
+  document.getElementById('pdfInfoBar').classList.remove('visible');
+  document.getElementById('previewBadge').textContent = 'NO FILE';
+}
+
+// ── CONVERT ───────────────────────────────────────────────────────────────────
+document.getElementById('convertBtn').addEventListener('click', async () => {
+  if (!files.length) { showToast('Please add PDF files first'); return; }
+
+  // Ensure all loaded
+  for (let i = 0; i < files.length; i++) {
+    if (!files[i].pdfDoc) await loadAndPreview(i);
+  }
+
+  const overlay = document.getElementById('processingOverlay');
+  overlay.classList.add('active');
+  results = [];
+
+  const steps   = ['pStep1','pStep2','pStep3','pStep4'];
+  const msgs    = ['Parsing PDF structure…','Extracting text…','Building RTF document…','Packaging RTF files…'];
+  const fromPage = parseInt(document.getElementById('pageFrom').value) || 1;
+  let totalPages = 0;
+
+  for (let fi = 0; fi < files.length; fi++) {
+    const item   = files[fi];
+    const total  = item.pdfDoc.numPages;
+    const toPageRaw = parseInt(document.getElementById('pageTo').value);
+    const toPage = Math.min((toPageRaw || total), total);
+    const from   = Math.max(1, Math.min(fromPage, total));
+    const baseName = sanitizeFilename(item.file.name.replace(/\.pdf$/i, ''));
+
+    setStep(steps, 0, msgs); setProgress((fi / files.length) * 10 + 2); await delay(150);
+
+    setStep(steps, 1, msgs);
+    const pagesText = [];
+    for (let p = from; p <= toPage; p++) {
+      setProgress(((fi / files.length) + ((p - from) / ((toPage - from + 1) * files.length))) * 75 + 10);
+
+      try {
+        const page   = await item.pdfDoc.getPage(p);
+        const textContent = await page.getTextContent();
+        const raw = (textContent.items || [])
+          .map(it => (it && it.str) ? it.str : '')
+          .join(' ');
+        const cleaned = raw.replace(/\s+/g, ' ').trim();
+        if (cleaned) pagesText.push(cleaned);
+        totalPages++;
+      } catch (pageErr) {
+        console.warn('Skipped page', p, pageErr);
+        showToast(`Skipped page ${p}: ${pageErr.message || pageErr}`);
+      }
+      await delay(0); // yield to browser
+    }
+
+    setStep(steps, 2, msgs);
+    const bodyText = pagesText.length ? pagesText.join('\n\n') : '';
+    if (!bodyText) showToast('No extractable text found in ' + item.file.name);
+    const rtfStr = buildRtfFromPlainText(bodyText, baseName);
+    results.push({ name: `${baseName}.rtf`, rtfStr, size: new Blob([rtfStr]).size });
+  }
+
+  setStep(steps, 3, msgs); setProgress(96); await delay(250);
+  setProgress(100); await delay(300);
+  overlay.classList.remove('active');
+  showResults(totalPages);
+});
+
+// ── SHOW RESULTS ──────────────────────────────────────────────────────────────
+function showResults(totalPages) {
+  const list = document.getElementById('resultList');
+  list.innerHTML = '';
+
+  // Group by source PDF for display
+  const displayItems = results.length > 20 ? results.slice(0, 20) : results;
+
+  displayItems.forEach(r => {
+    const blob = new Blob([r.rtfStr], { type: 'application/rtf' });
+    const url  = URL.createObjectURL(blob);
+    const row  = document.createElement('div');
+    row.className = 'result-row';
+    row.innerHTML = `
+      <div class="result-icon">RTF</div>
+      <div class="result-info">
+        <div class="result-filename">${r.name}</div>
+        <div class="result-meta">${formatSize(blob.size)}</div>
+        <div><span class="convert-badge">✦ PDF→RTF · text extraction</span></div>
+      </div>
+      <button class="result-dl" data-url="${url}" data-name="${r.name}">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Save
+      </button>`;
+    list.appendChild(row);
+  });
+
+  if (results.length > 20) {
+    const note = document.createElement('div');
+    note.style.cssText = 'font-family:"DM Mono",monospace;font-size:0.68rem;color:var(--muted);padding:0.5rem 0;';
+    note.textContent = `Showing 20 of ${results.length} files — use "Download All as ZIP" to get every RTF.`;
+    list.appendChild(note);
+  }
+
+  list.querySelectorAll('.result-dl').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const a = document.createElement('a');
+      a.href = btn.dataset.url; a.download = btn.dataset.name; a.click();
+      showToast('Downloading ' + btn.dataset.name);
+    });
+  });
+
+  document.getElementById('rFiles').textContent   = results.length + ' RTF' + (results.length !== 1 ? 's' : '');
+  document.getElementById('rDpi').textContent     = '—';
+  document.getElementById('rQuality').textContent = '—';
+  document.getElementById('rBg').textContent      = '—';
+  document.getElementById('resultCountBadge').textContent = results.length + ' file' + (results.length !== 1 ? 's' : '');
+  document.getElementById('resultArea').classList.add('visible');
+  document.getElementById('resultArea').scrollIntoView({ behavior:'smooth', block:'nearest' });
+}
+
+// ── DOWNLOAD ALL AS ZIP ───────────────────────────────────────────────────────
+document.getElementById('downloadAllBtn').addEventListener('click', () => {
+  if (!results.length) return;
+  try {
+    const enc   = new TextEncoder();
+    const fileList = results.map(r => ({ name: r.name, bytes: enc.encode(r.rtfStr) }));
+    const zip  = buildZip(fileList);
+    const blob = new Blob([zip], { type: 'application/zip' });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href = url; a.download = 'converted-rtfs.zip'; document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 8000);
+    showToast('Downloading ZIP with ' + results.length + ' RTFs…');
+  } catch (zipErr) {
+    console.error(zipErr);
+    showToast('Failed to create ZIP: ' + (zipErr.message || zipErr));
+  }
+});
+
+document.getElementById('reconvertBtn').addEventListener('click', () => {
+  document.getElementById('resultArea').classList.remove('visible');
+  results = [];
+  showToast('Adjust settings and convert again');
+});
+
+document.getElementById('clearBtn').addEventListener('click', () => {
+  currentLoadToken++;
+  files.forEach(f => { if (f.pdfDoc) f.pdfDoc.destroy(); });
+  files = []; results = []; previewIdx = 0;
+  document.getElementById('fileQueue').innerHTML = '';
+  document.getElementById('fileCount').textContent = '0 files';
+  document.getElementById('toolColumns').style.display = 'none';
+  document.getElementById('resultArea').classList.remove('visible');
+  resetPreview();
+  showToast('Cleared all files');
+});
+
+// ── ZIP BUILDER ───────────────────────────────────────────────────────────────
+function buildZip(fileArr) {
+  const enc=new TextEncoder(),parts=[],central=[];
+  let offset=0;
+  function u16(n){return[n&0xff,(n>>8)&0xff];}
+  function u32(n){return[n&0xff,(n>>8)&0xff,(n>>16)&0xff,(n>>24)&0xff];}
+  function crc32(buf){
+    const T=crc32._t||(crc32._t=(()=>{const t=new Uint32Array(256);for(let i=0;i<256;i++){let c=i;for(let j=0;j<8;j++)c=(c&1)?(0xEDB88320^(c>>>1)):(c>>>1);t[i]=c;}return t;})());
+    let c=0xFFFFFFFF;for(let i=0;i<buf.length;i++)c=T[(c^buf[i])&0xff]^(c>>>8);return(c^0xFFFFFFFF)>>>0;
+  }
+  for(const file of fileArr){
+    const nb=enc.encode(file.name),crc=crc32(file.bytes),size=file.bytes.length;
+    const h=new Uint8Array([0x50,0x4B,0x03,0x04,20,0,0,0,0,0,0,0,0,0,...u32(crc),...u32(size),...u32(size),...u16(nb.length),0,0,...nb]);
+    central.push({nb,crc,size,offset});parts.push(h);parts.push(file.bytes);offset+=h.length+size;
+  }
+  const cdStart=offset;
+  for(const{nb,crc,size,offset:fo}of central){
+    const cd=new Uint8Array([0x50,0x4B,0x01,0x02,20,0,20,0,0,0,0,0,0,0,0,0,...u32(crc),...u32(size),...u32(size),...u16(nb.length),0,0,0,0,0,0,0,0,0,0,...u32(fo),...nb]);
+    parts.push(cd);offset+=cd.length;
+  }
+  const eocd=new Uint8Array([0x50,0x4B,0x05,0x06,0,0,0,0,...u16(fileArr.length),...u16(fileArr.length),...u32(offset-cdStart),...u32(cdStart),0,0]);
+  parts.push(eocd);
+  let total=0;for(const p of parts)total+=p.length;
+  const out=new Uint8Array(total);let pos=0;for(const p of parts){out.set(p,pos);pos+=p.length;}return out;
+}
+
+// ── HELPERS ───────────────────────────────────────────────────────────────────
+function formatSize(bytes){
+  if(bytes<1024)return bytes+' B';
+  if(bytes<1048576)return(bytes/1024).toFixed(1)+' KB';
+  return(bytes/1048576).toFixed(2)+' MB';
+}
+function setStep(ids,idx,msgs){
+  ids.forEach((id,i)=>{
+    const el=document.getElementById(id);
+    el.classList.remove('active','done');
+    if(i<idx)el.classList.add('done');
+    else if(i===idx)el.classList.add('active');
+  });
+  document.getElementById('processingText').textContent=msgs[idx];
+}
+function setProgress(pct){document.getElementById('progressBar').style.width=Math.min(100,pct)+'%';}
+function delay(ms){return new Promise(r=>setTimeout(r,ms));}
+
+// ── FAQ ───────────────────────────────────────────────────────────────────────
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const item=q.parentElement,wasOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!wasOpen)item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>

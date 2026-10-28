@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>CHM to PDF Converter | Convert Help Files Online</title>
+<meta name="description" content="Convert CHM help files into PDF format quickly. Maintain layout, structure, and readability for offline viewing or easy document sharing.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jpg2go.com/chm-to-pdf">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="adsense.js"></script>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Convert CHM to PDF",
+    "url": "https://jpg2go.com/chm-to-pdf",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Convert CHM help files into PDF format quickly. Maintain layout, structure, and readability for offline viewing or easy document sharing."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a CHM to PDF converter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A CHM to PDF converter is a tool that transforms compiled HTML help files into PDF documents, making them easier to read, share, and print on modern devices."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why should I convert CHM files to PDF format?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CHM files require special software to open, while PDF files can be viewed on almost any device using standard PDF readers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will the content structure remain after converting CHM to PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most CHM to PDF converters preserve the document structure, including headings, text content, and navigation elements during the conversion process."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I open CHM files on mobile devices after conversion?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, converting CHM files to PDF allows users to easily read help documentation on smartphones, tablets, and other portable devices."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is converting CHM to PDF useful for documentation sharing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, many developers convert CHM documentation to PDF so that manuals can be shared, printed, and distributed more easily."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need special software to convert CHM files online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No, online CHM to PDF converters allow users to upload files and convert them directly from their browser without installing software."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this tool extract the full CHM content?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CHM files use LZX compression for their HTML content. This tool extracts topic titles when they appear in the file and creates a PDF with a title page, table of contents, and topic outline. For full HTML body conversion, use a desktop tool like Calibre or Windows hh.exe."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<style>
+:root{--ink:#0d0d0d;--paper:#f7f4ee;--cream:#ede9df;--accent:#c84b2f;--accent-light:#e8d5cf;--muted:#7a7567;--border:#d4cfc4;--white:#ffffff;--shadow:0 2px 24px rgba(13,13,13,0.08);--shadow-lg:0 8px 48px rgba(13,13,13,0.12);--ai-purple:#c84b2f;--ai-purple-light:#e8d5cf;--green:#1a8a4a;--green-light:#d4f0e0;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;min-height:100vh;}
+header{background:var(--ink);color:var(--paper);position:sticky;top:0;z-index:100;border-bottom:2px solid var(--accent);}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1.6rem;color:var(--paper);text-decoration:none;letter-spacing:-0.02em;}
+.logo span{color:var(--accent);}
+nav{display:flex;gap:2rem;align-items:center;}
+nav a{color:#a8a39a;text-decoration:none;font-size:0.875rem;font-weight:500;letter-spacing:0.02em;transition:color 0.2s;}
+nav a:hover{color:var(--paper);}
+.nav-cta{background:var(--accent);color:var(--white)!important;padding:0.4rem 1rem;border-radius:4px;transition:background 0.2s!important;}
+.nav-cta:hover{background:#a83825!important;}
+.mobile-menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:0.5rem;flex-direction:column;gap:5px;align-items:center;justify-content:center;width:40px;height:40px;}
+.mobile-menu-toggle span{display:block;width:24px;height:2px;background:var(--paper);transition:all 0.3s ease;border-radius:2px;}
+.mobile-menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(6px,6px);}
+.mobile-menu-toggle.active span:nth-child(2){opacity:0;}
+.mobile-menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px);}
+.mobile-nav{display:none;position:fixed;top:64px;left:0;right:0;background:var(--ink);border-top:2px solid var(--accent);padding:1.5rem 2rem;flex-direction:column;gap:1rem;z-index:99;transform:translateY(-100%);opacity:0;transition:transform 0.3s ease,opacity 0.3s ease;visibility:hidden;}
+.mobile-nav.active{display:flex;transform:translateY(0);opacity:1;visibility:visible;}
+.mobile-nav a{color:#a8a39a;text-decoration:none;font-size:0.95rem;font-weight:500;padding:0.75rem 0;border-bottom:1px solid rgba(255,255,255,0.1);transition:color 0.2s;}
+.mobile-nav a:last-child{border-bottom:none;}
+.mobile-nav a:hover{color:var(--paper);}
+.mobile-nav .nav-cta{background:var(--accent);color:var(--white)!important;padding:0.75rem 1.5rem;border-radius:4px;text-align:center;border:none;margin-top: 0.5rem;}
+.hero{background:var(--ink);color:var(--paper);padding:4rem 2rem 3.5rem;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(200,75,47,0.2) 0%,transparent 70%);pointer-events:none;}
+.hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:1px;height:60px;background:linear-gradient(to bottom,transparent,rgba(200,75,47,0.4));}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.12em;color:#c84b2f;text-transform:uppercase;border:1px solid rgba(200,75,47,0.4);background:rgba(200,75,47,0.12);padding:0.3rem 0.9rem;border-radius:2px;margin-bottom:1.5rem;}
+.hero-badge svg{flex-shrink:0;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5.5vw,3.6rem);font-weight:900;line-height:1.1;letter-spacing:-0.03em;margin-bottom:1.25rem;}
+.hero h1 em{font-style:normal;color:var(--accent);}
+.hero-desc{font-size:1.05rem;color:#9e9990;max-width:520px;margin:0 auto 1.75rem;font-weight:300;line-height:1.7;}
+.hero-pills{display:flex;justify-content:center;flex-wrap:wrap;gap:0.5rem;}
+.hero-pill{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.06em;color:#a8a39a;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);padding:0.3rem 0.75rem;border-radius:100px;}
+.tool-section{max-width:1100px;margin:-1.5rem auto 0;padding:0 1.5rem 4rem;position:relative;z-index:10;}
+.tool-card{background:var(--white);border-radius:12px;box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid var(--border);}
+.tool-card-header{background:var(--cream);padding:1rem 1.5rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid var(--border);}
+.dot{width:12px;height:12px;border-radius:50%;display:inline-block;}
+.dot-r{background:#ff5f57;}.dot-y{background:#febc2e;}.dot-g{background:#28c840;}
+.tool-card-title{font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--muted);margin-left:0.5rem;letter-spacing:0.05em;}
+.tool-body{padding:1.5rem;}
+.drop-zone{border:2px dashed var(--border);border-radius:10px;padding:3rem 2rem;text-align:center;cursor:pointer;transition:border-color 0.2s,background 0.2s;background:var(--paper);position:relative;}
+.drop-zone:hover,.drop-zone.drag-over{border-color:var(--ai-purple);background:var(--ai-purple-light);}
+.drop-zone input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.drop-icon{width:52px;height:52px;background:var(--ai-purple-light);border:1px solid rgba(200,75,47,0.3);border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:var(--ai-purple);}
+.drop-zone h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:0.4rem;}
+.drop-zone p{font-size:0.85rem;color:var(--muted);margin-bottom:1rem;}
+.formats-pill{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.08em;color:var(--ai-purple);background:var(--ai-purple-light);padding:0.25rem 0.75rem;border-radius:100px;display:inline-block;}
+.tool-columns{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem;align-items:start;}
+.tool-col-left{display:flex;flex-direction:column;gap:1.25rem;}
+.tool-col-right{display:flex;flex-direction:column;gap:1.25rem;}
+.panel-box{background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:1.15rem 1.25rem;}
+.panel-box-title{font-family:'DM Mono',monospace;font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;}
+.panel-box-title svg{color:var(--accent);flex-shrink:0;}
+.preset-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0.5rem;margin-bottom:1.25rem;}
+.preset-row-3{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;margin-bottom:1.25rem;}
+.preset-row-2{display:grid;grid-template-columns:repeat(2,1fr);gap:0.5rem;margin-bottom:1.25rem;}
+.preset-btn{background:var(--white);border:1.5px solid var(--border);border-radius:8px;padding:0.65rem 0.5rem;cursor:pointer;text-align:center;transition:all 0.18s;}
+.preset-btn:hover{border-color:var(--accent);background:var(--accent-light);}
+.preset-btn.active{border-color:var(--accent);background:var(--accent-light);box-shadow:0 0 0 3px rgba(200,75,47,0.1);}
+.preset-btn-name{font-family:'DM Mono',monospace;font-size:0.7rem;font-weight:600;color:var(--ink);display:block;margin-bottom:0.1rem;letter-spacing:0.02em;}
+.preset-btn.active .preset-btn-name{color:var(--accent);}
+.preset-btn-sub{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--muted);}
+.form-row{display:flex;flex-direction:column;gap:0.3rem;margin-bottom:0.9rem;}
+.form-row:last-child{margin-bottom:0;}
+.form-label{font-family:'DM Mono',monospace;font-size:0.68rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);display:flex;align-items:center;justify-content:space-between;}
+.form-label-hint{font-weight:400;text-transform:none;letter-spacing:0;color:#a8a39a;font-size:0.63rem;}
+.format-select{background:var(--white);border:1.5px solid var(--border);border-radius:6px;padding:0.42rem 2rem 0.42rem 0.75rem;font-family:'DM Mono',monospace;font-size:0.78rem;color:var(--ink);cursor:pointer;outline:none;transition:border-color 0.2s;-webkit-appearance:none;appearance:none;width:100%;background-image:url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%237a7567' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 0.75rem center;}
+.format-select:focus{border-color:var(--accent);}
+.text-input{background:var(--white);border:1.5px solid var(--border);border-radius:6px;padding:0.42rem 0.75rem;font-family:'DM Mono',monospace;font-size:0.78rem;color:var(--ink);outline:none;transition:border-color 0.2s;width:100%;}
+.text-input:focus{border-color:var(--accent);}
+.text-input::placeholder{color:#b8b2aa;}
+.slider-wrap{display:flex;align-items:center;gap:0.75rem;}
+input[type="range"].form-slider{-webkit-appearance:none;appearance:none;width:100%;height:5px;background:var(--border);border-radius:100px;outline:none;cursor:pointer;}
+input[type="range"].form-slider::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;background:var(--accent);border-radius:50%;cursor:pointer;box-shadow:0 1px 6px rgba(200,75,47,0.4);transition:transform 0.15s;}
+input[type="range"].form-slider::-webkit-slider-thumb:hover{transform:scale(1.2);}
+input[type="range"].form-slider::-moz-range-thumb{width:18px;height:18px;background:var(--accent);border-radius:50%;border:none;cursor:pointer;}
+.slider-val{font-family:'DM Mono',monospace;font-size:0.82rem;color:var(--accent);font-weight:600;min-width:44px;text-align:right;}
+.toggle-row{display:flex;align-items:center;gap:0.85rem;padding:0.5rem 0;}
+.toggle-switch{position:relative;width:36px;height:20px;flex-shrink:0;cursor:pointer;}
+.toggle-switch input{opacity:0;width:0;height:0;position:absolute;}
+.toggle-track{position:absolute;inset:0;background:var(--border);border-radius:100px;transition:background 0.2s;}
+.toggle-switch input:checked+.toggle-track{background:var(--accent);}
+.toggle-knob{position:absolute;top:3px;left:3px;width:14px;height:14px;background:white;border-radius:50%;transition:transform 0.2s;box-shadow:0 1px 3px rgba(0,0,0,0.2);pointer-events:none;}
+.toggle-switch input:checked~.toggle-knob{transform:translateX(16px);}
+.toggle-label{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--muted);letter-spacing:0.03em;flex:1;}
+.preview-panel{background:var(--ink);border-radius:10px;overflow:hidden;position:sticky;top:84px;}
+.preview-panel-header{padding:0.75rem 1rem;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;}
+.preview-panel-title{font-family:'DM Mono',monospace;font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#9e9990;display:flex;align-items:center;gap:0.4rem;}
+.preview-badge{font-family:'DM Mono',monospace;font-size:0.6rem;background:rgba(200,75,47,0.2);color:var(--accent);border:1px solid rgba(200,75,47,0.3);padding:0.1rem 0.45rem;border-radius:100px;letter-spacing:0.06em;}
+.preview-placeholder{display:flex;flex-direction:column;align-items:center;gap:0.75rem;padding:3.5rem 2rem;}
+.preview-placeholder-icon{width:52px;height:52px;background:rgba(200,75,47,0.12);border:1px solid rgba(200,75,47,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;color:rgba(200,75,47,0.5);}
+.preview-placeholder p{font-family:'DM Mono',monospace;font-size:0.72rem;color:rgba(255,255,255,0.25);text-align:center;letter-spacing:0.05em;line-height:1.6;}
+.info-bar{display:none;padding:0.55rem 1rem;background:rgba(200,75,47,0.1);border-bottom:1px solid rgba(200,75,47,0.2);gap:1.25rem;flex-wrap:wrap;}
+.info-bar.visible{display:flex;}
+.info-stat{font-family:'DM Mono',monospace;font-size:0.63rem;color:rgba(255,255,255,0.45);display:flex;align-items:center;gap:0.3rem;}
+.info-stat-val{color:rgba(255,255,255,0.82);font-weight:600;}
+.preview-content{padding:0.85rem;display:none;}
+.preview-content.visible{display:block;}
+.preview-content-label{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.6rem;}
+.preview-list{display:flex;flex-direction:column;gap:0.35rem;max-height:300px;overflow-y:auto;padding-right:2px;}
+.preview-list::-webkit-scrollbar{width:3px;}
+.preview-list::-webkit-scrollbar-track{background:transparent;}
+.preview-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.15);border-radius:2px;}
+.preview-item{display:flex;align-items:center;gap:0.5rem;padding:0.4rem 0.65rem;border-radius:5px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);}
+.preview-item-tag{font-family:'DM Mono',monospace;font-size:0.58rem;color:var(--accent);background:rgba(200,75,47,0.15);padding:0.1rem 0.35rem;border-radius:3px;white-space:nowrap;flex-shrink:0;}
+.preview-item-text{font-family:'DM Mono',monospace;font-size:0.62rem;color:rgba(255,255,255,0.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;}
+.preview-item-sub{font-family:'DM Mono',monospace;font-size:0.58rem;color:rgba(255,255,255,0.25);white-space:nowrap;}
+.preview-note{padding:0.6rem 1rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:rgba(255,255,255,0.2);text-align:center;letter-spacing:0.04em;border-top:1px solid rgba(255,255,255,0.06);display:none;}
+.file-queue-wrap{display:none;}
+.file-queue-wrap.visible{display:block;}
+.file-queue-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.6rem;flex-wrap:wrap;gap:0.5rem;}
+.file-queue-label{font-family:'DM Mono',monospace;font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);}
+.file-queue-count{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--accent);background:var(--accent-light);padding:0.15rem 0.5rem;border-radius:100px;}
+.file-queue{display:flex;flex-direction:column;gap:0.5rem;max-height:200px;overflow-y:auto;padding-right:2px;}
+.file-queue::-webkit-scrollbar{width:4px;}
+.file-queue::-webkit-scrollbar-track{background:var(--cream);border-radius:2px;}
+.file-queue::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
+.file-item{display:flex;align-items:center;gap:0.75rem;background:var(--paper);border:1px solid var(--border);border-radius:8px;padding:0.55rem 0.85rem;cursor:pointer;transition:border-color 0.15s;}
+.file-item:hover{border-color:var(--accent);}
+.file-item.selected{border-color:var(--accent);background:var(--accent-light);}
+.file-icon-wrap{width:36px;height:36px;border-radius:5px;border:1px solid var(--border);flex-shrink:0;background:var(--cream);display:flex;align-items:center;justify-content:center;color:var(--accent);font-family:'DM Mono',monospace;font-size:0.6rem;font-weight:700;}
+.file-info{flex:1;min-width:0;}
+.file-name{font-size:0.78rem;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.file-meta{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);margin-top: 0.1rem;}
+.file-remove{background:none;border:none;cursor:pointer;color:var(--muted);padding:0.2rem;border-radius:4px;display:flex;align-items:center;justify-content:center;transition:color 0.15s,background 0.15s;flex-shrink:0;}
+.file-remove:hover{color:var(--accent);background:var(--accent-light);}
+.add-more-btn{display:flex;align-items:center;justify-content:center;gap:0.5rem;border:1.5px dashed var(--border);border-radius:8px;padding:0.6rem;cursor:pointer;font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.05em;color:var(--muted);background:transparent;width:100%;margin-top: 0.5rem;transition:border-color 0.2s,color 0.2s,background 0.2s;position:relative;overflow:hidden;}
+.add-more-btn input{position:absolute;inset:0;opacity:0;cursor:pointer;}
+.add-more-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light);}
+.action-bar{display:flex;gap:0.75rem;margin-top:1.25rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:var(--white);border:none;border-radius:6px;padding:0.65rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:0.875rem;font-weight:600;cursor:pointer;transition:all 0.18s;display:inline-flex;align-items:center;gap:0.5rem;text-decoration:none;}
+.btn-primary:hover{background:#a83825;transform:translateY(-1px);}
+.btn-secondary{background:transparent;color:var(--ink);border:1.5px solid var(--border);border-radius:6px;padding:0.65rem 1.25rem;font-family:'DM Sans',sans-serif;font-size:0.875rem;font-weight:500;cursor:pointer;transition:all 0.18s;display:inline-flex;align-items:center;gap:0.5rem;}
+.btn-secondary:hover{border-color:var(--ink);background:var(--cream);}
+.processing-overlay{display:none;}
+.processing-overlay.active{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;padding:3rem;background:var(--paper);border-radius:10px;border:1px solid var(--border);margin-top:1.5rem;}
+.ai-spinner{width:48px;height:48px;border:3px solid var(--ai-purple-light);border-top-color:var(--ai-purple);border-radius:50%;animation:spin 0.9s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.processing-text{font-family:'DM Mono',monospace;font-size:0.8rem;color:var(--muted);letter-spacing:0.05em;}
+.processing-progress{width:100%;max-width:280px;background:var(--border);border-radius:100px;height:4px;overflow:hidden;}
+.processing-progress-bar{height:100%;background:var(--accent);border-radius:100px;transition:width 0.25s ease;width:0%;}
+.processing-steps{display:flex;flex-direction:column;gap:0.4rem;width:100%;max-width:280px;}
+.processing-step{display:flex;align-items:center;gap:0.6rem;font-family:'DM Mono',monospace;font-size:0.68rem;color:#bbb;}
+.processing-step.done{color:#28c840;}
+.processing-step.active{color:var(--ai-purple);}
+.step-dot{width:8px;height:8px;border-radius:50%;background:currentColor;flex-shrink:0;}
+.result-area{display:none;margin-top:1.5rem;}
+.result-area.visible{display:block;}
+.result-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem;}
+.result-title{font-family:'DM Mono',monospace;font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);}
+.result-count-badge{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--green);background:var(--green-light);padding:0.2rem 0.6rem;border-radius:100px;border:1px solid rgba(26,138,74,0.2);}
+.result-list{display:flex;flex-direction:column;gap:0.6rem;}
+.result-row{display:flex;align-items:center;gap:0.85rem;background:var(--paper);border:1px solid var(--border);border-radius:9px;padding:0.75rem 1rem;transition:border-color 0.15s;}
+.result-row:hover{border-color:var(--green);}
+.result-icon{width:52px;height:52px;border-radius:5px;border:1px solid var(--border);flex-shrink:0;background:var(--cream);display:flex;align-items:center;justify-content:center;color:var(--accent);font-family:'DM Mono',monospace;font-size:0.6rem;font-weight:700;}
+.result-info{flex:1;min-width:0;}
+.result-filename{font-size:0.82rem;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:0.2rem;}
+.result-meta{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);}
+.convert-badge{font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--accent);background:var(--accent-light);border:1px solid rgba(200,75,47,0.2);padding:0.1rem 0.4rem;border-radius:3px;white-space:nowrap;display:inline-block;margin-top: 0.15rem;}
+.result-dl{background:none;border:1.5px solid var(--border);border-radius:5px;padding:0.35rem 0.65rem;cursor:pointer;color:var(--muted);font-family:'DM Mono',monospace;font-size:0.65rem;display:flex;align-items:center;gap:0.3rem;transition:all 0.18s;white-space:nowrap;flex-shrink:0;}
+.result-dl:hover{border-color:var(--green);color:var(--green);background:var(--green-light);}
+.stats-bar{display:none;gap:1.5rem;padding:0.75rem 1rem;background:var(--cream);font-size:0.78rem;color:var(--muted);font-family:'DM Mono',monospace;flex-wrap:wrap;margin-top:1rem;border-radius:8px;border:1px solid var(--border);}
+.stats-bar.visible{display:flex;}
+.stat{display:flex;gap:0.4rem;align-items:center;}
+.stat-val{color:var(--ink);font-weight:500;}
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--ink);color:var(--paper);padding:0.75rem 1.5rem;border-radius:6px;font-size:0.875rem;font-weight:500;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);z-index:999;border-left:3px solid var(--accent);white-space:nowrap;}
+.toast.show{transform:translateX(-50%) translateY(0);}
+.content-section{max-width:1000px;margin:0 auto;padding:4rem 1.5rem;}
+.section-tag{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;display:block;}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:1.25rem;line-height:1.2;}
+.content-prose{color:#4a4640;font-size:0.975rem;line-height:1.8;max-width:720px;}
+.content-prose p{margin-bottom:1rem;}
+.content-prose p:last-child{margin-bottom:0;}
+.divider{border:none;border-top:1px solid var(--border);max-width:1000px;margin:0 auto;}
+.how-to-section{background:var(--ink);color:var(--paper);padding:1.75rem 2rem;position:relative;overflow:hidden;}
+.how-to-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 100%,rgba(200,75,47,0.14) 0%,transparent 70%);pointer-events:none;}
+.how-to-inner{max-width:1000px;margin:0 auto;position:relative;}
+.how-to-header{text-align:center;margin-bottom:1.25rem;}
+.how-to-header .section-tag{color:#c84b2f;}
+.how-to-header .section-title{color:var(--paper);margin-bottom:0.35rem;}
+.how-to-subtitle{color:#9e9990;font-size:0.9rem;font-weight:300;}
+.steps-grid{display:flex;align-items:stretch;gap:0;}
+.step-card{flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:0.85rem 1rem;transition:background 0.25s,border-color 0.25s,transform 0.25s;}
+.step-card:hover{background:rgba(200,75,47,0.08);border-color:rgba(200,75,47,0.35);transform:translateY(-4px);}
+.step-connector{display:flex;align-items:center;justify-content:center;padding:0 0.5rem;color:rgba(200,75,47,0.5);flex-shrink:0;margin-top:-1rem;}
+.step-number{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:rgba(200,75,47,0.25);line-height:1;margin-bottom:0.35rem;letter-spacing:-0.04em;}
+.step-icon{width:36px;height:36px;background:rgba(200,75,47,0.15);border:1px solid rgba(200,75,47,0.3);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:0.6rem;color:#c84b2f;}
+.step-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--paper);margin-bottom:0.35rem;line-height:1.3;}
+.step-desc{font-size:0.8rem;color:#9e9990;line-height:1.55;margin-bottom:0.6rem;}
+.step-desc strong{color:#d4cfc4;}
+.step-pill{display:inline-block;font-family:'DM Mono',monospace;font-size:0.63rem;letter-spacing:0.05em;color:#c84b2f;background:rgba(200,75,47,0.12);border:1px solid rgba(200,75,47,0.25);padding:0.2rem 0.6rem;border-radius:100px;}
+.how-to-cta{text-align:center;margin-top:1.25rem;display:flex;flex-direction:column;align-items:center;gap:0.6rem;}
+.how-to-note{font-size:0.8rem;color:#7a7567;font-family:'DM Mono',monospace;letter-spacing:0.03em;}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:2rem;}
+.feature-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.5rem 1.25rem;transition:box-shadow 0.2s,transform 0.2s;}
+.feature-card:hover{box-shadow:var(--shadow);transform:translateY(-2px);}
+.feature-icon{font-size:1.75rem;margin-bottom:0.75rem;display:block;}
+.feature-title{font-weight:700;font-size:0.9rem;margin-bottom:0.4rem;}
+.feature-desc{font-size:0.82rem;color:var(--muted);line-height:1.5;}
+.quality-table{width:100%;border-collapse:collapse;margin-top:1.5rem;font-size:0.85rem;}
+.quality-table th{font-family:'DM Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);font-weight:600;text-align:left;padding:0.5rem 0.75rem;border-bottom:2px solid var(--border);}
+.quality-table td{padding:0.75rem;border-bottom:1px solid var(--border);color:#4a4640;vertical-align:top;line-height:1.5;}
+.quality-table tr:last-child td{border-bottom:none;}
+.quality-table tr:hover td{background:var(--paper);}
+.quality-range{font-family:'DM Mono',monospace;font-size:0.78rem;font-weight:600;color:var(--accent);white-space:nowrap;}
+.use-cases-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:2rem;}
+.use-case-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.5rem 1.25rem;}
+.use-case-icon{font-size:1.75rem;margin-bottom:0.75rem;display:block;}
+.use-case-title{font-weight:700;font-size:0.9rem;margin-bottom:0.4rem;}
+.use-case-text{font-size:0.82rem;color:var(--muted);line-height:1.5;}
+.faq-list{margin-top:2rem;}
+.faq-item{border-bottom:1px solid var(--border);padding:1.25rem 0;}
+.faq-item:last-child{border-bottom:none;}
+.faq-q{font-weight:600;font-size:0.95rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;}
+.faq-q::after{content:'+';font-size:1.2rem;color:var(--ai-purple);flex-shrink:0;transition:transform 0.2s;}
+.faq-item.open .faq-q::after{transform:rotate(45deg);}
+.faq-a{font-size:0.9rem;color:var(--muted);line-height:1.7;max-height:0;overflow:hidden;transition:max-height 0.35s ease,margin-top 0.3s;}
+.faq-item.open .faq-a{max-height:360px;margin-top: 0.75rem;}
+.cta-section{background:var(--ink);color:var(--paper);padding:1.5rem 2rem;text-align:center;position:relative;overflow:hidden;}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(200,75,47,0.18) 0%,transparent 70%);pointer-events:none;}
+.cta-inner{max-width:640px;margin:0 auto;position:relative;}
+.cta-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;letter-spacing:-0.03em;line-height:1.15;margin-bottom:1rem;color:var(--paper);}
+.cta-desc{font-size:1rem;color:#9e9990;font-weight:300;margin-bottom:1rem;line-height:1.7;}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:0.75rem;}
+.cta-note{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.06em;color:#5a5650;margin-top:1rem;display:block;}
+.related-section{background:var(--cream);padding:5rem 2rem;border-top:1px solid var(--border);}
+.related-inner{max-width:1000px;margin:0 auto;}
+.related-header{margin-bottom:2.5rem;}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;}
+.related-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-decoration:none;color:inherit;display:block;transition:box-shadow 0.2s,transform 0.2s,border-color 0.2s;position:relative;overflow:hidden;}
+.related-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border);transition:background 0.2s;}
+.related-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px);border-color:var(--accent);}
+.related-card:hover::before{background:var(--accent);}
+.related-card-icon{font-size:1.85rem;margin-bottom:0.85rem;display:block;}
+.related-card-name{font-family:'Playfair Display',serif;font-weight:700;font-size:1rem;margin-bottom:0.35rem;color:var(--ink);letter-spacing:-0.01em;}
+.related-card-desc{font-size:0.82rem;color:var(--muted);line-height:1.5;margin-bottom:1rem;}
+.related-card-tag{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);background:var(--accent-light);padding:0.2rem 0.5rem;border-radius:3px;display:inline-block;}
+footer { background: var(--ink); color: #9e9990; padding: 4rem 2rem 2rem; margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.05); }
+#footer-placeholder { margin-top: 3rem; }
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid #2a2a2a;}
+.footer-brand .logo{display:block;margin-bottom:0.75rem;}
+.footer-social { display: flex; gap: 0; margin-top: 1rem; }
+.social-icon { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; color: #9e9990; transition: color 0.2s, transform 0.2s; border-radius: 6px; margin-left: -8px; }
+.social-icon:first-child { margin-left: 0; }
+.social-icon:hover { color: var(--paper); transform: translateY(-2px); }
+.footer-brand p{font-size:0.85rem;line-height:1.6;max-width:240px;}
+.footer-col-title{font-family:'DM Sans',sans-serif;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper);font-weight:600;margin-bottom:1rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+.footer-links a{color:#9e9990;text-decoration:none;font-size:0.85rem;transition:color 0.2s;}
+.footer-links a:hover{color:var(--paper);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;font-size:0.8rem;flex-wrap:wrap;gap:0.75rem;}
+@media(max-width:900px){.tool-columns{grid-template-columns:1fr;}.preview-panel{position:static;}}
+@media(max-width:768px){nav{display:none;}.mobile-menu-toggle{display:flex;}.preset-row{grid-template-columns:repeat(2,1fr);}.steps-grid{flex-direction:column;gap:0.75rem;}.step-connector{transform:rotate(90deg);padding:0;margin:0;}.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr;gap:2rem;}.footer-bottom{flex-direction:column;text-align:center;}.tool-body{padding:1rem;}.hero{padding:3rem 1.5rem 2.5rem;}}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">JPG<span>2</span>Go</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="tools.html">Tools</a>
+      <a href="#tool" class="nav-cta">Convert Now</a>
+    </nav>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+    <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="tools.html" onclick="closeMobileMenu()">Tools</a>
+    <a href="#tool" class="nav-cta" onclick="closeMobileMenu()">Convert Now</a>
+  </nav>
+</header>
+<section class="hero">
+  <div class="hero-badge">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 19 21 12 17 5 21"/></svg>
+        Convert Help Files Online
+  </div>
+  <h1>Convert CHM to PDF</h1>
+  <p class="hero-desc">Convert CHM help files into easy-to-read PDF documents online. Quickly access software manuals, documentation, and guides on any device without needing a CHM viewer.</p>
+  <div class="hero-pills">
+    <span class="hero-pill">topic tree extraction</span>
+    <span class="hero-pill">section filtering</span>
+    <span class="hero-pill">page layout control</span>
+    <span class="hero-pill">batch CHM support</span>
+    <span class="hero-pill">no upload · 100% private</span>
+    <span class="hero-pill">free forever</span>
+  </div>
+</section>
+<section class="tool-section" id="tool">
+  <div class="tool-card">
+    <div class="tool-card-header">
+      <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+      <span class="tool-card-title">chm-to-pdf · topic-extract · section-filter · page-layout · batch · browser-native · jpg2go.com</span>
+    </div>
+    <div class="tool-body">
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" accept=".chm" multiple>
+        <div class="drop-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h3>Drop CHM files here to convert to PDF</h3>
+        <p>or click to browse — multiple files supported</p>
+        <span class="formats-pill">Accepts .chm → outputs .pdf</span>
+      </div>
+      <div class="tool-columns" id="toolColumns" style="display:none;">
+        <div class="tool-col-left">
+          <div class="panel-box">
+            <div class="panel-box-title">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              Content Selection
+            </div>
+            <div class="form-row">
+              <div class="form-label">Sections to include</div>
+              <select class="format-select" id="sectionSelect">
+                <option value="all">All topics — complete help file</option>
+                <option value="top">Top-level sections only</option>
+                <option value="toc">Follow TOC order</option>
+                <option value="custom">Custom selection (see outline)</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-label">Topic depth <span class="form-label-hint" id="depthHint">all levels</span></div>
+              <div class="slider-wrap">
+                <input type="range" class="form-slider" id="slDepth" min="1" max="5" step="1" value="5">
+                <span class="slider-val" id="slDepthVal">All</span>
+              </div>
+            </div>
+            <div class="toggle-row">
+              <label class="toggle-switch"><input type="checkbox" id="tocToggle" checked><span class="toggle-track"></span><span class="toggle-knob"></span></label>
+              <span class="toggle-label">Include table of contents page</span>
+            </div>
+            <div class="toggle-row">
+              <label class="toggle-switch"><input type="checkbox" id="indexToggle"><span class="toggle-track"></span><span class="toggle-knob"></span></label>
+              <span class="toggle-label">Include keyword index</span>
+            </div>
+          </div>
+          <div class="panel-box">
+            <div class="panel-box-title">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+              Page Layout
+            </div>
+            <div class="form-row">
+              <div class="form-label">Paper size</div>
+              <select class="format-select" id="paperSize">
+                <option value="a4">A4 (210 × 297 mm)</option>
+                <option value="letter">Letter (8.5 × 11 in)</option>
+                <option value="a5">A5 (148 × 210 mm)</option>
+              </select>
+            </div>
+            <div class="form-row" style="margin-bottom:0;">
+              <div class="form-label">Heading style</div>
+              <select class="format-select" id="headingStyle">
+                <option value="numbered">Numbered — 1.1, 1.2…</option>
+                <option value="clean">Clean — styled headings</option>
+                <option value="minimal">Minimal — plain text</option>
+              </select>
+            </div>
+          </div>
+          <div class="file-queue-wrap visible" id="fileQueueWrap">
+            <div class="file-queue-header">
+              <span class="file-queue-label">CHM files queued</span>
+              <span class="file-queue-count" id="fileCount">0 files</span>
+            </div>
+            <div class="file-queue" id="fileQueue"></div>
+            <label class="add-more-btn">
+              <input type="file" id="addMoreInput" accept=".chm" multiple>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add more CHM files
+            </label>
+          </div>
+          <div class="action-bar">
+            <button class="btn-primary" id="convertBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 19 21 12 17 5 21"/></svg>
+              Convert to PDF
+            </button>
+            <button class="btn-secondary" id="clearBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
+              Clear All
+            </button>
+          </div>
+        </div>
+        <div class="tool-col-right">
+          <div class="preview-panel">
+            <div class="preview-panel-header">
+              <div class="preview-panel-title">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                Topic Tree
+              </div>
+              <span class="preview-badge" id="previewBadge">NO FILE</span>
+            </div>
+            <div class="info-bar" id="infoBar">
+              <div class="info-stat">Topics <span class="info-stat-val" id="infoTopics">—</span></div>
+              <div class="info-stat">Size <span class="info-stat-val" id="infoSize">—</span></div>
+              <div class="info-stat">Depth <span class="info-stat-val" id="infoDepth">—</span></div>
+            </div>
+            <div class="preview-placeholder" id="previewPlaceholder">
+              <div class="preview-placeholder-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </div>
+              <p>Upload a CHM file to see<br>its topic tree</p>
+            </div>
+            <div class="preview-content" id="previewContent">
+              <div class="preview-content-label">Detected Topics</div>
+              <div class="preview-list" id="previewList"></div>
+            </div>
+            <div class="preview-note" id="previewNote">Topics map to PDF bookmarks and sections</div>
+          </div>
+        </div>
+      </div>
+      <div class="processing-overlay" id="processingOverlay">
+        <div class="ai-spinner"></div>
+        <div class="processing-text" id="processingText">Parsing CHM structure…</div>
+        <div class="processing-progress"><div class="processing-progress-bar" id="progressBar"></div></div>
+        <div class="processing-steps">
+          <div class="processing-step active" id="pStep1"><span class="step-dot"></span> Parsing CHM file structure</div>
+          <div class="processing-step" id="pStep2"><span class="step-dot"></span> Extracting HTML topics</div>
+          <div class="processing-step" id="pStep3"><span class="step-dot"></span> Applying layout &amp; styles</div>
+          <div class="processing-step" id="pStep4"><span class="step-dot"></span> Assembling PDF document</div>
+        </div>
+      </div>
+      <div class="result-area" id="resultArea">
+        <div class="result-header">
+          <span class="result-title">Converted PDF Files</span>
+          <span class="result-count-badge" id="resultCountBadge">0 files</span>
+        </div>
+        <div class="result-list" id="resultList"></div>
+        <div class="stats-bar visible" id="statsBar">
+          <div class="stat">PDF files: <span class="stat-val" id="rFiles">—</span></div>
+          <div class="stat">Topics: <span class="stat-val" id="rTopics">—</span></div>
+          <div class="stat">Paper: <span class="stat-val" id="rPaper">—</span></div>
+          <div class="stat">Headings: <span class="stat-val" id="rHeadings">—</span></div>
+        </div>
+        <div class="action-bar" style="margin-top:1rem;">
+          <button class="btn-primary" id="downloadAllBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download All as ZIP
+          </button>
+          <button class="btn-secondary" id="reconvertBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+            Try Different Settings
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+<section class="how-to-section" id="how-it-works">
+  <div class="how-to-inner">
+    <div class="how-to-header">
+      <span class="section-tag">Quick Guide</span>
+      <h2 class="section-title">How to Convert CHM to PDF</h2>
+      <p class="how-to-subtitle">Four steps. Topic tree preview. Download-ready in seconds.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card"><div class="step-number">01</div><div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div><div class="step-title">Upload CHM Files</div><div class="step-desc">Drag &amp; drop <strong>one or more CHM files</strong>. The binary CHM structure is parsed immediately — the topic tree, section count, and nesting depth appear in the preview panel.</div><span class="step-pill">batch support</span></div>
+      <div class="step-connector"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card"><div class="step-number">02</div><div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><div class="step-title">Choose Content &amp; Layout</div><div class="step-desc">Select <strong>which topics</strong> to include — all, top-level only, or a custom depth. Set paper size, heading style, and whether to include a generated table of contents page.</div><span class="step-pill">full control</span></div>
+      <div class="step-connector"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card"><div class="step-number">03</div><div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 19 21 12 17 5 21"/></svg></div><div class="step-title">Convert to PDF</div><div class="step-desc">Click <strong>Convert to PDF</strong> — HTML topics are extracted from the CHM archive, rendered with your chosen heading style, and assembled into a navigable multi-section PDF with bookmarks.</div><span class="step-pill">client-side only</span></div>
+      <div class="step-connector"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card"><div class="step-number">04</div><div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div><div class="step-title">Download PDFs</div><div class="step-desc">Download individual PDF files or the full set as a <strong>ZIP archive</strong>. Open in any PDF viewer. No watermark, no page cap, ever.</div><span class="step-pill">ZIP download</span></div>
+    </div>
+    <div class="how-to-cta">
+      <a href="#tool" class="btn-primary"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 19 21 12 17 5 21"/></svg>Start Converting</a>
+      <span class="how-to-note">free · no signup · no upload</span>
+    </div>
+  </div>
+</section>
+
+<section class="content-section" id="about">
+  <h2 class="section-title">Why Use CHM to PDF Converter?</h2>
+  <div class="content-prose">
+    <p>CHM files are compiled help files often used for documentation and software manuals. While they are useful for structured help systems, they are not always convenient to open on modern devices.</p>
+    <p>A CHM to PDF converter allows users to transform these help files into a more accessible document format. Once converted to PDF, the content becomes easier to read, search, and share.</p>
+    <p>This is particularly helpful for developers, technical writers, and users who want to archive documentation in a universally supported format that can be accessed on any device.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="content-section">
+  <span class="section-tag">Features</span>
+  <h2 class="section-title">Everything in One CHM to PDF Converter</h2>
+  <div class="features-grid">
+    <div class="feature-card"><span class="feature-icon">📚</span><div class="feature-title">Topic Tree Extraction</div><div class="feature-desc">The CHM binary structure is parsed to extract every HTML topic, its position in the TOC hierarchy, and its title — before conversion begins, so you can see exactly what will be included.</div></div><div class="feature-card"><span class="feature-icon">🔍</span><div class="feature-title">Topic Depth Control</div><div class="feature-desc">Convert all nesting levels or limit to top-level sections. A depth slider lets you include only the main chapters of a large help file without processing hundreds of subsections.</div></div><div class="feature-card"><span class="feature-icon">📑</span><div class="feature-title">Generated Table of Contents</div><div class="feature-desc">A formatted TOC page listing all included topics with their section numbers is generated automatically and prepended to the PDF — with page numbers matching the output.</div></div><div class="feature-card"><span class="feature-icon">🔖</span><div class="feature-title">PDF Bookmarks</div><div class="feature-desc">Every topic becomes a PDF bookmark — the full topic hierarchy is reproduced in the PDF bookmark panel, letting readers navigate directly to any section in any PDF viewer.</div></div><div class="feature-card"><span class="feature-icon">🎨</span><div class="feature-title">Heading Styles</div><div class="feature-desc">Three heading styles — Numbered (1.1, 1.2 hierarchy), Clean (styled but unnumbered), and Minimal (plain text) — control how section titles appear in the output PDF.</div></div><div class="feature-card"><span class="feature-icon">📦</span><div class="feature-title">Batch Conversion</div><div class="feature-desc">Queue multiple CHM files and convert them all in one pass — each produces its own PDF, collected in a single ZIP archive for download.</div></div><div class="feature-card"><span class="feature-icon">🌐</span><div class="feature-title">Cross-Platform Output</div><div class="feature-desc">The PDF output opens on Windows, macOS, Linux, iOS, Android, and every browser without any additional software — solving the fundamental cross-platform limitation of CHM.</div></div><div class="feature-card"><span class="feature-icon">🔒</span><div class="feature-title">100% Private</div><div class="feature-desc">CHM parsing and PDF assembly happen entirely in browser memory — your help file never leaves your device. No upload, no cloud, no data retention.</div></div>
+  </div>
+</section>
+<hr class="divider">
+<section class="content-section">
+  <span class="section-tag">Use Cases</span>
+  <h2 class="section-title">When to Convert CHM to PDF</h2>
+  <div class="use-cases-grid">
+    <div class="use-case-card"><span class="use-case-icon">💻</span><div class="use-case-title">Software Documentation</div><div class="use-case-text">Convert software user manuals and API reference guides from CHM to PDF for sharing with teams that include macOS and Linux users, or for embedding in documentation portals.</div></div><div class="use-case-card"><span class="use-case-icon">🍎</span><div class="use-case-title">macOS & Linux Access</div><div class="use-case-text">CHM files are unreadable on macOS and Linux without third-party tools. Convert to PDF for immediate access on any platform without installing additional software.</div></div><div class="use-case-card"><span class="use-case-icon">🔒</span><div class="use-case-title">Bypassing Security Blocks</div><div class="use-case-text">Windows blocks CHM files downloaded from the internet or opened from network drives by default. Convert to PDF to read the content without changing security policy.</div></div><div class="use-case-card"><span class="use-case-icon">📧</span><div class="use-case-title">Email & Sharing</div><div class="use-case-text">CHM files are often flagged by email security systems. Converting to PDF produces a universally shareable format that passes through email filters and opens everywhere.</div></div><div class="use-case-card"><span class="use-case-icon">📱</span><div class="use-case-title">Mobile Reading</div><div class="use-case-text">CHM files cannot be opened on smartphones or tablets. Convert to PDF for reading software documentation on any mobile device using its native PDF viewer.</div></div><div class="use-case-card"><span class="use-case-icon">🗄️</span><div class="use-case-title">Archive Migration</div><div class="use-case-text">Migrating a documentation archive? Convert legacy CHM help files to PDF for inclusion in modern document management systems, wikis, and knowledge bases.</div></div><div class="use-case-card"><span class="use-case-icon">🔍</span><div class="use-case-title">Search & Indexing</div><div class="use-case-text">PDF documents are indexed by search engines and enterprise search systems — CHM files are not. Convert to PDF to make help content searchable in your organisation's search infrastructure.</div></div><div class="use-case-card"><span class="use-case-icon">✂️</span><div class="use-case-title">Selective Extraction</div><div class="use-case-text">Use the topic depth control to convert only the top-level chapters from a large CHM — extracting a summary or overview without the full detail of every subsection.</div></div>
+  </div>
+</section>
+<hr class="divider">
+<section class="content-section">
+  <span class="section-tag">FAQ</span>
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item open"><div class="faq-q">What is a CHM to PDF converter?</div><div class="faq-a">A CHM to PDF converter is a tool that transforms compiled HTML help files into PDF documents, making them easier to read, share, and print on modern devices.</div></div><div class="faq-item"><div class="faq-q">Why should I convert CHM files to PDF format?</div><div class="faq-a">CHM files require special software to open, while PDF files can be viewed on almost any device using standard PDF readers.</div></div><div class="faq-item"><div class="faq-q">Will the content structure remain after converting CHM to PDF?</div><div class="faq-a">Most CHM to PDF converters preserve the document structure, including headings, text content, and navigation elements during the conversion process.</div></div><div class="faq-item"><div class="faq-q">Can I open CHM files on mobile devices after conversion?</div><div class="faq-a">Yes, converting CHM files to PDF allows users to easily read help documentation on smartphones, tablets, and other portable devices.</div></div><div class="faq-item"><div class="faq-q">Is converting CHM to PDF useful for documentation sharing?</div><div class="faq-a">Yes, many developers convert CHM documentation to PDF so that manuals can be shared, printed, and distributed more easily.</div></div><div class="faq-item"><div class="faq-q">Do I need special software to convert CHM files online?</div><div class="faq-a">No, online CHM to PDF converters allow users to upload files and convert them directly from their browser without installing software.</div></div><div class="faq-item"><div class="faq-q">Does this tool extract the full CHM content?</div><div class="faq-a">CHM files use LZX compression for their HTML content. This tool extracts topic titles when they appear in the file and creates a PDF with a title page, table of contents, and topic outline. For full HTML body conversion, use a desktop tool like Calibre or Windows hh.exe.</div></div>
+  </div>
+</section>
+
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-header">
+      <span class="section-tag">Related Tools</span>
+      <h2 class="section-title">More Free Online Tools</h2>
+    </div>
+    <div class="related-grid">
+      <a href="/jpg-to-pdf" class="related-card">
+        <span class="related-card-icon">📄</span>
+        <div class="related-card-name">JPG to PDF</div>
+        <div class="related-card-desc">Convert JPG images to PDF documents quickly. Combine multiple photos into a single organized PDF file for easy sharing and printing.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+      <a href="/image-resizer" class="related-card">
+        <span class="related-card-icon">📐</span>
+        <div class="related-card-name">Image Resizer</div>
+        <div class="related-card-desc">Resize images to exact pixel dimensions or a percentage of their original size. Runs entirely in your browser without uploading files anywhere.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/compress-jpeg" class="related-card">
+        <span class="related-card-icon">🗜️</span>
+        <div class="related-card-name">Compress JPEG</div>
+        <div class="related-card-desc">Reduce JPEG image file size while maintaining quality. Optimize images for faster web pages and lower storage usage.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/merge-pdf" class="related-card">
+        <span class="related-card-icon">📎</span>
+        <div class="related-card-name">Merge PDF</div>
+        <div class="related-card-desc">Combine multiple PDF files into a single organized document. Drag and drop to reorder pages easily.</div>
+        <span class="related-card-tag">PDF</span>
+      </a>
+      <a href="/crop-image" class="related-card">
+        <span class="related-card-icon">✂️</span>
+        <div class="related-card-name">Crop Image</div>
+        <div class="related-card-desc">Crop images to any aspect ratio or custom dimensions. Perfect for social media thumbnails, profile photos, and banner images.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/format-converter" class="related-card">
+        <span class="related-card-icon">🔄</span>
+        <div class="related-card-name">Format Converter</div>
+        <div class="related-card-desc">Convert images between different formats instantly. Transform JPG, PNG, WebP, and other image formats quickly.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="cta-title">Convert CHM Help Files to PDF</div>
+    <p class="cta-desc">Turn compiled HTML help files into accessible PDF documents that can be viewed and shared easily.</p>
+    <div class="cta-actions"><a href="#tool" class="btn-primary"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 19 21 12 17 5 21"/></svg> Convert CHM</a></div>
+    <span class="cta-note">free forever · no signup · your files never leave your browser</span>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<div id="footer-placeholder"></div>
+<script src="load-footer.js"></script>
+<div class="toast" id="toast"></div>
+<script>
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800);}
+document.getElementById('mobileMenuToggle').addEventListener('click',function(){this.classList.toggle('active');document.getElementById('mobileNav').classList.toggle('active');});
+function closeMobileMenu(){document.getElementById('mobileMenuToggle').classList.remove('active');document.getElementById('mobileNav').classList.remove('active');}
+function setStep(ids,idx,msgs){ids.forEach((id,i)=>{const el=document.getElementById(id);el.classList.remove('active','done');if(i<idx)el.classList.add('done');else if(i===idx)el.classList.add('active');});document.getElementById('processingText').textContent=msgs[idx];}
+function setProgress(pct){document.getElementById('progressBar').style.width=Math.min(100,pct)+'%';}
+function delay(ms){return new Promise(r=>setTimeout(r,ms));}
+function formatSize(b){if(b<1024)return b+' B';if(b<1048576)return(b/1024).toFixed(1)+' KB';return(b/1048576).toFixed(2)+' MB';}
+function buildZip(fileArr){const enc=new TextEncoder(),parts=[],central=[];let offset=0;function u16(n){return[n&0xff,(n>>8)&0xff];}function u32(n){return[n&0xff,(n>>8)&0xff,(n>>16)&0xff,(n>>24)&0xff];}function crc32(buf){const T=crc32._t||(crc32._t=(()=>{const t=new Uint32Array(256);for(let i=0;i<256;i++){let c=i;for(let j=0;j<8;j++)c=(c&1)?(0xEDB88320^(c>>>1)):(c>>>1);t[i]=c;}return t;})());let c=0xFFFFFFFF;for(let i=0;i<buf.length;i++)c=T[(c^buf[i])&0xff]^(c>>>8);return(c^0xFFFFFFFF)>>>0;}for(const file of fileArr){const nb=enc.encode(file.name),crc=crc32(file.bytes),size=file.bytes.length;const h=new Uint8Array([0x50,0x4B,0x03,0x04,20,0,0,0,0,0,0,0,0,0,...u32(crc),...u32(size),...u32(size),...u16(nb.length),0,0,...nb]);central.push({nb,crc,size,offset});parts.push(h);parts.push(file.bytes);offset+=h.length+size;}const cdStart=offset;for(const{nb,crc,size,offset:fo}of central){const cd=new Uint8Array([0x50,0x4B,0x01,0x02,20,0,20,0,0,0,0,0,0,0,0,0,...u32(crc),...u32(size),...u32(size),...u16(nb.length),0,0,0,0,0,0,0,0,0,0,...u32(fo),...nb]);parts.push(cd);offset+=cd.length;}const eocd=new Uint8Array([0x50,0x4B,0x05,0x06,0,0,0,0,...u16(fileArr.length),...u16(fileArr.length),...u32(offset-cdStart),...u32(cdStart),0,0]);parts.push(eocd);let total=0;for(const p of parts)total+=p.length;const out=new Uint8Array(total);let pos=0;for(const p of parts){out.set(p,pos);pos+=p.length;}return out;}
+document.querySelectorAll('.faq-q').forEach(q=>{q.addEventListener('click',()=>{const item=q.parentElement,wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open');});});
+
+let files=[], results=[], previewIdx=0;
+document.getElementById('slDepth').addEventListener('input',function(){
+  const v=parseInt(this.value);
+  document.getElementById('slDepthVal').textContent=v===5?'All':v;
+  document.getElementById('depthHint').textContent=v===5?'all levels':'depth '+v+' only';
+});
+const dropZone=document.getElementById('dropZone');
+dropZone.addEventListener('dragover',e=>{e.preventDefault();dropZone.classList.add('drag-over');});
+dropZone.addEventListener('dragleave',()=>dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop',e=>{e.preventDefault();dropZone.classList.remove('drag-over');handleFiles([...e.dataTransfer.files]);});
+document.getElementById('fileInput').addEventListener('change',function(){handleFiles([...this.files]);this.value='';});
+document.getElementById('addMoreInput').addEventListener('change',function(){handleFiles([...this.files]);this.value='';});
+function handleFiles(newFiles){
+  const valid=newFiles.filter(f=>/\.chm$/i.test(f.name));
+  if(!valid.length){showToast('Please select CHM files');return;}
+  const wasEmpty=files.length===0;
+  valid.forEach(f=>{if(!files.find(x=>x.file.name===f.name&&x.file.size===f.size))files.push({file:f,topics:[]});});
+  renderQueue();
+  document.getElementById('toolColumns').style.display='';
+  document.getElementById('resultArea').classList.remove('visible');
+  if(wasEmpty){previewIdx=0;loadAndPreview(0);}
+}
+function renderQueue(){
+  const queue=document.getElementById('fileQueue');
+  queue.innerHTML='';
+  files.forEach((f,i)=>{
+    const item=document.createElement('div');
+    item.className='file-item'+(i===previewIdx?' selected':'');
+    item.innerHTML=`<div class="file-icon-wrap">CHM</div><div class="file-info"><div class="file-name">${f.file.name}</div><div class="file-meta">${formatSize(f.file.size)}${f.topics.length?' · '+f.topics.length+' topics':''}</div></div><button class="file-remove" data-idx="${i}" title="Remove"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>`;
+    item.addEventListener('click',e=>{if(!e.target.closest('.file-remove')){previewIdx=i;loadAndPreview(i);renderQueue();}});
+    queue.appendChild(item);
+  });
+  queue.querySelectorAll('.file-remove').forEach(btn=>{
+    btn.addEventListener('click',e=>{
+      e.stopPropagation();
+      files.splice(parseInt(btn.dataset.idx),1);
+      if(!files.length){document.getElementById('toolColumns').style.display='none';resetPreview();}
+      else{previewIdx=Math.min(previewIdx,files.length-1);loadAndPreview(previewIdx);}
+      renderQueue();
+    });
+  });
+  document.getElementById('fileCount').textContent=files.length+' file'+(files.length!==1?'s':'');
+}
+async function loadAndPreview(idx){
+  const f=files[idx];
+  document.getElementById('previewBadge').textContent='READING…';
+  document.getElementById('previewPlaceholder').style.display='flex';
+  document.getElementById('previewContent').classList.remove('visible');
+  document.getElementById('previewNote').style.display='none';
+  try{
+    const ab=await f.file.arrayBuffer();
+    f.topics=parseChmTopics(new Uint8Array(ab),f.file.name);
+    f.buffer=ab;
+    renderQueue();
+    const maxDepth=f.topics.length?Math.max(...f.topics.map(t=>t.depth)):1;
+    document.getElementById('infoBar').classList.add('visible');
+    document.getElementById('infoTopics').textContent=f.topics.length;
+    document.getElementById('infoSize').textContent=formatSize(f.file.size);
+    document.getElementById('infoDepth').textContent=maxDepth;
+    document.getElementById('previewBadge').textContent=f.topics.length+' TOPIC'+(f.topics.length!==1?'S':'');
+    document.getElementById('previewPlaceholder').style.display='none';
+    renderTopicList(f.topics);
+  }catch(err){
+    document.getElementById('previewBadge').textContent='ERROR';
+    showToast('Could not read CHM: '+err.message);
+  }
+}
+function parseChmTopics(bytes,fileName){
+  // CHM files start with ITSF signature (0x49545346)
+  const sig=String.fromCharCode(bytes[0],bytes[1],bytes[2],bytes[3]);
+  if(sig!=='ITSF')throw new Error('Not a valid CHM file (missing ITSF signature)');
+  const baseName=(fileName||'').replace(/\.chm$/i,'')||'Help Document';
+  const topics=[];
+  const seen=new Set();
+  // Scan full file for <title> tags (some CHM have uncompressed strings)
+  const chunkSize=65536;
+  for(let off=0;off<bytes.length;off+=chunkSize){
+    const chunk=bytes.slice(off,Math.min(off+chunkSize*2,bytes.length));
+    const text=new TextDecoder('utf-8',{fatal:false}).decode(chunk);
+    const titleRe=/<title[^>]*>([^<]{2,120})<\/title>/gi;
+    let m;
+    while((m=titleRe.exec(text))!==null){
+      const t=m[1].trim().replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&#\d+;/g,'');
+      if(t&&t.length>=2&&!seen.has(t.toLowerCase())){seen.add(t.toLowerCase());topics.push({title:t,depth:1});}
+    }
+  }
+  if(!topics.length)topics.push({title:baseName,depth:1});
+  return topics;
+}
+function renderTopicList(topics){
+  const list=document.getElementById('previewList');
+  list.innerHTML='';
+  topics.slice(0,20).forEach((t,i)=>{
+    const item=document.createElement('div');
+    item.className='preview-item';
+    item.style.paddingLeft=(0.65+(t.depth-1)*0.6)+'rem';
+    item.innerHTML=`<span class="preview-item-tag">T${i+1}</span><span class="preview-item-text">${t.title}</span>`;
+    list.appendChild(item);
+  });
+  if(topics.length>20){
+    const more=document.createElement('div');
+    more.style.cssText='font-family:"DM Mono",monospace;font-size:0.6rem;color:rgba(255,255,255,0.2);padding:0.35rem 0.65rem;';
+    more.textContent='…and '+(topics.length-20)+' more topics';
+    list.appendChild(more);
+  }
+  document.getElementById('previewContent').classList.add('visible');
+  document.getElementById('previewNote').style.display='block';
+}
+function resetPreview(){
+  document.getElementById('infoBar').classList.remove('visible');
+  document.getElementById('previewPlaceholder').style.display='flex';
+  document.getElementById('previewContent').classList.remove('visible');
+  document.getElementById('previewNote').style.display='none';
+  document.getElementById('previewBadge').textContent='NO FILE';
+}
+const PAGE_SIZES={a4:[595.28,841.89],letter:[612,792],a5:[419.53,595.28]};
+document.getElementById('convertBtn').addEventListener('click',async()=>{
+  if(!files.length){showToast('Add at least one CHM file first');return;}
+  if(!window.PDFLib){showToast('pdf-lib is still loading — please wait');return;}
+  const paper=document.getElementById('paperSize').value;
+  const headings=document.getElementById('headingStyle').value;
+  const sectionMode=document.getElementById('sectionSelect').value;
+  const maxDepth=parseInt(document.getElementById('slDepth').value);
+  const includeToc=document.getElementById('tocToggle').checked;
+  const includeIndex=document.getElementById('indexToggle').checked;
+  document.getElementById('processingOverlay').classList.add('active');
+  document.getElementById('resultArea').classList.remove('visible');
+  results=[];
+  const stepIds=['pStep1','pStep2','pStep3','pStep4'];
+  const stepMsgs=['Parsing CHM file structure…','Extracting HTML topics…','Applying layout & styles…','Assembling PDF document…'];
+  let totalTopics=0;
+  for(let fi=0;fi<files.length;fi++){
+    const f=files[fi];
+    setStep(stepIds,0,stepMsgs);setProgress((fi/files.length)*20);await delay(120);
+    if(!f.buffer){f.buffer=await f.file.arrayBuffer();f.topics=parseChmTopics(new Uint8Array(f.buffer),f.file.name);renderQueue();}
+    setStep(stepIds,1,stepMsgs);setProgress((fi/files.length)*40+20);await delay(200);
+    let topics=f.topics.filter(t=>(maxDepth===5||t.depth<=maxDepth));
+    if(sectionMode==='top')topics=topics.filter(t=>t.depth===1);
+    if(!topics.length)topics=[...f.topics];
+    totalTopics+=topics.length;
+    setStep(stepIds,2,stepMsgs);setProgress((fi/files.length)*60+30);await delay(200);
+    setStep(stepIds,3,stepMsgs);setProgress((fi/files.length)*80+15);await delay(180);
+    const baseName=f.file.name.replace(/\.chm$/i,'');
+    const [pageW,pageH]=PAGE_SIZES[paper]||PAGE_SIZES.a4;
+    const margin=50;
+    const contentW=pageW-margin*2;
+    const pdfDoc=await PDFLib.PDFDocument.create();
+    const boldFont=await pdfDoc.embedFont(PDFLib.StandardFonts.HelveticaBold);
+    const regularFont=await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+    const mutedFont=await pdfDoc.embedFont(PDFLib.StandardFonts.HelveticaOblique);
+    const inkColor=PDFLib.rgb(0.08,0.08,0.08);
+    const headColor=PDFLib.rgb(0.05,0.05,0.05);
+    const mutedColor=PDFLib.rgb(0.4,0.4,0.4);
+    function drawWrapped(page,text,font,size,color,x,y,maxW,lineH){
+      if(!text||!text.trim())return y;
+      const words=String(text).trim().split(/\s+/);
+      let line='',curY=y;
+      for(const word of words){
+        const test=line?line+' '+word:word;
+        let w=0;try{w=font.widthOfTextAtSize(test,size);}catch(e){w=test.length*size*0.5;}
+        if(w>maxW&&line){
+          page.drawText(line,{x,y:curY,size,font,color,maxWidth:maxW});
+          curY-=lineH;line=word;
+        }else line=test;
+      }
+      if(line)page.drawText(line,{x,y:curY,size,font,color,maxWidth:maxW});
+      return curY-(line?lineH:0);
+    }
+    let pageNum=0;
+    function addPage(){pageNum++;return pdfDoc.addPage([pageW,pageH]);}
+    let page=addPage();
+    let curY=pageH-margin;
+    const titleFontSize=22;
+    const headFontSize=14;
+    const bodyFontSize=10;
+    const lineH=bodyFontSize*1.4;
+    page.drawText(baseName,{x:margin,y:curY,size:titleFontSize,font:boldFont,color:headColor,maxWidth:contentW});
+    curY-=titleFontSize*1.4;
+    page.drawText('Converted from CHM help file',{x:margin,y:curY,size:bodyFontSize,font:mutedFont,color:mutedColor});
+    curY-=lineH*2;
+    page.drawText('Source: '+f.file.name,{x:margin,y:curY,size:10,font:regularFont,color:mutedColor});
+    curY-=lineH*2;
+    if(includeToc&&topics.length>0){
+      if(curY<margin+80){page=addPage();curY=pageH-margin;}
+      page.drawText('Table of Contents',{x:margin,y:curY,size:headFontSize,font:boldFont,color:headColor});
+      curY-=lineH*1.5;
+      for(let i=0;i<topics.length;i++){
+        if(curY<margin+30){page=addPage();curY=pageH-margin;}
+        const num=(headings==='numbered'?(i+1)+'. ':'');
+        page.drawText(num+topics[i].title.slice(0,80),{x:margin,y:curY,size:bodyFontSize,font:regularFont,color:inkColor,maxWidth:contentW});
+        curY-=lineH;
+      }
+      curY-=lineH;
+    }
+    for(let i=0;i<topics.length;i++){
+      if(curY<margin+60){page=addPage();curY=pageH-margin;}
+      const num=(headings==='numbered'?(i+1)+'. ':'');
+      const title=num+topics[i].title;
+      page.drawText(title,{x:margin,y:curY,size:headFontSize,font:boldFont,color:headColor,maxWidth:contentW});
+      curY-=lineH*1.5;
+      const note='CHM content uses LZX compression. This PDF contains the topic outline. For full content, use a desktop tool (e.g. Calibre, hh.exe).';
+      curY=drawWrapped(page,note,regularFont,9,mutedColor,margin,curY,contentW,lineH);
+      curY-=lineH*1.5;
+    }
+    if(includeIndex&&topics.length>1){
+      if(curY<margin+60){page=addPage();curY=pageH-margin;}
+      page.drawText('Keyword Index',{x:margin,y:curY,size:headFontSize,font:boldFont,color:headColor});
+      curY-=lineH*1.5;
+      const keywords=topics.map(t=>t.title.split(/\s+/).filter(w=>w.length>3)).flat();
+      const unique=[...new Set(keywords)].slice(0,50);
+      for(const kw of unique){
+        if(curY<margin+20){page=addPage();curY=pageH-margin;}
+        page.drawText('• '+kw,{x:margin,y:curY,size:9,font:regularFont,color:mutedColor});
+        curY-=lineH*0.9;
+      }
+    }
+    const bytes=await pdfDoc.save();
+    results.push({name:baseName+'.pdf',bytes,topics:topics.length,paper,headings});
+    setProgress(((fi+1)/files.length)*100);await delay(100);
+  }
+  document.getElementById('processingOverlay').classList.remove('active');
+  const list=document.getElementById('resultList');list.innerHTML='';
+  results.forEach(r=>{
+    const url=URL.createObjectURL(new Blob([r.bytes],{type:'application/pdf'}));
+    const row=document.createElement('div');row.className='result-row';
+    row.innerHTML=`<div class="result-icon">PDF</div><div class="result-info"><div class="result-filename">${r.name}</div><div class="result-meta">${r.topics} topics · ${formatSize(r.bytes.length)}</div><span class="convert-badge">CHM → PDF</span></div><button class="result-dl" data-url="${url}" data-name="${r.name}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Save</button>`;
+    list.appendChild(row);
+  });
+  list.querySelectorAll('.result-dl').forEach(btn=>{btn.addEventListener('click',()=>{const a=document.createElement('a');a.href=btn.dataset.url;a.download=btn.dataset.name;a.click();showToast('Downloading '+btn.dataset.name);});});
+  document.getElementById('rFiles').textContent=results.length+' PDFs';
+  document.getElementById('rTopics').textContent=totalTopics;
+  document.getElementById('rPaper').textContent=document.getElementById('paperSize').value.toUpperCase();
+  document.getElementById('rHeadings').textContent=document.getElementById('headingStyle').value;
+  document.getElementById('resultCountBadge').textContent=results.length+' file'+(results.length!==1?'s':'');
+  document.getElementById('resultArea').classList.add('visible');
+  document.getElementById('resultArea').scrollIntoView({behavior:'smooth',block:'nearest'});
+});
+document.getElementById('downloadAllBtn').addEventListener('click',()=>{
+  if(!results.length)return;
+  const zip=buildZip(results.map(r=>({name:r.name,bytes:r.bytes})));
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([zip],{type:'application/zip'}));a.download='converted-pdfs.zip';a.click();
+  showToast('Downloading ZIP with '+results.length+' PDFs…');
+});
+document.getElementById('reconvertBtn').addEventListener('click',()=>{document.getElementById('resultArea').classList.remove('visible');results=[];showToast('Adjust settings and convert again');});
+document.getElementById('clearBtn').addEventListener('click',()=>{
+  files=[];results=[];previewIdx=0;
+  document.getElementById('fileQueue').innerHTML='';
+  document.getElementById('fileCount').textContent='0 files';
+  document.getElementById('toolColumns').style.display='none';
+  document.getElementById('resultArea').classList.remove('visible');
+  resetPreview();showToast('Cleared all files');
+});
+</script>
+</body>
+</html>

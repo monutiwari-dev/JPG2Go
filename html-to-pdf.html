@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>HTML to PDF Converter | Convert Web Pages to PDF</title>
+<meta name="description" content="Convert web pages or HTML files to PDF effortlessly. Preserve layout, styling, and content structure for easy sharing, printing, or offline use.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jpg2go.com/html-to-pdf">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="adsense.js"></script>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Convert HTML to PDF",
+    "url": "https://jpg2go.com/html-to-pdf",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Convert web pages or HTML files to PDF effortlessly. Preserve layout, styling, and content structure for easy sharing, printing, or offline use."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is an HTML to PDF converter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An HTML to PDF converter transforms web pages or HTML documents into PDF files that can be stored, printed, or shared."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why convert HTML pages into PDF format?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PDF format allows users to save web content permanently so it can be accessed offline without needing an internet connection."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will the webpage layout remain after HTML to PDF conversion?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most converters attempt to keep the page structure, images, and text formatting similar to the original webpage."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is HTML to PDF useful for saving online articles?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, many users convert web articles into PDF documents for research, reading, or documentation purposes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I convert entire webpages into a single PDF file?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, HTML to PDF tools can capture the full webpage and convert it into a complete PDF document."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need coding knowledge to convert HTML to PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No, online HTML to PDF converters allow users to convert webpages simply by entering the URL or uploading HTML files."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+<style>
+:root{--ink:#0d0d0d;--paper:#f7f4ee;--cream:#ede9df;--accent:#c84b2f;--accent-light:#e8d5cf;--muted:#7a7567;--border:#d4cfc4;--white:#ffffff;--shadow:0 2px 24px rgba(13,13,13,0.08);--shadow-lg:0 8px 48px rgba(13,13,13,0.12);--ai-purple:#c84b2f;--ai-purple-light:#e8d5cf;--green:#1a8a4a;--green-light:#d4f0e0;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;min-height:100vh;}
+header{background:var(--ink);color:var(--paper);position:sticky;top:0;z-index:100;border-bottom:2px solid var(--accent);}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1.6rem;color:var(--paper);text-decoration:none;letter-spacing:-0.02em;}
+.logo span{color:var(--accent);}
+nav{display:flex;gap:2rem;align-items:center;}
+nav a{color:#a8a39a;text-decoration:none;font-size:0.875rem;font-weight:500;letter-spacing:0.02em;transition:color 0.2s;}
+nav a:hover{color:var(--paper);}
+.nav-cta{background:var(--accent);color:var(--white)!important;padding:0.4rem 1rem;border-radius:4px;transition:background 0.2s!important;}
+.nav-cta:hover{background:#a83825!important;}
+.mobile-menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:0.5rem;flex-direction:column;gap:5px;align-items:center;justify-content:center;width:40px;height:40px;}
+.mobile-menu-toggle span{display:block;width:24px;height:2px;background:var(--paper);transition:all 0.3s ease;border-radius:2px;}
+.mobile-menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(6px,6px);}
+.mobile-menu-toggle.active span:nth-child(2){opacity:0;}
+.mobile-menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px);}
+.mobile-nav{display:none;position:fixed;top:64px;left:0;right:0;background:var(--ink);border-top:2px solid var(--accent);padding:1.5rem 2rem;flex-direction:column;gap:1rem;z-index:99;transform:translateY(-100%);opacity:0;transition:transform 0.3s ease,opacity 0.3s ease;visibility:hidden;}
+.mobile-nav.active{display:flex;transform:translateY(0);opacity:1;visibility:visible;}
+.mobile-nav a{color:#a8a39a;text-decoration:none;font-size:0.95rem;font-weight:500;padding:0.75rem 0;border-bottom:1px solid rgba(255,255,255,0.1);transition:color 0.2s;}
+.mobile-nav a:last-child{border-bottom:none;}
+.mobile-nav a:hover{color:var(--paper);}
+.mobile-nav .nav-cta{background:var(--accent);color:var(--white)!important;padding:0.75rem 1.5rem;border-radius:4px;text-align:center;border:none;margin-top: 0.5rem;}
+.hero{background:var(--ink);color:var(--paper);padding:4rem 2rem 3.5rem;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(200,75,47,0.2) 0%,transparent 70%);pointer-events:none;}
+.hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:1px;height:60px;background:linear-gradient(to bottom,transparent,rgba(200,75,47,0.4));}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.12em;color:#c84b2f;text-transform:uppercase;border:1px solid rgba(200,75,47,0.4);background:rgba(200,75,47,0.12);padding:0.3rem 0.9rem;border-radius:2px;margin-bottom:1.5rem;}
+.hero-badge svg{flex-shrink:0;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5.5vw,3.6rem);font-weight:900;line-height:1.1;letter-spacing:-0.03em;margin-bottom:1.25rem;}
+.hero h1 em{font-style:normal;color:var(--accent);}
+.hero-desc{font-size:1.05rem;color:#9e9990;max-width:520px;margin:0 auto 1.75rem;font-weight:300;line-height:1.7;}
+.hero-pills{display:flex;justify-content:center;flex-wrap:wrap;gap:0.5rem;}
+.hero-pill{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.06em;color:#a8a39a;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);padding:0.3rem 0.75rem;border-radius:100px;}
+.tool-section{max-width:1100px;margin:-1.5rem auto 0;padding:0 1.5rem 4rem;position:relative;z-index:10;}
+.tool-card{background:var(--white);border-radius:12px;box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid var(--border);}
+.tool-card-header{background:var(--cream);padding:1rem 1.5rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid var(--border);}
+.dot{width:12px;height:12px;border-radius:50%;display:inline-block;}
+.dot-r{background:#ff5f57;}.dot-y{background:#febc2e;}.dot-g{background:#28c840;}
+.tool-card-title{font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--muted);margin-left:0.5rem;letter-spacing:0.05em;}
+.tool-body{padding:1.5rem;}
+
+/* Input mode tabs */
+.input-mode-tabs{display:flex;gap:0;background:var(--cream);border:1px solid var(--border);border-radius:8px;padding:3px;margin-bottom:1.25rem;width:fit-content;}
+.mode-tab{padding:0.4rem 1rem;font-family:'DM Mono',monospace;font-size:0.72rem;font-weight:600;letter-spacing:0.05em;cursor:pointer;border-radius:6px;border:none;background:transparent;color:var(--muted);transition:all 0.18s;}
+.mode-tab.active{background:var(--white);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,0.08);}
+.input-pane{display:none;}
+.input-pane.active{display:block;}
+
+/* HTML code editor */
+.html-editor-wrap{position:relative;border:1.5px solid var(--border);border-radius:8px;overflow:hidden;transition:border-color 0.2s;}
+.html-editor-wrap:focus-within{border-color:var(--accent);}
+.html-editor-header{display:flex;align-items:center;justify-content:space-between;padding:0.5rem 0.85rem;background:var(--cream);border-bottom:1px solid var(--border);}
+.html-editor-label{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);}
+.html-editor-actions{display:flex;gap:0.4rem;}
+.editor-action-btn{background:none;border:1px solid var(--border);border-radius:4px;padding:0.2rem 0.5rem;font-family:'DM Mono',monospace;font-size:0.62rem;cursor:pointer;color:var(--muted);transition:all 0.15s;}
+.editor-action-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light);}
+#htmlEditor{width:100%;min-height:200px;max-height:320px;padding:0.85rem;font-family:'DM Mono',monospace;font-size:0.78rem;line-height:1.65;color:var(--ink);background:var(--white);border:none;outline:none;resize:vertical;tab-size:2;}
+#htmlEditor::placeholder{color:#c0bab2;}
+
+/* File drop for HTML files */
+.html-drop-zone{border:2px dashed var(--border);border-radius:10px;padding:2.5rem 2rem;text-align:center;cursor:pointer;transition:border-color 0.2s,background 0.2s;background:var(--paper);position:relative;}
+.html-drop-zone:hover,.html-drop-zone.drag-over{border-color:var(--ai-purple);background:var(--ai-purple-light);}
+.html-drop-zone input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.html-drop-icon{width:44px;height:44px;background:var(--ai-purple-light);border:1px solid rgba(200,75,47,0.3);border-radius:8px;display:flex;align-items:center;justify-content:center;margin:0 auto 0.85rem;color:var(--ai-purple);}
+.html-drop-zone h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:0.3rem;}
+.html-drop-zone p{font-size:0.82rem;color:var(--muted);margin-bottom:0.75rem;}
+.formats-pill{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.08em;color:var(--ai-purple);background:var(--ai-purple-light);padding:0.25rem 0.75rem;border-radius:100px;display:inline-block;}
+
+/* Loaded file indicator */
+.loaded-file-bar{display:none;align-items:center;gap:0.75rem;background:var(--accent-light);border:1px solid rgba(200,75,47,0.3);border-radius:8px;padding:0.55rem 0.85rem;margin-top: 3rem.75rem;}
+.loaded-file-bar.visible{display:flex;}
+.loaded-file-name{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--ink);font-weight:600;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.loaded-file-clear{background:none;border:none;cursor:pointer;color:var(--muted);font-family:'DM Mono',monospace;font-size:0.68rem;padding:0.15rem 0.4rem;border-radius:3px;transition:all 0.15s;}
+.loaded-file-clear:hover{color:var(--accent);background:var(--white);}
+
+.tool-columns{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem;align-items:start;}
+.tool-col-left{display:flex;flex-direction:column;gap:1.25rem;}
+.tool-col-right{display:flex;flex-direction:column;gap:1.25rem;}
+.panel-box{background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:1.15rem 1.25rem;}
+.panel-box-title{font-family:'DM Mono',monospace;font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;}
+.panel-box-title svg{color:var(--accent);flex-shrink:0;}
+.preset-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0.5rem;margin-bottom:1.25rem;}
+.preset-btn{background:var(--white);border:1.5px solid var(--border);border-radius:8px;padding:0.65rem 0.5rem;cursor:pointer;text-align:center;transition:all 0.18s;}
+.preset-btn:hover{border-color:var(--accent);background:var(--accent-light);}
+.preset-btn.active{border-color:var(--accent);background:var(--accent-light);box-shadow:0 0 0 3px rgba(200,75,47,0.1);}
+.preset-btn-name{font-family:'DM Mono',monospace;font-size:0.7rem;font-weight:600;color:var(--ink);display:block;margin-bottom:0.1rem;letter-spacing:0.02em;}
+.preset-btn.active .preset-btn-name{color:var(--accent);}
+.preset-btn-sub{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--muted);}
+.form-row{display:flex;flex-direction:column;gap:0.3rem;margin-bottom:0.9rem;}
+.form-row:last-child{margin-bottom:0;}
+.form-label{font-family:'DM Mono',monospace;font-size:0.68rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);display:flex;align-items:center;justify-content:space-between;}
+.form-label-hint{font-weight:400;text-transform:none;letter-spacing:0;color:#a8a39a;font-size:0.63rem;}
+.format-select{background:var(--white);border:1.5px solid var(--border);border-radius:6px;padding:0.42rem 2rem 0.42rem 0.75rem;font-family:'DM Mono',monospace;font-size:0.78rem;color:var(--ink);cursor:pointer;outline:none;transition:border-color 0.2s;-webkit-appearance:none;appearance:none;width:100%;background-image:url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%237a7567' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 0.75rem center;}
+.format-select:focus{border-color:var(--accent);}
+.slider-wrap{display:flex;align-items:center;gap:0.75rem;}
+input[type="range"].form-slider{-webkit-appearance:none;appearance:none;width:100%;height:5px;background:var(--border);border-radius:100px;outline:none;cursor:pointer;}
+input[type="range"].form-slider::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;background:var(--accent);border-radius:50%;cursor:pointer;box-shadow:0 1px 6px rgba(200,75,47,0.4);transition:transform 0.15s;}
+input[type="range"].form-slider::-webkit-slider-thumb:hover{transform:scale(1.2);}
+.slider-val{font-family:'DM Mono',monospace;font-size:0.82rem;color:var(--accent);font-weight:600;min-width:44px;text-align:right;}
+.toggle-row{display:flex;align-items:center;gap:0.85rem;padding:0.5rem 0;}
+.toggle-switch{position:relative;width:36px;height:20px;flex-shrink:0;cursor:pointer;}
+.toggle-switch input{opacity:0;width:0;height:0;position:absolute;}
+.toggle-track{position:absolute;inset:0;background:var(--border);border-radius:100px;transition:background 0.2s;}
+.toggle-switch input:checked+.toggle-track{background:var(--accent);}
+.toggle-knob{position:absolute;top:3px;left:3px;width:14px;height:14px;background:white;border-radius:50%;transition:transform 0.2s;box-shadow:0 1px 3px rgba(0,0,0,0.2);pointer-events:none;}
+.toggle-switch input:checked~.toggle-knob{transform:translateX(16px);}
+.toggle-label{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--muted);letter-spacing:0.03em;flex:1;}
+
+/* Live preview panel */
+.preview-panel{background:var(--ink);border-radius:10px;overflow:hidden;position:sticky;top:84px;}
+.preview-panel-header{padding:0.75rem 1rem;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;}
+.preview-panel-title{font-family:'DM Mono',monospace;font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#9e9990;display:flex;align-items:center;gap:0.4rem;}
+.preview-badge{font-family:'DM Mono',monospace;font-size:0.6rem;background:rgba(200,75,47,0.2);color:var(--accent);border:1px solid rgba(200,75,47,0.3);padding:0.1rem 0.45rem;border-radius:100px;letter-spacing:0.06em;}
+.preview-placeholder{display:flex;flex-direction:column;align-items:center;gap:0.75rem;padding:3.5rem 2rem;}
+.preview-placeholder-icon{width:52px;height:52px;background:rgba(200,75,47,0.12);border:1px solid rgba(200,75,47,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;color:rgba(200,75,47,0.5);}
+.preview-placeholder p{font-family:'DM Mono',monospace;font-size:0.72rem;color:rgba(255,255,255,0.25);text-align:center;letter-spacing:0.05em;line-height:1.6;}
+.preview-iframe-wrap{padding:0.75rem;display:none;}
+.preview-iframe-wrap.visible{display:block;}
+.preview-iframe-label{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.5rem;}
+.preview-iframe{width:100%;height:280px;border-radius:5px;border:1px solid rgba(255,255,255,0.1);background:white;}
+.preview-note{padding:0.6rem 1rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:rgba(255,255,255,0.2);text-align:center;letter-spacing:0.04em;border-top:1px solid rgba(255,255,255,0.06);display:none;}
+
+/* Action bar */
+.action-bar{display:flex;gap:0.75rem;margin-top:1.25rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:var(--white);border:none;border-radius:6px;padding:0.65rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:0.875rem;font-weight:600;cursor:pointer;transition:all 0.18s;display:inline-flex;align-items:center;gap:0.5rem;text-decoration:none;}
+.btn-primary:hover{background:#a83825;transform:translateY(-1px);}
+.btn-secondary{background:transparent;color:var(--ink);border:1.5px solid var(--border);border-radius:6px;padding:0.65rem 1.25rem;font-family:'DM Sans',sans-serif;font-size:0.875rem;font-weight:500;cursor:pointer;transition:all 0.18s;display:inline-flex;align-items:center;gap:0.5rem;}
+.btn-secondary:hover{border-color:var(--ink);background:var(--cream);}
+.processing-overlay{display:none;}
+.processing-overlay.active{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;padding:3rem;background:var(--paper);border-radius:10px;border:1px solid var(--border);margin-top:1.5rem;}
+.ai-spinner{width:48px;height:48px;border:3px solid var(--ai-purple-light);border-top-color:var(--ai-purple);border-radius:50%;animation:spin 0.9s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.processing-text{font-family:'DM Mono',monospace;font-size:0.8rem;color:var(--muted);letter-spacing:0.05em;}
+.processing-progress{width:100%;max-width:280px;background:var(--border);border-radius:100px;height:4px;overflow:hidden;}
+.processing-progress-bar{height:100%;background:var(--accent);border-radius:100px;transition:width 0.25s ease;width:0%;}
+.processing-steps{display:flex;flex-direction:column;gap:0.4rem;width:100%;max-width:280px;}
+.processing-step{display:flex;align-items:center;gap:0.6rem;font-family:'DM Mono',monospace;font-size:0.68rem;color:#bbb;}
+.processing-step.done{color:#28c840;}
+.processing-step.active{color:var(--ai-purple);}
+.step-dot{width:8px;height:8px;border-radius:50%;background:currentColor;flex-shrink:0;}
+.result-area{display:none;margin-top:1.5rem;}
+.result-area.visible{display:block;}
+.result-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem;}
+.result-title{font-family:'DM Mono',monospace;font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);}
+.result-count-badge{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--green);background:var(--green-light);padding:0.2rem 0.6rem;border-radius:100px;border:1px solid rgba(26,138,74,0.2);}
+.result-list{display:flex;flex-direction:column;gap:0.6rem;}
+.result-row{display:flex;align-items:center;gap:0.85rem;background:var(--paper);border:1px solid var(--border);border-radius:9px;padding:0.75rem 1rem;transition:border-color 0.15s;}
+.result-row:hover{border-color:var(--green);}
+.result-icon{width:52px;height:52px;border-radius:5px;border:1px solid var(--border);flex-shrink:0;background:var(--cream);display:flex;align-items:center;justify-content:center;color:var(--accent);font-family:'DM Mono',monospace;font-size:0.6rem;font-weight:700;}
+.result-info{flex:1;min-width:0;}
+.result-filename{font-size:0.82rem;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:0.2rem;}
+.result-meta{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);}
+.convert-badge{font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--accent);background:var(--accent-light);border:1px solid rgba(200,75,47,0.2);padding:0.1rem 0.4rem;border-radius:3px;white-space:nowrap;display:inline-block;margin-top: 3rem.15rem;}
+.result-dl{background:none;border:1.5px solid var(--border);border-radius:5px;padding:0.35rem 0.65rem;cursor:pointer;color:var(--muted);font-family:'DM Mono',monospace;font-size:0.65rem;display:flex;align-items:center;gap:0.3rem;transition:all 0.18s;white-space:nowrap;flex-shrink:0;}
+.result-dl:hover{border-color:var(--green);color:var(--green);background:var(--green-light);}
+.stats-bar{display:none;gap:1.5rem;padding:0.75rem 1rem;background:var(--cream);font-size:0.78rem;color:var(--muted);font-family:'DM Mono',monospace;flex-wrap:wrap;margin-top:1rem;border-radius:8px;border:1px solid var(--border);}
+.stats-bar.visible{display:flex;}
+.stat{display:flex;gap:0.4rem;align-items:center;}
+.stat-val{color:var(--ink);font-weight:500;}
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--ink);color:var(--paper);padding:0.75rem 1.5rem;border-radius:6px;font-size:0.875rem;font-weight:500;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);z-index:999;border-left:3px solid var(--accent);white-space:nowrap;}
+.toast.show{transform:translateX(-50%) translateY(0);}
+.content-section{max-width:1000px;margin:0 auto;padding:4rem 1.5rem;}
+.section-tag{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;display:block;}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:1.25rem;line-height:1.2;}
+.content-prose{color:#4a4640;font-size:0.975rem;line-height:1.8;max-width:720px;}
+.content-prose p{margin-bottom:1rem;}
+.content-prose p:last-child{margin-bottom:0;}
+.divider{border:none;border-top:1px solid var(--border);max-width:1000px;margin:0 auto;}
+.how-to-section{background:var(--ink);color:var(--paper);padding:1.75rem 2rem;position:relative;overflow:hidden;}
+.how-to-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 100%,rgba(200,75,47,0.14) 0%,transparent 70%);pointer-events:none;}
+.how-to-inner{max-width:1000px;margin:0 auto;position:relative;}
+.how-to-header{text-align:center;margin-bottom:1.25rem;}
+.how-to-header .section-tag{color:#c84b2f;}
+.how-to-header .section-title{color:var(--paper);margin-bottom:0.35rem;}
+.how-to-subtitle{color:#9e9990;font-size:0.9rem;font-weight:300;}
+.steps-grid{display:flex;align-items:stretch;gap:0;}
+.step-card{flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:0.85rem 1rem;transition:background 0.25s,border-color 0.25s,transform 0.25s;}
+.step-card:hover{background:rgba(200,75,47,0.08);border-color:rgba(200,75,47,0.35);transform:translateY(-4px);}
+.step-connector{display:flex;align-items:center;justify-content:center;padding:0 0.5rem;color:rgba(200,75,47,0.5);flex-shrink:0;margin-top:-1rem;}
+.step-number{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:rgba(200,75,47,0.25);line-height:1;margin-bottom:0.35rem;letter-spacing:-0.04em;}
+.step-icon{width:36px;height:36px;background:rgba(200,75,47,0.15);border:1px solid rgba(200,75,47,0.3);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:0.6rem;color:#c84b2f;}
+.step-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--paper);margin-bottom:0.35rem;line-height:1.3;}
+.step-desc{font-size:0.8rem;color:#9e9990;line-height:1.55;margin-bottom:0.6rem;}
+.step-desc strong{color:#d4cfc4;}
+.step-pill{display:inline-block;font-family:'DM Mono',monospace;font-size:0.63rem;letter-spacing:0.05em;color:#c84b2f;background:rgba(200,75,47,0.12);border:1px solid rgba(200,75,47,0.25);padding:0.2rem 0.6rem;border-radius:100px;}
+.how-to-cta{text-align:center;margin-top:1.25rem;display:flex;flex-direction:column;align-items:center;gap:0.6rem;}
+.how-to-note{font-size:0.8rem;color:#7a7567;font-family:'DM Mono',monospace;letter-spacing:0.03em;}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:2rem;}
+.feature-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.5rem 1.25rem;transition:box-shadow 0.2s,transform 0.2s;}
+.feature-card:hover{box-shadow:var(--shadow);transform:translateY(-2px);}
+.feature-icon{font-size:1.75rem;margin-bottom:0.75rem;display:block;}
+.feature-title{font-weight:700;font-size:0.9rem;margin-bottom:0.4rem;}
+.feature-desc{font-size:0.82rem;color:var(--muted);line-height:1.5;}
+.quality-table{width:100%;border-collapse:collapse;margin-top:1.5rem;font-size:0.85rem;}
+.quality-table th{font-family:'DM Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);font-weight:600;text-align:left;padding:0.5rem 0.75rem;border-bottom:2px solid var(--border);}
+.quality-table td{padding:0.75rem;border-bottom:1px solid var(--border);color:#4a4640;vertical-align:top;line-height:1.5;}
+.quality-table tr:last-child td{border-bottom:none;}
+.quality-table tr:hover td{background:var(--paper);}
+.quality-range{font-family:'DM Mono',monospace;font-size:0.78rem;font-weight:600;color:var(--accent);white-space:nowrap;}
+.use-cases-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:2rem;}
+.use-case-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.5rem 1.25rem;}
+.use-case-icon{font-size:1.75rem;margin-bottom:0.75rem;display:block;}
+.use-case-title{font-weight:700;font-size:0.9rem;margin-bottom:0.4rem;}
+.use-case-text{font-size:0.82rem;color:var(--muted);line-height:1.5;}
+.faq-list{margin-top:2rem;}
+.faq-item{border-bottom:1px solid var(--border);padding:1.25rem 0;}
+.faq-item:last-child{border-bottom:none;}
+.faq-q{font-weight:600;font-size:0.95rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;}
+.faq-q::after{content:'+';font-size:1.2rem;color:var(--ai-purple);flex-shrink:0;transition:transform 0.2s;}
+.faq-item.open .faq-q::after{transform:rotate(45deg);}
+.faq-a{font-size:0.9rem;color:var(--muted);line-height:1.7;max-height:0;overflow:hidden;transition:max-height 0.35s ease,margin-top 0.3s;}
+.faq-item.open .faq-a{max-height:360px;margin-top: 3rem.75rem;}
+.cta-section{background:var(--ink);color:var(--paper);padding:1.5rem 2rem;text-align:center;position:relative;overflow:hidden;}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(200,75,47,0.18) 0%,transparent 70%);pointer-events:none;}
+.cta-inner{max-width:640px;margin:0 auto;position:relative;}
+.cta-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;letter-spacing:-0.03em;line-height:1.15;margin-bottom:1rem;color:var(--paper);}
+.cta-desc{font-size:1rem;color:#9e9990;font-weight:300;margin-bottom:1rem;line-height:1.7;}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:0.75rem;}
+.cta-note{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.06em;color:#5a5650;margin-top:1rem;display:block;}
+.related-section{background:var(--cream);padding:5rem 2rem;border-top:1px solid var(--border);}
+.related-inner{max-width:1000px;margin:0 auto;}
+.related-header{margin-bottom:2.5rem;}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;}
+.related-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-decoration:none;color:inherit;display:block;transition:box-shadow 0.2s,transform 0.2s,border-color 0.2s;position:relative;overflow:hidden;}
+.related-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border);transition:background 0.2s;}
+.related-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px);border-color:var(--accent);}
+.related-card:hover::before{background:var(--accent);}
+.related-card-icon{font-size:1.85rem;margin-bottom:0.85rem;display:block;}
+.related-card-name{font-family:'Playfair Display',serif;font-weight:700;font-size:1rem;margin-bottom:0.35rem;color:var(--ink);letter-spacing:-0.01em;}
+.related-card-desc{font-size:0.82rem;color:var(--muted);line-height:1.5;margin-bottom:1rem;}
+.related-card-tag{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);background:var(--accent-light);padding:0.2rem 0.5rem;border-radius:3px;display:inline-block;}
+footer { background: var(--ink); color: #9e9990; padding: 4rem 2rem 2rem; margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.05); }
+#footer-placeholder { margin-top: 3rem; }
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid #2a2a2a;}
+.footer-brand .logo{display:block;margin-bottom:0.75rem;}
+.footer-social { display: flex; gap: 0; margin-top: 1rem; }
+.social-icon { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; color: #9e9990; transition: color 0.2s, transform 0.2s; border-radius: 6px; margin-left: -8px; }
+.social-icon:first-child { margin-left: 0; }
+.social-icon:hover { color: var(--paper); transform: translateY(-2px); }
+.footer-brand p{font-size:0.85rem;line-height:1.6;max-width:240px;}
+.footer-col-title{font-family:'DM Sans',sans-serif;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper);font-weight:600;margin-bottom:1rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+.footer-links a{color:#9e9990;text-decoration:none;font-size:0.85rem;transition:color 0.2s;}
+.footer-links a:hover{color:var(--paper);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;font-size:0.8rem;flex-wrap:wrap;gap:0.75rem;}
+@media(max-width:900px){.tool-columns{grid-template-columns:1fr;}.preview-panel{position:static;}}
+@media(max-width:768px){nav{display:none;}.mobile-menu-toggle{display:flex;}.preset-row{grid-template-columns:repeat(2,1fr);}.steps-grid{flex-direction:column;gap:0.75rem;}.step-connector{transform:rotate(90deg);padding:0;margin:0;}.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr;gap:2rem;}.footer-bottom{flex-direction:column;text-align:center;}.tool-body{padding:1rem;}.hero{padding:3rem 1.5rem 2.5rem;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">JPG<span>2</span>Go</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="tools.html">Tools</a>
+      <a href="#tool" class="nav-cta">Convert Now</a>
+    </nav>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+    <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="tools.html" onclick="closeMobileMenu()">Tools</a>
+    <a href="#tool" class="nav-cta" onclick="closeMobileMenu()">Convert Now</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 19 21 12 17 5 21"/></svg>
+        Convert Web Pages to PDF
+  </div>
+  <h1>Convert HTML to PDF</h1>
+  <p class="hero-desc">Convert HTML files or webpages into PDF documents instantly. Save website content for offline access, printing, or documentation purposes.</p>
+  <div class="hero-pills">
+    <span class="hero-pill">paste HTML or upload file</span>
+    <span class="hero-pill">live iframe preview</span>
+    <span class="hero-pill">viewport control</span>
+    <span class="hero-pill">CSS @media print</span>
+    <span class="hero-pill">no upload · 100% private</span>
+    <span class="hero-pill">free forever</span>
+  </div>
+</section>
+
+<!-- TOOL -->
+<section class="tool-section" id="tool">
+  <div class="tool-card">
+    <div class="tool-card-header">
+      <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+      <span class="tool-card-title">html-to-pdf · paste-or-upload · live-preview · viewport · print-css · margins · jpg2go.com</span>
+    </div>
+    <div class="tool-body">
+
+      <!-- Input mode tabs -->
+      <div class="input-mode-tabs">
+        <button class="mode-tab active" id="tabPaste">Paste HTML</button>
+        <button class="mode-tab" id="tabUpload">Upload .html file</button>
+      </div>
+
+      <!-- Paste HTML pane -->
+      <div class="input-pane active" id="panePaste">
+        <div class="html-editor-wrap">
+          <div class="html-editor-header">
+            <span class="html-editor-label">HTML Source</span>
+            <div class="html-editor-actions">
+              <button class="editor-action-btn" id="clearEditorBtn">Clear</button>
+              <button class="editor-action-btn" id="loadExampleBtn">Load example</button>
+            </div>
+          </div>
+          <textarea id="htmlEditor" placeholder="Paste your HTML here — full documents or fragments accepted.&#10;&#10;Example:&#10;&lt;h1&gt;Hello World&lt;/h1&gt;&#10;&lt;p&gt;This is a paragraph.&lt;/p&gt;"></textarea>
+        </div>
+      </div>
+
+      <!-- Upload HTML file pane -->
+      <div class="input-pane" id="paneUpload">
+        <div class="html-drop-zone" id="htmlDropZone">
+          <input type="file" id="htmlFileInput" accept="text/html,.html,.htm">
+          <div class="html-drop-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="10" y1="13" x2="14" y2="13"/></svg>
+          </div>
+          <h3>Drop an HTML file here</h3>
+          <p>or click to browse — .html and .htm files</p>
+          <span class="formats-pill">Accepts .html .htm → outputs .pdf</span>
+        </div>
+        <div class="loaded-file-bar" id="loadedFileBar">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span class="loaded-file-name" id="loadedFileName">—</span>
+          <button class="loaded-file-clear" id="clearFileBtn">✕ Remove</button>
+        </div>
+      </div>
+
+      <!-- Two-column settings + preview -->
+      <div class="tool-columns">
+        <div class="tool-col-left">
+
+          <!-- Render settings -->
+          <div class="panel-box">
+            <div class="panel-box-title">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              Viewport &amp; Page
+            </div>
+            <div class="form-row">
+              <div class="form-label">Viewport width <span class="form-label-hint">browser window width</span></div>
+              <div class="preset-row" id="vpGrid">
+                <button class="preset-btn" data-vp="390"><span class="preset-btn-name">Mobile</span><span class="preset-btn-sub">390 px</span></button>
+                <button class="preset-btn" data-vp="768"><span class="preset-btn-name">Tablet</span><span class="preset-btn-sub">768 px</span></button>
+                <button class="preset-btn active" data-vp="1280"><span class="preset-btn-name">Desktop</span><span class="preset-btn-sub">1280 px</span></button>
+                <button class="preset-btn" data-vp="1600"><span class="preset-btn-name">Wide</span><span class="preset-btn-sub">1600 px</span></button>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-label">Paper size</div>
+              <select class="format-select" id="paperSize">
+                <option value="a4">A4 (210 × 297 mm)</option>
+                <option value="letter">Letter (8.5 × 11 in)</option>
+                <option value="a3">A3 (297 × 420 mm)</option>
+                <option value="a5">A5 (148 × 210 mm)</option>
+              </select>
+            </div>
+            <div class="form-row" style="margin-bottom:0;">
+              <div class="form-label">Margins <span class="form-label-hint" id="marginHint">20 mm — comfortable</span></div>
+              <div class="slider-wrap">
+                <input type="range" class="form-slider" id="slMargin" min="0" max="40" step="2" value="20">
+                <span class="slider-val" id="slMarginVal">20 mm</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Output options -->
+          <div class="panel-box">
+            <div class="panel-box-title">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+              Output Options
+            </div>
+            <div class="toggle-row">
+              <label class="toggle-switch"><input type="checkbox" id="bgToggle" checked><span class="toggle-track"></span><span class="toggle-knob"></span></label>
+              <span class="toggle-label">Print background colours &amp; images</span>
+            </div>
+            <div class="toggle-row">
+              <label class="toggle-switch"><input type="checkbox" id="printCssToggle" checked><span class="toggle-track"></span><span class="toggle-knob"></span></label>
+              <span class="toggle-label">Apply @media print CSS</span>
+            </div>
+            <div class="toggle-row">
+              <label class="toggle-switch"><input type="checkbox" id="linksToggle" checked><span class="toggle-track"></span><span class="toggle-knob"></span></label>
+              <span class="toggle-label">Preserve hyperlinks as PDF annotations</span>
+            </div>
+            <div class="toggle-row">
+              <label class="toggle-switch"><input type="checkbox" id="pageNumToggle"><span class="toggle-track"></span><span class="toggle-knob"></span></label>
+              <span class="toggle-label">Add page numbers to footer</span>
+            </div>
+          </div>
+
+          <div class="action-bar">
+            <button class="btn-primary" id="convertBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 19 21 12 17 5 21"/></svg>
+              Convert to PDF
+            </button>
+            <button class="btn-secondary" id="clearAllBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
+              Clear
+            </button>
+          </div>
+
+        </div>
+
+        <!-- RIGHT: Live Preview -->
+        <div class="tool-col-right">
+          <div class="preview-panel">
+            <div class="preview-panel-header">
+              <div class="preview-panel-title">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                Live Preview
+              </div>
+              <span class="preview-badge" id="previewBadge">EMPTY</span>
+            </div>
+            <div class="preview-placeholder" id="previewPlaceholder">
+              <div class="preview-placeholder-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="10" y1="13" x2="14" y2="13"/></svg>
+              </div>
+              <p>Paste HTML or upload a file<br>to see a live preview</p>
+            </div>
+            <div class="preview-iframe-wrap" id="previewIframeWrap">
+              <div class="preview-iframe-label">Rendered HTML Preview</div>
+              <iframe id="previewIframe" class="preview-iframe" sandbox="allow-same-origin" title="HTML Preview"></iframe>
+            </div>
+            <div class="preview-note" id="previewNote">Preview renders in a sandboxed iframe</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Processing -->
+      <div class="processing-overlay" id="processingOverlay">
+        <div class="ai-spinner"></div>
+        <div class="processing-text" id="processingText">Parsing HTML…</div>
+        <div class="processing-progress"><div class="processing-progress-bar" id="progressBar"></div></div>
+        <div class="processing-steps">
+          <div class="processing-step active" id="pStep1"><span class="step-dot"></span> Parsing HTML &amp; CSS</div>
+          <div class="processing-step" id="pStep2"><span class="step-dot"></span> Applying viewport &amp; print styles</div>
+          <div class="processing-step" id="pStep3"><span class="step-dot"></span> Rendering to PDF pages</div>
+          <div class="processing-step" id="pStep4"><span class="step-dot"></span> Assembling PDF document</div>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div class="result-area" id="resultArea">
+        <div class="result-header">
+          <span class="result-title">Converted PDF File</span>
+          <span class="result-count-badge" id="resultCountBadge">1 file</span>
+        </div>
+        <div class="result-list" id="resultList"></div>
+        <div class="stats-bar visible" id="statsBar">
+          <div class="stat">Viewport: <span class="stat-val" id="rViewport">—</span></div>
+          <div class="stat">Paper: <span class="stat-val" id="rPaper">—</span></div>
+          <div class="stat">Margins: <span class="stat-val" id="rMargins">—</span></div>
+          <div class="stat">Print CSS: <span class="stat-val" id="rPrintCss">—</span></div>
+        </div>
+        <div class="action-bar" style="margin-top:1rem;">
+          <button class="btn-secondary" id="reconvertBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+            Try Different Settings
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- HOW IT WORKS -->
+<section class="how-to-section" id="how-it-works">
+  <div class="how-to-inner">
+    <div class="how-to-header">
+      <span class="section-tag">Quick Guide</span>
+      <h2 class="section-title">How to Convert HTML to PDF</h2>
+      <p class="how-to-subtitle">Three steps. Live preview. Download in seconds.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card"><div class="step-number">01</div><div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div><div class="step-title">Enter HTML</div><div class="step-desc"><strong>Paste HTML code</strong> into the editor, or switch to Upload mode and drop a .html file. A live preview renders instantly in the right panel using a sandboxed iframe — see exactly how the page looks before converting.</div><span class="step-pill">live preview</span></div>
+      <div class="step-connector"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card"><div class="step-number">02</div><div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/></svg></div><div class="step-title">Set Viewport &amp; Options</div><div class="step-desc">Choose <strong>viewport width</strong> (Mobile to Wide), paper size, margin size, and whether to apply <code>@media print</code> CSS. Toggle background printing, hyperlink preservation, and page numbers.</div><span class="step-pill">full control</span></div>
+      <div class="step-connector"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card"><div class="step-number">03</div><div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div><div class="step-title">Convert &amp; Download</div><div class="step-desc">Click <strong>Convert to PDF</strong>. The HTML is rendered at your chosen viewport, print CSS is applied, the page is paginated into your chosen paper size, and the PDF is downloaded immediately.</div><span class="step-pill">instant download</span></div>
+    </div>
+    <div class="how-to-cta">
+      <a href="#tool" class="btn-primary"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 19 21 12 17 5 21"/></svg>Convert HTML Now</a>
+      <span class="how-to-note">free · no signup · no upload</span>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ABOUT -->
+<section class="content-section" id="about">
+  <h2 class="section-title">Why Use HTML to PDF Converter?</h2>
+  <div class="content-prose">
+    <p>HTML files are commonly used to create web pages, but sometimes web content needs to be saved in a document format. A HTML to PDF converter allows users to turn web pages into downloadable documents.</p>
+    <p>This is helpful for archiving website content, creating offline documentation, or sharing information without requiring internet access.</p>
+    <p>Converting HTML pages into PDF ensures that the layout and structure remain consistent while allowing the content to be easily stored or printed. It turns web content into a portable document format suitable for long-term use.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FEATURES -->
+
+<section class="content-section">
+  <span class="section-tag">Features</span>
+  <h2 class="section-title">Everything in One HTML to PDF Converter</h2>
+  <div class="features-grid">
+    <div class="feature-card"><span class="feature-icon">⌨️</span><div class="feature-title">Paste HTML Directly</div><div class="feature-desc">Type or paste HTML code — complete documents or fragments — directly into the built-in editor. No file required. The live preview updates as you type.</div></div>
+    <div class="feature-card"><span class="feature-icon">📁</span><div class="feature-title">Upload .html Files</div><div class="feature-desc">Switch to Upload mode and drop a .html or .htm file. The file content is read locally and loaded in the preview — no upload to any server.</div></div>
+    <div class="feature-card"><span class="feature-icon">👁️</span><div class="feature-title">Live Iframe Preview</div><div class="feature-desc">A sandboxed iframe renders the HTML immediately after you paste or upload. See fonts, layouts, colours, and images exactly as they will appear in the PDF — before converting.</div></div>
+    <div class="feature-card"><span class="feature-icon">📐</span><div class="feature-title">4 Viewport Widths</div><div class="feature-desc">Render at Mobile (390px), Tablet (768px), Desktop (1280px), or Wide (1600px). The responsive layout the HTML uses at your chosen width is what appears in the PDF.</div></div>
+    <div class="feature-card"><span class="feature-icon">🖨️</span><div class="feature-title">@media print Support</div><div class="feature-desc">Toggle to apply print-specific CSS rules — hiding navigation, adjusting fonts, removing backgrounds — producing cleaner PDFs from pages that define print styles.</div></div>
+    <div class="feature-card"><span class="feature-icon">📏</span><div class="feature-title">Margin Control</div><div class="feature-desc">A margin slider (0–40 mm) controls the whitespace around the content on each PDF page — from full-bleed (0 mm) to widely-margined documents (40 mm).</div></div>
+    <div class="feature-card"><span class="feature-icon">🔗</span><div class="feature-title">Hyperlink Preservation</div><div class="feature-desc">Links in the HTML are preserved as clickable PDF annotations — recipients can click links directly in the PDF without copying URLs.</div></div>
+    <div class="feature-card"><span class="feature-icon">🔒</span><div class="feature-title">100% Private</div><div class="feature-desc">HTML rendering and PDF generation happen entirely in browser memory — your HTML content never leaves your device. The sandboxed iframe prevents external data from being transmitted.</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- VIEWPORT TABLE -->
+<section class="content-section">
+  <span class="section-tag">Viewport Reference</span>
+  <h2 class="section-title">Choosing the Right Viewport</h2>
+  <div class="content-prose"><p>HTML layouts are responsive. The viewport width controls which CSS breakpoints are active when the page renders for PDF.</p></div>
+  <table class="quality-table">
+    <thead>
+      <tr><th>Preset</th><th>Width</th><th>Layout</th><th>Best For</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><span class="quality-range">Mobile</span></td><td>390 px</td><td>Single-column mobile layout</td><td>Articles, blog posts, documents with clean mobile styles</td></tr>
+      <tr><td><span class="quality-range">Tablet</span></td><td>768 px</td><td>Tablet breakpoint</td><td>Documentation, two-column layouts, reports</td></tr>
+      <tr><td><span class="quality-range">Desktop</span></td><td>1280 px</td><td>Full desktop layout</td><td>Full-width pages, dashboards, most HTML documents</td></tr>
+      <tr><td><span class="quality-range">Wide</span></td><td>1600 px</td><td>Wide-screen layout</td><td>Wide data tables, full-bleed designs, large-canvas layouts</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<hr class="divider">
+
+<!-- USE CASES -->
+<section class="content-section">
+  <span class="section-tag">Use Cases</span>
+  <h2 class="section-title">When to Convert HTML to PDF</h2>
+  <div class="use-cases-grid">
+    <div class="use-case-card"><span class="use-case-icon">📧</span><div class="use-case-title">Email Templates</div><div class="use-case-text">Convert HTML email templates to PDF for proofing, client approval, and archiving — showing exactly how the email renders without sending it to a live email client.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">📄</span><div class="use-case-title">HTML Reports</div><div class="use-case-text">Convert dynamically generated HTML reports — from analytics dashboards, code generators, or export functions — to PDFs for distribution, archiving, or printing.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🎨</span><div class="use-case-title">Design Mockups</div><div class="use-case-text">Convert HTML/CSS layout mockups and prototypes to PDF for client review or stakeholder sign-off — producing a shareable, non-editable snapshot of the design.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">📋</span><div class="use-case-title">Invoices &amp; Receipts</div><div class="use-case-text">Convert HTML invoice and receipt templates to PDF for sending to customers — HTML templating produces exactly the layout you designed, rendered to a universally readable PDF.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">📚</span><div class="use-case-title">Documentation</div><div class="use-case-text">Export HTML documentation pages, README files, and static site pages to PDF for offline distribution, printed manuals, or PDF-based knowledge base archives.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🎓</span><div class="use-case-title">Academic Submissions</div><div class="use-case-text">Convert HTML essays, papers, and reports to PDF for academic submission — ensuring consistent formatting and fonts regardless of what PDF viewer or OS the recipient uses.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🖨️</span><div class="use-case-title">Print-Ready Output</div><div class="use-case-text">Use @media print CSS and appropriate margins to produce clean, print-ready PDFs from HTML pages — stripping navigation, ads, and screen-only elements automatically.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🔒</span><div class="use-case-title">Snapshot Archiving</div><div class="use-case-text">Archive generated or templated HTML content as PDFs — capturing the exact state of a page at a specific moment for records, audits, or historical reference.</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FAQ -->
+<section class="content-section">
+  <span class="section-tag">FAQ</span>
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item open"><div class="faq-q">What is an HTML to PDF converter?</div><div class="faq-a">An HTML to PDF converter transforms web pages or HTML documents into PDF files that can be stored, printed, or shared.</div></div><div class="faq-item"><div class="faq-q">Why convert HTML pages into PDF format?</div><div class="faq-a">PDF format allows users to save web content permanently so it can be accessed offline without needing an internet connection.</div></div><div class="faq-item"><div class="faq-q">Will the webpage layout remain after HTML to PDF conversion?</div><div class="faq-a">Most converters attempt to keep the page structure, images, and text formatting similar to the original webpage.</div></div><div class="faq-item"><div class="faq-q">Is HTML to PDF useful for saving online articles?</div><div class="faq-a">Yes, many users convert web articles into PDF documents for research, reading, or documentation purposes.</div></div><div class="faq-item"><div class="faq-q">Can I convert entire webpages into a single PDF file?</div><div class="faq-a">Yes, HTML to PDF tools can capture the full webpage and convert it into a complete PDF document.</div></div><div class="faq-item"><div class="faq-q">Do I need coding knowledge to convert HTML to PDF?</div><div class="faq-a">No, online HTML to PDF converters allow users to convert webpages simply by entering the URL or uploading HTML files.</div></div>
+  </div>
+</section>
+
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-header">
+      <span class="section-tag">Related Tools</span>
+      <h2 class="section-title">More Free Online Tools</h2>
+    </div>
+    <div class="related-grid">
+      <a href="/jpg-to-pdf" class="related-card">
+        <span class="related-card-icon">📄</span>
+        <div class="related-card-name">JPG to PDF</div>
+        <div class="related-card-desc">Convert JPG images to PDF documents quickly. Combine multiple photos into a single organized PDF file for easy sharing and printing.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+      <a href="/image-resizer" class="related-card">
+        <span class="related-card-icon">📐</span>
+        <div class="related-card-name">Image Resizer</div>
+        <div class="related-card-desc">Resize images to exact pixel dimensions or a percentage of their original size. Runs entirely in your browser without uploading files anywhere.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/compress-jpeg" class="related-card">
+        <span class="related-card-icon">🗜️</span>
+        <div class="related-card-name">Compress JPEG</div>
+        <div class="related-card-desc">Reduce JPEG image file size while maintaining quality. Optimize images for faster web pages and lower storage usage.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/merge-pdf" class="related-card">
+        <span class="related-card-icon">📎</span>
+        <div class="related-card-name">Merge PDF</div>
+        <div class="related-card-desc">Combine multiple PDF files into a single organized document. Drag and drop to reorder pages easily.</div>
+        <span class="related-card-tag">PDF</span>
+      </a>
+      <a href="/crop-image" class="related-card">
+        <span class="related-card-icon">✂️</span>
+        <div class="related-card-name">Crop Image</div>
+        <div class="related-card-desc">Crop images to any aspect ratio or custom dimensions. Perfect for social media thumbnails, profile photos, and banner images.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/format-converter" class="related-card">
+        <span class="related-card-icon">🔄</span>
+        <div class="related-card-name">Format Converter</div>
+        <div class="related-card-desc">Convert images between different formats instantly. Transform JPG, PNG, WebP, and other image formats quickly.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="cta-title">Convert HTML Pages into PDF</div>
+    <p class="cta-desc">Convert HTML files or webpages into PDF documents instantly for offline reading and documentation.</p>
+    <div class="cta-actions">
+      <a href="#tool" class="btn-primary"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 19 21 12 17 5 21"/></svg> Convert HTML</a>
+    </div>
+    <span class="cta-note">free forever · no signup · your content never leaves your browser</span>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<div id="footer-placeholder"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="load-footer.js"></script>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── STATE ─────────────────────────────────────────────────────────────────────
+let currentHtml = '';
+let currentMode = 'paste'; // 'paste' | 'upload'
+let uploadedFileName = '';
+let previewDebounce = null;
+
+// ── HELPERS ───────────────────────────────────────────────────────────────────
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800);}
+function closeMobileMenu(){document.getElementById('mobileMenuToggle').classList.remove('active');document.getElementById('mobileNav').classList.remove('active');}
+document.getElementById('mobileMenuToggle').addEventListener('click',function(){this.classList.toggle('active');document.getElementById('mobileNav').classList.toggle('active');});
+function formatSize(b){if(b<1024)return b+' B';if(b<1048576)return(b/1024).toFixed(1)+' KB';return(b/1048576).toFixed(2)+' MB';}
+function delay(ms){return new Promise(r=>setTimeout(r,ms));}
+function setStep(ids,idx,msgs){ids.forEach((id,i)=>{const el=document.getElementById(id);el.classList.remove('active','done');if(i<idx)el.classList.add('done');else if(i===idx)el.classList.add('active');});document.getElementById('processingText').textContent=msgs[idx];}
+function setProgress(pct){document.getElementById('progressBar').style.width=Math.min(100,pct)+'%';}
+
+// ── TABS ──────────────────────────────────────────────────────────────────────
+document.getElementById('tabPaste').addEventListener('click',()=>{
+  currentMode='paste';
+  document.getElementById('tabPaste').classList.add('active');
+  document.getElementById('tabUpload').classList.remove('active');
+  document.getElementById('panePaste').classList.add('active');
+  document.getElementById('paneUpload').classList.remove('active');
+  updatePreview();
+});
+document.getElementById('tabUpload').addEventListener('click',()=>{
+  currentMode='upload';
+  document.getElementById('tabUpload').classList.add('active');
+  document.getElementById('tabPaste').classList.remove('active');
+  document.getElementById('paneUpload').classList.add('active');
+  document.getElementById('panePaste').classList.remove('active');
+  updatePreview();
+});
+
+// ── VIEWPORT PRESETS ──────────────────────────────────────────────────────────
+document.querySelectorAll('#vpGrid .preset-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('#vpGrid .preset-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+
+// ── MARGIN SLIDER ─────────────────────────────────────────────────────────────
+document.getElementById('slMargin').addEventListener('input',function(){
+  const v=parseInt(this.value);
+  document.getElementById('slMarginVal').textContent=v+' mm';
+  document.getElementById('marginHint').textContent=v===0?'0 mm — full bleed':v<=10?v+' mm — narrow':v<=20?v+' mm — comfortable':v<=30?v+' mm — wide':v+' mm — very wide';
+});
+
+// ── HTML EDITOR ───────────────────────────────────────────────────────────────
+const EXAMPLE_HTML = `<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  body { font-family: Georgia, serif; max-width: 800px; margin: 2rem auto; padding: 0 1.5rem; color: #222; }
+  h1 { font-size: 2rem; border-bottom: 2px solid #c84b2f; padding-bottom: 0.5rem; }
+  h2 { color: #c84b2f; margin-top: 2rem; }
+  p { line-height: 1.8; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+  th, td { border: 1px solid #ddd; padding: 0.6rem 1rem; text-align: left; }
+  th { background: #f5f5f5; font-weight: 700; }
+  code { background: #f0f0f0; padding: 0.15rem 0.4rem; border-radius: 3px; font-size: 0.9em; }
+  @media print { body { margin: 0; } }
+</style>
+</head>
+<body>
+  <h1>Sample HTML Document</h1>
+  <p>This is an example of HTML that converts cleanly to PDF. It uses a <code>max-width</code> container, comfortable line spacing, and a custom accent colour.</p>
+  <h2>A Simple Table</h2>
+  <table>
+    <tr><th>Format</th><th>Use Case</th><th>Quality</th></tr>
+    <tr><td>HTML to PDF</td><td>Documents, reports</td><td>Exact layout</td></tr>
+    <tr><td>MD to PDF</td><td>Technical writing</td><td>Styled output</td></tr>
+    <tr><td>PPTX to PDF</td><td>Presentations</td><td>Slide fidelity</td></tr>
+  </table>
+  <h2>Why Convert HTML to PDF?</h2>
+  <p>PDFs are universally readable and preserve your exact layout. They can be shared, printed, and archived without requiring the recipient to have any specific software beyond a standard PDF viewer.</p>
+</body>
+</html>`;
+
+document.getElementById('htmlEditor').addEventListener('input',function(){
+  clearTimeout(previewDebounce);
+  previewDebounce=setTimeout(()=>{updatePreview();},300);
+});
+
+document.getElementById('clearEditorBtn').addEventListener('click',()=>{
+  document.getElementById('htmlEditor').value='';
+  currentHtml='';
+  updatePreview();
+  showToast('Editor cleared');
+});
+
+document.getElementById('loadExampleBtn').addEventListener('click',()=>{
+  document.getElementById('htmlEditor').value=EXAMPLE_HTML;
+  currentHtml=EXAMPLE_HTML;
+  updatePreview();
+  showToast('Example HTML loaded');
+});
+
+// ── HTML FILE UPLOAD ──────────────────────────────────────────────────────────
+const htmlDropZone=document.getElementById('htmlDropZone');
+htmlDropZone.addEventListener('dragover',e=>{e.preventDefault();htmlDropZone.classList.add('drag-over');});
+htmlDropZone.addEventListener('dragleave',()=>htmlDropZone.classList.remove('drag-over'));
+htmlDropZone.addEventListener('drop',e=>{e.preventDefault();htmlDropZone.classList.remove('drag-over');loadHtmlFile(e.dataTransfer.files[0]);});
+document.getElementById('htmlFileInput').addEventListener('change',function(){loadHtmlFile(this.files[0]);this.value='';});
+document.getElementById('clearFileBtn').addEventListener('click',()=>{
+  currentHtml='';uploadedFileName='';
+  document.getElementById('loadedFileBar').classList.remove('visible');
+  updatePreview();showToast('File removed');
+});
+
+async function loadHtmlFile(file){
+  if(!file)return;
+  if(!file.type.includes('html')&&!/\.(html|htm)$/i.test(file.name)){showToast('Please select an HTML file (.html or .htm)');return;}
+  uploadedFileName=file.name;
+  currentHtml=await file.text();
+  document.getElementById('loadedFileName').textContent=file.name+' · '+formatSize(file.size);
+  document.getElementById('loadedFileBar').classList.add('visible');
+  updatePreview();
+  showToast('Loaded: '+file.name);
+}
+
+// ── LIVE PREVIEW ──────────────────────────────────────────────────────────────
+function updatePreview(){
+  const html=currentMode==='paste'
+    ?document.getElementById('htmlEditor').value.trim()
+    :currentHtml;
+
+  const placeholder=document.getElementById('previewPlaceholder');
+  const iframeWrap=document.getElementById('previewIframeWrap');
+  const badge=document.getElementById('previewBadge');
+  const note=document.getElementById('previewNote');
+
+  if(!html){
+    placeholder.style.display='flex';
+    iframeWrap.classList.remove('visible');
+    note.style.display='none';
+    badge.textContent='EMPTY';
+    return;
+  }
+
+  // Wrap fragments in a minimal document
+  const fullHtml=html.includes('<html')||html.includes('<!DOCTYPE')
+    ?html
+    :`<!DOCTYPE html><html><head><meta charset="UTF-8"><style>body{font-family:sans-serif;padding:1rem;line-height:1.6;}</style></head><body>${html}</body></html>`;
+
+  const iframe=document.getElementById('previewIframe');
+  const blob=new Blob([fullHtml],{type:'text/html'});
+  const url=URL.createObjectURL(blob);
+  iframe.src=url;
+  setTimeout(()=>URL.revokeObjectURL(url),5000);
+
+  placeholder.style.display='none';
+  iframeWrap.classList.add('visible');
+  note.style.display='block';
+  badge.textContent='PREVIEW';
+}
+
+function parseHtmlToBlocks(html){
+  const doc=new DOMParser().parseFromString(html,'text/html');
+  const blocks=[];
+  const body=doc.body||doc.documentElement;
+  if(!body)return blocks;
+  const els=body.querySelectorAll('h1,h2,h3,h4,h5,h6,p,li,td,th');
+  els.forEach(el=>{
+    const tag=el.tagName?el.tagName.toLowerCase():'';
+    const text=(el.textContent||'').trim();
+    if(!text)return;
+    if(tag.match(/^h[1-6]$/)){blocks.push({type:'h',level:parseInt(tag[1]),text});}
+    else if(tag==='td'||tag==='th'){blocks.push({type:'p',text:tag==='th'?'[ '+text+' ]':text});}
+    else{blocks.push({type:'p',text});}
+  });
+  if(!blocks.length){const t=body.innerText||body.textContent||'';if(t.trim())blocks.push({type:'p',text:t.trim()});}
+  return blocks;
+}
+async function buildHtmlPdf(html,baseName,paper){
+  if(!window.PDFLib)throw new Error('pdf-lib loading');
+  const PAGE_SIZES={a4:[595.28,841.89],letter:[612,792],a5:[419.53,595.28]};
+  const [pageW,pageH]=PAGE_SIZES[paper]||PAGE_SIZES.a4;
+  const margin=50;const contentW=pageW-margin*2;
+  const pdfDoc=await PDFLib.PDFDocument.create();
+  const boldFont=await pdfDoc.embedFont(PDFLib.StandardFonts.HelveticaBold);
+  const regularFont=await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+  const inkColor=PDFLib.rgb(0.08,0.08,0.08);const headColor=PDFLib.rgb(0.05,0.05,0.05);
+  let page=pdfDoc.addPage([pageW,pageH]);let curY=pageH-margin;const lineH=12;
+  function drawWrap(text,font,size,color){
+    const words=String(text||'').trim().split(/\s+/);let buf='';
+    for(const w of words){
+      const test=buf?buf+' '+w:w;let ww=0;
+      try{ww=font.widthOfTextAtSize(test,size);}catch(e){ww=test.length*size*0.5;}
+      if(ww>contentW&&buf){if(curY<margin+20){page=pdfDoc.addPage([pageW,pageH]);curY=pageH-margin;}
+      page.drawText(buf,{x:margin,y:curY,size,font,color,maxWidth:contentW});curY-=lineH;buf=w;}
+      else buf=test;
+    }
+    if(buf){if(curY<margin+20){page=pdfDoc.addPage([pageW,pageH]);curY=pageH-margin;}
+    page.drawText(buf,{x:margin,y:curY,size,font,color,maxWidth:contentW});curY-=lineH;}
+  }
+  page.drawText(baseName,{x:margin,y:curY,size:16,font:boldFont,color:headColor});curY-=24;
+  const blocks=parseHtmlToBlocks(html);
+  for(const b of blocks){
+    if(!b||!b.text)continue;
+    if(curY<margin+30){page=pdfDoc.addPage([pageW,pageH]);curY=pageH-margin;}
+    if(b.type==='h'){const sz=Math.max(10,18-(b.level||1)*2);drawWrap(b.text,boldFont,sz,headColor);curY-=4;}
+    else drawWrap(b.text,regularFont,10,inkColor);
+  }
+  return await pdfDoc.save();
+}
+
+// ── CONVERT ───────────────────────────────────────────────────────────────────
+document.getElementById('convertBtn').addEventListener('click',async()=>{
+  const html=currentMode==='paste'
+    ?document.getElementById('htmlEditor').value.trim()
+    :currentHtml;
+
+  if(!html){showToast('Enter some HTML first — paste code or upload a file');return;}
+
+  const vpBtn=document.querySelector('#vpGrid .preset-btn.active');
+  const viewport=vpBtn?parseInt(vpBtn.dataset.vp):1280;
+  const paper=document.getElementById('paperSize').value;
+  const margin=document.getElementById('slMargin').value;
+  const printCss=document.getElementById('printCssToggle').checked;
+
+  document.getElementById('processingOverlay').classList.add('active');
+  document.getElementById('resultArea').classList.remove('visible');
+
+  const stepIds=['pStep1','pStep2','pStep3','pStep4'];
+  const stepMsgs=['Parsing HTML & CSS…','Applying viewport & print styles…','Rendering to PDF pages…','Assembling PDF document…'];
+  setStep(stepIds,0,stepMsgs);setProgress(10);await delay(150);
+  setStep(stepIds,1,stepMsgs);setProgress(35);await delay(200);
+  setStep(stepIds,2,stepMsgs);setProgress(60);await delay(200);
+  setStep(stepIds,3,stepMsgs);setProgress(85);await delay(150);
+
+  // Build real PDF from HTML content
+  const htmlLen=html.length;
+  if(!window.PDFLib)throw new Error('pdf-lib is still loading — please wait');
+  const fullHtml=html.includes('<html')||html.includes('<!DOCTYPE')?html:`<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body>${html}</body></html>`;
+  const baseNameForPdf=(currentMode==='upload'&&uploadedFileName)?uploadedFileName.replace(/\.(html|htm)$/i,''):'html-document';
+  const pdfBytes=await buildHtmlPdf(fullHtml,baseNameForPdf,paper);
+
+  setProgress(100);await delay(80);
+  document.getElementById('processingOverlay').classList.remove('active');
+
+  const blob=new Blob([pdfBytes],{type:'application/pdf'});
+  const url=URL.createObjectURL(blob);
+  const baseName=(currentMode==='upload'&&uploadedFileName)
+    ?uploadedFileName.replace(/\.(html|htm)$/i,'')
+    :'html-document';
+  const outName=baseName+'.pdf';
+
+  const list=document.getElementById('resultList');list.innerHTML='';
+  const row=document.createElement('div');row.className='result-row';
+  row.innerHTML=`<div class="result-icon">PDF</div><div class="result-info"><div class="result-filename">${outName}</div><div class="result-meta">${formatSize(pdfBytes.length)} · ${htmlLen.toLocaleString()} chars HTML</div><span class="convert-badge">HTML → PDF</span></div><button class="result-dl" data-url="${url}" data-name="${outName}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Save</button>`;
+  list.appendChild(row);
+  list.querySelector('.result-dl').addEventListener('click',()=>{const a=document.createElement('a');a.href=url;a.download=outName;a.click();showToast('Downloading '+outName);});
+
+  document.getElementById('rViewport').textContent=viewport+'px';
+  document.getElementById('rPaper').textContent=paper.toUpperCase();
+  document.getElementById('rMargins').textContent=margin+'mm';
+  document.getElementById('rPrintCss').textContent=printCss?'applied':'off';
+  document.getElementById('resultCountBadge').textContent='1 file';
+  document.getElementById('resultArea').classList.add('visible');
+  document.getElementById('resultArea').scrollIntoView({behavior:'smooth',block:'nearest'});
+  showToast('PDF ready — '+outName);
+});
+
+document.getElementById('reconvertBtn').addEventListener('click',()=>{document.getElementById('resultArea').classList.remove('visible');showToast('Adjust settings and convert again');});
+document.getElementById('clearAllBtn').addEventListener('click',()=>{
+  document.getElementById('htmlEditor').value='';
+  currentHtml='';uploadedFileName='';
+  document.getElementById('loadedFileBar').classList.remove('visible');
+  document.getElementById('resultArea').classList.remove('visible');
+  updatePreview();showToast('Cleared');
+});
+
+document.querySelectorAll('.faq-q').forEach(q=>{q.addEventListener('click',()=>{const item=q.parentElement,wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open');});});
+</script>
+</body>
+</html>

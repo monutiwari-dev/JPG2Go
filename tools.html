@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>Online Tools Collection | JP2Go Image & PDF Tools</title>
+<meta name="description" content="Discover all available tools on JP2Go including image converters, PDF utilities, compression tools, and document management solutions designed for fast online processing.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jpg2go.com/tools">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="adsense.js"></script>
+<style>
+:root {
+  --ink: #0d0d0d;
+  --paper: #f7f4ee;
+  --cream: #ede9df;
+  --accent: #c84b2f;
+  --accent-light: #e8d5cf;
+  --muted: #7a7567;
+  --border: #d4cfc4;
+  --white: #ffffff;
+  --shadow: 0 2px 24px rgba(13,13,13,0.08);
+  --shadow-lg: 0 8px 48px rgba(13,13,13,0.12);
+  /* category colours */
+  --cat-image: #2563eb;
+  --cat-image-bg: #dbeafe;
+  --cat-pdf-edit: #7c3aed;
+  --cat-pdf-edit-bg: #ede9fe;
+  --cat-pdf-convert: #059669;
+  --cat-pdf-convert-bg: #d1fae5;
+  --cat-pdf-security: #dc2626;
+  --cat-pdf-security-bg: #fee2e2;
+  --cat-convert-to: #d97706;
+  --cat-convert-to-bg: #fef3c7;
+  --cat-convert-from: #0891b2;
+  --cat-convert-from-bg: #cffafe;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; min-height: 100vh; }
+
+/* ══ HEADER ══ */
+header { background: var(--ink); color: var(--paper); position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--accent); }
+.header-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.logo { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.6rem; color: var(--paper); text-decoration: none; letter-spacing: -0.02em; }
+.logo span { color: var(--accent); }
+nav { display: flex; gap: 2rem; align-items: center; }
+nav a { color: #a8a39a; text-decoration: none; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.02em; transition: color 0.2s; }
+nav a:hover, nav a.active { color: var(--paper); }
+.nav-cta { background: var(--accent); color: var(--white) !important; padding: 0.4rem 1rem; border-radius: 4px; }
+.nav-cta:hover { background: #a83825 !important; }
+.mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-direction: column; gap: 5px; align-items: center; justify-content: center; width: 40px; height: 40px; }
+.mobile-menu-toggle span { display: block; width: 24px; height: 2px; background: var(--paper); transition: all 0.3s ease; border-radius: 2px; }
+.mobile-menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+.mobile-menu-toggle.active span:nth-child(2) { opacity: 0; }
+.mobile-menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+.mobile-nav { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--ink); border-top: 2px solid var(--accent); padding: 1.5rem 2rem; flex-direction: column; gap: 1rem; z-index: 99; transform: translateY(-100%); opacity: 0; transition: transform 0.3s ease, opacity 0.3s ease; visibility: hidden; }
+.mobile-nav.active { display: flex; transform: translateY(0); opacity: 1; visibility: visible; }
+.mobile-nav a { color: #a8a39a; text-decoration: none; font-size: 0.95rem; font-weight: 500; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); transition: color 0.2s; }
+.mobile-nav a:last-child { border-bottom: none; }
+.mobile-nav a:hover { color: var(--paper); }
+.mobile-nav .nav-cta { background: var(--accent); color: var(--white) !important; padding: 0.75rem 1.5rem; border-radius: 4px; text-align: center; border: none; margin-top: 0.5rem; }
+
+/* ══ HERO ══ */
+.page-hero { background: var(--ink); color: var(--paper); padding: 4.5rem 2rem 3.5rem; text-align: center; position: relative; overflow: hidden; }
+.page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(200,75,47,0.18) 0%, transparent 70%); pointer-events: none; }
+.hero-label { display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.15em; color: var(--accent); text-transform: uppercase; border: 1px solid rgba(200,75,47,0.4); padding: 0.25rem 0.75rem; border-radius: 2px; margin-bottom: 1.5rem; }
+.page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5.5vw, 3.4rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1rem; }
+.page-hero h1 em { font-style: normal; color: var(--accent); }
+.page-hero p { font-size: 1rem; color: #9e9990; max-width: 520px; margin: 0 auto 1.75rem; font-weight: 300; line-height: 1.75; }
+.hero-stats { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+.hero-stat { text-align: center; }
+.hero-stat-num { font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 900; color: var(--paper); letter-spacing: -0.04em; line-height: 1; }
+.hero-stat-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; color: #7a7567; text-transform: uppercase; margin-top: 0.2rem; }
+
+/* ══ STICKY CONTROLS BAR ══ */
+.controls-bar { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 64px; z-index: 90; }
+.controls-inner { max-width: 1200px; margin: 0 auto; padding: 0.85rem 2rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+.search-wrap { position: relative; flex: 1; min-width: 200px; }
+.search-wrap svg { position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+#searchInput { width: 100%; padding: 0.55rem 0.75rem 0.55rem 2.25rem; border: 1.5px solid var(--border); border-radius: 6px; font-family: 'DM Sans', sans-serif; font-size: 0.875rem; background: var(--paper); color: var(--ink); outline: none; transition: border-color 0.2s; }
+#searchInput:focus { border-color: var(--accent); }
+#searchInput::placeholder { color: var(--muted); }
+.filter-pills { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.filter-pill { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.35rem 0.75rem; border-radius: 100px; border: 1.5px solid var(--border); background: transparent; color: var(--muted); cursor: pointer; transition: all 0.18s; white-space: nowrap; }
+.filter-pill:hover { border-color: var(--ink); color: var(--ink); }
+.filter-pill.active { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.filter-pill[data-cat="image"].active { background: var(--cat-image); border-color: var(--cat-image); }
+.filter-pill[data-cat="pdf-edit"].active { background: var(--cat-pdf-edit); border-color: var(--cat-pdf-edit); }
+.filter-pill[data-cat="pdf-convert"].active { background: var(--cat-pdf-convert); border-color: var(--cat-pdf-convert); }
+.filter-pill[data-cat="pdf-security"].active { background: var(--cat-pdf-security); border-color: var(--cat-pdf-security); }
+.filter-pill[data-cat="to-pdf"].active { background: var(--cat-convert-to); border-color: var(--cat-convert-to); }
+.filter-pill[data-cat="from-pdf"].active { background: var(--cat-convert-from); border-color: var(--cat-convert-from); }
+.results-count { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--muted); white-space: nowrap; margin-left: auto; }
+
+/* ══ MAIN GRID ══ */
+.tools-page { max-width: 1200px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
+.category-block { margin-bottom: 3.5rem; }
+.category-block.hidden { display: none; }
+.cat-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+.cat-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.1rem; }
+.cat-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; letter-spacing: -0.02em; }
+.cat-count { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; padding: 0.2rem 0.55rem; border-radius: 100px; margin-left: 0.25rem; }
+
+/* category colour theming */
+.cat-image .cat-icon { background: var(--cat-image-bg); color: var(--cat-image); }
+.cat-image .cat-count { background: var(--cat-image-bg); color: var(--cat-image); }
+.cat-pdf-edit .cat-icon { background: var(--cat-pdf-edit-bg); color: var(--cat-pdf-edit); }
+.cat-pdf-edit .cat-count { background: var(--cat-pdf-edit-bg); color: var(--cat-pdf-edit); }
+.cat-pdf-convert .cat-icon { background: var(--cat-pdf-convert-bg); color: var(--cat-pdf-convert); }
+.cat-pdf-convert .cat-count { background: var(--cat-pdf-convert-bg); color: var(--cat-pdf-convert); }
+.cat-pdf-security .cat-icon { background: var(--cat-pdf-security-bg); color: var(--cat-pdf-security); }
+.cat-pdf-security .cat-count { background: var(--cat-pdf-security-bg); color: var(--cat-pdf-security); }
+.cat-to-pdf .cat-icon { background: var(--cat-convert-to-bg); color: var(--cat-convert-to); }
+.cat-to-pdf .cat-count { background: var(--cat-convert-to-bg); color: var(--cat-convert-to); }
+.cat-from-pdf .cat-icon { background: var(--cat-convert-from-bg); color: var(--cat-convert-from); }
+.cat-from-pdf .cat-count { background: var(--cat-convert-from-bg); color: var(--cat-convert-from); }
+
+/* ══ TOOL CARD ══ */
+.tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 0.75rem; }
+.tool-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem 1.15rem 1rem; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 0.5rem; position: relative; overflow: hidden; transition: box-shadow 0.2s, transform 0.18s, border-color 0.18s; cursor: pointer; }
+.tool-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; transition: background 0.2s; }
+.tool-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); border-color: transparent; }
+.tool-card.hidden { display: none; }
+
+/* accent line per category */
+.cat-image .tool-card::before,    .tool-card[data-cat="image"]::before    { background: var(--border); }
+.cat-image .tool-card:hover::before,  .tool-card[data-cat="image"]:hover::before  { background: var(--cat-image); }
+.cat-pdf-edit .tool-card::before, .tool-card[data-cat="pdf-edit"]::before { background: var(--border); }
+.cat-pdf-edit .tool-card:hover::before, .tool-card[data-cat="pdf-edit"]:hover::before { background: var(--cat-pdf-edit); }
+.cat-pdf-convert .tool-card::before { background: var(--border); }
+.cat-pdf-convert .tool-card:hover::before { background: var(--cat-pdf-convert); }
+.cat-pdf-security .tool-card::before { background: var(--border); }
+.cat-pdf-security .tool-card:hover::before { background: var(--cat-pdf-security); }
+.cat-to-pdf .tool-card::before    { background: var(--border); }
+.cat-to-pdf .tool-card:hover::before { background: var(--cat-convert-to); }
+.cat-from-pdf .tool-card::before  { background: var(--border); }
+.cat-from-pdf .tool-card:hover::before { background: var(--cat-convert-from); }
+
+.tool-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; }
+.tool-emoji { font-size: 1.4rem; line-height: 1; flex-shrink: 0; }
+.tool-badge { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.15rem 0.45rem; border-radius: 3px; flex-shrink: 0; }
+.badge-free { background: #d1fae5; color: #065f46; }
+.badge-new  { background: var(--accent-light); color: var(--accent); }
+.tool-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 0.88rem; color: var(--ink); line-height: 1.3; letter-spacing: -0.01em; }
+.tool-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.5; flex: 1; }
+.tool-arrow { display: flex; align-items: center; justify-content: flex-end; color: var(--border); transition: color 0.18s, transform 0.18s; margin-top: 0.25rem; }
+.tool-card:hover .tool-arrow { color: var(--accent); transform: translateX(3px); }
+
+/* ══ EMPTY STATE ══ */
+.empty-state { text-align: center; padding: 5rem 2rem; display: none; }
+.empty-state.visible { display: block; }
+.empty-state h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; }
+.empty-state p { color: var(--muted); font-size: 0.9rem; }
+
+/* ══ CTA STRIP ══ */
+.cta-strip { background: var(--ink); color: var(--paper); padding: 3.5rem 2rem; margin-bottom: 0; text-align: center; position: relative; overflow: hidden; }
+.cta-strip::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(200,75,47,0.18) 0%, transparent 70%); pointer-events: none; }
+.cta-strip-inner { max-width: 640px; margin: 0 auto; position: relative; }
+.cta-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 0.75rem; }
+.cta-title em { font-style: normal; color: var(--accent); }
+.cta-desc { color: #9e9990; font-size: 0.95rem; font-weight: 300; margin-bottom: 1.75rem; line-height: 1.7; }
+.btn-primary { background: var(--accent); color: var(--white); border: none; border-radius: 6px; padding: 0.7rem 1.6rem; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; transition: all 0.18s; }
+.btn-primary:hover { background: #a83825; transform: translateY(-1px); }
+.cta-note { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.06em; color: #5a5650; margin-top: 1rem; display: block; }
+
+/* ══ FOOTER ══ */
+footer { background: var(--ink); color: #9e9990; padding: 4rem 2rem 2rem; margin-top: 0; border-top: 1px solid rgba(255,255,255,0.05); }
+#footer-placeholder { margin-top: 0; }
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid #2a2a2a; }
+.footer-brand .logo { display: block; margin-bottom: 0.75rem; }
+.footer-brand p { font-size: 0.85rem; line-height: 1.6; max-width: 240px; }
+.footer-social { display: flex; gap: 0; margin-top: 1rem; }
+.social-icon { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; color: #9e9990; transition: color 0.2s, transform 0.2s; border-radius: 6px; margin-left: -8px; }
+.social-icon:first-child { margin-left: 0; }
+.social-icon:hover { color: var(--paper); transform: translateY(-2px); }
+.footer-col-title { font-family: 'DM Sans', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper); font-weight: 600; margin-bottom: 1rem; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-links a { color: #9e9990; text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+.footer-links a:hover { color: var(--paper); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; font-size: 0.8rem; flex-wrap: wrap; gap: 0.75rem; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.fade-up { animation: fadeUp 0.55s ease both; }
+
+@media (max-width: 768px) {
+  nav { display: none; }
+  .mobile-menu-toggle { display: flex; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .controls-inner { padding: 0.75rem 1rem; }
+  .results-count { display: none; }
+}
+@media (max-width: 560px) {
+  .tools-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+  .filter-pills { display: none; }
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">JPG2<span>Go</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="tools.html">Tools</a>
+      <a href="index.html#tool" class="nav-cta">Convert Now</a>
+    </nav>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="tools.html" onclick="closeMobileMenu()">Tools</a>
+    <a href="index.html#tool" class="nav-cta" onclick="closeMobileMenu()">Convert Now</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="fade-up">
+    <span class="hero-label">Free Online Toolkit</span>
+    <h1>Every <em>Tool</em> You Need.</h1>
+    <p>Explore our complete collection of online tools designed for image optimization, file conversion, and document management.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">90+</div>
+        <div class="hero-stat-label">Free Tools</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">6</div>
+        <div class="hero-stat-label">Categories</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">0</div>
+        <div class="hero-stat-label">Files Uploaded</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STICKY CONTROLS -->
+<div class="controls-bar">
+  <div class="controls-inner">
+    <div class="search-wrap">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="searchInput" placeholder="Search tools…" autocomplete="off">
+    </div>
+    <div class="filter-pills">
+      <button class="filter-pill active" data-cat="all">All</button>
+      <button class="filter-pill" data-cat="image">Image</button>
+      <button class="filter-pill" data-cat="pdf-edit">PDF Edit</button>
+      <button class="filter-pill" data-cat="pdf-convert">PDF Convert</button>
+      <button class="filter-pill" data-cat="pdf-security">PDF Security</button>
+      <button class="filter-pill" data-cat="to-pdf">→ PDF</button>
+      <button class="filter-pill" data-cat="from-pdf">PDF →</button>
+    </div>
+    <span class="results-count" id="resultsCount">102 tools</span>
+  </div>
+</div>
+
+<!-- TOOLS GRID -->
+<main class="tools-page" id="toolsPage">
+
+  <!-- ── IMAGE TOOLS ── -->
+  <section class="category-block cat-image" data-category="image" id="cat-image">
+    <div class="cat-header">
+      <div class="cat-icon">🖼️</div>
+      <h2 class="cat-title">Image Tools</h2>
+      <span class="cat-count" id="count-image">20</span>
+    </div>
+    <div class="tools-grid">
+
+      <a href="index.html" class="tool-card" data-cat="image" data-name="jpg png webp avif gif bmp image converter convert">
+        <div class="tool-card-top"><span class="tool-emoji">🔄</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">Image Converter</div>
+        <div class="tool-desc">Convert between JPG, PNG, WebP, AVIF, GIF and BMP instantly in-browser.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="format-converter.html" class="tool-card" data-cat="image" data-name="format converter convert jpg png webp avif bulk">
+        <div class="tool-card-top"><span class="tool-emoji">🔄</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">Format Converter</div>
+        <div class="tool-desc">Convert images between JPG, PNG, WebP, and AVIF formats in bulk instantly.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="compress-jpeg.html" class="tool-card" data-cat="image" data-name="compress jpeg jpg reduce size">
+        <div class="tool-card-top"><span class="tool-emoji">📦</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">Compress JPEG</div>
+        <div class="tool-desc">Reduce JPEG file size while preserving maximum visual quality.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="jpeg-optimizer.html" class="tool-card" data-cat="image" data-name="jpeg optimizer optimize jpg quality exif strip">
+        <div class="tool-card-top"><span class="tool-emoji">⚡</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">JPEG Optimizer</div>
+        <div class="tool-desc">Optimize JPEG images with quality control, EXIF stripping, and progressive encoding.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="watermark-tool.html" class="tool-card" data-cat="image" data-name="watermark image add text logo stamp">
+        <div class="tool-card-top"><span class="tool-emoji">💧</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">Image Watermark Tool</div>
+        <div class="tool-desc">Add text or image watermarks to photos in bulk with custom opacity and position.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="image" data-name="colorize image colour black white photo">
+        <div class="tool-card-top"><span class="tool-emoji">🎨</span><span class="tool-badge badge-new">New</span></div>
+        <div class="tool-name">Colorize Image</div>
+        <div class="tool-desc">Automatically add realistic colour to black-and-white photographs.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="sharpen-image.html" class="tool-card" data-cat="image" data-name="sharpen image enhance details clarity">
+        <div class="tool-card-top"><span class="tool-emoji">🔍</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">Sharpen Images</div>
+        <div class="tool-desc">Apply sharpening filters to improve detail and clarity in blurry photos.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="ai-image-enhancer.html" class="tool-card" data-cat="image" data-name="ai image enhancer enhance improve quality upscale">
+        <div class="tool-card-top"><span class="tool-emoji">✨</span><span class="tool-badge badge-new">New</span></div>
+        <div class="tool-name">AI Image Enhancer</div>
+        <div class="tool-desc">Enhance image quality using AI-powered upscaling and improvement algorithms.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="png-optimizer.html" class="tool-card" data-cat="image" data-name="png optimizer optimize compress reduce file size palette">
+        <div class="tool-card-top"><span class="tool-emoji">⚡</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PNG Optimizer</div>
+        <div class="tool-desc">Optimize PNG images with compression control, palette quantization, and metadata stripping.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="background-remover.html" class="tool-card" data-cat="image" data-name="background remover remove bg transparent png">
+        <div class="tool-card-top"><span class="tool-emoji">✂️</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">Remove Image Background</div>
+        <div class="tool-desc">Automatically remove image backgrounds and export as transparent PNG.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="crop-image.html" class="tool-card" data-cat="image" data-name="crop image resize trim aspect ratio">
+        <div class="tool-card-top"><span class="tool-emoji">🖊️</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">Crop Image Online</div>
+        <div class="tool-desc">Crop images to any dimension or aspect ratio with a visual editor.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="image-resizer.html" class="tool-card" data-cat="image" data-name="image resizer resize dimensions pixels percentage scale">
+        <div class="tool-card-top"><span class="tool-emoji">📐</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">Image Resizer</div>
+        <div class="tool-desc">Resize images in bulk with exact pixel dimensions, percentage scaling, or presets.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="image" data-name="image analyzer inspect metadata exif info">
+        <div class="tool-card-top"><span class="tool-emoji">🔬</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">Image Analyzer</div>
+        <div class="tool-desc">Inspect colour profiles, resolution, EXIF metadata, and compression info.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="png-to-jpg.html" class="tool-card" data-cat="image" data-name="png to jpg convert transparent background">
+        <div class="tool-card-top"><span class="tool-emoji">🔁</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PNG To JPG</div>
+        <div class="tool-desc">Convert PNG files to compressed JPG with a custom white or colour background.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="jpg-metadata-editor.html" class="tool-card" data-cat="image" data-name="jpg metadata editor exif remove edit strip">
+        <div class="tool-card-top"><span class="tool-emoji">🏷️</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">JPG Metadata Editor</div>
+        <div class="tool-desc">View, edit, or strip EXIF, IPTC, and XMP metadata from JPEG files.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="jpg-quality-analyzer.html" class="tool-card" data-cat="image" data-name="jpg quality analyzer check compression score">
+        <div class="tool-card-top"><span class="tool-emoji">📊</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">JPG Quality Analyzer</div>
+        <div class="tool-desc">Detect the effective quality level and compression artefacts in any JPEG.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="image" data-name="progressive jpg creator interlaced web">
+        <div class="tool-card-top"><span class="tool-emoji">⏩</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">Progressive JPG Creator</div>
+        <div class="tool-desc">Re-encode JPEGs in progressive format for faster perceived load times on the web.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="image" data-name="exposure corrector brightness contrast fix photo">
+        <div class="tool-card-top"><span class="tool-emoji">☀️</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">Exposure Corrector</div>
+        <div class="tool-desc">Fix overexposed or underexposed photos by adjusting brightness and contrast.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="image" data-name="perspective corrector skew distortion fix straighten">
+        <div class="tool-card-top"><span class="tool-emoji">📐</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">Perspective Corrector</div>
+        <div class="tool-desc">Fix skewed perspectives in document scans and architectural photos.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="image" data-name="collage maker grid layout multiple photos">
+        <div class="tool-card-top"><span class="tool-emoji">🖼️</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">Collage Maker</div>
+        <div class="tool-desc">Combine multiple photos into a single grid or freeform collage layout.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="image" data-name="photo border frame add edge decoration">
+        <div class="tool-card-top"><span class="tool-emoji">🪟</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">Photo Border</div>
+        <div class="tool-desc">Add customisable borders and frames to photos with colour and width controls.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ── PDF EDIT ── -->
+  <section class="category-block cat-pdf-edit" data-category="pdf-edit" id="cat-pdf-edit">
+    <div class="cat-header">
+      <div class="cat-icon">✏️</div>
+      <h2 class="cat-title">PDF Edit &amp; Organise</h2>
+      <span class="cat-count" id="count-pdf-edit">22</span>
+    </div>
+    <div class="tools-grid">
+
+      <a href="merge-pdf.html" class="tool-card" data-cat="pdf-edit" data-name="pdf merger merge combine join multiple files">
+        <div class="tool-card-top"><span class="tool-emoji">🗂️</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">Merge PDF</div>
+        <div class="tool-desc">Combine multiple PDF files into one document in any order.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="split-pdf.html" class="tool-card" data-cat="pdf-edit" data-name="pdf splitter split separate divide pages">
+        <div class="tool-card-top"><span class="tool-emoji">✂️</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">Split PDF</div>
+        <div class="tool-desc">Split a PDF into individual pages or custom page ranges.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="compress-pdf.html" class="tool-card" data-cat="pdf-edit" data-name="pdf compressor compress reduce file size optimise">
+        <div class="tool-card-top"><span class="tool-emoji">📦</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">Compress PDF</div>
+        <div class="tool-desc">Reduce PDF file size for email, upload, or storage without quality loss.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="pdf-edit" data-name="pdf watermark add stamp branding text image">
+        <div class="tool-card-top"><span class="tool-emoji">💧</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PDF Watermark</div>
+        <div class="tool-desc">Stamp text or image watermarks on every page of a PDF document.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="pdf-edit" data-name="pdf page numbers add footer header numbering">
+        <div class="tool-card-top"><span class="tool-emoji">🔢</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PDF Page Numbers</div>
+        <div class="tool-desc">Insert automatic page numbering with custom position and font styles.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="pdf-edit" data-name="pdf editor edit modify change content text">
+        <div class="tool-card-top"><span class="tool-emoji">📝</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PDF Editor</div>
+        <div class="tool-desc">Edit text, images, and content directly within a PDF file.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="pdf-edit" data-name="pdf viewer view open read online browser">
+        <div class="tool-card-top"><span class="tool-emoji">👁️</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PDF Viewer</div>
+        <div class="tool-desc">View and navigate PDF files directly in your browser without any software.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="pdf-edit" data-name="pdf resize pages a4 letter custom dimensions">
+        <div class="tool-card-top"><span class="tool-emoji">📏</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PDF Resize Pages</div>
+        <div class="tool-desc">Resize all pages to A4, Letter, or any custom dimensions.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="pdf-edit" data-name="pdf delete pages remove unwanted blank">
+        <div class="tool-card-top"><span class="tool-emoji">🗑️</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PDF Delete Pages</div>
+        <div class="tool-desc">Remove specific pages or page ranges from any PDF document.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="pdf-rotator.html" class="tool-card" data-cat="pdf-edit" data-name="pdf rotate rotator landscape portrait orientation">
+        <div class="tool-card-top"><span class="tool-emoji">🔃</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">Rotate PDF Pages</div>
+        <div class="tool-desc">Rotate individual pages or the entire PDF to the correct orientation.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="pdf-edit" data-name="pdf crop trim margins page size cut">
+        <div class="tool-card-top"><span class="tool-emoji">🖊️</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PDF Crop</div>
+        <div class="tool-desc">Crop page margins and remove white borders from scanned PDF documents.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="pdf-edit" data-name="pdf organise reorder rearrange pages sort">
+        <div class="tool-card-top"><span class="tool-emoji">🗃️</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PDF Organise</div>
+        <div class="tool-desc">Drag and drop to reorder, rotate, or delete pages before saving.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="pdf-extract.html" class="tool-card" data-cat="pdf-edit" data-name="pdf extract pages pull out sections separate">
+        <div class="tool-card-top"><span class="tool-emoji">📤</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">Extract PDF Pages</div>
+        <div class="tool-desc">Extract specific pages or ranges into a new standalone PDF document.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="pdf-edit" data-name="pdf add text insert annotation write type">
+        <div class="tool-card-top"><span class="tool-emoji">🖋️</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PDF Add Text</div>
+        <div class="tool-desc">Type and position text anywhere on PDF pages with font and size controls.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="pdf-edit" data-name="pdf extract text copy content scrape pull">
+        <div class="tool-card-top"><span class="tool-emoji">📋</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PDF Extract Text</div>
+        <div class="tool-desc">Pull all readable text from a PDF into a plain text or structured format.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="pdf-edit" data-name="pdf extract images export pull photos figures">
+        <div class="tool-card-top"><span class="tool-emoji">🖼️</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PDF Extract Images</div>
+        <div class="tool-desc">Export all embedded images from a PDF as individual JPG or PNG files.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="pdf-edit" data-name="pdf add image insert photo embed picture">
+        <div class="tool-card-top"><span class="tool-emoji">➕</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PDF Add Image</div>
+        <div class="tool-desc">Insert and position images onto any page in an existing PDF.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="pdf-edit" data-name="pdf annotate comments sticky notes markup review">
+        <div class="tool-card-top"><span class="tool-emoji">💬</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PDF Annotate</div>
+        <div class="tool-desc">Add comments, sticky notes, and markup annotations for document review.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="pdf-edit" data-name="pdf highlight color mark text passages">
+        <div class="tool-card-top"><span class="tool-emoji">🖍️</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PDF Highlight</div>
+        <div class="tool-desc">Highlight text passages in multiple colours for document review and study.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="pdf-edit" data-name="pdf grayscale convert black white desaturate">
+        <div class="tool-card-top"><span class="tool-emoji">🌑</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PDF Grayscale</div>
+        <div class="tool-desc">Convert a colour PDF to grayscale for printing or file size reduction.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="pdf-edit" data-name="pdf header footer add top bottom text date">
+        <div class="tool-card-top"><span class="tool-emoji">📄</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PDF Header &amp; Footer</div>
+        <div class="tool-desc">Add consistent headers and footers with text, dates, or page numbers.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="pdf-edit" data-name="pdf filler fill form fields interactive complete">
+        <div class="tool-card-top"><span class="tool-emoji">📋</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PDF Filler</div>
+        <div class="tool-desc">Fill out interactive PDF form fields and export the completed document.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ── PDF CONVERT ── -->
+  <section class="category-block cat-pdf-convert" data-category="pdf-convert" id="cat-pdf-convert">
+    <div class="cat-header">
+      <div class="cat-icon">🔄</div>
+      <h2 class="cat-title">PDF Convert &amp; Export</h2>
+      <span class="cat-count" id="count-pdf-convert">10</span>
+    </div>
+    <div class="tools-grid">
+
+      <a href="pdf-to-word.html" class="tool-card" data-cat="pdf-convert" data-name="pdf to word docx convert export microsoft">
+        <div class="tool-card-top"><span class="tool-emoji">📝</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PDF To Word</div>
+        <div class="tool-desc">Convert PDF documents into editable Microsoft Word DOCX files.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="word-to-pdf.html" class="tool-card" data-cat="pdf-convert" data-name="word to pdf convert docx microsoft office">
+        <div class="tool-card-top"><span class="tool-emoji">📄</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">Word To PDF</div>
+        <div class="tool-desc">Convert Word DOCX documents into high-fidelity PDF files.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="pdf-convert" data-name="pdf to powerpoint pptx presentation slides">
+        <div class="tool-card-top"><span class="tool-emoji">📊</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PDF To PowerPoint</div>
+        <div class="tool-desc">Export PDF pages into editable PowerPoint PPTX presentation slides.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="powerpoint-to-pdf.html" class="tool-card" data-cat="pdf-convert" data-name="powerpoint to pdf pptx convert slides">
+        <div class="tool-card-top"><span class="tool-emoji">🖥️</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PowerPoint To PDF</div>
+        <div class="tool-desc">Convert PowerPoint presentations into universally readable PDF files.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="pdf-to-excel.html" class="tool-card" data-cat="pdf-convert" data-name="pdf to excel xlsx spreadsheet table data">
+        <div class="tool-card-top"><span class="tool-emoji">📊</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PDF To Excel</div>
+        <div class="tool-desc">Extract tables from PDF files into editable Excel XLSX spreadsheets.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="excel-to-pdf.html" class="tool-card" data-cat="pdf-convert" data-name="excel to pdf xlsx spreadsheet convert">
+        <div class="tool-card-top"><span class="tool-emoji">📋</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">Excel To PDF</div>
+        <div class="tool-desc">Convert Excel spreadsheets to PDF preserving formatting and layout.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="html-to-pdf.html" class="tool-card" data-cat="pdf-convert" data-name="html to pdf webpage convert save web">
+        <div class="tool-card-top"><span class="tool-emoji">🌐</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">HTML To PDF</div>
+        <div class="tool-desc">Convert HTML pages or paste HTML markup to generate PDF documents.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="pdf-convert" data-name="pdf ocr optical character recognition text extract scan">
+        <div class="tool-card-top"><span class="tool-emoji">🔤</span><span class="tool-badge badge-new">New</span></div>
+        <div class="tool-name">PDF To OCR</div>
+        <div class="tool-desc">Run optical character recognition on scanned PDFs to create searchable text.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="pdf-convert" data-name="pdf repair fix corrupt damaged broken recover">
+        <div class="tool-card-top"><span class="tool-emoji">🔧</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PDF Repair</div>
+        <div class="tool-desc">Attempt to recover and fix corrupt or partially damaged PDF files.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="url-to-pdf.html" class="tool-card" data-cat="pdf-convert" data-name="url to pdf convert webpage link save screenshot">
+        <div class="tool-card-top"><span class="tool-emoji">🔗</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">URL To PDF</div>
+        <div class="tool-desc">Convert any public web page URL into a downloadable PDF document.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ── PDF SECURITY ── -->
+  <section class="category-block cat-pdf-security" data-category="pdf-security" id="cat-pdf-security">
+    <div class="cat-header">
+      <div class="cat-icon">🔒</div>
+      <h2 class="cat-title">PDF Security &amp; Advanced</h2>
+      <span class="cat-count" id="count-pdf-security">10</span>
+    </div>
+    <div class="tools-grid">
+
+      <a href="protect-pdf.html" class="tool-card" data-cat="pdf-security" data-name="pdf protector protect password encrypt lock secure">
+        <div class="tool-card-top"><span class="tool-emoji">🔐</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">Protect PDF</div>
+        <div class="tool-desc">Password-protect and encrypt PDFs to restrict opening or editing.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="unlock-pdf.html" class="tool-card" data-cat="pdf-security" data-name="pdf unlocker unlock remove password decrypt open">
+        <div class="tool-card-top"><span class="tool-emoji">🔓</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">Unlock PDF</div>
+        <div class="tool-desc">Remove known passwords and restrictions from protected PDF files.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="pdf-security" data-name="pdf sign signature digital e-sign add">
+        <div class="tool-card-top"><span class="tool-emoji">✍️</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PDF Sign</div>
+        <div class="tool-desc">Draw or upload a signature and place it on any PDF document.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="pdf-security" data-name="pdf redact censor black out hide sensitive information">
+        <div class="tool-card-top"><span class="tool-emoji">⬛</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PDF Redact</div>
+        <div class="tool-desc">Permanently black out sensitive text and images before sharing PDFs.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="pdf-security" data-name="pdf compare diff differences two documents versions">
+        <div class="tool-card-top"><span class="tool-emoji">🔍</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PDF Compare</div>
+        <div class="tool-desc">Visually compare two PDF versions and highlight all differences.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="pdf-security" data-name="pdf remove metadata strip clean author properties">
+        <div class="tool-card-top"><span class="tool-emoji">🧹</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PDF Remove Metadata</div>
+        <div class="tool-desc">Strip author, creation date, and all hidden metadata from PDF files.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="pdf-security" data-name="pdf edit metadata update change title author subject">
+        <div class="tool-card-top"><span class="tool-emoji">🏷️</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PDF Edit Metadata</div>
+        <div class="tool-desc">Update title, author, subject, and keyword metadata fields in a PDF.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="pdf-security" data-name="pdf whiteout white correction fluid cover text">
+        <div class="tool-card-top"><span class="tool-emoji">⬜</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PDF Whiteout</div>
+        <div class="tool-desc">Cover over text or images with white boxes before sharing documents.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#" class="tool-card" data-cat="pdf-security" data-name="pdf flatten form fields annotations merge embed">
+        <div class="tool-card-top"><span class="tool-emoji">📎</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">PDF Flatten</div>
+        <div class="tool-desc">Flatten form fields and annotations into static, non-editable PDF pages.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="pdf-extract.html" class="tool-card" data-cat="pdf-security" data-name="pdf extract pull section subset range output">
+        <div class="tool-card-top"><span class="tool-emoji">📤</span><span class="tool-badge badge-free">Free</span></div>
+        <div class="tool-name">Extract PDF Pages</div>
+        <div class="tool-desc">Extract a specific subset of pages, text, or images into a new PDF.</div>
+        <div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ── TO PDF ── -->
+  <section class="category-block cat-to-pdf" data-category="to-pdf" id="cat-to-pdf">
+    <div class="cat-header">
+      <div class="cat-icon">📥</div>
+      <h2 class="cat-title">Convert to PDF</h2>
+      <span class="cat-count" id="count-to-pdf">29</span>
+    </div>
+    <div class="tools-grid">
+      <!-- office / doc -->
+      <a href="txt-to-pdf.html" class="tool-card" data-cat="to-pdf" data-name="txt to pdf text plain convert"><div class="tool-card-top"><span class="tool-emoji">📄</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">TXT To PDF</div><div class="tool-desc">Convert plain text files into clean, formatted PDFs.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="odt-to-pdf.html" class="tool-card" data-cat="to-pdf" data-name="odt to pdf opendocument libreoffice convert"><div class="tool-card-top"><span class="tool-emoji">📝</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">ODT To PDF</div><div class="tool-desc">Convert OpenDocument ODT files to PDF format.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="rtf-to-pdf.html" class="tool-card" data-cat="to-pdf" data-name="rtf to pdf rich text format convert"><div class="tool-card-top"><span class="tool-emoji">📝</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">RTF To PDF</div><div class="tool-desc">Convert Rich Text Format RTF files to PDF.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="csv-to-pdf.html" class="tool-card" data-cat="to-pdf" data-name="csv to pdf spreadsheet table data convert"><div class="tool-card-top"><span class="tool-emoji">📊</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">CSV To PDF</div><div class="tool-desc">Convert CSV spreadsheet data into a formatted PDF table.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="xml-to-pdf.html" class="tool-card" data-cat="to-pdf" data-name="xml to pdf markup data structured convert"><div class="tool-card-top"><span class="tool-emoji">💻</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">XML To PDF</div><div class="tool-desc">Convert XML data files into a readable PDF document layout.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="md-to-pdf.html" class="tool-card" data-cat="to-pdf" data-name="md markdown to pdf readme docs convert"><div class="tool-card-top"><span class="tool-emoji">📑</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">Markdown To PDF</div><div class="tool-desc">Convert Markdown files to beautifully rendered PDF documents.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="wps-to-pdf.html" class="tool-card" data-cat="to-pdf" data-name="wps to pdf kingsoft office convert"><div class="tool-card-top"><span class="tool-emoji">📄</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">WPS To PDF</div><div class="tool-desc">Convert WPS Office documents to standard PDF format.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="dxf-to-pdf.html" class="tool-card" data-cat="to-pdf" data-name="dxf to pdf autocad cad drawing convert"><div class="tool-card-top"><span class="tool-emoji">📐</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">DXF To PDF</div><div class="tool-desc">Convert AutoCAD DXF drawing files into shareable PDF format.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="eml-to-pdf.html" class="tool-card" data-cat="to-pdf" data-name="eml to pdf email message outlook convert"><div class="tool-card-top"><span class="tool-emoji">📧</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">EML To PDF</div><div class="tool-desc">Convert email message files EML to PDF for archiving.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="xps-to-pdf.html" class="tool-card" data-cat="to-pdf" data-name="xps to pdf microsoft convert print"><div class="tool-card-top"><span class="tool-emoji">📄</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">XPS To PDF</div><div class="tool-desc">Convert Microsoft XPS print files to universally compatible PDF.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <!-- ebook -->
+      <a href="epub-to-pdf.html" class="tool-card" data-cat="to-pdf" data-name="epub to pdf ebook convert kindle reader"><div class="tool-card-top"><span class="tool-emoji">📚</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">EPUB To PDF</div><div class="tool-desc">Convert EPUB e-books to PDF for easy reading and printing.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="djvu-to-pdf.html" class="tool-card" data-cat="to-pdf" data-name="djvu to pdf scan book archive convert"><div class="tool-card-top"><span class="tool-emoji">📖</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">DjVu To PDF</div><div class="tool-desc">Convert DjVu scanned book files to PDF format.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="mobi-to-pdf.html" class="tool-card" data-cat="to-pdf" data-name="mobi to pdf kindle ebook convert amazon"><div class="tool-card-top"><span class="tool-emoji">📱</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">MOBI To PDF</div><div class="tool-desc">Convert Amazon Kindle MOBI e-book files to PDF.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="ebook-to-pdf.html" class="tool-card" data-cat="to-pdf" data-name="ebook to pdf general universal convert reader"><div class="tool-card-top"><span class="tool-emoji">📗</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">eBook To PDF</div><div class="tool-desc">Convert various e-book formats to PDF in one universal tool.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="fb2-to-pdf.html" class="tool-card" data-cat="to-pdf" data-name="fb2 to pdf fictionbook ebook russian convert"><div class="tool-card-top"><span class="tool-emoji">📙</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">FB2 To PDF</div><div class="tool-desc">Convert FictionBook FB2 e-book files into PDF format.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="cbz-to-pdf.html" class="tool-card" data-cat="to-pdf" data-name="cbz to pdf comic book zip archive convert"><div class="tool-card-top"><span class="tool-emoji">🦸</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">CBZ To PDF</div><div class="tool-desc">Convert CBZ comic book archives to PDF for easy reading.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="cbr-to-pdf.html" class="tool-card" data-cat="to-pdf" data-name="cbr to pdf comic book rar archive convert"><div class="tool-card-top"><span class="tool-emoji">🦸</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">CBR To PDF</div><div class="tool-desc">Convert CBR comic book archives to PDF format.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <!-- image → pdf -->
+      <a href="png-to-pdf.html" class="tool-card" data-cat="to-pdf" data-name="png to pdf convert transparent image document"><div class="tool-card-top"><span class="tool-emoji">📄</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">PNG To PDF</div><div class="tool-desc">Convert PNG images to PDF documents with custom background and layout options.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="jpg-to-pdf.html" class="tool-card" data-cat="to-pdf" data-name="jpg jpeg to pdf convert photo image document"><div class="tool-card-top"><span class="tool-emoji">📄</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">JPG To PDF</div><div class="tool-desc">Convert JPG/JPEG images to PDF documents with customizable page layout.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="tiff-to-pdf.html" class="tool-card" data-cat="to-pdf" data-name="tiff to pdf convert multi page fax scan"><div class="tool-card-top"><span class="tool-emoji">🖼️</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">TIFF To PDF</div><div class="tool-desc">Combine single or multi-page TIFF images into a PDF document.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="svg-to-pdf.html" class="tool-card" data-cat="to-pdf" data-name="svg to pdf vector graphics illustration convert"><div class="tool-card-top"><span class="tool-emoji">🎨</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">SVG To PDF</div><div class="tool-desc">Convert scalable SVG vector graphics to PDF format.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="webp-to-pdf.html" class="tool-card" data-cat="to-pdf" data-name="webp to pdf google image convert modern"><div class="tool-card-top"><span class="tool-emoji">🌐</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">WebP To PDF</div><div class="tool-desc">Convert WebP images to PDF documents.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="heif-to-pdf.html" class="tool-card" data-cat="to-pdf" data-name="heif heic to pdf apple iphone photo convert"><div class="tool-card-top"><span class="tool-emoji">📷</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">HEIF To PDF</div><div class="tool-desc">Convert iPhone HEIF / HEIC photos to PDF format.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="jfif-to-pdf.html" class="tool-card" data-cat="to-pdf" data-name="jfif to pdf jpeg file interchange format convert"><div class="tool-card-top"><span class="tool-emoji">🖼️</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">JFIF To PDF</div><div class="tool-desc">Convert JFIF image files to PDF documents.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="gif-to-pdf.html" class="tool-card" data-cat="to-pdf" data-name="gif to pdf animated image convert frames"><div class="tool-card-top"><span class="tool-emoji">🎞️</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">GIF To PDF</div><div class="tool-desc">Convert GIF images (or all animation frames) to PDF format.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="bmp-to-pdf.html" class="tool-card" data-cat="to-pdf" data-name="bmp to pdf bitmap image convert windows"><div class="tool-card-top"><span class="tool-emoji">🖼️</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">BMP To PDF</div><div class="tool-desc">Convert Windows BMP bitmap images to PDF documents.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <!-- misc -->
+      <a href="ai-to-pdf.html" class="tool-card" data-cat="to-pdf" data-name="ai to pdf adobe illustrator vector artwork convert"><div class="tool-card-top"><span class="tool-emoji">🎨</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">AI To PDF</div><div class="tool-desc">Convert Adobe Illustrator AI artwork files to PDF.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="hwp-to-pdf.html" class="tool-card" data-cat="to-pdf" data-name="hwp to pdf hangul korean word processor convert"><div class="tool-card-top"><span class="tool-emoji">📄</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">HWP To PDF</div><div class="tool-desc">Convert Korean Hangul HWP documents to PDF format.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="chm-to-pdf.html" class="tool-card" data-cat="to-pdf" data-name="chm to pdf help compiled html microsoft convert"><div class="tool-card-top"><span class="tool-emoji">❓</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">CHM To PDF</div><div class="tool-desc">Convert compiled HTML Help CHM files to PDF documents.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="zip-to-pdf.html" class="tool-card" data-cat="to-pdf" data-name="zip to pdf archive batch images inside folder convert"><div class="tool-card-top"><span class="tool-emoji">🗜️</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">ZIP To PDF</div><div class="tool-desc">Convert a ZIP archive of images into a single multi-page PDF.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+    </div>
+  </section>
+
+  <!-- ── FROM PDF ── -->
+  <section class="category-block cat-from-pdf" data-category="from-pdf" id="cat-from-pdf">
+    <div class="cat-header">
+      <div class="cat-icon">📤</div>
+      <h2 class="cat-title">Convert from PDF</h2>
+      <span class="cat-count" id="count-from-pdf">11</span>
+    </div>
+    <div class="tools-grid">
+      <a href="pdf-to-epub.html" class="tool-card" data-cat="from-pdf" data-name="pdf to epub ebook convert reader kindle"><div class="tool-card-top"><span class="tool-emoji">📚</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">PDF To EPUB</div><div class="tool-desc">Convert PDF documents into reflowable EPUB e-books.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="pdf-to-tiff.html" class="tool-card" data-cat="from-pdf" data-name="pdf to tiff image multipage convert fax scan"><div class="tool-card-top"><span class="tool-emoji">🖼️</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">PDF To TIFF</div><div class="tool-desc">Export PDF pages as high-quality TIFF image files.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="pdf-to-odt.html" class="tool-card" data-cat="from-pdf" data-name="pdf to odt opendocument convert libreoffice"><div class="tool-card-top"><span class="tool-emoji">📝</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">PDF To ODT</div><div class="tool-desc">Convert PDF files to editable OpenDocument ODT format.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="pdf-to-svg.html" class="tool-card" data-cat="from-pdf" data-name="pdf to svg vector graphics convert scalable"><div class="tool-card-top"><span class="tool-emoji">🎨</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">PDF To SVG</div><div class="tool-desc">Convert PDF pages to scalable SVG vector format.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="pdf-to-csv.html" class="tool-card" data-cat="from-pdf" data-name="pdf to csv spreadsheet data table extract convert"><div class="tool-card-top"><span class="tool-emoji">📊</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">PDF To CSV</div><div class="tool-desc">Extract tabular data from PDFs into CSV spreadsheet format.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="pdf-to-rtf.html" class="tool-card" data-cat="from-pdf" data-name="pdf to rtf rich text format convert editable"><div class="tool-card-top"><span class="tool-emoji">📝</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">PDF To RTF</div><div class="tool-desc">Export PDF content to Rich Text Format for word processors.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="pdf-to-gif.html" class="tool-card" data-cat="from-pdf" data-name="pdf to gif animated convert image pages"><div class="tool-card-top"><span class="tool-emoji">🎞️</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">PDF To GIF</div><div class="tool-desc">Convert PDF pages to GIF images or an animated GIF.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="pdf-to-bmp.html" class="tool-card" data-cat="from-pdf" data-name="pdf to bmp bitmap image convert pages export"><div class="tool-card-top"><span class="tool-emoji">🖼️</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">PDF To BMP</div><div class="tool-desc">Export PDF pages as Windows BMP bitmap image files.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="pdf-to-png.html" class="tool-card" data-cat="from-pdf" data-name="pdf to png image convert pages export transparent"><div class="tool-card-top"><span class="tool-emoji">🖼️</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">PDF To PNG</div><div class="tool-desc">Convert PDF pages to high-quality PNG images with transparent backgrounds.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="pdf-to-jpg.html" class="tool-card" data-cat="from-pdf" data-name="pdf to jpg image convert pages export rasterize"><div class="tool-card-top"><span class="tool-emoji">📸</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">PDF To JPG</div><div class="tool-desc">Rasterize PDF pages into high-resolution JPG images.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="#" class="tool-card" data-cat="from-pdf" data-name="pdf to txt text plain extract content readable"><div class="tool-card-top"><span class="tool-emoji">📋</span><span class="tool-badge badge-free">Free</span></div><div class="tool-name">PDF To TXT</div><div class="tool-desc">Extract all readable text from a PDF into a plain text file.</div><div class="tool-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+    </div>
+  </section>
+
+  <!-- EMPTY STATE -->
+  <div class="empty-state" id="emptyState">
+    <div style="font-size:3rem;margin-bottom:1rem;">🔍</div>
+    <h3>No tools found</h3>
+    <p>Try a different search term or clear your filter to browse all tools.</p>
+  </div>
+
+</main>
+
+<!-- CTA STRIP -->
+<section class="cta-strip">
+  <div class="cta-strip-inner">
+    <h2 class="cta-title">Start with the <em>Image Converter</em></h2>
+    <p class="cta-desc">The core JPG2Go tool — convert between all 6 image formats instantly, privately, and for free. No upload required.</p>
+    <a href="index.html" class="btn-primary">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      Open Image Converter
+    </a>
+    <span class="cta-note">100% private · Works in every browser · Your images never leave your device</span>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<div id="footer-placeholder"></div>
+<script src="load-footer.js"></script>
+
+<script>
+// ── MOBILE MENU ──────────────────────────────────────────────────────────
+const mobileToggle = document.getElementById('mobileMenuToggle');
+const mobileNav    = document.getElementById('mobileNav');
+function toggleMobileMenu(e) { e.stopPropagation(); mobileToggle.classList.toggle('active'); mobileNav.classList.toggle('active'); }
+function closeMobileMenu()   { mobileToggle.classList.remove('active'); mobileNav.classList.remove('active'); }
+mobileToggle.addEventListener('click', toggleMobileMenu);
+document.addEventListener('click', e => { if (!mobileNav.contains(e.target) && !mobileToggle.contains(e.target)) closeMobileMenu(); });
+
+// ── SEARCH + FILTER ──────────────────────────────────────────────────────
+const searchInput   = document.getElementById('searchInput');
+const filterPills   = document.querySelectorAll('.filter-pill');
+const allCards      = document.querySelectorAll('.tool-card');
+const allCategories = document.querySelectorAll('.category-block');
+const emptyState    = document.getElementById('emptyState');
+const resultsCount  = document.getElementById('resultsCount');
+
+let activeFilter = 'all';
+let searchTerm   = '';
+
+function applyFilters() {
+  let visible = 0;
+
+  allCards.forEach(card => {
+    const cat     = card.dataset.cat;
+    const name    = card.dataset.name || '';
+    const catMatch = activeFilter === 'all' || cat === activeFilter;
+    const searchMatch = !searchTerm || name.includes(searchTerm);
+    const show = catMatch && searchMatch;
+    card.classList.toggle('hidden', !show);
+    if (show) visible++;
+  });
+
+  // show/hide category sections
+  allCategories.forEach(section => {
+    const catId = section.dataset.category;
+    const catMatch = activeFilter === 'all' || catId === activeFilter;
+    if (!catMatch) { section.classList.add('hidden'); return; }
+    const anyVisible = [...section.querySelectorAll('.tool-card')].some(c => !c.classList.contains('hidden'));
+    section.classList.toggle('hidden', !anyVisible);
+  });
+
+  emptyState.classList.toggle('visible', visible === 0);
+  resultsCount.textContent = visible + (visible === 1 ? ' tool' : ' tools');
+}
+
+filterPills.forEach(pill => {
+  pill.addEventListener('click', () => {
+    filterPills.forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+    activeFilter = pill.dataset.cat;
+    applyFilters();
+  });
+});
+
+searchInput.addEventListener('input', () => {
+  searchTerm = searchInput.value.toLowerCase().trim();
+  applyFilters();
+});
+</script>
+</body>
+</html>

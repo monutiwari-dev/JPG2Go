@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>TIFF to PDF Converter | Convert TIFF Files Online</title>
+<meta name="description" content="Convert TIFF images into PDF format online. Preserve image quality and layout, ideal for scanned documents, professional sharing, or printing.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jpg2go.com/tiff-to-pdf">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="adsense.js"></script>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Convert TIFF to PDF",
+    "url": "https://jpg2go.com/tiff-to-pdf",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Convert TIFF images into PDF format online. Preserve image quality and layout, ideal for scanned documents, professional sharing, or printing."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a TIFF to PDF converter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A TIFF to PDF converter is a tool that converts TIFF image files into a PDF document for easier sharing, viewing, and printing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why convert TIFF images to PDF format?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TIFF images often have large file sizes, while PDF format allows multiple images to be organized into one convenient document."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can multiple TIFF images be merged into one PDF file?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, most TIFF to PDF converters allow users to upload several TIFF images and combine them into a single PDF document."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will image quality remain after converting TIFF to PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TIFF images typically maintain their high resolution during conversion, ensuring the final PDF remains clear and detailed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is TIFF to PDF conversion useful for scanned documents?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, scanned documents are often stored as TIFF images and converting them into PDF helps organize them into readable files."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I open converted TIFF images on different devices?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, PDF format is supported on most devices, allowing users to open the converted document on computers, tablets, and smartphones."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+<style>
+:root{--ink:#0d0d0d;--paper:#f7f4ee;--cream:#ede9df;--accent:#c84b2f;--accent-light:#e8d5cf;--muted:#7a7567;--border:#d4cfc4;--white:#ffffff;--shadow:0 2px 24px rgba(13,13,13,0.08);--shadow-lg:0 8px 48px rgba(13,13,13,0.12);--ai-purple:#c84b2f;--ai-purple-light:#e8d5cf;--teal:#2a7a8a;--teal-light:#d4edf2}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;min-height:100vh}
+header{background:var(--ink);color:var(--paper);position:sticky;top:0;z-index:100;border-bottom:2px solid var(--accent)}.header-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px}.logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1.6rem;color:var(--paper);text-decoration:none;letter-spacing:-.02em}.logo span{color:var(--accent)}nav{display:flex;gap:2rem;align-items:center}nav a{color:#a8a39a;text-decoration:none;font-size:.875rem;font-weight:500;letter-spacing:.02em;transition:color .2s}nav a:hover{color:var(--paper)}.nav-cta{background:var(--accent);color:var(--white)!important;padding:.4rem 1rem;border-radius:4px;transition:background .2s!important}.nav-cta:hover{background:#a83825!important}
+.mobile-menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem;flex-direction:column;gap:5px;align-items:center;justify-content:center;width:40px;height:40px}.mobile-menu-toggle span{display:block;width:24px;height:2px;background:var(--paper);transition:all .3s ease;border-radius:2px}.mobile-menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(6px,6px)}.mobile-menu-toggle.active span:nth-child(2){opacity:0}.mobile-menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}.mobile-nav{display:none;position:fixed;top:64px;left:0;right:0;background:var(--ink);border-top:2px solid var(--accent);padding:1.5rem 2rem;flex-direction:column;gap:1rem;z-index:99;transform:translateY(-100%);opacity:0;transition:transform .3s ease,opacity .3s ease;visibility:hidden}.mobile-nav.active{display:flex;transform:translateY(0);opacity:1;visibility:visible}.mobile-nav a{color:#a8a39a;text-decoration:none;font-size:.95rem;font-weight:500;padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.1);transition:color .2s}.mobile-nav a:last-child{border-bottom:none}.mobile-nav a:hover{color:var(--paper)}.mobile-nav .nav-cta{background:var(--accent);color:var(--white)!important;padding:.75rem 1.5rem;border-radius:4px;text-align:center;border:none;margin-top:.5rem}
+.hero{background:var(--ink);color:var(--paper);padding:4rem 2rem 3.5rem;text-align:center;position:relative;overflow:hidden}.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(200,75,47,.2) 0%,transparent 70%);pointer-events:none}.hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:1px;height:60px;background:linear-gradient(to bottom,transparent,rgba(200,75,47,.4))}.hero-badge{display:inline-flex;align-items:center;gap:.5rem;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.12em;color:#c84b2f;text-transform:uppercase;border:1px solid rgba(200,75,47,.4);background:rgba(200,75,47,.12);padding:.3rem .9rem;border-radius:2px;margin-bottom:1.5rem}.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5.5vw,3.6rem);font-weight:900;line-height:1.1;letter-spacing:-.03em;margin-bottom:1.25rem}.hero h1 em{font-style:normal;color:var(--accent)}.hero-desc{font-size:1.05rem;color:#9e9990;max-width:520px;margin:0 auto 1.75rem;font-weight:300;line-height:1.7}.hero-pills{display:flex;justify-content:center;flex-wrap:wrap;gap:.5rem}.hero-pill{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.06em;color:#a8a39a;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:.3rem .75rem;border-radius:100px}
+.tool-section{max-width:1000px;margin:-1.5rem auto 0;padding:0 1.5rem 4rem;position:relative;z-index:10}.tool-card{background:var(--white);border-radius:12px;box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid var(--border)}.tool-card-header{background:var(--cream);padding:1rem 1.5rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid var(--border)}.dot{width:12px;height:12px;border-radius:50%;display:inline-block}.dot-r{background:#ff5f57}.dot-y{background:#febc2e}.dot-g{background:#28c840}.tool-card-title{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--muted);margin-left:.5rem;letter-spacing:.05em}.tool-body{padding:1.5rem}
+.drop-zone{border:2px dashed var(--border);border-radius:10px;padding:3rem 2rem;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;background:var(--paper);position:relative}.drop-zone:hover,.drop-zone.drag-over{border-color:var(--ai-purple);background:var(--ai-purple-light)}.drop-zone input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}.drop-icon{width:52px;height:52px;background:var(--ai-purple-light);border:1px solid rgba(200,75,47,.3);border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:var(--ai-purple)}.drop-zone h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:.4rem}.drop-zone p{font-size:.85rem;color:var(--muted);margin-bottom:1rem}.formats-pill{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.08em;color:var(--ai-purple);background:var(--ai-purple-light);padding:.25rem .75rem;border-radius:100px;display:inline-block}
+.file-list-wrap{margin:1.25rem 0 0;display:none}.file-list-wrap.visible{display:block}.file-list-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem;flex-wrap:wrap;gap:.4rem}.file-list-label{font-family:'DM Mono',monospace;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}.file-list-count{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--accent);background:var(--accent-light);padding:.15rem .5rem;border-radius:100px}.file-list{display:flex;flex-direction:column;gap:.5rem;max-height:260px;overflow-y:auto;padding-right:2px}.file-list::-webkit-scrollbar{width:4px}.file-list::-webkit-scrollbar-track{background:var(--cream)}.file-list::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}.file-item{display:flex;align-items:center;gap:.75rem;background:var(--paper);border:1px solid var(--border);border-radius:8px;padding:.6rem .85rem;transition:border-color .15s}.file-item:hover{border-color:var(--accent)}.file-thumb{width:38px;height:38px;border-radius:5px;object-fit:cover;border:1px solid var(--border);flex-shrink:0;background:var(--cream)}.file-info{flex:1;min-width:0}.file-name{font-size:.8rem;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.file-meta{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--muted);margin-top:.1rem;display:flex;align-items:center;gap:.4rem}.file-badge{font-family:'DM Mono',monospace;font-size:.6rem;color:var(--teal);background:var(--teal-light);border:1px solid rgba(42,122,138,.2);padding:.05rem .35rem;border-radius:3px}.file-order{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--muted);background:var(--cream);border:1px solid var(--border);border-radius:3px;padding:.15rem .4rem;white-space:nowrap}.file-remove{background:none;border:none;cursor:pointer;color:var(--muted);padding:.2rem;border-radius:4px;display:flex;align-items:center;transition:color .15s,background .15s}.file-remove:hover{color:var(--accent);background:var(--accent-light)}
+.add-more-btn{display:flex;align-items:center;justify-content:center;gap:.5rem;border:1.5px dashed var(--border);border-radius:8px;padding:.65rem;cursor:pointer;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.05em;color:var(--muted);background:transparent;width:100%;margin-top:.5rem;transition:all .2s;position:relative;overflow:hidden}.add-more-btn input{position:absolute;inset:0;opacity:0;cursor:pointer}.add-more-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}
+.pdf-options{margin:1.5rem 0 1rem;display:none}.pdf-options.visible{display:block}.options-label{font-family:'DM Mono',monospace;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.75rem;display:block}.options-row{display:flex;align-items:center;gap:1rem;margin-bottom:.85rem;flex-wrap:wrap}.opt-label{font-family:'DM Mono',monospace;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);white-space:nowrap;min-width:100px}.opt-btns{display:flex;gap:.4rem;flex-wrap:wrap}.opt-btn{background:var(--paper);border:1.5px solid var(--border);border-radius:6px;padding:.4rem .85rem;font-family:'DM Mono',monospace;font-size:.75rem;font-weight:500;color:var(--ink);cursor:pointer;transition:all .18s;letter-spacing:.04em}.opt-btn:hover{border-color:var(--ai-purple);color:var(--ai-purple);background:var(--ai-purple-light)}.opt-btn.active{background:var(--ai-purple);border-color:var(--ai-purple);color:var(--white)}
+.action-bar{display:flex;gap:.75rem;margin-top:1.25rem;flex-wrap:wrap}.btn-primary{background:var(--accent);color:var(--white);border:none;border-radius:6px;padding:.65rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:.875rem;font-weight:600;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:.5rem;text-decoration:none}.btn-primary:hover{background:#a83825;transform:translateY(-1px)}.btn-primary:disabled{background:var(--border);color:var(--muted);cursor:not-allowed;transform:none}.btn-secondary{background:transparent;color:var(--ink);border:1.5px solid var(--border);border-radius:6px;padding:.65rem 1.25rem;font-family:'DM Sans',sans-serif;font-size:.875rem;font-weight:500;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:.5rem}.btn-secondary:hover{border-color:var(--ink);background:var(--cream)}
+.processing-overlay{display:none}.processing-overlay.active{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;padding:3rem;background:var(--paper);border-radius:10px;border:1px solid var(--border);margin-top:1.5rem}.ai-spinner{width:48px;height:48px;border:3px solid var(--ai-purple-light);border-top-color:var(--ai-purple);border-radius:50%;animation:spin .9s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.processing-text{font-family:'DM Mono',monospace;font-size:.8rem;color:var(--muted);letter-spacing:.05em}.processing-progress{width:100%;max-width:280px;background:var(--border);border-radius:100px;height:4px;overflow:hidden}.processing-progress-bar{height:100%;background:var(--accent);border-radius:100px;transition:width .25s ease;width:0%}.processing-steps{display:flex;flex-direction:column;gap:.4rem;width:100%;max-width:280px}.processing-step{display:flex;align-items:center;gap:.6rem;font-family:'DM Mono',monospace;font-size:.68rem;color:#bbb}.processing-step.done{color:#28c840}.processing-step.active{color:var(--ai-purple)}.step-dot{width:8px;height:8px;border-radius:50%;background:currentColor;flex-shrink:0}
+.result-area{display:none;margin-top:1.5rem}.result-area.visible{display:block}.result-card{border:1px solid var(--border);border-radius:10px;background:var(--cream);overflow:hidden}.result-card-header{display:flex;align-items:center;justify-content:space-between;padding:.65rem 1rem;border-bottom:1px solid var(--border)}.result-card-title{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted);letter-spacing:.05em}.result-preview{padding:2rem;display:flex;flex-direction:column;align-items:center;gap:1rem}.pdf-icon-wrap{width:72px;height:88px;background:var(--white);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.25rem;box-shadow:var(--shadow);position:relative}.pdf-corner{position:absolute;top:0;right:0;width:18px;height:18px;background:var(--cream);border-bottom-left-radius:4px;border-top-right-radius:8px}.pdf-icon-text{font-family:'DM Mono',monospace;font-size:.7rem;font-weight:500;color:var(--accent);letter-spacing:.05em;margin-top:.25rem}.result-info{text-align:center}.result-filename{font-weight:700;font-size:.9rem;color:var(--ink);margin-bottom:.25rem}.result-meta{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted)}
+.stats-bar{display:none;gap:1.5rem;padding:.75rem 1rem;background:var(--cream);font-size:.78rem;color:var(--muted);font-family:'DM Mono',monospace;flex-wrap:wrap;margin-top:1rem;border-radius:8px;border:1px solid var(--border)}.stats-bar.visible{display:flex}.stat{display:flex;gap:.4rem;align-items:center}.stat-val{color:var(--ink);font-weight:500}.stat-val.enhanced{color:var(--ai-purple)}
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--ink);color:var(--paper);padding:.75rem 1.5rem;border-radius:6px;font-size:.875rem;font-weight:500;transition:transform .3s cubic-bezier(.34,1.56,.64,1);z-index:999;border-left:3px solid var(--accent);white-space:nowrap}.toast.show{transform:translateX(-50%) translateY(0)}
+.content-section{max-width:1000px;margin:0 auto;padding:4rem 1.5rem}.section-tag{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem;display:block}.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;letter-spacing:-.02em;margin-bottom:1.25rem;line-height:1.2}.content-prose{color:#4a4640;font-size:.975rem;line-height:1.8;max-width:720px}.content-prose p{margin-bottom:1rem}.content-prose p:last-child{margin-bottom:0}.divider{border:none;border-top:1px solid var(--border);max-width:1000px;margin:0 auto}
+.how-to-section{background:var(--ink);color:var(--paper);padding:1.75rem 2rem;position:relative;overflow:hidden}.how-to-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 100%,rgba(200,75,47,.14) 0%,transparent 70%);pointer-events:none}.how-to-inner{max-width:1000px;margin:0 auto;position:relative}.how-to-header{text-align:center;margin-bottom:1.25rem}.how-to-header .section-tag{color:#c84b2f}.how-to-header .section-title{color:var(--paper);margin-bottom:.35rem}.how-to-subtitle{color:#9e9990;font-size:.9rem;font-weight:300}.steps-grid{display:flex;align-items:stretch;gap:0}.step-card{flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:.85rem 1rem;transition:background .25s,border-color .25s,transform .25s}.step-card:hover{background:rgba(200,75,47,.08);border-color:rgba(200,75,47,.35);transform:translateY(-4px)}.step-connector{display:flex;align-items:center;justify-content:center;padding:0 .5rem;color:rgba(200,75,47,.5);flex-shrink:0;margin-top:-1rem}.step-number{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:rgba(200,75,47,.25);line-height:1;margin-bottom:.35rem;letter-spacing:-.04em}.step-icon{width:36px;height:36px;background:rgba(200,75,47,.15);border:1px solid rgba(200,75,47,.3);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:.6rem;color:#c84b2f}.step-title{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:var(--paper);margin-bottom:.35rem;line-height:1.3}.step-desc{font-size:.8rem;color:#9e9990;line-height:1.55;margin-bottom:.6rem}.step-desc strong{color:#d4cfc4}.step-pill{display:inline-block;font-family:'DM Mono',monospace;font-size:.63rem;letter-spacing:.05em;color:#c84b2f;background:rgba(200,75,47,.12);border:1px solid rgba(200,75,47,.25);padding:.2rem .6rem;border-radius:100px}.how-to-cta{text-align:center;margin-top:1.25rem;display:flex;flex-direction:column;align-items:center;gap:.6rem}.how-to-note{font-size:.8rem;color:#7a7567;font-family:'DM Mono',monospace;letter-spacing:.03em}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:2rem}.feature-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.5rem 1.25rem;transition:box-shadow .2s,transform .2s}.feature-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}.feature-icon{font-size:1.75rem;margin-bottom:.75rem;display:block}.feature-title{font-weight:700;font-size:.9rem;margin-bottom:.4rem}.feature-desc{font-size:.82rem;color:var(--muted);line-height:1.5}
+.use-cases-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:2rem}.use-case-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.5rem 1.25rem}.use-case-icon{font-size:1.75rem;margin-bottom:.75rem;display:block}.use-case-title{font-weight:700;font-size:.9rem;margin-bottom:.4rem}.use-case-text{font-size:.82rem;color:var(--muted);line-height:1.5}
+.cases-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-top:2rem}.case-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.25rem;transition:box-shadow .2s,transform .2s}.case-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}.case-card-name{font-weight:700;font-size:.9rem;margin-bottom:.35rem;color:var(--ink)}.case-card-example{font-family:'DM Mono',monospace;font-size:.78rem;color:var(--accent);background:var(--accent-light);padding:.25rem .5rem;border-radius:4px;display:inline-block;margin-bottom:.6rem}.case-card-desc{font-size:.825rem;color:var(--muted);line-height:1.5}
+.faq-list{margin-top:2rem}.faq-item{border-bottom:1px solid var(--border);padding:1.25rem 0}.faq-item:last-child{border-bottom:none}.faq-q{font-weight:600;font-size:.95rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}.faq-q::after{content:'+';font-size:1.2rem;color:var(--ai-purple);flex-shrink:0;transition:transform .2s}.faq-item.open .faq-q::after{transform:rotate(45deg)}.faq-a{font-size:.9rem;color:var(--muted);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .3s ease,margin-top .3s}.faq-item.open .faq-a{max-height:320px;margin-top:.75rem}
+.cta-section{background:var(--ink);color:var(--paper);padding:1.5rem 2rem;text-align:center;position:relative;overflow:hidden}.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(200,75,47,.18) 0%,transparent 70%);pointer-events:none}.cta-inner{max-width:640px;margin:0 auto;position:relative}.cta-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-bottom:1rem;color:var(--paper)}.cta-desc{font-size:1rem;color:#9e9990;font-weight:300;margin-bottom:1rem;line-height:1.7}.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:.75rem}.cta-note{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.06em;color:#5a5650;margin-top:1rem;display:block}
+.related-section{background:var(--cream);padding:5rem 2rem;border-top:1px solid var(--border)}.related-inner{max-width:1000px;margin:0 auto}.related-header{margin-bottom:2.5rem}.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}.related-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-decoration:none;color:inherit;display:block;transition:box-shadow .2s,transform .2s,border-color .2s;position:relative;overflow:hidden}.related-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border);transition:background .2s}.related-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px);border-color:var(--accent)}.related-card:hover::before{background:var(--accent)}.related-card-icon{font-size:1.85rem;margin-bottom:.85rem;display:block}.related-card-name{font-family:'Playfair Display',serif;font-weight:700;font-size:1rem;margin-bottom:.35rem;color:var(--ink);letter-spacing:-.01em}.related-card-desc{font-size:.82rem;color:var(--muted);line-height:1.5;margin-bottom:1rem}.related-card-tag{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--accent-light);padding:.2rem .5rem;border-radius:3px;display:inline-block}
+footer{background:var(--ink);color:#9e9990;padding:4rem 2rem 2rem;margin-top:3rem;border-top:1px solid rgba(255,255,255,0.05)}.footer-inner{max-width:1200px;
+  margin-top: 0;
+  border-top: 1px solid rgba(255,255,255,0.05);margin:0 auto}.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid #2a2a2a}.footer-brand .logo{display:block;margin-bottom:.75rem}.footer-brand p{font-size:.85rem;line-height:1.6;max-width:240px}.footer-social{display:flex;margin-top:1rem}.social-icon{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;color:#9e9990;transition:color .2s,transform .2s;border-radius:6px}.social-icon:hover{color:var(--paper);transform:translateY(-2px)}.footer-col-title{font-family:'DM Sans',sans-serif;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--paper);font-weight:600;margin-bottom:1rem}.footer-links{list-style:none;display:flex;flex-direction:column;gap:.6rem}.footer-links a{color:#9e9990;text-decoration:none;font-size:.85rem;transition:color .2s}.footer-links a:hover{color:var(--paper)}.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;font-size:.8rem;flex-wrap:wrap;gap:.75rem}
+@media(max-width:768px){nav{display:none}.mobile-menu-toggle{display:flex}.steps-grid{flex-direction:column}.step-connector{transform:rotate(90deg);padding:.25rem 0}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr;gap:2rem}.footer-bottom{flex-direction:column;text-align:center}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}.fade-up{animation:fadeUp .6s ease both}.delay-1{animation-delay:.1s}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">JPG2<span>Go</span></a>
+    <nav>
+<nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="tools.html">Tools</a>
+      <a href="#tool" class="nav-cta">Convert Now</a>
+    </nav>
+</nav>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+    <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="tools.html" onclick="closeMobileMenu()">Tools</a>
+    <a href="#tool" class="nav-cta" onclick="closeMobileMenu()">Convert Now</a>
+  </nav>
+</nav>
+</header>
+
+<section class="hero">
+  <div class="fade-up">
+    <div class="hero-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Convert TIFF Files Online
+    </div>
+    <h1>Convert TIFF to PDF</h1>
+    <p class="hero-desc">Convert TIFF images into a single PDF document quickly. Organize high-resolution images into a format that is easy to share and print.</p>
+    <div class="hero-pills">
+      <span class="hero-pill">Multi-Page TIFF</span>
+      <span class="hero-pill">LZW · PackBits · Uncompressed</span>
+      <span class="hero-pill">Grayscale &amp; Colour</span>
+      <span class="hero-pill">A4 · Letter · A3</span>
+      <span class="hero-pill">Batch File Support</span>
+    </div>
+  </div>
+</section>
+
+<section class="tool-section" id="tool">
+  <div class="tool-card fade-up delay-1">
+    <div class="tool-card-header">
+      <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+      <span class="tool-card-title">tiff-to-pdf · multi-page · lzw/packbits/uncompressed · browser-native</span>
+    </div>
+    <div class="tool-body">
+
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" accept="image/tiff,image/tif,.tiff,.tif" multiple>
+        <div class="drop-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg></div>
+        <h3>Drop your TIFF images here</h3>
+        <p>Drop one or more TIFF/TIF files — including multi-page TIFFs. Each page becomes a PDF page.</p>
+        <span class="formats-pill">TIFF · TIF · multi-page supported</span>
+      </div>
+
+      <div class="file-list-wrap" id="fileListWrap">
+        <div class="file-list-header">
+          <span class="file-list-label">Images to convert</span>
+          <span class="file-list-count" id="fileCount">0 files</span>
+        </div>
+        <div class="file-list" id="fileList"></div>
+        <label class="add-more-btn">
+          <input type="file" id="addMoreInput" accept="image/tiff,image/tif,.tiff,.tif" multiple>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Add more TIFF files
+        </label>
+      </div>
+
+      <div class="pdf-options" id="pdfOptions">
+        <span class="options-label">PDF Settings</span>
+        <div class="options-row"><span class="opt-label">Page Size</span><div class="opt-btns" id="pageSizeBtns"><button class="opt-btn active" data-val="a4">A4</button><button class="opt-btn" data-val="letter">Letter</button><button class="opt-btn" data-val="a3">A3</button></div></div>
+        <div class="options-row"><span class="opt-label">Orientation</span><div class="opt-btns" id="orientationBtns"><button class="opt-btn active" data-val="portrait">Portrait</button><button class="opt-btn" data-val="landscape">Landscape</button></div></div>
+        <div class="options-row"><span class="opt-label">Margins</span><div class="opt-btns" id="marginBtns"><button class="opt-btn" data-val="0">None</button><button class="opt-btn active" data-val="20">Small</button><button class="opt-btn" data-val="40">Medium</button><button class="opt-btn" data-val="60">Large</button></div></div>
+        <div class="options-row"><span class="opt-label">Image Fit</span><div class="opt-btns" id="fitBtns"><button class="opt-btn active" data-val="fit">Fit to Page</button><button class="opt-btn" data-val="fill">Fill Page</button><button class="opt-btn" data-val="original">Original Size</button></div></div>
+        <div class="options-row"><span class="opt-label">Quality</span>
+          <div style="display:flex;align-items:center;gap:.75rem;flex:1;min-width:180px;">
+            <input type="range" style="-webkit-appearance:none;appearance:none;width:100%;height:4px;background:var(--border);border-radius:2px;outline:none;cursor:pointer;" id="qualitySlider" min="50" max="100" value="92">
+            <span style="font-family:'DM Mono',monospace;font-size:.72rem;color:var(--accent);font-weight:500;min-width:32px;" id="qualityVal">92%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-bar">
+        <button class="btn-primary" id="convertBtn" disabled>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Convert to PDF
+        </button>
+        <button class="btn-secondary" id="clearBtn" style="display:none;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
+          Clear All
+        </button>
+      </div>
+
+      <div class="processing-overlay" id="processingOverlay">
+        <div class="ai-spinner"></div>
+        <div class="processing-text" id="processingText">Parsing TIFF data…</div>
+        <div class="processing-progress"><div class="processing-progress-bar" id="progressBar"></div></div>
+        <div class="processing-steps">
+          <div class="processing-step active" id="pStep1"><span class="step-dot"></span> Parsing TIFF structure</div>
+          <div class="processing-step" id="pStep2"><span class="step-dot"></span> Decompressing image data</div>
+          <div class="processing-step" id="pStep3"><span class="step-dot"></span> Rendering PDF pages</div>
+          <div class="processing-step" id="pStep4"><span class="step-dot"></span> Finalising PDF</div>
+        </div>
+      </div>
+
+      <div class="result-area" id="resultArea">
+        <div class="result-card">
+          <div class="result-card-header"><span class="result-card-title">PDF Ready</span><span class="result-card-title" id="resultPageCount" style="color:var(--accent);">—</span></div>
+          <div class="result-preview">
+            <div class="pdf-icon-wrap"><div class="pdf-corner"></div><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c84b2f" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><div class="pdf-icon-text">PDF</div></div>
+            <div class="result-info"><div class="result-filename" id="resultFilename">output.pdf</div><div class="result-meta" id="resultMeta">—</div></div>
+          </div>
+        </div>
+        <div class="stats-bar visible" id="statsBar">
+          <div class="stat">Pages: <span class="stat-val enhanced" id="rPages">—</span></div>
+          <div class="stat">Size: <span class="stat-val" id="rPaperSize">—</span></div>
+          <div class="stat">Orientation: <span class="stat-val" id="rOrientation">—</span></div>
+          <div class="stat">Quality: <span class="stat-val" id="rQuality">—</span></div>
+        </div>
+        <div class="action-bar" style="margin-top:1rem;">
+          <button class="btn-primary" id="downloadBtn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download PDF</button>
+          <button class="btn-secondary" id="convertAgainBtn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg> Try Different Settings</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how-to-section" id="how-it-works">
+  <div class="how-to-inner">
+    <div class="how-to-header"><span class="section-tag">Quick Guide</span><h2 class="section-title">How to Convert TIFF to PDF</h2><p class="how-to-subtitle">Four steps. Multi-page TIFF ready. No account.</p></div>
+    <div class="steps-grid">
+      <div class="step-card"><div class="step-number">01</div><div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div><div class="step-title">Upload TIFF Files</div><div class="step-desc">Drop <strong>.tiff or .tif files</strong> — including multi-page TIFFs. Each IFD (page) in a multi-page TIFF becomes its own PDF page.</div><span class="step-pill">multi-page support</span></div>
+      <div class="step-connector"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card"><div class="step-number">02</div><div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div><div class="step-title">TIFF is Parsed</div><div class="step-desc">The <strong>binary TIFF structure</strong> is read directly — IFD tags, compression type, strip data. LZW, PackBits, and uncompressed variants are decoded automatically.</div><span class="step-pill">browser-native parsing</span></div>
+      <div class="step-connector"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card"><div class="step-number">03</div><div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></div><div class="step-title">Set Page Layout</div><div class="step-desc">Choose <strong>page size, orientation, margins</strong> and image fit. Large-format TIFFs scale cleanly to any page size.</div><span class="step-pill">full layout control</span></div>
+      <div class="step-connector"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card"><div class="step-number">04</div><div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div><div class="step-title">Download PDF</div><div class="step-desc">Your <strong>clean, watermark-free PDF</strong> is ready instantly. Multi-page TIFFs produce multi-page PDFs with page order preserved.</div><span class="step-pill">instant download</span></div>
+    </div>
+    <div class="how-to-cta"><a href="#tool" class="btn-primary"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Start Converting</a><span class="how-to-note">free · no signup · no upload</span></div>
+  </div>
+</section>
+
+<section class="content-section" id="about">
+  <h2 class="section-title">Why Use TIFF to PDF Converter?</h2>
+  <div class="content-prose">
+    <p>TIFF images are commonly used for high-resolution scanning and document archiving. While these files preserve excellent detail, they can be large and difficult to manage individually.</p>
+    <p>A TIFF to PDF converter helps combine multiple TIFF images into a single PDF document.</p>
+    <p>This makes it easier to store, share, and organize scanned materials. Converting TIFF images to PDF creates structured documents that are easier to distribute and manage.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="content-section">
+  <span class="section-tag">Features</span>
+  <h2 class="section-title">Built to Handle Real-World TIFFs</h2>
+  <div class="features-grid">
+    <div class="feature-card"><span class="feature-icon">📑</span><div class="feature-title">Multi-Page TIFF</div><div class="feature-desc">Walks the full IFD chain in multi-page TIFFs — fax archives, scanned documents, and multi-frame outputs each become their own PDF page.</div></div>
+    <div class="feature-card"><span class="feature-icon">🗜️</span><div class="feature-title">LZW Decompression</div><div class="feature-desc">Full LZW decoder handles the most common TIFF compression format — used by Photoshop, scanners, and most document workflows.</div></div>
+    <div class="feature-card"><span class="feature-icon">⚡</span><div class="feature-title">PackBits &amp; Uncompressed</div><div class="feature-desc">Handles PackBits RLE (common in older scanners and Mac-origin TIFFs) and raw uncompressed TIFFs instantly.</div></div>
+    <div class="feature-card"><span class="feature-icon">⚫</span><div class="feature-title">Grayscale Support</div><div class="feature-desc">Scanned documents are almost always 8-bit grayscale TIFF. The tool correctly interprets WhiteIsZero and BlackIsZero photometric modes.</div></div>
+    <div class="feature-card"><span class="feature-icon">🔒</span><div class="feature-title">100% Private</div><div class="feature-desc">All TIFF parsing and PDF generation happens in your browser. TIFF files from medical, legal, or scientific workflows never leave your device.</div></div>
+    <div class="feature-card"><span class="feature-icon">💸</span><div class="feature-title">Free Forever</div><div class="feature-desc">No subscription, no watermark, no file count limits. Convert as many TIFFs as you need, always completely free.</div></div>
+  </div>
+</section>
+
+<section class="content-section">
+  <span class="section-tag">Use Cases</span>
+  <h2 class="section-title">Why Convert TIFF to PDF?</h2>
+  <div class="use-cases-grid">
+    <div class="use-case-card"><span class="use-case-icon">🔬</span><div class="use-case-title">Scientific Imaging</div><div class="use-case-text">Microscopy, satellite imagery, and instrument output often arrive as TIFF. Convert to PDF for inclusion in reports and publications.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🖨️</span><div class="use-case-title">Scanned Documents</div><div class="use-case-text">Flatbed scanners default to multi-page TIFF. Convert the entire scan to a single PDF for filing, sharing, or archiving.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🏛️</span><div class="use-case-title">Archival Conversion</div><div class="use-case-text">Many institutions archive documents as TIFF for maximum fidelity, then convert to PDF for distribution and indexing.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🎨</span><div class="use-case-title">Print &amp; Prepress</div><div class="use-case-text">Artwork, maps, and print layouts saved as TIFF need to be converted to PDF for delivery to print vendors or clients.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🏥</span><div class="use-case-title">Medical &amp; Legal</div><div class="use-case-text">Medical scans and legal document scans frequently use TIFF. Convert to PDF for sharing with practitioners, courts, or insurers.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🗂️</span><div class="use-case-title">Fax Archives</div><div class="use-case-text">Incoming fax files are often stored as multi-page Group 3/4 TIFFs. Convert common TIFF variants to searchable-ready PDF pages.</div></div>
+  </div>
+</section>
+
+<section class="content-section">
+  <span class="section-tag">Pro Tips</span>
+  <h2 class="section-title">Get the Best Results</h2>
+  <div class="cases-grid">
+    <div class="case-card"><div class="case-card-name">Multi-Page TIFFs</div><div class="case-card-example">tip → multi-page</div><div class="case-card-desc">When you upload a multi-page TIFF (common from document scanners and fax archives), the tool reads every IFD in the chain. Page count is detected and displayed before conversion. A 50-page scanned TIFF produces a 50-page PDF with page order preserved exactly.</div></div>
+    <div class="case-card"><div class="case-card-name">Large File Warning</div><div class="case-card-example">tip → file size</div><div class="case-card-desc">Uncompressed TIFFs can be very large — a 300 DPI A4 scan at 24-bit colour is ~25 MB. Parsing large TIFFs is memory-intensive. For files over 50 MB, allow 10–30 seconds and use a desktop browser. Mobile devices may run out of memory on very large uncompressed TIFFs.</div></div>
+    <div class="case-card"><div class="case-card-name">Unsupported Compressions</div><div class="case-card-example">tip → compatibility</div><div class="case-card-desc">This tool supports uncompressed (1), LZW (5), and PackBits (32773) — the three most common TIFF compression types. CCITT Group 3/4 fax compression (3/4), JPEG-in-TIFF (6/7), and DEFLATE (8) will trigger a fallback message. Use a desktop tool like LibreOffice to pre-convert these.</div></div>
+    <div class="case-card"><div class="case-card-name">Quality for TIFF Content</div><div class="case-card-example">tip → quality</div><div class="case-card-desc">TIFF is lossless, but the PDF is re-encoded as JPEG. For scanned text documents, use quality 95–100 to preserve sharp character edges. For photographic TIFFs, 85–92 is indistinguishable from the original at normal viewing sizes and produces significantly smaller PDFs.</div></div>
+    <div class="case-card"><div class="case-card-name">Landscape for Panoramas</div><div class="case-card-example">tip → orientation</div><div class="case-card-desc">Many scientific and cartographic TIFFs are wider than tall. Switch orientation to Landscape and use "Fit to Page" to ensure the full image is visible without clipping.</div></div>
+    <div class="case-card"><div class="case-card-name">Batch Multiple TIFFs</div><div class="case-card-example">tip → batch</div><div class="case-card-desc">You can upload multiple separate TIFF files at once — each becomes a block of pages in the PDF in the order you added them. This is useful for collections of single-page TIFFs that belong in a single document.</div></div>
+  </div>
+</section>
+
+<section class="content-section" id="faq">
+  <span class="section-tag">FAQ</span>
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item open"><div class="faq-q">What is a TIFF to PDF converter?</div><div class="faq-a">A TIFF to PDF converter is a tool that converts TIFF image files into a PDF document for easier sharing, viewing, and printing.</div></div><div class="faq-item"><div class="faq-q">Why convert TIFF images to PDF format?</div><div class="faq-a">TIFF images often have large file sizes, while PDF format allows multiple images to be organized into one convenient document.</div></div><div class="faq-item"><div class="faq-q">Can multiple TIFF images be merged into one PDF file?</div><div class="faq-a">Yes, most TIFF to PDF converters allow users to upload several TIFF images and combine them into a single PDF document.</div></div><div class="faq-item"><div class="faq-q">Will image quality remain after converting TIFF to PDF?</div><div class="faq-a">TIFF images typically maintain their high resolution during conversion, ensuring the final PDF remains clear and detailed.</div></div><div class="faq-item"><div class="faq-q">Is TIFF to PDF conversion useful for scanned documents?</div><div class="faq-a">Yes, scanned documents are often stored as TIFF images and converting them into PDF helps organize them into readable files.</div></div><div class="faq-item"><div class="faq-q">Can I open converted TIFF images on different devices?</div><div class="faq-a">Yes, PDF format is supported on most devices, allowing users to open the converted document on computers, tablets, and smartphones.</div></div>
+  </div>
+</section>
+
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-header"><span class="section-tag">Related Tools</span><h2 class="section-title">More Free Online Tools</h2></div>
+    <div class="related-grid">
+      <a href="/jpg-to-pdf" class="related-card">
+        <span class="related-card-icon">📄</span>
+        <div class="related-card-name">JPG to PDF</div>
+        <div class="related-card-desc">Convert JPG images to PDF documents quickly. Combine multiple photos into a single organized PDF file for easy sharing and printing.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+      <a href="/image-resizer" class="related-card">
+        <span class="related-card-icon">📐</span>
+        <div class="related-card-name">Image Resizer</div>
+        <div class="related-card-desc">Resize images to exact pixel dimensions or a percentage of their original size. Runs entirely in your browser without uploading files anywhere.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/compress-jpeg" class="related-card">
+        <span class="related-card-icon">🗜️</span>
+        <div class="related-card-name">Compress JPEG</div>
+        <div class="related-card-desc">Reduce JPEG image file size while maintaining quality. Optimize images for faster web pages and lower storage usage.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/merge-pdf" class="related-card">
+        <span class="related-card-icon">📎</span>
+        <div class="related-card-name">Merge PDF</div>
+        <div class="related-card-desc">Combine multiple PDF files into a single organized document. Drag and drop to reorder pages easily.</div>
+        <span class="related-card-tag">PDF</span>
+      </a>
+      <a href="/crop-image" class="related-card">
+        <span class="related-card-icon">✂️</span>
+        <div class="related-card-name">Crop Image</div>
+        <div class="related-card-desc">Crop images to any aspect ratio or custom dimensions. Perfect for social media thumbnails, profile photos, and banner images.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/format-converter" class="related-card">
+        <span class="related-card-icon">🔄</span>
+        <div class="related-card-name">Format Converter</div>
+        <div class="related-card-desc">Convert images between different formats instantly. Transform JPG, PNG, WebP, and other image formats quickly.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner">
+    <h2 class="cta-title">Ready to Convert?</h2>
+    <p class="cta-desc">Drop your TIFFs in — single or multi-page — set your layout, and download a clean PDF in seconds. No account, no upload, no watermark.</p>
+    <div class="cta-actions"><a href="#tool" class="btn-primary"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Convert TIFF to PDF</a></div>
+    <span class="cta-note">free · browser-native · no signup required</span>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<div id="footer-placeholder"></div>
+<script src="load-footer.js"></script>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ══ GLOBALS ═══════════════════════════════════════════════════════════════════
+let files = [];
+let pdfDataUrl = null;
+const PAGE_SIZES = {a4:{w:595.28,h:841.89,label:'A4'},letter:{w:612,h:792,label:'Letter'},a3:{w:841.89,h:1190.55,label:'A3'}};
+let settings = {pageSize:'a4',orientation:'portrait',margin:20,fit:'fit',quality:0.92};
+
+// ══ TOAST ═════════════════════════════════════════════════════════════════════
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800)}
+document.getElementById('mobileMenuToggle').addEventListener('click',function(){this.classList.toggle('active');document.getElementById('mobileNav').classList.toggle('active')});
+
+// ══ DROP ══════════════════════════════════════════════════════════════════════
+const dropZone=document.getElementById('dropZone'),fileInput=document.getElementById('fileInput');
+dropZone.addEventListener('dragover',e=>{e.preventDefault();dropZone.classList.add('drag-over')});
+dropZone.addEventListener('dragleave',()=>dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop',e=>{e.preventDefault();dropZone.classList.remove('drag-over');addFiles(Array.from(e.dataTransfer.files).filter(isTiff))});
+fileInput.addEventListener('change',e=>{addFiles(Array.from(e.target.files));fileInput.value=''});
+document.getElementById('addMoreInput').addEventListener('change',e=>{addFiles(Array.from(e.target.files));e.target.value=''});
+function isTiff(f){return f.type==='image/tiff'||f.type==='image/tif'||/\.(tiff|tif)$/i.test(f.name)}
+
+// ══ FILE MANAGEMENT ════════════════════════════════════════════════════════════
+function addFiles(newFiles){
+  newFiles.forEach(f=>files.push({file:f,pages:null,objectUrl:null}));
+  renderFileList();
+  if(files.length>0){
+    document.getElementById('fileListWrap').classList.add('visible');
+    document.getElementById('pdfOptions').classList.add('visible');
+    document.getElementById('convertBtn').disabled=false;
+    document.getElementById('clearBtn').style.display='';
+    document.getElementById('resultArea').classList.remove('visible');
+    pdfDataUrl=null;
+    // Pre-scan page counts asynchronously
+    files.forEach((entry,i)=>{if(!entry.pages)scanTiffPages(entry,i)});
+  }
+}
+
+async function scanTiffPages(entry,idx){
+  const buf=await entry.file.arrayBuffer();
+  const pages=parseTiffPages(buf);
+  files[idx].pages=pages;
+  files[idx].buf=buf;
+  renderFileList();
+}
+
+function removeFile(idx){
+  files.splice(idx,1);
+  renderFileList();
+  if(files.length===0){document.getElementById('fileListWrap').classList.remove('visible');document.getElementById('pdfOptions').classList.remove('visible');document.getElementById('convertBtn').disabled=true;document.getElementById('clearBtn').style.display='none';document.getElementById('resultArea').classList.remove('visible')}
+}
+
+function renderFileList(){
+  const list=document.getElementById('fileList'),countEl=document.getElementById('fileCount');
+  countEl.textContent=`${files.length} file${files.length!==1?'s':''}`;
+  list.innerHTML='';
+  let pageNum=1;
+  files.forEach(({file,pages},i)=>{
+    const pCount=pages?pages.length:1;
+    const url=files[i].objectUrl||(files[i].objectUrl=URL.createObjectURL(file));
+    const item=document.createElement('div');item.className='file-item';
+    const badge=pages&&pages.length>1?`<span class="file-badge">${pages.length} pages</span>`:'';
+    item.innerHTML=`<img class="file-thumb" src="${url}" alt="${file.name}" onerror="this.style.display='none'"><div class="file-info"><div class="file-name">${file.name}</div><div class="file-meta"><span>${formatSize(file.size)} · TIFF</span>${badge}</div></div><span class="file-order">Page${pCount>1?'s':''} ${pageNum}${pCount>1?'–'+(pageNum+pCount-1):''}</span><button class="file-remove" data-idx="${i}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>`;
+    list.appendChild(item);
+    pageNum+=pCount;
+  });
+  list.querySelectorAll('.file-remove').forEach(btn=>btn.addEventListener('click',()=>removeFile(parseInt(btn.dataset.idx))));
+}
+
+// ══ OPTIONS ═══════════════════════════════════════════════════════════════════
+function bindOptBtns(id,key){document.getElementById(id).querySelectorAll('.opt-btn').forEach(btn=>{btn.addEventListener('click',()=>{document.getElementById(id).querySelectorAll('.opt-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');settings[key]=key==='margin'?parseInt(btn.dataset.val):btn.dataset.val})})}
+bindOptBtns('pageSizeBtns','pageSize');bindOptBtns('orientationBtns','orientation');bindOptBtns('marginBtns','margin');bindOptBtns('fitBtns','fit');
+document.getElementById('qualitySlider').addEventListener('input',function(){settings.quality=parseInt(this.value)/100;document.getElementById('qualityVal').textContent=this.value+'%'});
+
+document.getElementById('clearBtn').addEventListener('click',()=>{
+  files.forEach(f=>{if(f.objectUrl)URL.revokeObjectURL(f.objectUrl)});files=[];pdfDataUrl=null;
+  ['fileListWrap','pdfOptions'].forEach(id=>document.getElementById(id).classList.remove('visible'));
+  document.getElementById('convertBtn').disabled=true;document.getElementById('clearBtn').style.display='none';
+  document.getElementById('resultArea').classList.remove('visible');document.getElementById('processingOverlay').classList.remove('active');
+  showToast('Cleared');
+});
+
+// ══ CONVERT ═══════════════════════════════════════════════════════════════════
+document.getElementById('convertBtn').addEventListener('click',startConvert);
+
+async function startConvert(){
+  if(!files.length)return;
+  document.getElementById('processingOverlay').classList.add('active');
+  document.getElementById('resultArea').classList.remove('visible');
+  document.getElementById('convertBtn').disabled=true;
+  const stepIds=['pStep1','pStep2','pStep3','pStep4'];
+  const msgs=['Parsing TIFF structure…','Decompressing image data…','Rendering PDF pages…','Finalising PDF…'];
+
+  try{
+    setStep(stepIds,0,msgs);setProgress(5);await delay(150);
+
+    let{w:pw,h:ph}=PAGE_SIZES[settings.pageSize];
+    if(settings.orientation==='landscape')[pw,ph]=[ph,pw];
+    const m=settings.margin;
+    const scale=96/72,cW=Math.round(pw*scale),cH=Math.round(ph*scale),mPx=Math.round(m*scale);
+    const canvas=document.createElement('canvas');canvas.width=cW;canvas.height=cH;
+    const ctx=canvas.getContext('2d');
+    const pageDataUrls=[];
+    let totalPages=0,pagesDone=0;
+
+    // Count total pages
+    for(const entry of files)totalPages+=(entry.pages?entry.pages.length:1);
+
+    setStep(stepIds,1,msgs);
+
+    for(const entry of files){
+      // Ensure buffer is loaded
+      if(!entry.buf)entry.buf=await entry.file.arrayBuffer();
+      if(!entry.pages)entry.pages=parseTiffPages(entry.buf);
+
+      for(const pageInfo of entry.pages){
+        document.getElementById('processingText').textContent=`Processing page ${pagesDone+1} of ${totalPages}…`;
+        setProgress(5+Math.round((pagesDone/totalPages)*80));
+
+        const imageData=await renderTiffPage(pageInfo);
+        ctx.clearRect(0,0,cW,cH);
+        ctx.fillStyle='#ffffff';ctx.fillRect(0,0,cW,cH);
+
+        const aW=cW-mPx*2,aH=cH-mPx*2;
+        const iw=imageData.width,ih=imageData.height;
+        let dW,dH;
+        if(settings.fit==='original'){dW=iw;dH=ih}
+        else if(settings.fit==='fill'){const s=Math.max(aW/iw,aH/ih);dW=iw*s;dH=ih*s}
+        else{const s=Math.min(aW/iw,aH/ih);dW=iw*s;dH=ih*s}
+
+        // Draw imageData to offscreen canvas then scale onto main canvas
+        const offscreen=document.createElement('canvas');offscreen.width=iw;offscreen.height=ih;
+        offscreen.getContext('2d').putImageData(imageData,0,0);
+        ctx.drawImage(offscreen,mPx+(aW-dW)/2,mPx+(aH-dH)/2,dW,dH);
+        pageDataUrls.push(canvas.toDataURL('image/jpeg',settings.quality));
+        pagesDone++;
+        await delay(10);
+      }
+    }
+
+    setStep(stepIds,2,msgs);setProgress(90);await delay(100);
+    setStep(stepIds,3,msgs);setProgress(95);await delay(100);
+    pdfDataUrl=buildPDF(pageDataUrls,pw,ph);
+    setProgress(100);await delay(100);
+
+    document.getElementById('processingOverlay').classList.remove('active');
+    document.getElementById('resultArea').classList.add('visible');
+    document.getElementById('convertBtn').disabled=false;
+
+    const baseName=files[0].file.name.replace(/\.[^.]+$/,'');
+    const fname=files.length>1?`${baseName}-and-${files.length-1}-more.pdf`:`${baseName}.pdf`;
+    document.getElementById('resultFilename').textContent=fname;
+    document.getElementById('resultMeta').textContent=`${pageDataUrls.length} page${pageDataUrls.length!==1?'s':''} · ${PAGE_SIZES[settings.pageSize].label} · ${Math.round(pdfDataUrl.length*.75/1024)} KB`;
+    document.getElementById('resultPageCount').textContent=`${pageDataUrls.length} page${pageDataUrls.length!==1?'s':''}`;
+    document.getElementById('rPages').textContent=pageDataUrls.length;
+    document.getElementById('rPaperSize').textContent=PAGE_SIZES[settings.pageSize].label+(settings.orientation==='landscape'?' (L)':' (P)');
+    document.getElementById('rOrientation').textContent=settings.orientation.charAt(0).toUpperCase()+settings.orientation.slice(1);
+    document.getElementById('rQuality').textContent=Math.round(settings.quality*100)+'%';
+    showToast('PDF ready — click Download to save');
+  }catch(err){
+    document.getElementById('processingOverlay').classList.remove('active');
+    document.getElementById('convertBtn').disabled=false;
+    showToast('Error: '+err.message);
+    console.error(err);
+  }
+}
+
+// ══ TIFF PARSER ════════════════════════════════════════════════════════════════
+function parseTiffPages(buf){
+  const view=new DataView(buf);
+  const byteOrder=view.getUint16(0);
+  const le=byteOrder===0x4949;
+  function r16(off){return le?view.getUint16(off,true):view.getUint16(off,false)}
+  function r32(off){return le?view.getUint32(off,true):view.getUint32(off,false)}
+
+  const magic=r16(2);
+  if(magic!==42&&magic!==43)throw new Error('Not a valid TIFF file');
+
+  const pages=[];
+  let ifdOffset=r32(4);
+
+  while(ifdOffset!==0&&ifdOffset<buf.byteLength){
+    const page=readIFD(buf,view,le,r16,r32,ifdOffset);
+    if(page)pages.push({...page,buf});
+    ifdOffset=page?page.nextIFD:0;
+  }
+  return pages.length>0?pages:[{buf,width:1,height:1,compression:1,bitsPerSample:[8],samplesPerPixel:3,photometric:2,stripOffsets:[],stripByteCounts:[],rowsPerStrip:1,nextIFD:0}];
+}
+
+function readIFD(buf,view,le,r16,r32,ifdOffset){
+  if(ifdOffset+2>buf.byteLength)return null;
+  const entryCount=r16(ifdOffset);
+  const tags={};
+
+  for(let i=0;i<entryCount;i++){
+    const off=ifdOffset+2+i*12;
+    if(off+12>buf.byteLength)break;
+    const tag=r16(off);
+    const type=r16(off+2);
+    const count=r32(off+4);
+    const typeSize=[0,1,1,2,4,8,1,1,2,4,8,4,8][type]||1;
+    let valOff=typeSize*count>4?r32(off+8):(off+8);
+    tags[tag]={type,count,offset:valOff};
+  }
+
+  function getVal(tag){
+    if(!tags[tag])return null;
+    const{type,count,offset}=tags[tag];
+    if(type===3)return le?view.getUint16(offset,true):view.getUint16(offset,false);
+    if(type===4)return le?view.getUint32(offset,true):view.getUint32(offset,false);
+    if(type===2){let s='';for(let i=0;i<count-1;i++){const c=view.getUint8(offset+i);if(c===0)break;s+=String.fromCharCode(c)}return s}
+    return null;
+  }
+
+  function getArray(tag){
+    if(!tags[tag])return null;
+    const{type,count,offset}=tags[tag];
+    const arr=[];
+    for(let i=0;i<count;i++){
+      if(type===3)arr.push(le?view.getUint16(offset+i*2,true):view.getUint16(offset+i*2,false));
+      else if(type===4)arr.push(le?view.getUint32(offset+i*4,true):view.getUint32(offset+i*4,false));
+    }
+    return arr.length?arr:null;
+  }
+
+  const width =getVal(256)||1;
+  const height=getVal(257)||1;
+  const compression=getVal(259)||1;
+  const photometric=getVal(262)||2;
+  const samplesPerPixel=getVal(277)||3;
+  const rowsPerStrip=getVal(278)||height;
+
+  // BitsPerSample: could be array
+  let bitsPerSample;
+  if(tags[258]&&tags[258].count>1)bitsPerSample=getArray(258);
+  else{const v=getVal(258)||8;bitsPerSample=Array(samplesPerPixel).fill(v)}
+
+  const stripOffsets  =getArray(273)||[getVal(273)||0];
+  const stripByteCounts=getArray(279)||[width*height*samplesPerPixel];
+
+  // Next IFD offset
+  const nextIFDOffset=ifdOffset+2+entryCount*12;
+  const nextIFD=nextIFDOffset+4<=buf.byteLength?(le?view.getUint32(nextIFDOffset,true):view.getUint32(nextIFDOffset,false)):0;
+
+  return{width,height,compression,photometric,samplesPerPixel,bitsPerSample,rowsPerStrip,stripOffsets,stripByteCounts,nextIFD};
+}
+
+// ══ TIFF PAGE RENDERER ════════════════════════════════════════════════════════
+async function renderTiffPage(pageInfo){
+  const{buf,width,height,compression,photometric,samplesPerPixel,bitsPerSample,rowsPerStrip,stripOffsets,stripByteCounts}=pageInfo;
+  const view=new DataView(buf);
+  const u8=new Uint8Array(buf);
+
+  // Decompress all strips and concatenate
+  let rawPixels=new Uint8Array(width*height*samplesPerPixel*(bitsPerSample[0]>8?2:1));
+  let rowOffset=0;
+
+  for(let s=0;s<stripOffsets.length;s++){
+    const start=stripOffsets[s];
+    const byteCount=stripByteCounts[s];
+    if(start===undefined||start+byteCount>buf.byteLength)continue;
+    const stripData=u8.slice(start,start+byteCount);
+
+    let decompressed;
+    if(compression===1){
+      decompressed=stripData;
+    }else if(compression===5){
+      decompressed=decompressLZW(stripData);
+    }else if(compression===32773){
+      decompressed=decompressPackBits(stripData);
+    }else{
+      throw new Error(`TIFF compression type ${compression} is not supported in this browser tool. Supported: Uncompressed (1), LZW (5), PackBits (32773). Please use a desktop tool (e.g. LibreOffice, GIMP) to convert this file to an uncompressed TIFF first.`);
+    }
+    rawPixels.set(decompressed.slice(0,Math.min(decompressed.length,rawPixels.length-rowOffset)),rowOffset);
+    rowOffset+=decompressed.length;
+  }
+
+  // Build ImageData (RGBA)
+  const imageData=new ImageData(width,height);
+  const out=imageData.data;
+  const bps=bitsPerSample[0];
+  const bpsDiv=bps>8?(1<<(bps-8)):1;
+
+  for(let y=0;y<height;y++){
+    for(let x=0;x<width;x++){
+      const pixIdx=(y*width+x);
+      const outIdx=pixIdx*4;
+      const rawIdx=pixIdx*samplesPerPixel*(bps>8?2:1);
+
+      let r,g,b;
+      if(samplesPerPixel>=3){
+        if(bps>8){
+          r=rawPixels[rawIdx]||0;
+          g=rawPixels[rawIdx+2]||0;
+          b=rawPixels[rawIdx+4]||0;
+        }else{
+          r=rawPixels[rawIdx]||0;
+          g=rawPixels[rawIdx+1]||0;
+          b=rawPixels[rawIdx+2]||0;
+        }
+      }else{
+        // Grayscale
+        const gray=bps>8?(rawPixels[rawIdx]||0):(rawPixels[rawIdx]||0);
+        r=g=b=gray;
+      }
+
+      // Photometric interpretation
+      if(photometric===0){r=255-r;g=255-g;b=255-b} // WhiteIsZero → invert
+      out[outIdx]=r;out[outIdx+1]=g;out[outIdx+2]=b;out[outIdx+3]=255;
+    }
+  }
+  return imageData;
+}
+
+// ══ LZW DECODER ════════════════════════════════════════════════════════════════
+function decompressLZW(input){
+  const CLEAR_CODE=256,EOI_CODE=257;
+  let table=[],nextCode=258,codeSize=9,bitBuf=0,bitCount=0,pos=0;
+
+  // Build initial table
+  for(let i=0;i<256;i++)table[i]=[i];
+
+  function readCode(){
+    while(bitCount<codeSize&&pos<input.length){
+      bitBuf|=(input[pos++]<<bitCount);bitCount+=8;
+    }
+    const code=bitBuf&((1<<codeSize)-1);
+    bitBuf>>=codeSize;bitCount-=codeSize;
+    return code;
+  }
+
+  const output=[];
+  let prev=null;
+
+  while(true){
+    const code=readCode();
+    if(code===EOI_CODE)break;
+    if(code===CLEAR_CODE){
+      table=[];for(let i=0;i<256;i++)table[i]=[i];
+      nextCode=258;codeSize=9;prev=null;continue;
+    }
+
+    let entry;
+    if(code<table.length){
+      entry=table[code];
+    }else if(code===nextCode&&prev!==null){
+      entry=[...prev,prev[0]];
+    }else{
+      break;
+    }
+
+    for(const b of entry)output.push(b);
+
+    if(prev!==null&&nextCode<4096){
+      table[nextCode++]=[...prev,entry[0]];
+      if(nextCode>=(1<<codeSize)&&codeSize<12)codeSize++;
+    }
+    prev=entry;
+  }
+  return new Uint8Array(output);
+}
+
+// ══ PACKBITS DECODER ════════════════════════════════════════════════════════════
+function decompressPackBits(input){
+  const output=[];
+  let i=0;
+  while(i<input.length){
+    const n=input[i++];
+    if(n>=0&&n<=127){
+      for(let j=0;j<=n&&i<input.length;j++)output.push(input[i++]);
+    }else if(n>=129){
+      const val=input[i++];
+      for(let j=0;j<257-n;j++)output.push(val);
+    }
+    // n===128 = no-op
+  }
+  return new Uint8Array(output);
+}
+
+// ══ PDF BUILDER (same as jpg-to-pdf) ════════════════════════════════════════════
+function buildPDF(pageDataUrls,pw,ph){
+  const enc=new TextEncoder();const bufs=[];let byteOffset=0;
+  const allObjOffsets=new Array(3+pageDataUrls.length*3).fill(0);
+  function write(s){const b=enc.encode(s);bufs.push(b);byteOffset+=b.length}
+  function writeBytes(b){bufs.push(b);byteOffset+=b.length}
+  const hdr='%PDF-1.4\n%\xFF\xFF\xFF\xFF\n';const hdrB=new Uint8Array(hdr.length);
+  for(let i=0;i<hdr.length;i++)hdrB[i]=hdr.charCodeAt(i);bufs.push(hdrB);byteOffset+=hdrB.length;
+  function b64ToBytes(b64){const bin=atob(b64.split(',')[1]);const out=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)out[i]=bin.charCodeAt(i);return out}
+  const imgMeta=pageDataUrls.map(d=>({bytes:b64ToBytes(d),imgW:Math.round(pw*96/72),imgH:Math.round(ph*96/72)}));
+  allObjOffsets[0]=byteOffset;write(`1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n`);
+  allObjOffsets[1]=byteOffset;const kids=pageDataUrls.map((_,i)=>`${3+i*2+1} 0 R`).join(' ');
+  write(`2 0 obj\n<< /Type /Pages /Kids [${kids}] /Count ${pageDataUrls.length} >>\nendobj\n`);
+  for(let i=0;i<pageDataUrls.length;i++){
+    const{bytes,imgW,imgH}=imgMeta[i];const xobjNum=3+i*2,pageNum=3+i*2+1,contNum=3+pageDataUrls.length*2+i;
+    allObjOffsets[xobjNum-1]=byteOffset;
+    write(`${xobjNum} 0 obj\n<< /Type /XObject /Subtype /Image /Width ${imgW} /Height ${imgH} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${bytes.length} >>\nstream\n`);
+    writeBytes(bytes);write(`\nendstream\nendobj\n`);
+    const cs=enc.encode(`q ${pw.toFixed(2)} 0 0 ${ph.toFixed(2)} 0 0 cm /Im${i} Do Q`);
+    allObjOffsets[contNum-1]=byteOffset;write(`${contNum} 0 obj\n<< /Length ${cs.length} >>\nstream\n`);writeBytes(cs);write(`\nendstream\nendobj\n`);
+    allObjOffsets[pageNum-1]=byteOffset;write(`${pageNum} 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${pw.toFixed(2)} ${ph.toFixed(2)}] /Resources << /XObject << /Im${i} ${xobjNum} 0 R >> >> /Contents ${contNum} 0 R >>\nendobj\n`);
+  }
+  const xrefOffset=byteOffset;const totalN=3+pageDataUrls.length*3;
+  write(`xref\n0 ${totalN+1}\n`);write(`0000000000 65535 f \n`);
+  for(let i=0;i<totalN;i++)write((allObjOffsets[i]||0).toString().padStart(10,'0')+' 00000 n \n');
+  write(`trailer\n<< /Size ${totalN+1} /Root 1 0 R >>\nstartxref\n${xrefOffset}\n%%EOF\n`);
+  let total=0;for(const b of bufs)total+=b.length;const out=new Uint8Array(total);let pos=0;for(const b of bufs){out.set(b,pos);pos+=b.length}
+  let bin='';for(let i=0;i<out.length;i++)bin+=String.fromCharCode(out[i]);return'data:application/pdf;base64,'+btoa(bin);
+}
+
+// ══ DOWNLOAD / AGAIN ═════════════════════════════════════════════════════════
+document.getElementById('downloadBtn').addEventListener('click',()=>{
+  if(!pdfDataUrl)return;
+  const baseName=files.length>0?files[0].file.name.replace(/\.[^.]+$/,''):'output';
+  const fname=files.length>1?`${baseName}-and-${files.length-1}-more.pdf`:`${baseName}.pdf`;
+  const a=document.createElement('a');a.href=pdfDataUrl;a.download=fname;a.click();showToast('Downloading PDF…');
+});
+document.getElementById('convertAgainBtn').addEventListener('click',()=>{document.getElementById('resultArea').classList.remove('visible');pdfDataUrl=null;document.getElementById('convertBtn').disabled=false;showToast('Adjust settings and convert again')});
+
+// ══ HELPERS ═══════════════════════════════════════════════════════════════════
+function setStep(ids,idx,msgs){ids.forEach((id,i)=>{const el=document.getElementById(id);el.classList.remove('active','done');if(i<idx)el.classList.add('done');else if(i===idx)el.classList.add('active')});document.getElementById('processingText').textContent=msgs[idx]}
+function setProgress(pct){document.getElementById('progressBar').style.width=pct+'%'}
+function delay(ms){return new Promise(r=>setTimeout(r,ms))}
+function formatSize(bytes){if(bytes<1024)return bytes+' B';if(bytes<1024*1024)return(bytes/1024).toFixed(1)+' KB';return(bytes/(1024*1024)).toFixed(2)+' MB'}
+
+// ══ FAQ ═══════════════════════════════════════════════════════════════════════
+document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{const item=q.parentElement,wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open')}));
+</script>
+<script>
+function closeMobileMenu() {
+  document.getElementById('mobileMenuToggle').classList.remove('active');
+  document.getElementById('mobileNav').classList.remove('active');
+}
+</script>
+</body>
+</html>

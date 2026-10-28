@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>Remove Image Background | Free Background Remover</title>
+<meta name="description" content="Remove backgrounds from images instantly with AI-powered precision. Ideal for product photos, presentations, and social media posts in seconds.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jpg2go.com/background-remover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="adsense.js"></script>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Remove Image Background",
+    "url": "https://jpg2go.com/remove-background",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Remove backgrounds from images instantly with AI-powered precision. Ideal for product photos, presentations, and social media posts in seconds."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is an online background remover?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A background remover is a tool that automatically removes the background from an image and isolates the main subject."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does an AI background remover work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AI algorithms detect the subject of the image and separate it from the background using object recognition technology."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I create transparent images with a background remover?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, most background remover tools allow you to export the image with a transparent PNG background."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is background removal useful for ecommerce?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, ecommerce stores use background removal to create clean product photos for marketplaces and online catalogs."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I replace the background after removing it?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Many tools allow you to add a new background, color, or graphic after removing the original background."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What image formats work best with background remover tools?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Common formats like JPG, PNG, and WebP usually work best for automatic background removal."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+
+<style>
+/* ══ ROOT TOKENS ══ */
+:root {
+  --ink: #0d0d0d;
+  --paper: #f7f4ee;
+  --cream: #ede9df;
+  --accent: #c84b2f;
+  --accent-light: #e8d5cf;
+  --muted: #7a7567;
+  --border: #d4cfc4;
+  --white: #ffffff;
+  --shadow: 0 2px 24px rgba(13,13,13,0.08);
+  --shadow-lg: 0 8px 48px rgba(13,13,13,0.12);
+  --ai-purple: #c84b2f;
+  --ai-purple-light: #e8d5cf;
+  --green: #1a8a4a;
+  --green-light: #d4f0e0;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;min-height:100vh}
+
+/* ══ HEADER ══ */
+header{background:var(--ink);color:var(--paper);position:sticky;top:0;z-index:100;border-bottom:2px solid var(--accent)}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1.6rem;color:var(--paper);text-decoration:none;letter-spacing:-0.02em}
+.logo span{color:var(--accent)}
+nav{display:flex;gap:2rem;align-items:center}
+nav a{color:#a8a39a;text-decoration:none;font-size:.875rem;font-weight:500;letter-spacing:.02em;transition:color .2s}
+nav a:hover{color:var(--paper)}
+.nav-cta{background:var(--accent);color:var(--white)!important;padding:.4rem 1rem;border-radius:4px;transition:background .2s!important}
+.nav-cta:hover{background:#a83825!important}
+.mobile-menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem;flex-direction:column;gap:5px;align-items:center;justify-content:center;width:40px;height:40px}
+.mobile-menu-toggle span{display:block;width:24px;height:2px;background:var(--paper);transition:all .3s ease;border-radius:2px}
+.mobile-menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(6px,6px)}
+.mobile-menu-toggle.active span:nth-child(2){opacity:0}
+.mobile-menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
+.mobile-nav{display:none;position:fixed;top:64px;left:0;right:0;background:var(--ink);border-top:2px solid var(--accent);padding:1.5rem 2rem;flex-direction:column;gap:1rem;z-index:99;transform:translateY(-100%);opacity:0;transition:transform .3s ease,opacity .3s ease;visibility:hidden}
+.mobile-nav.active{display:flex;transform:translateY(0);opacity:1;visibility:visible}
+.mobile-nav a{color:#a8a39a;text-decoration:none;font-size:.95rem;font-weight:500;padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.1);transition:color .2s}
+.mobile-nav a:last-child{border-bottom:none}
+.mobile-nav a:hover{color:var(--paper)}
+.mobile-nav .nav-cta{background:var(--accent);color:var(--white)!important;padding:.75rem 1.5rem;border-radius:4px;text-align:center;border:none;margin-top:.5rem}
+
+/* ══ HERO ══ */
+.hero{background:var(--ink);color:var(--paper);padding:4rem 2rem 3.5rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(200,75,47,.2) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:1px;height:60px;background:linear-gradient(to bottom,transparent,rgba(200,75,47,.4))}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.12em;color:#c84b2f;text-transform:uppercase;border:1px solid rgba(200,75,47,.4);background:rgba(200,75,47,.12);padding:.3rem .9rem;border-radius:2px;margin-bottom:1.5rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5.5vw,3.6rem);font-weight:900;line-height:1.1;letter-spacing:-.03em;margin-bottom:1.25rem}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-desc{font-size:1.05rem;color:#9e9990;max-width:520px;margin:0 auto 1.75rem;font-weight:300;line-height:1.7}
+.hero-pills{display:flex;justify-content:center;flex-wrap:wrap;gap:.5rem}
+.hero-pill{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.06em;color:#a8a39a;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:.3rem .75rem;border-radius:100px}
+
+/* ══ TOOL SECTION ══ */
+.tool-section{max-width:1140px;margin:-1.5rem auto 0;padding:0 1.5rem 4rem;position:relative;z-index:10}
+.tool-card{background:var(--white);border-radius:12px;box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid var(--border)}
+.tool-card-header{background:var(--cream);padding:1rem 1.5rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid var(--border)}
+.dot{width:12px;height:12px;border-radius:50%;display:inline-block}
+.dot-r{background:#ff5f57}.dot-y{background:#febc2e}.dot-g{background:#28c840}
+.tool-card-title{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--muted);margin-left:.5rem;letter-spacing:.05em}
+.tool-body{padding:1.5rem}
+
+/* ══ DROP ZONE ══ */
+.drop-zone{border:2px dashed var(--border);border-radius:10px;padding:3rem 2rem;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;background:var(--paper);position:relative}
+.drop-zone:hover,.drop-zone.drag-over{border-color:var(--accent);background:var(--ai-purple-light)}
+.drop-zone input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.drop-icon{width:52px;height:52px;background:var(--ai-purple-light);border:1px solid rgba(200,75,47,.3);border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:var(--accent)}
+.drop-zone h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:.4rem}
+.drop-zone p{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+.formats-pill{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.08em;color:var(--accent);background:var(--ai-purple-light);padding:.25rem .75rem;border-radius:100px;display:inline-block}
+
+/* ══ TWO-COL LAYOUT ══ */
+.tool-columns{display:grid;grid-template-columns:1fr 1.1fr;gap:1.5rem;margin-top:1.5rem;align-items:start}
+.tool-col-left{display:flex;flex-direction:column;gap:1.25rem}
+.tool-col-right{display:flex;flex-direction:column;gap:1.25rem}
+
+/* ══ PANEL BOXES ══ */
+.panel-box{background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:1.15rem 1.25rem}
+.panel-box-title{font-family:'DM Mono',monospace;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.panel-box-title svg{color:var(--accent);flex-shrink:0}
+
+/* ══ METHOD TABS ══ */
+.mode-tabs{display:flex;gap:0;background:var(--cream);border:1.5px solid var(--border);border-radius:8px;padding:3px;margin-bottom:1.1rem;width:fit-content}
+.mode-tab{font-family:'DM Mono',monospace;font-size:.72rem;font-weight:500;letter-spacing:.04em;color:var(--muted);background:transparent;border:none;padding:.42rem 1rem;border-radius:6px;cursor:pointer;transition:all .18s}
+.mode-tab.active{background:var(--white);color:var(--accent);box-shadow:0 1px 4px rgba(13,13,13,.1);font-weight:600}
+.method-panel{display:none}
+.method-panel.active{display:block}
+
+/* ══ FORM ROWS ══ */
+.form-row{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.9rem}
+.form-row:last-child{margin-bottom:0}
+.form-label{font-family:'DM Mono',monospace;font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);display:flex;align-items:center;justify-content:space-between}
+.form-label-hint{font-weight:400;text-transform:none;letter-spacing:0;color:#a8a39a;font-size:.63rem}
+.slider-wrap{display:flex;align-items:center;gap:.75rem}
+input[type="range"].form-slider{-webkit-appearance:none;appearance:none;width:100%;height:5px;background:var(--border);border-radius:100px;outline:none;cursor:pointer}
+input[type="range"].form-slider::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;background:var(--accent);border-radius:50%;cursor:pointer;box-shadow:0 1px 6px rgba(200,75,47,.4);transition:transform .15s}
+input[type="range"].form-slider::-webkit-slider-thumb:hover{transform:scale(1.2)}
+input[type="range"].form-slider::-moz-range-thumb{width:18px;height:18px;background:var(--accent);border-radius:50%;border:none;cursor:pointer}
+.slider-val{font-family:'DM Mono',monospace;font-size:.82rem;color:var(--accent);font-weight:600;min-width:36px;text-align:right}
+
+/* ══ SAMPLE SWATCH PICKER ══ */
+.sample-instruction{font-size:.82rem;color:var(--muted);line-height:1.5;margin-bottom:.85rem;padding:.65rem .8rem;background:var(--cream);border-radius:7px;border:1px solid var(--border)}
+.sample-instruction strong{color:var(--ink)}
+.swatch-grid{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.85rem;align-items:center}
+.swatch-item{width:28px;height:28px;border-radius:5px;border:2px solid rgba(0,0,0,.12);cursor:pointer;position:relative;flex-shrink:0;transition:transform .15s,border-color .15s}
+.swatch-item:hover{transform:scale(1.15);border-color:var(--accent)}
+.swatch-item.active{border-color:var(--accent);box-shadow:0 0 0 2px rgba(200,75,47,.25)}
+.swatch-clear{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--muted);background:none;border:1.5px solid var(--border);border-radius:5px;padding:.2rem .6rem;cursor:pointer;transition:all .15s;white-space:nowrap}
+.swatch-clear:hover{border-color:var(--accent);color:var(--accent)}
+.colour-pick-row{display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem}
+.colour-pick-label{font-family:'DM Mono',monospace;font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);min-width:100px}
+input[type="color"].color-picker{width:36px;height:36px;border:1.5px solid var(--border);border-radius:6px;cursor:pointer;padding:2px;background:var(--white);outline:none;flex-shrink:0}
+.color-hex{font-family:'DM Mono',monospace;font-size:.78rem;color:var(--ink);background:var(--white);border:1.5px solid var(--border);border-radius:6px;padding:.35rem .65rem;outline:none;width:100px;transition:border-color .2s}
+.color-hex:focus{border-color:var(--accent)}
+
+/* ══ TOGGLE ══ */
+.toggle-row{display:flex;align-items:center;gap:.85rem;padding:.4rem 0}
+.toggle-switch{position:relative;width:36px;height:20px;flex-shrink:0;cursor:pointer}
+.toggle-switch input{opacity:0;width:0;height:0;position:absolute}
+.toggle-track{position:absolute;inset:0;background:var(--border);border-radius:100px;transition:background .2s}
+.toggle-switch input:checked+.toggle-track{background:var(--accent)}
+.toggle-knob{position:absolute;top:3px;left:3px;width:14px;height:14px;background:white;border-radius:50%;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.2);pointer-events:none}
+.toggle-switch input:checked~.toggle-knob{transform:translateX(16px)}
+.toggle-label{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--muted);letter-spacing:.03em;flex:1;line-height:1.4}
+
+/* ══ BACKGROUND REPLACE ══ */
+.bg-options{display:grid;grid-template-columns:repeat(5,1fr);gap:.45rem;margin-bottom:.85rem}
+.bg-opt{border:1.5px solid var(--border);border-radius:8px;padding:.5rem .35rem;cursor:pointer;text-align:center;transition:all .18s;background:var(--white)}
+.bg-opt:hover{border-color:var(--accent)}
+.bg-opt.active{border-color:var(--accent);background:var(--accent-light)}
+.bg-opt-swatch{width:100%;height:28px;border-radius:4px;margin-bottom:.3rem;overflow:hidden}
+.bg-opt-name{font-family:'DM Mono',monospace;font-size:.6rem;font-weight:600;color:var(--muted);letter-spacing:.03em;display:block}
+.bg-opt.active .bg-opt-name{color:var(--accent)}
+.checkerboard{background-image:repeating-conic-gradient(#ccc 0% 25%,#fff 0% 50%);background-size:10px 10px}
+.custom-bg-row{display:flex;align-items:center;gap:.75rem;margin-top:.25rem}
+.custom-bg-row.hidden{display:none}
+
+/* ══ PREVIEW PANEL ══ */
+.preview-panel{background:var(--ink);border-radius:10px;overflow:hidden;position:sticky;top:84px}
+.preview-panel-header{padding:.75rem 1rem;border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between}
+.preview-panel-title{font-family:'DM Mono',monospace;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:#9e9990;display:flex;align-items:center;gap:.4rem}
+.preview-badge{font-family:'DM Mono',monospace;font-size:.6rem;background:rgba(200,75,47,.2);color:var(--accent);border:1px solid rgba(200,75,47,.3);padding:.1rem .45rem;border-radius:100px;letter-spacing:.06em}
+.preview-canvas-wrap{position:relative;width:100%;min-height:280px;display:flex;align-items:center;justify-content:center;background:repeating-conic-gradient(rgba(255,255,255,.04) 0% 25%,transparent 0% 50%) 0 0/16px 16px;overflow:hidden}
+.preview-placeholder{display:flex;flex-direction:column;align-items:center;gap:.75rem;padding:3.5rem 2rem}
+.preview-placeholder-icon{width:52px;height:52px;background:rgba(200,75,47,.12);border:1px solid rgba(200,75,47,.2);border-radius:10px;display:flex;align-items:center;justify-content:center;color:rgba(200,75,47,.5)}
+.preview-placeholder p{font-family:'DM Mono',monospace;font-size:.72rem;color:rgba(255,255,255,.25);text-align:center;letter-spacing:.05em;line-height:1.6}
+#previewCanvas{max-width:100%;max-height:380px;display:none;image-rendering:auto}
+.preview-tabs{display:flex;gap:4px;padding:.6rem 1rem;border-top:1px solid rgba(255,255,255,.06)}
+.preview-tab{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.06em;color:rgba(255,255,255,.35);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:4px;padding:.25rem .65rem;cursor:pointer;transition:all .15s}
+.preview-tab.active,.preview-tab:hover{color:var(--paper);background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2)}
+.preview-note{padding:.5rem 1rem;font-family:'DM Mono',monospace;font-size:.63rem;color:rgba(255,255,255,.2);text-align:center;letter-spacing:.04em}
+
+/* ══ FILE QUEUE ══ */
+.file-queue-wrap{display:none}
+.file-queue-wrap.visible{display:block}
+.file-queue-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem;flex-wrap:wrap;gap:.5rem}
+.file-queue-label{font-family:'DM Mono',monospace;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.file-queue-count{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--accent);background:var(--accent-light);padding:.15rem .5rem;border-radius:100px}
+.file-queue{display:flex;flex-direction:column;gap:.5rem;max-height:220px;overflow-y:auto;padding-right:2px}
+.file-queue::-webkit-scrollbar{width:4px}
+.file-queue::-webkit-scrollbar-track{background:var(--cream);border-radius:2px}
+.file-queue::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.file-item{display:flex;align-items:center;gap:.75rem;background:var(--paper);border:1px solid var(--border);border-radius:8px;padding:.55rem .85rem;cursor:pointer;transition:border-color .15s}
+.file-item:hover{border-color:var(--accent)}
+.file-item.selected{border-color:var(--accent);background:var(--accent-light)}
+.file-thumb-wrap{width:36px;height:36px;border-radius:5px;border:1px solid var(--border);flex-shrink:0;overflow:hidden;background:var(--cream);background-image:repeating-conic-gradient(#ddd 0% 25%,#fff 0% 50%);background-size:8px 8px}
+.file-thumb{width:100%;height:100%;object-fit:cover;display:block}
+.file-info{flex:1;min-width:0}
+.file-name{font-size:.78rem;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.file-meta{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--muted);margin-top:.1rem}
+.file-remove{background:none;border:none;cursor:pointer;color:var(--muted);padding:.2rem;border-radius:4px;display:flex;align-items:center;justify-content:center;transition:color .15s,background .15s;flex-shrink:0}
+.file-remove:hover{color:var(--accent);background:var(--accent-light)}
+.add-more-btn{display:flex;align-items:center;justify-content:center;gap:.5rem;border:1.5px dashed var(--border);border-radius:8px;padding:.6rem;cursor:pointer;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.05em;color:var(--muted);background:transparent;width:100%;margin-top:.5rem;transition:border-color .2s,color .2s,background .2s;position:relative;overflow:hidden}
+.add-more-btn input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.add-more-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}
+
+/* ══ ACTION BAR ══ */
+.action-bar{display:flex;gap:.75rem;margin-top:1.25rem;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:var(--white);border:none;border-radius:6px;padding:.65rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:.875rem;font-weight:600;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:.5rem;text-decoration:none}
+.btn-primary:hover{background:#a83825;transform:translateY(-1px)}
+.btn-primary:disabled{background:var(--border);color:var(--muted);cursor:not-allowed;transform:none}
+.btn-secondary{background:transparent;color:var(--ink);border:1.5px solid var(--border);border-radius:6px;padding:.65rem 1.25rem;font-family:'DM Sans',sans-serif;font-size:.875rem;font-weight:500;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:.5rem}
+.btn-secondary:hover{border-color:var(--ink);background:var(--cream)}
+.btn-secondary:disabled{opacity:.4;cursor:not-allowed}
+
+/* ══ PROCESSING ══ */
+.processing-overlay{display:none}
+.processing-overlay.active{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;padding:3rem;background:var(--paper);border-radius:10px;border:1px solid var(--border);margin-top:1.5rem}
+.ai-spinner{width:48px;height:48px;border:3px solid var(--ai-purple-light);border-top-color:var(--accent);border-radius:50%;animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.processing-text{font-family:'DM Mono',monospace;font-size:.8rem;color:var(--muted);letter-spacing:.05em}
+.processing-progress{width:100%;max-width:280px;background:var(--border);border-radius:100px;height:4px;overflow:hidden}
+.processing-progress-bar{height:100%;background:var(--accent);border-radius:100px;transition:width .25s ease;width:0%}
+.processing-steps{display:flex;flex-direction:column;gap:.4rem;width:100%;max-width:280px}
+.processing-step{display:flex;align-items:center;gap:.6rem;font-family:'DM Mono',monospace;font-size:.68rem;color:#bbb}
+.processing-step.done{color:#28c840}
+.processing-step.active{color:var(--accent)}
+.step-dot{width:8px;height:8px;border-radius:50%;background:currentColor;flex-shrink:0}
+
+/* ══ RESULTS ══ */
+.result-area{display:none;margin-top:1.5rem}
+.result-area.visible{display:block}
+.result-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;flex-wrap:wrap;gap:.5rem}
+.result-title{font-family:'DM Mono',monospace;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.result-count-badge{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--green);background:var(--green-light);padding:.2rem .6rem;border-radius:100px;border:1px solid rgba(26,138,74,.2)}
+.result-list{display:flex;flex-direction:column;gap:.6rem}
+.result-row{display:flex;align-items:center;gap:.85rem;background:var(--paper);border:1px solid var(--border);border-radius:9px;padding:.75rem 1rem;transition:border-color .15s}
+.result-row:hover{border-color:var(--green)}
+.result-thumb{width:52px;height:52px;border-radius:5px;object-fit:cover;border:1px solid var(--border);flex-shrink:0;background-image:repeating-conic-gradient(#ddd 0% 25%,#fff 0% 50%);background-size:8px 8px}
+.result-info{flex:1;min-width:0}
+.result-filename{font-size:.82rem;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:.2rem}
+.result-meta{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--muted)}
+.bg-badge{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--accent);background:var(--accent-light);border:1px solid rgba(200,75,47,.2);padding:.1rem .4rem;border-radius:3px;white-space:nowrap;display:inline-block;margin-top:.15rem}
+.result-dl{background:none;border:1.5px solid var(--border);border-radius:5px;padding:.35rem .65rem;cursor:pointer;color:var(--muted);font-family:'DM Mono',monospace;font-size:.65rem;display:flex;align-items:center;gap:.3rem;transition:all .18s;white-space:nowrap;flex-shrink:0}
+.result-dl:hover{border-color:var(--green);color:var(--green);background:var(--green-light)}
+
+/* ══ TOAST ══ */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--ink);color:var(--paper);padding:.75rem 1.5rem;border-radius:6px;font-size:.875rem;font-weight:500;transition:transform .3s cubic-bezier(.34,1.56,.64,1);z-index:999;border-left:3px solid var(--accent);white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* ══ CONTENT ══ */
+.content-section{max-width:1000px;margin:0 auto;padding:4rem 1.5rem}
+.section-tag{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem;display:block}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;letter-spacing:-.02em;margin-bottom:1.25rem;line-height:1.2}
+.content-prose{color:#4a4640;font-size:.975rem;line-height:1.8;max-width:720px}
+.content-prose p{margin-bottom:1rem}
+.content-prose p:last-child{margin-bottom:0}
+.divider{border:none;border-top:1px solid var(--border);max-width:1000px;margin:0 auto}
+
+/* ══ HOW IT WORKS ══ */
+.how-section{background:var(--ink);color:var(--paper);padding:1.75rem 2rem;position:relative;overflow:hidden}
+.how-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 100%,rgba(200,75,47,.14) 0%,transparent 70%);pointer-events:none}
+.how-inner{max-width:1000px;margin:0 auto;position:relative}
+.how-hdr{text-align:center;margin-bottom:1.5rem}
+.how-hdr .section-tag{color:#c84b2f}
+.how-hdr .section-title{color:var(--paper);margin-bottom:.3rem}
+.how-sub{color:#9e9990;font-size:.9rem;font-weight:300}
+.steps-grid{display:flex;align-items:stretch;gap:0}
+.step-card{flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:.85rem 1rem;position:relative;transition:background .25s,border-color .25s,transform .25s}
+.step-card:hover{background:rgba(200,75,47,.08);border-color:rgba(200,75,47,.35);transform:translateY(-4px)}
+.step-connector{display:flex;align-items:center;justify-content:center;padding:0 .5rem;color:rgba(200,75,47,.5);flex-shrink:0;margin-top:-1rem}
+.step-number{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:rgba(200,75,47,.25);line-height:1;margin-bottom:.35rem;letter-spacing:-.04em}
+.step-icon{width:36px;height:36px;background:rgba(200,75,47,.15);border:1px solid rgba(200,75,47,.3);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:.6rem;color:#c84b2f}
+.step-title{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:var(--paper);margin-bottom:.35rem;line-height:1.3}
+.step-desc{font-size:.8rem;color:#9e9990;line-height:1.55;margin-bottom:.6rem}
+.step-desc strong{color:#d4cfc4}
+.step-pill{display:inline-block;font-family:'DM Mono',monospace;font-size:.63rem;letter-spacing:.05em;color:#c84b2f;background:rgba(200,75,47,.12);border:1px solid rgba(200,75,47,.25);padding:.2rem .6rem;border-radius:100px}
+.how-cta{text-align:center;margin-top:1.5rem;display:flex;flex-direction:column;align-items:center;gap:.55rem}
+.how-note{font-size:.8rem;color:#7a7567;font-family:'DM Mono',monospace}
+
+/* ══ FEATURES / USE CASES ══ */
+.features-grid,.use-cases-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:2rem}
+.feature-card,.use-case-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.5rem 1.25rem;transition:box-shadow .2s,transform .2s}
+.feature-card:hover,.use-case-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.feature-icon,.use-case-icon{font-size:1.75rem;margin-bottom:.75rem;display:block}
+.feature-title,.use-case-title{font-weight:700;font-size:.9rem;margin-bottom:.4rem}
+.feature-desc,.use-case-text{font-size:.82rem;color:var(--muted);line-height:1.5}
+
+/* ══ FAQ ══ */
+.faq-list{margin-top:2rem}
+.faq-item{border-bottom:1px solid var(--border);padding:1.25rem 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-weight:600;font-size:.95rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-q::after{content:'+';font-size:1.2rem;color:var(--accent);flex-shrink:0;transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-size:.9rem;color:var(--muted);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .35s ease,margin-top .3s}
+.faq-item.open .faq-a{max-height:320px;margin-top:.75rem}
+
+/* ══ CTA ══ */
+.cta-section{background:var(--ink);color:var(--paper);padding:1.5rem 2rem;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid rgba(255,255,255,0.05)}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(200,75,47,.18) 0%,transparent 70%);pointer-events:none}
+.cta-inner{max-width:640px;margin:0 auto;position:relative}
+.cta-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-bottom:0.75rem;color:var(--paper)}
+.cta-desc{font-size:1rem;color:#9e9990;font-weight:300;margin-bottom:0.75rem;line-height:1.7}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:0.5rem}
+.cta-note{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.06em;color:#5a5650;margin-top:0.75rem;display:block}
+
+/* ══ RELATED ══ */
+.related-section{background:var(--cream);padding:5rem 2rem;border-top:1px solid var(--border)}
+.related-inner{max-width:1000px;margin:0 auto}
+.related-header{margin-bottom:2.5rem}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
+.related-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-decoration:none;color:inherit;display:block;transition:box-shadow .2s,transform .2s,border-color .2s;position:relative;overflow:hidden}
+.related-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border);transition:background .2s}
+.related-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px);border-color:var(--accent)}
+.related-card:hover::before{background:var(--accent)}
+.related-card-icon{font-size:1.85rem;margin-bottom:.85rem;display:block}
+.related-card-name{font-family:'Playfair Display',serif;font-weight:700;font-size:1rem;margin-bottom:.35rem;color:var(--ink);letter-spacing:-.01em}
+.related-card-desc{font-size:.82rem;color:var(--muted);line-height:1.5;margin-bottom:1rem}
+.related-card-tag{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--accent-light);padding:.2rem .5rem;border-radius:3px;display:inline-block}
+
+/* ══ FOOTER ══ */
+footer{background:var(--ink);color:#9e9990;padding:4rem 2rem 2rem;margin-top:3rem;border-top:1px solid rgba(255,255,255,0.05)}
+#footer-placeholder{margin-top:3rem}
+.footer-inner{max-width:1200px;
+  border-top: 1px solid rgba(255,255,255,0.05);margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid #2a2a2a}
+.footer-brand .logo{display:block;margin-bottom:.75rem}
+.footer-brand p{font-size:.85rem;line-height:1.6;max-width:240px}
+.footer-social{display:flex;gap:0;margin-top:1rem}
+.social-icon{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;color:#9e9990;transition:color .2s,transform .2s;border-radius:6px;margin-left:-8px}
+.social-icon:first-child{margin-left:0}
+.social-icon:hover{color:var(--paper);transform:translateY(-2px)}
+.footer-col-title{font-family:'DM Sans',sans-serif;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--paper);font-weight:600;margin-bottom:1rem}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.footer-links a{color:#9e9990;text-decoration:none;font-size:.85rem;transition:color .2s}
+.footer-links a:hover{color:var(--paper)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;font-size:.8rem;flex-wrap:wrap;gap:.75rem}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:960px){
+  .tool-columns{grid-template-columns:1fr}
+  .preview-panel{position:static}
+}
+@media(max-width:768px){
+  nav{display:none}
+  .mobile-menu-toggle{display:flex}
+  .steps-grid{flex-direction:column}
+  .step-connector{transform:rotate(90deg);padding:.25rem 0}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .bg-options{grid-template-columns:repeat(5,1fr)}
+}
+@media(max-width:480px){
+  .footer-grid{grid-template-columns:1fr;gap:2rem}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .bg-options{grid-template-columns:repeat(3,1fr)}
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeUp .6s ease both}
+.delay-1{animation-delay:.1s}
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">JPG2<span>Go</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="tools.html">Tools</a>
+      <a href="#tool" class="nav-cta">Convert Now</a>
+    </nav>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="tools.html" onclick="closeMobileMenu()">Tools</a>
+    <a href="#tool" class="nav-cta" onclick="closeMobileMenu()">Convert Now</a>
+  </nav>
+</header>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="fade-up">
+    <div class="hero-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>
+            Free Background Remover
+    </div>
+    <h1>Remove Image Background</h1>
+    <p class="hero-desc">Remove unwanted backgrounds from images instantly using our AI-powered background remover tool. Create transparent images for product photos, social media graphics, and professional design projects.</p>
+    <div class="hero-pills">
+      <span class="hero-pill">Colour Sampling</span>
+      <span class="hero-pill">Flood Fill</span>
+      <span class="hero-pill">Tolerance Control</span>
+      <span class="hero-pill">Edge Feathering</span>
+      <span class="hero-pill">Transparent Output</span>
+      <span class="hero-pill">Replace Background</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TOOL ══ -->
+<section class="tool-section" id="tool">
+  <div class="tool-card fade-up delay-1">
+    <div class="tool-card-header">
+      <span class="dot dot-r"></span>
+      <span class="dot dot-y"></span>
+      <span class="dot dot-g"></span>
+      <span class="tool-card-title">background-remover · colour-sample · flood-fill · tolerance · live-preview · browser-native</span>
+    </div>
+    <div class="tool-body">
+
+      <!-- Drop Zone -->
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" accept="image/jpeg,image/jpg,image/png,image/webp,.jpg,.jpeg,.png,.webp" multiple>
+        <div class="drop-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>
+        </div>
+        <h3>Drop your images here</h3>
+        <p>Remove unwanted backgrounds from images instantly using our AI-powered background remover tool. Create transparent images for product photos, social media graphics, and professional design projects.</p>
+        <span class="formats-pill">JPG · PNG · WebP · batch supported</span>
+      </div>
+
+      <!-- Two-column layout -->
+      <div class="tool-columns" id="toolColumns" style="display:none">
+
+        <!-- LEFT -->
+        <div class="tool-col-left">
+
+          <!-- Removal Method -->
+          <div class="panel-box">
+            <div class="panel-box-title">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              Removal Method
+            </div>
+            <div class="mode-tabs">
+              <button class="mode-tab active" data-method="sample">Colour Sample</button>
+              <button class="mode-tab" data-method="manual">Manual Colour</button>
+            </div>
+
+            <!-- SAMPLE METHOD -->
+            <div class="method-panel active" id="panelSample">
+              <div class="sample-instruction">
+                <strong>Click anywhere on the preview</strong> to sample that background colour. Add multiple samples for complex backgrounds. Then adjust Tolerance to expand the selection.
+              </div>
+              <div class="swatch-grid" id="swatchGrid">
+                <button class="swatch-clear" id="swatchClearBtn">Clear all samples</button>
+              </div>
+              <div class="form-row" style="margin-bottom:0">
+                <label class="form-label">
+                  Sampled colours
+                  <span class="form-label-hint" id="swatchCount">0 sampled</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- MANUAL METHOD -->
+            <div class="method-panel" id="panelManual">
+              <div class="colour-pick-row">
+                <span class="colour-pick-label">Background colour</span>
+                <input type="color" class="color-picker" id="manualColor" value="#ffffff">
+                <input type="text" class="color-hex" id="manualColorHex" value="#ffffff" maxlength="7">
+              </div>
+            </div>
+          </div>
+
+          <!-- Tolerance & Feather -->
+          <div class="panel-box">
+            <div class="panel-box-title">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+              Removal Controls
+            </div>
+
+            <div class="form-row">
+              <label class="form-label">
+                Tolerance
+                <span class="form-label-hint">How similar colours are removed</span>
+              </label>
+              <div class="slider-wrap">
+                <input type="range" class="form-slider" id="slTolerance" min="0" max="120" value="30">
+                <span class="slider-val" id="slToleranceVal">30</span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label class="form-label">
+                Edge Feather
+                <span class="form-label-hint">Softness of the removed edge</span>
+              </label>
+              <div class="slider-wrap">
+                <input type="range" class="form-slider" id="slFeather" min="0" max="20" value="2">
+                <span class="slider-val" id="slFeatherVal">2</span>
+              </div>
+            </div>
+
+            <div class="form-row" style="margin-bottom:0">
+              <label class="form-label">
+                Flood Fill Only
+                <span class="form-label-hint">Connected pixels from edge/corner</span>
+              </label>
+              <div class="toggle-row" style="padding:.2rem 0 0">
+                <label class="toggle-switch">
+                  <input type="checkbox" id="floodFillToggle" checked>
+                  <span class="toggle-track"></span>
+                  <span class="toggle-knob"></span>
+                </label>
+                <span class="toggle-label">Only remove background pixels connected to the image border — preserves interior areas of the same colour (e.g. white text on white background)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Background Replace -->
+          <div class="panel-box">
+            <div class="panel-box-title">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              Replace With
+            </div>
+            <div class="bg-options" id="bgOptions">
+              <div class="bg-opt active" data-bg="transparent">
+                <div class="bg-opt-swatch checkerboard"></div>
+                <span class="bg-opt-name">Transparent</span>
+              </div>
+              <div class="bg-opt" data-bg="white">
+                <div class="bg-opt-swatch" style="background:#fff;border:1px solid #eee"></div>
+                <span class="bg-opt-name">White</span>
+              </div>
+              <div class="bg-opt" data-bg="black">
+                <div class="bg-opt-swatch" style="background:#000"></div>
+                <span class="bg-opt-name">Black</span>
+              </div>
+              <div class="bg-opt" data-bg="grey">
+                <div class="bg-opt-swatch" style="background:#808080"></div>
+                <span class="bg-opt-name">Grey</span>
+              </div>
+              <div class="bg-opt" data-bg="custom">
+                <div class="bg-opt-swatch" id="customBgSwatch" style="background:#4a90e2"></div>
+                <span class="bg-opt-name">Custom</span>
+              </div>
+            </div>
+            <div class="custom-bg-row hidden" id="customBgRow">
+              <span class="colour-pick-label" style="font-family:'DM Mono',monospace;font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);min-width:90px">Custom colour</span>
+              <input type="color" class="color-picker" id="customBgColor" value="#4a90e2">
+              <input type="text" class="color-hex" id="customBgHex" value="#4a90e2" maxlength="7">
+            </div>
+          </div>
+
+          <!-- File Queue -->
+          <div class="file-queue-wrap visible" id="fileQueueWrap">
+            <div class="file-queue-header">
+              <span class="file-queue-label">Images queued</span>
+              <span class="file-queue-count" id="fileCount">0 files</span>
+            </div>
+            <div class="file-queue" id="fileQueue"></div>
+            <label class="add-more-btn">
+              <input type="file" id="addMoreInput" accept="image/jpeg,image/jpg,image/png,image/webp,.jpg,.jpeg,.png,.webp" multiple>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add more images
+            </label>
+          </div>
+
+          <!-- Action Bar -->
+          <div class="action-bar">
+            <button class="btn-primary" id="removeBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>
+              Remove Background
+            </button>
+            <button class="btn-secondary" id="clearBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
+              Clear All
+            </button>
+          </div>
+        </div>
+
+        <!-- RIGHT: Live Preview -->
+        <div class="tool-col-right">
+          <div class="preview-panel">
+            <div class="preview-panel-header">
+              <div class="preview-panel-title">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                Live Preview
+              </div>
+              <span class="preview-badge">CLICK TO SAMPLE</span>
+            </div>
+            <div class="preview-canvas-wrap" id="previewWrap">
+              <div class="preview-placeholder" id="previewPlaceholder">
+                <div class="preview-placeholder-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72"/></svg>
+                </div>
+                <p>Upload an image to start<br>Click the preview to sample<br>background colours</p>
+              </div>
+              <canvas id="previewCanvas"></canvas>
+            </div>
+            <div class="preview-tabs" id="previewTabBar" style="display:none">
+              <button class="preview-tab active" data-view="result">Result</button>
+              <button class="preview-tab" data-view="original">Original</button>
+              <button class="preview-tab" data-view="mask">Mask</button>
+            </div>
+            <div class="preview-note" id="previewNote" style="display:none">
+              Click image to sample colours · <span id="previewFileName">—</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Processing Overlay -->
+      <div class="processing-overlay" id="processingOverlay">
+        <div class="ai-spinner"></div>
+        <div class="processing-text" id="processingText">Loading images…</div>
+        <div class="processing-progress"><div class="processing-progress-bar" id="progressBar"></div></div>
+        <div class="processing-steps">
+          <div class="processing-step active" id="pStep1"><span class="step-dot"></span> Loading image pixels</div>
+          <div class="processing-step" id="pStep2"><span class="step-dot"></span> Flood-filling background</div>
+          <div class="processing-step" id="pStep3"><span class="step-dot"></span> Feathering edges</div>
+          <div class="processing-step" id="pStep4"><span class="step-dot"></span> Compositing &amp; encoding</div>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div class="result-area" id="resultArea">
+        <div class="result-header">
+          <span class="result-title">Processed Images</span>
+          <span class="result-count-badge" id="resultCountBadge">0 files</span>
+        </div>
+        <div class="result-list" id="resultList"></div>
+        <div class="action-bar" style="margin-top:1rem">
+          <button class="btn-primary" id="downloadAllBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download All as ZIP
+          </button>
+          <button class="btn-secondary" id="retryBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+            Adjust &amp; Re-process
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ══ -->
+<section class="how-section" id="how-it-works">
+  <div class="how-inner">
+    <div class="how-hdr">
+      <span class="section-tag">Quick Guide</span>
+      <h2 class="section-title">How to Remove a Background</h2>
+      <p class="how-sub">Four steps. Browser-native. Zero upload.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">01</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+        <div class="step-title">Upload Image</div>
+        <div class="step-desc">Drag &amp; drop or click to select a <strong>JPG, PNG, or WebP image</strong>. It appears in the preview panel where you can interact with it directly.</div>
+        <span class="step-pill">batch support</span>
+      </div>
+      <div class="step-connector"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-number">02</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M13.8 12H3"/></svg></div>
+        <div class="step-title">Sample the Background</div>
+        <div class="step-desc"><strong>Click on the background</strong> in the preview to sample its colour. Add multiple samples for gradients or uneven backgrounds. Adjust Tolerance to expand coverage.</div>
+        <span class="step-pill">live sampling</span>
+      </div>
+      <div class="step-connector"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-number">03</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85"/></svg></div>
+        <div class="step-title">Choose Replacement</div>
+        <div class="step-desc">Select <strong>transparent, white, black, grey, or a custom colour</strong> as the new background. The preview updates as you change settings.</div>
+        <span class="step-pill">live preview</span>
+      </div>
+      <div class="step-connector"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-number">04</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+        <div class="step-title">Download</div>
+        <div class="step-desc">Click <strong>Remove Background</strong> to process all images at full resolution. Download individually or as a ZIP. Transparent outputs are saved as PNG automatically.</div>
+        <span class="step-pill">PNG / ZIP</span>
+      </div>
+    </div>
+    <div class="how-cta">
+      <a href="#tool" class="btn-primary">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/></svg>
+        Start Removing
+      </a>
+      <span class="how-note">free · no signup · no upload</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHY THIS TOOL ══ -->
+<section class="content-section" id="about">
+  <h2 class="section-title">Why Use Background Remover?</h2>
+  <div class="content-prose">
+    <p>Removing image backgrounds manually can take a lot of time and requires professional editing skills. The JPG2Go Background Remover makes this process fast and simple by automatically detecting the main subject in your image and removing the background within seconds.</p>
+    <p>Our tool uses smart image processing technology to deliver clean and accurate results without complicated editing software. Whether you are creating product photos, social media graphics, or marketing visuals, JPG2Go helps you get a transparent or clean background quickly.</p>
+    <p>With a simple upload process and fast performance, JPG2Go Background Remover is designed for designers, ecommerce sellers, and content creators who want professional-looking images without spending hours editing.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══ FEATURES ══ -->
+<section class="content-section" id="features">
+  <span class="section-tag">Features</span>
+  <h2 class="section-title">Everything in One Background Remover</h2>
+  <div class="features-grid">
+    <div class="feature-card"><span class="feature-icon">🖱️</span><div class="feature-title">Click-to-Sample</div><div class="feature-desc">Click directly on the preview image to sample background colours. Add as many sample points as needed for complex or uneven backgrounds.</div></div>
+    <div class="feature-card"><span class="feature-icon">🎚️</span><div class="feature-title">Tolerance Control</div><div class="feature-desc">Adjust how similar a colour must be to the sampled background to be removed — covers gradients and slight variations without over-erasing the subject.</div></div>
+    <div class="feature-card"><span class="feature-icon">🌊</span><div class="feature-title">Flood Fill</div><div class="feature-desc">Connected-region algorithm removes only background pixels touching the image border — preserves interior areas of the same colour that belong to the subject.</div></div>
+    <div class="feature-card"><span class="feature-icon">✨</span><div class="feature-title">Edge Feathering</div><div class="feature-desc">Gaussian alpha falloff at cut boundaries produces smooth, anti-aliased edges — no jagged pixel edges, no white fringing around fine detail.</div></div>
+    <div class="feature-card"><span class="feature-icon">🎨</span><div class="feature-title">Background Replace</div><div class="feature-desc">Replace the removed background with transparent, white, black, grey, or any custom hex colour — directly in the same operation.</div></div>
+    <div class="feature-card"><span class="feature-icon">📦</span><div class="feature-title">Batch Processing</div><div class="feature-desc">Apply the same removal settings to a whole folder of images at once — consistent results across product catalogues, headshots, or icon sets.</div></div>
+    <div class="feature-card"><span class="feature-icon">🔒</span><div class="feature-title">100% Private</div><div class="feature-desc">Your images never leave your device. No server, no cloud, no account. The Canvas API processes everything locally in your browser tab.</div></div>
+    <div class="feature-card"><span class="feature-icon">📄</span><div class="feature-title">PNG Output</div><div class="feature-desc">Transparent outputs are automatically saved as PNG to preserve the alpha channel. Solid-background outputs are saved in the original format.</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══ WHO USES THIS ══ -->
+<section class="content-section">
+  <span class="section-tag">Who It's For</span>
+  <h2 class="section-title">Who Uses a Background Remover?</h2>
+  <div class="use-cases-grid">
+    <div class="use-case-card"><span class="use-case-icon">🛍️</span><div class="use-case-title">Product Photography</div><div class="use-case-text">Remove white studio backgrounds for marketplace listings — Amazon, Shopify, and most e-commerce platforms require pure white or transparent product images.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">👤</span><div class="use-case-title">Profile Photos</div><div class="use-case-text">Remove office or outdoor backgrounds from headshots for LinkedIn, company directories, or ID-style images with a solid or branded background.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🎨</span><div class="use-case-title">Design Assets</div><div class="use-case-text">Extract logos, icons, and illustrations from solid backgrounds for use in slide decks, brochures, or websites without white halos.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">📱</span><div class="use-case-title">App Icons & Stickers</div><div class="use-case-text">Prepare transparent PNG icons and stickers for app stores, messaging platforms, and web use — isolate the subject from any background.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🖼️</span><div class="use-case-title">Photo Compositing</div><div class="use-case-text">Cut out subjects to place on new backgrounds in photo editors — uniform-background studio shots are ideal candidates for colour-range removal.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🖨️</span><div class="use-case-title">Print & Packaging</div><div class="use-case-text">Prepare transparent product renders for print templates, packaging artwork, or display materials where the background must be fully clear.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🎓</span><div class="use-case-title">Presentations</div><div class="use-case-text">Place product images or headshots on coloured slides without visible white boxes — transparent PNG images integrate cleanly with any slide theme.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🌐</span><div class="use-case-title">Web & UI Assets</div><div class="use-case-text">Create transparent images for website hero sections, component overlays, and CSS backgrounds where the browser background should show through.</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══ FAQ ══ -->
+<section class="content-section" id="faq">
+  <span class="section-tag">FAQ</span>
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">What is an online background remover?</div>
+      <div class="faq-a">A background remover is a tool that automatically removes the background from an image and isolates the main subject.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How does an AI background remover work?</div>
+      <div class="faq-a">AI algorithms detect the subject of the image and separate it from the background using object recognition technology.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I create transparent images with a background remover?</div>
+      <div class="faq-a">Yes, most background remover tools allow you to export the image with a transparent PNG background.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is background removal useful for ecommerce?</div>
+      <div class="faq-a">Yes, ecommerce stores use background removal to create clean product photos for marketplaces and online catalogs.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I replace the background after removing it?</div>
+      <div class="faq-a">Many tools allow you to add a new background, color, or graphic after removing the original background.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What image formats work best with background remover tools?</div>
+      <div class="faq-a">Common formats like JPG, PNG, and WebP usually work best for automatic background removal.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ RELATED TOOLS ══ -->
+<section class="related-section" id="tools">
+  <div class="related-inner">
+    <div class="related-header">
+      <span class="section-tag">Related Tools</span>
+      <h2 class="section-title">More Free Online Tools</h2>
+    </div>
+    <div class="related-grid">
+      <a href="/jpg-to-pdf" class="related-card">
+        <span class="related-card-icon">📄</span>
+        <div class="related-card-name">JPG to PDF</div>
+        <div class="related-card-desc">Convert JPG images to PDF documents quickly. Combine multiple photos into a single organized PDF file for easy sharing and printing.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+      <a href="/image-resizer" class="related-card">
+        <span class="related-card-icon">📐</span>
+        <div class="related-card-name">Image Resizer</div>
+        <div class="related-card-desc">Resize images to exact pixel dimensions or a percentage of their original size. Runs entirely in your browser without uploading files anywhere.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/compress-jpeg" class="related-card">
+        <span class="related-card-icon">🗜️</span>
+        <div class="related-card-name">Compress JPEG</div>
+        <div class="related-card-desc">Reduce JPEG image file size while maintaining quality. Optimize images for faster web pages and lower storage usage.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/merge-pdf" class="related-card">
+        <span class="related-card-icon">📎</span>
+        <div class="related-card-name">Merge PDF</div>
+        <div class="related-card-desc">Combine multiple PDF files into a single organized document. Drag and drop to reorder pages easily.</div>
+        <span class="related-card-tag">PDF</span>
+      </a>
+      <a href="/crop-image" class="related-card">
+        <span class="related-card-icon">✂️</span>
+        <div class="related-card-name">Crop Image</div>
+        <div class="related-card-desc">Crop images to any aspect ratio or custom dimensions. Perfect for social media thumbnails, profile photos, and banner images.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/format-converter" class="related-card">
+        <span class="related-card-icon">🔄</span>
+        <div class="related-card-name">Format Converter</div>
+        <div class="related-card-desc">Convert images between different formats instantly. Transform JPG, PNG, WebP, and other image formats quickly.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <span class="section-tag" style="color:var(--accent);">Get Started</span>
+    <h2 class="cta-title">Ready to Remove Backgrounds?</h2>
+    <p class="cta-desc">Free, instant, and completely private. Drop an image, click to sample, download the result — no account ever needed.</p>
+    <div class="cta-actions">
+      <a href="#tool" class="btn-primary" style="font-size:1rem;padding:0.85rem 2rem;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/></svg>
+        Start Removing
+      </a>
+    </div>
+    <p class="cta-note">No account · No upload · No data stored · Works offline</p>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<div id="footer-placeholder"></div>
+<script src="load-footer.js"></script>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── GLOBALS ────────────────────────────────────────────────────────────────────
+let files      = [];   // { file, objectUrl }
+let results    = [];   // { dataUrl, filename, origSize }
+let previewIdx = 0;
+let sampledColors = []; // [{r,g,b}]
+let method     = 'sample';
+let bgChoice   = 'transparent';
+let currentView = 'result';
+// Preview state
+let previewOrigData = null; // ImageData of original at preview scale
+let previewResultData = null;
+let previewMaskData = null;
+
+// ── TOAST ─────────────────────────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ── MOBILE MENU ───────────────────────────────────────────────────────────────
+document.getElementById('mobileMenuToggle').addEventListener('click', function(){
+  this.classList.toggle('active');
+  document.getElementById('mobileNav').classList.toggle('active');
+});
+function closeMobileMenu(){
+  document.getElementById('mobileMenuToggle').classList.remove('active');
+  document.getElementById('mobileNav').classList.remove('active');
+}
+
+// ── METHOD TABS ───────────────────────────────────────────────────────────────
+document.querySelectorAll('.mode-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    method = tab.dataset.method;
+    document.getElementById('panelSample').classList.toggle('active', method === 'sample');
+    document.getElementById('panelManual').classList.toggle('active', method === 'manual');
+    schedulePreview();
+  });
+});
+
+// ── MANUAL COLOR ──────────────────────────────────────────────────────────────
+document.getElementById('manualColor').addEventListener('input', function(){
+  document.getElementById('manualColorHex').value = this.value;
+  schedulePreview();
+});
+document.getElementById('manualColorHex').addEventListener('input', function(){
+  const v = this.value.trim();
+  if(/^#[0-9a-fA-F]{6}$/.test(v)){
+    document.getElementById('manualColor').value = v;
+    schedulePreview();
+  }
+});
+
+// ── SLIDERS ───────────────────────────────────────────────────────────────────
+document.getElementById('slTolerance').addEventListener('input', function(){
+  document.getElementById('slToleranceVal').textContent = this.value;
+  schedulePreview();
+});
+document.getElementById('slFeather').addEventListener('input', function(){
+  document.getElementById('slFeatherVal').textContent = this.value;
+  schedulePreview();
+});
+document.getElementById('floodFillToggle').addEventListener('change', schedulePreview);
+
+// ── BACKGROUND OPTIONS ────────────────────────────────────────────────────────
+document.querySelectorAll('.bg-opt').forEach(opt => {
+  opt.addEventListener('click', () => {
+    document.querySelectorAll('.bg-opt').forEach(o => o.classList.remove('active'));
+    opt.classList.add('active');
+    bgChoice = opt.dataset.bg;
+    document.getElementById('customBgRow').classList.toggle('hidden', bgChoice !== 'custom');
+    schedulePreview();
+  });
+});
+document.getElementById('customBgColor').addEventListener('input', function(){
+  document.getElementById('customBgHex').value = this.value;
+  document.getElementById('customBgSwatch').style.background = this.value;
+  schedulePreview();
+});
+document.getElementById('customBgHex').addEventListener('input', function(){
+  const v = this.value.trim();
+  if(/^#[0-9a-fA-F]{6}$/.test(v)){
+    document.getElementById('customBgColor').value = v;
+    document.getElementById('customBgSwatch').style.background = v;
+    schedulePreview();
+  }
+});
+
+// ── SWATCH MANAGEMENT ─────────────────────────────────────────────────────────
+function hexFromRGB(r,g,b){return '#'+[r,g,b].map(v=>v.toString(16).padStart(2,'0')).join('')}
+
+function addSwatch(r,g,b){
+  sampledColors.push({r,g,b});
+  renderSwatches();
+  schedulePreview();
+}
+
+function renderSwatches(){
+  const grid = document.getElementById('swatchGrid');
+  grid.innerHTML = '';
+  sampledColors.forEach((c,i) => {
+    const sw = document.createElement('div');
+    sw.className = 'swatch-item' + (i === sampledColors.length-1 ? ' active' : '');
+    sw.style.background = hexFromRGB(c.r,c.g,c.b);
+    sw.title = hexFromRGB(c.r,c.g,c.b);
+    sw.addEventListener('click', () => {
+      sampledColors.splice(i,1);
+      renderSwatches();
+      schedulePreview();
+    });
+    grid.appendChild(sw);
+  });
+  const clearBtn = document.createElement('button');
+  clearBtn.className = 'swatch-clear';
+  clearBtn.id = 'swatchClearBtn';
+  clearBtn.textContent = 'Clear all';
+  clearBtn.addEventListener('click', () => {
+    sampledColors = [];
+    renderSwatches();
+    schedulePreview();
+  });
+  grid.appendChild(clearBtn);
+  document.getElementById('swatchCount').textContent = sampledColors.length + ' sampled';
+}
+renderSwatches();
+
+// ── FILE HANDLING ─────────────────────────────────────────────────────────────
+const dropZone = document.getElementById('dropZone');
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => { e.preventDefault(); dropZone.classList.remove('drag-over'); handleFiles([...e.dataTransfer.files]); });
+document.getElementById('fileInput').addEventListener('change', function(){ handleFiles([...this.files]); this.value=''; });
+document.getElementById('addMoreInput').addEventListener('change', function(){ handleFiles([...this.files]); this.value=''; });
+
+function handleFiles(newFiles){
+  const valid = newFiles.filter(f => f.type.startsWith('image/'));
+  if(!valid.length){ showToast('Please select image files'); return; }
+  const wasEmpty = files.length === 0;
+  valid.forEach(f => {
+    if(files.find(x => x.file.name===f.name && x.file.size===f.size)) return;
+    files.push({ file:f, objectUrl:URL.createObjectURL(f) });
+  });
+  renderQueue();
+  document.getElementById('toolColumns').style.display = '';
+  document.getElementById('resultArea').classList.remove('visible');
+  results = [];
+  if(wasEmpty){ previewIdx=0; loadPreviewImage(); }
+}
+
+function renderQueue(){
+  const queue = document.getElementById('fileQueue');
+  queue.innerHTML = '';
+  document.getElementById('fileCount').textContent = files.length+' file'+(files.length!==1?'s':'');
+  files.forEach((item,idx) => {
+    const el = document.createElement('div');
+    el.className = 'file-item'+(idx===previewIdx?' selected':'');
+    el.innerHTML = `
+      <div class="file-thumb-wrap"><img class="file-thumb" src="${item.objectUrl}" alt=""></div>
+      <div class="file-info">
+        <div class="file-name">${item.file.name}</div>
+        <div class="file-meta">${formatSize(item.file.size)}</div>
+      </div>
+      <button class="file-remove" data-idx="${idx}">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>`;
+    el.addEventListener('click', e => {
+      if(e.target.closest('.file-remove')) return;
+      previewIdx = idx;
+      document.querySelectorAll('.file-item').forEach((r,i) => r.classList.toggle('selected', i===idx));
+      loadPreviewImage();
+    });
+    queue.appendChild(el);
+  });
+  queue.querySelectorAll('.file-remove').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const i = parseInt(btn.dataset.idx);
+      URL.revokeObjectURL(files[i].objectUrl);
+      files.splice(i,1);
+      if(!files.length){
+        document.getElementById('toolColumns').style.display='none';
+        clearPreview();
+        document.getElementById('resultArea').classList.remove('visible');
+      } else {
+        previewIdx = Math.min(previewIdx, files.length-1);
+        loadPreviewImage();
+      }
+      renderQueue();
+    });
+  });
+}
+
+// ── CLEAR ─────────────────────────────────────────────────────────────────────
+document.getElementById('clearBtn').addEventListener('click', () => {
+  files.forEach(f => URL.revokeObjectURL(f.objectUrl));
+  files = []; results = [];
+  renderQueue();
+  document.getElementById('toolColumns').style.display = 'none';
+  document.getElementById('resultArea').classList.remove('visible');
+  clearPreview();
+  showToast('All files cleared');
+});
+
+// ── PREVIEW ───────────────────────────────────────────────────────────────────
+function clearPreview(){
+  document.getElementById('previewPlaceholder').style.display = '';
+  document.getElementById('previewCanvas').style.display = 'none';
+  document.getElementById('previewTabBar').style.display = 'none';
+  document.getElementById('previewNote').style.display = 'none';
+  previewOrigData = null;
+}
+
+function loadPreviewImage(){
+  if(!files.length){ clearPreview(); return; }
+  const item = files[previewIdx];
+  const img = new Image();
+  img.onload = () => {
+    const maxW=520, maxH=380;
+    const scale = Math.min(maxW/img.naturalWidth, maxH/img.naturalHeight, 1);
+    const W = Math.round(img.naturalWidth*scale);
+    const H = Math.round(img.naturalHeight*scale);
+    const canvas = document.getElementById('previewCanvas');
+    canvas.width=W; canvas.height=H;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img,0,0,W,H);
+    previewOrigData = ctx.getImageData(0,0,W,H);
+    document.getElementById('previewPlaceholder').style.display = 'none';
+    canvas.style.display = 'block';
+    document.getElementById('previewTabBar').style.display = 'flex';
+    document.getElementById('previewNote').style.display = '';
+    document.getElementById('previewFileName').textContent = item.file.name;
+    schedulePreview();
+  };
+  img.src = item.objectUrl;
+}
+
+// Click on preview to sample
+document.getElementById('previewCanvas').addEventListener('click', function(e){
+  if(!previewOrigData) return;
+  const rect = this.getBoundingClientRect();
+  const scaleX = this.width / rect.width;
+  const scaleY = this.height / rect.height;
+  const x = Math.round((e.clientX-rect.left)*scaleX);
+  const y = Math.round((e.clientY-rect.top)*scaleY);
+  const idx = (y*previewOrigData.width+x)*4;
+  const d = previewOrigData.data;
+  addSwatch(d[idx], d[idx+1], d[idx+2]);
+});
+
+// Preview tabs
+document.querySelectorAll('.preview-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.preview-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    currentView = tab.dataset.view;
+    renderPreviewView();
+  });
+});
+
+function renderPreviewView(){
+  if(!previewOrigData) return;
+  const canvas = document.getElementById('previewCanvas');
+  const ctx = canvas.getContext('2d');
+  if(currentView === 'original'){
+    ctx.putImageData(previewOrigData, 0, 0);
+  } else if(currentView === 'mask' && previewMaskData){
+    ctx.putImageData(previewMaskData, 0, 0);
+  } else if(currentView === 'result' && previewResultData){
+    ctx.putImageData(previewResultData, 0, 0);
+  }
+}
+
+let previewTimer = null;
+function schedulePreview(){
+  clearTimeout(previewTimer);
+  previewTimer = setTimeout(computePreview, 120);
+}
+
+function computePreview(){
+  if(!previewOrigData) return;
+  const W = previewOrigData.width, H = previewOrigData.height;
+  const mask = buildMask(previewOrigData, getActiveColors(), getTolerance(), getFloodFill(), getFeather());
+  const resultData = applyMask(previewOrigData, mask, getBgColor());
+  previewMaskData = buildMaskVisual(mask, W, H);
+  previewResultData = resultData;
+  renderPreviewView();
+}
+
+// ── BACKGROUND REMOVAL CORE ───────────────────────────────────────────────────
+function getActiveColors(){
+  if(method === 'manual'){
+    const hex = document.getElementById('manualColor').value;
+    const r = parseInt(hex.slice(1,3),16);
+    const g = parseInt(hex.slice(3,5),16);
+    const b = parseInt(hex.slice(5,7),16);
+    return [{r,g,b}];
+  }
+  return sampledColors;
+}
+function getTolerance(){ return parseInt(document.getElementById('slTolerance').value); }
+function getFeather(){ return parseInt(document.getElementById('slFeather').value); }
+function getFloodFill(){ return document.getElementById('floodFillToggle').checked; }
+function getBgColor(){
+  const bg = bgChoice;
+  if(bg === 'transparent') return null;
+  if(bg === 'white') return {r:255,g:255,b:255};
+  if(bg === 'black') return {r:0,g:0,b:0};
+  if(bg === 'grey') return {r:128,g:128,b:128};
+  if(bg === 'custom'){
+    const hex = document.getElementById('customBgColor').value;
+    return { r:parseInt(hex.slice(1,3),16), g:parseInt(hex.slice(3,5),16), b:parseInt(hex.slice(5,7),16) };
+  }
+  return null;
+}
+
+function colorDist(r1,g1,b1,r2,g2,b2){
+  return Math.sqrt((r1-r2)**2+(g1-g2)**2+(b1-b2)**2);
+}
+
+function matchesAny(r,g,b,colors,tolerance){
+  for(const c of colors){
+    if(colorDist(r,g,b,c.r,c.g,c.b) <= tolerance) return true;
+  }
+  return false;
+}
+
+// Returns Float32Array of alpha values 0-1 (0 = remove, 1 = keep)
+function buildMask(imageData, colors, tolerance, floodFill, feather){
+  const W = imageData.width, H = imageData.height;
+  const d = imageData.data;
+  const mask = new Float32Array(W*H).fill(1); // 1 = keep
+
+  if(!colors.length) return mask;
+
+  if(floodFill){
+    // BFS from all border pixels
+    const visited = new Uint8Array(W*H);
+    const queue = [];
+
+    function enqueue(x,y){
+      const i = y*W+x;
+      if(visited[i]) return;
+      visited[i]=1;
+      const p = i*4;
+      if(matchesAny(d[p],d[p+1],d[p+2],colors,tolerance)){
+        mask[i]=0;
+        queue.push(i);
+      }
+    }
+
+    // Seed border
+    for(let x=0;x<W;x++){ enqueue(x,0); enqueue(x,H-1); }
+    for(let y=0;y<H;y++){ enqueue(0,y); enqueue(W-1,y); }
+
+    // BFS
+    let head=0;
+    while(head<queue.length){
+      const i=queue[head++];
+      const x=i%W, y=Math.floor(i/W);
+      for(const [dx,dy] of[[-1,0],[1,0],[0,-1],[0,1]]){
+        const nx=x+dx, ny=y+dy;
+        if(nx<0||nx>=W||ny<0||ny>=H) continue;
+        const ni=ny*W+nx;
+        if(visited[ni]) continue;
+        visited[ni]=1;
+        const p=ni*4;
+        if(matchesAny(d[p],d[p+1],d[p+2],colors,tolerance)){
+          mask[ni]=0;
+          queue.push(ni);
+        }
+      }
+    }
+  } else {
+    // Global replace
+    for(let i=0;i<W*H;i++){
+      const p=i*4;
+      if(matchesAny(d[p],d[p+1],d[p+2],colors,tolerance)) mask[i]=0;
+    }
+  }
+
+  // Edge feather — blur the mask boundary
+  if(feather>0){
+    const blurred = gaussianBlurMask(mask, W, H, feather);
+    for(let i=0;i<W*H;i++) mask[i]=blurred[i];
+  }
+
+  return mask;
+}
+
+function gaussianBlurMask(mask, W, H, radius){
+  const sigma = Math.max(radius/2, 0.5);
+  const size = Math.ceil(sigma*2.5)*2+1;
+  const kernel = new Float32Array(size);
+  const mid = Math.floor(size/2);
+  let ksum=0;
+  for(let i=0;i<size;i++){ kernel[i]=Math.exp(-0.5*((i-mid)/sigma)**2); ksum+=kernel[i]; }
+  for(let i=0;i<size;i++) kernel[i]/=ksum;
+  const tmp = new Float32Array(W*H);
+  const out = new Float32Array(W*H);
+  for(let y=0;y<H;y++) for(let x=0;x<W;x++){
+    let v=0;
+    for(let k=0;k<size;k++){
+      const sx=Math.min(W-1,Math.max(0,x+k-mid));
+      v+=mask[y*W+sx]*kernel[k];
+    }
+    tmp[y*W+x]=v;
+  }
+  for(let y=0;y<H;y++) for(let x=0;x<W;x++){
+    let v=0;
+    for(let k=0;k<size;k++){
+      const sy=Math.min(H-1,Math.max(0,y+k-mid));
+      v+=tmp[sy*W+x]*kernel[k];
+    }
+    out[y*W+x]=v;
+  }
+  return out;
+}
+
+function applyMask(imageData, mask, bgColor){
+  const W=imageData.width, H=imageData.height;
+  const src=imageData.data;
+  const out=new Uint8ClampedArray(src.length);
+  for(let i=0;i<W*H;i++){
+    const p=i*4;
+    const alpha=mask[i];
+    if(bgColor){
+      // Composite over solid bg
+      out[p]   = Math.round(src[p]*alpha   + bgColor.r*(1-alpha));
+      out[p+1] = Math.round(src[p+1]*alpha + bgColor.g*(1-alpha));
+      out[p+2] = Math.round(src[p+2]*alpha + bgColor.b*(1-alpha));
+      out[p+3] = 255;
+    } else {
+      out[p]=src[p]; out[p+1]=src[p+1]; out[p+2]=src[p+2];
+      out[p+3]=Math.round(alpha*255);
+    }
+  }
+  return new ImageData(out,W,H);
+}
+
+function buildMaskVisual(mask,W,H){
+  const out=new Uint8ClampedArray(W*H*4);
+  for(let i=0;i<W*H;i++){
+    const p=i*4;
+    const v=Math.round(mask[i]*255);
+    out[p]=v; out[p+1]=v; out[p+2]=v; out[p+3]=255;
+  }
+  return new ImageData(out,W,H);
+}
+
+// ── PROCESS FULL RESOLUTION ───────────────────────────────────────────────────
+function processFile(file){
+  return new Promise(resolve => {
+    const img=new Image();
+    const url=URL.createObjectURL(file);
+    img.onload=()=>{
+      const canvas=document.createElement('canvas');
+      canvas.width=img.naturalWidth; canvas.height=img.naturalHeight;
+      const ctx=canvas.getContext('2d');
+      ctx.drawImage(img,0,0);
+      URL.revokeObjectURL(url);
+      const imgData=ctx.getImageData(0,0,canvas.width,canvas.height);
+      const colors=getActiveColors();
+      const mask=buildMask(imgData,colors,getTolerance(),getFloodFill(),getFeather());
+      const result=applyMask(imgData,mask,getBgColor());
+      ctx.putImageData(result,0,0);
+      const bgCol=getBgColor();
+      const fmt = bgCol ? (file.type||'image/jpeg') : 'image/png';
+      const q = bgCol ? 0.92 : undefined;
+      resolve({ dataUrl: canvas.toDataURL(fmt,q), fmt });
+    };
+    img.src=url;
+  });
+}
+
+// ── REMOVE BUTTON ─────────────────────────────────────────────────────────────
+document.getElementById('removeBtn').addEventListener('click', async () => {
+  if(!files.length) return;
+  const colors=getActiveColors();
+  if(!colors.length){ showToast('Please sample a background colour first'); return; }
+  document.getElementById('removeBtn').disabled=true;
+  document.getElementById('resultArea').classList.remove('visible');
+  results=[];
+  const overlay=document.getElementById('processingOverlay');
+  overlay.classList.add('active');
+  const stepIds=['pStep1','pStep2','pStep3','pStep4'];
+  const msgs=['Loading image pixels…','Flood-filling background…','Feathering edges…','Compositing & encoding…'];
+  setStep(stepIds,0,msgs); setProgress(5); await delay(200);
+
+  for(let i=0;i<files.length;i++){
+    setStep(stepIds,Math.min(1+Math.floor((i/files.length)*2),2),msgs);
+    setProgress(10+Math.round((i/files.length)*80));
+    const {dataUrl,fmt}=await processFile(files[i].file);
+    const base=files[i].file.name.replace(/\.[^.]+$/,'');
+    const ext = fmt==='image/png'?'png': fmt==='image/webp'?'webp':'jpg';
+    const outName=base+'-no-bg.'+ext;
+    results.push({dataUrl,filename:outName,origSize:files[i].file.size,newSize:dataUrlToByteCount(dataUrl)});
+    await delay(20);
+  }
+
+  setStep(stepIds,3,msgs); setProgress(100); await delay(300);
+  overlay.classList.remove('active');
+  document.getElementById('removeBtn').disabled=false;
+  renderResults();
+  showToast('Background removed from '+results.length+' image'+(results.length!==1?'s':'')+'!');
+});
+
+function renderResults(){
+  const list=document.getElementById('resultList');
+  list.innerHTML='';
+  document.getElementById('resultCountBadge').textContent=results.length+' file'+(results.length!==1?'s':'');
+  const bgLabel={'transparent':'Transparent','white':'White BG','black':'Black BG','grey':'Grey BG','custom':'Custom BG'}[bgChoice]||'Removed';
+  results.forEach(r=>{
+    const row=document.createElement('div');
+    row.className='result-row';
+    row.innerHTML=`
+      <img class="result-thumb" src="${r.dataUrl}" alt="${r.filename}">
+      <div class="result-info">
+        <div class="result-filename">${r.filename}</div>
+        <div class="result-meta">${formatSize(r.origSize)} → ${formatSize(r.newSize)}</div>
+        <div><span class="bg-badge">⊘ Background removed · ${bgLabel} · tol ${getTolerance()}</span></div>
+      </div>
+      <button class="result-dl" data-url="${r.dataUrl}" data-name="${r.filename}">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Save
+      </button>`;
+    list.appendChild(row);
+  });
+  list.querySelectorAll('.result-dl').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const a=document.createElement('a');
+      a.href=btn.dataset.url; a.download=btn.dataset.name; a.click();
+      showToast('Downloading '+btn.dataset.name);
+    });
+  });
+  document.getElementById('resultArea').classList.add('visible');
+  document.getElementById('resultArea').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+document.getElementById('downloadAllBtn').addEventListener('click',()=>{
+  if(!results.length) return;
+  const fileList=results.map(r=>{
+    const b64=r.dataUrl.split(',')[1],bin=atob(b64);
+    const bytes=new Uint8Array(bin.length);
+    for(let i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i);
+    return{name:r.filename,bytes};
+  });
+  const zip=buildZip(fileList);
+  const blob=new Blob([zip],{type:'application/zip'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url; a.download='backgrounds-removed.zip'; a.click();
+  setTimeout(()=>URL.revokeObjectURL(url),5000);
+  showToast('Downloading ZIP…');
+});
+
+document.getElementById('retryBtn').addEventListener('click',()=>{
+  document.getElementById('resultArea').classList.remove('visible');
+  results=[];
+  showToast('Adjust settings and try again');
+});
+
+// ── ZIP ───────────────────────────────────────────────────────────────────────
+function buildZip(fileArr){
+  const enc=new TextEncoder(),parts=[],central=[];
+  let offset=0;
+  const u16=n=>[n&0xff,(n>>8)&0xff];
+  const u32=n=>[n&0xff,(n>>8)&0xff,(n>>16)&0xff,(n>>24)&0xff];
+  function crc32(buf){
+    const T=crc32._t||(crc32._t=(()=>{const t=new Uint32Array(256);for(let i=0;i<256;i++){let c=i;for(let j=0;j<8;j++)c=(c&1)?(0xEDB88320^(c>>>1)):(c>>>1);t[i]=c;}return t;})());
+    let c=0xFFFFFFFF;for(let i=0;i<buf.length;i++)c=T[(c^buf[i])&0xff]^(c>>>8);return(c^0xFFFFFFFF)>>>0;
+  }
+  for(const file of fileArr){
+    const nb=enc.encode(file.name),crc=crc32(file.bytes),size=file.bytes.length;
+    const h=new Uint8Array([0x50,0x4B,0x03,0x04,20,0,0,0,0,0,0,0,0,0,...u32(crc),...u32(size),...u32(size),...u16(nb.length),0,0,...nb]);
+    central.push({nb,crc,size,offset});parts.push(h);parts.push(file.bytes);offset+=h.length+size;
+  }
+  const cdStart=offset;
+  for(const{nb,crc,size,offset:fo}of central){
+    const cd=new Uint8Array([0x50,0x4B,0x01,0x02,20,0,20,0,0,0,0,0,0,0,0,0,...u32(crc),...u32(size),...u32(size),...u16(nb.length),0,0,0,0,0,0,0,0,0,0,...u32(fo),...nb]);
+    parts.push(cd);offset+=cd.length;
+  }
+  const eocd=new Uint8Array([0x50,0x4B,0x05,0x06,0,0,0,0,...u16(fileArr.length),...u16(fileArr.length),...u32(offset-cdStart),...u32(cdStart),0,0]);
+  parts.push(eocd);
+  let total=0;for(const p of parts)total+=p.length;
+  const out=new Uint8Array(total);let pos=0;for(const p of parts){out.set(p,pos);pos+=p.length;}
+  return out;
+}
+
+// ── HELPERS ───────────────────────────────────────────────────────────────────
+function formatSize(bytes){
+  if(bytes<1024) return bytes+' B';
+  if(bytes<1024*1024) return (bytes/1024).toFixed(1)+' KB';
+  return (bytes/(1024*1024)).toFixed(2)+' MB';
+}
+function dataUrlToByteCount(dataUrl){
+  const b64=dataUrl.split(',')[1];
+  const pad=(b64.match(/=+$/)||[''])[0].length;
+  return Math.round(b64.length*0.75)-pad;
+}
+function setStep(ids,idx,msgs){
+  ids.forEach((id,i)=>{
+    const el=document.getElementById(id);
+    el.classList.remove('active','done');
+    if(i<idx) el.classList.add('done');
+    else if(i===idx) el.classList.add('active');
+  });
+  document.getElementById('processingText').textContent=msgs[idx];
+}
+function setProgress(pct){ document.getElementById('progressBar').style.width=pct+'%'; }
+function delay(ms){ return new Promise(r=>setTimeout(r,ms)); }
+
+// ── FAQ ───────────────────────────────────────────────────────────────────────
+// ── FAQ ACCORDION ────────────────────────────────────────────────────────
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>ZIP to PDF Converter | Convert Compressed Files Online</title>
+<meta name="description" content="Convert ZIP archives containing images or documents into PDF files online. Extract content, organize efficiently, and generate ready-to-share documents.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jpg2go.com/zip-to-pdf">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="adsense.js"></script>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Convert ZIP to PDF",
+    "url": "https://jpg2go.com/zip-to-pdf",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Convert ZIP archives containing images or documents into PDF files online. Extract content, organize efficiently, and generate ready-to-share documents."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is this ZIP to PDF converter free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — completely free with no hidden charges, no subscription, no watermark on the output, and no usage limits. JPG2Go is free for everyone, always."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my ZIP file uploaded to a server?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Your ZIP file and all images inside it are processed entirely in your browser using JSZip and pdf-lib, both client-side JavaScript libraries. Nothing is ever sent to any server. Your files never leave your device."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What image formats are supported inside the ZIP?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "JPG/JPEG, PNG, and WebP. Other file types inside the ZIP (text files, PDFs, SVGs, etc.) are automatically skipped. The stats bar shows how many files were skipped so you know what was excluded."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it support images inside subfolders in the ZIP?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The tool scans all files in the ZIP regardless of directory depth. Images in nested subfolders are included. Their path-sorted order determines the initial extraction order, which you can then reorder by dragging."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is page order determined?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Images are initially sorted by their filename path within the ZIP (alphabetically, case-insensitive). You can then drag thumbnails to any order in the preview grid before converting. The sequence shown is the exact page order in the PDF."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What page size options are available?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Fit to image (each PDF page matches the exact pixel dimensions of its image), A4 (210 × 297 mm), US Letter (8.5 × 11 in), A3 (297 × 420 mm), and Square (210 × 210 mm). Each page size can be combined with portrait, landscape, or auto orientation."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+
+<style>
+:root{--ink:#0d0d0d;--paper:#f7f4ee;--cream:#ede9df;--accent:#c84b2f;--accent-light:#e8d5cf;--muted:#7a7567;--border:#d4cfc4;--white:#ffffff;--shadow:0 2px 24px rgba(13,13,13,.08);--shadow-lg:0 8px 48px rgba(13,13,13,.12);--green:#1a8a4a;--green-light:#d4f0e0}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;min-height:100vh}
+
+/* ── HEADER ── */
+header{background:var(--ink);color:var(--paper);position:sticky;top:0;z-index:100;border-bottom:2px solid var(--accent)}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1.6rem;color:var(--paper);text-decoration:none;letter-spacing:-.02em}
+.logo span{color:var(--accent)}
+nav{display:flex;gap:2rem;align-items:center}
+nav a{color:#a8a39a;text-decoration:none;font-size:.875rem;font-weight:500;letter-spacing:.02em;transition:color .2s}
+nav a:hover{color:var(--paper)}
+.nav-cta{background:var(--accent);color:var(--white)!important;padding:.4rem 1rem;border-radius:4px;transition:background .2s!important}
+.nav-cta:hover{background:#a83825!important}
+.mobile-menu-toggle {display:none;background:none;border:none;cursor:pointer;padding:.5rem;flex-direction:column;gap:5px;align-items:center;justify-content:center;width:40px;height:40px}
+.mobile-menu-toggle span{display:block;width:24px;height:2px;background:var(--paper);transition:all .3s;border-radius:2px}
+.mobile-menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(6px,6px)}
+.mobile-menu-toggle.active span:nth-child(2){opacity:0}
+.mobile-menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
+.mobile-nav {display:none;position:fixed;top:64px;left:0;right:0;background:var(--ink);border-top:2px solid var(--accent);padding:1.5rem 2rem;flex-direction:column;gap:1rem;z-index:99;transform:translateY(-100%);opacity:0;transition:transform .3s,opacity .3s;visibility:hidden}
+.mobile-nav.active{display:flex;transform:translateY(0);opacity:1;visibility:visible}
+.mobile-nav a{color:#a8a39a;text-decoration:none;font-size:.95rem;font-weight:500;padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.1);transition:color .2s}
+.mobile-nav a:last-child{border-bottom:none}
+.mobile-nav a:hover{color:var(--paper)}
+.mobile-nav .nav-cta{background:var(--accent);color:var(--white)!important;padding:.75rem 1.5rem;border-radius:4px;text-align:center;border:none;margin-top:.5rem}
+
+/* ── HERO ── */
+.hero{background:var(--ink);color:var(--paper);padding:4rem 2rem 3.5rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(200,75,47,.2) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:1px;height:60px;background:linear-gradient(to bottom,transparent,rgba(200,75,47,.4))}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.12em;color:#c84b2f;text-transform:uppercase;border:1px solid rgba(200,75,47,.4);background:rgba(200,75,47,.12);padding:.3rem .9rem;border-radius:2px;margin-bottom:1.5rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5.5vw,3.6rem);font-weight:900;line-height:1.1;letter-spacing:-.03em;margin-bottom:1.25rem}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-desc{font-size:1.05rem;color:#9e9990;max-width:520px;margin:0 auto 1.75rem;font-weight:300;line-height:1.7}
+.hero-pills{display:flex;justify-content:center;flex-wrap:wrap;gap:.5rem}
+.hero-pill{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.06em;color:#a8a39a;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:.3rem .75rem;border-radius:100px}
+
+/* ── TOOL CARD ── */
+.tool-section{max-width:1000px;margin:-1.5rem auto 0;padding:0 1.5rem 4rem;position:relative;z-index:10}
+.tool-card{background:var(--white);border-radius:12px;box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid var(--border)}
+.tool-card-header{background:var(--cream);padding:1rem 1.5rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid var(--border)}
+.dot{width:12px;height:12px;border-radius:50%;display:inline-block}
+.dot-r{background:#ff5f57}.dot-y{background:#febc2e}.dot-g{background:#28c840}
+.tc-title{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--muted);margin-left:.5rem;letter-spacing:.05em}
+.tool-body{padding:1.5rem}
+
+/* ── DROP ZONE ── */
+.drop-zone{border:2px dashed var(--border);border-radius:10px;padding:2rem 2rem;margin-bottom:2rem;border-bottom:1px solid rgba(255,255,255,0.05);text-align:center;cursor:pointer;transition:border-color .2s,background .2s;background:var(--paper);position:relative}
+.drop-zone:hover,.drop-zone.drag-over{border-color:var(--accent);background:var(--accent-light)}
+.drop-zone input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.drop-icon{width:52px;height:52px;background:var(--accent-light);border:1px solid rgba(200,75,47,.3);border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:var(--accent)}
+.drop-zone h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:.4rem}
+.drop-zone p{font-size:.85rem;color:var(--muted);margin-bottom:0.75rem;color:var(--paper)}
+.formats-pill{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.08em;color:var(--accent);background:var(--accent-light);padding:.25rem .75rem;border-radius:100px;display:inline-block}
+
+/* ── FILE BAR ── */
+.file-bar{display:none;align-items:center;gap:.75rem;background:var(--paper);border:1.5px solid var(--border);border-radius:9px;padding:.65rem .9rem;margin-top:1.1rem}
+.file-bar.on{display:flex}
+.fb-icon{color:var(--accent);flex-shrink:0}
+.fb-info{flex:1;min-width:0}
+.fb-name{font-size:.83rem;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fb-meta{font-family:'DM Mono',monospace;font-size:.64rem;color:var(--muted);margin-top:.1rem}
+.fb-remove{background:none;border:none;cursor:pointer;color:var(--muted);padding:.25rem;border-radius:4px;display:flex;align-items:center;transition:color .15s,background .15s;flex-shrink:0}
+.fb-remove:hover{color:var(--accent);background:var(--accent-light)}
+
+/* ── IMAGE PREVIEW GRID ── */
+.preview-section{display:none;margin-top:1.4rem}
+.preview-section.on{display:block}
+.preview-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;flex-wrap:wrap;gap:.5rem}
+.preview-label{font-family:'DM Mono',monospace;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.preview-badge{font-family:'DM Mono',monospace;font-size:.67rem;color:var(--accent);background:var(--accent-light);padding:.18rem .55rem;border-radius:100px;border:1px solid rgba(200,75,47,.2)}
+.preview-hint{font-family:'DM Mono',monospace;font-size:.63rem;color:var(--muted);margin-bottom:.85rem;display:flex;align-items:center;gap:.4rem}
+.preview-hint svg{opacity:.45;flex-shrink:0}
+
+.img-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:.55rem;margin-bottom:1.1rem;max-height:360px;overflow-y:auto;padding-right:.25rem}
+.img-grid::-webkit-scrollbar{width:5px}
+.img-grid::-webkit-scrollbar-track{background:var(--paper);border-radius:100px}
+.img-grid::-webkit-scrollbar-thumb{background:var(--border);border-radius:100px}
+.img-tile{position:relative;border-radius:8px;overflow:hidden;border:1.5px solid var(--border);background:var(--cream);aspect-ratio:1;cursor:grab;user-select:none;transition:border-color .15s,box-shadow .15s}
+.img-tile:hover{border-color:rgba(200,75,47,.45);box-shadow:0 2px 10px rgba(13,13,13,.1)}
+.img-tile.is-dragging{opacity:.35;border-style:dashed}
+.img-tile.drop-target{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-light)}
+.img-tile img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.img-tile-num{position:absolute;top:.3rem;left:.3rem;font-family:'DM Mono',monospace;font-size:.58rem;font-weight:700;background:rgba(13,13,13,.7);color:#fff;padding:.1rem .35rem;border-radius:3px;line-height:1.4;pointer-events:none}
+.img-tile-remove{position:absolute;top:.3rem;right:.3rem;width:18px;height:18px;border-radius:50%;background:rgba(220,38,38,.85);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .15s;color:#fff}
+.img-tile:hover .img-tile-remove{opacity:1}
+.img-tile-name{position:absolute;bottom:0;left:0;right:0;font-family:'DM Mono',monospace;font-size:.56rem;background:rgba(13,13,13,.65);color:#fff;padding:.2rem .35rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;pointer-events:none}
+
+/* ── OPTIONS ── */
+.opts-row{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.1rem;align-items:flex-end}
+.opt-field{display:flex;flex-direction:column;gap:.3rem}
+.opt-lbl{font-family:'DM Mono',monospace;font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
+.opt-select{background:var(--paper);border:1.5px solid var(--border);border-radius:6px;padding:.42rem .75rem;font-family:'DM Mono',monospace;font-size:.8rem;color:var(--ink);outline:none;transition:border-color .2s;cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%237a7567' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .6rem center;padding-right:2rem}
+.opt-select:focus{border-color:var(--accent)}
+.filename-row{display:flex;align-items:center;gap:.5rem}
+.filename-input{background:var(--paper);border:1.5px solid var(--border);border-radius:6px;padding:.42rem .75rem;font-family:'DM Mono',monospace;font-size:.8rem;color:var(--ink);outline:none;transition:border-color .2s;flex:1;min-width:130px;max-width:240px}
+.filename-input:focus{border-color:var(--accent)}
+.filename-ext{font-family:'DM Mono',monospace;font-size:.8rem;color:var(--muted)}
+
+/* ── STATS BAR ── */
+.stats-bar{display:flex;gap:1.5rem;flex-wrap:wrap;background:var(--cream);border-radius:8px;padding:.65rem 1rem;margin-bottom:1.1rem}
+.stat{font-family:'DM Mono',monospace;font-size:.69rem;color:var(--muted)}
+.stat strong{color:var(--ink);font-weight:700}
+
+/* ── BUTTONS ── */
+.action-bar{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn-p{background:var(--accent);color:var(--white);border:none;border-radius:6px;padding:.65rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:.875rem;font-weight:600;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;white-space:nowrap}
+.btn-p:hover{background:#a83825;transform:translateY(-1px)}
+.btn-p:disabled{background:var(--border);color:var(--muted);cursor:not-allowed;transform:none}
+.btn-s{background:transparent;color:var(--ink);border:1.5px solid var(--border);border-radius:6px;padding:.65rem 1.25rem;font-family:'DM Sans',sans-serif;font-size:.875rem;font-weight:500;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:.5rem;white-space:nowrap}
+.btn-s:hover{border-color:var(--ink);background:var(--cream)}
+
+/* ── PROGRESS ── */
+.prog-wrap{display:none;margin-top:1.5rem;flex-direction:column;align-items:center;gap:.85rem;background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:2rem}
+.prog-wrap.on{display:flex}
+.prog-spinner{width:44px;height:44px;border:3px solid var(--accent-light);border-top-color:var(--accent);border-radius:50%;animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.prog-lbl{font-family:'DM Mono',monospace;font-size:.78rem;color:var(--muted);text-align:center}
+.prog-bar-wrap{width:100%;max-width:300px;background:var(--border);border-radius:100px;height:5px;overflow:hidden}
+.prog-bar{height:100%;background:var(--accent);border-radius:100px;transition:width .35s ease;width:0%}
+.prog-steps{display:flex;flex-direction:column;gap:.35rem;width:100%;max-width:300px}
+.pstep{display:flex;align-items:center;gap:.5rem;font-family:'DM Mono',monospace;font-size:.65rem;color:#bbb;transition:color .2s}
+.pstep.active{color:var(--accent)}.pstep.done{color:var(--green)}
+.pstep-dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0}
+
+/* ── RESULT ── */
+.result-area{display:none;margin-top:1.5rem}
+.result-area.on{display:block}
+.result-box{background:var(--paper);border:1.5px solid var(--green);border-radius:10px;padding:1.35rem 1.5rem;display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap}
+.result-icon{width:52px;height:52px;background:var(--green-light);border:1px solid rgba(26,138,74,.25);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0}
+.result-info{flex:1;min-width:140px}
+.result-fname{font-weight:700;font-size:.95rem;color:var(--ink);margin-bottom:.2rem;word-break:break-all}
+.result-meta{font-family:'DM Mono',monospace;font-size:.67rem;color:var(--muted)}
+.result-btns{display:flex;gap:.6rem;flex-wrap:wrap}
+
+/* ── ERROR ── */
+.err-box{display:none;margin-top:1.25rem;background:#fff8f8;border:1.5px solid #fca5a5;border-radius:8px;padding:.9rem 1.1rem}
+.err-box.on{display:block}
+.err-box p{font-size:.85rem;color:#dc2626;line-height:1.6}
+
+/* ── CONTENT ── */
+.content-section{max-width:1000px;margin:0 auto;padding:4rem 1.5rem}
+.section-tag{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem;display:block}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;letter-spacing:-.02em;margin-bottom:1.25rem;line-height:1.2}
+.content-prose{color:#4a4640;font-size:.975rem;line-height:1.8;max-width:720px}
+.content-prose p{margin-bottom:1rem}
+.content-prose p:last-child{margin-bottom:0}
+hr.divider{border:none;border-top:1px solid var(--border);max-width:1000px;margin:0 auto}
+
+/* HOW IT WORKS */
+.how-section{background:var(--ink);color:var(--paper);padding:2rem;position:relative;overflow:hidden}
+.how-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 100%,rgba(200,75,47,.14) 0%,transparent 70%);pointer-events:none}
+.how-inner{max-width:1000px;margin:0 auto;position:relative}
+.how-hdr{text-align:center;margin-bottom:1.5rem}
+.how-hdr .section-tag{color:#c84b2f}
+.how-hdr .section-title{color:var(--paper);margin-bottom:.3rem}
+.how-sub{color:#9e9990;font-size:.9rem;font-weight:300}
+.steps-grid{display:flex;align-items:stretch;gap:0}
+.step-card{flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:.9rem 1rem;transition:background .25s,border-color .25s,transform .25s}
+.step-card:hover{background:rgba(200,75,47,.08);border-color:rgba(200,75,47,.35);transform:translateY(-4px)}
+.step-conn{display:flex;align-items:center;justify-content:center;padding:0 .5rem;color:rgba(200,75,47,.5);flex-shrink:0;margin-top:-.75rem}
+.step-num{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:rgba(200,75,47,.25);line-height:1;margin-bottom:.3rem}
+.step-ico{width:36px;height:36px;background:rgba(200,75,47,.15);border:1px solid rgba(200,75,47,.3);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:.55rem;color:#c84b2f}
+.step-ttl{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:var(--paper);margin-bottom:.3rem}
+.step-dsc{font-size:.8rem;color:#9e9990;line-height:1.55;margin-bottom:.55rem}
+.step-dsc strong{color:#d4cfc4}
+.step-pill{display:inline-block;font-family:'DM Mono',monospace;font-size:.62rem;color:#c84b2f;background:rgba(200,75,47,.12);border:1px solid rgba(200,75,47,.25);padding:.18rem .55rem;border-radius:100px}
+.how-cta{text-align:center;margin-top:1.5rem;display:flex;flex-direction:column;align-items:center;gap:.55rem}
+.how-note{font-size:.8rem;color:#7a7567;font-family:'DM Mono',monospace}
+
+/* GRIDS */
+.features-grid,.use-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(218px,1fr));gap:1rem;margin-top:2rem}
+.feature-card,.use-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.4rem 1.2rem;transition:box-shadow .2s,transform .2s}
+.feature-card:hover,.use-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.f-ico,.u-ico{font-size:1.75rem;margin-bottom:.7rem;display:block}
+.f-title,.u-title{font-weight:700;font-size:.9rem;margin-bottom:.35rem}
+.f-desc,.u-desc{font-size:.82rem;color:var(--muted);line-height:1.5}
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-top:2rem}
+.tip-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.2rem;transition:box-shadow .2s,transform .2s}
+.tip-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.tip-name{font-weight:700;font-size:.9rem;margin-bottom:.3rem;color:var(--ink)}
+.tip-tag{font-family:'DM Mono',monospace;font-size:.74rem;color:var(--accent);background:var(--accent-light);padding:.2rem .5rem;border-radius:4px;display:inline-block;margin-bottom:.5rem}
+.tip-desc{font-size:.82rem;color:var(--muted);line-height:1.5}
+
+/* FAQ */
+.faq-list{margin-top:2rem}
+.faq-item{border-bottom:1px solid var(--border);padding:1.25rem 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-weight:600;font-size:.95rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-q::after{content:'+';font-size:1.2rem;color:var(--accent);flex-shrink:0;transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-size:.9rem;color:var(--muted);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .3s ease,margin-top .3s}
+.faq-item.open .faq-a{max-height:350px;margin-top:.75rem}
+
+/* CTA */
+.cta-section{background:var(--ink);color:var(--paper);padding:1.5rem 2rem;border-bottom:1px solid rgba(255,255,255,0.05);text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(200,75,47,.18) 0%,transparent 70%);pointer-events:none}
+.cta-inner{max-width:640px;margin:0 auto;position:relative}
+.cta-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-bottom:0.75rem;color:var(--paper)}
+.cta-desc{font-size:1rem;color:#9e9990;font-weight:300;margin-bottom:0.75rem;line-height:1.7}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:0.5rem}
+.cta-note{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.06em;color:#5a5650;margin-top:0.75rem;display:block}
+
+/* BUTTONS */
+.btn-primary{background:var(--accent);color:var(--white);border:none;border-radius:6px;padding:0.65rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:0.875rem;font-weight:600;cursor:pointer;transition:all 0.18s;display:inline-flex;align-items:center;gap:0.5rem;text-decoration:none}
+.btn-primary:hover{background:#a83825;transform:translateY(-1px)}
+
+/* RELATED */
+.related-section { background: var(--cream); padding: 5rem 2rem; border-top: 1px solid var(--border); }
+.related-inner { max-width: 1000px; margin: 0 auto; }
+.related-header { margin-bottom: 2.5rem; }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+.related-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-decoration: none; color: inherit; display: block; transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s; position: relative; overflow: hidden; }
+.related-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--border); transition: background 0.2s; }
+.related-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); border-color: var(--accent); }
+.related-card:hover::before { background: var(--accent); }
+.related-card-icon { font-size: 1.85rem; margin-bottom: 0.85rem; display: block; }
+.related-card-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem; color: var(--ink); letter-spacing: -0.01em; }
+.related-card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin-bottom: 1rem; }
+.related-card-tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); background: var(--accent-light); padding: 0.2rem 0.5rem; border-radius: 3px; display: inline-block; }
+
+/* FOOTER */
+footer{background:var(--ink);color:#9e9990;padding:4rem 2rem 2rem;margin-top:3rem;border-top:1px solid rgba(255,255,255,0.05)}
+.footer-inner{max-width:1200px;
+  margin-top: 0;
+  border-top: 1px solid rgba(255,255,255,0.05);margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid #2a2a2a}
+.footer-brand .logo{display:block;margin-bottom:.75rem}
+.footer-brand p{font-size:.85rem;line-height:1.6;max-width:240px}
+.footer-social{display:flex;margin-top:1rem}
+.social-icon{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;color:#9e9990;transition:color .2s,transform .2s}
+.social-icon:hover{color:var(--paper);transform:translateY(-2px)}
+.footer-col-title{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--paper);font-weight:600;margin-bottom:0.75rem;color:var(--paper)}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.footer-links a{color:#9e9990;text-decoration:none;font-size:.85rem;transition:color .2s}
+.footer-links a:hover{color:var(--paper)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;font-size:.8rem;flex-wrap:wrap;gap:.75rem}
+
+/* TOAST */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--ink);color:var(--paper);padding:.75rem 1.5rem;border-radius:6px;font-size:.875rem;font-weight:500;transition:transform .3s cubic-bezier(.34,1.56,.64,1);z-index:999;border-left:3px solid var(--accent);white-space:nowrap;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeUp .6s ease both}
+.delay-1{animation-delay:.1s}
+
+@media(max-width:768px){nav{display:none}.mobile-menu-toggle {display:flex}.steps-grid{flex-direction:column}.step-conn{transform:rotate(90deg);padding:.25rem 0}.footer-grid{grid-template-columns:1fr 1fr}.img-grid{grid-template-columns:repeat(auto-fill,minmax(85px,1fr))}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr;gap:2rem}.footer-bottom{flex-direction:column;text-align:center}.result-box{flex-direction:column;text-align:center}.result-btns{justify-content:center}}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">JPG2<span>Go</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="tools.html">Tools</a>
+      <a href="#tool" class="nav-cta">Convert Now</a>
+    </nav>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="tools.html" onclick="closeMobileMenu()">Tools</a>
+    <a href="#tool" class="nav-cta" onclick="closeMobileMenu()">Convert Now</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="fade-up">
+    <div class="hero-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Convert Compressed Files Online
+    </div>
+    <h1>Convert ZIP to PDF</h1>
+    <p class="hero-desc">Extract supported files from ZIP archives and convert them into PDF format for convenient viewing and document sharing.</p>
+    <div class="hero-pills">
+      <span class="hero-pill">JPG · PNG · WebP</span>
+      <span class="hero-pill">Drag-to-Reorder</span>
+      <span class="hero-pill">Page Size Options</span>
+      <span class="hero-pill">Image Fit Control</span>
+      <span class="hero-pill">100% Private</span>
+    </div>
+  </div>
+</section>
+
+<!-- TOOL -->
+<section class="tool-section" id="tool">
+  <div class="tool-card fade-up delay-1">
+    <div class="tool-card-header">
+      <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+      <span class="tc-title">zip-to-pdf · jszip + pdf-lib · drag-to-reorder · page-options · zero upload</span>
+    </div>
+    <div class="tool-body">
+
+      <!-- Drop Zone -->
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" accept=".zip,application/zip,application/x-zip-compressed">
+        <div class="drop-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/><rect x="9" y="2" width="6" height="6" rx="1" stroke-width="1.5"/></svg>
+        </div>
+        <h3>Drop your ZIP file here</h3>
+        <p>Extract supported files from ZIP archives and convert them into PDF format for convenient viewing and document sharing.</p>
+        <span class="formats-pill">ZIP → JPG · PNG · WebP → PDF</span>
+      </div>
+
+      <!-- File Bar -->
+      <div class="file-bar" id="fileBar">
+        <span class="fb-icon">
+          <svg width="20" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/><rect x="9" y="2" width="6" height="6" rx="1" stroke-width="1.5"/></svg>
+        </span>
+        <div class="fb-info">
+          <div class="fb-name" id="fbName">—</div>
+          <div class="fb-meta" id="fbMeta">—</div>
+        </div>
+        <button class="fb-remove" id="fbRemove" aria-label="Remove file">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <!-- Preview + Options -->
+      <div class="preview-section" id="previewSection">
+
+        <div class="preview-header">
+          <span class="preview-label">Images Found</span>
+          <span class="preview-badge" id="previewBadge">0 images</span>
+        </div>
+        <div class="preview-hint">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16" stroke-width="3"/></svg>
+          Drag thumbnails to reorder pages — the sequence shown becomes the PDF page order
+        </div>
+
+        <div class="img-grid" id="imgGrid"></div>
+
+        <!-- Stats -->
+        <div class="stats-bar">
+          <div class="stat">Images: <strong id="statImgs">0</strong></div>
+          <div class="stat">Skipped (non-image): <strong id="statSkipped">0</strong></div>
+          <div class="stat">Total image size: <strong id="statSize">—</strong></div>
+        </div>
+
+        <!-- Options -->
+        <div class="opts-row">
+          <div class="opt-field">
+            <span class="opt-lbl">Page Size</span>
+            <select class="opt-select" id="pageSizeSelect">
+              <option value="fit">Fit to image (exact)</option>
+              <option value="a4" selected>A4 (210 × 297 mm)</option>
+              <option value="letter">US Letter (8.5 × 11 in)</option>
+              <option value="a3">A3 (297 × 420 mm)</option>
+              <option value="square">Square (210 × 210 mm)</option>
+            </select>
+          </div>
+          <div class="opt-field">
+            <span class="opt-lbl">Image Fit</span>
+            <select class="opt-select" id="imgFitSelect">
+              <option value="contain" selected>Fit (preserve aspect ratio)</option>
+              <option value="fill">Fill (stretch to page)</option>
+              <option value="cover">Cover (crop to fill)</option>
+            </select>
+          </div>
+          <div class="opt-field">
+            <span class="opt-lbl">Orientation</span>
+            <select class="opt-select" id="orientSelect">
+              <option value="portrait" selected>Portrait</option>
+              <option value="landscape">Landscape</option>
+              <option value="auto">Auto (per image)</option>
+            </select>
+          </div>
+          <div class="opt-field">
+            <span class="opt-lbl">Output Filename</span>
+            <div class="filename-row">
+              <input class="filename-input" id="filenameInput" type="text" value="images-from-zip" maxlength="80">
+              <span class="filename-ext">.pdf</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="action-bar">
+          <button class="btn-p" id="convertBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Convert to PDF
+          </button>
+          <button class="btn-s" id="clearBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
+            Clear
+          </button>
+        </div>
+
+        <!-- Progress -->
+        <div class="prog-wrap" id="progWrap">
+          <div class="prog-spinner"></div>
+          <div class="prog-lbl" id="progLbl">Extracting images…</div>
+          <div class="prog-bar-wrap"><div class="prog-bar" id="progBar"></div></div>
+          <div class="prog-steps">
+            <div class="pstep" id="ps1"><span class="pstep-dot"></span>Reading ZIP archive</div>
+            <div class="pstep" id="ps2"><span class="pstep-dot"></span>Decoding images</div>
+            <div class="pstep" id="ps3"><span class="pstep-dot"></span>Laying out pages</div>
+            <div class="pstep" id="ps4"><span class="pstep-dot"></span>Writing PDF</div>
+          </div>
+        </div>
+
+        <!-- Error -->
+        <div class="err-box" id="errBox"><p id="errText"></p></div>
+
+        <!-- Result -->
+        <div class="result-area" id="resultArea">
+          <div class="result-box">
+            <div class="result-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 12 18 15 15"/><line x1="12" y1="12" x2="12" y2="18"/></svg>
+            </div>
+            <div class="result-info">
+              <div class="result-fname" id="resultFname">images-from-zip.pdf</div>
+              <div class="result-meta" id="resultMeta">—</div>
+            </div>
+            <div class="result-btns">
+              <button class="btn-p" id="downloadBtn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download PDF
+              </button>
+              <button class="btn-s" id="convertAgainBtn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                Convert Again
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /preview-section -->
+    </div><!-- /tool-body -->
+  </div><!-- /tool-card -->
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how-it-works">
+  <div class="how-inner">
+    <div class="how-hdr">
+      <span class="section-tag">Quick Guide</span>
+      <h2 class="section-title">How to Convert ZIP to PDF</h2>
+      <p class="how-sub">Three steps. No software. No account.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+        <div class="step-ttl">Drop Your ZIP</div>
+        <div class="step-dsc">Select or drop a <strong>ZIP archive</strong> containing JPG, PNG, or WebP images. The tool extracts and previews all images instantly in the browser.</div>
+        <span class="step-pill">ZIP · JPG · PNG · WebP</span>
+      </div>
+      <div class="step-conn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6" stroke-width="3"/><line x1="3" y1="12" x2="3.01" y2="12" stroke-width="3"/><line x1="3" y1="18" x2="3.01" y2="18" stroke-width="3"/></svg></div>
+        <div class="step-ttl">Reorder &amp; Configure</div>
+        <div class="step-dsc"><strong>Drag thumbnails</strong> to set the page order. Choose page size, image fit mode, orientation, and output filename before converting.</div>
+        <span class="step-pill">drag · A4 · Letter · fit options</span>
+      </div>
+      <div class="step-conn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+        <div class="step-ttl">Download PDF</div>
+        <div class="step-dsc">Click <strong>Convert to PDF</strong>. One image per page, in your chosen order, downloads instantly — no waiting, no email link.</div>
+        <span class="step-pill">instant download</span>
+      </div>
+    </div>
+    <div class="how-cta">
+      <a href="#tool" class="btn-p">Convert a ZIP Now</a>
+      <span class="how-note">free · no signup · no upload · no watermark</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHY THIS TOOL -->
+<section class="content-section" id="about">
+  <h2 class="section-title">Why Use ZIP to PDF Converter?</h2>
+  <div class="content-prose">
+    <p>ZIP files are commonly used to compress multiple files into a single archive. However, the contents inside a ZIP file often need to be extracted before they can be viewed or shared. A ZIP to PDF converter simplifies this process by turning supported files inside the archive into a single PDF document.</p>
+    <p>This approach helps organize information from multiple files into a structured document that is easier to manage.</p>
+    <p>For users who frequently deal with archived documents, converting ZIP contents into PDF format can improve document organization and make sharing information more convenient and efficient.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FEATURES -->
+
+<section class="content-section" id="features">
+  <span class="section-tag">Features</span>
+  <h2 class="section-title">Everything in One Converter</h2>
+  <div class="features-grid">
+    <div class="feature-card"><span class="f-ico">📦</span><div class="f-title">ZIP Extraction</div><div class="f-desc">Automatically extracts all JPG, PNG, and WebP images from any ZIP archive — including images inside subfolders.</div></div>
+    <div class="feature-card"><span class="f-ico">🖼️</span><div class="f-title">Image Preview Grid</div><div class="f-desc">Thumbnails of every extracted image are shown immediately so you can verify contents before converting.</div></div>
+    <div class="feature-card"><span class="f-ico">↕️</span><div class="f-title">Drag-to-Reorder</div><div class="f-desc">Drag thumbnails to any position — the order shown is the exact page order in the final PDF.</div></div>
+    <div class="feature-card"><span class="f-ico">📐</span><div class="f-title">Page Size Options</div><div class="f-desc">Choose Fit to image, A4, US Letter, A3, or Square — with portrait, landscape, or auto orientation per page.</div></div>
+    <div class="feature-card"><span class="f-ico">🔲</span><div class="f-title">Image Fit Modes</div><div class="f-desc">Contain (letterbox), Fill (stretch), or Cover (crop) — control exactly how each image fills its PDF page.</div></div>
+    <div class="feature-card"><span class="f-ico">🏷️</span><div class="f-title">Custom Filename</div><div class="f-desc">Name the output PDF before downloading. Clear, descriptive filenames rather than a generic "output.pdf".</div></div>
+    <div class="feature-card"><span class="f-ico">🔒</span><div class="f-title">100% Private</div><div class="f-desc">Your ZIP and its images never leave your device. Everything runs locally — no server, no cloud, no logs.</div></div>
+    <div class="feature-card"><span class="f-ico">💸</span><div class="f-title">Free Forever</div><div class="f-desc">No subscription, no credits, no watermark on the output PDF. JPG2Go is free for everyone, always.</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- WHO USES THIS -->
+<section class="content-section">
+  <span class="section-tag">Who It's For</span>
+  <h2 class="section-title">Who Uses a ZIP to PDF Converter?</h2>
+  <div class="use-grid">
+    <div class="use-card"><span class="u-ico">📸</span><div class="u-title">Photo Collections</div><div class="u-desc">Turn a ZIP of event or travel photos into a paginated PDF album for sharing, printing, or archiving.</div></div>
+    <div class="use-card"><span class="u-ico">📚</span><div class="u-title">Scanned Documents</div><div class="u-desc">Convert a batch of scanned page images delivered as a ZIP into a single, searchable-ready PDF document.</div></div>
+    <div class="use-card"><span class="u-ico">🎨</span><div class="u-title">Design Portfolios</div><div class="u-desc">Package a ZIP of design mockup screenshots or artwork exports into a single PDF portfolio for client review.</div></div>
+    <div class="use-card"><span class="u-ico">📖</span><div class="u-title">Manga &amp; Comics</div><div class="u-desc">Convert a ZIP of manga or comic pages into a single PDF to read in any PDF reader or send to an e-reader.</div></div>
+    <div class="use-card"><span class="u-ico">🏗️</span><div class="u-title">Architecture &amp; CAD</div><div class="u-desc">Combine a ZIP of exported floor plans or render images into a single PDF presentation for clients or contractors.</div></div>
+    <div class="use-card"><span class="u-ico">📋</span><div class="u-title">Report Assembly</div><div class="u-desc">Assemble a ZIP of chart screenshots and infographic exports into a single PDF report for distribution.</div></div>
+    <div class="use-card"><span class="u-ico">🖨️</span><div class="u-title">Print Preparation</div><div class="u-desc">Convert a ZIP of print-ready image files to A4 or Letter PDF pages sized for a print service or photobook.</div></div>
+    <div class="use-card"><span class="u-ico">📱</span><div class="u-title">App &amp; UI Screenshots</div><div class="u-desc">Turn a ZIP of app screenshots into a PDF slide deck for design reviews, bug reports, or investor decks.</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- TIPS -->
+<section class="content-section">
+  <span class="section-tag">Pro Tips</span>
+  <h2 class="section-title">Get the Best Results</h2>
+  <div class="tips-grid">
+    <div class="tip-card">
+      <div class="tip-name">Name Images for Natural Ordering</div>
+      <div class="tip-tag">tip → page order</div>
+      <div class="tip-desc">Images in a ZIP are extracted in filename order. If you name them with zero-padded numbers — "001.jpg", "002.jpg", "003.jpg" — they'll arrive in the right order and need no dragging to reorder. Use at least three digits for archives larger than 99 images.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">Choose "Fit to Image" for Mixed Sizes</div>
+      <div class="tip-tag">tip → page size</div>
+      <div class="tip-desc">If your images have inconsistent dimensions — mixing portrait photos and landscape screenshots, for example — choose "Fit to image" so each PDF page matches its image exactly rather than being uniformly letterboxed on an A4 canvas.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">Use "Auto" Orientation for Photos</div>
+      <div class="tip-tag">tip → orientation</div>
+      <div class="tip-desc">For photo archives with a mix of portrait and landscape shots, set Orientation to "Auto". Each page will be oriented to match the image — portrait for tall photos, landscape for wide ones — rather than forcing everything into one orientation.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">Remove Non-Image Files First</div>
+      <div class="tip-tag">tip → clean output</div>
+      <div class="tip-desc">The tool skips non-image files, but if your ZIP contains many extras (text files, thumbs.db, __MACOSX folders) the stats bar will show a high "skipped" count. For the cleanest result, build your ZIP from image files only before converting.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">Compress Images Before Zipping</div>
+      <div class="tip-tag">tip → file size</div>
+      <div class="tip-desc">The output PDF size is roughly the sum of the input image sizes. For large photo collections, run the images through the JPEG Optimizer first to reduce file size before zipping, so the resulting PDF is more compact and email-friendly.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">Protect or Merge After Converting</div>
+      <div class="tip-tag">tip → workflow</div>
+      <div class="tip-desc">After downloading the PDF, use Protect PDF to add a password if it contains sensitive images, or Merge PDF to combine it with other existing PDFs into a larger document — both tools accept the output directly.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FAQ -->
+<section class="content-section" id="faq">
+  <span class="section-tag">FAQ</span>
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <div class="faq-list">
+<div class="faq-item"><div class="faq-q">Is this ZIP to PDF converter free?</div><div class="faq-a">Yes — completely free with no hidden charges, no subscription, no watermark on the output, and no usage limits. JPG2Go is free for everyone, always.</div></div>
+<div class="faq-item"><div class="faq-q">Is my ZIP file uploaded to a server?</div><div class="faq-a">No. Your ZIP file and all images inside it are processed entirely in your browser using JSZip and pdf-lib, both client-side JavaScript libraries. Nothing is ever sent to any server. Your files never leave your device.</div></div>
+<div class="faq-item"><div class="faq-q">What image formats are supported inside the ZIP?</div><div class="faq-a">JPG/JPEG, PNG, and WebP. Other file types inside the ZIP (text files, PDFs, SVGs, etc.) are automatically skipped. The stats bar shows how many files were skipped so you know what was excluded.</div></div>
+<div class="faq-item"><div class="faq-q">Does it support images inside subfolders in the ZIP?</div><div class="faq-a">Yes. The tool scans all files in the ZIP regardless of directory depth. Images in nested subfolders are included. Their path-sorted order determines the initial extraction order, which you can then reorder by dragging.</div></div>
+<div class="faq-item"><div class="faq-q">How is page order determined?</div><div class="faq-a">Images are initially sorted by their filename path within the ZIP (alphabetically, case-insensitive). You can then drag thumbnails to any order in the preview grid before converting. The sequence shown is the exact page order in the PDF.</div></div>
+<div class="faq-item"><div class="faq-q">What page size options are available?</div><div class="faq-a">Fit to image (each PDF page matches the exact pixel dimensions of its image), A4 (210 × 297 mm), US Letter (8.5 × 11 in), A3 (297 × 420 mm), and Square (210 × 210 mm). Each page size can be combined with portrait, landscape, or auto orientation.</div></div>
+  </div>
+</section>
+
+<!-- RELATED TOOLS -->
+<section class="related-section" id="tools">
+  <div class="related-inner">
+    <div class="related-header">
+      <span class="section-tag">Related Tools</span>
+      <h2 class="section-title">More Free Online Tools</h2>
+    </div>
+    <div class="related-grid">
+      <a href="/jpg-to-pdf" class="related-card">
+        <span class="related-card-icon">📄</span>
+        <div class="related-card-name">JPG to PDF</div>
+        <div class="related-card-desc">Convert JPG images to PDF documents quickly. Combine multiple photos into a single organized PDF file for easy sharing and printing.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+      <a href="/image-resizer" class="related-card">
+        <span class="related-card-icon">📐</span>
+        <div class="related-card-name">Image Resizer</div>
+        <div class="related-card-desc">Resize images to exact pixel dimensions or a percentage of their original size. Runs entirely in your browser without uploading files anywhere.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/compress-jpeg" class="related-card">
+        <span class="related-card-icon">🗜️</span>
+        <div class="related-card-name">Compress JPEG</div>
+        <div class="related-card-desc">Reduce JPEG image file size while maintaining quality. Optimize images for faster web pages and lower storage usage.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/merge-pdf" class="related-card">
+        <span class="related-card-icon">📎</span>
+        <div class="related-card-name">Merge PDF</div>
+        <div class="related-card-desc">Combine multiple PDF files into a single organized document. Drag and drop to reorder pages easily.</div>
+        <span class="related-card-tag">PDF</span>
+      </a>
+      <a href="/crop-image" class="related-card">
+        <span class="related-card-icon">✂️</span>
+        <div class="related-card-name">Crop Image</div>
+        <div class="related-card-desc">Crop images to any aspect ratio or custom dimensions. Perfect for social media thumbnails, profile photos, and banner images.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/format-converter" class="related-card">
+        <span class="related-card-icon">🔄</span>
+        <div class="related-card-name">Format Converter</div>
+        <div class="related-card-desc">Convert images between different formats instantly. Transform JPG, PNG, WebP, and other image formats quickly.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <span class="section-tag" style="color:var(--accent);">Get Started</span>
+    <h2 class="cta-title">Ready to Convert ZIP to PDF?</h2>
+    <p class="cta-desc">Extract files from ZIP archives and convert supported documents into PDF format quickly.</p>
+    <div class="cta-actions">
+      <a href="#tool" class="btn-primary" style="font-size:1rem;padding:0.85rem 2rem;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Convert ZIP</a>
+    </div>
+    <p class="cta-note">No account · No upload · No data stored · Works offline</p>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<div id="footer-placeholder"></div>
+<script src="load-footer.js"></script>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══ STATE ════════════════════════════════════════════════════════
+// Each entry: {id, name, blob, dataUrl, w, h}
+let images = [];
+let uid = 0;
+let resultBlob = null;
+let dragSrcId = null;
+
+// Page size definitions in PDF points (1pt = 1/72 inch)
+const PAGE_SIZES = {
+  a4:     [595.28, 841.89],
+  letter: [612,    792   ],
+  a3:     [841.89, 1190.55],
+  square: [595.28, 595.28 ],
+};
+
+// ═══ HELPERS ══════════════════════════════════════════════════════
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+function fmtSize(b) {
+  if (b < 1024) return b + ' B';
+  if (b < 1048576) return (b/1024).toFixed(1) + ' KB';
+  return (b/1048576).toFixed(2) + ' MB';
+}
+function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
+function setP(pct, msg) {
+  document.getElementById('progBar').style.width = pct + '%';
+  if (msg !== undefined) document.getElementById('progLbl').textContent = msg;
+}
+function setStep(idx) {
+  ['ps1','ps2','ps3','ps4'].forEach((id, i) => {
+    const el = document.getElementById(id);
+    el.classList.remove('active','done');
+    if (i < idx) el.classList.add('done');
+    else if (i === idx) el.classList.add('active');
+  });
+}
+function isImageFile(name) {
+  return /\.(jpe?g|png|webp)$/i.test(name);
+}
+
+// ═══ MOBILE MENU ══════════════════════════════════════════════════
+document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+  this.classList.toggle('active');
+  document.getElementById('mobileNav').classList.toggle('active');
+});
+
+// ═══ FILE INPUT ════════════════════════════════════════════════════
+const dropZone = document.getElementById('dropZone');
+document.getElementById('fileInput').addEventListener('change', e => {
+  if (e.target.files[0]) loadZip(e.target.files[0]);
+  e.target.value = '';
+});
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault(); dropZone.classList.remove('drag-over');
+  const f = Array.from(e.dataTransfer.files).find(f =>
+    f.type === 'application/zip' || f.type === 'application/x-zip-compressed' || f.name.toLowerCase().endsWith('.zip')
+  );
+  if (f) loadZip(f); else toast('Please drop a ZIP file');
+});
+
+async function loadZip(file) {
+  if (!file.name.toLowerCase().endsWith('.zip') &&
+      file.type !== 'application/zip' &&
+      file.type !== 'application/x-zip-compressed') {
+    toast('Please select a ZIP file'); return;
+  }
+  if (!window.JSZip) { toast('JSZip is still loading — please wait and try again'); return; }
+
+  document.getElementById('fbName').textContent = file.name;
+  document.getElementById('fbMeta').textContent = fmtSize(file.size) + ' · ZIP archive';
+  document.getElementById('fileBar').classList.add('on');
+  dropZone.style.display = 'none';
+
+  // Reset state
+  images = []; uid = 0; resultBlob = null;
+  document.getElementById('imgGrid').innerHTML = '';
+  document.getElementById('previewSection').classList.remove('on');
+  document.getElementById('resultArea').classList.remove('on');
+  document.getElementById('errBox').classList.remove('on');
+
+  // Extract
+  try {
+    const buf = await file.arrayBuffer();
+    const zip = await JSZip.loadAsync(buf);
+
+    // Gather image files, sort by path
+    const imgFiles = [];
+    let skippedCount = 0;
+    zip.forEach((relPath, entry) => {
+      if (entry.dir) return;
+      const baseName = relPath.split('/').pop();
+      if (baseName.startsWith('.') || baseName.startsWith('__')) { skippedCount++; return; }
+      if (isImageFile(baseName)) {
+        imgFiles.push({ relPath, entry });
+      } else {
+        skippedCount++;
+      }
+    });
+
+    // Sort by path (natural sort)
+    imgFiles.sort((a, b) => a.relPath.localeCompare(b.relPath, undefined, { numeric: true, sensitivity: 'base' }));
+
+    if (!imgFiles.length) {
+      toast('No images found in this ZIP');
+      resetTool();
+      return;
+    }
+
+    // Load each image
+    for (const { relPath, entry } of imgFiles) {
+      const blob = await entry.async('blob');
+      const mime = /\.png$/i.test(relPath) ? 'image/png'
+                 : /\.webp$/i.test(relPath) ? 'image/webp'
+                 : 'image/jpeg';
+      const typedBlob = new Blob([blob], { type: mime });
+      const dataUrl = await blobToDataUrl(typedBlob);
+      const { w, h } = await getImageDims(dataUrl);
+      images.push({ id: uid++, name: relPath.split('/').pop(), blob: typedBlob, dataUrl, w, h, mime });
+    }
+
+    document.getElementById('statSkipped').textContent = skippedCount;
+    document.getElementById('filenameInput').value = file.name.replace(/\.zip$/i, '');
+
+    document.getElementById('previewSection').classList.add('on');
+    renderGrid();
+    updateStats();
+    toast(images.length + ' image' + (images.length !== 1 ? 's' : '') + ' found in ZIP');
+
+  } catch(err) {
+    toast('Could not read ZIP: ' + err.message);
+    resetTool();
+  }
+}
+
+function blobToDataUrl(blob) {
+  return new Promise((res, rej) => {
+    const r = new FileReader();
+    r.onload = e => res(e.target.result);
+    r.onerror = rej;
+    r.readAsDataURL(blob);
+  });
+}
+function getImageDims(dataUrl) {
+  return new Promise(res => {
+    const img = new Image();
+    img.onload = () => res({ w: img.naturalWidth, h: img.naturalHeight });
+    img.onerror = () => res({ w: 800, h: 600 });
+    img.src = dataUrl;
+  });
+}
+
+// ═══ RENDER GRID ══════════════════════════════════════════════════
+function renderGrid() {
+  const grid = document.getElementById('imgGrid');
+  grid.innerHTML = '';
+  images.forEach((img, idx) => {
+    const tile = document.createElement('div');
+    tile.className = 'img-tile';
+    tile.dataset.id = img.id;
+    tile.draggable = true;
+    tile.innerHTML = `
+      <img src="${img.dataUrl}" alt="${img.name}" loading="lazy">
+      <span class="img-tile-num">${idx + 1}</span>
+      <button class="img-tile-remove" data-id="${img.id}" title="Remove">
+        <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <span class="img-tile-name">${img.name}</span>`;
+
+    tile.querySelector('.img-tile-remove').addEventListener('click', e => {
+      e.stopPropagation();
+      const id = parseInt(e.currentTarget.dataset.id);
+      images = images.filter(i => i.id !== id);
+      if (!images.length) { resetTool(); return; }
+      renderGrid(); updateStats();
+    });
+
+    bindTileDrag(tile);
+    grid.appendChild(tile);
+  });
+  document.getElementById('previewBadge').textContent = images.length + ' image' + (images.length !== 1 ? 's' : '');
+}
+
+// ═══ TILE DRAG REORDER ════════════════════════════════════════════
+function bindTileDrag(tile) {
+  tile.addEventListener('dragstart', e => {
+    dragSrcId = parseInt(tile.dataset.id);
+    tile.classList.add('is-dragging');
+    e.dataTransfer.effectAllowed = 'move';
+  });
+  tile.addEventListener('dragend', () => {
+    document.querySelectorAll('.img-tile').forEach(t => t.classList.remove('is-dragging','drop-target'));
+  });
+  tile.addEventListener('dragover', e => {
+    e.preventDefault(); e.dataTransfer.dropEffect = 'move';
+    document.querySelectorAll('.img-tile').forEach(t => t.classList.remove('drop-target'));
+    if (parseInt(tile.dataset.id) !== dragSrcId) tile.classList.add('drop-target');
+  });
+  tile.addEventListener('drop', e => {
+    e.preventDefault();
+    const toId = parseInt(tile.dataset.id);
+    if (dragSrcId === toId) return;
+    const fromIdx = images.findIndex(i => i.id === dragSrcId);
+    const toIdx   = images.findIndex(i => i.id === toId);
+    const [moved] = images.splice(fromIdx, 1);
+    images.splice(toIdx, 0, moved);
+    renderGrid();
+  });
+}
+
+// ═══ STATS ════════════════════════════════════════════════════════
+function updateStats() {
+  document.getElementById('statImgs').textContent = images.length;
+  const totalBytes = images.reduce((s, i) => s + (i.blob.size || 0), 0);
+  document.getElementById('statSize').textContent = fmtSize(totalBytes);
+}
+
+// ═══ CONVERT ══════════════════════════════════════════════════════
+document.getElementById('convertBtn').addEventListener('click', doConvert);
+
+async function doConvert() {
+  if (!images.length) { toast('No images to convert'); return; }
+  if (!window.PDFLib) { toast('pdf-lib is still loading — please wait'); return; }
+
+  const pageSizeKey = document.getElementById('pageSizeSelect').value;
+  const fitMode     = document.getElementById('imgFitSelect').value;
+  const orientation = document.getElementById('orientSelect').value;
+
+  document.getElementById('progWrap').classList.add('on');
+  document.getElementById('resultArea').classList.remove('on');
+  document.getElementById('errBox').classList.remove('on');
+  document.getElementById('convertBtn').disabled = true;
+  resultBlob = null;
+  setP(0); setStep(0);
+  await wait(50);
+
+  try {
+    // Step 1 — read ZIP data (already done; images in memory)
+    setStep(0); setP(8, 'Reading ZIP archive…');
+    await wait(30);
+
+    const pdfDoc = await PDFLib.PDFDocument.create();
+
+    // Step 2 — decode images
+    setStep(1); setP(20, 'Decoding images…');
+    await wait(30);
+
+    const embedded = [];
+    for (let i = 0; i < images.length; i++) {
+      setP(20 + Math.round((i / images.length) * 30), `Decoding image ${i+1} of ${images.length}…`);
+      const img = images[i];
+      try {
+        let embImg;
+        if (img.mime === 'image/png') {
+          const bytes = await img.blob.arrayBuffer();
+          embImg = await pdfDoc.embedPng(bytes);
+        } else if (img.mime === 'image/webp') {
+          // pdf-lib doesn't support WebP natively — re-encode via canvas
+          const jpegBytes = await webpToJpeg(img.dataUrl);
+          embImg = await pdfDoc.embedJpg(jpegBytes);
+        } else {
+          const bytes = await img.blob.arrayBuffer();
+          embImg = await pdfDoc.embedJpg(bytes);
+        }
+        embedded.push({ embImg, srcW: img.w, srcH: img.h, name: img.name });
+      } catch(imgErr) {
+        console.warn('Skipping image', img.name, imgErr);
+        embedded.push(null);
+      }
+      await wait(5);
+    }
+
+    // Step 3 — lay out pages
+    setStep(2); setP(52, 'Laying out pages…');
+    await wait(30);
+
+    for (let i = 0; i < embedded.length; i++) {
+      setP(52 + Math.round((i / embedded.length) * 30), `Adding page ${i+1}…`);
+      const item = embedded[i];
+      if (!item) continue;
+      const { embImg, srcW, srcH } = item;
+
+      let pageW, pageH;
+      if (pageSizeKey === 'fit') {
+        pageW = srcW;
+        pageH = srcH;
+      } else {
+        [pageW, pageH] = PAGE_SIZES[pageSizeKey];
+        // Apply orientation
+        const imgIsLandscape = srcW > srcH;
+        const useOrientation = orientation === 'auto'
+          ? (imgIsLandscape ? 'landscape' : 'portrait')
+          : orientation;
+        if (useOrientation === 'landscape' && pageW < pageH) [pageW, pageH] = [pageH, pageW];
+        else if (useOrientation === 'portrait'  && pageW > pageH) [pageW, pageH] = [pageH, pageW];
+      }
+
+      const page = pdfDoc.addPage([pageW, pageH]);
+
+      // Calculate draw rect based on fit mode
+      let drawX, drawY, drawW, drawH;
+      const scaleX = pageW / srcW;
+      const scaleY = pageH / srcH;
+
+      if (fitMode === 'fill') {
+        drawW = pageW; drawH = pageH; drawX = 0; drawY = 0;
+      } else if (fitMode === 'cover') {
+        const scale = Math.max(scaleX, scaleY);
+        drawW = srcW * scale; drawH = srcH * scale;
+        drawX = (pageW - drawW) / 2; drawY = (pageH - drawH) / 2;
+      } else {
+        // contain
+        const scale = Math.min(scaleX, scaleY);
+        drawW = srcW * scale; drawH = srcH * scale;
+        drawX = (pageW - drawW) / 2; drawY = (pageH - drawH) / 2;
+      }
+
+      page.drawImage(embImg, { x: drawX, y: drawY, width: drawW, height: drawH });
+      await wait(2);
+    }
+
+    // Step 4 — write PDF
+    setStep(3); setP(84, 'Writing PDF…');
+    await wait(30);
+
+    const pdfBytes = await pdfDoc.save();
+    setP(100, 'Done!');
+    await wait(100);
+
+    resultBlob = new Blob([pdfBytes], { type: 'application/pdf' });
+    const fname = (document.getElementById('filenameInput').value.trim() || 'images-from-zip') + '.pdf';
+    const pageCount = pdfDoc.getPageCount();
+
+    document.getElementById('resultFname').textContent = fname;
+    document.getElementById('resultMeta').textContent =
+      fmtSize(pdfBytes.length) + ' · ' + pageCount + ' page' + (pageCount !== 1 ? 's' : '') + ' · ' + images.length + ' images';
+
+    document.getElementById('progWrap').classList.remove('on');
+    document.getElementById('resultArea').classList.add('on');
+    document.getElementById('resultArea').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    toast('PDF created — ' + pageCount + ' pages');
+
+  } catch(err) {
+    document.getElementById('progWrap').classList.remove('on');
+    document.getElementById('errBox').classList.add('on');
+    document.getElementById('errText').textContent = 'Conversion failed: ' + (err.message || String(err));
+    toast('Conversion failed — see error above');
+    console.error(err);
+  }
+
+  document.getElementById('convertBtn').disabled = false;
+}
+
+// Re-encode WebP → JPEG via Canvas
+function webpToJpeg(dataUrl) {
+  return new Promise((res, rej) => {
+    const img = new Image();
+    img.onload = () => {
+      const cv = document.createElement('canvas');
+      cv.width = img.naturalWidth; cv.height = img.naturalHeight;
+      cv.getContext('2d').drawImage(img, 0, 0);
+      cv.toBlob(blob => {
+        if (!blob) { rej(new Error('Canvas toBlob failed')); return; }
+        blob.arrayBuffer().then(res).catch(rej);
+      }, 'image/jpeg', 0.93);
+    };
+    img.onerror = rej;
+    img.src = dataUrl;
+  });
+}
+
+// ═══ DOWNLOAD ═════════════════════════════════════════════════════
+document.getElementById('downloadBtn').addEventListener('click', () => {
+  if (!resultBlob) return;
+  const fname = (document.getElementById('filenameInput').value.trim() || 'images-from-zip') + '.pdf';
+  const url = URL.createObjectURL(resultBlob);
+  const a = document.createElement('a');
+  a.href = url; a.download = fname; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 8000);
+  toast('Downloading ' + fname + '…');
+});
+
+// ═══ CONVERT AGAIN / CLEAR ════════════════════════════════════════
+document.getElementById('convertAgainBtn').addEventListener('click', () => {
+  document.getElementById('resultArea').classList.remove('on');
+  resultBlob = null;
+  toast('Adjust settings and convert again');
+});
+document.getElementById('clearBtn').addEventListener('click', resetTool);
+document.getElementById('fbRemove').addEventListener('click', resetTool);
+
+function resetTool() {
+  images = []; uid = 0; resultBlob = null;
+  document.getElementById('fileBar').classList.remove('on');
+  document.getElementById('previewSection').classList.remove('on');
+  dropZone.style.display = '';
+  document.getElementById('resultArea').classList.remove('on');
+  document.getElementById('errBox').classList.remove('on');
+  document.getElementById('progWrap').classList.remove('on');
+  document.getElementById('imgGrid').innerHTML = '';
+  toast('Cleared');
+}
+
+// ═══ FAQ ══════════════════════════════════════════════════════════
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement; const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+function closeMobileMenu() {
+  document.getElementById('mobileMenuToggle').classList.remove('active');
+  document.getElementById('mobileNav').classList.remove('active');
+}
+</script>
+</body>
+</html>

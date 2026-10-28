@@ -1,0 +1,16 @@
+{
+  "name": "jpg2go-site",
+  "version": "1.0.0",
+  "description": "JPG2Go - Free online image and PDF conversion tools",
+  "scripts": {
+    "dev": "npx http-server . -p 8080 -o",
+    "start": "npx http-server . -p 8080 -o"
+  },
+  "keywords": [
+    "image-converter",
+    "pdf-tools",
+    "browser-based"
+  ],
+  "author": "",
+  "license": "MIT"
+}

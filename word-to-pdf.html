@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>Word to PDF Converter | Convert DOC to PDF Online</title>
+<meta name="description" content="Convert Word documents to PDF online instantly. Keep formatting, tables, and layout intact for professional sharing, printing, or archiving.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jpg2go.com/word-to-pdf">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="adsense.js"></script>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Convert Word to PDF",
+    "url": "https://jpg2go.com/word-to-pdf",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Convert Word documents to PDF online instantly. Keep formatting, tables, and layout intact for professional sharing, printing, or archiving."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a Word to PDF converter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Word to PDF converter transforms Microsoft Word documents (DOC or DOCX) into PDF format so they can be shared easily without altering the original layout."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why convert Word documents into PDF files?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PDF files maintain the original formatting of a document, ensuring that fonts, images, and layout remain consistent when viewed on different devices."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will formatting remain the same after conversion?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most Word to PDF converters preserve the document structure including headings, tables, images, and fonts to keep the final PDF identical to the original file."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can large Word documents be converted online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, many online tools support large Word files and convert them into PDF documents quickly and securely."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Word to PDF conversion commonly used in offices?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, businesses frequently convert reports, contracts, and presentations into PDF format to ensure consistent viewing and printing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I print the PDF after conversion?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, PDF files are optimized for printing and usually maintain the same formatting across different printers."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+
+<style>
+:root{
+  --ink:#0d0d0d;--paper:#f7f4ee;--cream:#ede9df;
+  --accent:#c84b2f;--accent-light:#e8d5cf;
+  --muted:#7a7567;--border:#d4cfc4;--white:#ffffff;
+  --shadow:0 2px 24px rgba(13,13,13,.08);
+  --shadow-lg:0 8px 48px rgba(13,13,13,.12);
+  --green:#1a8a4a;--green-light:#d4f0e0;
+  --blue:#1e50a2;--blue-light:#dde8f7;
+  --amber:#b45309;--amber-light:#fef3c7;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;min-height:100vh}
+
+/* ── HEADER ── */
+header{background:var(--ink);color:var(--paper);position:sticky;top:0;z-index:100;border-bottom:2px solid var(--accent)}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1.6rem;color:var(--paper);text-decoration:none;letter-spacing:-.02em}
+.logo span{color:var(--accent)}
+nav{display:flex;gap:2rem;align-items:center}
+nav a{color:#a8a39a;text-decoration:none;font-size:.875rem;font-weight:500;letter-spacing:.02em;transition:color .2s}
+nav a:hover{color:var(--paper)}
+.nav-cta{background:var(--accent);color:var(--white)!important;padding:.4rem 1rem;border-radius:4px;transition:background .2s!important}
+.nav-cta:hover{background:#a83825!important}
+.mobile-menu-toggle {display:none;background:none;border:none;cursor:pointer;padding:.5rem;flex-direction:column;gap:5px;align-items:center;justify-content:center;width:40px;height:40px}
+.mobile-menu-toggle span{display:block;width:24px;height:2px;background:var(--paper);transition:all .3s;border-radius:2px}
+.mobile-menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(6px,6px)}
+.mobile-menu-toggle.active span:nth-child(2){opacity:0}
+.mobile-menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
+.mobile-nav {display:none;position:fixed;top:64px;left:0;right:0;background:var(--ink);border-top:2px solid var(--accent);padding:1.5rem 2rem;flex-direction:column;gap:1rem;z-index:99;transform:translateY(-100%);opacity:0;transition:transform .3s,opacity .3s;visibility:hidden}
+.mobile-nav.active{display:flex;transform:translateY(0);opacity:1;visibility:visible}
+.mobile-nav a{color:#a8a39a;text-decoration:none;font-size:.95rem;font-weight:500;padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.1);transition:color .2s}
+.mobile-nav a:last-child{border-bottom:none}
+.mobile-nav a:hover{color:var(--paper)}
+.mobile-nav .nav-cta{background:var(--accent);color:var(--white)!important;padding:.75rem 1.5rem;border-radius:4px;text-align:center;border:none;margin-top:.5rem}
+
+/* ── HERO ── */
+.hero{background:var(--ink);color:var(--paper);padding:4rem 2rem 3.5rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(200,75,47,.2) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:1px;height:60px;background:linear-gradient(to bottom,transparent,rgba(200,75,47,.4))}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.12em;color:#c84b2f;text-transform:uppercase;border:1px solid rgba(200,75,47,.4);background:rgba(200,75,47,.12);padding:.3rem .9rem;border-radius:2px;margin-bottom:1.5rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5.5vw,3.6rem);font-weight:900;line-height:1.1;letter-spacing:-.03em;margin-bottom:1.25rem}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-desc{font-size:1.05rem;color:#9e9990;max-width:520px;margin:0 auto 1.75rem;font-weight:300;line-height:1.7}
+.hero-pills{display:flex;justify-content:center;flex-wrap:wrap;gap:.5rem}
+.hero-pill{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.06em;color:#a8a39a;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:.3rem .75rem;border-radius:100px}
+
+/* ── TOOL CARD ── */
+.tool-section{max-width:1000px;margin:-1.5rem auto 0;padding:0 1.5rem 4rem;position:relative;z-index:10}
+.tool-card{background:var(--white);border-radius:12px;box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid var(--border)}
+.tool-card-header{background:var(--cream);padding:1rem 1.5rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid var(--border)}
+.dot{width:12px;height:12px;border-radius:50%;display:inline-block}
+.dot-r{background:#ff5f57}.dot-y{background:#febc2e}.dot-g{background:#28c840}
+.tc-title{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--muted);margin-left:.5rem;letter-spacing:.05em}
+.tool-body{padding:1.5rem}
+
+/* ── DROP ZONE ── */
+.drop-zone{border:2px dashed var(--border);border-radius:10px;padding:3rem 2rem;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;background:var(--paper);position:relative}
+.drop-zone:hover,.drop-zone.drag-over{border-color:var(--accent);background:var(--accent-light)}
+.drop-zone input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.drop-icon{width:52px;height:52px;background:var(--accent-light);border:1px solid rgba(200,75,47,.3);border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:var(--accent)}
+.drop-zone h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:.4rem}
+.drop-zone p{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+.formats-pill{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.08em;color:var(--accent);background:var(--accent-light);padding:.25rem .75rem;border-radius:100px;display:inline-block}
+
+/* ── FILE BAR ── */
+.file-bar{display:none;align-items:center;gap:.75rem;background:var(--paper);border:1.5px solid var(--border);border-radius:9px;padding:.65rem .9rem;margin-top:1.1rem}
+.file-bar.on{display:flex}
+.fb-icon{color:var(--accent);flex-shrink:0}
+.fb-info{flex:1;min-width:0}
+.fb-name{font-size:.83rem;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fb-meta{font-family:'DM Mono',monospace;font-size:.64rem;color:var(--muted);margin-top:.1rem}
+.fb-type-badge{font-family:'DM Mono',monospace;font-size:.62rem;padding:.18rem .5rem;border-radius:100px;border:1px solid;display:inline-flex;align-items:center;gap:.3rem;flex-shrink:0;font-weight:600}
+.fb-type-badge.docx{color:var(--blue);background:var(--blue-light);border-color:rgba(30,80,162,.25)}
+.fb-type-badge.doc{color:var(--amber);background:var(--amber-light);border-color:rgba(180,83,9,.25)}
+.fb-remove{background:none;border:none;cursor:pointer;color:var(--muted);padding:.25rem;border-radius:4px;display:flex;align-items:center;transition:color .15s,background .15s;flex-shrink:0}
+.fb-remove:hover{color:var(--accent);background:var(--accent-light)}
+
+/* ── DOC INFO ── */
+.doc-info{display:none;background:var(--blue-light);border:1px solid rgba(30,80,162,.18);border-radius:10px;padding:1rem 1.25rem;margin-top:1.1rem;flex-wrap:wrap;gap:.85rem;align-items:flex-start}
+.doc-info.on{display:flex}
+.di-item{display:flex;flex-direction:column;gap:.15rem}
+.di-label{font-family:'DM Mono',monospace;font-size:.6rem;text-transform:uppercase;letter-spacing:.09em;color:rgba(30,80,162,.55);font-weight:600}
+.di-value{font-family:'DM Mono',monospace;font-weight:700;color:var(--blue);font-size:.76rem}
+
+/* ── PREVIEW ── */
+.doc-preview{display:none;margin-top:1.25rem}
+.doc-preview.on{display:block}
+.dp-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.65rem;flex-wrap:wrap;gap:.5rem}
+.dp-label{font-family:'DM Mono',monospace;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.dp-badge{font-family:'DM Mono',monospace;font-size:.67rem;color:var(--accent);background:var(--accent-light);padding:.18rem .55rem;border-radius:100px;border:1px solid rgba(200,75,47,.2)}
+
+/* Document preview: render the mammoth HTML output in a styled frame */
+.doc-frame-wrap{border:1px solid var(--border);border-radius:8px;overflow:hidden;background:#fff;max-height:380px;overflow-y:auto;position:relative}
+.doc-frame-wrap::-webkit-scrollbar{width:5px}
+.doc-frame-wrap::-webkit-scrollbar-thumb{background:var(--border);border-radius:100px}
+#docFrame{width:100%;border:none;min-height:200px;background:#fff}
+
+/* ── OPTIONS ── */
+.opts-wrap{display:none;margin-top:1.25rem}
+.opts-wrap.on{display:block}
+.opts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.85rem;margin-bottom:1.1rem}
+.opt-field{display:flex;flex-direction:column;gap:.3rem}
+.opt-lbl{font-family:'DM Mono',monospace;font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
+.opt-select{background:var(--paper);border:1.5px solid var(--border);border-radius:6px;padding:.42rem .75rem;font-family:'DM Mono',monospace;font-size:.8rem;color:var(--ink);outline:none;transition:border-color .2s;cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%237a7567' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .6rem center;padding-right:2rem}
+.opt-select:focus{border-color:var(--accent)}
+.opt-input{background:var(--paper);border:1.5px solid var(--border);border-radius:6px;padding:.42rem .75rem;font-family:'DM Mono',monospace;font-size:.8rem;color:var(--ink);outline:none;transition:border-color .2s;width:100%}
+.opt-input:focus{border-color:var(--accent)}
+
+/* ── STATS BAR ── */
+.stats-bar{display:flex;gap:1.5rem;flex-wrap:wrap;background:var(--cream);border-radius:8px;padding:.65rem 1rem;margin-bottom:1.1rem}
+.stat{font-family:'DM Mono',monospace;font-size:.69rem;color:var(--muted)}
+.stat strong{color:var(--ink);font-weight:700}
+
+/* ── FEATURE TOGGLE ROW ── */
+.feature-toggles{display:flex;flex-wrap:wrap;gap:.55rem;margin-bottom:1.1rem}
+.feat-toggle{display:flex;align-items:center;gap:.45rem;background:var(--paper);border:1.5px solid var(--border);border-radius:7px;padding:.38rem .75rem;cursor:pointer;user-select:none;transition:border-color .15s,background .15s}
+.feat-toggle:hover{border-color:rgba(200,75,47,.4)}
+.feat-toggle.active{background:var(--accent-light);border-color:var(--accent)}
+.feat-toggle-cb{width:14px;height:14px;border:1.5px solid var(--border);border-radius:3px;flex-shrink:0;background:#fff;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.feat-toggle.active .feat-toggle-cb{background:var(--accent);border-color:var(--accent)}
+.feat-toggle.active .feat-toggle-cb::after{content:'';display:block;width:7px;height:4.5px;border-left:1.5px solid #fff;border-bottom:1.5px solid #fff;transform:rotate(-45deg) translate(1px,-1px)}
+.feat-toggle-lbl{font-family:'DM Mono',monospace;font-size:.68rem;font-weight:500;color:var(--muted)}
+.feat-toggle.active .feat-toggle-lbl{color:var(--accent)}
+
+/* ── BUTTONS ── */
+.action-bar{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn-p{background:var(--accent);color:var(--white);border:none;border-radius:6px;padding:.65rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:.875rem;font-weight:600;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;white-space:nowrap}
+.btn-p:hover{background:#a83825;transform:translateY(-1px)}
+.btn-p:disabled{background:var(--border);color:var(--muted);cursor:not-allowed;transform:none}
+.btn-s{background:transparent;color:var(--ink);border:1.5px solid var(--border);border-radius:6px;padding:.65rem 1.25rem;font-family:'DM Sans',sans-serif;font-size:.875rem;font-weight:500;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:.5rem;white-space:nowrap}
+.btn-s:hover{border-color:var(--ink);background:var(--cream)}
+
+/* ── PROGRESS ── */
+.prog-wrap{display:none;margin-top:1.5rem;flex-direction:column;align-items:center;gap:.85rem;background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:2rem}
+.prog-wrap.on{display:flex}
+.prog-spinner{width:44px;height:44px;border:3px solid var(--accent-light);border-top-color:var(--accent);border-radius:50%;animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.prog-lbl{font-family:'DM Mono',monospace;font-size:.78rem;color:var(--muted);text-align:center}
+.prog-bar-wrap{width:100%;max-width:300px;background:var(--border);border-radius:100px;height:5px;overflow:hidden}
+.prog-bar{height:100%;background:var(--accent);border-radius:100px;transition:width .35s ease;width:0%}
+.prog-steps{display:flex;flex-direction:column;gap:.35rem;width:100%;max-width:300px}
+.pstep{display:flex;align-items:center;gap:.5rem;font-family:'DM Mono',monospace;font-size:.65rem;color:#bbb;transition:color .2s}
+.pstep.active{color:var(--accent)}.pstep.done{color:var(--green)}
+.pstep-dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0}
+
+/* ── RESULT ── */
+.result-area{display:none;margin-top:1.5rem}
+.result-area.on{display:block}
+.result-box{background:var(--paper);border:1.5px solid var(--green);border-radius:10px;padding:1.35rem 1.5rem;display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap}
+.result-icon{width:52px;height:52px;background:var(--green-light);border:1px solid rgba(26,138,74,.25);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0}
+.result-info{flex:1;min-width:140px}
+.result-fname{font-weight:700;font-size:.95rem;color:var(--ink);margin-bottom:.2rem;word-break:break-all}
+.result-meta{font-family:'DM Mono',monospace;font-size:.67rem;color:var(--muted)}
+.result-btns{display:flex;gap:.6rem;flex-wrap:wrap}
+
+/* ── ERROR ── */
+.err-box{display:none;margin-top:1.25rem;background:#fff8f8;border:1.5px solid #fca5a5;border-radius:8px;padding:.9rem 1.1rem}
+.err-box.on{display:block}
+.err-box p{font-size:.85rem;color:#dc2626;line-height:1.6}
+
+/* ── CONTENT ── */
+.content-section{max-width:1000px;margin:0 auto;padding:4rem 1.5rem}
+.section-tag{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem;display:block}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;letter-spacing:-.02em;margin-bottom:1.25rem;line-height:1.2}
+.content-prose{color:#4a4640;font-size:.975rem;line-height:1.8;max-width:720px}
+.content-prose p{margin-bottom:1rem}
+.content-prose p:last-child{margin-bottom:0}
+hr.divider{border:none;border-top:1px solid var(--border);max-width:1000px;margin:0 auto}
+
+/* HOW IT WORKS */
+.how-section{background:var(--ink);color:var(--paper);padding:2rem;position:relative;overflow:hidden}
+.how-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 100%,rgba(200,75,47,.14) 0%,transparent 70%);pointer-events:none}
+.how-inner{max-width:1000px;margin:0 auto;position:relative}
+.how-hdr{text-align:center;margin-bottom:1.5rem}
+.how-hdr .section-tag{color:#c84b2f}
+.how-hdr .section-title{color:var(--paper);margin-bottom:.3rem}
+.how-sub{color:#9e9990;font-size:.9rem;font-weight:300}
+.steps-grid{display:flex;align-items:stretch;gap:0}
+.step-card{flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:.9rem 1rem;transition:background .25s,border-color .25s,transform .25s}
+.step-card:hover{background:rgba(200,75,47,.08);border-color:rgba(200,75,47,.35);transform:translateY(-4px)}
+.step-conn{display:flex;align-items:center;justify-content:center;padding:0 .5rem;color:rgba(200,75,47,.5);flex-shrink:0;margin-top:-.75rem}
+.step-num{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:rgba(200,75,47,.25);line-height:1;margin-bottom:.3rem}
+.step-ico{width:36px;height:36px;background:rgba(200,75,47,.15);border:1px solid rgba(200,75,47,.3);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:.55rem;color:#c84b2f}
+.step-ttl{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:var(--paper);margin-bottom:.3rem}
+.step-dsc{font-size:.8rem;color:#9e9990;line-height:1.55;margin-bottom:.55rem}
+.step-dsc strong{color:#d4cfc4}
+.step-pill{display:inline-block;font-family:'DM Mono',monospace;font-size:.62rem;color:#c84b2f;background:rgba(200,75,47,.12);border:1px solid rgba(200,75,47,.25);padding:.18rem .55rem;border-radius:100px}
+.how-cta{text-align:center;margin-top:1.5rem;display:flex;flex-direction:column;align-items:center;gap:.55rem}
+.how-note{font-size:.8rem;color:#7a7567;font-family:'DM Mono',monospace}
+
+/* GRIDS */
+.features-grid,.use-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(218px,1fr));gap:1rem;margin-top:2rem}
+.feature-card,.use-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.4rem 1.2rem;transition:box-shadow .2s,transform .2s}
+.feature-card:hover,.use-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.f-ico,.u-ico{font-size:1.75rem;margin-bottom:.7rem;display:block}
+.f-title,.u-title{font-weight:700;font-size:.9rem;margin-bottom:.35rem}
+.f-desc,.u-desc{font-size:.82rem;color:var(--muted);line-height:1.5}
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-top:2rem}
+.tip-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.2rem;transition:box-shadow .2s,transform .2s}
+.tip-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.tip-name{font-weight:700;font-size:.9rem;margin-bottom:.3rem;color:var(--ink)}
+.tip-tag{font-family:'DM Mono',monospace;font-size:.74rem;color:var(--accent);background:var(--accent-light);padding:.2rem .5rem;border-radius:4px;display:inline-block;margin-bottom:.5rem}
+.tip-desc{font-size:.82rem;color:var(--muted);line-height:1.5}
+
+/* FAQ */
+.faq-list{margin-top:2rem}
+.faq-item{border-bottom:1px solid var(--border);padding:1.25rem 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-weight:600;font-size:.95rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-q::after{content:'+';font-size:1.2rem;color:var(--accent);flex-shrink:0;transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-size:.9rem;color:var(--muted);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .3s ease,margin-top .3s}
+.faq-item.open .faq-a{max-height:360px;margin-top:.75rem}
+
+/* CTA */
+.cta-section{background:var(--ink);color:var(--paper);padding:1.5rem 2rem;text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(200,75,47,.18) 0%,transparent 70%);pointer-events:none}
+.cta-inner{max-width:640px;margin:0 auto;position:relative}
+.cta-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-bottom:1rem}
+.cta-desc{font-size:1rem;color:#9e9990;font-weight:300;margin-bottom:1.5rem;line-height:1.7}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.cta-note{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.06em;color:#5a5650;margin-top:1rem;display:block}
+
+/* RELATED */
+.related-section { background: var(--cream); padding: 5rem 2rem; border-top: 1px solid var(--border); }
+.related-inner { max-width: 1000px; margin: 0 auto; }
+.related-header { margin-bottom: 2.5rem; }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+.related-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-decoration: none; color: inherit; display: block; transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s; position: relative; overflow: hidden; }
+.related-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--border); transition: background 0.2s; }
+.related-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); border-color: var(--accent); }
+.related-card:hover::before { background: var(--accent); }
+.related-card-icon { font-size: 1.85rem; margin-bottom: 0.85rem; display: block; }
+.related-card-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem; color: var(--ink); letter-spacing: -0.01em; }
+.related-card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin-bottom: 1rem; }
+.related-card-tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); background: var(--accent-light); padding: 0.2rem 0.5rem; border-radius: 3px; display: inline-block; }
+
+/* FOOTER */
+footer{background:var(--ink);color:#9e9990;padding:4rem 2rem 2rem;margin-top:3rem;border-top:1px solid rgba(255,255,255,0.05)}
+.footer-inner{max-width:1200px;
+  margin-top: 0;
+  border-top: 1px solid rgba(255,255,255,0.05);margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid #2a2a2a}
+.footer-brand .logo{display:block;margin-bottom:.75rem}
+.footer-brand p{font-size:.85rem;line-height:1.6;max-width:240px}
+.footer-social{display:flex;margin-top:1rem}
+.social-icon{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;color:#9e9990;transition:color .2s,transform .2s}
+.social-icon:hover{color:var(--paper);transform:translateY(-2px)}
+.footer-col-title{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--paper);font-weight:600;margin-bottom:1rem}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.footer-links a{color:#9e9990;text-decoration:none;font-size:.85rem;transition:color .2s}
+.footer-links a:hover{color:var(--paper)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;font-size:.8rem;flex-wrap:wrap;gap:.75rem}
+
+/* TOAST */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--ink);color:var(--paper);padding:.75rem 1.5rem;border-radius:6px;font-size:.875rem;font-weight:500;transition:transform .3s cubic-bezier(.34,1.56,.64,1);z-index:999;border-left:3px solid var(--accent);white-space:nowrap;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* Hidden preview rendering area */
+#htmlRenderArea{position:fixed;top:-9999px;left:-9999px;width:794px;visibility:hidden;pointer-events:none;background:#fff}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeUp .6s ease both}
+.delay-1{animation-delay:.1s}
+
+@media(max-width:768px){nav{display:none}.mobile-menu-toggle {display:flex}.steps-grid{flex-direction:column}.step-conn{transform:rotate(90deg);padding:.25rem 0}.footer-grid{grid-template-columns:1fr 1fr}.opts-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr;gap:2rem}.footer-bottom{flex-direction:column;text-align:center}.result-box{flex-direction:column;text-align:center}.result-btns{justify-content:center}.opts-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- Hidden render area for HTML preview -->
+<div id="htmlRenderArea"></div>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">JPG2<span>Go</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="tools.html">Tools</a>
+      <a href="#tool" class="nav-cta">Convert Now</a>
+    </nav>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="tools.html" onclick="closeMobileMenu()">Tools</a>
+    <a href="#tool" class="nav-cta" onclick="closeMobileMenu()">Convert Now</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="fade-up">
+    <div class="hero-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            Convert DOC to PDF Online
+    </div>
+    <h1>Convert Word to PDF</h1>
+    <p class="hero-desc">Convert Microsoft Word documents into high-quality PDF files while preserving text formatting, images, and layout.</p>
+    <div class="hero-pills">
+      <span class="hero-pill">DOCX &amp; DOC</span>
+      <span class="hero-pill">Bold &amp; Italic</span>
+      <span class="hero-pill">Headings H1–H6</span>
+      <span class="hero-pill">Tables &amp; Lists</span>
+      <span class="hero-pill">Inline Images</span>
+    </div>
+  </div>
+</section>
+
+<section class="tool-section" id="tool">
+  <div class="tool-card fade-up delay-1">
+    <div class="tool-card-header">
+      <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+      <span class="tc-title">word-to-pdf · mammoth.js · pdf-lib · rich-formatting · tables · images · zero upload</span>
+    </div>
+    <div class="tool-body">
+
+      <!-- Drop Zone -->
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" accept=".docx,.doc">
+        <div class="drop-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <h3>Drop your Word document here</h3>
+        <p>Convert Microsoft Word documents into high-quality PDF files while preserving text formatting, images, and layout.</p>
+        <span class="formats-pill">DOCX · DOC → PDF · formatting preserved</span>
+      </div>
+
+      <!-- File bar -->
+      <div class="file-bar" id="fileBar">
+        <span class="fb-icon">
+          <svg width="18" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </span>
+        <div class="fb-info">
+          <div class="fb-name" id="fbName">—</div>
+          <div class="fb-meta" id="fbMeta">—</div>
+        </div>
+        <span class="fb-type-badge" id="fbTypeBadge">DOCX</span>
+        <button class="fb-remove" id="fbRemove" aria-label="Remove">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <!-- Doc info -->
+      <div class="doc-info" id="docInfo">
+        <div class="di-item"><span class="di-label">Paragraphs</span><span class="di-value" id="diParas">—</span></div>
+        <div class="di-item"><span class="di-label">Words</span><span class="di-value" id="diWords">—</span></div>
+        <div class="di-item"><span class="di-label">Tables</span><span class="di-value" id="diTables">—</span></div>
+        <div class="di-item"><span class="di-label">Images</span><span class="di-value" id="diImages">—</span></div>
+        <div class="di-item"><span class="di-label">Headings</span><span class="di-value" id="diHeadings">—</span></div>
+        <div class="di-item"><span class="di-label">Format</span><span class="di-value" id="diFormat">—</span></div>
+      </div>
+
+      <!-- HTML Preview (mammoth output) -->
+      <div class="doc-preview" id="docPreview">
+        <div class="dp-header">
+          <span class="dp-label">Document Preview</span>
+          <span class="dp-badge" id="previewBadge">Loading…</span>
+        </div>
+        <div class="doc-frame-wrap">
+          <iframe id="docFrame" title="Document preview" sandbox="allow-same-origin"></iframe>
+        </div>
+      </div>
+
+      <!-- Options + convert -->
+      <div class="opts-wrap" id="optsWrap">
+        <div class="opts-grid">
+          <div class="opt-field">
+            <span class="opt-lbl">Page Size</span>
+            <select class="opt-select" id="pageSizeSelect">
+              <option value="a4" selected>A4 (210 × 297 mm)</option>
+              <option value="letter">US Letter (8.5 × 11 in)</option>
+              <option value="a5">A5 (148 × 210 mm)</option>
+              <option value="legal">US Legal (8.5 × 14 in)</option>
+            </select>
+          </div>
+          <div class="opt-field">
+            <span class="opt-lbl">Font Size</span>
+            <select class="opt-select" id="fontSizeSelect">
+              <option value="10">10 pt — Compact</option>
+              <option value="11">11 pt — Small</option>
+              <option value="12" selected>12 pt — Standard</option>
+              <option value="14">14 pt — Large</option>
+            </select>
+          </div>
+          <div class="opt-field">
+            <span class="opt-lbl">Font Family</span>
+            <select class="opt-select" id="fontFamilySelect">
+              <option value="serif" selected>Times (Serif)</option>
+              <option value="sans">Helvetica (Sans)</option>
+              <option value="mono">Courier (Mono)</option>
+            </select>
+          </div>
+          <div class="opt-field">
+            <span class="opt-lbl">Line Spacing</span>
+            <select class="opt-select" id="lineSpacingSelect">
+              <option value="1.2">Single (1.2)</option>
+              <option value="1.5" selected>1.5 Lines</option>
+              <option value="2.0">Double (2.0)</option>
+            </select>
+          </div>
+          <div class="opt-field">
+            <span class="opt-lbl">Margin</span>
+            <select class="opt-select" id="marginSelect">
+              <option value="40">Narrow (14 mm)</option>
+              <option value="56" selected>Normal (20 mm)</option>
+              <option value="72">Wide (26 mm)</option>
+            </select>
+          </div>
+          <div class="opt-field">
+            <span class="opt-lbl">Output Filename</span>
+            <input class="opt-input" id="filenameInput" type="text" value="document" maxlength="80">
+          </div>
+        </div>
+
+        <!-- Feature toggles -->
+        <div class="feature-toggles">
+          <div class="feat-toggle active" id="ftBold" data-feat="bold">
+            <span class="feat-toggle-cb"></span><span class="feat-toggle-lbl">Bold text</span>
+          </div>
+          <div class="feat-toggle active" id="ftItalic" data-feat="italic">
+            <span class="feat-toggle-cb"></span><span class="feat-toggle-lbl">Italic text</span>
+          </div>
+          <div class="feat-toggle active" id="ftHeadings" data-feat="headings">
+            <span class="feat-toggle-cb"></span><span class="feat-toggle-lbl">Headings</span>
+          </div>
+          <div class="feat-toggle active" id="ftTables" data-feat="tables">
+            <span class="feat-toggle-cb"></span><span class="feat-toggle-lbl">Tables</span>
+          </div>
+          <div class="feat-toggle active" id="ftImages" data-feat="images">
+            <span class="feat-toggle-cb"></span><span class="feat-toggle-lbl">Images</span>
+          </div>
+          <div class="feat-toggle active" id="ftLists" data-feat="lists">
+            <span class="feat-toggle-cb"></span><span class="feat-toggle-lbl">Lists</span>
+          </div>
+        </div>
+
+        <div class="stats-bar">
+          <div class="stat">Paragraphs: <strong id="statParas">0</strong></div>
+          <div class="stat">Words: <strong id="statWords">0</strong></div>
+          <div class="stat">File size: <strong id="statSize">—</strong></div>
+        </div>
+
+        <div class="action-bar">
+          <button class="btn-p" id="convertBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Convert to PDF
+          </button>
+          <button class="btn-s" id="clearBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
+            Clear
+          </button>
+        </div>
+      </div>
+
+      <!-- Progress -->
+      <div class="prog-wrap" id="progWrap">
+        <div class="prog-spinner"></div>
+        <div class="prog-lbl" id="progLbl">Reading document…</div>
+        <div class="prog-bar-wrap"><div class="prog-bar" id="progBar"></div></div>
+        <div class="prog-steps">
+          <div class="pstep" id="ps1"><span class="pstep-dot"></span>Parsing DOCX with mammoth.js</div>
+          <div class="pstep" id="ps2"><span class="pstep-dot"></span>Extracting content &amp; formatting</div>
+          <div class="pstep" id="ps3"><span class="pstep-dot"></span>Laying out PDF pages</div>
+          <div class="pstep" id="ps4"><span class="pstep-dot"></span>Writing PDF file</div>
+        </div>
+      </div>
+
+      <!-- Error -->
+      <div class="err-box" id="errBox"><p id="errText"></p></div>
+
+      <!-- Result -->
+      <div class="result-area" id="resultArea">
+        <div class="result-box">
+          <div class="result-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 12 18 15 15"/><line x1="12" y1="12" x2="12" y2="18"/></svg>
+          </div>
+          <div class="result-info">
+            <div class="result-fname" id="resultFname">document.pdf</div>
+            <div class="result-meta" id="resultMeta">—</div>
+          </div>
+          <div class="result-btns">
+            <button class="btn-p" id="downloadBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download PDF
+            </button>
+            <button class="btn-s" id="convertAgainBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+              Convert Again
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="how-section" id="how-it-works">
+  <div class="how-inner">
+    <div class="how-hdr">
+      <span class="section-tag">Related Tools</span>
+      <h2 class="section-title">More Free Online Tools</h2>
+      <p class="how-sub">Three steps. No software. No account.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+        <div class="step-ttl">Upload Your Document</div>
+        <div class="step-dsc">Drop or select a <strong>DOCX or DOC file</strong>. mammoth.js converts it to HTML in your browser — your document never leaves your device.</div>
+        <span class="step-pill">DOCX · DOC</span>
+      </div>
+      <div class="step-conn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg></div>
+        <div class="step-ttl">Preview &amp; Configure</div>
+        <div class="step-dsc"><strong>Review the live preview</strong>, toggle which elements to include (bold, images, tables), choose page size, font, and spacing.</div>
+        <span class="step-pill">live preview · font · layout</span>
+      </div>
+      <div class="step-conn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+        <div class="step-ttl">Download PDF</div>
+        <div class="step-dsc">Click <strong>Convert to PDF</strong>. Formatting is preserved — bold, italic, headings, lists, tables, and images all carried through to the output.</div>
+        <span class="step-pill">instant download</span>
+      </div>
+    </div>
+    <div class="how-cta">
+      <a href="#tool" class="btn-p">Convert a Word Doc Now</a>
+      <span class="how-note">free · no signup · no upload · no watermark</span>
+    </div>
+  </div>
+</section>
+
+<section class="content-section" id="about">
+  <h2 class="section-title">Why Use Word to PDF Converter?</h2>
+  <div class="content-prose">
+    <p>A Word to PDF converter is essential for turning editable documents into a stable file format suitable for sharing. Word documents can sometimes display differently depending on the software version or installed fonts.</p>
+    <p>By converting a Word file into PDF format, the layout becomes fixed and appears exactly the same on every device.</p>
+    <p>This makes PDFs ideal for official documents, reports, resumes, and presentations that need to maintain consistent formatting. Converting Word to PDF ensures that documents remain professional, secure, and easy to distribute across multiple platforms.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="content-section" id="features">
+  <span class="section-tag">Features</span>
+  <h2 class="section-title">Everything in One Word to PDF Converter</h2>
+  <div class="features-grid">
+    <div class="feature-card"><span class="f-ico">📝</span><div class="f-title">mammoth.js Engine</div><div class="f-desc">Powered by mammoth.js — the leading open-source client-side DOCX converter, designed specifically for high-fidelity DOCX→HTML extraction.</div></div>
+    <div class="feature-card"><span class="f-ico">🔤</span><div class="f-title">Bold &amp; Italic</div><div class="f-desc">Inline text runs marked as bold, italic, or bold-italic in the DOCX are correctly rendered using the matching PDF font variant.</div></div>
+    <div class="feature-card"><span class="f-ico">📋</span><div class="f-title">Headings H1–H6</div><div class="f-desc">All heading levels are detected and rendered proportionally larger and bolder, maintaining document hierarchy in the PDF output.</div></div>
+    <div class="feature-card"><span class="f-ico">🔢</span><div class="f-title">Bullet &amp; Numbered Lists</div><div class="f-desc">Unordered lists get bullet markers; ordered lists get sequential numbers — both with correct indentation in the PDF.</div></div>
+    <div class="feature-card"><span class="f-ico">📊</span><div class="f-title">Tables</div><div class="f-desc">Tables are rendered as bordered grids with header rows distinguished by background shading and bold text.</div></div>
+    <div class="feature-card"><span class="f-ico">🖼️</span><div class="f-title">Inline Images</div><div class="f-desc">Images embedded in the DOCX are extracted as base64 data and placed in the PDF at their approximate position in the text flow.</div></div>
+    <div class="feature-card"><span class="f-ico">👁️</span><div class="f-title">Live Preview</div><div class="f-desc">mammoth.js renders the full document to HTML immediately — see the extracted content before converting to PDF.</div></div>
+    <div class="feature-card"><span class="f-ico">🔒</span><div class="f-title">100% Private</div><div class="f-desc">Your document never leaves your device. mammoth.js and pdf-lib both run entirely in the browser — no server, no cloud.</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="content-section">
+  <span class="section-tag">Who It's For</span>
+  <h2 class="section-title">Who Uses a Word to PDF Converter?</h2>
+  <div class="use-grid">
+    <div class="use-card"><span class="u-ico">📤</span><div class="u-title">Share Documents</div><div class="u-desc">PDF opens on every device without Microsoft Word — share reports, proposals, and letters universally.</div></div>
+    <div class="use-card"><span class="u-ico">📋</span><div class="u-title">Job Applications</div><div class="u-desc">Convert a Word CV or cover letter to PDF before emailing — ensures your formatting looks identical to every recruiter.</div></div>
+    <div class="use-card"><span class="u-ico">🖨️</span><div class="u-title">Print Documents</div><div class="u-desc">PDF is the most reliable format for printing — your layout prints exactly as designed from any printer.</div></div>
+    <div class="use-card"><span class="u-ico">🎓</span><div class="u-title">Academic Submissions</div><div class="u-desc">Most academic submission portals, university forms, and journals only accept PDF. Convert before submitting.</div></div>
+    <div class="use-card"><span class="u-ico">🏢</span><div class="u-title">Contracts &amp; Agreements</div><div class="u-desc">Lock document formatting for legal and business documents — PDF prevents accidental editing by recipients.</div></div>
+    <div class="use-card"><span class="u-ico">📁</span><div class="u-title">Archive Documents</div><div class="u-desc">PDF is the archival standard — convert Word documents for long-term storage independent of Word version compatibility.</div></div>
+    <div class="use-card"><span class="u-ico">💼</span><div class="u-title">Client Deliverables</div><div class="u-desc">Deliver reports, proposals, and decks as PDF — clients see exactly what you designed, not a Word-rendered approximation.</div></div>
+    <div class="use-card"><span class="u-ico">🌐</span><div class="u-title">Web Publishing</div><div class="u-desc">Embed or link to a PDF version of a document in a website, portal, or knowledge base where DOCX files can't be previewed.</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="content-section">
+  <span class="section-tag">Pro Tips</span>
+  <h2 class="section-title">Get the Best Results</h2>
+  <div class="tips-grid">
+    <div class="tip-card">
+      <div class="tip-name">Always Use DOCX, Not DOC</div>
+      <div class="tip-tag">tip → format choice</div>
+      <div class="tip-desc">mammoth.js was built for DOCX (Word 2007+ OOXML format). DOC is a legacy binary format — conversion quality varies. If you have a .doc file, open it in Microsoft Word or LibreOffice and use Save As to convert to .docx first. The difference in output quality is significant.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">Check the Preview Before Converting</div>
+      <div class="tip-tag">tip → verify content</div>
+      <div class="tip-desc">The live preview shows exactly what mammoth.js extracted from your DOCX. Always review it — if something looks wrong (missing images, garbled text, broken tables), the DOCX may have complex embedded objects or unusual styles that the converter can't reproduce faithfully.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">Use Standard Word Styles for Best Fidelity</div>
+      <div class="tip-tag">tip → document preparation</div>
+      <div class="tip-desc">mammoth.js maps Word's built-in paragraph styles (Heading 1, Heading 2, Normal, etc.) to HTML. Custom styles work less reliably. For the best conversion, apply standard heading styles from Word's style gallery rather than manually changing font size and weight to mimic headings.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">Toggle Off Images for Compact PDFs</div>
+      <div class="tip-tag">tip → file size</div>
+      <div class="tip-desc">If your document has many large embedded images and you only need the text content, uncheck "Images" in the feature toggles before converting. The output PDF will be dramatically smaller and faster to produce.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">Protect the PDF After Converting</div>
+      <div class="tip-tag">tip → security</div>
+      <div class="tip-desc">For confidential documents — contracts, HR records, financial reports — use Protect PDF after converting to add a password and optionally block printing or text copying. Your recipients can read but not extract or modify the content.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">What mammoth.js Doesn't Convert</div>
+      <div class="tip-tag">tip → limitations</div>
+      <div class="tip-desc">mammoth.js intentionally skips some complex formatting: text boxes, WordArt, SmartArt, chart objects, headers and footers, footnotes, endnotes, tracked changes, and custom styles. For documents that rely heavily on these features, Word's own built-in PDF export (File → Save As → PDF) will produce the most accurate output.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="content-section" id="faq">
+  <span class="section-tag">FAQ</span>
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">What is a Word to PDF converter?</div>
+      <div class="faq-a">A Word to PDF converter transforms Microsoft Word documents (DOC or DOCX) into PDF format so they can be shared easily without altering the original layout.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Why convert Word documents into PDF files?</div>
+      <div class="faq-a">PDF files maintain the original formatting of a document, ensuring that fonts, images, and layout remain consistent when viewed on different devices.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Will formatting remain the same after conversion?</div>
+      <div class="faq-a">Most Word to PDF converters preserve the document structure including headings, tables, images, and fonts to keep the final PDF identical to the original file.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can large Word documents be converted online?</div>
+      <div class="faq-a">Yes, many online tools support large Word files and convert them into PDF documents quickly and securely.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is Word to PDF conversion commonly used in offices?</div>
+      <div class="faq-a">Yes, businesses frequently convert reports, contracts, and presentations into PDF format to ensure consistent viewing and printing.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I print the PDF after conversion?</div>
+      <div class="faq-a">Yes, PDF files are optimized for printing and usually maintain the same formatting across different printers.</div>
+    </div>
+  </div>
+</section>
+
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-header">
+      <span class="section-tag">Related Tools</span>
+      <h2 class="section-title">More Free Online Tools</h2>
+    </div>
+    <div class="related-grid">
+      <a href="/jpg-to-pdf" class="related-card">
+        <span class="related-card-icon">📄</span>
+        <div class="related-card-name">JPG to PDF</div>
+        <div class="related-card-desc">Convert JPG images to PDF documents quickly. Combine multiple photos into a single organized PDF file for easy sharing and printing.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+      <a href="/image-resizer" class="related-card">
+        <span class="related-card-icon">📐</span>
+        <div class="related-card-name">Image Resizer</div>
+        <div class="related-card-desc">Resize images to exact pixel dimensions or a percentage of their original size. Runs entirely in your browser without uploading files anywhere.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/compress-jpeg" class="related-card">
+        <span class="related-card-icon">🗜️</span>
+        <div class="related-card-name">Compress JPEG</div>
+        <div class="related-card-desc">Reduce JPEG image file size while maintaining quality. Optimize images for faster web pages and lower storage usage.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/merge-pdf" class="related-card">
+        <span class="related-card-icon">📎</span>
+        <div class="related-card-name">Merge PDF</div>
+        <div class="related-card-desc">Combine multiple PDF files into a single organized document. Drag and drop to reorder pages easily.</div>
+        <span class="related-card-tag">PDF</span>
+      </a>
+      <a href="/crop-image" class="related-card">
+        <span class="related-card-icon">✂️</span>
+        <div class="related-card-name">Crop Image</div>
+        <div class="related-card-desc">Crop images to any aspect ratio or custom dimensions. Perfect for social media thumbnails, profile photos, and banner images.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/format-converter" class="related-card">
+        <span class="related-card-icon">🔄</span>
+        <div class="related-card-name">Format Converter</div>
+        <div class="related-card-desc">Convert images between different formats instantly. Transform JPG, PNG, WebP, and other image formats quickly.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner">
+    <h2 class="cta-title">Ready to Convert?</h2>
+    <p class="cta-desc">Transform DOC or DOCX files into high-quality PDF documents instantly.</p>
+    <div class="cta-actions">
+      <a href="#tool" class="btn-p">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Convert a Word Doc Now
+      </a>
+    </div>
+    <span class="cta-note">free · browser-native · no signup required</span>
+  </div>
+</section>
+
+
+
+<!-- ══ FOOTER ══ -->
+<div id="footer-placeholder"></div>
+<script src="load-footer.js"></script>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════════════
+let srcFile    = null;
+let parsedHtml = '';       // mammoth.js HTML output
+let resultBlob = null;
+let featureSet = { bold:true, italic:true, headings:true, tables:true, images:true, lists:true };
+let convertToken = 0;
+
+const PAGE_SIZES_PT = {
+  a4:     [595.28, 841.89],
+  letter: [612,    792   ],
+  a5:     [419.53, 595.28],
+  legal:  [612,    1008  ],
+};
+
+// ═══════════════════════════════════════════════════════════════
+// HELPERS
+// ═══════════════════════════════════════════════════════════════
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+function fmtSize(b) {
+  if (b < 1024) return b + ' B';
+  if (b < 1048576) return (b/1024).toFixed(1) + ' KB';
+  return (b/1048576).toFixed(2) + ' MB';
+}
+function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
+function setP(pct, msg) {
+  document.getElementById('progBar').style.width = pct + '%';
+  if (msg !== undefined) document.getElementById('progLbl').textContent = msg;
+}
+function setStep(idx) {
+  ['ps1','ps2','ps3','ps4'].forEach((id, i) => {
+    const el = document.getElementById(id);
+    el.classList.remove('active','done');
+    if (i < idx) el.classList.add('done');
+    else if (i === idx) el.classList.add('active');
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// MOBILE MENU
+// ═══════════════════════════════════════════════════════════════
+document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+  this.classList.toggle('active');
+  document.getElementById('mobileNav').classList.toggle('active');
+});
+
+// ═══════════════════════════════════════════════════════════════
+// FEATURE TOGGLES
+// ═══════════════════════════════════════════════════════════════
+document.querySelectorAll('.feat-toggle').forEach(el => {
+  el.addEventListener('click', () => {
+    const feat = el.dataset.feat;
+    featureSet[feat] = !featureSet[feat];
+    el.classList.toggle('active', featureSet[feat]);
+  });
+});
+
+// ═══════════════════════════════════════════════════════════════
+// FILE INPUT
+// ═══════════════════════════════════════════════════════════════
+const dropZone = document.getElementById('dropZone');
+document.getElementById('fileInput').addEventListener('change', e => {
+  if (e.target.files[0]) loadFile(e.target.files[0]);
+  e.target.value = '';
+});
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault(); dropZone.classList.remove('drag-over');
+  const f = Array.from(e.dataTransfer.files).find(f => /\.(docx?$)/i.test(f.name));
+  if (f) loadFile(f); else toast('Please drop a DOCX or DOC file');
+});
+
+async function loadFile(file) {
+  if (!/\.(docx?)$/i.test(file.name)) { toast('Please select a DOCX or DOC file'); return; }
+  if (typeof mammoth === 'undefined') { toast('mammoth.js is still loading — please wait a moment'); return; }
+  if (file.size === 0) { toast('That file is empty (0 bytes)'); return; }
+
+  srcFile = file;
+  const token = ++convertToken;
+  resetUI(false);
+
+  const ext = file.name.split('.').pop().toLowerCase();
+  document.getElementById('fbName').textContent = file.name;
+  document.getElementById('fbMeta').textContent = fmtSize(file.size) + ' · ' + ext.toUpperCase() + ' document';
+  document.getElementById('fbTypeBadge').textContent = ext.toUpperCase();
+  document.getElementById('fbTypeBadge').className = 'fb-type-badge ' + (ext === 'docx' ? 'docx' : 'doc');
+  document.getElementById('fileBar').classList.add('on');
+  dropZone.style.display = 'none';
+  document.getElementById('filenameInput').value = file.name.replace(/\.\w+$/, '');
+
+  document.getElementById('previewBadge').textContent = 'Converting…';
+  document.getElementById('docPreview').classList.add('on');
+
+  try {
+    const arrayBuffer = await file.arrayBuffer();
+    if (token !== convertToken) return;
+
+    // Run mammoth.js
+    const extLower = (file.name.split('.').pop() || '').toLowerCase();
+    if (extLower === 'doc') {
+      // Mammoth is DOCX-focused; DOC will usually fail or be garbage
+      throw new Error('DOC is a legacy Word format. Please save as .docx and try again for reliable conversion.');
+    }
+
+    const result = await mammoth.convertToHtml({ arrayBuffer });
+    parsedHtml = result.value;
+    if (token !== convertToken) return;
+
+    if (!parsedHtml || parsedHtml.trim() === '') {
+      throw new Error('No content was extracted from this document. It may be empty or use an unsupported format.');
+    }
+
+    // Populate the preview iframe
+    const frame = document.getElementById('docFrame');
+    const frameDoc = frame.contentDocument || frame.contentWindow.document;
+    frameDoc.open();
+    frameDoc.write(`<!DOCTYPE html><html><head><style>
+      body{font-family:Georgia,serif;font-size:14px;line-height:1.7;padding:24px 28px;color:#1a1a1a;max-width:100%}
+      h1{font-size:1.65em;margin:1em 0 .5em;border-bottom:1px solid #ddd;padding-bottom:.3em}
+      h2{font-size:1.35em;margin:.9em 0 .4em}
+      h3{font-size:1.1em;margin:.8em 0 .35em}
+      h4,h5,h6{font-size:1em;margin:.7em 0 .3em;font-weight:700}
+      p{margin:.55em 0}
+      ul,ol{padding-left:1.8em;margin:.4em 0}
+      li{margin:.2em 0}
+      table{border-collapse:collapse;width:100%;margin:.8em 0}
+      td,th{border:1px solid #ccc;padding:5px 8px;font-size:.9em}
+      th{background:#f5f5f5;font-weight:700}
+      img{max-width:100%;height:auto;margin:.5em 0}
+      strong{font-weight:700}
+      em{font-style:italic}
+      code,pre{font-family:Courier,monospace;background:#f5f5f5;padding:.1em .35em;border-radius:3px;font-size:.9em}
+    </style></head><body>${parsedHtml}</body></html>`);
+    frameDoc.close();
+
+    // Auto-size the iframe
+    setTimeout(() => {
+      try {
+        const h = frameDoc.body.scrollHeight;
+        frame.style.height = Math.min(h + 20, 360) + 'px';
+      } catch(e) {}
+    }, 150);
+
+    // Gather stats from the HTML
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(parsedHtml, 'text/html');
+    const allText = doc.body.textContent || '';
+    const wordCount = allText.trim().split(/\s+/).filter(Boolean).length;
+    const paraCount = doc.querySelectorAll('p').length;
+    const headingCount = doc.querySelectorAll('h1,h2,h3,h4,h5,h6').length;
+    const tableCount = doc.querySelectorAll('table').length;
+    const imageCount = doc.querySelectorAll('img').length;
+
+    document.getElementById('diParas').textContent = paraCount;
+    document.getElementById('diWords').textContent = wordCount.toLocaleString();
+    document.getElementById('diHeadings').textContent = headingCount;
+    document.getElementById('diTables').textContent = tableCount;
+    document.getElementById('diImages').textContent = imageCount;
+    document.getElementById('diFormat').textContent = ext.toUpperCase();
+    document.getElementById('docInfo').classList.add('on');
+
+    document.getElementById('statParas').textContent = paraCount;
+    document.getElementById('statWords').textContent = wordCount.toLocaleString();
+    document.getElementById('statSize').textContent  = fmtSize(file.size);
+    document.getElementById('previewBadge').textContent = paraCount + ' para' + (paraCount !== 1 ? 's' : '');
+
+    document.getElementById('optsWrap').classList.add('on');
+
+    if (result.messages && result.messages.length > 0) {
+      const warnings = result.messages.filter(m => m.type === 'warning').length;
+      if (warnings > 0) toast('"' + file.name + '" — ' + warnings + ' element(s) could not be converted');
+      else toast('"' + file.name + '" loaded');
+    } else {
+      toast('"' + file.name + '" loaded — ' + paraCount + ' paragraphs');
+    }
+
+  } catch(err) {
+    document.getElementById('errBox').classList.add('on');
+    document.getElementById('errText').textContent = 'Could not parse document: ' + err.message +
+      '. Try resaving as .docx in Microsoft Word and try again.';
+    toast('Parse error — ' + err.message);
+    console.error(err);
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// CONVERT TO PDF
+// ═══════════════════════════════════════════════════════════════
+document.getElementById('convertBtn').addEventListener('click', doConvert);
+
+async function doConvert() {
+  if (!parsedHtml) { toast('No document loaded'); return; }
+  if (typeof PDFLib === 'undefined') { toast('pdf-lib is still loading — please wait'); return; }
+  const token = ++convertToken;
+
+  const pageSizeKey = document.getElementById('pageSizeSelect').value;
+  const fontSize    = parseInt(document.getElementById('fontSizeSelect').value);
+  const fontFamKey  = document.getElementById('fontFamilySelect').value;
+  const lineSpacing = parseFloat(document.getElementById('lineSpacingSelect').value);
+  const margin      = parseInt(document.getElementById('marginSelect').value);
+
+  document.getElementById('progWrap').classList.add('on');
+  document.getElementById('resultArea').classList.remove('on');
+  document.getElementById('errBox').classList.remove('on');
+  document.getElementById('convertBtn').disabled = true;
+  resultBlob = null;
+  setP(0); setStep(0);
+  await wait(50);
+
+  try {
+    setStep(0); setP(8, 'Parsing DOCX with mammoth.js…');
+    await wait(30);
+
+    // Parse the HTML output into blocks
+    const htmlDoc = new DOMParser().parseFromString(parsedHtml, 'text/html');
+    if (token !== convertToken) return;
+
+    setStep(1); setP(22, 'Extracting content and formatting…');
+    await wait(25);
+
+    const [pageW, pageH] = PAGE_SIZES_PT[pageSizeKey];
+    const pdfDoc = await PDFLib.PDFDocument.create();
+    if (token !== convertToken) return;
+
+    // Embed fonts — full set: regular, bold, italic, bold-italic
+    let fonts = {};
+    switch(fontFamKey) {
+      case 'sans':
+        fonts.regular   = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+        fonts.bold      = await pdfDoc.embedFont(PDFLib.StandardFonts.HelveticaBold);
+        fonts.italic    = await pdfDoc.embedFont(PDFLib.StandardFonts.HelveticaOblique);
+        fonts.boldItalic= await pdfDoc.embedFont(PDFLib.StandardFonts.HelveticaBoldOblique);
+        break;
+      case 'mono':
+        fonts.regular   = await pdfDoc.embedFont(PDFLib.StandardFonts.Courier);
+        fonts.bold      = await pdfDoc.embedFont(PDFLib.StandardFonts.CourierBold);
+        fonts.italic    = await pdfDoc.embedFont(PDFLib.StandardFonts.CourierOblique);
+        fonts.boldItalic= await pdfDoc.embedFont(PDFLib.StandardFonts.CourierBoldOblique);
+        break;
+      default: // serif Times
+        fonts.regular   = await pdfDoc.embedFont(PDFLib.StandardFonts.TimesRoman);
+        fonts.bold      = await pdfDoc.embedFont(PDFLib.StandardFonts.TimesRomanBold);
+        fonts.italic    = await pdfDoc.embedFont(PDFLib.StandardFonts.TimesRomanItalic);
+        fonts.boldItalic= await pdfDoc.embedFont(PDFLib.StandardFonts.TimesRomanBoldItalic);
+    }
+
+    setStep(2); setP(35, 'Laying out PDF pages…');
+    await wait(20);
+
+    const lineH   = fontSize * lineSpacing;
+    const contentW = pageW - margin * 2;
+    const topY    = pageH - margin;
+    const botY    = margin + fontSize;
+    const inkColor = PDFLib.rgb(0.04, 0.04, 0.04);
+    const headColor= PDFLib.rgb(0.02, 0.02, 0.02);
+    const mutedC   = PDFLib.rgb(0.35, 0.35, 0.35);
+    const accentC  = PDFLib.rgb(0.78, 0.29, 0.18);
+
+    let page = null, curY = 0;
+    function newPage() { page = pdfDoc.addPage([pageW, pageH]); curY = topY; }
+    function ensureSpace(h) { if (!page || curY - h < botY) newPage(); }
+
+    function safeW(font, text, size) {
+      try { return font.widthOfTextAtSize(text, size); }
+      catch(e) { return text.length * size * 0.52; }
+    }
+
+    // Draw text with inline bold/italic spans from a runs array
+    // runs: [{text, bold, italic}]
+    function drawRuns(runs, baseSize, indent, extraAfter) {
+      const maxW = contentW - indent;
+      // Flatten all runs into words with their style
+      const words = [];
+      for (const run of runs) {
+        const tokens = run.text.split(/(\s+)/);
+        for (const tok of tokens) {
+          if (tok) words.push({ text: tok, bold: run.bold, italic: run.italic });
+        }
+      }
+      if (!words.length) return;
+
+      let lineWords = [];
+      let lineW = 0;
+
+      function flushLine(lineArr) {
+        if (!lineArr.length) return;
+        ensureSpace(baseSize + 2);
+        let x = margin + indent;
+        for (const w of lineArr) {
+          let font = fonts.regular;
+          if (featureSet.bold && featureSet.italic && w.bold && w.italic) font = fonts.boldItalic;
+          else if (featureSet.bold && w.bold) font = fonts.bold;
+          else if (featureSet.italic && w.italic) font = fonts.italic;
+          const ww = safeW(font, w.text, baseSize);
+          try { page.drawText(w.text, { x, y: curY, size: baseSize, font, color: inkColor, maxWidth: maxW - (x - margin - indent) }); }
+          catch(e) {}
+          x += ww;
+        }
+        curY -= lineH;
+      }
+
+      for (const word of words) {
+        let font = fonts.regular;
+        if (featureSet.bold && featureSet.italic && word.bold && word.italic) font = fonts.boldItalic;
+        else if (featureSet.bold && word.bold) font = fonts.bold;
+        else if (featureSet.italic && word.italic) font = fonts.italic;
+        const ww = safeW(font, word.text, baseSize);
+
+        if (/^\s+$/.test(word.text)) {
+          if (lineW > 0) { lineWords.push(word); lineW += ww; }
+          continue;
+        }
+
+        if (lineW + ww > maxW && lineWords.length) {
+          flushLine(lineWords); lineWords = []; lineW = 0;
+        }
+        lineWords.push(word); lineW += ww;
+      }
+      if (lineWords.length) flushLine(lineWords);
+      curY -= extraAfter || 0;
+    }
+
+    function drawRule(y, alpha) {
+      page.drawLine({ start:{x:margin,y}, end:{x:pageW-margin,y}, thickness:0.5, color:PDFLib.rgb(0.8,0.8,0.8) });
+    }
+
+    // Extract runs from an element (handles nested strong/em/b/i)
+    function extractRuns(el, inheritBold, inheritItalic) {
+      const runs = [];
+      for (const child of el.childNodes) {
+        if (child.nodeType === 3) {
+          if (child.textContent) runs.push({ text: child.textContent, bold: inheritBold, italic: inheritItalic });
+        } else if (child.nodeType === 1) {
+          const t = (child.localName || child.tagName || '').toLowerCase();
+          const isBold   = inheritBold   || t === 'strong' || t === 'b';
+          const isItalic = inheritItalic || t === 'em'     || t === 'i';
+          runs.push(...extractRuns(child, isBold, isItalic));
+        }
+      }
+      return runs;
+    }
+
+    // Walk all top-level children of body
+    const bodyNodes = Array.from(htmlDoc.body.childNodes);
+    let nodeIdx = 0;
+    newPage();
+
+    for (const node of bodyNodes) {
+      nodeIdx++;
+      if (nodeIdx % 40 === 0) {
+        setP(35 + Math.round((nodeIdx / bodyNodes.length) * 48), `Rendering block ${nodeIdx}…`);
+        await wait(2);
+      }
+      if (node.nodeType !== 1) continue;
+      const tag = (node.localName || node.tagName || '').toLowerCase();
+
+      // HEADINGS
+      if (/^h[1-6]$/.test(tag) && featureSet.headings) {
+        const level = parseInt(tag[1]);
+        const hSize = Math.round(fontSize * (1.9 - (level - 1) * 0.18));
+        curY -= hSize * 0.35;
+        ensureSpace(hSize + 8);
+        const txt = (node.textContent || '').trim().slice(0, 200);
+        if (txt) {
+          try { page.drawText(txt, { x:margin, y:curY, size:hSize, font:fonts.bold, color:headColor, maxWidth:contentW }); }
+          catch(e) {}
+          curY -= hSize + 4;
+          if (level <= 2) { drawRule(curY + 2); curY -= 4; }
+        }
+        continue;
+      }
+
+      // PARAGRAPHS
+      if (tag === 'p') {
+        const runs = extractRuns(node, false, false);
+        const text = runs.map(r => r.text).join('').trim();
+        if (text) drawRuns(runs, fontSize, 0, fontSize * 0.2);
+        continue;
+      }
+
+      // UNORDERED LIST
+      if (tag === 'ul' && featureSet.lists) {
+        for (const li of Array.from(node.querySelectorAll('li'))) {
+          ensureSpace(fontSize + 2);
+          try { page.drawText('•', { x:margin, y:curY, size:fontSize, font:fonts.regular, color:accentC }); }
+          catch(e) {}
+          const runs = extractRuns(li, false, false);
+          drawRuns(runs, fontSize, fontSize * 1.2, fontSize * 0.1);
+        }
+        curY -= fontSize * 0.2;
+        continue;
+      }
+
+      // ORDERED LIST
+      if (tag === 'ol' && featureSet.lists) {
+        let num = 1;
+        for (const li of Array.from(node.querySelectorAll('li'))) {
+          ensureSpace(fontSize + 2);
+          const numStr = num++ + '.';
+          try { page.drawText(numStr, { x:margin, y:curY, size:fontSize, font:fonts.bold, color:accentC }); }
+          catch(e) {}
+          const runs = extractRuns(li, false, false);
+          drawRuns(runs, fontSize, fontSize * 1.6, fontSize * 0.1);
+        }
+        curY -= fontSize * 0.2;
+        continue;
+      }
+
+      // TABLE
+      if (tag === 'table' && featureSet.tables) {
+        const rows = Array.from(node.querySelectorAll('tr'));
+        if (!rows.length) continue;
+        const colCount = Math.max(...rows.map(r => r.querySelectorAll('td,th').length));
+        if (!colCount) continue;
+        const colW    = contentW / colCount;
+        const cellPad = 4;
+        const cellH   = Math.round(fontSize * lineSpacing) + cellPad * 2;
+        curY -= fontSize * 0.3;
+        for (let ri = 0; ri < rows.length; ri++) {
+          ensureSpace(cellH + 2);
+          const cells = Array.from(rows[ri].querySelectorAll('td,th'));
+          for (let ci = 0; ci < cells.length; ci++) {
+            const isHeader = cells[ci].tagName.toLowerCase() === 'th';
+            const cx = margin + ci * colW;
+            const cy = curY - cellH;
+            page.drawRectangle({ x:cx, y:cy, width:colW, height:cellH,
+              borderColor:PDFLib.rgb(0.72,0.72,0.72), borderWidth:0.5,
+              color: ri===0 || isHeader ? PDFLib.rgb(0.95,0.95,0.95) : PDFLib.rgb(1,1,1) });
+            const cellText = (cells[ci].textContent || '').trim().slice(0, 100);
+            if (cellText) {
+              try {
+                page.drawText(cellText, { x:cx+cellPad, y:cy+cellPad+1, size:Math.round(fontSize*0.84),
+                  font: ri===0||isHeader ? fonts.bold : fonts.regular,
+                  color: inkColor, maxWidth: colW - cellPad*2 });
+              } catch(e) {}
+            }
+          }
+          curY -= cellH;
+        }
+        curY -= fontSize * 0.45;
+        continue;
+      }
+
+      // IMAGES
+      if (tag === 'img' && featureSet.images) {
+        const src = node.getAttribute('src') || '';
+        if (src.startsWith('data:image/')) {
+          try {
+            const mimeMatch = src.match(/^data:(image\/[^;]+)/);
+            const mime = mimeMatch ? mimeMatch[1] : 'image/jpeg';
+            const b64  = src.split(',')[1];
+            if (b64) {
+              const bytes = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+              let img;
+              if (mime === 'image/png') img = await pdfDoc.embedPng(bytes);
+              else img = await pdfDoc.embedJpg(bytes);
+              const maxImgW = contentW;
+              const maxImgH = Math.min(img.height, (pageH - margin * 2) * 0.5);
+              const scale   = Math.min(maxImgW / img.width, maxImgH / img.height, 1);
+              const drawW   = img.width  * scale;
+              const drawH   = img.height * scale;
+              ensureSpace(drawH + 10);
+              page.drawImage(img, { x:margin, y:curY - drawH, width:drawW, height:drawH });
+              curY -= drawH + fontSize * 0.5;
+            }
+          } catch(imgErr) { /* skip unsupported images */ }
+        }
+        continue;
+      }
+
+      // HR / dividers
+      if (tag === 'hr') {
+        ensureSpace(8);
+        drawRule(curY - 4);
+        curY -= 12;
+        continue;
+      }
+
+      // Blockquote
+      if (tag === 'blockquote') {
+        const text = (node.textContent || '').trim();
+        if (text) {
+          curY -= fontSize * 0.2;
+          ensureSpace(fontSize + 2);
+          // Draw left border
+          if (page) page.drawLine({ start:{x:margin,y:curY}, end:{x:margin,y:curY-fontSize*2}, thickness:2, color:accentC });
+          drawRuns([{text, bold:false, italic:true}], Math.round(fontSize * 0.92), fontSize, fontSize * 0.2);
+        }
+        continue;
+      }
+
+      // Pre / code blocks
+      if (tag === 'pre' || tag === 'code') {
+        const text = (node.textContent || '').trim();
+        if (text) drawRuns([{text, bold:false, italic:false}].map(r => ({...r, mono:true})), Math.round(fontSize * 0.85), 0, fontSize * 0.2);
+        continue;
+      }
+    }
+
+    setStep(3); setP(85, 'Writing PDF file…');
+    await wait(30);
+
+    if (token !== convertToken) return;
+    const pdfBytes = await pdfDoc.save();
+    setP(100, 'Done!');
+    await wait(100);
+
+    resultBlob = new Blob([pdfBytes], { type: 'application/pdf' });
+    const fname = (document.getElementById('filenameInput').value.trim() || 'document') + '.pdf';
+    const pageCount = pdfDoc.getPageCount();
+
+    document.getElementById('resultFname').textContent = fname;
+    document.getElementById('resultMeta').textContent  =
+      fmtSize(pdfBytes.length) + ' · ' + pageCount + ' page' + (pageCount !== 1 ? 's' : '');
+
+    document.getElementById('progWrap').classList.remove('on');
+    document.getElementById('resultArea').classList.add('on');
+    document.getElementById('resultArea').scrollIntoView({ behavior:'smooth', block:'nearest' });
+    toast('PDF created — ' + pageCount + ' pages');
+
+  } catch(err) {
+    document.getElementById('progWrap').classList.remove('on');
+    document.getElementById('errBox').classList.add('on');
+    document.getElementById('errText').textContent = 'Conversion failed: ' + (err.message || String(err));
+    toast('Conversion failed — see error above');
+    console.error(err);
+  }
+
+  document.getElementById('convertBtn').disabled = false;
+}
+
+// ═══ DOWNLOAD ════════════════════════════════════════════════
+document.getElementById('downloadBtn').addEventListener('click', () => {
+  if (!resultBlob) return;
+  const fname = (document.getElementById('filenameInput').value.trim() || 'document') + '.pdf';
+  const url = URL.createObjectURL(resultBlob);
+  const a = document.createElement('a');
+  a.href = url; a.download = fname; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 8000);
+  toast('Downloading ' + fname + '…');
+});
+
+// ═══ AGAIN / CLEAR ═══════════════════════════════════════════
+document.getElementById('convertAgainBtn').addEventListener('click', () => {
+  document.getElementById('resultArea').classList.remove('on');
+  resultBlob = null;
+  toast('Adjust settings and convert again');
+});
+document.getElementById('clearBtn').addEventListener('click', () => resetTool(true));
+document.getElementById('fbRemove').addEventListener('click', () => resetTool(true));
+
+function resetUI(showDrop) {
+  document.getElementById('docInfo').classList.remove('on');
+  document.getElementById('docPreview').classList.remove('on');
+  document.getElementById('optsWrap').classList.remove('on');
+  document.getElementById('progWrap').classList.remove('on');
+  document.getElementById('resultArea').classList.remove('on');
+  document.getElementById('errBox').classList.remove('on');
+  if (showDrop) document.getElementById('fileBar').classList.remove('on');
+}
+
+function resetTool(showDrop) {
+  convertToken++;
+  srcFile = null; parsedHtml = ''; resultBlob = null;
+  resetUI(showDrop);
+  if (showDrop) { dropZone.style.display = ''; toast('Cleared'); }
+}
+
+// ═══ FAQ ════════════════════════════════════════════════════
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement, was = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!was) item.classList.add('open');
+  });
+});
+
+function closeMobileMenu() {
+  document.getElementById('mobileMenuToggle').classList.remove('active');
+  document.getElementById('mobileNav').classList.remove('active');
+}
+</script>
+</body>
+</html>

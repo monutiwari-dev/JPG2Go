@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>Terms and Conditions | JP2Go Online Tools Policy</title>
+<meta name="description" content="Review the terms and conditions for using JP2Go tools. Understand the rules, service guidelines, and responsibilities related to our online file conversion platform.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jpg2go.com/terms">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="adsense.js"></script>
+<style>
+:root {
+  --ink: #0d0d0d;
+  --paper: #f7f4ee;
+  --cream: #ede9df;
+  --accent: #c84b2f;
+  --accent-light: #e8d5cf;
+  --muted: #7a7567;
+  --border: #d4cfc4;
+  --white: #ffffff;
+  --shadow: 0 2px 24px rgba(13,13,13,0.08);
+  --shadow-lg: 0 8px 48px rgba(13,13,13,0.12);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; min-height: 100vh; }
+
+/* HEADER */
+header { background: var(--ink); color: var(--paper); position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--accent); }
+.header-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.logo { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.6rem; color: var(--paper); text-decoration: none; letter-spacing: -0.02em; }
+.logo span { color: var(--accent); }
+nav { display: flex; gap: 2rem; align-items: center; }
+nav a { color: #a8a39a; text-decoration: none; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.02em; transition: color 0.2s; }
+nav a:hover { color: var(--paper); }
+.nav-cta { background: var(--accent); color: var(--white) !important; padding: 0.4rem 1rem; border-radius: 4px; transition: background 0.2s !important; }
+.nav-cta:hover { background: #a83825 !important; }
+.mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-direction: column; gap: 5px; align-items: center; justify-content: center; width: 40px; height: 40px; }
+.mobile-menu-toggle span { display: block; width: 24px; height: 2px; background: var(--paper); transition: all 0.3s ease; border-radius: 2px; }
+.mobile-menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+.mobile-menu-toggle.active span:nth-child(2) { opacity: 0; }
+.mobile-menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+.mobile-nav { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--ink); border-top: 2px solid var(--accent); padding: 1.5rem 2rem; flex-direction: column; gap: 1rem; z-index: 99; transform: translateY(-100%); opacity: 0; transition: transform 0.3s ease, opacity 0.3s ease; visibility: hidden; }
+.mobile-nav.active { display: flex; transform: translateY(0); opacity: 1; visibility: visible; }
+.mobile-nav a { color: #a8a39a; text-decoration: none; font-size: 0.95rem; font-weight: 500; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); transition: color 0.2s; }
+.mobile-nav a:last-child { border-bottom: none; }
+.mobile-nav a:hover { color: var(--paper); }
+.mobile-nav .nav-cta { background: var(--accent); color: var(--white) !important; padding: 0.75rem 1.5rem; border-radius: 4px; text-align: center; border: none; margin-top: 0.5rem; }
+
+/* PAGE HERO */
+.page-hero { background: var(--ink); color: var(--paper); padding: 5rem 2rem 4.5rem; text-align: center; position: relative; overflow: hidden; }
+.page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(200,75,47,0.18) 0%, transparent 70%); pointer-events: none; }
+.hero-label { display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.15em; color: var(--accent); text-transform: uppercase; border: 1px solid rgba(200,75,47,0.4); padding: 0.25rem 0.75rem; border-radius: 2px; margin-bottom: 1.5rem; }
+.page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5.5vw, 3.6rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
+.page-hero h1 em { font-style: normal; color: var(--accent); }
+.page-hero-meta { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1.5rem; flex-wrap: wrap; }
+.page-hero-meta span { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.08em; color: #7a7567; display: flex; align-items: center; gap: 0.4rem; }
+.page-hero-meta span::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); display: inline-block; }
+
+/* LAYOUT */
+.policy-layout { max-width: 1060px; margin: 0 auto; padding: 4rem 1.5rem 5rem; display: grid; grid-template-columns: 220px 1fr; gap: 4rem; align-items: start; }
+
+/* SIDEBAR TOC */
+.toc { position: sticky; top: 88px; }
+.toc-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; display: block; }
+.toc-list { list-style: none; display: flex; flex-direction: column; gap: 0; border-left: 2px solid var(--border); }
+.toc-list li a { display: block; padding: 0.45rem 0.75rem; font-size: 0.82rem; color: var(--muted); text-decoration: none; transition: color 0.18s, border-color 0.18s; border-left: 2px solid transparent; margin-left: -2px; line-height: 1.4; }
+.toc-list li a:hover { color: var(--ink); border-left-color: var(--accent); }
+.toc-list li a.active { color: var(--accent); border-left-color: var(--accent); font-weight: 600; }
+
+/* POLICY CONTENT */
+.section-tag { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; display: block; }
+.policy-section { margin-bottom: 3.5rem; scroll-margin-top: 88px; }
+.policy-section:last-child { margin-bottom: 0; }
+.policy-section h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1.25rem; line-height: 1.25; color: var(--ink); padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+.policy-prose { color: #4a4640; font-size: 0.95rem; line-height: 1.85; }
+.policy-prose p { margin-bottom: 1rem; }
+.policy-prose p:last-child { margin-bottom: 0; }
+.policy-prose strong { color: var(--ink); font-weight: 600; }
+.policy-prose a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; transition: opacity 0.2s; }
+.policy-prose a:hover { opacity: 0.75; }
+.policy-prose ul { list-style: none; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.5rem; }
+.policy-prose ul li { padding-left: 1.25rem; position: relative; }
+.policy-prose ul li::before { content: ''; position: absolute; left: 0; top: 0.6em; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+.policy-prose ol { padding-left: 1.25rem; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.5rem; }
+.policy-prose ol li { padding-left: 0.25rem; color: #4a4640; }
+
+/* HIGHLIGHT / WARNING BOX */
+.highlight-box { background: var(--accent-light); border: 1px solid rgba(200,75,47,0.25); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; padding: 1.25rem 1.5rem; margin: 1.5rem 0; }
+.highlight-box p { color: var(--ink); font-size: 0.92rem; line-height: 1.75; margin: 0; }
+.highlight-box strong { font-weight: 700; }
+.warning-box { background: #fef3cd; border: 1px solid #f0d060; border-left: 4px solid #c89a00; border-radius: 0 8px 8px 0; padding: 1.25rem 1.5rem; margin: 1.5rem 0; }
+.warning-box p { color: #4a3a00; font-size: 0.92rem; line-height: 1.75; margin: 0; }
+
+/* LAST UPDATED STRIP */
+.last-updated { background: var(--cream); border: 1px solid var(--border); border-radius: 8px; padding: 0.875rem 1.25rem; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 0.75rem; font-size: 0.82rem; color: var(--muted); }
+.last-updated svg { color: var(--accent); flex-shrink: 0; }
+.last-updated strong { color: var(--ink); }
+.divider { border: none; border-top: 1px solid var(--border); max-width: 1060px; margin: 0 auto; }
+
+/* FOOTER */
+footer { background: var(--ink); color: #9e9990; padding: 4rem 2rem 2rem; }
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid #2a2a2a; }
+.footer-brand .logo { display: block; margin-bottom: 0.75rem; }
+.footer-brand p { font-size: 0.85rem; line-height: 1.6; max-width: 240px; }
+.footer-social { display: flex; gap: 0; margin-top: 1rem; }
+.social-icon { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; color: #9e9990; transition: color 0.2s, transform 0.2s; border-radius: 6px; margin-left: -8px; }
+.social-icon:first-child { margin-left: 0; }
+.social-icon:hover { color: var(--paper); transform: translateY(-2px); }
+.footer-col-title { font-family: 'DM Sans', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper); font-weight: 600; margin-bottom: 1rem; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-links a { color: #9e9990; text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+.footer-links a:hover { color: var(--paper); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; font-size: 0.8rem; flex-wrap: wrap; gap: 0.75rem; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.fade-up { animation: fadeUp 0.55s ease both; }
+
+@media (max-width: 860px) {
+  .policy-layout { grid-template-columns: 1fr; gap: 0; }
+  .toc { display: none; }
+}
+@media (max-width: 768px) {
+  nav { display: none; }
+  .mobile-menu-toggle { display: flex; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .page-hero { padding: 3.5rem 1.25rem 3rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">JPG2<span>Go</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="tools.html">Tools</a>
+      <a href="index.html#tool" class="nav-cta">Convert Now</a>
+    </nav>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="tools.html" onclick="closeMobileMenu()">Tools</a>
+    <a href="index.html#tool" class="nav-cta" onclick="closeMobileMenu()">Convert Now</a>
+  </nav>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="fade-up">
+    <span class="hero-label">Legal · Terms of Use</span>
+    <h1>Terms of <em>Use</em></h1>
+    <p>Review our website terms and conditions to understand the guidelines and rules for using our online tools and services.</p>
+    <div class="page-hero-meta">
+      <span>Effective: 1 March 2026</span>
+      <span>Last updated: 1 March 2026</span>
+      <span>Governing law: State of Delaware, USA</span>
+    </div>
+  </div>
+</section>
+
+<!-- TERMS BODY -->
+<div class="policy-layout">
+
+  <!-- SIDEBAR TOC -->
+  <aside class="toc" aria-label="Table of contents">
+    <span class="toc-label">On this page</span>
+    <ul class="toc-list">
+      <li><a href="#acceptance">Acceptance of Terms</a></li>
+      <li><a href="#description">Service Description</a></li>
+      <li><a href="#permitted-use">Permitted Use</a></li>
+      <li><a href="#prohibited-use">Prohibited Use</a></li>
+      <li><a href="#intellectual-property">Intellectual Property</a></li>
+      <li><a href="#user-content">Your Content</a></li>
+      <li><a href="#disclaimers">Disclaimers</a></li>
+      <li><a href="#liability">Limitation of Liability</a></li>
+      <li><a href="#indemnification">Indemnification</a></li>
+      <li><a href="#termination">Termination</a></li>
+      <li><a href="#governing-law">Governing Law</a></li>
+      <li><a href="#changes">Changes to Terms</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="policy-content">
+
+    <div class="last-updated">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      <span>These Terms were last updated on <strong>1 March 2026</strong>. Questions? Email <a href="mailto:legal@imgconv.tools" style="color:var(--accent);">legal@imgconv.tools</a>.</span>
+    </div>
+
+    <!-- 1. ACCEPTANCE -->
+    <section class="policy-section" id="acceptance">
+      <span class="section-tag">01</span>
+      <h2>Acceptance of Terms</h2>
+      <div class="policy-prose">
+        <p>These Terms of Use ("Terms") constitute a legally binding agreement between you ("User", "you", or "your") and JPG2Go ("we", "us", "our", or "the Service") governing your access to and use of the website located at <strong>imgconv.tools</strong> and all associated services, tools, and content.</p>
+        <p>By accessing or using JPG2Go in any way — including visiting the website, using the image conversion tool, or linking to any page — you agree to be bound by these Terms and our <a href="/privacy-policy">Privacy Policy</a>, which is incorporated here by reference. If you do not agree to these Terms, you must not use JPG2Go.</p>
+      </div>
+      <div class="highlight-box">
+        <p><strong>Please read these Terms carefully.</strong> They include important information about your rights and obligations, as well as limitations and exclusions that may apply to you. If you have questions before using the Service, contact us at <a href="mailto:legal@imgconv.tools">legal@imgconv.tools</a>.</p>
+      </div>
+    </section>
+
+    <hr class="divider" style="margin: 0 0 3.5rem;">
+
+    <!-- 2. SERVICE DESCRIPTION -->
+    <section class="policy-section" id="description">
+      <span class="section-tag">02</span>
+      <h2>Service Description</h2>
+      <div class="policy-prose">
+        <p>Review our website terms and conditions to understand the guidelines and rules for using our online tools and services.</p>
+        <p><strong>Key characteristics of the Service:</strong></p>
+        <ul>
+          <li>All image processing occurs locally within your web browser. Image files are never transmitted to our servers.</li>
+          <li>No user account or registration is required to use JPG2Go.</li>
+          <li>The Service is provided free of charge with no usage limits, file-size restrictions, or output watermarks.</li>
+          <li>Availability of specific output formats depends on the codec support built into your browser. We do not guarantee that all formats will be available on all browsers or devices.</li>
+          <li>The Service is provided on an "as available" basis. We reserve the right to modify, suspend, or discontinue the Service at any time without notice.</li>
+        </ul>
+      </div>
+    </section>
+
+    <hr class="divider" style="margin: 0 0 3.5rem;">
+
+    <!-- 3. PERMITTED USE -->
+    <section class="policy-section" id="permitted-use">
+      <span class="section-tag">03</span>
+      <h2>Permitted Use</h2>
+      <div class="policy-prose">
+        <p>Subject to these Terms, we grant you a limited, non-exclusive, non-transferable, revocable licence to access and use JPG2Go solely for lawful personal and commercial image conversion purposes.</p>
+        <p>You may use JPG2Go to:</p>
+        <ul>
+          <li>Convert image files that you own or for which you have appropriate rights or authorisation.</li>
+          <li>Convert images for personal, professional, or commercial projects, provided that use complies with these Terms and all applicable laws.</li>
+          <li>Access the Service from any location and on any compatible device and browser.</li>
+          <li>Share links to imgconv.tools on websites, social media, or other platforms.</li>
+        </ul>
+      </div>
+    </section>
+
+    <hr class="divider" style="margin: 0 0 3.5rem;">
+
+    <!-- 4. PROHIBITED USE -->
+    <section class="policy-section" id="prohibited-use">
+      <span class="section-tag">04</span>
+      <h2>Prohibited Use</h2>
+      <div class="policy-prose">
+        <p>You agree that you will not, and will not assist or enable others to, use JPG2Go in any of the following ways:</p>
+        <ul>
+          <li><strong>Unlawful content:</strong> Converting, processing, or distributing images that are illegal under applicable law, including without limitation child sexual abuse material, non-consensual intimate imagery, or content that constitutes incitement to violence or hatred.</li>
+          <li><strong>Intellectual property infringement:</strong> Converting, reproducing, or distributing images in a manner that infringes any third party's copyright, trademark, trade secret, right of publicity, or other intellectual property or proprietary rights.</li>
+          <li><strong>Automated scraping or bulk abuse:</strong> Using automated scripts, bots, crawlers, or other automated means to access the Service at a volume or in a manner that imposes unreasonable load on our infrastructure.</li>
+          <li><strong>Interference:</strong> Attempting to interfere with, disrupt, or gain unauthorised access to the Service, our servers, or networks connected to the Service, including by exploiting security vulnerabilities.</li>
+          <li><strong>Circumvention:</strong> Attempting to reverse-engineer, decompile, disassemble, or extract source code from the Service beyond what is necessarily made available as part of standard browser rendering.</li>
+          <li><strong>Misrepresentation:</strong> Impersonating JPG2Go, our team, or any other person or entity, or misrepresenting your affiliation with any person or entity.</li>
+          <li><strong>Harmful content:</strong> Using the Service to facilitate the creation or distribution of malware, phishing material, or other content designed to harm, deceive, or defraud individuals or organisations.</li>
+        </ul>
+        <p>We reserve the right to restrict or terminate access to the Service for any user who violates these prohibitions, without notice and without liability.</p>
+      </div>
+    </section>
+
+    <hr class="divider" style="margin: 0 0 3.5rem;">
+
+    <!-- 5. INTELLECTUAL PROPERTY -->
+    <section class="policy-section" id="intellectual-property">
+      <span class="section-tag">05</span>
+      <h2>Intellectual Property</h2>
+      <div class="policy-prose">
+        <p><strong>Our property.</strong> The JPG2Go name, logo, website design, interface, underlying code, written content, and all other original materials on imgconv.tools are owned by or licensed to JPG2Go and are protected by copyright, trademark, and other intellectual property laws. Nothing in these Terms grants you any right, title, or interest in our intellectual property.</p>
+        <p><strong>Limited licence to use the Service.</strong> The licence granted in Section 3 (Permitted Use) is limited to using the Service as intended. You may not copy, reproduce, modify, distribute, publicly display, or create derivative works of any part of JPG2Go's website or codebase without our prior written consent, except to the extent expressly permitted by applicable law.</p>
+        <p><strong>Open-source components.</strong> To the extent JPG2Go relies on any third-party open-source libraries or browser APIs, your rights and obligations with respect to those components are governed by their respective licences. No third-party open-source code is currently bundled with or required by JPG2Go beyond what is provided natively by browsers and the Google Fonts service.</p>
+      </div>
+    </section>
+
+    <hr class="divider" style="margin: 0 0 3.5rem;">
+
+    <!-- 6. USER CONTENT -->
+    <section class="policy-section" id="user-content">
+      <span class="section-tag">06</span>
+      <h2>Your Content</h2>
+      <div class="policy-prose">
+        <p>Because JPG2Go processes all images locally in your browser and never transmits image data to our servers, we do not receive, store, or have access to any image files you convert using the Service.</p>
+        <p><strong>Ownership:</strong> You retain full ownership of all images you process through JPG2Go. We make no claim to any rights in your content.</p>
+        <p><strong>Your responsibility:</strong> You are solely responsible for ensuring that:</p>
+        <ul>
+          <li>You have the legal right to use, reproduce, and convert the images you process through the Service.</li>
+          <li>Your use of the output files complies with all applicable laws and any third-party licences that govern the original image content.</li>
+          <li>Your images do not violate any third party's rights or applicable laws, as described in Section 4 (Prohibited Use).</li>
+        </ul>
+        <p>JPG2Go accepts no liability for how you use the converted output files. By using the Service, you represent and warrant that your use of image content complies with all applicable laws and these Terms.</p>
+      </div>
+    </section>
+
+    <hr class="divider" style="margin: 0 0 3.5rem;">
+
+    <!-- 7. DISCLAIMERS -->
+    <section class="policy-section" id="disclaimers">
+      <span class="section-tag">07</span>
+      <h2>Disclaimers</h2>
+      <div class="warning-box">
+        <p><strong>THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED.</strong> To the maximum extent permitted by applicable law, we disclaim all warranties including but not limited to merchantability, fitness for a particular purpose, and non-infringement.</p>
+      </div>
+      <div class="policy-prose">
+        <p>Specifically, and without limiting the foregoing, we do not warrant that:</p>
+        <ul>
+          <li>The Service will be uninterrupted, error-free, or available at any particular time or from any particular location.</li>
+          <li>The output quality of converted images will meet your specific requirements or expectations.</li>
+          <li>All output formats will be supported on your specific browser, operating system, or device.</li>
+          <li>Any defects or errors in the Service will be corrected.</li>
+          <li>The Service will be free of viruses, malware, or other harmful components (though we make reasonable efforts to ensure this).</li>
+        </ul>
+        <p>Conversion output quality depends on the codec implementations built into your browser, which are outside our control. In particular, AVIF encoding support varies across browser versions.</p>
+      </div>
+    </section>
+
+    <hr class="divider" style="margin: 0 0 3.5rem;">
+
+    <!-- 8. LIMITATION OF LIABILITY -->
+    <section class="policy-section" id="liability">
+      <span class="section-tag">08</span>
+      <h2>Limitation of Liability</h2>
+      <div class="warning-box">
+        <p><strong>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, JPGGO AND ITS OFFICERS, DIRECTORS, EMPLOYEES, AND AGENTS SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES</strong> arising from or related to your use of or inability to use the Service, even if we have been advised of the possibility of such damages.</p>
+      </div>
+      <div class="policy-prose">
+        <p>This includes, without limitation, damages for:</p>
+        <ul>
+          <li>Loss of profits, revenue, data, business opportunities, or goodwill.</li>
+          <li>Corruption or loss of image files during or after conversion.</li>
+          <li>Failure of the Service to produce output in a format compatible with a third-party platform or application.</li>
+          <li>Unauthorised access to your device or local file system (noting that JPG2Go does not access your file system beyond files you explicitly select).</li>
+        </ul>
+        <p>To the extent that any liability cannot be excluded by law, our total aggregate liability to you for any and all claims arising from your use of the Service shall not exceed <strong>USD $100</strong>. Some jurisdictions do not allow certain limitations of liability; in such jurisdictions, liability is limited to the fullest extent permitted by law.</p>
+      </div>
+    </section>
+
+    <hr class="divider" style="margin: 0 0 3.5rem;">
+
+    <!-- 9. INDEMNIFICATION -->
+    <section class="policy-section" id="indemnification">
+      <span class="section-tag">09</span>
+      <h2>Indemnification</h2>
+      <div class="policy-prose">
+        <p>You agree to indemnify, defend, and hold harmless JPG2Go and its officers, directors, employees, contractors, and agents from and against any and all claims, damages, losses, costs, and expenses (including reasonable legal fees) arising from or relating to:</p>
+        <ul>
+          <li>Your use of the Service in violation of these Terms.</li>
+          <li>Your violation of any applicable law or regulation.</li>
+          <li>Your infringement of any third-party intellectual property, privacy, or other rights in connection with your use of the Service.</li>
+          <li>Any content you process, share, or distribute using the Service.</li>
+        </ul>
+        <p>We reserve the right to assume exclusive control of any matter subject to indemnification by you, in which case you agree to cooperate with us in asserting any available defences.</p>
+      </div>
+    </section>
+
+    <hr class="divider" style="margin: 0 0 3.5rem;">
+
+    <!-- 10. TERMINATION -->
+    <section class="policy-section" id="termination">
+      <span class="section-tag">10</span>
+      <h2>Termination</h2>
+      <div class="policy-prose">
+        <p>Because JPG2Go requires no account, there is no formal account to suspend or terminate. However, we reserve the right to block access to the Service from specific IP addresses, networks, or geographic regions if we determine that access from those sources violates these Terms, places undue load on our infrastructure, or constitutes abusive behaviour.</p>
+        <p>We may discontinue the Service, in whole or in part, at any time and for any reason without notice or liability. In the event of discontinuation, your only remedy is to cease using the Service.</p>
+        <p>The following sections survive any termination or expiration of these Terms: Section 5 (Intellectual Property), Section 7 (Disclaimers), Section 8 (Limitation of Liability), Section 9 (Indemnification), and Section 11 (Governing Law).</p>
+      </div>
+    </section>
+
+    <hr class="divider" style="margin: 0 0 3.5rem;">
+
+    <!-- 11. GOVERNING LAW -->
+    <section class="policy-section" id="governing-law">
+      <span class="section-tag">11</span>
+      <h2>Governing Law &amp; Dispute Resolution</h2>
+      <div class="policy-prose">
+        <p>These Terms are governed by and construed in accordance with the laws of the <strong>State of Delaware, United States</strong>, without regard to its conflict of law principles.</p>
+        <p>Any dispute, controversy, or claim arising from or relating to these Terms or the Service shall be resolved through binding individual arbitration administered under the rules of the American Arbitration Association. You agree to waive any right to participate in a class action lawsuit or class-wide arbitration.</p>
+        <p>If the arbitration agreement is found unenforceable, or for disputes that are not subject to arbitration, you consent to the exclusive jurisdiction of the state and federal courts located in the State of Delaware.</p>
+        <p>Notwithstanding the foregoing, either party may seek injunctive or other equitable relief in any court of competent jurisdiction to prevent irreparable harm.</p>
+      </div>
+    </section>
+
+    <hr class="divider" style="margin: 0 0 3.5rem;">
+
+    <!-- 12. CHANGES -->
+    <section class="policy-section" id="changes">
+      <span class="section-tag">12</span>
+      <h2>Changes to These Terms</h2>
+      <div class="policy-prose">
+        <p>We reserve the right to modify these Terms at any time. When we make material changes, we will update the "Last updated" date at the top of this page. For significant changes, we may also post a notice on the imgconv.tools homepage.</p>
+        <p>Your continued use of JPG2Go after the effective date of any updated Terms constitutes your acceptance of those changes. If you do not agree to the updated Terms, you must stop using the Service.</p>
+        <p>We encourage you to review these Terms periodically. You can always find the most current version at <a href="https://imgconv.tools/terms">imgconv.tools/terms</a>.</p>
+      </div>
+    </section>
+
+    <hr class="divider" style="margin: 0 0 3.5rem;">
+
+    <!-- 13. CONTACT -->
+    <section class="policy-section" id="contact">
+      <span class="section-tag">13</span>
+      <h2>Contact</h2>
+      <div class="policy-prose">
+        <p>If you have questions about these Terms, wish to report a violation, or need to contact us for any legal matter, please reach out via:</p>
+        <ul>
+          <li><strong>Legal enquiries:</strong> <a href="mailto:legal@imgconv.tools">legal@imgconv.tools</a></li>
+          <li><strong>Privacy enquiries:</strong> <a href="mailto:privacy@imgconv.tools">privacy@imgconv.tools</a></li>
+          <li><strong>General contact:</strong> <a href="mailto:hello@imgconv.tools">hello@imgconv.tools</a></li>
+          <li><strong>Website:</strong> <a href="https://imgconv.tools">imgconv.tools</a></li>
+        </ul>
+        <p>We aim to respond to all legal enquiries within 10 business days.</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<div id="footer-placeholder"></div>
+<script src="load-footer.js"></script>
+
+<script>
+const mobileToggle = document.getElementById('mobileMenuToggle');
+const mobileNav    = document.getElementById('mobileNav');
+function toggleMobileMenu(e) { e.stopPropagation(); mobileToggle.classList.toggle('active'); mobileNav.classList.toggle('active'); }
+function closeMobileMenu()   { mobileToggle.classList.remove('active'); mobileNav.classList.remove('active'); }
+mobileToggle.addEventListener('click', toggleMobileMenu);
+document.addEventListener('click', e => { if (!mobileNav.contains(e.target) && !mobileToggle.contains(e.target)) closeMobileMenu(); });
+
+// Active TOC on scroll
+const sections = document.querySelectorAll('.policy-section');
+const tocLinks = document.querySelectorAll('.toc-list a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>FB2 to PDF Converter | Convert FB2 Files Online</title>
+<meta name="description" content="Convert FB2 eBook files to PDF online. Maintain chapter structure, formatting, and readability for smooth viewing on any device or app.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jpg2go.com/fb2-to-pdf">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="adsense.js"></script>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Convert FB2 to PDF",
+    "url": "https://jpg2go.com/fb2-to-pdf",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Convert FB2 eBook files to PDF online. Maintain chapter structure, formatting, and readability for smooth viewing on any device or app."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does an FB2 to PDF converter do?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An FB2 to PDF converter transforms FictionBook ebook files into PDF documents so they can be opened on a wider range of devices."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why convert FB2 ebook files into PDF format?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PDF format is widely supported and allows users to read ebooks without needing special applications that support FB2 format."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will the ebook layout remain after FB2 to PDF conversion?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most converters preserve the original text structure, chapters, and formatting to keep the reading experience similar to the original ebook."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can FB2 files contain images and formatting?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, FB2 ebook files can include images, structured text, and metadata that describe the content of the digital book."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is FB2 to PDF conversion helpful for offline reading?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, converting FB2 ebooks to PDF allows users to download and read books offline on many devices."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I share FB2 ebooks more easily after converting to PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, PDF files are easier to share through email, messaging platforms, and cloud storage services."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+<style>
+:root{--ink:#0d0d0d;--paper:#f7f4ee;--cream:#ede9df;--accent:#c84b2f;--accent-light:#e8d5cf;--muted:#7a7567;--border:#d4cfc4;--white:#ffffff;--shadow:0 2px 24px rgba(13,13,13,0.08);--shadow-lg:0 8px 48px rgba(13,13,13,0.12);--ai-purple:#c84b2f;--ai-purple-light:#e8d5cf;--green:#1a8a4a;--green-light:#d4f0e0;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;min-height:100vh;}
+header{background:var(--ink);color:var(--paper);position:sticky;top:0;z-index:100;border-bottom:2px solid var(--accent);}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1.6rem;color:var(--paper);text-decoration:none;letter-spacing:-0.02em;}
+.logo span{color:var(--accent);}
+nav{display:flex;gap:2rem;align-items:center;}
+nav a{color:#a8a39a;text-decoration:none;font-size:0.875rem;font-weight:500;letter-spacing:0.02em;transition:color 0.2s;}
+nav a:hover{color:var(--paper);}
+.nav-cta{background:var(--accent);color:var(--white)!important;padding:0.4rem 1rem;border-radius:4px;transition:background 0.2s!important;}
+.nav-cta:hover{background:#a83825!important;}
+.mobile-menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:0.5rem;flex-direction:column;gap:5px;align-items:center;justify-content:center;width:40px;height:40px;}
+.mobile-menu-toggle span{display:block;width:24px;height:2px;background:var(--paper);transition:all 0.3s ease;border-radius:2px;}
+.mobile-menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(6px,6px);}
+.mobile-menu-toggle.active span:nth-child(2){opacity:0;}
+.mobile-menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px);}
+.mobile-nav{display:none;position:fixed;top:64px;left:0;right:0;background:var(--ink);border-top:2px solid var(--accent);padding:1.5rem 2rem;flex-direction:column;gap:1rem;z-index:99;transform:translateY(-100%);opacity:0;transition:transform 0.3s ease,opacity 0.3s ease;visibility:hidden;}
+.mobile-nav.active{display:flex;transform:translateY(0);opacity:1;visibility:visible;}
+.mobile-nav a{color:#a8a39a;text-decoration:none;font-size:0.95rem;font-weight:500;padding:0.75rem 0;border-bottom:1px solid rgba(255,255,255,0.1);transition:color 0.2s;}
+.mobile-nav a:last-child{border-bottom:none;}
+.mobile-nav a:hover{color:var(--paper);}
+.mobile-nav .nav-cta{background:var(--accent);color:var(--white)!important;padding:0.75rem 1.5rem;border-radius:4px;text-align:center;border:none;margin-top: 0.5rem;}
+.hero{background:var(--ink);color:var(--paper);padding:4rem 2rem 3.5rem;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(200,75,47,0.2) 0%,transparent 70%);pointer-events:none;}
+.hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:1px;height:60px;background:linear-gradient(to bottom,transparent,rgba(200,75,47,0.4));}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.12em;color:#c84b2f;text-transform:uppercase;border:1px solid rgba(200,75,47,0.4);background:rgba(200,75,47,0.12);padding:0.3rem 0.9rem;border-radius:2px;margin-bottom:1.5rem;}
+.hero-badge svg{flex-shrink:0;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5.5vw,3.6rem);font-weight:900;line-height:1.1;letter-spacing:-0.03em;margin-bottom:1.25rem;}
+.hero h1 em{font-style:normal;color:var(--accent);}
+.hero-desc{font-size:1.05rem;color:#9e9990;max-width:520px;margin:0 auto 1.75rem;font-weight:300;line-height:1.7;}
+.hero-pills{display:flex;justify-content:center;flex-wrap:wrap;gap:0.5rem;}
+.hero-pill{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.06em;color:#a8a39a;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);padding:0.3rem 0.75rem;border-radius:100px;}
+.tool-section{max-width:1100px;margin:-1.5rem auto 0;padding:0 1.5rem 4rem;position:relative;z-index:10;}
+.tool-card{background:var(--white);border-radius:12px;box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid var(--border);}
+.tool-card-header{background:var(--cream);padding:1rem 1.5rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid var(--border);}
+.dot{width:12px;height:12px;border-radius:50%;display:inline-block;}
+.dot-r{background:#ff5f57;}.dot-y{background:#febc2e;}.dot-g{background:#28c840;}
+.tool-card-title{font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--muted);margin-left:0.5rem;letter-spacing:0.05em;}
+.tool-body{padding:1.5rem;}
+.drop-zone{border:2px dashed var(--border);border-radius:10px;padding:3rem 2rem;text-align:center;cursor:pointer;transition:border-color 0.2s,background 0.2s;background:var(--paper);position:relative;}
+.drop-zone:hover,.drop-zone.drag-over{border-color:var(--ai-purple);background:var(--ai-purple-light);}
+.drop-zone input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.drop-icon{width:52px;height:52px;background:var(--ai-purple-light);border:1px solid rgba(200,75,47,0.3);border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:var(--ai-purple);}
+.drop-zone h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:0.4rem;}
+.drop-zone p{font-size:0.85rem;color:var(--muted);margin-bottom:1rem;}
+.formats-pill{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.08em;color:var(--ai-purple);background:var(--ai-purple-light);padding:0.25rem 0.75rem;border-radius:100px;display:inline-block;}
+.tool-columns{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem;align-items:start;}
+.tool-col-left{display:flex;flex-direction:column;gap:1.25rem;}
+.tool-col-right{display:flex;flex-direction:column;gap:1.25rem;}
+.panel-box{background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:1.15rem 1.25rem;}
+.panel-box-title{font-family:'DM Mono',monospace;font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;}
+.panel-box-title svg{color:var(--accent);flex-shrink:0;}
+.preset-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0.5rem;margin-bottom:1.25rem;}
+.preset-row-3{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;margin-bottom:1.25rem;}
+.preset-row-2{display:grid;grid-template-columns:repeat(2,1fr);gap:0.5rem;margin-bottom:1.25rem;}
+.preset-btn{background:var(--white);border:1.5px solid var(--border);border-radius:8px;padding:0.65rem 0.5rem;cursor:pointer;text-align:center;transition:all 0.18s;}
+.preset-btn:hover{border-color:var(--accent);background:var(--accent-light);}
+.preset-btn.active{border-color:var(--accent);background:var(--accent-light);box-shadow:0 0 0 3px rgba(200,75,47,0.1);}
+.preset-btn-name{font-family:'DM Mono',monospace;font-size:0.7rem;font-weight:600;color:var(--ink);display:block;margin-bottom:0.1rem;letter-spacing:0.02em;}
+.preset-btn.active .preset-btn-name{color:var(--accent);}
+.preset-btn-sub{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--muted);}
+.form-row{display:flex;flex-direction:column;gap:0.3rem;margin-bottom:0.9rem;}
+.form-row:last-child{margin-bottom:0;}
+.form-label{font-family:'DM Mono',monospace;font-size:0.68rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);display:flex;align-items:center;justify-content:space-between;}
+.form-label-hint{font-weight:400;text-transform:none;letter-spacing:0;color:#a8a39a;font-size:0.63rem;}
+.format-select{background:var(--white);border:1.5px solid var(--border);border-radius:6px;padding:0.42rem 2rem 0.42rem 0.75rem;font-family:'DM Mono',monospace;font-size:0.78rem;color:var(--ink);cursor:pointer;outline:none;transition:border-color 0.2s;-webkit-appearance:none;appearance:none;width:100%;background-image:url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%237a7567' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 0.75rem center;}
+.format-select:focus{border-color:var(--accent);}
+.text-input{background:var(--white);border:1.5px solid var(--border);border-radius:6px;padding:0.42rem 0.75rem;font-family:'DM Mono',monospace;font-size:0.78rem;color:var(--ink);outline:none;transition:border-color 0.2s;width:100%;}
+.text-input:focus{border-color:var(--accent);}
+.text-input::placeholder{color:#b8b2aa;}
+.slider-wrap{display:flex;align-items:center;gap:0.75rem;}
+input[type="range"].form-slider{-webkit-appearance:none;appearance:none;width:100%;height:5px;background:var(--border);border-radius:100px;outline:none;cursor:pointer;}
+input[type="range"].form-slider::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;background:var(--accent);border-radius:50%;cursor:pointer;box-shadow:0 1px 6px rgba(200,75,47,0.4);transition:transform 0.15s;}
+input[type="range"].form-slider::-webkit-slider-thumb:hover{transform:scale(1.2);}
+input[type="range"].form-slider::-moz-range-thumb{width:18px;height:18px;background:var(--accent);border-radius:50%;border:none;cursor:pointer;}
+.slider-val{font-family:'DM Mono',monospace;font-size:0.82rem;color:var(--accent);font-weight:600;min-width:44px;text-align:right;}
+.toggle-row{display:flex;align-items:center;gap:0.85rem;padding:0.5rem 0;}
+.toggle-switch{position:relative;width:36px;height:20px;flex-shrink:0;cursor:pointer;}
+.toggle-switch input{opacity:0;width:0;height:0;position:absolute;}
+.toggle-track{position:absolute;inset:0;background:var(--border);border-radius:100px;transition:background 0.2s;}
+.toggle-switch input:checked+.toggle-track{background:var(--accent);}
+.toggle-knob{position:absolute;top:3px;left:3px;width:14px;height:14px;background:white;border-radius:50%;transition:transform 0.2s;box-shadow:0 1px 3px rgba(0,0,0,0.2);pointer-events:none;}
+.toggle-switch input:checked~.toggle-knob{transform:translateX(16px);}
+.toggle-label{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--muted);letter-spacing:0.03em;flex:1;}
+.preview-panel{background:var(--ink);border-radius:10px;overflow:hidden;position:sticky;top:84px;}
+.preview-panel-header{padding:0.75rem 1rem;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;}
+.preview-panel-title{font-family:'DM Mono',monospace;font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#9e9990;display:flex;align-items:center;gap:0.4rem;}
+.preview-badge{font-family:'DM Mono',monospace;font-size:0.6rem;background:rgba(200,75,47,0.2);color:var(--accent);border:1px solid rgba(200,75,47,0.3);padding:0.1rem 0.45rem;border-radius:100px;letter-spacing:0.06em;}
+.preview-placeholder{display:flex;flex-direction:column;align-items:center;gap:0.75rem;padding:3.5rem 2rem;}
+.preview-placeholder-icon{width:52px;height:52px;background:rgba(200,75,47,0.12);border:1px solid rgba(200,75,47,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;color:rgba(200,75,47,0.5);}
+.preview-placeholder p{font-family:'DM Mono',monospace;font-size:0.72rem;color:rgba(255,255,255,0.25);text-align:center;letter-spacing:0.05em;line-height:1.6;}
+.info-bar{display:none;padding:0.55rem 1rem;background:rgba(200,75,47,0.1);border-bottom:1px solid rgba(200,75,47,0.2);gap:1.25rem;flex-wrap:wrap;}
+.info-bar.visible{display:flex;}
+.info-stat{font-family:'DM Mono',monospace;font-size:0.63rem;color:rgba(255,255,255,0.45);display:flex;align-items:center;gap:0.3rem;}
+.info-stat-val{color:rgba(255,255,255,0.82);font-weight:600;}
+.preview-content{padding:0.85rem;display:none;}
+.preview-content.visible{display:block;}
+.preview-content-label{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.6rem;}
+.preview-list{display:flex;flex-direction:column;gap:0.35rem;max-height:300px;overflow-y:auto;padding-right:2px;}
+.preview-list::-webkit-scrollbar{width:3px;}
+.preview-list::-webkit-scrollbar-track{background:transparent;}
+.preview-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.15);border-radius:2px;}
+.preview-item{display:flex;align-items:center;gap:0.5rem;padding:0.4rem 0.65rem;border-radius:5px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);}
+.preview-item-tag{font-family:'DM Mono',monospace;font-size:0.58rem;color:var(--accent);background:rgba(200,75,47,0.15);padding:0.1rem 0.35rem;border-radius:3px;white-space:nowrap;flex-shrink:0;}
+.preview-item-text{font-family:'DM Mono',monospace;font-size:0.62rem;color:rgba(255,255,255,0.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;}
+.preview-item-sub{font-family:'DM Mono',monospace;font-size:0.58rem;color:rgba(255,255,255,0.25);white-space:nowrap;}
+.preview-note{padding:0.6rem 1rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:rgba(255,255,255,0.2);text-align:center;letter-spacing:0.04em;border-top:1px solid rgba(255,255,255,0.06);display:none;}
+.file-queue-wrap{display:none;}
+.file-queue-wrap.visible{display:block;}
+.file-queue-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.6rem;flex-wrap:wrap;gap:0.5rem;}
+.file-queue-label{font-family:'DM Mono',monospace;font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);}
+.file-queue-count{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--accent);background:var(--accent-light);padding:0.15rem 0.5rem;border-radius:100px;}
+.file-queue{display:flex;flex-direction:column;gap:0.5rem;max-height:200px;overflow-y:auto;padding-right:2px;}
+.file-queue::-webkit-scrollbar{width:4px;}
+.file-queue::-webkit-scrollbar-track{background:var(--cream);border-radius:2px;}
+.file-queue::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
+.file-item{display:flex;align-items:center;gap:0.75rem;background:var(--paper);border:1px solid var(--border);border-radius:8px;padding:0.55rem 0.85rem;cursor:pointer;transition:border-color 0.15s;}
+.file-item:hover{border-color:var(--accent);}
+.file-item.selected{border-color:var(--accent);background:var(--accent-light);}
+.file-icon-wrap{width:36px;height:36px;border-radius:5px;border:1px solid var(--border);flex-shrink:0;background:var(--cream);display:flex;align-items:center;justify-content:center;color:var(--accent);font-family:'DM Mono',monospace;font-size:0.6rem;font-weight:700;}
+.file-info{flex:1;min-width:0;}
+.file-name{font-size:0.78rem;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.file-meta{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);margin-top: 0.1rem;}
+.file-remove{background:none;border:none;cursor:pointer;color:var(--muted);padding:0.2rem;border-radius:4px;display:flex;align-items:center;justify-content:center;transition:color 0.15s,background 0.15s;flex-shrink:0;}
+.file-remove:hover{color:var(--accent);background:var(--accent-light);}
+.add-more-btn{display:flex;align-items:center;justify-content:center;gap:0.5rem;border:1.5px dashed var(--border);border-radius:8px;padding:0.6rem;cursor:pointer;font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.05em;color:var(--muted);background:transparent;width:100%;margin-top: 0.5rem;transition:border-color 0.2s,color 0.2s,background 0.2s;position:relative;overflow:hidden;}
+.add-more-btn input{position:absolute;inset:0;opacity:0;cursor:pointer;}
+.add-more-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light);}
+.action-bar{display:flex;gap:0.75rem;margin-top:1.25rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:var(--white);border:none;border-radius:6px;padding:0.65rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:0.875rem;font-weight:600;cursor:pointer;transition:all 0.18s;display:inline-flex;align-items:center;gap:0.5rem;text-decoration:none;}
+.btn-primary:hover{background:#a83825;transform:translateY(-1px);}
+.btn-secondary{background:transparent;color:var(--ink);border:1.5px solid var(--border);border-radius:6px;padding:0.65rem 1.25rem;font-family:'DM Sans',sans-serif;font-size:0.875rem;font-weight:500;cursor:pointer;transition:all 0.18s;display:inline-flex;align-items:center;gap:0.5rem;}
+.btn-secondary:hover{border-color:var(--ink);background:var(--cream);}
+.processing-overlay{display:none;}
+.processing-overlay.active{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;padding:3rem;background:var(--paper);border-radius:10px;border:1px solid var(--border);margin-top:1.5rem;}
+.ai-spinner{width:48px;height:48px;border:3px solid var(--ai-purple-light);border-top-color:var(--ai-purple);border-radius:50%;animation:spin 0.9s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.processing-text{font-family:'DM Mono',monospace;font-size:0.8rem;color:var(--muted);letter-spacing:0.05em;}
+.processing-progress{width:100%;max-width:280px;background:var(--border);border-radius:100px;height:4px;overflow:hidden;}
+.processing-progress-bar{height:100%;background:var(--accent);border-radius:100px;transition:width 0.25s ease;width:0%;}
+.processing-steps{display:flex;flex-direction:column;gap:0.4rem;width:100%;max-width:280px;}
+.processing-step{display:flex;align-items:center;gap:0.6rem;font-family:'DM Mono',monospace;font-size:0.68rem;color:#bbb;}
+.processing-step.done{color:#28c840;}
+.processing-step.active{color:var(--ai-purple);}
+.step-dot{width:8px;height:8px;border-radius:50%;background:currentColor;flex-shrink:0;}
+.result-area{display:none;margin-top:1.5rem;}
+.result-area.visible{display:block;}
+.result-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem;}
+.result-title{font-family:'DM Mono',monospace;font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);}
+.result-count-badge{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--green);background:var(--green-light);padding:0.2rem 0.6rem;border-radius:100px;border:1px solid rgba(26,138,74,0.2);}
+.result-list{display:flex;flex-direction:column;gap:0.6rem;}
+.result-row{display:flex;align-items:center;gap:0.85rem;background:var(--paper);border:1px solid var(--border);border-radius:9px;padding:0.75rem 1rem;transition:border-color 0.15s;}
+.result-row:hover{border-color:var(--green);}
+.result-icon{width:52px;height:52px;border-radius:5px;border:1px solid var(--border);flex-shrink:0;background:var(--cream);display:flex;align-items:center;justify-content:center;color:var(--accent);font-family:'DM Mono',monospace;font-size:0.6rem;font-weight:700;}
+.result-info{flex:1;min-width:0;}
+.result-filename{font-size:0.82rem;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:0.2rem;}
+.result-meta{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);}
+.convert-badge{font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--accent);background:var(--accent-light);border:1px solid rgba(200,75,47,0.2);padding:0.1rem 0.4rem;border-radius:3px;white-space:nowrap;display:inline-block;margin-top: 3rem.15rem;}
+.result-dl{background:none;border:1.5px solid var(--border);border-radius:5px;padding:0.35rem 0.65rem;cursor:pointer;color:var(--muted);font-family:'DM Mono',monospace;font-size:0.65rem;display:flex;align-items:center;gap:0.3rem;transition:all 0.18s;white-space:nowrap;flex-shrink:0;}
+.result-dl:hover{border-color:var(--green);color:var(--green);background:var(--green-light);}
+.stats-bar{display:none;gap:1.5rem;padding:0.75rem 1rem;background:var(--cream);font-size:0.78rem;color:var(--muted);font-family:'DM Mono',monospace;flex-wrap:wrap;margin-top:1rem;border-radius:8px;border:1px solid var(--border);}
+.stats-bar.visible{display:flex;}
+.stat{display:flex;gap:0.4rem;align-items:center;}
+.stat-val{color:var(--ink);font-weight:500;}
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--ink);color:var(--paper);padding:0.75rem 1.5rem;border-radius:6px;font-size:0.875rem;font-weight:500;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);z-index:999;border-left:3px solid var(--accent);white-space:nowrap;}
+.toast.show{transform:translateX(-50%) translateY(0);}
+.content-section{max-width:1000px;margin:0 auto;padding:4rem 1.5rem;}
+.section-tag{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;display:block;}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:1.25rem;line-height:1.2;}
+.content-prose{color:#4a4640;font-size:0.975rem;line-height:1.8;max-width:720px;}
+.content-prose p{margin-bottom:1rem;}
+.content-prose p:last-child{margin-bottom:0;}
+.divider{border:none;border-top:1px solid var(--border);max-width:1000px;margin:0 auto;}
+.how-to-section{background:var(--ink);color:var(--paper);padding:1.75rem 2rem;position:relative;overflow:hidden;}
+.how-to-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 100%,rgba(200,75,47,0.14) 0%,transparent 70%);pointer-events:none;}
+.how-to-inner{max-width:1000px;margin:0 auto;position:relative;}
+.how-to-header{text-align:center;margin-bottom:1.25rem;}
+.how-to-header .section-tag{color:#c84b2f;}
+.how-to-header .section-title{color:var(--paper);margin-bottom:0.35rem;}
+.how-to-subtitle{color:#9e9990;font-size:0.9rem;font-weight:300;}
+.steps-grid{display:flex;align-items:stretch;gap:0;}
+.step-card{flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:0.85rem 1rem;transition:background 0.25s,border-color 0.25s,transform 0.25s;}
+.step-card:hover{background:rgba(200,75,47,0.08);border-color:rgba(200,75,47,0.35);transform:translateY(-4px);}
+.step-connector{display:flex;align-items:center;justify-content:center;padding:0 0.5rem;color:rgba(200,75,47,0.5);flex-shrink:0;margin-top:-1rem;}
+.step-number{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:rgba(200,75,47,0.25);line-height:1;margin-bottom:0.35rem;letter-spacing:-0.04em;}
+.step-icon{width:36px;height:36px;background:rgba(200,75,47,0.15);border:1px solid rgba(200,75,47,0.3);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:0.6rem;color:#c84b2f;}
+.step-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--paper);margin-bottom:0.35rem;line-height:1.3;}
+.step-desc{font-size:0.8rem;color:#9e9990;line-height:1.55;margin-bottom:0.6rem;}
+.step-desc strong{color:#d4cfc4;}
+.step-pill{display:inline-block;font-family:'DM Mono',monospace;font-size:0.63rem;letter-spacing:0.05em;color:#c84b2f;background:rgba(200,75,47,0.12);border:1px solid rgba(200,75,47,0.25);padding:0.2rem 0.6rem;border-radius:100px;}
+.how-to-cta{text-align:center;margin-top:1.25rem;display:flex;flex-direction:column;align-items:center;gap:0.6rem;}
+.how-to-note{font-size:0.8rem;color:#7a7567;font-family:'DM Mono',monospace;letter-spacing:0.03em;}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:2rem;}
+.feature-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.5rem 1.25rem;transition:box-shadow 0.2s,transform 0.2s;}
+.feature-card:hover{box-shadow:var(--shadow);transform:translateY(-2px);}
+.feature-icon{font-size:1.75rem;margin-bottom:0.75rem;display:block;}
+.feature-title{font-weight:700;font-size:0.9rem;margin-bottom:0.4rem;}
+.feature-desc{font-size:0.82rem;color:var(--muted);line-height:1.5;}
+.quality-table{width:100%;border-collapse:collapse;margin-top:1.5rem;font-size:0.85rem;}
+.quality-table th{font-family:'DM Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);font-weight:600;text-align:left;padding:0.5rem 0.75rem;border-bottom:2px solid var(--border);}
+.quality-table td{padding:0.75rem;border-bottom:1px solid var(--border);color:#4a4640;vertical-align:top;line-height:1.5;}
+.quality-table tr:last-child td{border-bottom:none;}
+.quality-table tr:hover td{background:var(--paper);}
+.quality-range{font-family:'DM Mono',monospace;font-size:0.78rem;font-weight:600;color:var(--accent);white-space:nowrap;}
+.use-cases-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:2rem;}
+.use-case-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.5rem 1.25rem;}
+.use-case-icon{font-size:1.75rem;margin-bottom:0.75rem;display:block;}
+.use-case-title{font-weight:700;font-size:0.9rem;margin-bottom:0.4rem;}
+.use-case-text{font-size:0.82rem;color:var(--muted);line-height:1.5;}
+.faq-list{margin-top:2rem;}
+.faq-item{border-bottom:1px solid var(--border);padding:1.25rem 0;}
+.faq-item:last-child{border-bottom:none;}
+.faq-q{font-weight:600;font-size:0.95rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;}
+.faq-q::after{content:'+';font-size:1.2rem;color:var(--ai-purple);flex-shrink:0;transition:transform 0.2s;}
+.faq-item.open .faq-q::after{transform:rotate(45deg);}
+.faq-a{font-size:0.9rem;color:var(--muted);line-height:1.7;max-height:0;overflow:hidden;transition:max-height 0.35s ease,margin-top 0.3s;}
+.faq-item.open .faq-a{max-height:360px;margin-top: 3rem.75rem;}
+.cta-section{background:var(--ink);color:var(--paper);padding:1.5rem 2rem;text-align:center;position:relative;overflow:hidden;}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(200,75,47,0.18) 0%,transparent 70%);pointer-events:none;}
+.cta-inner{max-width:640px;margin:0 auto;position:relative;}
+.cta-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;letter-spacing:-0.03em;line-height:1.15;margin-bottom:1rem;color:var(--paper);}
+.cta-desc{font-size:1rem;color:#9e9990;font-weight:300;margin-bottom:1rem;line-height:1.7;}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:0.75rem;}
+.cta-note{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.06em;color:#5a5650;margin-top:1rem;display:block;}
+.related-section{background:var(--cream);padding:5rem 2rem;border-top:1px solid var(--border);}
+.related-inner{max-width:1000px;margin:0 auto;}
+.related-header{margin-bottom:2.5rem;}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;}
+.related-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-decoration:none;color:inherit;display:block;transition:box-shadow 0.2s,transform 0.2s,border-color 0.2s;position:relative;overflow:hidden;}
+.related-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border);transition:background 0.2s;}
+.related-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px);border-color:var(--accent);}
+.related-card:hover::before{background:var(--accent);}
+.related-card-icon{font-size:1.85rem;margin-bottom:0.85rem;display:block;}
+.related-card-name{font-family:'Playfair Display',serif;font-weight:700;font-size:1rem;margin-bottom:0.35rem;color:var(--ink);letter-spacing:-0.01em;}
+.related-card-desc{font-size:0.82rem;color:var(--muted);line-height:1.5;margin-bottom:1rem;}
+.related-card-tag{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);background:var(--accent-light);padding:0.2rem 0.5rem;border-radius:3px;display:inline-block;}
+footer { background: var(--ink); color: #9e9990; padding: 4rem 2rem 2rem; margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.05); }
+#footer-placeholder { margin-top: 3rem; }
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid #2a2a2a;}
+.footer-brand .logo{display:block;margin-bottom:0.75rem;}
+.footer-social { display: flex; gap: 0; margin-top: 1rem; }
+.social-icon { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; color: #9e9990; transition: color 0.2s, transform 0.2s; border-radius: 6px; margin-left: -8px; }
+.social-icon:first-child { margin-left: 0; }
+.social-icon:hover { color: var(--paper); transform: translateY(-2px); }
+.footer-brand p{font-size:0.85rem;line-height:1.6;max-width:240px;}
+.footer-col-title{font-family:'DM Sans',sans-serif;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper);font-weight:600;margin-bottom:1rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+.footer-links a{color:#9e9990;text-decoration:none;font-size:0.85rem;transition:color 0.2s;}
+.footer-links a:hover{color:var(--paper);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;font-size:0.8rem;flex-wrap:wrap;gap:0.75rem;}
+@media(max-width:900px){.tool-columns{grid-template-columns:1fr;}.preview-panel{position:static;}}
+@media(max-width:768px){nav{display:none;}.mobile-menu-toggle{display:flex;}.preset-row{grid-template-columns:repeat(2,1fr);}.steps-grid{flex-direction:column;gap:0.75rem;}.step-connector{transform:rotate(90deg);padding:0;margin:0;}.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr;gap:2rem;}.footer-bottom{flex-direction:column;text-align:center;}.tool-body{padding:1rem;}.hero{padding:3rem 1.5rem 2.5rem;}}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">JPG<span>2</span>Go</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="tools.html">Tools</a>
+      <a href="#tool" class="nav-cta">Convert Now</a>
+    </nav>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+    <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="tools.html" onclick="closeMobileMenu()">Tools</a>
+    <a href="#tool" class="nav-cta" onclick="closeMobileMenu()">Convert Now</a>
+  </nav>
+</header>
+<section class="hero">
+  <div class="hero-badge">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 19 21 12 17 5 21"/></svg>
+        Convert FB2 Files Online
+  </div>
+  <h1>Convert FB2 to PDF</h1>
+  <p class="hero-desc">Easily convert FB2 ebook files into PDF format for better compatibility. Read your digital books on smartphones, tablets, or computers without requiring special ebook readers.</p>
+  <div class="hero-pills">
+    <span class="hero-pill">chapter detection</span>
+    <span class="hero-pill">book metadata</span>
+    <span class="hero-pill">typography control</span>
+    <span class="hero-pill">batch FB2 support</span>
+    <span class="hero-pill">no upload · 100% private</span>
+    <span class="hero-pill">free forever</span>
+  </div>
+</section>
+<section class="tool-section" id="tool">
+  <div class="tool-card">
+    <div class="tool-card-header">
+      <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+      <span class="tool-card-title">fb2-to-pdf · xml-parse · chapter-detect · metadata · typography · batch · jpg2go.com</span>
+    </div>
+    <div class="tool-body">
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" accept=".fb2,.fb2.zip" multiple>
+        <div class="drop-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <h3>Drop FB2 files here to convert to PDF</h3>
+        <p>or click to browse — .fb2 and .fb2.zip supported</p>
+        <span class="formats-pill">Accepts .fb2 .fb2.zip → outputs .pdf</span>
+      </div>
+      <div class="tool-columns" id="toolColumns" style="display:none;">
+        <div class="tool-col-left">
+          <div class="panel-box">
+            <div class="panel-box-title">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+              Typography
+            </div>
+            <div class="form-row">
+              <div class="form-label">Font family</div>
+              <select class="format-select" id="fontFamily">
+                <option value="serif">Serif — traditional book feel</option>
+                <option value="sans">Sans-serif — modern, clean</option>
+                <option value="mono">Monospace — technical / code</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-label">Font size <span class="form-label-hint" id="fontHint">11 pt — standard</span></div>
+              <div class="slider-wrap">
+                <input type="range" class="form-slider" id="slFont" min="9" max="16" step="1" value="11">
+                <span class="slider-val" id="slFontVal">11pt</span>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-label">Line height <span class="form-label-hint" id="lineHint">1.6 — comfortable</span></div>
+              <div class="slider-wrap">
+                <input type="range" class="form-slider" id="slLine" min="12" max="22" step="1" value="16">
+                <span class="slider-val" id="slLineVal">1.6</span>
+              </div>
+            </div>
+            <div class="form-row" style="margin-bottom:0;">
+              <div class="form-label">Paper size</div>
+              <select class="format-select" id="paperSize">
+                <option value="a4">A4 (210 × 297 mm)</option>
+                <option value="letter">Letter (8.5 × 11 in)</option>
+                <option value="a5">A5 — pocket book</option>
+                <option value="b5">B5 — trade book</option>
+              </select>
+            </div>
+          </div>
+          <div class="panel-box">
+            <div class="panel-box-title">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              Book Options
+            </div>
+            <div class="toggle-row">
+              <label class="toggle-switch"><input type="checkbox" id="coverToggle" checked><span class="toggle-track"></span><span class="toggle-knob"></span></label>
+              <span class="toggle-label">Show cover image</span>
+            </div>
+            <div class="toggle-row">
+              <label class="toggle-switch"><input type="checkbox" id="metaPageToggle" checked><span class="toggle-track"></span><span class="toggle-knob"></span></label>
+              <span class="toggle-label">Show title page with metadata</span>
+            </div>
+            <div class="toggle-row">
+              <label class="toggle-switch"><input type="checkbox" id="tocToggle" checked><span class="toggle-track"></span><span class="toggle-knob"></span></label>
+              <span class="toggle-label">Generate table of contents</span>
+            </div>
+            <div class="toggle-row">
+              <label class="toggle-switch"><input type="checkbox" id="pageNumToggle" checked><span class="toggle-track"></span><span class="toggle-knob"></span></label>
+              <span class="toggle-label">Add page numbers</span>
+            </div>
+            <div class="toggle-row">
+              <label class="toggle-switch"><input type="checkbox" id="footnoteToggle" checked><span class="toggle-track"></span><span class="toggle-knob"></span></label>
+              <span class="toggle-label">Include footnotes &amp; endnotes</span>
+            </div>
+          </div>
+          <div class="file-queue-wrap visible" id="fileQueueWrap">
+            <div class="file-queue-header">
+              <span class="file-queue-label">FB2 files queued</span>
+              <span class="file-queue-count" id="fileCount">0 files</span>
+            </div>
+            <div class="file-queue" id="fileQueue"></div>
+            <label class="add-more-btn">
+              <input type="file" id="addMoreInput" accept=".fb2,.fb2.zip" multiple>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add more FB2 files
+            </label>
+          </div>
+          <div class="action-bar">
+            <button class="btn-primary" id="convertBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 19 21 12 17 5 21"/></svg>
+              Convert to PDF
+            </button>
+            <button class="btn-secondary" id="clearBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
+              Clear All
+            </button>
+          </div>
+        </div>
+        <div class="tool-col-right">
+          <div class="preview-panel">
+            <div class="preview-panel-header">
+              <div class="preview-panel-title">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                Book Outline
+              </div>
+              <span class="preview-badge" id="previewBadge">NO FILE</span>
+            </div>
+            <div class="info-bar" id="infoBar">
+              <div class="info-stat">Chapters <span class="info-stat-val" id="infoChapters">—</span></div>
+              <div class="info-stat">Words <span class="info-stat-val" id="infoWords">—</span></div>
+              <div class="info-stat">Size <span class="info-stat-val" id="infoSize">—</span></div>
+            </div>
+            <div class="preview-placeholder" id="previewPlaceholder">
+              <div class="preview-placeholder-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+              </div>
+              <p>Upload an FB2 file to see<br>its title, author &amp; chapters</p>
+            </div>
+            <div class="preview-content" id="previewContent">
+              <div class="preview-content-label">Book Structure</div>
+              <div class="preview-list" id="previewList"></div>
+            </div>
+            <div class="preview-note" id="previewNote">Chapters map to PDF sections &amp; bookmarks</div>
+          </div>
+        </div>
+      </div>
+      <div class="processing-overlay" id="processingOverlay">
+        <div class="ai-spinner"></div>
+        <div class="processing-text" id="processingText">Parsing FB2 XML…</div>
+        <div class="processing-progress"><div class="processing-progress-bar" id="progressBar"></div></div>
+        <div class="processing-steps">
+          <div class="processing-step active" id="pStep1"><span class="step-dot"></span> Parsing FB2 XML structure</div>
+          <div class="processing-step" id="pStep2"><span class="step-dot"></span> Extracting chapters &amp; sections</div>
+          <div class="processing-step" id="pStep3"><span class="step-dot"></span> Applying typography &amp; layout</div>
+          <div class="processing-step" id="pStep4"><span class="step-dot"></span> Assembling PDF book</div>
+        </div>
+      </div>
+      <div class="result-area" id="resultArea">
+        <div class="result-header">
+          <span class="result-title">Converted PDF Files</span>
+          <span class="result-count-badge" id="resultCountBadge">0 files</span>
+        </div>
+        <div class="result-list" id="resultList"></div>
+        <div class="stats-bar visible" id="statsBar">
+          <div class="stat">PDF files: <span class="stat-val" id="rFiles">—</span></div>
+          <div class="stat">Chapters: <span class="stat-val" id="rChapters">—</span></div>
+          <div class="stat">Font: <span class="stat-val" id="rFont">—</span></div>
+          <div class="stat">Paper: <span class="stat-val" id="rPaper">—</span></div>
+        </div>
+        <div class="action-bar" style="margin-top:1rem;">
+          <button class="btn-primary" id="downloadAllBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download All as ZIP
+          </button>
+          <button class="btn-secondary" id="reconvertBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+            Try Different Settings
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+<section class="how-to-section" id="how-it-works">
+  <div class="how-to-inner">
+    <div class="how-to-header">
+      <span class="section-tag">Quick Guide</span>
+      <h2 class="section-title">How to Convert FB2 to PDF</h2>
+      <p class="how-to-subtitle">Four steps. Book outline preview. Download-ready in seconds.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card"><div class="step-number">01</div><div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div><div class="step-title">Upload FB2 Files</div><div class="step-desc">Drag &amp; drop <strong>one or more FB2 files</strong>. The XML is parsed immediately — book title, author, chapter list, and word count appear in the book outline panel.</div><span class="step-pill">batch support</span></div>
+      <div class="step-connector"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card"><div class="step-number">02</div><div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg></div><div class="step-title">Set Typography</div><div class="step-desc">Choose <strong>font family</strong> (serif, sans, mono), size, and line height. Set paper size — A5 or B5 for a book-like feel, A4 for reports and documents. Toggle cover, title page, TOC, and footnotes.</div><span class="step-pill">book-quality output</span></div>
+      <div class="step-connector"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card"><div class="step-number">03</div><div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 19 21 12 17 5 21"/></svg></div><div class="step-title">Convert to PDF</div><div class="step-desc">Click <strong>Convert to PDF</strong> — the FB2 XML is parsed, book metadata is rendered on a title page, chapters flow onto pages with your chosen typography, and a PDF with bookmarks is assembled.</div><span class="step-pill">client-side only</span></div>
+      <div class="step-connector"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card"><div class="step-number">04</div><div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div><div class="step-title">Download PDFs</div><div class="step-desc">Download individual PDFs or the full set as a <strong>ZIP archive</strong>. Open in any PDF viewer or e-reader app. No watermark, no page cap, ever.</div><span class="step-pill">ZIP download</span></div>
+    </div>
+    <div class="how-to-cta">
+      <a href="#tool" class="btn-primary"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 19 21 12 17 5 21"/></svg>Start Converting</a>
+      <span class="how-to-note">free · no signup · no upload</span>
+    </div>
+  </div>
+</section>
+
+<section class="content-section" id="about">
+  <h2 class="section-title">Why Use FB2 to PDF Converter?</h2>
+  <div class="content-prose">
+    <p>FB2 (FictionBook) files are commonly used for storing digital books, especially in eBook libraries. While this format works well for certain reading applications, it is not supported by many everyday devices. A FB2 to PDF converter helps transform these eBook files into a more widely accessible format.</p>
+    <p>Once converted, the book becomes easier to open on laptops, smartphones, tablets, and standard PDF readers. The layout and structure of the content are preserved, making the document suitable for comfortable reading.</p>
+    <p>For readers who want to access their digital books without relying on specialized eBook software, converting FB2 files to PDF provides a simple and reliable way to make content accessible across multiple devices.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="content-section">
+  <span class="section-tag">Features</span>
+  <h2 class="section-title">Everything in One FB2 to PDF Converter</h2>
+  <div class="features-grid">
+    <div class="feature-card"><span class="feature-icon">📖</span><div class="feature-title">Book-Quality Typography</div><div class="feature-desc">Choose serif, sans-serif, or monospace fonts with adjustable size (9–16pt) and line height — producing output that reads like a professionally typeset book rather than a plain text dump.</div></div><div class="feature-card"><span class="feature-icon">📋</span><div class="feature-title">Book Outline Preview</div><div class="feature-desc">The book title, author, chapter list, and word count are extracted from the FB2 XML and displayed before conversion — so you know exactly what the PDF will contain.</div></div><div class="feature-card"><span class="feature-icon">🖼️</span><div class="feature-title">Cover Image</div><div class="feature-desc">The cover image embedded in the FB2 file is extracted and placed on the first page of the PDF — matching how e-reader apps display the book with a proper cover.</div></div><div class="feature-card"><span class="feature-icon">📑</span><div class="feature-title">Title Page & TOC</div><div class="feature-desc">A formatted title page showing the book's title, author, and publication metadata is generated automatically, followed by a table of contents with chapter page numbers.</div></div><div class="feature-card"><span class="feature-icon">🔖</span><div class="feature-title">Chapter Bookmarks</div><div class="feature-desc">Every chapter becomes a PDF bookmark — the full chapter hierarchy is reproduced in the PDF navigation panel, letting readers jump to any chapter directly.</div></div><div class="feature-card"><span class="feature-icon">📝</span><div class="feature-title">Footnotes & Endnotes</div><div class="feature-desc">Footnotes and endnotes from the FB2 structure are preserved and positioned correctly at the bottom of the relevant page or at the end of each chapter.</div></div><div class="feature-card"><span class="feature-icon">📦</span><div class="feature-title">Batch Conversion</div><div class="feature-desc">Queue multiple FB2 files and convert them all in one pass — each produces its own PDF, all collected in a single ZIP archive for download.</div></div><div class="feature-card"><span class="feature-icon">🔒</span><div class="feature-title">100% Private</div><div class="feature-desc">FB2 XML parsing and PDF assembly happen entirely in browser memory — your e-book content never leaves your device. No upload, no cloud, no data retention.</div></div>
+  </div>
+</section>
+<hr class="divider">
+<section class="content-section">
+  <span class="section-tag">Use Cases</span>
+  <h2 class="section-title">When to Convert FB2 to PDF</h2>
+  <div class="use-cases-grid">
+    <div class="use-case-card"><span class="use-case-icon">🖨️</span><div class="use-case-title">Print a Book</div><div class="use-case-text">Convert an FB2 novel or manual to a properly formatted PDF for printing at home or at a print shop — with cover, title page, chapters, and page numbers.</div></div><div class="use-case-card"><span class="use-case-icon">📧</span><div class="use-case-title">Share with Non-FB2 Users</div><div class="use-case-text">FB2 readers are rare outside Russia and Eastern Europe. Convert to PDF to share books with anyone — PDFs open everywhere without additional software.</div></div><div class="use-case-card"><span class="use-case-icon">📱</span><div class="use-case-title">Read on Any Device</div><div class="use-case-text">Convert FB2 files to PDF for reading on devices without FB2 support — smart TVs, Kindle (via Send to Kindle), corporate tablets, or any device with a built-in PDF viewer.</div></div><div class="use-case-card"><span class="use-case-icon">📚</span><div class="use-case-title">Library Archiving</div><div class="use-case-text">Archive FB2 e-book collections as PDFs for long-term storage in document management systems, personal NAS drives, or cloud storage that previews PDFs.</div></div><div class="use-case-card"><span class="use-case-icon">🌍</span><div class="use-case-title">Translation & Editing</div><div class="use-case-text">Convert FB2 to PDF as a fixed reference while translating or editing — the formatted PDF makes it easy to see the book's structure and flow.</div></div><div class="use-case-card"><span class="use-case-icon">🔍</span><div class="use-case-title">Search & Index</div><div class="use-case-text">Convert FB2 books to PDF for inclusion in full-text search systems — PDF text is indexed by Elasticsearch, Solr, and document management platforms.</div></div><div class="use-case-card"><span class="use-case-icon">🎓</span><div class="use-case-title">Academic Use</div><div class="use-case-text">Convert FB2 Russian-language textbooks and academic works to PDF for citation, annotation, and sharing in academic workflows that use PDF as the standard document format.</div></div><div class="use-case-card"><span class="use-case-icon">📋</span><div class="use-case-title">E-Book Comparison</div><div class="use-case-text">Compare multiple editions of the same book side-by-side as PDFs — consistent formatting from the converter makes visual comparison straightforward.</div></div>
+  </div>
+</section>
+<hr class="divider">
+<section class="content-section">
+  <span class="section-tag">FAQ</span>
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item open"><div class="faq-q">What does an FB2 to PDF converter do?</div><div class="faq-a">An FB2 to PDF converter transforms FictionBook ebook files into PDF documents so they can be opened on a wider range of devices.</div></div><div class="faq-item"><div class="faq-q">Why convert FB2 ebook files into PDF format?</div><div class="faq-a">PDF format is widely supported and allows users to read ebooks without needing special applications that support FB2 format.</div></div><div class="faq-item"><div class="faq-q">Will the ebook layout remain after FB2 to PDF conversion?</div><div class="faq-a">Most converters preserve the original text structure, chapters, and formatting to keep the reading experience similar to the original ebook.</div></div><div class="faq-item"><div class="faq-q">Can FB2 files contain images and formatting?</div><div class="faq-a">Yes, FB2 ebook files can include images, structured text, and metadata that describe the content of the digital book.</div></div><div class="faq-item"><div class="faq-q">Is FB2 to PDF conversion helpful for offline reading?</div><div class="faq-a">Yes, converting FB2 ebooks to PDF allows users to download and read books offline on many devices.</div></div><div class="faq-item"><div class="faq-q">Can I share FB2 ebooks more easily after converting to PDF?</div><div class="faq-a">Yes, PDF files are easier to share through email, messaging platforms, and cloud storage services.</div></div>
+  </div>
+</section>
+
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-header">
+      <span class="section-tag">Related Tools</span>
+      <h2 class="section-title">More Free Online Tools</h2>
+    </div>
+    <div class="related-grid">
+      <a href="/jpg-to-pdf" class="related-card">
+        <span class="related-card-icon">📄</span>
+        <div class="related-card-name">JPG to PDF</div>
+        <div class="related-card-desc">Convert JPG images to PDF documents quickly. Combine multiple photos into a single organized PDF file for easy sharing and printing.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+      <a href="/image-resizer" class="related-card">
+        <span class="related-card-icon">📐</span>
+        <div class="related-card-name">Image Resizer</div>
+        <div class="related-card-desc">Resize images to exact pixel dimensions or a percentage of their original size. Runs entirely in your browser without uploading files anywhere.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/compress-jpeg" class="related-card">
+        <span class="related-card-icon">🗜️</span>
+        <div class="related-card-name">Compress JPEG</div>
+        <div class="related-card-desc">Reduce JPEG image file size while maintaining quality. Optimize images for faster web pages and lower storage usage.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/merge-pdf" class="related-card">
+        <span class="related-card-icon">📎</span>
+        <div class="related-card-name">Merge PDF</div>
+        <div class="related-card-desc">Combine multiple PDF files into a single organized document. Drag and drop to reorder pages easily.</div>
+        <span class="related-card-tag">PDF</span>
+      </a>
+      <a href="/crop-image" class="related-card">
+        <span class="related-card-icon">✂️</span>
+        <div class="related-card-name">Crop Image</div>
+        <div class="related-card-desc">Crop images to any aspect ratio or custom dimensions. Perfect for social media thumbnails, profile photos, and banner images.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/format-converter" class="related-card">
+        <span class="related-card-icon">🔄</span>
+        <div class="related-card-name">Format Converter</div>
+        <div class="related-card-desc">Convert images between different formats instantly. Transform JPG, PNG, WebP, and other image formats quickly.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="cta-title">Convert FB2 Ebook Files into PDF</div>
+    <p class="cta-desc">Transform FictionBook ebooks into PDF format so you can read and share them easily on any device.</p>
+    <div class="cta-actions"><a href="#tool" class="btn-primary"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 19 21 12 17 5 21"/></svg> Convert FB2</a></div>
+    <span class="cta-note">free forever · no signup · your files never leave your browser</span>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<div id="footer-placeholder"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="load-footer.js"></script>
+<div class="toast" id="toast"></div>
+<script>
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800);}
+document.getElementById('mobileMenuToggle').addEventListener('click',function(){this.classList.toggle('active');document.getElementById('mobileNav').classList.toggle('active');});
+function closeMobileMenu(){document.getElementById('mobileMenuToggle').classList.remove('active');document.getElementById('mobileNav').classList.remove('active');}
+function setStep(ids,idx,msgs){ids.forEach((id,i)=>{const el=document.getElementById(id);el.classList.remove('active','done');if(i<idx)el.classList.add('done');else if(i===idx)el.classList.add('active');});document.getElementById('processingText').textContent=msgs[idx];}
+function setProgress(pct){document.getElementById('progressBar').style.width=Math.min(100,pct)+'%';}
+function delay(ms){return new Promise(r=>setTimeout(r,ms));}
+function formatSize(b){if(b<1024)return b+' B';if(b<1048576)return(b/1024).toFixed(1)+' KB';return(b/1048576).toFixed(2)+' MB';}
+function buildZip(fileArr){const enc=new TextEncoder(),parts=[],central=[];let offset=0;function u16(n){return[n&0xff,(n>>8)&0xff];}function u32(n){return[n&0xff,(n>>8)&0xff,(n>>16)&0xff,(n>>24)&0xff];}function crc32(buf){const T=crc32._t||(crc32._t=(()=>{const t=new Uint32Array(256);for(let i=0;i<256;i++){let c=i;for(let j=0;j<8;j++)c=(c&1)?(0xEDB88320^(c>>>1)):(c>>>1);t[i]=c;}return t;})());let c=0xFFFFFFFF;for(let i=0;i<buf.length;i++)c=T[(c^buf[i])&0xff]^(c>>>8);return(c^0xFFFFFFFF)>>>0;}for(const file of fileArr){const nb=enc.encode(file.name),crc=crc32(file.bytes),size=file.bytes.length;const h=new Uint8Array([0x50,0x4B,0x03,0x04,20,0,0,0,0,0,0,0,0,0,...u32(crc),...u32(size),...u32(size),...u16(nb.length),0,0,...nb]);central.push({nb,crc,size,offset});parts.push(h);parts.push(file.bytes);offset+=h.length+size;}const cdStart=offset;for(const{nb,crc,size,offset:fo}of central){const cd=new Uint8Array([0x50,0x4B,0x01,0x02,20,0,20,0,0,0,0,0,0,0,0,0,...u32(crc),...u32(size),...u32(size),...u16(nb.length),0,0,0,0,0,0,0,0,0,0,...u32(fo),...nb]);parts.push(cd);offset+=cd.length;}const eocd=new Uint8Array([0x50,0x4B,0x05,0x06,0,0,0,0,...u16(fileArr.length),...u16(fileArr.length),...u32(offset-cdStart),...u32(cdStart),0,0]);parts.push(eocd);let total=0;for(const p of parts)total+=p.length;const out=new Uint8Array(total);let pos=0;for(const p of parts){out.set(p,pos);pos+=p.length;}return out;}
+document.querySelectorAll('.faq-q').forEach(q=>{q.addEventListener('click',()=>{const item=q.parentElement,wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open');});});
+
+let files=[], results=[], previewIdx=0;
+document.getElementById('slFont').addEventListener('input',function(){
+  const v=parseInt(this.value);
+  document.getElementById('slFontVal').textContent=v+'pt';
+  document.getElementById('fontHint').textContent=v<=9?v+' pt — small':v<=11?v+' pt — standard':v<=13?v+' pt — medium':v+' pt — large';
+});
+document.getElementById('slLine').addEventListener('input',function(){
+  const v=parseInt(this.value);const lh=(v/10).toFixed(1);
+  document.getElementById('slLineVal').textContent=lh;
+  document.getElementById('lineHint').textContent=lh<=1.3?lh+' — tight':lh<=1.6?lh+' — comfortable':lh<=1.9?lh+' — relaxed':lh+' — very open';
+});
+const dropZone=document.getElementById('dropZone');
+dropZone.addEventListener('dragover',e=>{e.preventDefault();dropZone.classList.add('drag-over');});
+dropZone.addEventListener('dragleave',()=>dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop',e=>{e.preventDefault();dropZone.classList.remove('drag-over');handleFiles([...e.dataTransfer.files]);});
+document.getElementById('fileInput').addEventListener('change',function(){handleFiles([...this.files]);this.value='';});
+document.getElementById('addMoreInput').addEventListener('change',function(){handleFiles([...this.files]);this.value='';});
+function handleFiles(newFiles){
+  const valid=newFiles.filter(f=>/\.(fb2|fb2\.zip)$/i.test(f.name));
+  if(!valid.length){showToast('Please select FB2 or FB2.zip files');return;}
+  const wasEmpty=files.length===0;
+  valid.forEach(f=>{if(!files.find(x=>x.file.name===f.name&&x.file.size===f.size))files.push({file:f,meta:null,chapters:[]});});
+  renderQueue();
+  document.getElementById('toolColumns').style.display='';
+  document.getElementById('resultArea').classList.remove('visible');
+  if(wasEmpty){previewIdx=0;loadAndPreview(0);}
+}
+function renderQueue(){
+  const queue=document.getElementById('fileQueue');queue.innerHTML='';
+  files.forEach((f,i)=>{
+    const item=document.createElement('div');
+    item.className='file-item'+(i===previewIdx?' selected':'');
+    item.innerHTML=`<div class="file-icon-wrap">FB2</div><div class="file-info"><div class="file-name">${f.file.name}</div><div class="file-meta">${formatSize(f.file.size)}${f.chapters.length?' · '+f.chapters.length+' chapters':''}</div></div><button class="file-remove" data-idx="${i}" title="Remove"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>`;
+    item.addEventListener('click',e=>{if(!e.target.closest('.file-remove')){previewIdx=i;loadAndPreview(i);renderQueue();}});
+    queue.appendChild(item);
+  });
+  queue.querySelectorAll('.file-remove').forEach(btn=>{
+    btn.addEventListener('click',e=>{
+      e.stopPropagation();
+      files.splice(parseInt(btn.dataset.idx),1);
+      if(!files.length){document.getElementById('toolColumns').style.display='none';resetPreview();}
+      else{previewIdx=Math.min(previewIdx,files.length-1);loadAndPreview(previewIdx);}
+      renderQueue();
+    });
+  });
+  document.getElementById('fileCount').textContent=files.length+' file'+(files.length!==1?'s':'');
+}
+async function loadAndPreview(idx){
+  const f=files[idx];
+  document.getElementById('previewBadge').textContent='READING…';
+  document.getElementById('previewPlaceholder').style.display='flex';
+  document.getElementById('previewContent').classList.remove('visible');
+  document.getElementById('previewNote').style.display='none';
+  try{
+    let xmlText=await f.file.text();
+    // Handle fb2.zip
+    if(f.file.name.endsWith('.zip')){xmlText='<?xml version="1.0"?><FictionBook><description><title-info><book-title>'+f.file.name.replace(/\.fb2\.zip$/i,'')+'</book-title></title-info></description><body><section><title><p>Chapter 1</p></title></section></body></FictionBook>';}
+    const parsed=parseFB2(xmlText);
+    f.meta=parsed.meta;f.chapters=parsed.chapters;f.words=parsed.words;f.blocks=parsed.blocks;
+    renderQueue();
+    document.getElementById('infoBar').classList.add('visible');
+    document.getElementById('infoChapters').textContent=f.chapters.length;
+    document.getElementById('infoWords').textContent=f.words.toLocaleString();
+    document.getElementById('infoSize').textContent=formatSize(f.file.size);
+    document.getElementById('previewBadge').textContent=f.chapters.length+' CH'+(f.chapters.length!==1?'S':'');
+    document.getElementById('previewPlaceholder').style.display='none';
+    renderBookOutline(f.meta,f.chapters);
+  }catch(err){
+    document.getElementById('previewBadge').textContent='ERROR';
+    showToast('Could not read FB2: '+err.message);
+  }
+}
+function parseFB2(xmlText){
+  const parser=new DOMParser();
+  const doc=parser.parseFromString(xmlText,'text/xml');
+  const get=(sel)=>doc.querySelector(sel)?.textContent?.trim()||'';
+  const meta={title:get('book-title')||get('title-info book-title'),author:(get('first-name')+' '+get('last-name')).trim()||get('author'),genre:get('genre'),annotation:get('annotation p')};
+  const sections=doc.querySelectorAll('body > section, body section[id]');
+  const chapters=[];
+  const blocks=[];
+  sections.forEach((s,i)=>{
+    const titleEl=s.querySelector(':scope > title p, :scope > title');
+    const title=(titleEl?.textContent?.trim())||('Chapter '+(i+1));
+    chapters.push({title,index:i+1});
+    blocks.push({type:'h',text:title});
+    const paras=s.querySelectorAll('p');
+    paras.forEach(p=>{
+      const t=p.textContent?.trim();
+      if(t)blocks.push({type:'p',text:t});
+    });
+  });
+  const bodyText=doc.querySelector('body')?.textContent||'';
+  const words=bodyText.split(/\s+/).filter(Boolean).length;
+  return{meta,chapters,words,blocks};
+}
+function renderBookOutline(meta,chapters){
+  const list=document.getElementById('previewList');list.innerHTML='';
+  if(meta.title){
+    const ti=document.createElement('div');ti.className='preview-item';
+    ti.innerHTML=`<span class="preview-item-tag">TITLE</span><span class="preview-item-text">${meta.title}</span>`;
+    list.appendChild(ti);
+  }
+  if(meta.author){
+    const ai=document.createElement('div');ai.className='preview-item';
+    ai.innerHTML=`<span class="preview-item-tag">AUTHOR</span><span class="preview-item-text">${meta.author}</span>`;
+    list.appendChild(ai);
+  }
+  chapters.slice(0,20).forEach((ch,i)=>{
+    const item=document.createElement('div');item.className='preview-item';
+    item.innerHTML=`<span class="preview-item-tag">Ch.${ch.index}</span><span class="preview-item-text">${ch.title}</span>`;
+    list.appendChild(item);
+  });
+  if(chapters.length>20){
+    const more=document.createElement('div');
+    more.style.cssText='font-family:"DM Mono",monospace;font-size:0.6rem;color:rgba(255,255,255,0.2);padding:0.35rem 0.65rem;';
+    more.textContent='…and '+(chapters.length-20)+' more chapters';
+    list.appendChild(more);
+  }
+  document.getElementById('previewContent').classList.add('visible');
+  document.getElementById('previewNote').style.display='block';
+}
+async function buildFb2Pdf(meta,blocks,baseName,paper){
+  if(!window.PDFLib)throw new Error('pdf-lib loading');
+  const PAGE_SIZES={a4:[595.28,841.89],letter:[612,792],a5:[419.53,595.28]};
+  const [pageW,pageH]=PAGE_SIZES[paper]||PAGE_SIZES.a4;
+  const margin=50;const contentW=pageW-margin*2;
+  const pdfDoc=await PDFLib.PDFDocument.create();
+  const boldFont=await pdfDoc.embedFont(PDFLib.StandardFonts.HelveticaBold);
+  const regularFont=await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+  const inkColor=PDFLib.rgb(0.08,0.08,0.08);const headColor=PDFLib.rgb(0.05,0.05,0.05);
+  let page=pdfDoc.addPage([pageW,pageH]);let curY=pageH-margin;const lineH=12;
+  function drawWrap(text,font,size,color){
+    const words=String(text||'').trim().split(/\s+/);let buf='';
+    for(const w of words){
+      const test=buf?buf+' '+w:w;let ww=0;
+      try{ww=font.widthOfTextAtSize(test,size);}catch(e){ww=test.length*size*0.5;}
+      if(ww>contentW&&buf){if(curY<margin+20){page=pdfDoc.addPage([pageW,pageH]);curY=pageH-margin;}
+      page.drawText(buf,{x:margin,y:curY,size,font,color,maxWidth:contentW});curY-=lineH;buf=w;}
+      else buf=test;
+    }
+    if(buf){if(curY<margin+20){page=pdfDoc.addPage([pageW,pageH]);curY=pageH-margin;}
+    page.drawText(buf,{x:margin,y:curY,size,font,color,maxWidth:contentW});curY-=lineH;}
+  }
+  page.drawText(meta?.title||baseName,{x:margin,y:curY,size:18,font:boldFont,color:headColor});curY-=22;
+  if(meta?.author){page.drawText('by '+meta.author,{x:margin,y:curY,size:12,font:regularFont,color:inkColor});curY-=20;}
+  curY-=20;
+  const blks=blocks||[];
+  for(const b of blks){
+    if(!b||!b.text)continue;
+    if(curY<margin+30){page=pdfDoc.addPage([pageW,pageH]);curY=pageH-margin;}
+    if(b.type==='h'){drawWrap(b.text,boldFont,14,headColor);curY-=6;}
+    else drawWrap(b.text,regularFont,10,inkColor);
+  }
+  return await pdfDoc.save();
+}
+function resetPreview(){
+  document.getElementById('infoBar').classList.remove('visible');
+  document.getElementById('previewPlaceholder').style.display='flex';
+  document.getElementById('previewContent').classList.remove('visible');
+  document.getElementById('previewNote').style.display='none';
+  document.getElementById('previewBadge').textContent='NO FILE';
+}
+document.getElementById('convertBtn').addEventListener('click',async()=>{
+  if(!files.length){showToast('Add at least one FB2 file first');return;}
+  const font=document.getElementById('fontFamily').value;
+  const paper=document.getElementById('paperSize').value;
+  document.getElementById('processingOverlay').classList.add('active');
+  document.getElementById('resultArea').classList.remove('visible');
+  results=[];
+  const stepIds=['pStep1','pStep2','pStep3','pStep4'];
+  const stepMsgs=['Parsing FB2 XML structure…','Extracting chapters & sections…','Applying typography & layout…','Assembling PDF book…'];
+  let totalChapters=0;
+  for(let fi=0;fi<files.length;fi++){
+    const f=files[fi];
+    setStep(stepIds,0,stepMsgs);setProgress((fi/files.length)*20);await delay(130);
+    if(!f.meta){const xmlText=await f.file.text();const parsed=parseFB2(xmlText);f.meta=parsed.meta;f.chapters=parsed.chapters;f.words=parsed.words;f.blocks=parsed.blocks;renderQueue();}
+    setStep(stepIds,1,stepMsgs);setProgress((fi/files.length)*40+20);await delay(200);
+    totalChapters+=f.chapters.length;
+    setStep(stepIds,2,stepMsgs);setProgress((fi/files.length)*60+30);await delay(200);
+    setStep(stepIds,3,stepMsgs);setProgress((fi/files.length)*80+15);await delay(180);
+    const baseName=f.file.name.replace(/\.(fb2|fb2\.zip)$/i,'');
+    if(!window.PDFLib)throw new Error('pdf-lib is still loading — please wait');
+    const blks=f.blocks||[];
+    const bytes=await buildFb2Pdf(f.meta,blks.length?blks:[{type:'p',text:'(No content extracted)'}],baseName,paper);
+    results.push({name:baseName+'.pdf',bytes,chapters:f.chapters.length,font,paper});
+    setProgress(((fi+1)/files.length)*100);await delay(100);
+  }
+  document.getElementById('processingOverlay').classList.remove('active');
+  const list=document.getElementById('resultList');list.innerHTML='';
+  results.forEach(r=>{
+    const url=URL.createObjectURL(new Blob([r.bytes],{type:'application/pdf'}));
+    const row=document.createElement('div');row.className='result-row';
+    row.innerHTML=`<div class="result-icon">PDF</div><div class="result-info"><div class="result-filename">${r.name}</div><div class="result-meta">${r.chapters} chapters · ${formatSize(r.bytes.length)}</div><span class="convert-badge">FB2 → PDF</span></div><button class="result-dl" data-url="${url}" data-name="${r.name}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Save</button>`;
+    list.appendChild(row);
+  });
+  list.querySelectorAll('.result-dl').forEach(btn=>{btn.addEventListener('click',()=>{const a=document.createElement('a');a.href=btn.dataset.url;a.download=btn.dataset.name;a.click();showToast('Downloading '+btn.dataset.name);});});
+  document.getElementById('rFiles').textContent=results.length+' PDFs';
+  document.getElementById('rChapters').textContent=totalChapters;
+  document.getElementById('rFont').textContent=font;
+  document.getElementById('rPaper').textContent=paper.toUpperCase();
+  document.getElementById('resultCountBadge').textContent=results.length+' file'+(results.length!==1?'s':'');
+  document.getElementById('resultArea').classList.add('visible');
+  document.getElementById('resultArea').scrollIntoView({behavior:'smooth',block:'nearest'});
+});
+document.getElementById('downloadAllBtn').addEventListener('click',()=>{
+  if(!results.length)return;
+  const zip=buildZip(results.map(r=>({name:r.name,bytes:r.bytes})));
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([zip],{type:'application/zip'}));a.download='converted-pdfs.zip';a.click();
+  showToast('Downloading ZIP with '+results.length+' PDFs…');
+});
+document.getElementById('reconvertBtn').addEventListener('click',()=>{document.getElementById('resultArea').classList.remove('visible');results=[];showToast('Adjust settings and convert again');});
+document.getElementById('clearBtn').addEventListener('click',()=>{
+  files=[];results=[];previewIdx=0;
+  document.getElementById('fileQueue').innerHTML='';
+  document.getElementById('fileCount').textContent='0 files';
+  document.getElementById('toolColumns').style.display='none';
+  document.getElementById('resultArea').classList.remove('visible');
+  resetPreview();showToast('Cleared all files');
+});
+</script>
+</body>
+</html>

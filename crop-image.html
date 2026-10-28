@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>Crop Images Online | Free Image Cropper</title>
+<meta name="description" content="Crop images online to remove unwanted areas with precision. Fast, easy, and perfect for editing photos for social media, websites, or personal use.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jpg2go.com/crop-image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="adsense.js"></script>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Crop Images Online",
+    "url": "https://jpg2go.com/crop-image",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Crop images online to remove unwanted areas with precision. Fast, easy, and perfect for editing photos for social media, websites, or personal use."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does an image crop tool do?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An image crop tool allows you to remove unwanted parts of a photo and focus on the main subject."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is image cropping important?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cropping improves image composition and ensures photos fit correctly in websites, social media posts, or design layouts."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I crop images to specific dimensions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, many image crop tools allow you to set custom width and height or use preset ratios like square or 16:9."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does cropping reduce image quality?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cropping itself does not reduce image quality; it simply removes unwanted areas from the photo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What formats can be cropped online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most cropping tools support common formats such as JPG, PNG, and WebP."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is cropping useful for social media images?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, cropping helps adjust images to fit platform requirements like profile pictures, posts, and banners."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+
+<style>
+/* ══ ROOT TOKENS ══ */
+:root {
+  --ink: #0d0d0d; --paper: #f7f4ee; --cream: #ede9df;
+  --accent: #c84b2f; --accent-light: #e8d5cf;
+  --muted: #7a7567; --border: #d4cfc4; --white: #ffffff;
+  --shadow: 0 2px 24px rgba(13,13,13,.08);
+  --shadow-lg: 0 8px 48px rgba(13,13,13,.12);
+  --green: #1a8a4a; --green-light: #d4f0e0;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; min-height: 100vh; }
+
+/* ══ HEADER ══ */
+header { background: var(--ink); color: var(--paper); position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--accent); }
+.header-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.logo { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.6rem; color: var(--paper); text-decoration: none; letter-spacing: -.02em; }
+.logo span { color: var(--accent); }
+nav { display: flex; gap: 2rem; align-items: center; }
+nav a { color: #a8a39a; text-decoration: none; font-size: .875rem; font-weight: 500; letter-spacing: .02em; transition: color .2s; }
+nav a:hover { color: var(--paper); }
+.nav-cta { background: var(--accent); color: var(--white) !important; padding: .4rem 1rem; border-radius: 4px; transition: background .2s !important; }
+.nav-cta:hover { background: #a83825 !important; }
+.mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-direction: column; gap: 5px; align-items: center; justify-content: center; width: 40px; height: 40px; }
+.mobile-menu-toggle span { display: block; width: 24px; height: 2px; background: var(--paper); transition: all 0.3s ease; border-radius: 2px; }
+.mobile-menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+.mobile-menu-toggle.active span:nth-child(2) { opacity: 0; }
+.mobile-menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+.mobile-nav { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--ink); border-top: 2px solid var(--accent); padding: 1.5rem 2rem; flex-direction: column; gap: 1rem; z-index: 99; transform: translateY(-100%); opacity: 0; transition: transform 0.3s ease, opacity 0.3s ease; visibility: hidden; }
+.mobile-nav.active { display: flex; transform: translateY(0); opacity: 1; visibility: visible; }
+.mobile-nav a { color: #a8a39a; text-decoration: none; font-size: 0.95rem; font-weight: 500; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); transition: color 0.2s; }
+.mobile-nav a:last-child { border-bottom: none; }
+.mobile-nav a:hover { color: var(--paper); }
+.mobile-nav .nav-cta { background: var(--accent); color: var(--white) !important; padding: 0.75rem 1.5rem; border-radius: 4px; text-align: center; border: none; margin-top: 0.5rem; }
+
+/* ══ HERO ══ */
+.hero { background: var(--ink); color: var(--paper); padding: 4rem 2rem 3.5rem; text-align: center; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(200,75,47,.2) 0%, transparent 70%); pointer-events: none; }
+.hero::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 60px; background: linear-gradient(to bottom, transparent, rgba(200,75,47,.4)); }
+.hero-badge { display: inline-flex; align-items: center; gap: .5rem; font-family: 'DM Mono', monospace; font-size: .72rem; letter-spacing: .12em; color: #c84b2f; text-transform: uppercase; border: 1px solid rgba(200,75,47,.4); background: rgba(200,75,47,.12); padding: .3rem .9rem; border-radius: 2px; margin-bottom: 1.5rem; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem,5.5vw,3.6rem); font-weight: 900; line-height: 1.1; letter-spacing: -.03em; margin-bottom: 1.25rem; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero-desc { font-size: 1.05rem; color: #9e9990; max-width: 520px; margin: 0 auto 1.75rem; font-weight: 300; line-height: 1.7; }
+.hero-pills { display: flex; justify-content: center; flex-wrap: wrap; gap: .5rem; }
+.hero-pill { font-family: 'DM Mono', monospace; font-size: .68rem; letter-spacing: .06em; color: #a8a39a; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); padding: .3rem .75rem; border-radius: 100px; }
+
+/* ══ TOOL CARD ══ */
+.tool-section { max-width: 1000px; margin: -1.5rem auto 0; padding: 0 1.5rem 4rem; position: relative; z-index: 10; }
+.tool-card { background: var(--white); border-radius: 12px; box-shadow: var(--shadow-lg); overflow: hidden; border: 1px solid var(--border); }
+.tool-card-header { background: var(--cream); padding: 1rem 1.5rem; display: flex; align-items: center; gap: .5rem; border-bottom: 1px solid var(--border); }
+.dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+.dot-r { background: #ff5f57; } .dot-y { background: #febc2e; } .dot-g { background: #28c840; }
+.tc-title { font-family: 'DM Mono', monospace; font-size: .75rem; color: var(--muted); margin-left: .5rem; letter-spacing: .05em; }
+.tool-body { padding: 1.5rem; }
+
+/* ══ DROP ZONE ══ */
+.drop-zone { border: 2px dashed var(--border); border-radius: 10px; padding: 3rem 2rem; text-align: center; cursor: pointer; transition: border-color .2s, background .2s; background: var(--paper); position: relative; }
+.drop-zone:hover, .drop-zone.drag-over { border-color: var(--accent); background: var(--accent-light); }
+.drop-zone input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+.drop-icon { width: 52px; height: 52px; background: var(--accent-light); border: 1px solid rgba(200,75,47,.3); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: var(--accent); }
+.drop-zone h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: .4rem; }
+.drop-zone p { font-size: .85rem; color: var(--muted); margin-bottom: 1rem; }
+.formats-pill { font-family: 'DM Mono', monospace; font-size: .68rem; letter-spacing: .08em; color: var(--accent); background: var(--accent-light); padding: .25rem .75rem; border-radius: 100px; display: inline-block; }
+
+/* ══ CROP WORKSPACE ══ */
+.crop-workspace { display: none; margin-top: 1.25rem; }
+.crop-workspace.on { display: block; }
+
+/* Top bar: aspect ratio + manual inputs */
+.crop-controls-top { display: flex; gap: 1rem; align-items: flex-start; flex-wrap: wrap; margin-bottom: 1rem; }
+.ctrl-group { display: flex; flex-direction: column; gap: .35rem; }
+.ctrl-lbl { font-family: 'DM Mono', monospace; font-size: .68rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+
+/* Aspect ratio pills */
+.ratio-pills { display: flex; flex-wrap: wrap; gap: .4rem; }
+.ratio-pill { font-family: 'DM Mono', monospace; font-size: .68rem; font-weight: 500; letter-spacing: .04em; color: var(--muted); background: var(--paper); border: 1.5px solid var(--border); border-radius: 100px; padding: .28rem .72rem; cursor: pointer; transition: all .15s; white-space: nowrap; }
+.ratio-pill:hover { border-color: var(--accent); color: var(--accent); }
+.ratio-pill.active { background: var(--accent); border-color: var(--accent); color: var(--white); }
+
+/* Coord inputs */
+.coord-row { display: flex; gap: .5rem; align-items: center; flex-wrap: wrap; }
+.coord-field { display: flex; flex-direction: column; gap: .22rem; }
+.coord-field label { font-family: 'DM Mono', monospace; font-size: .62rem; color: var(--muted); letter-spacing: .06em; }
+.coord-input { width: 74px; background: var(--paper); border: 1.5px solid var(--border); border-radius: 5px; padding: .38rem .55rem; font-family: 'DM Mono', monospace; font-size: .8rem; color: var(--ink); outline: none; transition: border-color .2s; }
+.coord-input:focus { border-color: var(--accent); }
+.coord-input::-webkit-inner-spin-button, .coord-input::-webkit-outer-spin-button { -webkit-appearance: none; }
+.coord-sep { font-family: 'DM Mono', monospace; font-size: .8rem; color: var(--border); padding-top: 1.15rem; }
+.coord-apply-btn { background: var(--cream); border: 1.5px solid var(--border); border-radius: 5px; padding: .38rem .75rem; font-family: 'DM Mono', monospace; font-size: .72rem; font-weight: 600; color: var(--muted); cursor: pointer; transition: all .15s; margin-top: 1.15rem; white-space: nowrap; }
+.coord-apply-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+
+/* Canvas area */
+.crop-canvas-wrap {
+  position: relative;
+  background: #1a1a1a;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  cursor: crosshair;
+  line-height: 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.crop-canvas-wrap canvas { display: block; width: 100%; height: auto; }
+
+/* Crop overlay SVG drawn with JS */
+.crop-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Crop info bar below canvas */
+.crop-info-bar { display: flex; align-items: center; gap: 1rem; margin-top: .65rem; flex-wrap: wrap; }
+.crop-info-item { font-family: 'DM Mono', monospace; font-size: .7rem; color: var(--muted); display: flex; align-items: center; gap: .35rem; }
+.crop-info-val { color: var(--ink); font-weight: 600; }
+.crop-info-sep { color: var(--border); }
+
+/* ══ BUTTONS ══ */
+.action-bar { display: flex; gap: .75rem; margin-top: 1.25rem; flex-wrap: wrap; }
+.btn-p { background: var(--accent); color: var(--white); border: none; border-radius: 6px; padding: .65rem 1.5rem; font-family: 'DM Sans', sans-serif; font-size: .875rem; font-weight: 600; cursor: pointer; transition: all .18s; display: inline-flex; align-items: center; gap: .5rem; text-decoration: none; }
+.btn-p:hover { background: #a83825; transform: translateY(-1px); }
+.btn-p:disabled { background: var(--border); color: var(--muted); cursor: not-allowed; transform: none; }
+.btn-s { background: transparent; color: var(--ink); border: 1.5px solid var(--border); border-radius: 6px; padding: .65rem 1.25rem; font-family: 'DM Sans', sans-serif; font-size: .875rem; font-weight: 500; cursor: pointer; transition: all .18s; display: inline-flex; align-items: center; gap: .5rem; }
+.btn-s:hover { border-color: var(--ink); background: var(--cream); }
+
+/* ══ RESULT ══ */
+.result-area { display: none; margin-top: 1.5rem; }
+.result-area.on { display: block; }
+.result-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: .85rem; flex-wrap: wrap; gap: .5rem; }
+.result-title { font-family: 'DM Mono', monospace; font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+.result-badge { font-family: 'DM Mono', monospace; font-size: .67rem; color: var(--green); background: var(--green-light); padding: .18rem .55rem; border-radius: 100px; border: 1px solid rgba(26,138,74,.2); }
+.result-preview { border-radius: 10px; border: 1px solid var(--border); overflow: hidden; background: var(--cream); display: flex; align-items: center; justify-content: center; max-height: 500px; }
+.result-preview img { max-width: 100%; max-height: 500px; display: block; object-fit: contain; }
+.result-stats { display: flex; gap: 1.5rem; margin-top: .75rem; flex-wrap: wrap; }
+.result-stat { font-family: 'DM Mono', monospace; font-size: .7rem; color: var(--muted); }
+.result-stat strong { color: var(--ink); }
+.result-actions { display: flex; gap: .75rem; margin-top: 1rem; flex-wrap: wrap; }
+
+/* ══ CONTENT SECTIONS ══ */
+.content-section { max-width: 1000px; margin: 0 auto; padding: 4rem 1.5rem; }
+.section-tag { font-family: 'DM Mono', monospace; font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: .75rem; display: block; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem,4vw,2.2rem); font-weight: 700; letter-spacing: -.02em; margin-bottom: 1.25rem; line-height: 1.2; }
+.prose { color: #4a4640; font-size: .975rem; line-height: 1.8; max-width: 720px; }
+.prose p { margin-bottom: 1rem; }
+.prose p:last-child { margin-bottom: 0; }
+.divider { border: none; border-top: 1px solid var(--border); max-width: 1000px; margin: 0 auto; }
+
+/* ══ HOW IT WORKS ══ */
+.how-section { background: var(--ink); color: var(--paper); padding: 2rem; position: relative; overflow: hidden; }
+.how-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 80% at 50% 100%, rgba(200,75,47,.14) 0%, transparent 70%); pointer-events: none; }
+.how-inner { max-width: 1000px; margin: 0 auto; position: relative; }
+.how-hdr { text-align: center; margin-bottom: 1.5rem; }
+.how-hdr .section-tag { color: #c84b2f; }
+.how-hdr .section-title { color: var(--paper); margin-bottom: .3rem; }
+.how-sub { color: #9e9990; font-size: .9rem; font-weight: 300; }
+.steps-grid { display: flex; align-items: stretch; gap: 0; }
+.step-card { flex: 1; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1); border-radius: 12px; padding: .9rem 1rem; transition: background .25s, border-color .25s, transform .25s; }
+.step-card:hover { background: rgba(200,75,47,.08); border-color: rgba(200,75,47,.35); transform: translateY(-4px); }
+.step-conn { display: flex; align-items: center; justify-content: center; padding: 0 .5rem; color: rgba(200,75,47,.5); flex-shrink: 0; margin-top: -.75rem; }
+.step-num { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; color: rgba(200,75,47,.25); line-height: 1; margin-bottom: .3rem; letter-spacing: -.04em; }
+.step-ico { width: 36px; height: 36px; background: rgba(200,75,47,.15); border: 1px solid rgba(200,75,47,.3); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: .55rem; color: #c84b2f; }
+.step-ttl { font-family: 'Playfair Display', serif; font-size: .95rem; font-weight: 700; color: var(--paper); margin-bottom: .3rem; }
+.step-dsc { font-size: .8rem; color: #9e9990; line-height: 1.55; margin-bottom: .55rem; }
+.step-dsc strong { color: #d4cfc4; }
+.step-pill { display: inline-block; font-family: 'DM Mono', monospace; font-size: .62rem; letter-spacing: .05em; color: #c84b2f; background: rgba(200,75,47,.12); border: 1px solid rgba(200,75,47,.25); padding: .18rem .55rem; border-radius: 100px; }
+.how-cta { text-align: center; margin-top: 1.5rem; display: flex; flex-direction: column; align-items: center; gap: .55rem; }
+.how-note { font-size: .8rem; color: #7a7567; font-family: 'DM Mono', monospace; }
+
+/* ══ GRIDS ══ */
+.features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(218px,1fr)); gap: 1rem; margin-top: 2rem; }
+.feature-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 1.4rem 1.2rem; transition: box-shadow .2s, transform .2s; }
+.feature-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+.f-ico { font-size: 1.75rem; margin-bottom: .7rem; display: block; }
+.f-title { font-weight: 700; font-size: .9rem; margin-bottom: .35rem; }
+.f-desc { font-size: .82rem; color: var(--muted); line-height: 1.5; }
+
+.use-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(218px,1fr)); gap: 1rem; margin-top: 2rem; }
+.use-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 1.4rem 1.2rem; }
+.u-ico { font-size: 1.75rem; margin-bottom: .7rem; display: block; }
+.u-title { font-weight: 700; font-size: .9rem; margin-bottom: .35rem; }
+.u-desc { font-size: .82rem; color: var(--muted); line-height: 1.5; }
+
+/* Ratio reference table */
+.ratio-table-wrap { margin-top: 2rem; overflow-x: auto; }
+.ratio-table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+.ratio-table th { font-family: 'DM Mono', monospace; font-size: .68rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); text-align: left; padding: .65rem 1rem; border-bottom: 2px solid var(--border); background: var(--cream); }
+.ratio-table td { padding: .6rem 1rem; border-bottom: 1px solid var(--border); color: #4a4640; vertical-align: top; }
+.ratio-table tr:last-child td { border-bottom: none; }
+.ratio-table tr:hover td { background: var(--paper); }
+.ratio-table .mono { font-family: 'DM Mono', monospace; font-size: .78rem; color: var(--accent); }
+
+/* Tips */
+.tips-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 1rem; margin-top: 2rem; }
+.tip-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem; transition: box-shadow .2s, transform .2s; }
+.tip-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+.tip-name { font-weight: 700; font-size: .9rem; margin-bottom: .3rem; color: var(--ink); }
+.tip-tag { font-family: 'DM Mono', monospace; font-size: .76rem; color: var(--accent); background: var(--accent-light); padding: .22rem .5rem; border-radius: 4px; display: inline-block; margin-bottom: .55rem; }
+.tip-desc { font-size: .82rem; color: var(--muted); line-height: 1.5; }
+
+/* ══ FAQ ══ */
+.faq-list { margin-top: 2rem; }
+.faq-item { border-bottom: 1px solid var(--border); padding: 1.25rem 0; }
+.faq-item:last-child { border-bottom: none; }
+.faq-q { font-weight: 600; font-size: .95rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.faq-q::after { content: '+'; font-size: 1.2rem; color: var(--accent); flex-shrink: 0; transition: transform .2s; }
+.faq-item.open .faq-q::after { transform: rotate(45deg); }
+.faq-a { font-size: .9rem; color: var(--muted); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height .3s ease, margin-top .3s; }
+.faq-item.open .faq-a { max-height: 300px; margin-top: .75rem; }
+
+/* ══ CTA ══ */
+.cta-section { background: var(--ink); color: var(--paper); padding: 1.5rem 2rem; text-align: center; position: relative; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(200,75,47,.18) 0%, transparent 70%); pointer-events: none; }
+.cta-inner { max-width: 640px; margin: 0 auto; position: relative; }
+.cta-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 0.75rem; color: var(--paper); }
+.cta-desc { font-size: 1rem; color: #9e9990; font-weight: 300; margin-bottom: 0.75rem; line-height: 1.7; }
+.cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 0.5rem; }
+.cta-note { font-family: 'DM Mono', monospace; font-size: .72rem; letter-spacing: .06em; color: #5a5650; margin-top: 3rem.75rem; display: block; }
+
+/* ══ BUTTONS ══ */
+.btn-primary { background: var(--accent); color: var(--white); border: none; border-radius: 6px; padding: 0.65rem 1.5rem; font-family: 'DM Sans', sans-serif; font-size: 0.875rem; font-weight: 600; cursor: pointer; transition: all 0.18s; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; }
+.btn-primary:hover { background: #a83825; transform: translateY(-1px); }
+
+/* ══ RELATED ══ */
+.related-section { background: var(--cream); padding: 5rem 2rem; border-top: 1px solid var(--border); }
+.related-inner { max-width: 1000px; margin: 0 auto; }
+.related-header { margin-bottom: 2.5rem; }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+.related-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-decoration: none; color: inherit; display: block; transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s; position: relative; overflow: hidden; }
+.related-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--border); transition: background 0.2s; }
+.related-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); border-color: var(--accent); }
+.related-card:hover::before { background: var(--accent); }
+.related-card-icon { font-size: 1.85rem; margin-bottom: 0.85rem; display: block; }
+.related-card-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem; color: var(--ink); letter-spacing: -0.01em; }
+.related-card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin-bottom: 1rem; }
+.related-card-tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); background: var(--accent-light); padding: 0.2rem 0.5rem; border-radius: 3px; display: inline-block; }
+
+/* ══ FOOTER ══ */
+footer { background: var(--ink); color: #9e9990; padding: 4rem 2rem 2rem; margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.05); }
+#footer-placeholder { margin-top: 3rem; }
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid #2a2a2a; }
+.footer-brand .logo { display: block; margin-bottom: .75rem; }
+.footer-brand p { font-size: .85rem; line-height: 1.6; max-width: 240px; }
+.footer-social { display: flex; margin-top: 1rem; }
+.social-icon { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; color: #9e9990; transition: color .2s, transform .2s; border-radius: 6px; }
+.social-icon:hover { color: var(--paper); transform: translateY(-2px); }
+.footer-col-title { font-family: 'DM Sans', sans-serif; font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--paper); font-weight: 600; margin-bottom: 1rem; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+.footer-links a { color: #9e9990; text-decoration: none; font-size: .85rem; transition: color .2s; }
+.footer-links a:hover { color: var(--paper); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; font-size: .8rem; flex-wrap: wrap; gap: .75rem; }
+
+/* ══ TOAST ══ */
+.toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--ink); color: var(--paper); padding: .75rem 1.5rem; border-radius: 6px; font-size: .875rem; font-weight: 500; transition: transform .3s cubic-bezier(.34,1.56,.64,1); z-index: 999; border-left: 3px solid var(--accent); white-space: nowrap; }
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 768px) {
+  nav { display: none; }
+  .mobile-menu-toggle { display: flex; }
+  .steps-grid { flex-direction: column; }
+  .step-conn { transform: rotate(90deg); padding: .25rem 0; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .crop-controls-top { flex-direction: column; }
+  .coord-row { gap: .35rem; }
+  .coord-input { width: 62px; }
+}
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+@keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+.fade-up { animation: fadeUp .6s ease both; }
+.delay-1 { animation-delay: .1s; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">JPG2<span>Go</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="tools.html">Tools</a>
+      <a href="#tool" class="nav-cta">Convert Now</a>
+    </nav>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="tools.html" onclick="closeMobileMenu()">Tools</a>
+    <a href="#tool" class="nav-cta" onclick="closeMobileMenu()">Convert Now</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="fade-up">
+    <div class="hero-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 3 3 3 3 9"/><polyline points="15 21 21 21 21 15"/><line x1="3" y1="3" x2="10" y2="10"/><line x1="21" y1="21" x2="14" y2="14"/></svg>
+            Free Image Cropper
+    </div>
+    <h1>Crop Images Online</h1>
+    <p class="hero-desc">Crop images online to remove unwanted areas or adjust dimensions. Ideal for creating thumbnails, profile pictures, banners, and properly sized images for websites or social media.</p>
+    <div class="hero-pills">
+      <span class="hero-pill">Drag-to-Crop Canvas</span>
+      <span class="hero-pill">Aspect Ratio Lock</span>
+      <span class="hero-pill">Exact Pixel Coords</span>
+      <span class="hero-pill">10 Social Presets</span>
+      <span class="hero-pill">JPG · PNG · WebP</span>
+    </div>
+  </div>
+</section>
+
+<!-- TOOL -->
+<section class="tool-section" id="tool">
+  <div class="tool-card fade-up delay-1">
+    <div class="tool-card-header">
+      <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+      <span class="tc-title">crop-image · drag-to-crop · aspect-lock · pixel-precise · browser-native</span>
+    </div>
+    <div class="tool-body">
+
+      <!-- Drop Zone -->
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" accept="image/jpeg,image/jpg,image/png,image/webp,.jpg,.jpeg,.png,.webp">
+        <div class="drop-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="9 3 3 3 3 9"/><polyline points="15 21 21 21 21 15"/><line x1="3" y1="3" x2="10" y2="10"/><line x1="21" y1="21" x2="14" y2="14"/></svg>
+        </div>
+        <h3>Drop your image here to crop</h3>
+        <p>Crop images online to remove unwanted areas or adjust dimensions. Ideal for creating thumbnails, profile pictures, banners, and properly sized images for websites or social media.</p>
+        <span class="formats-pill">JPG · PNG · WebP</span>
+      </div>
+
+      <!-- Crop Workspace -->
+      <div class="crop-workspace" id="cropWorkspace">
+
+        <!-- Controls row -->
+        <div class="crop-controls-top">
+
+          <!-- Aspect ratio -->
+          <div class="ctrl-group">
+            <span class="ctrl-lbl">Aspect Ratio</span>
+            <div class="ratio-pills">
+              <button class="ratio-pill active" data-ratio="free">Free</button>
+              <button class="ratio-pill" data-ratio="1:1">1:1</button>
+              <button class="ratio-pill" data-ratio="4:3">4:3</button>
+              <button class="ratio-pill" data-ratio="3:2">3:2</button>
+              <button class="ratio-pill" data-ratio="16:9">16:9</button>
+              <button class="ratio-pill" data-ratio="9:16">9:16</button>
+              <button class="ratio-pill" data-ratio="3:4">3:4</button>
+              <button class="ratio-pill" data-ratio="2:3">2:3</button>
+              <button class="ratio-pill" data-ratio="5:4">5:4</button>
+              <button class="ratio-pill" data-ratio="21:9">21:9</button>
+            </div>
+          </div>
+
+          <!-- Manual pixel coords -->
+          <div class="ctrl-group">
+            <span class="ctrl-lbl">Manual Crop (pixels)</span>
+            <div class="coord-row">
+              <div class="coord-field"><label>X</label><input class="coord-input" id="coordX" type="number" min="0" placeholder="0"></div>
+              <div class="coord-field"><label>Y</label><input class="coord-input" id="coordY" type="number" min="0" placeholder="0"></div>
+              <span class="coord-sep">·</span>
+              <div class="coord-field"><label>W</label><input class="coord-input" id="coordW" type="number" min="1" placeholder="w"></div>
+              <div class="coord-field"><label>H</label><input class="coord-input" id="coordH" type="number" min="1" placeholder="h"></div>
+              <button class="coord-apply-btn" id="coordApplyBtn">Apply</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Canvas -->
+        <div class="crop-canvas-wrap" id="canvasWrap">
+          <canvas id="imgCanvas"></canvas>
+          <canvas id="overlayCanvas" style="position:absolute;inset:0;width:100%;height:100%;cursor:crosshair;"></canvas>
+        </div>
+
+        <!-- Info bar -->
+        <div class="crop-info-bar">
+          <div class="crop-info-item">
+            Original: <span class="crop-info-val" id="infoOrig">—</span>
+          </div>
+          <span class="crop-info-sep">·</span>
+          <div class="crop-info-item">
+            Crop: <span class="crop-info-val" id="infoCrop">—</span>
+          </div>
+          <span class="crop-info-sep">·</span>
+          <div class="crop-info-item">
+            Position: <span class="crop-info-val" id="infoPos">—</span>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="action-bar">
+          <button class="btn-p" id="cropBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 3 3 3 3 9"/><polyline points="15 21 21 21 21 15"/><line x1="3" y1="3" x2="10" y2="10"/><line x1="21" y1="21" x2="14" y2="14"/></svg>
+            Crop Image
+          </button>
+          <button class="btn-s" id="resetCropBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+            Reset Crop
+          </button>
+          <button class="btn-s" id="clearBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
+            New Image
+          </button>
+        </div>
+
+        <!-- Result -->
+        <div class="result-area" id="resultArea">
+          <div class="result-header">
+            <span class="result-title">Cropped Result</span>
+            <span class="result-badge" id="resultBadge">✓ Cropped</span>
+          </div>
+          <div class="result-preview">
+            <img id="resultImg" src="" alt="Cropped image">
+          </div>
+          <div class="result-stats">
+            <div class="result-stat">Output size: <strong id="statDims">—</strong></div>
+            <div class="result-stat">Crop region: <strong id="statRegion">—</strong></div>
+            <div class="result-stat">Format: <strong id="statFmt">—</strong></div>
+          </div>
+          <div class="result-actions">
+            <button class="btn-p" id="downloadBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download Cropped
+            </button>
+            <button class="btn-s" id="cropAgainBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 3 3 3 3 9"/><polyline points="15 21 21 21 21 15"/><line x1="3" y1="3" x2="10" y2="10"/><line x1="21" y1="21" x2="14" y2="14"/></svg>
+              Crop Again
+            </button>
+          </div>
+        </div>
+
+      </div><!-- /crop-workspace -->
+
+    </div><!-- /tool-body -->
+  </div><!-- /tool-card -->
+</section>
+
+<hr class="divider">
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how-it-works">
+  <div class="how-inner">
+    <div class="how-hdr">
+      <span class="section-tag">Quick Guide</span>
+      <h2 class="section-title">How to Crop an Image</h2>
+      <p class="how-sub">Three steps. No software. No upload.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+        <div class="step-ttl">Upload Your Image</div>
+        <div class="step-dsc">Drop or select a <strong>JPG, PNG, or WebP</strong> image. It loads instantly in the browser — nothing is uploaded to any server.</div>
+        <span class="step-pill">JPG · PNG · WebP</span>
+      </div>
+      <div class="step-conn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 3 3 3 3 9"/><polyline points="15 21 21 21 21 15"/><line x1="3" y1="3" x2="10" y2="10"/><line x1="21" y1="21" x2="14" y2="14"/></svg></div>
+        <div class="step-ttl">Draw Your Crop</div>
+        <div class="step-dsc"><strong>Drag to draw</strong> a crop area, drag to reposition it, or use an aspect ratio preset. Type exact pixel coordinates for precision crops.</div>
+        <span class="step-pill">drag · lock · coords</span>
+      </div>
+      <div class="step-conn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+        <div class="step-ttl">Download Result</div>
+        <div class="step-dsc">Hit <strong>Crop Image</strong> to preview, then download. The output matches your original format — JPG, PNG, or WebP — at full source resolution.</div>
+        <span class="step-pill">instant download</span>
+      </div>
+    </div>
+    <div class="how-cta">
+      <a href="#tool" class="btn-p">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 3 3 3 3 9"/><polyline points="15 21 21 21 21 15"/><line x1="3" y1="3" x2="10" y2="10"/><line x1="21" y1="21" x2="14" y2="14"/></svg>
+        Start Cropping
+      </a>
+      <span class="how-note">free · no signup · no upload · no watermark</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHY THIS TOOL -->
+<section class="content-section" id="about">
+  <h2 class="section-title">Why Use Image Cropper?</h2>
+  <div class="prose">
+    <p>Sometimes an image contains extra space, unwanted objects, or areas that distract from the main subject. An Image Cropper helps you quickly remove these unnecessary parts and focus only on the most important section of the photo. This improves the overall composition and makes the image look cleaner and more professional.</p>
+    <p>Cropping images is especially useful when preparing pictures for websites, social media posts, profile photos, banners, or thumbnails. By adjusting the image frame, you can make sure the picture fits perfectly within the required dimensions.</p>
+    <p>Another advantage is simplicity. With an online image cropper, you can upload a photo, select the desired area, and crop it instantly without needing advanced photo editing software or technical skills.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FEATURES -->
+
+<section class="content-section" id="features">
+  <span class="section-tag">Features</span>
+  <h2 class="section-title">Everything in One Cropper</h2>
+  <div class="features-grid">
+    <div class="feature-card"><span class="f-ico">✂️</span><div class="f-title">Drag-to-Draw Crop Box</div><div class="f-desc">Click and drag anywhere on the image to draw a crop area. Drag the selection to reposition it without redrawing.</div></div>
+    <div class="feature-card"><span class="f-ico">🔒</span><div class="f-title">Aspect Ratio Lock</div><div class="f-desc">Pick a ratio — 1:1, 16:9, 4:3, 9:16, 3:2 and more — and your crop is automatically constrained to it as you drag.</div></div>
+    <div class="feature-card"><span class="f-ico">🎯</span><div class="f-title">Exact Pixel Coordinates</div><div class="f-desc">Type X, Y, Width, Height in pixels for precision crops. Coordinates map directly to original image pixels.</div></div>
+    <div class="feature-card"><span class="f-ico">📐</span><div class="f-title">Rule-of-Thirds Grid</div><div class="f-desc">A subtle thirds overlay inside the crop box helps you align subjects to classic compositional guidelines.</div></div>
+    <div class="feature-card"><span class="f-ico">🖼️</span><div class="f-title">Original Resolution Output</div><div class="f-desc">The crop is applied to your full-resolution original — not the scaled canvas preview — so there's zero quality loss.</div></div>
+    <div class="feature-card"><span class="f-ico">🔄</span><div class="f-title">Crop Again Without Re-upload</div><div class="f-desc">After cropping, go back and draw a new crop area on the original image without re-uploading the file.</div></div>
+    <div class="feature-card"><span class="f-ico">🏷️</span><div class="f-title">Format Preserved</div><div class="f-desc">JPG inputs save as JPG, PNG as PNG, WebP as WebP. No silent format conversion, no quality loss from re-encoding chains.</div></div>
+    <div class="feature-card"><span class="f-ico">🔒</span><div class="f-title">100% Private</div><div class="f-desc">Your image never leaves your device. All processing happens locally in the browser — no server upload, no cloud storage.</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ASPECT RATIO REFERENCE -->
+<section class="content-section">
+  <span class="section-tag">Reference</span>
+  <h2 class="section-title">Aspect Ratio Preset Guide</h2>
+  <div class="prose"><p>Choose the right preset for your platform. All presets are available in the crop tool — just click the ratio pill before drawing your crop area.</p></div>
+  <div class="ratio-table-wrap">
+    <table class="ratio-table">
+      <thead>
+        <tr><th>Ratio</th><th>Common Use</th><th>Typical Pixel Size</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="mono">1:1</td><td>Instagram Post, Profile Picture, App Icon</td><td>1080 × 1080</td><td>Square format. Works across almost every platform.</td></tr>
+        <tr><td class="mono">16:9</td><td>YouTube Thumbnail, Desktop Wallpaper, Presentation Slide</td><td>1280 × 720</td><td>Standard widescreen. Matches most monitor and video proportions.</td></tr>
+        <tr><td class="mono">9:16</td><td>Instagram Story, TikTok, YouTube Shorts, Reels</td><td>1080 × 1920</td><td>Full-screen vertical video/story format.</td></tr>
+        <tr><td class="mono">4:3</td><td>Facebook Post, Classic Photography, Tablets</td><td>1200 × 900</td><td>Traditional photo ratio from film cameras and older screens.</td></tr>
+        <tr><td class="mono">3:2</td><td>DSLR/Mirrorless Output, Print (4×6), Portfolio</td><td>1200 × 800</td><td>Most full-frame cameras produce this ratio natively.</td></tr>
+        <tr><td class="mono">3:4</td><td>Pinterest Pin, LinkedIn Post, Vertical Facebook</td><td>900 × 1200</td><td>Tall portrait format that performs well in vertical feeds.</td></tr>
+        <tr><td class="mono">2:3</td><td>Print (4×6 portrait), 35mm Film Portrait</td><td>800 × 1200</td><td>Standard vertical print ratio.</td></tr>
+        <tr><td class="mono">5:4</td><td>Print (8×10), Large Format Photography</td><td>1000 × 800</td><td>Common in large-format and medium-format photography.</td></tr>
+        <tr><td class="mono">21:9</td><td>Cinematic Crop, Ultra-Wide Desktop, Hero Banners</td><td>2560 × 1080</td><td>Cinematic ultra-wide ratio used in film and hero imagery.</td></tr>
+        <tr><td class="mono">Free</td><td>Custom / Unrestricted</td><td>Any</td><td>No ratio constraint — draw any crop shape freely.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- WHO USES THIS -->
+<section class="content-section">
+  <span class="section-tag">Who It's For</span>
+  <h2 class="section-title">Who Uses an Image Cropper?</h2>
+  <div class="use-grid">
+    <div class="use-card"><span class="u-ico">📱</span><div class="u-title">Social Media Prep</div><div class="u-desc">Crop photos to exact platform ratios — square for Instagram, 16:9 for YouTube thumbnails, 9:16 for Stories and Reels.</div></div>
+    <div class="use-card"><span class="u-ico">🎨</span><div class="u-title">Reframe Composition</div><div class="u-desc">Remove distracting background elements, straighten the horizon line, or tighten the subject for a stronger composition.</div></div>
+    <div class="use-card"><span class="u-ico">🖨️</span><div class="u-title">Print Preparation</div><div class="u-desc">Crop to standard print ratios (4×6, 5×7, 8×10) before sending to a print lab to ensure no content is auto-cropped by the printer.</div></div>
+    <div class="use-card"><span class="u-ico">👤</span><div class="u-title">Profile & Avatar Photos</div><div class="u-desc">Crop a photo to a perfect 1:1 square, centering the face for LinkedIn, Twitter, or any platform avatar.</div></div>
+    <div class="use-card"><span class="u-ico">🏷️</span><div class="u-title">Product Photography</div><div class="u-desc">Isolate a product from a cluttered background with a precise crop before uploading to an e-commerce listing.</div></div>
+    <div class="use-card"><span class="u-ico">✉️</span><div class="u-title">Email & Blog Images</div><div class="u-desc">Crop banner or hero images to a consistent 16:9 or 4:3 ratio for consistent layout rendering in email clients and CMS platforms.</div></div>
+    <div class="use-card"><span class="u-ico">🔬</span><div class="u-title">Focus on Detail</div><div class="u-desc">Crop a tight detail shot from a larger image — useful for scientific documentation, product close-ups, and art reproduction.</div></div>
+    <div class="use-card"><span class="u-ico">🎞️</span><div class="u-title">Frame Extraction</div><div class="u-desc">Crop a specific region from a screenshot or exported video frame to share a detail without revealing the full context.</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- TIPS -->
+<section class="content-section">
+  <span class="section-tag">Pro Tips</span>
+  <h2 class="section-title">Get the Most from the Cropper</h2>
+  <div class="tips-grid">
+    <div class="tip-card"><div class="tip-name">Use Pixel Coords for Repeatable Crops</div><div class="tip-tag">tip → precision</div><div class="tip-desc">If you need to crop a series of images to the exact same region — e.g. extracting a logo or watermark area — use the X/Y/W/H input fields. Note the values from the first crop and apply them to each subsequent image for a perfectly consistent result.</div></div>
+    <div class="tip-card"><div class="tip-name">Lock Ratio Before Drawing</div><div class="tip-tag">tip → workflow</div><div class="tip-desc">Always select your aspect ratio preset before drawing the crop box, not after. The ratio is applied as you drag — switching after drawing won't retroactively adjust the box. Click "Reset Crop" and redraw if you need to change ratio.</div></div>
+    <div class="tip-card"><div class="tip-name">Rule of Thirds for Better Portraits</div><div class="tip-tag">tip → composition</div><div class="tip-desc">The crop overlay shows a subtle rule-of-thirds grid. Position eyes at the upper-third line and leave breathing room in the direction the subject faces. This consistently produces more compelling portrait crops than centered framing.</div></div>
+    <div class="tip-card"><div class="tip-name">Crop Before Resizing</div><div class="tip-tag">tip → workflow order</div><div class="tip-desc">Always crop first, then resize. Cropping reduces the total pixel area, so the subsequent resize operation works on fewer pixels — faster and with better upscaling quality if you're enlarging a region. Resizing first wastes pixels you'll discard.</div></div>
+    <div class="tip-card"><div class="tip-name">Crop Before Colorizing</div><div class="tip-tag">tip → AI accuracy</div><div class="tip-desc">If you're using the AI Colorizer, crop tight on your subject before running colorization. The AI allocates attention across the whole frame — a tight crop means more analysis on your actual subject, resulting in more accurate skin tones and colors.</div></div>
+    <div class="tip-card"><div class="tip-name">Download Format Matches Input</div><div class="tip-tag">tip → file format</div><div class="tip-desc">The cropped file downloads in the same format as the original. If you need a different output format — e.g. you uploaded a PNG but want a compressed JPEG — use the Format Converter after cropping to convert it without re-uploading.</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FAQ -->
+<section class="content-section" id="faq">
+  <span class="section-tag">FAQ</span>
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">What does an image crop tool do?</div>
+      <div class="faq-a">An image crop tool allows you to remove unwanted parts of a photo and focus on the main subject.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Why is image cropping important?</div>
+      <div class="faq-a">Cropping improves image composition and ensures photos fit correctly in websites, social media posts, or design layouts.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I crop images to specific dimensions?</div>
+      <div class="faq-a">Yes, many image crop tools allow you to set custom width and height or use preset ratios like square or 16:9.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does cropping reduce image quality?</div>
+      <div class="faq-a">Cropping itself does not reduce image quality; it simply removes unwanted areas from the photo.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What formats can be cropped online?</div>
+      <div class="faq-a">Most cropping tools support common formats such as JPG, PNG, and WebP.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is cropping useful for social media images?</div>
+      <div class="faq-a">Yes, cropping helps adjust images to fit platform requirements like profile pictures, posts, and banners.</div>
+    </div>
+  </div>
+</section>
+
+<!-- RELATED TOOLS -->
+<section class="related-section" id="tools">
+  <div class="related-inner">
+    <div class="related-header">
+      <span class="section-tag">Related Tools</span>
+      <h2 class="section-title">More Free Online Tools</h2>
+    </div>
+    <div class="related-grid">
+      <a href="/jpg-to-pdf" class="related-card">
+        <span class="related-card-icon">📄</span>
+        <div class="related-card-name">JPG to PDF</div>
+        <div class="related-card-desc">Convert JPG images to PDF documents quickly. Combine multiple photos into a single organized PDF file for easy sharing and printing.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+      <a href="/image-resizer" class="related-card">
+        <span class="related-card-icon">📐</span>
+        <div class="related-card-name">Image Resizer</div>
+        <div class="related-card-desc">Resize images to exact pixel dimensions or a percentage of their original size. Runs entirely in your browser without uploading files anywhere.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/compress-jpeg" class="related-card">
+        <span class="related-card-icon">🗜️</span>
+        <div class="related-card-name">Compress JPEG</div>
+        <div class="related-card-desc">Reduce JPEG image file size while maintaining quality. Optimize images for faster web pages and lower storage usage.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/merge-pdf" class="related-card">
+        <span class="related-card-icon">📎</span>
+        <div class="related-card-name">Merge PDF</div>
+        <div class="related-card-desc">Combine multiple PDF files into a single organized document. Drag and drop to reorder pages easily.</div>
+        <span class="related-card-tag">PDF</span>
+      </a>
+      <a href="/png-optimizer" class="related-card">
+        <span class="related-card-icon">⚡</span>
+        <div class="related-card-name">PNG Optimizer</div>
+        <div class="related-card-desc">Optimize PNG images for faster loading and better performance. Compress PNG files without losing clarity.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/format-converter" class="related-card">
+        <span class="related-card-icon">🔄</span>
+        <div class="related-card-name">Format Converter</div>
+        <div class="related-card-desc">Convert images between different formats instantly. Transform JPG, PNG, WebP, and other image formats quickly.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <span class="section-tag" style="color:var(--accent);">Get Started</span>
+    <h2 class="cta-title">Ready to Crop Your Images?</h2>
+    <p class="cta-desc">Free, instant, and completely private. Drop an image, draw your crop, download the result — no account ever needed.</p>
+    <div class="cta-actions">
+      <a href="#tool" class="btn-primary" style="font-size:1rem;padding:0.85rem 2rem;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 3 3 3 3 9"/><polyline points="15 21 21 21 21 15"/><line x1="3" y1="3" x2="10" y2="10"/><line x1="21" y1="21" x2="14" y2="14"/></svg>
+        Start Cropping
+      </a>
+    </div>
+    <p class="cta-note">No account · No upload · No data stored · Works offline</p>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<div id="footer-placeholder"></div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ─── STATE ────────────────────────────────────────────────────────────────────
+let srcImage = null;       // HTMLImageElement — original
+let srcFile  = null;       // File object
+let srcMime  = 'image/jpeg';
+
+// Canvas refs
+let imgCanvas, imgCtx, overlayCanvas, overlayCtx;
+
+// Crop box in IMAGE pixels
+let crop = { x:0, y:0, w:0, h:0 };
+
+// Canvas display scale (display px / image px)
+let scale = 1;
+
+// Interaction state
+let mode = 'idle'; // 'idle' | 'drawing' | 'moving'
+let dragStart = { x:0, y:0 };
+let moveOffset = { x:0, y:0 };
+
+// Aspect ratio: null = free, else {w, h}
+let lockedRatio = null;
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  imgCanvas     = document.getElementById('imgCanvas');
+  imgCtx        = imgCanvas.getContext('2d');
+  overlayCanvas = document.getElementById('overlayCanvas');
+  overlayCtx    = overlayCanvas.getContext('2d');
+  bindOverlayEvents();
+});
+
+// ─── TOAST ────────────────────────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ── MOBILE MENU ───────────────────────────────────────────────────────────────
+document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+  this.classList.toggle('active');
+  document.getElementById('mobileNav').classList.toggle('active');
+});
+function closeMobileMenu() {
+  document.getElementById('mobileMenuToggle').classList.remove('active');
+  document.getElementById('mobileNav').classList.remove('active');
+}
+
+// ─── DROP / FILE INPUT ────────────────────────────────────────────────────────
+const dropZone = document.getElementById('dropZone');
+document.getElementById('fileInput').addEventListener('change', e => {
+  if (e.target.files[0]) loadFile(e.target.files[0]);
+  e.target.value = '';
+});
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault(); dropZone.classList.remove('drag-over');
+  if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]);
+});
+
+function isImg(f) { return /^image\/(jpeg|png|webp)$/i.test(f.type) || /\.(jpe?g|png|webp)$/i.test(f.name); }
+
+function loadFile(f) {
+  if (!isImg(f)) { showToast('Please upload a JPG, PNG, or WebP image'); return; }
+  srcFile = f;
+  srcMime = f.type || 'image/jpeg';
+  const url = URL.createObjectURL(f);
+  const img = new Image();
+  img.onload = () => {
+    srcImage = img;
+    URL.revokeObjectURL(url);
+    initCanvas();
+    document.getElementById('dropZone').style.display = 'none';
+    document.getElementById('cropWorkspace').classList.add('on');
+    document.getElementById('resultArea').classList.remove('on');
+    document.getElementById('infoOrig').textContent = img.naturalWidth + ' × ' + img.naturalHeight + ' px';
+    updateCoordInputs();
+    showToast('Image loaded — draw a crop area');
+  };
+  img.onerror = () => showToast('Could not load image');
+  img.src = url;
+}
+
+// ─── CANVAS SETUP ─────────────────────────────────────────────────────────────
+function initCanvas() {
+  const W = srcImage.naturalWidth;
+  const H = srcImage.naturalHeight;
+  const maxW = Math.min(W, document.getElementById('canvasWrap').clientWidth || 900);
+  scale = maxW / W;
+
+  const dW = Math.round(W * scale);
+  const dH = Math.round(H * scale);
+
+  imgCanvas.width  = W; imgCanvas.height  = H;
+  imgCanvas.style.width  = dW + 'px';
+  imgCanvas.style.height = dH + 'px';
+  overlayCanvas.width  = dW; overlayCanvas.height = dH;
+  overlayCanvas.style.width  = dW + 'px';
+  overlayCanvas.style.height = dH + 'px';
+
+  imgCtx.drawImage(srcImage, 0, 0);
+
+  // Default crop = full image, inset 10%
+  const pad = Math.round(Math.min(W, H) * 0.1);
+  crop = { x: pad, y: pad, w: W - pad*2, h: H - pad*2 };
+  if (lockedRatio) enforceLockFromCenter();
+  drawOverlay();
+  updateCoordInputs();
+  updateInfoBar();
+}
+
+// ─── OVERLAY DRAW ─────────────────────────────────────────────────────────────
+function drawOverlay() {
+  const oc = overlayCanvas;
+  const ctx = overlayCtx;
+  const cW = oc.width, cH = oc.height;
+
+  ctx.clearRect(0, 0, cW, cH);
+
+  const cx = Math.round(crop.x * scale);
+  const cy = Math.round(crop.y * scale);
+  const cw = Math.round(crop.w * scale);
+  const ch = Math.round(crop.h * scale);
+
+  if (cw <= 0 || ch <= 0) return;
+
+  // Dim outside
+  ctx.fillStyle = 'rgba(0,0,0,0.52)';
+  ctx.fillRect(0, 0, cW, cH);
+  ctx.clearRect(cx, cy, cw, ch);
+
+  // Border
+  ctx.strokeStyle = '#fff';
+  ctx.lineWidth = 1.5;
+  ctx.strokeRect(cx + 0.5, cy + 0.5, cw - 1, ch - 1);
+
+  // Accent inner border
+  ctx.strokeStyle = 'rgba(200,75,47,0.9)';
+  ctx.lineWidth = 1;
+  ctx.strokeRect(cx + 2.5, cy + 2.5, cw - 5, ch - 5);
+
+  // Rule of thirds
+  ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+  ctx.lineWidth = 0.75;
+  for (let i = 1; i <= 2; i++) {
+    const tx = cx + Math.round(cw * i / 3);
+    const ty = cy + Math.round(ch * i / 3);
+    ctx.beginPath(); ctx.moveTo(tx, cy); ctx.lineTo(tx, cy + ch); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(cx, ty); ctx.lineTo(cx + cw, ty); ctx.stroke();
+  }
+
+  // Corner handles
+  const hs = 10;
+  ctx.fillStyle = '#fff';
+  [[cx,cy],[cx+cw-hs,cy],[cx,cy+ch-hs],[cx+cw-hs,cy+ch-hs]].forEach(([hx,hy]) => {
+    ctx.fillRect(hx, hy, hs, hs);
+  });
+  // Accent corner handles
+  ctx.fillStyle = 'rgba(200,75,47,0.9)';
+  [[cx+1,cy+1],[cx+cw-hs+1,cy+1],[cx+1,cy+ch-hs+1],[cx+cw-hs+1,cy+ch-hs+1]].forEach(([hx,hy]) => {
+    ctx.fillRect(hx, hy, hs-2, hs-2);
+  });
+}
+
+// ─── OVERLAY INTERACTION ─────────────────────────────────────────────────────
+function bindOverlayEvents() {
+  const oc = overlayCanvas;
+
+  function getPos(e) {
+    const rect = oc.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    // Convert display px to image px
+    return {
+      x: (clientX - rect.left) / (rect.width  / oc.width)  / scale,
+      y: (clientY - rect.top)  / (rect.height / oc.height) / scale
+    };
+  }
+
+  function insideCrop(p) {
+    return p.x >= crop.x && p.x <= crop.x + crop.w &&
+           p.y >= crop.y && p.y <= crop.y + crop.h;
+  }
+
+  function onDown(e) {
+    e.preventDefault();
+    const p = getPos(e);
+    if (insideCrop(p)) {
+      mode = 'moving';
+      moveOffset = { x: p.x - crop.x, y: p.y - crop.y };
+    } else {
+      mode = 'drawing';
+      dragStart = { x: clampX(p.x), y: clampY(p.y) };
+      crop = { x: dragStart.x, y: dragStart.y, w: 0, h: 0 };
+    }
+  }
+
+  function onMove(e) {
+    e.preventDefault();
+    if (mode === 'idle') return;
+    const p = getPos(e);
+
+    if (mode === 'drawing') {
+      let nx = clampX(p.x), ny = clampY(p.y);
+      let nw = nx - dragStart.x, nh = ny - dragStart.y;
+
+      if (lockedRatio) {
+        // Enforce ratio based on dominant axis
+        const rW = lockedRatio.w, rH = lockedRatio.h;
+        if (Math.abs(nw) / rW > Math.abs(nh) / rH) {
+          nh = Math.sign(nh) * Math.abs(nw) * rH / rW;
+        } else {
+          nw = Math.sign(nw) * Math.abs(nh) * rW / rH;
+        }
+      }
+
+      // Normalize negative dimensions
+      crop.x = nw >= 0 ? dragStart.x : dragStart.x + nw;
+      crop.y = nh >= 0 ? dragStart.y : dragStart.y + nh;
+      crop.w = Math.abs(nw); crop.h = Math.abs(nh);
+      // Clamp to image bounds
+      crop.x = Math.max(0, Math.min(crop.x, srcImage.naturalWidth  - 1));
+      crop.y = Math.max(0, Math.min(crop.y, srcImage.naturalHeight - 1));
+      crop.w = Math.min(crop.w, srcImage.naturalWidth  - crop.x);
+      crop.h = Math.min(crop.h, srcImage.naturalHeight - crop.y);
+
+    } else if (mode === 'moving') {
+      let nx = p.x - moveOffset.x;
+      let ny = p.y - moveOffset.y;
+      nx = Math.max(0, Math.min(nx, srcImage.naturalWidth  - crop.w));
+      ny = Math.max(0, Math.min(ny, srcImage.naturalHeight - crop.h));
+      crop.x = nx; crop.y = ny;
+    }
+
+    drawOverlay();
+    updateCoordInputs();
+    updateInfoBar();
+  }
+
+  function onUp(e) { mode = 'idle'; }
+
+  oc.addEventListener('mousedown',  onDown, { passive: false });
+  oc.addEventListener('mousemove',  onMove, { passive: false });
+  oc.addEventListener('mouseup',    onUp);
+  oc.addEventListener('touchstart', onDown, { passive: false });
+  oc.addEventListener('touchmove',  onMove, { passive: false });
+  oc.addEventListener('touchend',   onUp);
+
+  // Cursor feedback
+  oc.addEventListener('mousemove', e => {
+    if (mode !== 'idle') return;
+    const p = getPos(e);
+    oc.style.cursor = insideCrop(p) ? 'move' : 'crosshair';
+  });
+}
+
+function clampX(x) { return Math.max(0, Math.min(x, srcImage ? srcImage.naturalWidth  : 0)); }
+function clampY(y) { return Math.max(0, Math.min(y, srcImage ? srcImage.naturalHeight : 0)); }
+
+// ─── ASPECT RATIO ─────────────────────────────────────────────────────────────
+document.querySelectorAll('.ratio-pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    document.querySelectorAll('.ratio-pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+    const val = pill.dataset.ratio;
+    if (val === 'free') {
+      lockedRatio = null;
+    } else {
+      const parts = val.split(':').map(Number);
+      lockedRatio = { w: parts[0], h: parts[1] };
+      if (srcImage) enforceLockFromCenter();
+    }
+    if (srcImage) { drawOverlay(); updateCoordInputs(); updateInfoBar(); }
+  });
+});
+
+function enforceLockFromCenter() {
+  if (!lockedRatio || !srcImage) return;
+  const cx = crop.x + crop.w / 2;
+  const cy = crop.y + crop.h / 2;
+  const rW = lockedRatio.w, rH = lockedRatio.h;
+  let nw = crop.w, nh = crop.w * rH / rW;
+  if (nh > crop.h) { nh = crop.h; nw = crop.h * rW / rH; }
+  crop.w = nw; crop.h = nh;
+  crop.x = Math.max(0, Math.min(cx - nw/2, srcImage.naturalWidth  - nw));
+  crop.y = Math.max(0, Math.min(cy - nh/2, srcImage.naturalHeight - nh));
+}
+
+// ─── COORD INPUTS ─────────────────────────────────────────────────────────────
+function updateCoordInputs() {
+  document.getElementById('coordX').value = Math.round(crop.x);
+  document.getElementById('coordY').value = Math.round(crop.y);
+  document.getElementById('coordW').value = Math.round(crop.w);
+  document.getElementById('coordH').value = Math.round(crop.h);
+}
+
+document.getElementById('coordApplyBtn').addEventListener('click', () => {
+  if (!srcImage) return;
+  let x = parseInt(document.getElementById('coordX').value) || 0;
+  let y = parseInt(document.getElementById('coordY').value) || 0;
+  let w = parseInt(document.getElementById('coordW').value) || 100;
+  let h = parseInt(document.getElementById('coordH').value) || 100;
+  const W = srcImage.naturalWidth, H = srcImage.naturalHeight;
+  x = Math.max(0, Math.min(x, W - 1));
+  y = Math.max(0, Math.min(y, H - 1));
+  w = Math.max(1, Math.min(w, W - x));
+  h = Math.max(1, Math.min(h, H - y));
+  crop = { x, y, w, h };
+  drawOverlay(); updateCoordInputs(); updateInfoBar();
+  showToast('Crop area updated');
+});
+
+// ─── INFO BAR ─────────────────────────────────────────────────────────────────
+function updateInfoBar() {
+  document.getElementById('infoCrop').textContent = Math.round(crop.w) + ' × ' + Math.round(crop.h) + ' px';
+  document.getElementById('infoPos').textContent  = Math.round(crop.x) + ', ' + Math.round(crop.y);
+}
+
+// ─── CROP & DOWNLOAD ──────────────────────────────────────────────────────────
+document.getElementById('cropBtn').addEventListener('click', performCrop);
+
+function performCrop() {
+  if (!srcImage || crop.w < 1 || crop.h < 1) {
+    showToast('Draw a crop area first'); return;
+  }
+  const x = Math.round(crop.x), y = Math.round(crop.y);
+  const w = Math.round(crop.w), h = Math.round(crop.h);
+
+  const out = document.createElement('canvas');
+  out.width = w; out.height = h;
+  out.getContext('2d').drawImage(srcImage, x, y, w, h, 0, 0, w, h);
+
+  const quality = srcMime === 'image/jpeg' ? 0.95 : undefined;
+  const dataUrl = out.toDataURL(srcMime, quality);
+
+  document.getElementById('resultImg').src = dataUrl;
+  document.getElementById('statDims').textContent   = w + ' × ' + h + ' px';
+  document.getElementById('statRegion').textContent = 'x:' + x + ' y:' + y + ' w:' + w + ' h:' + h;
+  document.getElementById('statFmt').textContent    = srcMime.split('/')[1].toUpperCase();
+  document.getElementById('resultBadge').textContent = '✓ ' + w + '×' + h + ' px';
+  document.getElementById('resultArea').classList.add('on');
+
+  // Store for download
+  window._croppedDataUrl = dataUrl;
+  window._croppedFilename = (srcFile.name.replace(/\.[^.]+$/, '') + '-cropped.' + srcMime.split('/')[1]).replace('jpeg','jpg');
+
+  document.getElementById('resultArea').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  showToast('Cropped to ' + w + ' × ' + h + ' px');
+}
+
+document.getElementById('downloadBtn').addEventListener('click', () => {
+  if (!window._croppedDataUrl) return;
+  const a = document.createElement('a');
+  a.href = window._croppedDataUrl;
+  a.download = window._croppedFilename;
+  a.click();
+  showToast('Downloading…');
+});
+
+// ─── RESET CROP ───────────────────────────────────────────────────────────────
+document.getElementById('resetCropBtn').addEventListener('click', () => {
+  if (!srcImage) return;
+  const W = srcImage.naturalWidth, H = srcImage.naturalHeight;
+  const pad = Math.round(Math.min(W, H) * 0.1);
+  crop = { x: pad, y: pad, w: W - pad*2, h: H - pad*2 };
+  if (lockedRatio) enforceLockFromCenter();
+  drawOverlay(); updateCoordInputs(); updateInfoBar();
+  document.getElementById('resultArea').classList.remove('on');
+  showToast('Crop reset');
+});
+
+// ─── CROP AGAIN ───────────────────────────────────────────────────────────────
+document.getElementById('cropAgainBtn').addEventListener('click', () => {
+  document.getElementById('resultArea').classList.remove('on');
+  showToast('Adjust your crop and try again');
+});
+
+// ─── NEW IMAGE ────────────────────────────────────────────────────────────────
+document.getElementById('clearBtn').addEventListener('click', () => {
+  srcImage = null; srcFile = null;
+  document.getElementById('dropZone').style.display = '';
+  document.getElementById('cropWorkspace').classList.remove('on');
+  document.getElementById('resultArea').classList.remove('on');
+  imgCtx && imgCtx.clearRect(0, 0, imgCanvas.width, imgCanvas.height);
+  overlayCtx && overlayCtx.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height);
+  showToast('Ready for a new image');
+});
+
+// ─── WINDOW RESIZE: rescale canvas ────────────────────────────────────────────
+window.addEventListener('resize', () => {
+  if (!srcImage) return;
+  const newMaxW = Math.min(srcImage.naturalWidth, document.getElementById('canvasWrap').clientWidth || 900);
+  const newScale = newMaxW / srcImage.naturalWidth;
+  if (Math.abs(newScale - scale) < 0.01) return;
+  scale = newScale;
+  const dW = Math.round(srcImage.naturalWidth  * scale);
+  const dH = Math.round(srcImage.naturalHeight * scale);
+  imgCanvas.style.width  = dW + 'px';
+  imgCanvas.style.height = dH + 'px';
+  overlayCanvas.width  = dW; overlayCanvas.height = dH;
+  overlayCanvas.style.width  = dW + 'px';
+  overlayCanvas.style.height = dH + 'px';
+  drawOverlay();
+});
+
+// ─── FAQ ──────────────────────────────────────────────────────────────────────
+// ── FAQ ACCORDION ────────────────────────────────────────────────────────
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+// ─── HELPERS ──────────────────────────────────────────────────────────────────
+function fmtSz(b) {
+  if (b < 1024) return b + ' B';
+  if (b < 1048576) return (b/1024).toFixed(1) + ' KB';
+  return (b/1048576).toFixed(2) + ' MB';
+}
+</script>
+<script src="load-footer.js"></script>
+</body>
+</html>

@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>PDF to CSV Converter | Extract PDF Data Online</title>
+<meta name="description" content="Extract tables from PDF files into editable CSV spreadsheets. Maintain structure, formatting, and accuracy for analysis, reporting, or data processing.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jpg2go.com/pdf-to-csv">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="adsense.js"></script>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Convert PDF to CSV",
+    "url": "https://jpg2go.com/pdf-to-csv",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Extract tables from PDF files into editable CSV spreadsheets. Maintain structure, formatting, and accuracy for analysis, reporting, or data processing."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does a PDF to CSV converter do?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It extracts structured data such as tables from PDF documents and converts them into CSV spreadsheet format."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why convert PDF tables into CSV files?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CSV files can be easily opened in spreadsheet software for editing, sorting, and analyzing data."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will table columns remain organized after conversion?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Good converters attempt to keep the table structure intact during the conversion process."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can CSV files be opened in Excel?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, CSV files are fully compatible with Excel and many other spreadsheet programs."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is PDF to CSV conversion useful for data analysis?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, it helps transform static PDF tables into editable data for analysis or reporting."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can large PDF files with many tables be converted?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Many online converters support large documents and extract data from multiple pages."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+<style>
+:root{--ink:#0d0d0d;--paper:#f7f4ee;--cream:#ede9df;--accent:#c84b2f;--accent-light:#e8d5cf;--muted:#7a7567;--border:#d4cfc4;--white:#ffffff;--shadow:0 2px 24px rgba(13,13,13,.08);--shadow-lg:0 8px 48px rgba(13,13,13,.12);--green:#1a8a4a;--green-light:#d4f0e0;--blue:#1e50a2;--blue-light:#dde8f7}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;min-height:100vh}
+
+/* HEADER */
+header{background:var(--ink);color:var(--paper);position:sticky;top:0;z-index:100;border-bottom:2px solid var(--accent)}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1.6rem;color:var(--paper);text-decoration:none;letter-spacing:-.02em}
+.logo span{color:var(--accent)}
+nav{display:flex;gap:2rem;align-items:center}
+nav a{color:#a8a39a;text-decoration:none;font-size:.875rem;font-weight:500;letter-spacing:.02em;transition:color .2s}
+nav a:hover{color:var(--paper)}
+.nav-cta{background:var(--accent);color:var(--white)!important;padding:.4rem 1rem;border-radius:4px;transition:background .2s!important}
+.nav-cta:hover{background:#a83825!important}
+.mobile-menu-toggle {display:none;background:none;border:none;cursor:pointer;padding:.5rem;flex-direction:column;gap:5px;align-items:center;justify-content:center;width:40px;height:40px}
+.mobile-menu-toggle span{display:block;width:24px;height:2px;background:var(--paper);transition:all .3s;border-radius:2px}
+.mobile-menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(6px,6px)}
+.mobile-menu-toggle.active span:nth-child(2){opacity:0}
+.mobile-menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
+.mobile-nav {display:none;position:fixed;top:64px;left:0;right:0;background:var(--ink);border-top:2px solid var(--accent);padding:1.5rem 2rem;flex-direction:column;gap:1rem;z-index:99;transform:translateY(-100%);opacity:0;transition:transform .3s,opacity .3s;visibility:hidden}
+.mobile-nav.active{display:flex;transform:translateY(0);opacity:1;visibility:visible}
+.mobile-nav a{color:#a8a39a;text-decoration:none;font-size:.95rem;font-weight:500;padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.1);transition:color .2s}
+.mobile-nav a:last-child{border-bottom:none}
+.mobile-nav a:hover{color:var(--paper)}
+.mobile-nav .nav-cta{background:var(--accent);color:var(--white)!important;padding:.75rem 1.5rem;border-radius:4px;text-align:center;border:none;margin-top:.5rem}
+
+/* HERO */
+.hero{background:var(--ink);color:var(--paper);padding:4rem 2rem 3.5rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(200,75,47,.2) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:1px;height:60px;background:linear-gradient(to bottom,transparent,rgba(200,75,47,.4))}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.12em;color:#c84b2f;text-transform:uppercase;border:1px solid rgba(200,75,47,.4);background:rgba(200,75,47,.12);padding:.3rem .9rem;border-radius:2px;margin-bottom:1.5rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5.5vw,3.6rem);font-weight:900;line-height:1.1;letter-spacing:-.03em;margin-bottom:1.25rem}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-desc{font-size:1.05rem;color:#9e9990;max-width:520px;margin:0 auto 1.75rem;font-weight:300;line-height:1.7}
+.hero-pills{display:flex;justify-content:center;flex-wrap:wrap;gap:.5rem}
+.hero-pill{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.06em;color:#a8a39a;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:.3rem .75rem;border-radius:100px}
+
+/* TOOL CARD */
+.tool-section{max-width:1000px;margin:-1.5rem auto 0;padding:0 1.5rem 4rem;position:relative;z-index:10}
+.tool-card{background:var(--white);border-radius:12px;box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid var(--border)}
+.tool-card-header{background:var(--cream);padding:1rem 1.5rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid var(--border)}
+.dot{width:12px;height:12px;border-radius:50%;display:inline-block}
+.dot-r{background:#ff5f57}.dot-y{background:#febc2e}.dot-g{background:#28c840}
+.tc-title{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--muted);margin-left:.5rem;letter-spacing:.05em}
+.tool-body{padding:1.5rem}
+
+/* DROP ZONE */
+.drop-zone{border:2px dashed var(--border);border-radius:10px;padding:3rem 2rem;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;background:var(--paper);position:relative}
+.drop-zone:hover,.drop-zone.drag-over{border-color:var(--accent);background:var(--accent-light)}
+.drop-zone input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.drop-icon{width:52px;height:52px;background:var(--accent-light);border:1px solid rgba(200,75,47,.3);border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:var(--accent)}
+.drop-zone h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:.4rem}
+.drop-zone p{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+.formats-pill{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.08em;color:var(--accent);background:var(--accent-light);padding:.25rem .75rem;border-radius:100px;display:inline-block}
+
+/* FILE BAR */
+.file-bar{display:none;align-items:center;gap:.75rem;background:var(--paper);border:1.5px solid var(--border);border-radius:9px;padding:.65rem .9rem;margin-top:1.1rem}
+.file-bar.on{display:flex}
+.fb-icon{color:var(--accent);flex-shrink:0}
+.fb-info{flex:1;min-width:0}
+.fb-name{font-size:.83rem;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fb-meta{font-family:'DM Mono',monospace;font-size:.64rem;color:var(--muted);margin-top:.1rem}
+.fb-remove{background:none;border:none;cursor:pointer;color:var(--muted);padding:.25rem;border-radius:4px;display:flex;align-items:center;transition:color .15s,background .15s;flex-shrink:0}
+.fb-remove:hover{color:var(--accent);background:var(--accent-light)}
+
+/* PAGE SELECTOR */
+.page-selector{display:none;margin-top:1.1rem}
+.page-selector.on{display:block}
+.ps-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.65rem;flex-wrap:wrap;gap:.5rem}
+.ps-label{font-family:'DM Mono',monospace;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.ps-hint{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--muted)}
+.page-tabs{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1rem}
+.page-tab{font-family:'DM Mono',monospace;font-size:.68rem;font-weight:500;background:var(--paper);border:1.5px solid var(--border);border-radius:6px;padding:.28rem .65rem;cursor:pointer;transition:all .15s;color:var(--muted);position:relative}
+.page-tab:hover{border-color:rgba(200,75,47,.45);color:var(--accent)}
+.page-tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.page-tab.has-tables::after{content:'';position:absolute;top:3px;right:3px;width:5px;height:5px;background:var(--green);border-radius:50%;border:1px solid #fff}
+.page-tabs-all{font-family:'DM Mono',monospace;font-size:.66rem;background:transparent;border:1px solid var(--border);border-radius:4px;padding:.22rem .55rem;cursor:pointer;color:var(--muted);transition:all .15s;margin-left:.35rem}
+.page-tabs-all:hover{border-color:var(--accent);color:var(--accent)}
+
+/* TABLE PREVIEW */
+.tables-section{display:none;margin-top:1.1rem}
+.tables-section.on{display:block}
+.tables-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.65rem;flex-wrap:wrap;gap:.5rem}
+.tables-label{font-family:'DM Mono',monospace;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.tables-badge{font-family:'DM Mono',monospace;font-size:.67rem;color:var(--accent);background:var(--accent-light);padding:.18rem .55rem;border-radius:100px;border:1px solid rgba(200,75,47,.2)}
+
+.table-group{margin-bottom:1.1rem}
+.table-group-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:.45rem;flex-wrap:wrap;gap:.4rem}
+.tg-title{font-family:'DM Mono',monospace;font-size:.67rem;font-weight:700;color:var(--ink)}
+.tg-meta{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--muted)}
+.tg-actions{display:flex;gap:.35rem}
+.tg-btn{font-family:'DM Mono',monospace;font-size:.63rem;background:var(--paper);border:1.5px solid var(--border);border-radius:5px;padding:.2rem .55rem;cursor:pointer;color:var(--muted);transition:all .15s;white-space:nowrap}
+.tg-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}
+.tg-btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.tg-btn.primary:hover{background:#a83825}
+
+.table-scroll{overflow-x:auto;border:1px solid var(--border);border-radius:8px;max-height:260px;overflow-y:auto}
+.table-scroll::-webkit-scrollbar{width:5px;height:5px}
+.table-scroll::-webkit-scrollbar-thumb{background:var(--border);border-radius:100px}
+.extracted-table{border-collapse:collapse;font-size:.78rem;min-width:100%;background:#fff}
+.extracted-table th,.extracted-table td{padding:.35rem .6rem;border:1px solid #e8e4de;white-space:nowrap;max-width:220px;overflow:hidden;text-overflow:ellipsis;vertical-align:top}
+.extracted-table thead th{background:var(--cream);font-family:'DM Mono',monospace;font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);position:sticky;top:0;z-index:1}
+.extracted-table tbody tr:nth-child(even){background:#faf9f6}
+.extracted-table tbody tr:hover td{background:var(--accent-light)}
+
+/* NO TABLES NOTICE */
+.no-tables{display:none;background:var(--blue-light);border:1px solid rgba(30,80,162,.18);border-radius:8px;padding:.85rem 1rem;margin-top:1rem}
+.no-tables.on{display:flex;align-items:flex-start;gap:.65rem}
+.no-tables p{font-size:.83rem;color:#1e3a6b;line-height:1.6}
+
+/* OPTIONS */
+.opts-wrap{display:none;margin-top:1.25rem}
+.opts-wrap.on{display:block}
+.opts-row{display:flex;gap:.85rem;flex-wrap:wrap;margin-bottom:1rem;align-items:flex-end}
+.opt-field{display:flex;flex-direction:column;gap:.3rem}
+.opt-lbl{font-family:'DM Mono',monospace;font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
+.opt-select{background:var(--paper);border:1.5px solid var(--border);border-radius:6px;padding:.42rem .75rem;font-family:'DM Mono',monospace;font-size:.8rem;color:var(--ink);outline:none;transition:border-color .2s;cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%237a7567' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .6rem center;padding-right:2rem}
+.opt-select:focus{border-color:var(--accent)}
+.opt-input{background:var(--paper);border:1.5px solid var(--border);border-radius:6px;padding:.42rem .75rem;font-family:'DM Mono',monospace;font-size:.8rem;color:var(--ink);outline:none;transition:border-color .2s}
+.opt-input:focus{border-color:var(--accent)}
+
+/* STATS BAR */
+.stats-bar{display:flex;gap:1.5rem;flex-wrap:wrap;background:var(--cream);border-radius:8px;padding:.65rem 1rem;margin-bottom:1.1rem}
+.stat{font-family:'DM Mono',monospace;font-size:.69rem;color:var(--muted)}
+.stat strong{color:var(--ink);font-weight:700}
+
+/* BUTTONS */
+.action-bar{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn-p{background:var(--accent);color:var(--white);border:none;border-radius:6px;padding:.65rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:.875rem;font-weight:600;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;white-space:nowrap}
+.btn-p:hover{background:#a83825;transform:translateY(-1px)}
+.btn-p:disabled{background:var(--border);color:var(--muted);cursor:not-allowed;transform:none}
+.btn-s{background:transparent;color:var(--ink);border:1.5px solid var(--border);border-radius:6px;padding:.65rem 1.25rem;font-family:'DM Sans',sans-serif;font-size:.875rem;font-weight:500;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:.5rem;white-space:nowrap}
+.btn-s:hover{border-color:var(--ink);background:var(--cream)}
+
+/* PROGRESS */
+.prog-wrap{display:none;margin-top:1.5rem;flex-direction:column;align-items:center;gap:.85rem;background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:2rem}
+.prog-wrap.on{display:flex}
+.prog-spinner{width:44px;height:44px;border:3px solid var(--accent-light);border-top-color:var(--accent);border-radius:50%;animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.prog-lbl{font-family:'DM Mono',monospace;font-size:.78rem;color:var(--muted);text-align:center}
+.prog-bar-wrap{width:100%;max-width:300px;background:var(--border);border-radius:100px;height:5px;overflow:hidden}
+.prog-bar{height:100%;background:var(--accent);border-radius:100px;transition:width .35s ease;width:0%}
+.prog-steps{display:flex;flex-direction:column;gap:.35rem;width:100%;max-width:300px}
+.pstep{display:flex;align-items:center;gap:.5rem;font-family:'DM Mono',monospace;font-size:.65rem;color:#bbb;transition:color .2s}
+.pstep.active{color:var(--accent)}.pstep.done{color:var(--green)}
+.pstep-dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0}
+
+/* RESULTS AREA */
+.result-area{display:none;margin-top:1.5rem}
+.result-area.on{display:block}
+.result-summary{background:var(--paper);border:1.5px solid var(--green);border-radius:10px;padding:1.2rem 1.5rem;display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;margin-bottom:1rem}
+.result-icon{width:48px;height:48px;background:var(--green-light);border:1px solid rgba(26,138,74,.25);border-radius:9px;display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0}
+.result-info{flex:1;min-width:140px}
+.result-title{font-weight:700;font-size:.92rem;color:var(--ink);margin-bottom:.15rem}
+.result-meta{font-family:'DM Mono',monospace;font-size:.66rem;color:var(--muted)}
+.result-btns{display:flex;gap:.6rem;flex-wrap:wrap}
+
+/* ERR */
+.err-box{display:none;margin-top:1.25rem;background:#fff8f8;border:1.5px solid #fca5a5;border-radius:8px;padding:.9rem 1.1rem}
+.err-box.on{display:block}
+.err-box p{font-size:.85rem;color:#dc2626;line-height:1.6}
+
+/* CONTENT */
+.content-section{max-width:1000px;margin:0 auto;padding:4rem 1.5rem}
+.section-tag{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem;display:block}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;letter-spacing:-.02em;margin-bottom:1.25rem;line-height:1.2}
+.content-prose{color:#4a4640;font-size:.975rem;line-height:1.8;max-width:720px}
+.content-prose p{margin-bottom:1rem}
+.content-prose p:last-child{margin-bottom:0}
+hr.divider{border:none;border-top:1px solid var(--border);max-width:1000px;margin:0 auto}
+
+/* HOW IT WORKS */
+.how-section{background:var(--ink);color:var(--paper);padding:2rem;position:relative;overflow:hidden}
+.how-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 100%,rgba(200,75,47,.14) 0%,transparent 70%);pointer-events:none}
+.how-inner{max-width:1000px;margin:0 auto;position:relative}
+.how-hdr{text-align:center;margin-bottom:1.5rem}
+.how-hdr .section-tag{color:#c84b2f}
+.how-hdr .section-title{color:var(--paper);margin-bottom:.3rem}
+.how-sub{color:#9e9990;font-size:.9rem;font-weight:300}
+.steps-grid{display:flex;align-items:stretch;gap:0}
+.step-card{flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:.9rem 1rem;transition:background .25s,border-color .25s,transform .25s}
+.step-card:hover{background:rgba(200,75,47,.08);border-color:rgba(200,75,47,.35);transform:translateY(-4px)}
+.step-conn{display:flex;align-items:center;justify-content:center;padding:0 .5rem;color:rgba(200,75,47,.5);flex-shrink:0;margin-top:-.75rem}
+.step-num{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:rgba(200,75,47,.25);line-height:1;margin-bottom:.3rem}
+.step-ico{width:36px;height:36px;background:rgba(200,75,47,.15);border:1px solid rgba(200,75,47,.3);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:.55rem;color:#c84b2f}
+.step-ttl{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:var(--paper);margin-bottom:.3rem}
+.step-dsc{font-size:.8rem;color:#9e9990;line-height:1.55;margin-bottom:.55rem}
+.step-dsc strong{color:#d4cfc4}
+.step-pill{display:inline-block;font-family:'DM Mono',monospace;font-size:.62rem;color:#c84b2f;background:rgba(200,75,47,.12);border:1px solid rgba(200,75,47,.25);padding:.18rem .55rem;border-radius:100px}
+.how-cta{text-align:center;margin-top:1.5rem;display:flex;flex-direction:column;align-items:center;gap:.55rem}
+.how-note{font-size:.8rem;color:#7a7567;font-family:'DM Mono',monospace}
+
+/* GRIDS */
+.features-grid,.use-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(218px,1fr));gap:1rem;margin-top:2rem}
+.feature-card,.use-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.4rem 1.2rem;transition:box-shadow .2s,transform .2s}
+.feature-card:hover,.use-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.f-ico,.u-ico{font-size:1.75rem;margin-bottom:.7rem;display:block}
+.f-title,.u-title{font-weight:700;font-size:.9rem;margin-bottom:.35rem}
+.f-desc,.u-desc{font-size:.82rem;color:var(--muted);line-height:1.5}
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-top:2rem}
+.tip-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.2rem;transition:box-shadow .2s,transform .2s}
+.tip-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.tip-name{font-weight:700;font-size:.9rem;margin-bottom:.3rem;color:var(--ink)}
+.tip-tag{font-family:'DM Mono',monospace;font-size:.74rem;color:var(--accent);background:var(--accent-light);padding:.2rem .5rem;border-radius:4px;display:inline-block;margin-bottom:.5rem}
+.tip-desc{font-size:.82rem;color:var(--muted);line-height:1.5}
+
+/* FAQ */
+.faq-list{margin-top:2rem}
+.faq-item{border-bottom:1px solid var(--border);padding:1.25rem 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-weight:600;font-size:.95rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-q::after{content:'+';font-size:1.2rem;color:var(--accent);flex-shrink:0;transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-size:.9rem;color:var(--muted);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .3s ease,margin-top .3s}
+.faq-item.open .faq-a{max-height:360px;margin-top:.75rem}
+
+/* CTA */
+.cta-section{background:var(--ink);color:var(--paper);padding:1.5rem 2rem;text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(200,75,47,.18) 0%,transparent 70%);pointer-events:none}
+.cta-inner{max-width:640px;margin:0 auto;position:relative}
+.cta-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-bottom:1rem}
+.cta-desc{font-size:1rem;color:#9e9990;font-weight:300;margin-bottom:1.5rem;line-height:1.7}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.cta-note{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.06em;color:#5a5650;margin-top:1rem;display:block}
+
+/* RELATED */
+.related-section { background: var(--cream); padding: 5rem 2rem; border-top: 1px solid var(--border); }
+.related-inner { max-width: 1000px; margin: 0 auto; }
+.related-header { margin-bottom: 2.5rem; }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+.related-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-decoration: none; color: inherit; display: block; transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s; position: relative; overflow: hidden; }
+.related-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--border); transition: background 0.2s; }
+.related-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); border-color: var(--accent); }
+.related-card:hover::before { background: var(--accent); }
+.related-card-icon { font-size: 1.85rem; margin-bottom: 0.85rem; display: block; }
+.related-card-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem; color: var(--ink); letter-spacing: -0.01em; }
+.related-card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin-bottom: 1rem; }
+.related-card-tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); background: var(--accent-light); padding: 0.2rem 0.5rem; border-radius: 3px; display: inline-block; }
+
+/* FOOTER */
+footer{background:var(--ink);color:#9e9990;padding:4rem 2rem 2rem;margin-top:3rem;border-top:1px solid rgba(255,255,255,0.05)}
+.footer-inner{max-width:1200px;
+  margin-top: 0;
+  border-top: 1px solid rgba(255,255,255,0.05);margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid #2a2a2a}
+.footer-brand .logo{display:block;margin-bottom:.75rem}
+.footer-brand p{font-size:.85rem;line-height:1.6;max-width:240px}
+.footer-social{display:flex;margin-top:1rem}
+.social-icon{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;color:#9e9990;transition:color .2s,transform .2s}
+.social-icon:hover{color:var(--paper);transform:translateY(-2px)}
+.footer-col-title{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--paper);font-weight:600;margin-bottom:1rem}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.footer-links a{color:#9e9990;text-decoration:none;font-size:.85rem;transition:color .2s}
+.footer-links a:hover{color:var(--paper)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;font-size:.8rem;flex-wrap:wrap;gap:.75rem}
+
+/* TOAST */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--ink);color:var(--paper);padding:.75rem 1.5rem;border-radius:6px;font-size:.875rem;font-weight:500;transition:transform .3s cubic-bezier(.34,1.56,.64,1);z-index:999;border-left:3px solid var(--accent);white-space:nowrap;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeUp .6s ease both}
+.delay-1{animation-delay:.1s}
+@media(max-width:768px){nav{display:none}.mobile-menu-toggle {display:flex}.steps-grid{flex-direction:column}.step-conn{transform:rotate(90deg);padding:.25rem 0}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr;gap:2rem}.footer-bottom{flex-direction:column;text-align:center}.result-summary{flex-direction:column;text-align:center}.result-btns{justify-content:center}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">JPG2<span>Go</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="tools.html">Tools</a>
+      <a href="#tool" class="nav-cta">Convert Now</a>
+    </nav>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="tools.html" onclick="closeMobileMenu()">Tools</a>
+    <a href="#tool" class="nav-cta" onclick="closeMobileMenu()">Convert Now</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="fade-up">
+    <div class="hero-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg>
+            Extract PDF Data Online
+    </div>
+    <h1>Convert PDF to CSV</h1>
+    <p class="hero-desc">Extract data tables from PDF documents and convert them into CSV format for spreadsheet editing and data analysis.</p>
+    <div class="hero-pills">
+      <span class="hero-pill">Auto Table Detection</span>
+      <span class="hero-pill">All Pages</span>
+      <span class="hero-pill">Per-Table Download</span>
+      <span class="hero-pill">CSV &amp; TSV Output</span>
+      <span class="hero-pill">100% Private</span>
+    </div>
+  </div>
+</section>
+
+<section class="tool-section" id="tool">
+  <div class="tool-card fade-up delay-1">
+    <div class="tool-card-header">
+      <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+      <span class="tc-title">pdf-to-csv · pdf.js text extraction · auto table detection · per-table CSV · zero upload</span>
+    </div>
+    <div class="tool-body">
+
+      <!-- Drop Zone -->
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" accept=".pdf,application/pdf">
+        <div class="drop-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg>
+        </div>
+        <h3>Drop your PDF here</h3>
+        <p>Extract data tables from PDF documents and convert them into CSV format for spreadsheet editing and data analysis.</p>
+        <span class="formats-pill">PDF → CSV · table extraction · all pages</span>
+      </div>
+
+      <!-- File Bar -->
+      <div class="file-bar" id="fileBar">
+        <span class="fb-icon">
+          <svg width="18" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </span>
+        <div class="fb-info">
+          <div class="fb-name" id="fbName">—</div>
+          <div class="fb-meta" id="fbMeta">—</div>
+        </div>
+        <button class="fb-remove" id="fbRemove" aria-label="Remove">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <!-- Page Selector -->
+      <div class="page-selector" id="pageSelector">
+        <div class="ps-header">
+          <span class="ps-label">Pages</span>
+          <span class="ps-hint">🟢 dot = table detected on this page</span>
+        </div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:.35rem">
+          <div class="page-tabs" id="pageTabs"></div>
+          <button class="page-tabs-all" id="selectAllPages">All pages</button>
+        </div>
+      </div>
+
+      <!-- Progress -->
+      <div class="prog-wrap" id="progWrap">
+        <div class="prog-spinner"></div>
+        <div class="prog-lbl" id="progLbl">Loading PDF…</div>
+        <div class="prog-bar-wrap"><div class="prog-bar" id="progBar"></div></div>
+        <div class="prog-steps">
+          <div class="pstep" id="ps1"><span class="pstep-dot"></span>Loading PDF with pdf.js</div>
+          <div class="pstep" id="ps2"><span class="pstep-dot"></span>Extracting text positions</div>
+          <div class="pstep" id="ps3"><span class="pstep-dot"></span>Detecting table structure</div>
+          <div class="pstep" id="ps4"><span class="pstep-dot"></span>Building CSV output</div>
+        </div>
+      </div>
+
+      <!-- Tables Section -->
+      <div class="tables-section" id="tablesSection">
+        <div class="tables-header">
+          <span class="tables-label">Extracted Tables</span>
+          <span class="tables-badge" id="tablesBadge">0 tables</span>
+        </div>
+        <div id="tablesContainer"></div>
+      </div>
+
+      <!-- No tables notice -->
+      <div class="no-tables" id="noTables">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--blue);flex-shrink:0;margin-top:.05rem"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16" stroke-width="3"/></svg>
+        <p id="noTablesText">No tables were detected on the selected pages. Tables must contain structured, aligned text arranged in rows and columns. Scanned PDFs (image-based) cannot be extracted — the PDF must contain selectable text.</p>
+      </div>
+
+      <!-- Options + global actions -->
+      <div class="opts-wrap" id="optsWrap">
+        <div class="opts-row">
+          <div class="opt-field">
+            <span class="opt-lbl">Delimiter</span>
+            <select class="opt-select" id="delimSelect">
+              <option value=",">Comma (CSV)</option>
+              <option value="\t">Tab (TSV)</option>
+              <option value=";">Semicolon</option>
+              <option value="|">Pipe</option>
+            </select>
+          </div>
+          <div class="opt-field">
+            <span class="opt-lbl">Quoting</span>
+            <select class="opt-select" id="quoteSelect">
+              <option value="auto" selected>Auto (quote when needed)</option>
+              <option value="always">Always quote cells</option>
+              <option value="never">Never quote</option>
+            </select>
+          </div>
+          <div class="opt-field">
+            <span class="opt-lbl">Header Row</span>
+            <select class="opt-select" id="headerSelect">
+              <option value="auto" selected>Auto-detect</option>
+              <option value="first">First row is header</option>
+              <option value="none">No header</option>
+            </select>
+          </div>
+          <div class="opt-field">
+            <span class="opt-lbl">Encoding</span>
+            <select class="opt-select" id="encodingSelect">
+              <option value="utf8" selected>UTF-8</option>
+              <option value="utf8bom">UTF-8 with BOM (Excel)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="stats-bar">
+          <div class="stat">Tables found: <strong id="statTables">0</strong></div>
+          <div class="stat">Total rows: <strong id="statRows">0</strong></div>
+          <div class="stat">Pages scanned: <strong id="statPages">0</strong></div>
+        </div>
+
+        <div class="action-bar">
+          <button class="btn-p" id="downloadAllBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download All Tables as CSV
+          </button>
+          <button class="btn-s" id="clearBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
+            Clear
+          </button>
+        </div>
+      </div>
+
+      <!-- Error -->
+      <div class="err-box" id="errBox"><p id="errText"></p></div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="how-section" id="how-it-works">
+  <div class="how-inner">
+    <div class="how-hdr">
+      <span class="section-tag">Quick Guide</span>
+      <h2 class="section-title">How to Convert PDF to CSV</h2>
+      <p class="how-sub">Three steps. Automatic detection. No account.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+        <div class="step-ttl">Upload Your PDF</div>
+        <div class="step-dsc">Drop or select a <strong>PDF with tables</strong>. pdf.js extracts all text positions from every page — nothing is sent to a server.</div>
+        <span class="step-pill">any text-based PDF</span>
+      </div>
+      <div class="step-conn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg></div>
+        <div class="step-ttl">Review Detected Tables</div>
+        <div class="step-dsc">Tables are <strong>automatically detected</strong> by clustering text into rows and columns. Click page numbers to see specific pages. Preview each table before downloading.</div>
+        <span class="step-pill">auto-detect · preview</span>
+      </div>
+      <div class="step-conn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+        <div class="step-ttl">Download CSV</div>
+        <div class="step-dsc">Download individual tables or all tables combined. Choose delimiter, quoting, and encoding. Opens directly in Excel or Google Sheets.</div>
+        <span class="step-pill">CSV · TSV · instant</span>
+      </div>
+    </div>
+    <div class="how-cta">
+      <a href="#tool" class="btn-p">Extract Tables Now</a>
+      <span class="how-note">free · no signup · no upload · no watermark</span>
+    </div>
+  </div>
+</section>
+
+<section class="content-section" id="about">
+  <h2 class="section-title">Why Use PDF to CSV Converter?</h2>
+  <div class="content-prose">
+    <p>Many reports and documents contain important tables stored inside PDF files. Extracting this data manually can be slow and error-prone. A PDF to CSV converter simplifies the process by converting table data into a format that can be opened in spreadsheet tools like Excel or Google Sheets.</p>
+    <p>Once converted to CSV format, the information becomes fully editable and easier to analyze. Users can sort rows, filter values, or perform calculations directly within spreadsheet software.</p>
+    <p>For analysts, researchers, and businesses that deal with data-heavy reports, this tool saves time and helps transform static PDF tables into structured datasets that can be organized, studied, and processed more efficiently.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══ FEATURES ══ -->
+<section class="content-section" id="features">
+  <span class="section-tag">Features</span>
+  <h2 class="section-title">Everything in One PDF to CSV Converter</h2>
+  <div class="features-grid">
+    <div class="feature-card"><span class="f-ico">📊</span><div class="f-title">Auto Table Detection</div><div class="f-desc">Tables are detected automatically from text positions — no manual column selection or zone drawing required.</div></div>
+    <div class="feature-card"><span class="f-ico">📄</span><div class="f-title">All Pages at Once</div><div class="f-desc">Scans every page and extracts all tables simultaneously. Green dots on page buttons indicate pages with tables.</div></div>
+    <div class="feature-card"><span class="f-ico">👁️</span><div class="f-title">Live Table Preview</div><div class="f-desc">Each detected table is shown as a styled preview grid before downloading — verify the data looks correct first.</div></div>
+    <div class="feature-card"><span class="f-ico">📁</span><div class="f-title">Per-Table Download</div><div class="f-desc">Download each table as a separate CSV file, or download all tables combined into a single file with table separators.</div></div>
+    <div class="feature-card"><span class="f-ico">⚙️</span><div class="f-title">Delimiter Options</div><div class="f-desc">CSV (comma), TSV (tab), semicolon, or pipe — choose the delimiter that works best for your target application.</div></div>
+    <div class="feature-card"><span class="f-ico">📝</span><div class="f-title">Encoding Control</div><div class="f-desc">UTF-8 or UTF-8 with BOM — the BOM variant ensures Excel on Windows opens the file with correct character encoding.</div></div>
+    <div class="feature-card"><span class="f-ico">🔒</span><div class="f-title">100% Private</div><div class="f-desc">Your PDF never leaves your device. pdf.js runs entirely in the browser — no server, no cloud, no analytics on your content.</div></div>
+    <div class="feature-card"><span class="f-ico">💸</span><div class="f-title">Free Forever</div><div class="f-desc">No subscription, no credits, no watermark. JPG2Go is free for everyone, always.</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══ WHO USES THIS ══ -->
+<section class="content-section">
+  <span class="section-tag">Who It's For</span>
+  <h2 class="section-title">Who Uses a PDF to CSV Converter?</h2>
+  <div class="use-grid">
+    <div class="use-card"><span class="u-ico">📈</span><div class="u-title">Financial Reports</div><div class="u-desc">Extract income statements, balance sheets, and financial tables from PDF reports for analysis in Excel or Python.</div></div>
+    <div class="use-card"><span class="u-ico">🧾</span><div class="u-title">Invoice Data</div><div class="u-desc">Pull line items, quantities, and amounts from PDF invoices into a spreadsheet for accounting or reconciliation.</div></div>
+    <div class="use-card"><span class="u-ico">📋</span><div class="u-title">Government Data</div><div class="u-desc">Governments publish data tables in PDF reports. Extract them to CSV for use in analysis tools, databases, or dashboards.</div></div>
+    <div class="use-card"><span class="u-ico">🔬</span><div class="u-title">Research Papers</div><div class="u-desc">Academic papers publish results in tables. Extract experimental data, statistics, and measurements to CSV for re-analysis.</div></div>
+    <div class="use-card"><span class="u-ico">🏥</span><div class="u-title">Medical Records</div><div class="u-desc">Extract test result tables, medication lists, and clinical data from PDF health records into structured spreadsheets.</div></div>
+    <div class="use-card"><span class="u-ico">⚖️</span><div class="u-title">Legal Discovery</div><div class="u-desc">Extract tabular data from PDF contracts, filings, and court documents for import into case management systems.</div></div>
+    <div class="use-card"><span class="u-ico">🏗️</span><div class="u-title">Product Catalogues</div><div class="u-desc">Pull product codes, prices, and specifications from PDF catalogues into a spreadsheet for import into e-commerce platforms.</div></div>
+    <div class="use-card"><span class="u-ico">📊</span><div class="u-title">Survey Results</div><div class="u-desc">Extract response tables from PDF survey reports into CSV for pivot table analysis or further statistical processing.</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══ PRO TIPS ══ -->
+<section class="content-section">
+  <span class="section-tag">Pro Tips</span>
+  <h2 class="section-title">Get the Best Results</h2>
+  <div class="tips-grid">
+    <div class="tip-card">
+      <div class="tip-name">Use UTF-8 with BOM for Excel on Windows</div>
+      <div class="tip-tag">tip → encoding</div>
+      <div class="tip-desc">If you're opening the CSV in Microsoft Excel on Windows and seeing garbled characters (especially for non-English text), switch the Encoding option to "UTF-8 with BOM". The BOM (Byte Order Mark) tells Excel to interpret the file as UTF-8 rather than the Windows-1252 default.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">Scanned PDFs Cannot Be Extracted</div>
+      <div class="tip-tag">tip → file type</div>
+      <div class="tip-desc">This tool extracts text positions — it requires a text-based PDF where text is selectable. Scanned documents are images; there is no underlying text to extract. For scanned PDFs, first run them through an OCR tool (e.g., Adobe Acrobat's "Recognize Text", or an online OCR service) to generate a text-based PDF, then extract here.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">Semi-colon Delimiter for European Excel</div>
+      <div class="tip-tag">tip → delimiter</div>
+      <div class="tip-desc">In European locales, Excel uses semicolon (;) as the CSV list separator rather than comma, because comma is used as the decimal separator. If you're in Germany, France, Spain, or most of continental Europe, choose Semicolon as your delimiter to ensure Excel recognises the file as a proper spreadsheet.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">Use Tab for Complex Data</div>
+      <div class="tip-tag">tip → delimiter</div>
+      <div class="tip-desc">If your PDF table cells contain commas (e.g., "Smith, John" or "$1,234.56"), using a comma delimiter will break those cells across multiple columns. Switch to Tab (TSV) — tab characters rarely appear in cell content, making it a safer delimiter for financial and address data.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">Try Different Pages for Multi-Page Tables</div>
+      <div class="tip-tag">tip → multi-page tables</div>
+      <div class="tip-desc">Tables that span multiple PDF pages appear as separate tables in the extraction results — one per page. To merge them, download each page's table as CSV, then combine them in your spreadsheet application (paste rows below each other, removing the header from the second page onwards).</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">Check the Preview Before Downloading</div>
+      <div class="tip-tag">tip → quality check</div>
+      <div class="tip-desc">Always review the table preview grid before downloading. Column alignment issues (cells merged into wrong columns, data shifted) indicate the PDF uses unusual spacing. In those cases, try adjusting the column tolerance — or copy the text directly from the PDF and paste it into a spreadsheet manually.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══ FAQ ══ -->
+<section class="content-section" id="faq">
+  <span class="section-tag">FAQ</span>
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">What does a PDF to CSV converter do?</div>
+      <div class="faq-a">It extracts structured data such as tables from PDF documents and converts them into CSV spreadsheet format.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Why convert PDF tables into CSV files?</div>
+      <div class="faq-a">CSV files can be easily opened in spreadsheet software for editing, sorting, and analyzing data.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Will table columns remain organized after conversion?</div>
+      <div class="faq-a">Good converters attempt to keep the table structure intact during the conversion process.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can CSV files be opened in Excel?</div>
+      <div class="faq-a">Yes, CSV files are fully compatible with Excel and many other spreadsheet programs.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is PDF to CSV conversion useful for data analysis?</div>
+      <div class="faq-a">Yes, it helps transform static PDF tables into editable data for analysis or reporting.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can large PDF files with many tables be converted?</div>
+      <div class="faq-a">Many online converters support large documents and extract data from multiple pages.</div>
+    </div>
+  </div>
+</section>
+
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-header">
+      <span class="section-tag">Related Tools</span>
+      <h2 class="section-title">More Free Online Tools</h2>
+    </div>
+    <div class="related-grid">
+      <a href="/jpg-to-pdf" class="related-card">
+        <span class="related-card-icon">📄</span>
+        <div class="related-card-name">JPG to PDF</div>
+        <div class="related-card-desc">Convert JPG images to PDF documents quickly. Combine multiple photos into a single organized PDF file for easy sharing and printing.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+      <a href="/image-resizer" class="related-card">
+        <span class="related-card-icon">📐</span>
+        <div class="related-card-name">Image Resizer</div>
+        <div class="related-card-desc">Resize images to exact pixel dimensions or a percentage of their original size. Runs entirely in your browser without uploading files anywhere.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/compress-jpeg" class="related-card">
+        <span class="related-card-icon">🗜️</span>
+        <div class="related-card-name">Compress JPEG</div>
+        <div class="related-card-desc">Reduce JPEG image file size while maintaining quality. Optimize images for faster web pages and lower storage usage.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/merge-pdf" class="related-card">
+        <span class="related-card-icon">📎</span>
+        <div class="related-card-name">Merge PDF</div>
+        <div class="related-card-desc">Combine multiple PDF files into a single organized document. Drag and drop to reorder pages easily.</div>
+        <span class="related-card-tag">PDF</span>
+      </a>
+      <a href="/crop-image" class="related-card">
+        <span class="related-card-icon">✂️</span>
+        <div class="related-card-name">Crop Image</div>
+        <div class="related-card-desc">Crop images to any aspect ratio or custom dimensions. Perfect for social media thumbnails, profile photos, and banner images.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/format-converter" class="related-card">
+        <span class="related-card-icon">🔄</span>
+        <div class="related-card-name">Format Converter</div>
+        <div class="related-card-desc">Convert images between different formats instantly. Transform JPG, PNG, WebP, and other image formats quickly.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner">
+    <h2 class="cta-title">Ready to Extract?</h2>
+    <p class="cta-desc">Convert tables and structured data from PDF files into editable CSV spreadsheets instantly.</p>
+    <div class="cta-actions">
+      <a href="#tool" class="btn-p">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg>
+        Extract Tables Now
+      </a>
+    </div>
+    <span class="cta-note">free · browser-native · no signup required</span>
+  </div>
+</section>
+
+
+
+<!-- ══ FOOTER ══ -->
+<div id="footer-placeholder"></div>
+<script src="load-footer.js"></script>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// Configure pdf.js worker
+if (window.pdfjsLib) {
+  pdfjsLib.GlobalWorkerOptions.workerSrc =
+    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+}
+
+// ═══════════════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════════════
+let pdfDoc   = null;
+let srcFile  = null;
+let currentLoadToken = 0;
+let allPageData   = {};  // pageNum → [{text, x, y, w, h}]
+let allPageTables = {};  // pageNum → [[[cell,…],…],…]  (array of tables, each table is array of rows)
+let selectedPages = new Set();
+let totalPages = 0;
+
+// ═══════════════════════════════════════════════════════════════
+// HELPERS
+// ═══════════════════════════════════════════════════════════════
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+function fmtSize(b) {
+  if (b < 1024) return b + ' B';
+  if (b < 1048576) return (b/1024).toFixed(1) + ' KB';
+  return (b/1048576).toFixed(2) + ' MB';
+}
+function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
+function setP(pct, msg) {
+  document.getElementById('progBar').style.width = pct + '%';
+  if (msg !== undefined) document.getElementById('progLbl').textContent = msg;
+}
+function setStep(idx) {
+  ['ps1','ps2','ps3','ps4'].forEach((id, i) => {
+    const el = document.getElementById(id);
+    el.classList.remove('active','done');
+    if (i < idx) el.classList.add('done');
+    else if (i === idx) el.classList.add('active');
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// MOBILE MENU
+// ═══════════════════════════════════════════════════════════════
+document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+  this.classList.toggle('active');
+  document.getElementById('mobileNav').classList.toggle('active');
+});
+
+// ═══════════════════════════════════════════════════════════════
+// FILE INPUT
+// ═══════════════════════════════════════════════════════════════
+const dropZone = document.getElementById('dropZone');
+document.getElementById('fileInput').addEventListener('change', e => {
+  if (e.target.files[0]) loadPdf(e.target.files[0]);
+  e.target.value = '';
+});
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault(); dropZone.classList.remove('drag-over');
+  const f = Array.from(e.dataTransfer.files).find(f =>
+    f.type === 'application/pdf' || f.name.toLowerCase().endsWith('.pdf')
+  );
+  if (f) loadPdf(f); else toast('Please drop a PDF file');
+});
+
+async function loadPdf(file) {
+  if (!window.pdfjsLib) { toast('pdf.js is still loading — please wait a moment'); return; }
+  if (!file || !file.name) { toast('Invalid file'); return; }
+  const isPdf = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
+  if (!isPdf) { toast('Please select a PDF file'); return; }
+  if (file.size === 0) { toast('This PDF is empty (0 bytes)'); return; }
+
+  // Cancel any in-flight load
+  const loadToken = ++currentLoadToken;
+
+  // Cleanup previous doc if any
+  if (pdfDoc) {
+    try { await pdfDoc.destroy(); } catch (_) {}
+    pdfDoc = null;
+  }
+  srcFile = file;
+  resetUI(false);
+
+  document.getElementById('fbName').textContent = file.name;
+  document.getElementById('fbMeta').textContent = fmtSize(file.size) + ' · PDF';
+  document.getElementById('fileBar').classList.add('on');
+  dropZone.style.display = 'none';
+
+  document.getElementById('progWrap').classList.add('on');
+  setP(0); setStep(0);
+  await wait(50);
+
+  try {
+    setStep(0); setP(8, 'Loading PDF with pdf.js…');
+    const arrayBuffer = await file.arrayBuffer();
+    if (loadToken !== currentLoadToken) return; // cancelled
+
+    pdfDoc = await pdfjsLib.getDocument({
+      data: arrayBuffer,
+      // If the PDF is password-protected, pdf.js will throw; we surface a clear message in catch.
+    }).promise;
+
+    if (loadToken !== currentLoadToken) return; // cancelled
+    totalPages = pdfDoc.numPages;
+    if (!totalPages || totalPages <= 0) throw new Error('PDF has no pages');
+    setP(20);
+    await wait(20);
+
+    // Extract text items from all pages
+    setStep(1); setP(25, 'Extracting text positions…');
+    allPageData   = {};
+    allPageTables = {};
+
+    for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
+      if (loadToken !== currentLoadToken) return; // cancelled
+      setP(25 + Math.round(((pageNum - 1) / totalPages) * 40), `Extracting page ${pageNum} of ${totalPages}…`);
+      try {
+        const page = await pdfDoc.getPage(pageNum);
+        const textContent = await page.getTextContent({ normalizeWhitespace: true });
+        const vp = page.getViewport({ scale: 1 });
+
+        // Convert items to {text, x, y, w, h} with y measured from top
+        const items = (textContent.items || [])
+          .filter(item => item?.str && item.str.trim())
+          .map(item => ({
+            text: item.str,
+            x:    item.transform?.[4] ?? 0,
+            y:    vp.height - (item.transform?.[5] ?? 0),  // flip to top-origin
+            w:    item.width  || (item.str.length * 6),
+            h:    item.height || 10,
+          }))
+          .filter(it => Number.isFinite(it.x) && Number.isFinite(it.y));
+
+        allPageData[pageNum] = items;
+        allPageTables[pageNum] = detectTables(items);
+      } catch (pageErr) {
+        // Keep going; some PDFs have broken pages
+        console.warn('Failed to extract page', pageNum, pageErr);
+        allPageData[pageNum] = [];
+        allPageTables[pageNum] = [];
+      }
+
+      await wait(5);
+    }
+
+    // Build page tabs
+    setStep(2); setP(68, 'Detecting table structure…');
+    await wait(20);
+
+    buildPageTabs();
+
+    // Select all pages by default, show all results
+    setStep(3); setP(90, 'Building CSV output…');
+    await wait(20);
+
+    selectedPages = new Set(Array.from({length: totalPages}, (_, i) => i + 1));
+    renderResults();
+
+    setP(100, 'Done!');
+    await wait(80);
+    document.getElementById('progWrap').classList.remove('on');
+
+    const totalTables = Object.values(allPageTables).reduce((s, ts) => s + ts.length, 0);
+    toast(totalTables + ' table' + (totalTables !== 1 ? 's' : '') + ' found across ' + totalPages + ' page' + (totalPages !== 1 ? 's' : ''));
+
+  } catch(err) {
+    document.getElementById('progWrap').classList.remove('on');
+    document.getElementById('errBox').classList.add('on');
+    const msg = (err && (err.message || String(err))) || 'Unknown error';
+    const isPassword = err?.name === 'PasswordException' || /password/i.test(msg);
+    document.getElementById('errText').textContent = isPassword
+      ? 'This PDF is password-protected/encrypted. Please unlock it first (use JPG2Go → Unlock PDF), then try again.'
+      : 'Could not process PDF: ' + msg + '. Make sure this is a text-based PDF (not a scanned image).';
+    toast('Error — ' + msg);
+    console.error(err);
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// TABLE DETECTION ALGORITHM
+// ═══════════════════════════════════════════════════════════════
+function detectTables(items) {
+  if (!items.length) return [];
+
+  const ROW_TOL  = 4;   // Y tolerance for same row (pts)
+  const ROW_GAP  = 14;  // Max Y gap between consecutive rows in a table
+  const MIN_COLS = 2;   // Minimum columns to be considered a table
+  const MIN_ROWS = 2;   // Minimum rows to be considered a table
+  const COL_TOL  = 12;  // X tolerance for same column
+
+  // 1. Group items into rows by Y coordinate
+  const rowMap = new Map();
+  for (const item of items) {
+    const ry = Math.round(item.y / ROW_TOL) * ROW_TOL;
+    if (!rowMap.has(ry)) rowMap.set(ry, []);
+    rowMap.get(ry).push(item);
+  }
+
+  // Sort rows by Y, sort items within each row by X
+  const rows = Array.from(rowMap.entries())
+    .sort((a, b) => a[0] - b[0])
+    .map(([y, items]) => ({
+      y,
+      items: items.sort((a, b) => a.x - b.x),
+    }));
+
+  // 2. Cluster consecutive rows into tables by vertical gap + column count alignment
+  const tableGroups = [];
+  let currentGroup = [rows[0]];
+
+  for (let i = 1; i < rows.length; i++) {
+    const gap = rows[i].y - rows[i-1].y;
+    if (gap <= ROW_GAP) {
+      currentGroup.push(rows[i]);
+    } else {
+      tableGroups.push(currentGroup);
+      currentGroup = [rows[i]];
+    }
+  }
+  tableGroups.push(currentGroup);
+
+  // 3. For each group with enough rows and columns, extract table data
+  const tables = [];
+
+  for (const group of tableGroups) {
+    if (group.length < MIN_ROWS) continue;
+
+    // Find all distinct X column positions across this group
+    const xPositions = group.flatMap(r => r.items.map(i => i.x));
+    const colCenters = clusterPositions(xPositions, COL_TOL);
+
+    if (colCenters.length < MIN_COLS) continue;
+
+    // Assign each item to a column
+    const tableRows = group.map(row => {
+      const cells = new Array(colCenters.length).fill('');
+      for (const item of row.items) {
+        // Find nearest column center
+        let bestCol = 0, bestDist = Infinity;
+        for (let c = 0; c < colCenters.length; c++) {
+          const dist = Math.abs(item.x - colCenters[c]);
+          if (dist < bestDist) { bestDist = dist; bestCol = c; }
+        }
+        // Append text to cell (handles multi-word cells)
+        cells[bestCol] = cells[bestCol]
+          ? cells[bestCol] + ' ' + item.text
+          : item.text;
+      }
+      return cells;
+    });
+
+    // Filter out rows that are entirely empty
+    const cleanRows = tableRows.filter(r => r.some(c => c.trim()));
+    if (cleanRows.length >= MIN_ROWS) tables.push(cleanRows);
+  }
+
+  return tables;
+}
+
+// K-means-like 1D position clustering
+function clusterPositions(positions, tolerance) {
+  if (!positions.length) return [];
+  const sorted = [...new Set(positions.map(p => Math.round(p)))].sort((a,b)=>a-b);
+  const clusters = [];
+  let group = [sorted[0]];
+  for (let i = 1; i < sorted.length; i++) {
+    if (sorted[i] - sorted[i-1] <= tolerance) {
+      group.push(sorted[i]);
+    } else {
+      clusters.push(group.reduce((s,v)=>s+v,0)/group.length);
+      group = [sorted[i]];
+    }
+  }
+  clusters.push(group.reduce((s,v)=>s+v,0)/group.length);
+  return clusters;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// BUILD PAGE TABS
+// ═══════════════════════════════════════════════════════════════
+function buildPageTabs() {
+  const container = document.getElementById('pageTabs');
+  container.innerHTML = '';
+  for (let p = 1; p <= totalPages; p++) {
+    const hasTables = (allPageTables[p] || []).length > 0;
+    const btn = document.createElement('button');
+    btn.className = 'page-tab active' + (hasTables ? ' has-tables' : '');
+    btn.textContent = p;
+    btn.dataset.page = p;
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('active');
+      if (btn.classList.contains('active')) selectedPages.add(p);
+      else selectedPages.delete(p);
+      renderResults();
+    });
+    container.appendChild(btn);
+  }
+  document.getElementById('pageSelector').classList.add('on');
+}
+
+document.getElementById('selectAllPages').addEventListener('click', () => {
+  selectedPages = new Set(Array.from({length: totalPages}, (_,i)=>i+1));
+  document.querySelectorAll('.page-tab').forEach(b => b.classList.add('active'));
+  renderResults();
+});
+
+// ═══════════════════════════════════════════════════════════════
+// RENDER RESULTS
+// ═══════════════════════════════════════════════════════════════
+function renderResults() {
+  const container = document.getElementById('tablesContainer');
+  container.innerHTML = '';
+  document.getElementById('noTables').classList.remove('on');
+  document.getElementById('tablesSection').classList.remove('on');
+  document.getElementById('optsWrap').classList.remove('on');
+
+  // Collect visible tables
+  const visible = [];
+  for (const p of [...selectedPages].sort((a,b)=>a-b)) {
+    const tables = allPageTables[p] || [];
+    tables.forEach((table, ti) => {
+      visible.push({ page: p, tableIdx: ti, table });
+    });
+  }
+
+  // Stats
+  const totalRows = visible.reduce((s, v) => s + v.table.length, 0);
+  document.getElementById('statTables').textContent = visible.length;
+  document.getElementById('statRows').textContent   = totalRows;
+  document.getElementById('statPages').textContent  = selectedPages.size;
+
+  if (!visible.length) {
+    document.getElementById('noTables').classList.add('on');
+    const scanned = Object.values(allPageData).every(items => items.length === 0);
+    document.getElementById('noTablesText').textContent = scanned
+      ? 'No text could be extracted from this PDF. It appears to be a scanned (image-based) PDF. Run it through an OCR tool first to make the text selectable, then try again.'
+      : 'No tables were detected on the selected pages. The PDF contains text, but it is not arranged in the rows-and-columns pattern the detector expects. Try selecting individual pages with the green-dot indicators.';
+    return;
+  }
+
+  document.getElementById('tablesSection').classList.add('on');
+  document.getElementById('tablesBadge').textContent = visible.length + ' table' + (visible.length !== 1 ? 's' : '');
+  document.getElementById('optsWrap').classList.add('on');
+
+  // Render each table
+  visible.forEach(({ page, tableIdx, table }, idx) => {
+    const group = document.createElement('div');
+    group.className = 'table-group';
+
+    const hdr = document.createElement('div');
+    hdr.className = 'table-group-hdr';
+    hdr.innerHTML = `
+      <span class="tg-title">Table ${idx + 1} — Page ${page}${totalPages > 1 ? ` of ${totalPages}` : ''}</span>
+      <span class="tg-meta">${table.length} rows × ${table[0]?.length || 0} cols</span>
+      <div class="tg-actions">
+        <button class="tg-btn primary" data-tidx="${idx}">⬇ Download CSV</button>
+      </div>`;
+    group.appendChild(hdr);
+
+    // Table preview
+    const scroll = document.createElement('div');
+    scroll.className = 'table-scroll';
+    const tbl = document.createElement('table');
+    tbl.className = 'extracted-table';
+    const showHeader = shouldUseHeader(table);
+    if (showHeader && table.length > 0) {
+      const thead = document.createElement('thead');
+      const tr = document.createElement('tr');
+      table[0].forEach(cell => {
+        const th = document.createElement('th');
+        th.textContent = cell || '—';
+        tr.appendChild(th);
+      });
+      thead.appendChild(tr);
+      tbl.appendChild(thead);
+    }
+    const tbody = document.createElement('tbody');
+    const startRow = showHeader ? 1 : 0;
+    for (let r = startRow; r < Math.min(table.length, 50); r++) {
+      const tr = document.createElement('tr');
+      table[r].forEach(cell => {
+        const td = document.createElement('td');
+        td.textContent = cell || '';
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    }
+    if (table.length > 50) {
+      const tr = document.createElement('tr');
+      const td = document.createElement('td');
+      td.colSpan = table[0]?.length || 1;
+      td.style.cssText = 'text-align:center;font-family:"DM Mono",monospace;font-size:.65rem;color:var(--muted);padding:.5rem';
+      td.textContent = `… ${table.length - 50} more rows (not shown in preview)`;
+      tr.appendChild(td); tbody.appendChild(tr);
+    }
+    tbl.appendChild(tbody);
+    scroll.appendChild(tbl);
+    group.appendChild(scroll);
+    container.appendChild(group);
+
+    // Download handler
+    hdr.querySelector('[data-tidx]').addEventListener('click', () => {
+      downloadTableAsCsv(table, `table-${idx + 1}-page-${page}`);
+    });
+  });
+}
+
+function shouldUseHeader(table) {
+  const mode = document.getElementById('headerSelect').value;
+  if (mode === 'first') return true;
+  if (mode === 'none') return false;
+  // Auto: header row if first row looks like headers (shorter, possibly bold, or consistent non-numeric)
+  if (!table.length || !table[0]) return false;
+  const firstRow = table[0];
+  const hasNumeric = firstRow.some(c => /^\s*-?[\d,.]+\s*$/.test(c));
+  return !hasNumeric;
+}
+
+document.getElementById('headerSelect').addEventListener('change', () => { if (Object.keys(allPageTables).length) renderResults(); });
+
+// ═══════════════════════════════════════════════════════════════
+// CSV GENERATION
+// ═══════════════════════════════════════════════════════════════
+function tableTocsv(table) {
+  const rawDelim = document.getElementById('delimSelect').value;
+  const delim    = rawDelim === '\\t' ? '\t' : rawDelim;
+  const quoting  = document.getElementById('quoteSelect').value;
+  const bom      = document.getElementById('encodingSelect').value === 'utf8bom';
+
+  function escapeCell(cell) {
+    const s = String(cell ?? '');
+    const needsQuote = quoting === 'always' ||
+      (quoting === 'auto' && (s.includes(delim) || s.includes('"') || s.includes('\n') || s.includes('\r')));
+    if (quoting === 'never') return s.replace(/"/g, '""');
+    if (needsQuote) return '"' + s.replace(/"/g, '""') + '"';
+    return s;
+  }
+
+  const csv = table.map(row => (row || []).map(escapeCell).join(delim)).join('\r\n');
+  return (bom ? '\uFEFF' : '') + csv;
+}
+
+function sanitizeFilename(name) {
+  const base = String(name || 'tables')
+    .replace(/[\\\/:*?"<>|]+/g, '-')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return base || 'tables';
+}
+
+function downloadCsvBlob(content, filename) {
+  const blob = new Blob([content], { type: 'text/csv;charset=utf-8;' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href = url;
+  a.download = sanitizeFilename(filename);
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 8000);
+}
+
+function downloadTableAsCsv(table, baseName) {
+  const ext  = document.getElementById('delimSelect').value === '\\t' ? '.tsv' : '.csv';
+  downloadCsvBlob(tableTocsv(table), baseName + ext);
+  toast('Downloading ' + baseName + ext + '…');
+}
+
+document.getElementById('downloadAllBtn').addEventListener('click', () => {
+  const visible = [];
+  for (const p of [...selectedPages].sort((a,b)=>a-b)) {
+    (allPageTables[p] || []).forEach((t, ti) => visible.push({ page:p, ti, table:t }));
+  }
+  if (!visible.length) { toast('No tables to download'); return; }
+
+  const rawDelim = document.getElementById('delimSelect').value;
+  const delim    = rawDelim === '\\t' ? '\t' : rawDelim;
+  const bom      = document.getElementById('encodingSelect').value === 'utf8bom';
+  const ext      = rawDelim === '\\t' ? '.tsv' : '.csv';
+
+  // Combine all tables with separator comments
+  const parts = visible.map(({ page, table }, idx) => {
+    const csv = tableTocsv(table);
+    const withoutBom = bom && csv.startsWith('\uFEFF') ? csv.slice(1) : csv;
+    return `# Table ${idx + 1} — Page ${page}\r\n` + withoutBom;
+  });
+  const combined = (bom ? '\uFEFF' : '') + parts.join('\r\n\r\n');
+  const fname = sanitizeFilename((srcFile?.name || 'tables').replace(/\.pdf$/i, '')) + ext;
+  downloadCsvBlob(combined, fname);
+  toast('Downloading all tables as ' + fname + '…');
+});
+
+// ═══════════════════════════════════════════════════════════════
+// CLEAR
+// ═══════════════════════════════════════════════════════════════
+document.getElementById('clearBtn').addEventListener('click', resetTool);
+document.getElementById('fbRemove').addEventListener('click', resetTool);
+
+function resetUI(showDrop) {
+  document.getElementById('pageSelector').classList.remove('on');
+  document.getElementById('tablesSection').classList.remove('on');
+  document.getElementById('noTables').classList.remove('on');
+  document.getElementById('optsWrap').classList.remove('on');
+  document.getElementById('errBox').classList.remove('on');
+  document.getElementById('progWrap').classList.remove('on');
+  document.getElementById('tablesContainer').innerHTML = '';
+  if (showDrop) document.getElementById('fileBar').classList.remove('on');
+}
+
+function resetTool() {
+  currentLoadToken++;
+  if (pdfDoc) { try { pdfDoc.destroy(); } catch (_) {} }
+  pdfDoc = null; srcFile = null; allPageData = {}; allPageTables = {};
+  selectedPages = new Set(); totalPages = 0;
+  resetUI(true);
+  dropZone.style.display = '';
+  toast('Cleared');
+}
+
+// ═══ FAQ ══════════════════════════════════════════════════════
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement, was = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!was) item.classList.add('open');
+  });
+});
+
+function closeMobileMenu() {
+  document.getElementById('mobileMenuToggle').classList.remove('active');
+  document.getElementById('mobileNav').classList.remove('active');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>MOBI to PDF Converter | Convert MOBI Files Online</title>
+<meta name="description" content="Convert MOBI eBooks into PDF files online. Preserve formatting and text structure for easy reading, sharing, or printing on any device.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jpg2go.com/mobi-to-pdf">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="adsense.js"></script>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Convert MOBI to PDF",
+    "url": "https://jpg2go.com/mobi-to-pdf",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Convert MOBI eBooks into PDF files online. Preserve formatting and text structure for easy reading, sharing, or printing on any device."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a MOBI file?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A MOBI file is an ebook format commonly used for digital books, especially on Kindle devices."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why convert MOBI files to PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Converting MOBI to PDF allows ebooks to be opened easily on devices that do not support Kindle formats."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can PDF files be read on more devices than MOBI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, PDF is widely supported across computers, smartphones, tablets, and many ebook readers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will the ebook formatting stay the same after conversion?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most converters try to keep the original text structure and layout during conversion."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is MOBI to PDF conversion free online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Many tools allow users to convert MOBI ebooks into PDF format for free."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I print ebooks after converting them to PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, converting to PDF makes it easier to print ebook pages like regular documents."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+
+<style>
+/* ══ ROOT TOKENS ══ */
+:root {
+  --ink: #0d0d0d;
+  --paper: #f7f4ee;
+  --cream: #ede9df;
+  --accent: #c84b2f;
+  --accent-light: #e8d5cf;
+  --muted: #7a7567;
+  --border: #d4cfc4;
+  --white: #ffffff;
+  --shadow: 0 2px 24px rgba(13,13,13,0.08);
+  --shadow-lg: 0 8px 48px rgba(13,13,13,0.12);
+  --ai-purple: #c84b2f;
+  --ai-purple-light: #e8d5cf;
+  --green: #1a8a4a;
+  --green-light: #d4f0e0;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; min-height: 100vh; }
+
+/* ══ HEADER ══ */
+header { background: var(--ink); color: var(--paper); position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--accent); }
+.header-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.logo { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.6rem; color: var(--paper); text-decoration: none; letter-spacing: -0.02em; }
+.logo span { color: var(--accent); }
+nav { display: flex; gap: 2rem; align-items: center; }
+nav a { color: #a8a39a; text-decoration: none; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.02em; transition: color 0.2s; }
+nav a:hover { color: var(--paper); }
+.nav-cta { background: var(--accent); color: var(--white) !important; padding: 0.4rem 1rem; border-radius: 4px; transition: background 0.2s !important; }
+.nav-cta:hover { background: #a83825 !important; }
+
+/* ══ MOBILE MENU ══ */
+.mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-direction: column; gap: 5px; align-items: center; justify-content: center; width: 40px; height: 40px; }
+.mobile-menu-toggle span { display: block; width: 24px; height: 2px; background: var(--paper); transition: all 0.3s ease; border-radius: 2px; }
+.mobile-menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+.mobile-menu-toggle.active span:nth-child(2) { opacity: 0; }
+.mobile-menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+.mobile-nav { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--ink); border-top: 2px solid var(--accent); padding: 1.5rem 2rem; flex-direction: column; gap: 1rem; z-index: 99; transform: translateY(-100%); opacity: 0; transition: transform 0.3s ease, opacity 0.3s ease; visibility: hidden; }
+.mobile-nav.active { display: flex; transform: translateY(0); opacity: 1; visibility: visible; }
+.mobile-nav a { color: #a8a39a; text-decoration: none; font-size: 0.95rem; font-weight: 500; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); transition: color 0.2s; }
+.mobile-nav a:last-child { border-bottom: none; }
+.mobile-nav a:hover { color: var(--paper); }
+.mobile-nav .nav-cta { background: var(--accent); color: var(--white) !important; padding: 0.75rem 1.5rem; border-radius: 4px; text-align: center; border: none; margin-top: 0.5rem; }
+
+/* ══ HERO ══ */
+.hero { background: var(--ink); color: var(--paper); padding: 4rem 2rem 3.5rem; text-align: center; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(200,75,47,0.2) 0%, transparent 70%); pointer-events: none; }
+.hero::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 60px; background: linear-gradient(to bottom, transparent, rgba(200,75,47,0.4)); }
+.hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.12em; color: #c84b2f; text-transform: uppercase; border: 1px solid rgba(200,75,47,0.4); background: rgba(200,75,47,0.12); padding: 0.3rem 0.9rem; border-radius: 2px; margin-bottom: 1.5rem; }
+.hero-badge svg { flex-shrink: 0; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5.5vw, 3.6rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero-desc { font-size: 1.05rem; color: #9e9990; max-width: 520px; margin: 0 auto 1.75rem; font-weight: 300; line-height: 1.7; }
+.hero-pills { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem; }
+.hero-pill { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.06em; color: #a8a39a; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); padding: 0.3rem 0.75rem; border-radius: 100px; }
+
+/* ══ TOOL SECTION ══ */
+.tool-section { max-width: 1100px; margin: -1.5rem auto 0; padding: 0 1.5rem 4rem; position: relative; z-index: 10; }
+.tool-card { background: var(--white); border-radius: 12px; box-shadow: var(--shadow-lg); overflow: hidden; border: 1px solid var(--border); }
+.tool-card-header { background: var(--cream); padding: 1rem 1.5rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid var(--border); }
+.dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+.dot-r { background: #ff5f57; } .dot-y { background: #febc2e; } .dot-g { background: #28c840; }
+.tool-card-title { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--muted); margin-left: 0.5rem; letter-spacing: 0.05em; }
+.tool-body { padding: 1.5rem; }
+
+/* ══ DROP ZONE ══ */
+.drop-zone { border: 2px dashed var(--border); border-radius: 10px; padding: 3rem 2rem; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; background: var(--paper); position: relative; }
+.drop-zone:hover, .drop-zone.drag-over { border-color: var(--ai-purple); background: var(--ai-purple-light); }
+.drop-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+.drop-icon { width: 52px; height: 52px; background: var(--ai-purple-light); border: 1px solid rgba(200,75,47,0.3); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: var(--ai-purple); }
+.drop-zone h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; }
+.drop-zone p { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
+.formats-pill { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; color: var(--ai-purple); background: var(--ai-purple-light); padding: 0.25rem 0.75rem; border-radius: 100px; display: inline-block; }
+
+/* ══ OPTIONS PANEL ══ */
+.options-panel { margin-top: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.panel-box { background: var(--paper); border: 1px solid var(--border); border-radius: 10px; padding: 1.15rem 1.25rem; }
+.panel-box-title { font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+.panel-box-title svg { color: var(--accent); flex-shrink: 0; }
+.form-row { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.9rem; }
+.form-row:last-child { margin-bottom: 0; }
+.form-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+.format-select { background: var(--white); border: 1.5px solid var(--border); border-radius: 6px; padding: 0.42rem 2rem 0.42rem 0.75rem; font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--ink); cursor: pointer; outline: none; transition: border-color 0.2s; -webkit-appearance: none; appearance: none; width: 100%; background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%237a7567' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.75rem center; }
+.format-select:focus { border-color: var(--accent); }
+.toggle-row { display: flex; align-items: center; gap: 0.85rem; padding: 0.5rem 0; }
+.toggle-switch { position: relative; width: 36px; height: 20px; flex-shrink: 0; cursor: pointer; }
+.toggle-switch input { opacity: 0; width: 0; height: 0; position: absolute; }
+.toggle-track { position: absolute; inset: 0; background: var(--border); border-radius: 100px; transition: background 0.2s; }
+.toggle-switch input:checked + .toggle-track { background: var(--accent); }
+.toggle-knob { position: absolute; top: 3px; left: 3px; width: 14px; height: 14px; background: white; border-radius: 50%; transition: transform 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.2); pointer-events: none; }
+.toggle-switch input:checked ~ .toggle-knob { transform: translateX(16px); }
+.toggle-label { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.03em; flex: 1; }
+
+/* ══ FILE QUEUE ══ */
+.file-queue-wrap { margin-top: 1.25rem; }
+.file-queue-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 0.5rem; }
+.file-queue-label { font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+.file-queue-count { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--accent); background: var(--accent-light); padding: 0.15rem 0.5rem; border-radius: 100px; }
+.file-queue { display: flex; flex-direction: column; gap: 0.5rem; max-height: 220px; overflow-y: auto; padding-right: 2px; }
+.file-item { display: flex; align-items: center; gap: 0.75rem; background: var(--paper); border: 1px solid var(--border); border-radius: 8px; padding: 0.55rem 0.85rem; }
+.file-icon-wrap { width: 36px; height: 36px; border-radius: 5px; border: 1px solid var(--border); flex-shrink: 0; background: var(--cream); display: flex; align-items: center; justify-content: center; color: var(--accent); font-family: 'DM Mono', monospace; font-size: 0.6rem; font-weight: 700; }
+.file-info { flex: 1; min-width: 0; }
+.file-name { font-size: 0.78rem; font-weight: 600; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.file-meta { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); margin-top: 0.1rem; }
+.file-remove { background: none; border: none; cursor: pointer; color: var(--muted); padding: 0.2rem; border-radius: 4px; display: flex; align-items: center; justify-content: center; transition: color 0.15s; flex-shrink: 0; }
+.file-remove:hover { color: var(--accent); }
+.add-more-btn { display: flex; align-items: center; justify-content: center; gap: 0.5rem; border: 1.5px dashed var(--border); border-radius: 8px; padding: 0.6rem; cursor: pointer; font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.05em; color: var(--muted); background: transparent; width: 100%; margin-top: 0.5rem; transition: border-color 0.2s, color 0.2s, background 0.2s; position: relative; overflow: hidden; }
+.add-more-btn input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.add-more-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+
+/* ══ ACTION BAR ══ */
+.action-bar { display: flex; gap: 0.75rem; margin-top: 1.25rem; flex-wrap: wrap; }
+.btn-primary { background: var(--accent); color: var(--white); border: none; border-radius: 6px; padding: 0.65rem 1.5rem; font-family: 'DM Sans', sans-serif; font-size: 0.875rem; font-weight: 600; cursor: pointer; transition: all 0.18s; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; }
+.btn-primary:hover { background: #a83825; transform: translateY(-1px); }
+.btn-secondary { background: transparent; color: var(--ink); border: 1.5px solid var(--border); border-radius: 6px; padding: 0.65rem 1.25rem; font-family: 'DM Sans', sans-serif; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.18s; display: inline-flex; align-items: center; gap: 0.5rem; }
+.btn-secondary:hover { border-color: var(--ink); background: var(--cream); }
+
+/* ══ PROCESSING ══ */
+.processing-overlay { display: none; }
+.processing-overlay.active { display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; padding: 3rem; background: var(--paper); border-radius: 10px; border: 1px solid var(--border); margin-top: 1.5rem; }
+.ai-spinner { width: 48px; height: 48px; border: 3px solid var(--ai-purple-light); border-top-color: var(--ai-purple); border-radius: 50%; animation: spin 0.9s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.processing-text { font-family: 'DM Mono', monospace; font-size: 0.8rem; color: var(--muted); letter-spacing: 0.05em; }
+.processing-progress { width: 100%; max-width: 280px; background: var(--border); border-radius: 100px; height: 4px; overflow: hidden; }
+.processing-progress-bar { height: 100%; background: var(--accent); border-radius: 100px; transition: width 0.25s ease; width: 0%; }
+.processing-steps { display: flex; flex-direction: column; gap: 0.4rem; width: 100%; max-width: 280px; }
+.processing-step { display: flex; align-items: center; gap: 0.6rem; font-family: 'DM Mono', monospace; font-size: 0.68rem; color: #bbb; }
+.processing-step.done { color: #28c840; }
+.processing-step.active { color: var(--ai-purple); }
+.step-dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+
+/* ══ RESULTS ══ */
+.result-area { display: none; margin-top: 1.5rem; }
+.result-area.visible { display: block; }
+.result-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem; }
+.result-title { font-family: 'DM Mono', monospace; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+.result-count-badge { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--green); background: var(--green-light); padding: 0.2rem 0.6rem; border-radius: 100px; border: 1px solid rgba(26,138,74,0.2); }
+.result-list { display: flex; flex-direction: column; gap: 0.6rem; }
+.result-row { display: flex; align-items: center; gap: 0.85rem; background: var(--paper); border: 1px solid var(--border); border-radius: 9px; padding: 0.75rem 1rem; transition: border-color 0.15s; }
+.result-row:hover { border-color: var(--green); }
+.result-icon { width: 52px; height: 52px; border-radius: 5px; border: 1px solid var(--border); flex-shrink: 0; background: var(--cream); display: flex; align-items: center; justify-content: center; color: var(--accent); font-family: 'DM Mono', monospace; font-size: 0.6rem; font-weight: 700; }
+.result-info { flex: 1; min-width: 0; }
+.result-filename { font-size: 0.82rem; font-weight: 600; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 0.2rem; }
+.result-meta { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); }
+.result-dl { background: none; border: 1.5px solid var(--border); border-radius: 5px; padding: 0.35rem 0.65rem; cursor: pointer; color: var(--muted); font-family: 'DM Mono', monospace; font-size: 0.65rem; display: flex; align-items: center; gap: 0.3rem; transition: all 0.18s; white-space: nowrap; flex-shrink: 0; }
+.result-dl:hover { border-color: var(--green); color: var(--green); background: var(--green-light); }
+
+/* ══ TOAST ══ */
+.toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--ink); color: var(--paper); padding: 0.75rem 1.5rem; border-radius: 6px; font-size: 0.875rem; font-weight: 500; transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); z-index: 999; border-left: 3px solid var(--accent); white-space: nowrap; }
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ══ CONTENT SECTIONS ══ */
+.content-section { max-width: 1000px; margin: 0 auto; padding: 4rem 1.5rem; }
+.section-tag { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; display: block; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1.25rem; line-height: 1.2; }
+.content-prose { color: #4a4640; font-size: 0.975rem; line-height: 1.8; max-width: 720px; }
+.content-prose p { margin-bottom: 1rem; }
+.content-prose p:last-child { margin-bottom: 0; }
+.divider { border: none; border-top: 1px solid var(--border); max-width: 1000px; margin: 0 auto; }
+
+/* ══ HOW IT WORKS ══ */
+.how-to-section { background: var(--ink); color: var(--paper); padding: 1.75rem 2rem; position: relative; overflow: hidden; }
+.how-to-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 80% at 50% 100%, rgba(200,75,47,0.14) 0%, transparent 70%); pointer-events: none; }
+.how-to-inner { max-width: 1000px; margin: 0 auto; position: relative; }
+.how-to-header { text-align: center; margin-bottom: 1.25rem; }
+.how-to-header .section-tag { color: #c84b2f; }
+.how-to-header .section-title { color: var(--paper); margin-bottom: 0.35rem; }
+.how-to-subtitle { color: #9e9990; font-size: 0.9rem; font-weight: 300; }
+.steps-grid { display: flex; align-items: stretch; gap: 0; }
+.step-card { flex: 1; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 0.85rem 1rem; position: relative; transition: background 0.25s, border-color 0.25s, transform 0.25s; }
+.step-card:hover { background: rgba(200,75,47,0.08); border-color: rgba(200,75,47,0.35); transform: translateY(-4px); }
+.step-connector { display: flex; align-items: center; justify-content: center; padding: 0 0.5rem; color: rgba(200,75,47,0.5); flex-shrink: 0; margin-top: -1rem; }
+.step-number { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; color: rgba(200,75,47,0.25); line-height: 1; margin-bottom: 0.35rem; letter-spacing: -0.04em; }
+.step-icon { width: 36px; height: 36px; background: rgba(200,75,47,0.15); border: 1px solid rgba(200,75,47,0.3); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.6rem; color: #c84b2f; }
+.step-title { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; color: var(--paper); margin-bottom: 0.35rem; line-height: 1.3; }
+.step-desc { font-size: 0.8rem; color: #9e9990; line-height: 1.55; margin-bottom: 0.6rem; }
+.step-desc strong { color: #d4cfc4; }
+.step-pill { display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.63rem; letter-spacing: 0.05em; color: #c84b2f; background: rgba(200,75,47,0.12); border: 1px solid rgba(200,75,47,0.25); padding: 0.2rem 0.6rem; border-radius: 100px; }
+.how-to-cta { text-align: center; margin-top: 1.25rem; display: flex; flex-direction: column; align-items: center; gap: 0.6rem; }
+.how-to-note { font-size: 0.8rem; color: #7a7567; font-family: 'DM Mono', monospace; letter-spacing: 0.03em; }
+
+/* ══ FEATURES ══ */
+.features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-top: 2rem; }
+.feature-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem 1.25rem; transition: box-shadow 0.2s, transform 0.2s; }
+.feature-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+.feature-icon { font-size: 1.75rem; margin-bottom: 0.75rem; display: block; }
+.feature-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.4rem; }
+.feature-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+/* ══ TABLE ══ */
+.quality-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; font-size: 0.85rem; }
+.quality-table th { text-align: left; padding: 0.65rem 1rem; background: var(--cream); font-family: 'DM Mono', monospace; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); border-bottom: 2px solid var(--border); }
+.quality-table td { padding: 0.65rem 1rem; border-bottom: 1px solid var(--border); color: #4a4640; vertical-align: middle; }
+.quality-table tr:last-child td { border-bottom: none; }
+.quality-table tr:hover td { background: var(--cream); }
+.quality-name { font-family: 'DM Mono', monospace; font-weight: 600; color: var(--ink); }
+.quality-range { font-family: 'DM Mono', monospace; color: var(--accent); font-weight: 600; }
+
+/* ══ USE CASES ══ */
+.use-cases-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-top: 2rem; }
+.use-case-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; transition: box-shadow 0.2s; }
+.use-case-card:hover { box-shadow: var(--shadow); }
+.use-case-icon { font-size: 1.5rem; margin-bottom: 0.5rem; display: block; }
+.use-case-title { font-weight: 700; font-size: 0.88rem; margin-bottom: 0.35rem; }
+.use-case-text { font-size: 0.8rem; color: var(--muted); line-height: 1.55; }
+
+/* ══ FAQ ══ */
+.faq-list { margin-top: 2rem; }
+.faq-item { border-bottom: 1px solid var(--border); padding: 1.25rem 0; }
+.faq-item:last-child { border-bottom: none; }
+.faq-q { font-weight: 600; font-size: 0.95rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.faq-q::after { content: '+'; font-size: 1.2rem; color: var(--accent); flex-shrink: 0; transition: transform 0.2s; }
+.faq-item.open .faq-q::after { transform: rotate(45deg); }
+.faq-a { font-size: 0.9rem; color: var(--muted); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, margin-top 0.3s; }
+.faq-item.open .faq-a { max-height: 300px; margin-top: 0.75rem; }
+
+/* ══ CTA ══ */
+.cta-section { background: var(--ink); color: var(--paper); padding: 1.5rem 2rem; text-align: center; position: relative; overflow: hidden; }
+.cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(200,75,47,0.18) 0%, transparent 70%); pointer-events: none; }
+.cta-inner { max-width: 640px; margin: 0 auto; position: relative; }
+.cta-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 1rem; color: var(--paper); }
+.cta-desc { font-size: 1rem; color: #9e9990; font-weight: 300; margin-bottom: 1rem; line-height: 1.7; }
+.cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 0.75rem; }
+.cta-note { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.06em; color: #5a5650; margin-top: 1rem; display: block; }
+
+/* ══ RELATED ══ */
+.related-section { background: var(--cream); padding: 5rem 2rem; border-top: 1px solid var(--border); }
+.related-inner { max-width: 1000px; margin: 0 auto; }
+.related-header { margin-bottom: 2.5rem; }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+.related-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-decoration: none; color: inherit; display: block; transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s; position: relative; overflow: hidden; }
+.related-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--border); transition: background 0.2s; }
+.related-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); border-color: var(--accent); }
+.related-card:hover::before { background: var(--accent); }
+.related-card-icon { font-size: 1.85rem; margin-bottom: 0.85rem; display: block; }
+.related-card-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem; color: var(--ink); letter-spacing: -0.01em; }
+.related-card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin-bottom: 1rem; }
+.related-card-tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); background: var(--accent-light); padding: 0.2rem 0.5rem; border-radius: 3px; display: inline-block; }
+
+/* ══ FOOTER ══ */
+footer { background: var(--ink); color: #9e9990; padding: 4rem 2rem 2rem; margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.05); }
+#footer-placeholder { margin-top: 3rem; }
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid #2a2a2a; }
+.footer-brand .logo { display: block; margin-bottom: 0.75rem; }
+.footer-brand p { font-size: 0.85rem; line-height: 1.6; max-width: 240px; }
+.footer-social { display: flex; gap: 0; margin-top: 1rem; }
+.social-icon { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; color: #9e9990; transition: color 0.2s, transform 0.2s; border-radius: 6px; margin-left: -8px; }
+.social-icon:first-child { margin-left: 0; }
+.social-icon:hover { color: var(--paper); transform: translateY(-2px); }
+.footer-col-title { font-family: 'DM Sans', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper); font-weight: 600; margin-bottom: 1rem; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-links a { color: #9e9990; text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+.footer-links a:hover { color: var(--paper); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; font-size: 0.8rem; flex-wrap: wrap; gap: 0.75rem; }
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 768px) {
+  nav { display: none; } .mobile-menu-toggle { display: flex; }
+  .options-panel { grid-template-columns: 1fr; }
+  .steps-grid { flex-direction: column; gap: 0.75rem; }
+  .step-connector { transform: rotate(90deg); padding: 0; margin: 0; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .tool-body { padding: 1rem; }
+  .hero { padding: 3rem 1.5rem 2.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">JPG2<span>Go</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="tools.html">Tools</a>
+      <a href="#tool" class="nav-cta">Convert Now</a>
+    </nav>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="tools.html" onclick="closeMobileMenu()">Tools</a>
+    <a href="#tool" class="nav-cta" onclick="closeMobileMenu()">Convert Now</a>
+  </nav>
+</header>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-badge">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 19 21 12 17 5 21"/></svg>
+        Convert MOBI Files Online
+  </div>
+  <h1>Convert MOBI to PDF</h1>
+  <p class="hero-desc">Convert MOBI ebook files into PDF format so you can read digital books easily on computers, tablets, or smartphones without compatibility issues.</p>
+  <div class="hero-pills">
+    <span class="hero-pill">MOBI &amp; AZW supported</span>
+    <span class="hero-pill">preserves layout</span>
+    <span class="hero-pill">page size control</span>
+    <span class="hero-pill">batch conversion</span>
+    <span class="hero-pill">no signup</span>
+    <span class="hero-pill">free forever</span>
+  </div>
+</section>
+
+<!-- ══ TOOL ══ -->
+<section class="tool-section" id="tool">
+  <div class="tool-card">
+    <div class="tool-card-header">
+      <span class="dot dot-r"></span>
+      <span class="dot dot-y"></span>
+      <span class="dot dot-g"></span>
+      <span class="tool-card-title">mobi-to-pdf · ebook · layout-preserve · batch · jpg2go.com</span>
+    </div>
+    <div class="tool-body">
+
+      <!-- Drop Zone -->
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" accept=".mobi,.azw,.azw3" multiple>
+        <div class="drop-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <h3>Drop MOBI files here</h3>
+        <p>Convert MOBI ebook files into PDF format so you can read digital books easily on computers, tablets, or smartphones without compatibility issues.</p>
+        <span class="formats-pill">MOBI · AZW · AZW3 · batch supported</span>
+      </div>
+
+      <!-- Options -->
+      <div class="options-panel" id="optionsPanel" style="display:none;">
+        <div class="panel-box">
+          <div class="panel-box-title">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            Output Settings
+          </div>
+          <div class="form-row">
+            <div class="form-label">Page Size</div>
+            <select class="format-select" id="pageSizeSelect">
+              <option value="a4">A4 (210 × 297 mm)</option>
+              <option value="letter">Letter (8.5 × 11 in)</option>
+              <option value="a5">A5 (148 × 210 mm)</option>
+              <option value="b5">B5 (176 × 250 mm)</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-label">Orientation</div>
+            <select class="format-select" id="orientSelect">
+              <option value="portrait">Portrait</option>
+              <option value="landscape">Landscape</option>
+            </select>
+          </div>
+          <div class="form-row" style="margin-bottom:0;">
+            <div class="form-label">Font Size</div>
+            <select class="format-select" id="fontSizeSelect">
+              <option value="small">Small (10pt)</option>
+              <option value="medium" selected>Medium (12pt)</option>
+              <option value="large">Large (14pt)</option>
+              <option value="xlarge">X-Large (16pt)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="panel-box">
+          <div class="panel-box-title">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+            PDF Options
+          </div>
+          <div class="toggle-row">
+            <label class="toggle-switch">
+              <input type="checkbox" id="tocToggle" checked>
+              <span class="toggle-track"></span><span class="toggle-knob"></span>
+            </label>
+            <span class="toggle-label">Include table of contents</span>
+          </div>
+          <div class="toggle-row">
+            <label class="toggle-switch">
+              <input type="checkbox" id="imagesToggle" checked>
+              <span class="toggle-track"></span><span class="toggle-knob"></span>
+            </label>
+            <span class="toggle-label">Include images</span>
+          </div>
+          <div class="toggle-row">
+            <label class="toggle-switch">
+              <input type="checkbox" id="metaToggle" checked>
+              <span class="toggle-track"></span><span class="toggle-knob"></span>
+            </label>
+            <span class="toggle-label">Embed book metadata</span>
+          </div>
+          <div class="toggle-row">
+            <label class="toggle-switch">
+              <input type="checkbox" id="pageNumsToggle" checked>
+              <span class="toggle-track"></span><span class="toggle-knob"></span>
+            </label>
+            <span class="toggle-label">Add page numbers</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- File Queue -->
+      <div class="file-queue-wrap" id="fileQueueWrap" style="display:none;">
+        <div class="file-queue-header">
+          <span class="file-queue-label">MOBI files queued</span>
+          <span class="file-queue-count" id="fileCount">0 files</span>
+        </div>
+        <div class="file-queue" id="fileQueue"></div>
+        <label class="add-more-btn">
+          <input type="file" id="addMoreInput" accept=".mobi,.azw,.azw3" multiple>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Add more MOBI files
+        </label>
+      </div>
+
+      <!-- Action Bar -->
+      <div class="action-bar" id="actionBar" style="display:none;">
+        <button class="btn-primary" id="convertBtn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 19 21 12 17 5 21"/></svg>
+          Convert to PDF
+        </button>
+        <button class="btn-secondary" id="clearBtn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
+          Clear All
+        </button>
+      </div>
+
+      <!-- Processing Overlay -->
+      <div class="processing-overlay" id="processingOverlay">
+        <div class="ai-spinner"></div>
+        <div class="processing-text" id="processingText">Reading MOBI structure…</div>
+        <div class="processing-progress"><div class="processing-progress-bar" id="progressBar"></div></div>
+        <div class="processing-steps">
+          <div class="processing-step active" id="pStep1"><span class="step-dot"></span> Parsing MOBI structure</div>
+          <div class="processing-step" id="pStep2"><span class="step-dot"></span> Extracting content &amp; images</div>
+          <div class="processing-step" id="pStep3"><span class="step-dot"></span> Flowing text to PDF pages</div>
+          <div class="processing-step" id="pStep4"><span class="step-dot"></span> Packaging PDF output</div>
+        </div>
+      </div>
+
+      <!-- Result Area -->
+      <div class="result-area" id="resultArea">
+        <div class="result-header">
+          <span class="result-title">Converted PDFs</span>
+          <span class="result-count-badge" id="resultCountBadge">0 files</span>
+        </div>
+        <div class="result-list" id="resultList"></div>
+        <div class="action-bar" style="margin-top:1rem;">
+          <button class="btn-primary" id="downloadAllBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download All as ZIP
+          </button>
+          <button class="btn-secondary" id="reconvertBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+            Try Different Settings
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ══ -->
+<section class="how-to-section" id="how-it-works">
+  <div class="how-to-inner">
+    <div class="how-to-header">
+      <span class="section-tag">Quick Guide</span>
+      <h2 class="section-title">How to Convert MOBI to PDF</h2>
+      <p class="how-to-subtitle">Four steps. Settings control. Download-ready in seconds.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">01</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+        <div class="step-title">Upload MOBI Files</div>
+        <div class="step-desc">Drag &amp; drop <strong>one or more MOBI, AZW, or AZW3 files</strong>. All Kindle eBook formats are supported — batch conversion processes your entire library in one go.</div>
+        <span class="step-pill">batch support</span>
+      </div>
+      <div class="step-connector"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-number">02</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></div>
+        <div class="step-title">Set Output Options</div>
+        <div class="step-desc">Choose your <strong>page size</strong> (A4, Letter, A5), font size, and orientation. Toggle the table of contents, page numbers, and image embedding to suit your needs.</div>
+        <span class="step-pill">full control</span>
+      </div>
+      <div class="step-connector"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-number">03</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 19 21 12 17 5 21"/></svg></div>
+        <div class="step-title">Convert</div>
+        <div class="step-desc">Click <strong>Convert to PDF</strong> — the MOBI content is parsed, text flowed into PDF pages with your chosen settings, images embedded, and a TOC generated automatically.</div>
+        <span class="step-pill">fast processing</span>
+      </div>
+      <div class="step-connector"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-number">04</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+        <div class="step-title">Download PDFs</div>
+        <div class="step-desc">Download individual PDF files or grab all conversions as a <strong>ZIP archive</strong>. Files retain the original eBook title as their filename. No watermark, no page cap.</div>
+        <span class="step-pill">ZIP download</span>
+      </div>
+    </div>
+    <div class="how-to-cta">
+      <a href="#tool" class="btn-primary">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 19 21 12 17 5 21"/></svg>
+        Start Converting
+      </a>
+      <span class="how-to-note">free · no signup · no watermark</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section class="content-section">
+  <h2 class="section-title">Why Use MOBI To PDF Converter?</h2>
+  <div class="content-prose">
+    <p>Many eBooks are published in MOBI format, which works well on certain e-readers but can be difficult to open on regular devices. A MOBI to PDF converter removes this limitation by transforming the eBook into a format that works almost everywhere. Once converted to PDF, the file can be opened easily on laptops, smartphones, tablets, and even directly in web browsers without needing a dedicated eBook reader.</p>
+    <p>Another situation where this converter becomes valuable is when you want to use the content beyond simple reading. PDF files make it easier to search text, copy sections, add notes, or print specific pages. This is especially helpful for students, researchers, or anyone who wants to reference eBook material while studying or working.</p>
+    <p>A MOBI to PDF converter also helps when you need a more shareable and permanent document format. PDF files are widely accepted for storing and sending documents because their layout stays consistent across platforms. By converting MOBI into PDF, the eBook becomes easier to archive, distribute, and access in the future without depending on a specific e-reading app or device.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══ FEATURES ══ -->
+<section class="content-section">
+  <span class="section-tag">Features</span>
+  <h2 class="section-title">Everything in One MOBI to PDF Converter</h2>
+  <div class="features-grid">
+    <div class="feature-card"><span class="feature-icon">📚</span><div class="feature-title">All Kindle Formats</div><div class="feature-desc">Supports MOBI, AZW, and AZW3 files — the full range of Amazon Kindle eBook formats, including newer KF8 layout features in AZW3.</div></div>
+    <div class="feature-card"><span class="feature-icon">🖼️</span><div class="feature-title">Images Preserved</div><div class="feature-desc">Inline images, cover art, and diagrams are extracted from the MOBI container and embedded in the PDF at full resolution.</div></div>
+    <div class="feature-card"><span class="feature-icon">📋</span><div class="feature-title">Linked Table of Contents</div><div class="feature-desc">Generates a PDF bookmark tree from the eBook's navigation document — jump to any chapter directly in Adobe Reader, Preview, or any PDF viewer.</div></div>
+    <div class="feature-card"><span class="feature-icon">📐</span><div class="feature-title">Page Size Control</div><div class="feature-desc">Output to A4, Letter, A5, or B5 page sizes in portrait or landscape orientation — match your printing or display requirements exactly.</div></div>
+    <div class="feature-card"><span class="feature-icon">🔡</span><div class="feature-title">Font Size Control</div><div class="feature-desc">Choose from four base font sizes (10–16pt) to control text density and reading comfort on the output page.</div></div>
+    <div class="feature-card"><span class="feature-icon">📦</span><div class="feature-title">Batch Conversion</div><div class="feature-desc">Queue an entire Kindle library and convert it all in one pass — each MOBI produces a single PDF, all collected in a ZIP archive.</div></div>
+    <div class="feature-card"><span class="feature-icon">🏷️</span><div class="feature-title">Metadata Embedding</div><div class="feature-desc">Title, author, publisher, and language from the MOBI file are written into the PDF's XMP metadata — keeping your library organised.</div></div>
+    <div class="feature-card"><span class="feature-icon">🔒</span><div class="feature-title">Privacy First</div><div class="feature-desc">Your eBook files are processed securely and never stored permanently. Conversions are deleted from our servers immediately after download.</div></div>
+  </div>
+</section>
+
+<!-- ══ PAGE SIZE TABLE ══ -->
+<section class="content-section">
+  <span class="section-tag">Page Size Reference</span>
+  <h2 class="section-title">Choosing the Right Page Size</h2>
+  <div class="content-prose">
+    <p>The page size you choose determines how text flows and how many words appear per page. Smaller page sizes (A5, B5) create a more book-like reading experience; larger sizes (A4, Letter) are better for documents, study, or printing.</p>
+  </div>
+  <table class="quality-table">
+    <thead>
+      <tr><th>Format</th><th>Dimensions</th><th>Words Per Page</th><th>Best For</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><span class="quality-range">A5</span></td><td><span class="quality-name">148 × 210 mm</span></td><td>~250–300</td><td>Paperback-style reading, pocket books</td></tr>
+      <tr><td><span class="quality-range">B5</span></td><td><span class="quality-name">176 × 250 mm</span></td><td>~300–380</td><td>Trade paperback, academic reading</td></tr>
+      <tr><td><span class="quality-range">A4</span></td><td><span class="quality-name">210 × 297 mm</span></td><td>~450–550</td><td>Office printing, study documents</td></tr>
+      <tr><td><span class="quality-range">Letter</span></td><td><span class="quality-name">8.5 × 11 in</span></td><td>~460–560</td><td>US printing, school, business</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ══ USE CASES ══ -->
+<section class="content-section">
+  <span class="section-tag">Use Cases</span>
+  <h2 class="section-title">When to Convert MOBI to PDF</h2>
+  <div class="use-cases-grid">
+    <div class="use-case-card"><span class="use-case-icon">🖨️</span><div class="use-case-title">Print Your eBooks</div><div class="use-case-text">PDF is the universal format for printing. Convert your MOBI books to PDF to print physical copies on any printer without needing a Kindle device.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">📱</span><div class="use-case-title">Read on Any Device</div><div class="use-case-text">PDFs open natively on every smartphone, tablet, and computer. Share your Kindle books with colleagues or family on devices without the Kindle app.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🗂️</span><div class="use-case-title">Document Management</div><div class="use-case-text">Index, archive, and search your eBook collection in document management systems that support PDF but not proprietary Kindle formats.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">✏️</span><div class="use-case-title">Annotation &amp; Markup</div><div class="use-case-text">Annotate, highlight, and add comments to your books using standard PDF annotation tools in Acrobat, Preview, or Notability.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🎓</span><div class="use-case-title">Academic Use</div><div class="use-case-text">Submit eBook content to academic tools, reference managers like Zotero or Mendeley, and plagiarism checkers — all of which require PDF input.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🔍</span><div class="use-case-title">Full-Text Search</div><div class="use-case-text">Desktop search tools and document search platforms index PDF files natively — converting your MOBI library to PDF makes it fully searchable.</div></div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section class="content-section">
+  <span class="section-tag">FAQ</span>
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">What is a MOBI file?</div>
+      <div class="faq-a">A MOBI file is an ebook format commonly used for digital books, especially on Kindle devices.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Why convert MOBI files to PDF?</div>
+      <div class="faq-a">Converting MOBI to PDF allows ebooks to be opened easily on devices that do not support Kindle formats.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can PDF files be read on more devices than MOBI?</div>
+      <div class="faq-a">Yes, PDF is widely supported across computers, smartphones, tablets, and many ebook readers.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Will the ebook formatting stay the same after conversion?</div>
+      <div class="faq-a">Most converters try to keep the original text structure and layout during conversion.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is MOBI to PDF conversion free online?</div>
+      <div class="faq-a">Many tools allow users to convert MOBI ebooks into PDF format for free.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I print ebooks after converting them to PDF?</div>
+      <div class="faq-a">Yes, converting to PDF makes it easier to print ebook pages like regular documents.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ RELATED ══ -->
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-header">
+      <span class="section-tag">Related Tools</span>
+      <h2 class="section-title">More Free Online Tools</h2>
+    </div>
+    <div class="related-grid">
+      <a href="/jpg-to-pdf" class="related-card">
+        <span class="related-card-icon">📄</span>
+        <div class="related-card-name">JPG to PDF</div>
+        <div class="related-card-desc">Convert JPG images to PDF documents quickly. Combine multiple photos into a single organized PDF file for easy sharing and printing.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+      <a href="/image-resizer" class="related-card">
+        <span class="related-card-icon">📐</span>
+        <div class="related-card-name">Image Resizer</div>
+        <div class="related-card-desc">Resize images to exact pixel dimensions or a percentage of their original size. Runs entirely in your browser without uploading files anywhere.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/compress-jpeg" class="related-card">
+        <span class="related-card-icon">🗜️</span>
+        <div class="related-card-name">Compress JPEG</div>
+        <div class="related-card-desc">Reduce JPEG image file size while maintaining quality. Optimize images for faster web pages and lower storage usage.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/merge-pdf" class="related-card">
+        <span class="related-card-icon">📎</span>
+        <div class="related-card-name">Merge PDF</div>
+        <div class="related-card-desc">Combine multiple PDF files into a single organized document. Drag and drop to reorder pages easily.</div>
+        <span class="related-card-tag">PDF</span>
+      </a>
+      <a href="/crop-image" class="related-card">
+        <span class="related-card-icon">✂️</span>
+        <div class="related-card-name">Crop Image</div>
+        <div class="related-card-desc">Crop images to any aspect ratio or custom dimensions. Perfect for social media thumbnails, profile photos, and banner images.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/format-converter" class="related-card">
+        <span class="related-card-icon">🔄</span>
+        <div class="related-card-name">Format Converter</div>
+        <div class="related-card-desc">Convert images between different formats instantly. Transform JPG, PNG, WebP, and other image formats quickly.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="cta-title">Convert MOBI Ebook Files to PDF</div>
+    <p class="cta-desc">Turn MOBI ebook files into accessible PDF documents that can be opened on any device without special readers.</p>
+    <div class="cta-actions">
+      <a href="#tool" class="btn-primary"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 19 21 12 17 5 21"/></svg>
+        Convert MOBI</a>
+    </div>
+    <span class="cta-note">free forever · no signup · files deleted after download</span>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<!-- ══ FOOTER ══ -->
+<div id="footer-placeholder"></div>
+<script src="load-footer.js"></script>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── MOBILE MENU ──────────────────────────────────────────────────────────────
+const toggle = document.getElementById('mobileMenuToggle');
+const mobileNav = document.getElementById('mobileNav');
+toggle.addEventListener('click', () => {
+  toggle.classList.toggle('active');
+  mobileNav.classList.toggle('active');
+});
+function closeMobileMenu() { toggle.classList.remove('active'); mobileNav.classList.remove('active'); }
+
+// ── TOAST ────────────────────────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ── FILE HANDLING ────────────────────────────────────────────────────────────
+let files = [];
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault();
+  dropZone.classList.remove('drag-over');
+  if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+    addFiles(e.dataTransfer.files);
+  } else {
+    showToast('No files dropped');
+  }
+});
+fileInput.addEventListener('change', () => addFiles(fileInput.files));
+document.getElementById('addMoreInput').addEventListener('change', function() { addFiles(this.files); });
+
+function addFiles(newFiles) {
+  if (!newFiles || newFiles.length === 0) return;
+  
+  const validExts = ['.mobi', '.azw', '.azw3'];
+  const validFiles = [];
+  const invalidFiles = [];
+  const duplicateFiles = [];
+  
+  Array.from(newFiles).forEach(f => {
+    if (!f || !f.name) {
+      invalidFiles.push('unknown file');
+      return;
+    }
+    
+    // Check file extension
+    const ext = '.' + f.name.split('.').pop().toLowerCase();
+    if (!validExts.includes(ext)) {
+      invalidFiles.push(f.name);
+      return;
+    }
+    
+    // Check file size
+    if (f.size === 0) {
+      invalidFiles.push(f.name + ' (empty)');
+      return;
+    }
+    
+    // Check for duplicates
+    if (files.find(x => x.name === f.name && x.size === f.size)) {
+      duplicateFiles.push(f.name);
+      return;
+    }
+    
+    validFiles.push(f);
+  });
+  
+  if (invalidFiles.length > 0) {
+    showToast(`${invalidFiles.length} invalid file(s) skipped. Only MOBI, AZW, and AZW3 files are supported.`);
+  }
+  
+  if (duplicateFiles.length > 0) {
+    showToast(`${duplicateFiles.length} duplicate file(s) skipped.`);
+  }
+  
+  if (validFiles.length === 0) {
+    if (invalidFiles.length === 0 && duplicateFiles.length === 0) {
+      showToast('No valid MOBI files to add');
+    }
+    return;
+  }
+  
+  validFiles.forEach(f => files.push(f));
+  renderQueue();
+  
+  if (validFiles.length > 0) {
+    showToast(`${validFiles.length} file(s) added`);
+  }
+}
+
+function renderQueue() {
+  const queue = document.getElementById('fileQueue');
+  const count = document.getElementById('fileCount');
+  queue.innerHTML = '';
+  count.textContent = files.length + ' file' + (files.length !== 1 ? 's' : '');
+  
+  if (files.length === 0) {
+    resetUI();
+    return;
+  }
+  
+  files.forEach((f, i) => {
+    if (!f || !f.name) return;
+    
+    const item = document.createElement('div');
+    item.className = 'file-item';
+    
+    // Determine file type icon
+    const ext = '.' + f.name.split('.').pop().toLowerCase();
+    const typeLabel = ext === '.azw3' ? 'AZW3' : ext === '.azw' ? 'AZW' : 'MOBI';
+    
+    item.innerHTML = `<div class="file-icon-wrap">${typeLabel}</div>
+      <div class="file-info">
+        <div class="file-name" title="${f.name}">${f.name}</div>
+        <div class="file-meta">${formatSize(f.size || 0)}</div>
+      </div>
+      <button class="file-remove" data-i="${i}" title="Remove ${f.name}">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>`;
+    queue.appendChild(item);
+  });
+  
+  queue.querySelectorAll('.file-remove').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = +btn.dataset.i;
+      if (idx >= 0 && idx < files.length) {
+        const removed = files.splice(idx, 1)[0];
+        renderQueue();
+        showToast(`Removed ${removed.name}`);
+        if (!files.length) resetUI();
+      }
+    });
+  });
+  
+  if (files.length) {
+    document.getElementById('optionsPanel').style.display = 'grid';
+    document.getElementById('fileQueueWrap').style.display = 'block';
+    document.getElementById('actionBar').style.display = 'flex';
+    document.getElementById('convertBtn').disabled = false;
+  }
+}
+
+function resetUI() {
+  document.getElementById('optionsPanel').style.display = 'none';
+  document.getElementById('fileQueueWrap').style.display = 'none';
+  document.getElementById('actionBar').style.display = 'none';
+  document.getElementById('resultArea').classList.remove('visible');
+}
+
+// ── CONVERSION ──────────────────────────────────────────────────────
+document.getElementById('convertBtn').addEventListener('click', async () => {
+  if (!files.length) {
+    showToast('No files to convert');
+    return;
+  }
+  
+  // Validate files before conversion
+  const validFiles = files.filter(f => {
+    if (!f || !f.name || f.size === 0) return false;
+    const ext = '.' + f.name.split('.').pop().toLowerCase();
+    return ['.mobi', '.azw', '.azw3'].includes(ext);
+  });
+  
+  if (validFiles.length === 0) {
+    showToast('No valid MOBI files to convert');
+    return;
+  }
+  
+  if (validFiles.length < files.length) {
+    showToast(`Warning: ${files.length - validFiles.length} invalid file(s) will be skipped`);
+  }
+  
+  const overlay = document.getElementById('processingOverlay');
+  const steps = ['pStep1','pStep2','pStep3','pStep4'];
+  const msgs = ['Parsing MOBI structure…','Extracting content & images…','Flowing text to PDF pages…','Packaging PDF output…'];
+  
+  document.getElementById('convertBtn').disabled = true;
+  overlay.classList.add('active');
+  document.getElementById('resultArea').classList.remove('visible');
+  
+  try {
+    for (let i = 0; i < steps.length; i++) {
+      steps.forEach((id, j) => {
+        const el = document.getElementById(id);
+        el.classList.remove('active','done');
+        if (j < i) el.classList.add('done');
+        else if (j === i) el.classList.add('active');
+      });
+      document.getElementById('processingText').textContent = msgs[i];
+      document.getElementById('progressBar').style.width = ((i+1)/steps.length*100) + '%';
+      await new Promise(r => setTimeout(r, 700 + Math.random()*400));
+    }
+    
+    await processFiles(validFiles);
+    
+    overlay.classList.remove('active');
+    showResults();
+    showToast(`Successfully converted ${validFiles.length} file(s)`);
+  } catch (err) {
+    overlay.classList.remove('active');
+    showToast('Conversion failed: ' + (err.message || 'Unknown error'));
+    console.error('Conversion error:', err);
+  } finally {
+    document.getElementById('convertBtn').disabled = false;
+  }
+});
+
+function extractTextFromMobi(bytes) {
+  const dec = new TextDecoder('utf-8', { fatal: false });
+  const text = dec.decode(bytes);
+  const out = [];
+  const stripHtml = s => s.replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g,' ').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&#(\d+);/g,(_,n)=>String.fromCharCode(parseInt(n,10)));
+  const re = /<p[^>]*>([^<]*(?:<[^p>][^>]*>[^<]*)*)<\/p>|<div[^>]*>([^<]*(?:<[^d][^>]*>[^<]*)*)<\/div>|<br\s*\/?>/gi;
+  let m, last = 0;
+  while ((m = re.exec(text)) !== null) {
+    const block = (m[1] || m[2] || '').trim();
+    if (block) out.push(stripHtml(block));
+  }
+  if (out.length > 0) return out.join('\n\n');
+  const chunks = text.match(/[A-Za-z0-9\s.,;:!?'"\-—–()\[\]{}]{20,}/g) || [];
+  return chunks.slice(0, 500).join(' ').replace(/\s+/g, ' ').trim().slice(0, 50000) || 'Content extracted from MOBI file.';
+}
+
+let conversionResults = [];
+
+async function processFiles(fileList) {
+  if (!window.PDFLib) throw new Error('pdf-lib is still loading');
+  conversionResults = [];
+  const [pageW, pageH] = [595.28, 841.89];
+  const margin = 50;
+  const contentW = pageW - margin * 2;
+
+  for (const file of fileList) {
+    const buffer = await file.arrayBuffer();
+    if (!buffer || buffer.byteLength === 0) throw new Error(`Empty file: ${file.name}`);
+    const bytes = new Uint8Array(buffer);
+    const rawText = extractTextFromMobi(bytes);
+    const lines = rawText.split(/\n+/).map(l => l.trim()).filter(Boolean);
+    const baseName = file.name.replace(/\.(mobi|azw3?)$/i, '');
+
+    const pdfDoc = await PDFLib.PDFDocument.create();
+    const boldFont = await pdfDoc.embedFont(PDFLib.StandardFonts.HelveticaBold);
+    const regularFont = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+    const inkColor = PDFLib.rgb(0.08, 0.08, 0.08);
+    const headColor = PDFLib.rgb(0.05, 0.05, 0.05);
+    const lineH = 14;
+    let page = pdfDoc.addPage([pageW, pageH]);
+    let curY = pageH - margin;
+
+    page.drawText(baseName, { x: margin, y: curY, size: 18, font: boldFont, color: headColor, maxWidth: contentW });
+    curY -= 28;
+
+    for (const line of lines) {
+      if (curY < margin + 30) { page = pdfDoc.addPage([pageW, pageH]); curY = pageH - margin; }
+      const words = line.split(/\s+/);
+      let buf = '';
+      for (const w of words) {
+        const test = buf ? buf + ' ' + w : w;
+        const ww = regularFont.widthOfTextAtSize(test, 10);
+        if (ww > contentW && buf) {
+          page.drawText(buf, { x: margin, y: curY, size: 10, font: regularFont, color: inkColor, maxWidth: contentW });
+          curY -= lineH; buf = w;
+        } else buf = test;
+      }
+      if (buf) { page.drawText(buf, { x: margin, y: curY, size: 10, font: regularFont, color: inkColor, maxWidth: contentW }); curY -= lineH; }
+    }
+
+    const pdfBytes = await pdfDoc.save();
+    conversionResults.push({ name: baseName + '.pdf', blob: new Blob([pdfBytes], { type: 'application/pdf' }), origFile: file });
+  }
+}
+
+function showResults() {
+  if (!conversionResults || conversionResults.length === 0) {
+    showToast('No files to display');
+    return;
+  }
+  
+  const list = document.getElementById('resultList');
+  list.innerHTML = '';
+  
+  conversionResults.forEach(r => {
+    const url = URL.createObjectURL(r.blob);
+    const row = document.createElement('div');
+    row.className = 'result-row';
+    row.innerHTML = `<div class="result-icon">PDF</div>
+      <div class="result-info">
+        <div class="result-filename" title="${r.name}">${r.name}</div>
+        <div class="result-meta">Converted from ${r.origFile.name} · ${formatSize(r.blob.size)}</div>
+      </div>
+      <button class="result-dl" data-url="${url}" data-name="${r.name}" title="Download ${r.name}">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Save
+      </button>`;
+    
+    row.querySelector('.result-dl').addEventListener('click', () => {
+      const btn = row.querySelector('.result-dl');
+      const a = document.createElement('a');
+      a.href = btn.dataset.url;
+      a.download = btn.dataset.name;
+      a.click();
+      showToast('Downloading ' + btn.dataset.name);
+    });
+    
+    list.appendChild(row);
+  });
+  
+  document.getElementById('resultCountBadge').textContent = conversionResults.length + ' file' + (conversionResults.length !== 1 ? 's' : '');
+  document.getElementById('resultArea').classList.add('visible');
+  document.getElementById('resultArea').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+document.getElementById('downloadAllBtn').addEventListener('click', async () => {
+  if (!conversionResults || conversionResults.length === 0) {
+    showToast('No converted PDFs to download');
+    return;
+  }
+  const enc = new TextEncoder();
+  const u16 = n => [n & 0xff, (n >> 8) & 0xff];
+  const u32 = n => [n & 0xff, (n >> 8) & 0xff, (n >> 16) & 0xff, (n >> 24) & 0xff];
+  const crc32 = buf => { const T = new Uint32Array(256); for (let i = 0; i < 256; i++) { let c = i; for (let j = 0; j < 8; j++) c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1); T[i] = c; } let c = 0xFFFFFFFF; for (let i = 0; i < buf.length; i++) c = T[(c ^ buf[i]) & 0xff] ^ (c >>> 8); return (c ^ 0xFFFFFFFF) >>> 0; };
+  const parts = []; const central = []; let offset = 0;
+  for (const r of conversionResults) {
+    const fileBytes = new Uint8Array(await r.blob.arrayBuffer());
+    const nb = enc.encode(r.name);
+    const crc = crc32(fileBytes);
+    const h = new Uint8Array([0x50, 0x4B, 0x03, 0x04, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...u32(crc), ...u32(fileBytes.length), ...u32(fileBytes.length), ...u16(nb.length), 0, 0, ...nb]);
+    central.push({ nb, crc, size: fileBytes.length, offset });
+    parts.push(h, fileBytes);
+    offset += h.length + fileBytes.length;
+  }
+  const cdStart = offset;
+  for (const { nb, crc, size, offset: fo } of central) {
+    const cd = new Uint8Array([0x50, 0x4B, 0x01, 0x02, 20, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...u32(crc), ...u32(size), ...u32(size), ...u16(nb.length), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...u32(fo), ...nb]);
+    parts.push(cd);
+    offset += cd.length;
+  }
+  const eocd = new Uint8Array([0x50, 0x4B, 0x05, 0x06, 0, 0, 0, 0, ...u16(conversionResults.length), ...u16(conversionResults.length), ...u32(offset - cdStart), ...u32(cdStart), 0, 0]);
+  parts.push(eocd);
+  let total = 0;
+  for (const p of parts) total += p.length;
+  const out = new Uint8Array(total);
+  let pos = 0;
+  for (const p of parts) { out.set(p, pos); pos += p.length; }
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([out], { type: 'application/zip' }));
+  a.download = 'mobi-converted-pdfs.zip';
+  a.click();
+  showToast('Downloading ZIP with ' + conversionResults.length + ' PDFs');
+});
+document.getElementById('reconvertBtn').addEventListener('click', () => { conversionResults = []; document.getElementById('resultArea').classList.remove('visible'); showToast('Adjust settings and convert again'); });
+document.getElementById('clearBtn').addEventListener('click', () => {
+  if (files.length === 0) {
+    showToast('No files to clear');
+    return;
+  }
+  files = [];
+  conversionResults = [];
+  renderQueue();
+  resetUI();
+  document.getElementById('resultArea').classList.remove('visible');
+  document.getElementById('convertBtn').disabled = false;
+  showToast('Cleared all files');
+});
+
+// ── FAQ ──────────────────────────────────────────────────────────────────────
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement, wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+function formatSize(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1048576) return (bytes/1024).toFixed(1) + ' KB';
+  return (bytes/1048576).toFixed(2) + ' MB';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>JPG Quality Analyzer | Check Image Quality Online</title>
+<meta name="description" content="Analyze JPG image quality and detect compression levels instantly. Identify optimization opportunities to maintain sharp visuals and clarity.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jpg2go.com/jpg-quality-analyzer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="adsense.js"></script>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Analyze JPG Quality",
+    "url": "https://jpg2go.com/jpg-quality-analyzer",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Analyze JPG image quality and detect compression levels instantly. Identify optimization opportunities to maintain sharp visuals and clarity."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a JPG quality analyzer tool?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A JPG quality analyzer is a tool that examines JPEG images to determine their compression level and overall visual quality."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is analyzing JPG quality important?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Analyzing image quality helps users understand how much compression has been applied and whether the image is suitable for editing or printing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can this tool detect heavily compressed images?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, JPG quality analyzers can identify compression artifacts and estimate how much the image quality has been reduced."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who commonly uses JPG quality analyzer tools?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Photographers, designers, and developers often use these tools to evaluate image quality before using them in projects."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does analyzing image quality change the image file?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No, the tool only analyzes the image and does not modify or alter the original file."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can JPG quality analyzers help optimize images for websites?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, analyzing image quality helps determine the best balance between compression and visual clarity for web performance."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+<style>
+:root{
+  --ink:#0d0d0d;--paper:#f7f4ee;--cream:#ede9df;--accent:#c84b2f;--accent-light:#e8d5cf;
+  --muted:#7a7567;--border:#d4cfc4;--white:#ffffff;
+  --shadow:0 2px 24px rgba(13,13,13,0.08);--shadow-lg:0 8px 48px rgba(13,13,13,0.12);
+  --ai-purple:#c84b2f;--ai-purple-light:#e8d5cf;
+  --green:#1a8a4a;--green-light:#d4f0e0;
+  --amber:#b07020;--amber-light:#fef3c7;
+  --red:#c84b2f;--red-light:#e8d5cf;
+  --blue:#2563a8;--blue-light:#dbeafe;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;min-height:100vh}
+
+/* HEADER */
+header{background:var(--ink);color:var(--paper);position:sticky;top:0;z-index:100;border-bottom:2px solid var(--accent)}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1.6rem;color:var(--paper);text-decoration:none;letter-spacing:-.02em}
+.logo span{color:var(--accent)}
+nav{display:flex;gap:2rem;align-items:center}
+nav a{color:#a8a39a;text-decoration:none;font-size:.875rem;font-weight:500;transition:color .2s}
+nav a:hover{color:var(--paper)}
+.nav-cta{background:var(--accent);color:var(--white)!important;padding:.4rem 1rem;border-radius:4px}
+.nav-cta:hover{background:#a83825!important}
+.mobile-menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem;flex-direction:column;gap:5px;align-items:center;justify-content:center;width:40px;height:40px}
+.mobile-menu-toggle span{display:block;width:24px;height:2px;background:var(--paper);transition:all .3s;border-radius:2px}
+.mobile-menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(6px,6px)}
+.mobile-menu-toggle.active span:nth-child(2){opacity:0}
+.mobile-menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
+.mobile-nav{display:none;position:fixed;top:64px;left:0;right:0;background:var(--ink);border-top:2px solid var(--accent);padding:1.5rem 2rem;flex-direction:column;gap:1rem;z-index:99;transform:translateY(-100%);opacity:0;transition:transform .3s,opacity .3s;visibility:hidden}
+.mobile-nav.active{display:flex;transform:translateY(0);opacity:1;visibility:visible}
+.mobile-nav a{color:#a8a39a;text-decoration:none;font-size:.95rem;font-weight:500;padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.1);transition:color .2s}
+.mobile-nav a:last-child{border-bottom:none}
+.mobile-nav a:hover{color:var(--paper)}
+.mobile-nav .nav-cta{background:var(--accent);color:var(--white)!important;padding:.75rem 1.5rem;border-radius:4px;text-align:center;border:none;margin-top:.5rem}
+
+/* HERO */
+.hero{background:var(--ink);color:var(--paper);padding:4rem 2rem 3.5rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(200,75,47,.2) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:1px;height:60px;background:linear-gradient(to bottom,transparent,rgba(200,75,47,.4))}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.12em;color:#c84b2f;text-transform:uppercase;border:1px solid rgba(200,75,47,.4);background:rgba(200,75,47,.12);padding:.3rem .9rem;border-radius:2px;margin-bottom:1.5rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5.5vw,3.6rem);font-weight:900;line-height:1.1;letter-spacing:-.03em;margin-bottom:1.25rem}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-desc{font-size:1.05rem;color:#9e9990;max-width:520px;margin:0 auto 1.75rem;font-weight:300;line-height:1.7}
+.hero-pills{display:flex;justify-content:center;flex-wrap:wrap;gap:.5rem}
+.hero-pill{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.06em;color:#a8a39a;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:.3rem .75rem;border-radius:100px}
+
+/* TOOL */
+.tool-section{max-width:1000px;margin:-1.5rem auto 0;padding:0 1.5rem 4rem;position:relative;z-index:10}
+.tool-card{background:var(--white);border-radius:12px;box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid var(--border)}
+.tool-card-header{background:var(--cream);padding:1rem 1.5rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid var(--border)}
+.dot{width:12px;height:12px;border-radius:50%;display:inline-block}
+.dot-r{background:#ff5f57}.dot-y{background:#febc2e}.dot-g{background:#28c840}
+.tool-card-title{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--muted);margin-left:.5rem;letter-spacing:.05em}
+.tool-body{padding:1.5rem}
+
+/* DROP ZONE */
+.drop-zone{border:2px dashed var(--border);border-radius:10px;padding:3rem 2rem;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;background:var(--paper);position:relative}
+.drop-zone:hover,.drop-zone.drag-over{border-color:var(--accent);background:var(--accent-light)}
+.drop-zone input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.drop-icon{width:52px;height:52px;background:var(--accent-light);border:1px solid rgba(200,75,47,.3);border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:var(--accent)}
+.drop-zone h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:.4rem}
+.drop-zone p{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+.formats-pill{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.08em;color:var(--accent);background:var(--accent-light);padding:.25rem .75rem;border-radius:100px;display:inline-block}
+
+/* FILE QUEUE */
+.file-queue-wrap{display:none;margin-top:1.25rem}
+.file-queue-wrap.visible{display:block}
+.fq-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem}
+.fq-label{font-family:'DM Mono',monospace;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.fq-count{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--accent);background:var(--accent-light);padding:.15rem .5rem;border-radius:100px}
+.fq-list{display:flex;flex-direction:column;gap:.4rem;max-height:200px;overflow-y:auto;padding-right:2px}
+.fq-list::-webkit-scrollbar{width:4px}
+.fq-list::-webkit-scrollbar-track{background:var(--cream)}
+.fq-list::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.fq-item{display:flex;align-items:center;gap:.65rem;background:var(--paper);border:1px solid var(--border);border-radius:7px;padding:.55rem .8rem}
+.fq-thumb{width:34px;height:34px;border-radius:4px;object-fit:cover;border:1px solid var(--border);flex-shrink:0;background:var(--cream)}
+.fq-info{flex:1;min-width:0}
+.fq-name{font-size:.78rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fq-meta{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--muted)}
+.fq-remove{background:none;border:none;cursor:pointer;color:var(--muted);padding:.15rem;border-radius:3px;display:flex;transition:color .15s}
+.fq-remove:hover{color:var(--accent)}
+.add-more-btn{display:flex;align-items:center;justify-content:center;gap:.5rem;border:1.5px dashed var(--border);border-radius:7px;padding:.55rem;cursor:pointer;font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted);background:transparent;width:100%;margin-top:.4rem;transition:all .2s;position:relative;overflow:hidden}
+.add-more-btn input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.add-more-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}
+
+/* ACTION */
+.action-bar{display:flex;gap:.75rem;margin-top:1.25rem;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:var(--white);border:none;border-radius:6px;padding:.65rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:.875rem;font-weight:600;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:.5rem;text-decoration:none}
+.btn-primary:hover{background:#a83825;transform:translateY(-1px)}
+.btn-primary:disabled{background:var(--border);color:var(--muted);cursor:not-allowed;transform:none}
+.btn-secondary{background:transparent;color:var(--ink);border:1.5px solid var(--border);border-radius:6px;padding:.65rem 1.25rem;font-family:'DM Sans',sans-serif;font-size:.875rem;font-weight:500;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:.5rem}
+.btn-secondary:hover{border-color:var(--ink);background:var(--cream)}
+
+/* RESULTS AREA */
+.results-area{display:none;margin-top:1.5rem}
+.results-area.visible{display:block}
+
+.result-cards{display:flex;flex-direction:column;gap:1rem}
+
+/* Single result card */
+.result-card{background:var(--paper);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.rc-header{display:flex;align-items:center;gap:.75rem;padding:.65rem 1rem;background:var(--cream);border-bottom:1px solid var(--border);flex-wrap:wrap;gap:.5rem}
+.rc-thumb{width:38px;height:38px;border-radius:4px;object-fit:cover;border:1px solid var(--border);flex-shrink:0;background:var(--ink)}
+.rc-filename{font-size:.82rem;font-weight:700;color:var(--ink);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rc-tier-badge{font-family:'DM Mono',monospace;font-size:.65rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:.2rem .6rem;border-radius:4px;white-space:nowrap;flex-shrink:0}
+.rc-body{padding:1rem}
+
+/* Quality gauge */
+.quality-gauge-wrap{display:flex;align-items:center;gap:1.25rem;margin-bottom:1rem;flex-wrap:wrap}
+.gauge-svg-wrap{position:relative;flex-shrink:0}
+.gauge-svg-wrap svg{overflow:visible}
+.gauge-score{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-top:10px}
+.gauge-number{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;line-height:1;letter-spacing:-.04em}
+.gauge-label{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:.15rem}
+.gauge-details{flex:1;min-width:180px}
+.gauge-tier{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:.2rem}
+.gauge-desc{font-size:.82rem;color:var(--muted);line-height:1.5}
+
+/* Stats grid */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.5rem;margin-bottom:1rem}
+.stat-box{background:var(--white);border:1px solid var(--border);border-radius:7px;padding:.65rem .85rem}
+.stat-box-label{font-family:'DM Mono',monospace;font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.25rem}
+.stat-box-val{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;letter-spacing:-.03em;color:var(--ink);line-height:1}
+.stat-box-unit{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--muted);margin-top:.1rem}
+
+/* Quant table toggle */
+.qt-toggle{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:.35rem;user-select:none;margin-bottom:.5rem;background:none;border:none;padding:0}
+.qt-toggle:hover{color:var(--ink)}
+.qt-toggle svg{transition:transform .2s}
+.qt-toggle.open svg{transform:rotate(90deg)}
+.qt-wrap{display:none;background:var(--cream);border:1px solid var(--border);border-radius:7px;padding:.85rem;overflow-x:auto}
+.qt-wrap.visible{display:block}
+.qt-table{border-collapse:collapse;font-family:'DM Mono',monospace;font-size:.68rem}
+.qt-table td{padding:.2rem .4rem;text-align:right;border:1px solid var(--border);min-width:30px;background:var(--white);color:var(--ink)}
+.qt-table td.qt-high{background:#fde8e8;color:#8b0000}
+.qt-table td.qt-med{background:#fef3c7;color:#854d0e}
+.qt-table td.qt-low{background:#d4f0e0;color:#14532d}
+.qt-title{font-family:'DM Mono',monospace;font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.4rem}
+
+/* Recommendation */
+.recommendation{background:var(--blue-light);border:1px solid rgba(37,99,168,.2);border-radius:8px;padding:.75rem .9rem;display:flex;align-items:flex-start;gap:.6rem;margin-top:.75rem}
+.recommendation svg{flex-shrink:0;color:var(--blue);margin-top:.1rem}
+.recommendation-text{font-size:.82rem;color:#1e3a5f;line-height:1.6}
+.recommendation-text strong{color:#1e3a5f}
+
+/* TOAST */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--ink);color:var(--paper);padding:.75rem 1.5rem;border-radius:6px;font-size:.875rem;font-weight:500;transition:transform .3s cubic-bezier(.34,1.56,.64,1);z-index:999;border-left:3px solid var(--accent);white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* CONTENT SECTIONS */
+.content-section{max-width:1000px;margin:0 auto;padding:4rem 1.5rem}
+.section-tag{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem;display:block}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;letter-spacing:-.02em;margin-bottom:1.25rem;line-height:1.2}
+.content-prose{color:#4a4640;font-size:.975rem;line-height:1.8;max-width:720px}
+.content-prose p{margin-bottom:1rem}
+.content-prose p:last-child{margin-bottom:0}
+.divider{border:none;border-top:1px solid var(--border);max-width:1000px;margin:0 auto}
+.how-to-section{background:var(--ink);color:var(--paper);padding:1.75rem 2rem;position:relative;overflow:hidden}
+.how-to-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 100%,rgba(200,75,47,.14) 0%,transparent 70%);pointer-events:none}
+.how-to-inner{max-width:1000px;margin:0 auto;position:relative}
+.how-to-header{text-align:center;margin-bottom:1.25rem}
+.how-to-header .section-tag{color:#c84b2f}
+.how-to-header .section-title{color:var(--paper);margin-bottom:.35rem}
+.how-to-subtitle{color:#9e9990;font-size:.9rem;font-weight:300}
+.steps-grid{display:flex;align-items:stretch;gap:0}
+.step-card{flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:.85rem 1rem;transition:background .25s,border-color .25s,transform .25s}
+.step-card:hover{background:rgba(200,75,47,.08);border-color:rgba(200,75,47,.35);transform:translateY(-4px)}
+.step-connector{display:flex;align-items:center;justify-content:center;padding:0 .5rem;color:rgba(200,75,47,.5);flex-shrink:0;margin-top:-1rem}
+.step-number{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:rgba(200,75,47,.25);line-height:1;margin-bottom:.35rem;letter-spacing:-.04em}
+.step-icon{width:36px;height:36px;background:rgba(200,75,47,.15);border:1px solid rgba(200,75,47,.3);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:.6rem;color:#c84b2f}
+.step-title{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:var(--paper);margin-bottom:.35rem;line-height:1.3}
+.step-desc{font-size:.8rem;color:#9e9990;line-height:1.55;margin-bottom:.6rem}
+.step-desc strong{color:#d4cfc4}
+.step-pill{display:inline-block;font-family:'DM Mono',monospace;font-size:.63rem;letter-spacing:.05em;color:#c84b2f;background:rgba(200,75,47,.12);border:1px solid rgba(200,75,47,.25);padding:.2rem .6rem;border-radius:100px}
+.how-to-cta{text-align:center;margin-top:1.25rem;display:flex;flex-direction:column;align-items:center;gap:.6rem}
+.how-to-note{font-size:.8rem;color:#7a7567;font-family:'DM Mono',monospace;letter-spacing:.03em}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:2rem}
+.feature-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.5rem 1.25rem;transition:box-shadow .2s,transform .2s}
+.feature-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.feature-icon{font-size:1.75rem;margin-bottom:.75rem;display:block}
+.feature-title{font-weight:700;font-size:.9rem;margin-bottom:.4rem}
+.feature-desc{font-size:.82rem;color:var(--muted);line-height:1.5}
+
+/* Quality reference table */
+.quality-ref-table{width:100%;border-collapse:collapse;margin-top:1.5rem;font-size:.85rem}
+.quality-ref-table th{font-family:'DM Mono',monospace;font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:600;text-align:left;padding:.5rem .75rem;border-bottom:2px solid var(--border)}
+.quality-ref-table td{padding:.7rem .75rem;border-bottom:1px solid var(--border);color:#4a4640;vertical-align:middle;line-height:1.5}
+.quality-ref-table tr:last-child td{border-bottom:none}
+.quality-ref-table tr:hover td{background:var(--paper)}
+.q-range{font-family:'DM Mono',monospace;font-size:.78rem;font-weight:600;color:var(--accent);white-space:nowrap}
+.q-swatch{width:12px;height:12px;border-radius:50%;display:inline-block;margin-right:.35rem;vertical-align:middle}
+
+.cases-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-top:2rem}
+.case-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.25rem;transition:box-shadow .2s,transform .2s}
+.case-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.case-card-name{font-weight:700;font-size:.9rem;margin-bottom:.35rem;color:var(--ink)}
+.case-card-example{font-family:'DM Mono',monospace;font-size:.78rem;color:var(--accent);background:var(--accent-light);padding:.25rem .5rem;border-radius:4px;display:inline-block;margin-bottom:.6rem}
+.case-card-desc{font-size:.825rem;color:var(--muted);line-height:1.5}
+.faq-list{margin-top:2rem}
+.faq-item{border-bottom:1px solid var(--border);padding:1.25rem 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-weight:600;font-size:.95rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-q::after{content:'+';font-size:1.2rem;color:var(--accent);flex-shrink:0;transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-size:.9rem;color:var(--muted);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .3s ease,margin-top .3s}
+.faq-item.open .faq-a{max-height:320px;margin-top:.75rem}
+.cta-section{background:var(--ink);color:var(--paper);padding:1.5rem 2rem;text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(200,75,47,.18) 0%,transparent 70%);pointer-events:none}
+.cta-inner{max-width:640px;margin:0 auto;position:relative}
+.cta-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-bottom:1rem;color:var(--paper)}
+.cta-desc{font-size:1rem;color:#9e9990;font-weight:300;margin-bottom:1rem;line-height:1.7}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:.75rem}
+.cta-note{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.06em;color:#5a5650;margin-top:1rem;display:block}
+.related-section{background:var(--cream);padding:5rem 2rem;border-top:1px solid var(--border)}
+.related-inner{max-width:1000px;margin:0 auto}
+.related-header{margin-bottom:2.5rem}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
+.related-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-decoration:none;color:inherit;display:block;transition:box-shadow .2s,transform .2s,border-color .2s;position:relative;overflow:hidden}
+.related-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border);transition:background .2s}
+.related-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px);border-color:var(--accent)}
+.related-card:hover::before{background:var(--accent)}
+.related-card-icon{font-size:1.85rem;margin-bottom:.85rem;display:block}
+.related-card-name{font-family:'Playfair Display',serif;font-weight:700;font-size:1rem;margin-bottom:.35rem;color:var(--ink);letter-spacing:-.01em}
+.related-card-desc{font-size:.82rem;color:var(--muted);line-height:1.5;margin-bottom:1rem}
+.related-card-tag{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--accent-light);padding:.2rem .5rem;border-radius:3px;display:inline-block}
+footer{background:var(--ink);color:#9e9990;padding:4rem 2rem 2rem;margin-top:3rem;border-top:1px solid rgba(255,255,255,0.05)}
+.footer-inner{max-width:1200px;
+  margin-top: 0;
+  border-top: 1px solid rgba(255,255,255,0.05);margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid #2a2a2a}
+.footer-brand .logo{display:block;margin-bottom:.75rem}
+.footer-brand p{font-size:.85rem;line-height:1.6;max-width:240px}
+.footer-social{display:flex;margin-top:1rem}
+.social-icon{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;color:#9e9990;transition:color .2s,transform .2s;border-radius:6px}
+.social-icon:hover{color:var(--paper);transform:translateY(-2px)}
+.footer-col-title{font-family:'DM Sans',sans-serif;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--paper);font-weight:600;margin-bottom:1rem}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.footer-links a{color:#9e9990;text-decoration:none;font-size:.85rem;transition:color .2s}
+.footer-links a:hover{color:var(--paper)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;font-size:.8rem;flex-wrap:wrap;gap:.75rem}
+@media(max-width:768px){nav{display:none}.mobile-menu-toggle{display:flex}.steps-grid{flex-direction:column}.step-connector{transform:rotate(90deg);padding:.25rem 0}.footer-grid{grid-template-columns:1fr 1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr;gap:2rem}.footer-bottom{flex-direction:column;text-align:center}.stats-grid{grid-template-columns:1fr 1fr}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeUp .6s ease both}.delay-1{animation-delay:.1s}
+@keyframes arcGrow{from{stroke-dashoffset:var(--arc-start)}to{stroke-dashoffset:var(--arc-end)}}
+.gauge-arc-fill{animation:arcGrow .8s cubic-bezier(.34,1.2,.64,1) both}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">JPG2<span>Go</span></a>
+    <nav>
+<nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="tools.html">Tools</a>
+      <a href="#tool" class="nav-cta">Convert Now</a>
+    </nav>
+</nav>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+    <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="tools.html" onclick="closeMobileMenu()">Tools</a>
+    <a href="#tool" class="nav-cta" onclick="closeMobileMenu()">Convert Now</a>
+  </nav>
+</nav>
+</header>
+
+<section class="hero">
+  <div class="fade-up">
+    <div class="hero-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            Check Image Quality Online
+    </div>
+    <h1>Analyze JPG Quality</h1>
+    <p class="hero-desc">Analyze JPEG image quality and compression levels instantly. Check whether a JPG file is suitable for editing, publishing, or web use.</p>
+    <div class="hero-pills">
+      <span class="hero-pill">Quantization Table Parse</span>
+      <span class="hero-pill">Quality Score 1–100</span>
+      <span class="hero-pill">Compression Ratio</span>
+      <span class="hero-pill">Bits Per Pixel</span>
+      <span class="hero-pill">Batch Analysis</span>
+    </div>
+  </div>
+</section>
+
+<section class="tool-section" id="tool">
+  <div class="tool-card fade-up delay-1">
+    <div class="tool-card-header">
+      <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+      <span class="tool-card-title">jpg-quality-analyzer · quantization table parser · browser-native · zero upload</span>
+    </div>
+    <div class="tool-body">
+
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" accept="image/jpeg,image/jpg,.jpg,.jpeg" multiple>
+        <div class="drop-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Drop JPG images here</h3>
+        <p>Drop one or more JPG files to analyze their compression quality level</p>
+        <span class="formats-pill">JPG · JPEG · batch supported</span>
+      </div>
+
+      <div class="file-queue-wrap" id="fileQueueWrap">
+        <div class="fq-header">
+          <span class="fq-label">Files queued</span>
+          <span class="fq-count" id="fqCount">0 files</span>
+        </div>
+        <div class="fq-list" id="fqList"></div>
+        <label class="add-more-btn">
+          <input type="file" id="addMoreInput" accept="image/jpeg,image/jpg,.jpg,.jpeg" multiple>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Add more images
+        </label>
+      </div>
+
+      <div class="action-bar">
+        <button class="btn-primary" id="analyzeBtn" disabled>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Analyze Quality
+        </button>
+        <button class="btn-secondary" id="clearBtn" style="display:none;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
+          Clear All
+        </button>
+      </div>
+
+      <div class="results-area" id="resultsArea">
+        <div class="result-cards" id="resultCards"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="how-to-section" id="how-it-works">
+  <div class="how-to-inner">
+    <div class="how-to-header">
+      <span class="section-tag">Quick Guide</span>
+      <h2 class="section-title">How JPEG Quality Analysis Works</h2>
+      <p class="how-to-subtitle">Reading quality from the file — no re-encoding needed.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">01</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+        <div class="step-title">Upload JPEG Files</div>
+        <div class="step-desc">Drop one or more JPG images. The tool reads each file as <strong>raw binary</strong> — no image decoding, no canvas, no re-encoding required.</div>
+        <span class="step-pill">batch supported</span>
+      </div>
+      <div class="step-connector"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-number">02</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <div class="step-title">Parse Quantization Tables</div>
+        <div class="step-desc">The JPEG DQT markers are located in the file header. The <strong>quantization table values</strong> directly encode how aggressively the image was compressed.</div>
+        <span class="step-pill">DQT marker parse</span>
+      </div>
+      <div class="step-connector"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-number">03</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div class="step-title">Estimate Quality</div>
+        <div class="step-desc">Table values are compared against the <strong>IJG standard quantization tables</strong> to reverse-engineer the quality setting used when the file was saved.</div>
+        <span class="step-pill">IJG algorithm</span>
+      </div>
+      <div class="step-connector"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-number">04</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div class="step-title">See Results &amp; Tips</div>
+        <div class="step-desc">Get a quality score, tier classification, compression ratio, bits per pixel, and <strong>specific recommendations</strong> for optimization.</div>
+        <span class="step-pill">actionable insights</span>
+      </div>
+    </div>
+    <div class="how-to-cta">
+      <a href="#tool" class="btn-primary"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Analyze Now</a>
+      <span class="how-to-note">free · no signup · no upload</span>
+    </div>
+  </div>
+</section>
+
+<section class="content-section" id="about">
+  <h2 class="section-title">Why Use JPG Quality Analyzer?</h2>
+  <div class="content-prose">
+    <p>A JPG quality analyzer helps evaluate the compression level and visual quality of JPEG images. When images are compressed multiple times, they may lose clarity or develop artifacts.</p>
+    <p>This tool analyzes image data to estimate how much compression has been applied and whether the image quality has been affected.</p>
+    <p>For photographers, designers, and digital publishers, understanding image quality is important for maintaining professional standards. A JPG quality analyzer provides insights that help ensure images remain clear, optimized, and suitable for digital use.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="content-section">
+  <span class="section-tag">Features</span>
+  <h2 class="section-title">What the Analyzer Tells You</h2>
+  <div class="features-grid">
+    <div class="feature-card"><span class="feature-icon">📊</span><div class="feature-title">Estimated Quality Score</div><div class="feature-desc">A 1–100 quality score estimated from the quantization tables, matching the libjpeg quality scale used by Photoshop, cameras, and browsers.</div></div>
+    <div class="feature-card"><span class="feature-icon">🗜️</span><div class="feature-title">Compression Ratio</div><div class="feature-desc">Actual file size compared to the uncompressed size (width × height × 3 bytes), showing how efficiently the image was compressed.</div></div>
+    <div class="feature-card"><span class="feature-icon">🔢</span><div class="feature-title">Bits Per Pixel</div><div class="feature-desc">File size divided by pixel count — a quality-independent metric for comparing compression efficiency across images of different sizes.</div></div>
+    <div class="feature-card"><span class="feature-icon">🔍</span><div class="feature-title">Quantization Table View</div><div class="feature-desc">Optionally inspect the raw 8×8 luminance quantization table from the file, with color-coding by value range.</div></div>
+    <div class="feature-card"><span class="feature-icon">💡</span><div class="feature-title">Optimization Tips</div><div class="feature-desc">Specific recommendations based on the quality level — whether the file is over-compressed, already optimal, or could benefit from re-encoding.</div></div>
+    <div class="feature-card"><span class="feature-icon">📦</span><div class="feature-title">Batch Analysis</div><div class="feature-desc">Analyze multiple JPEGs at once — each gets its own quality report card. Useful for comparing assets in a project or auditing a batch of images.</div></div>
+  </div>
+</section>
+
+<section class="content-section">
+  <span class="section-tag">Quality Reference</span>
+  <h2 class="section-title">JPEG Quality Tiers Explained</h2>
+  <div class="content-prose"><p>JPEG quality scores correspond to different use cases and visual trade-offs. The tool classifies results into these tiers:</p></div>
+  <table class="quality-ref-table">
+    <thead><tr><th>Quality Range</th><th>Tier</th><th>Typical Use</th><th>Signs to Look For</th></tr></thead>
+    <tbody>
+      <tr><td><span class="q-range"><span class="q-swatch" style="background:#14532d"></span>90–100</span></td><td><strong>Near-Lossless</strong></td><td>Print production, stock photography, source files, archival</td><td>Very large file size; minimal artefacts even at 400% zoom</td></tr>
+      <tr><td><span class="q-range"><span class="q-swatch" style="background:#1a8a4a"></span>75–89</span></td><td><strong>High Quality</strong></td><td>Web photography, social media, email, app UI photos</td><td>Excellent visual quality; subtle artefacts only at extreme zoom</td></tr>
+      <tr><td><span class="q-range"><span class="q-swatch" style="background:#b07020"></span>55–74</span></td><td><strong>Medium Quality</strong></td><td>Thumbnails, background images, previews</td><td>Visible block artefacts on fine texture; colours slightly flatter</td></tr>
+      <tr><td><span class="q-range"><span class="q-swatch" style="background:#c84b2f"></span>30–54</span></td><td><strong>Low Quality</strong></td><td>Drafts, placeholders, heavy bandwidth savings</td><td>Clear blocking in smooth areas; edge ringing visible</td></tr>
+      <tr><td><span class="q-range"><span class="q-swatch" style="background:#8b0000"></span>1–29</span></td><td><strong>Very Low</strong></td><td>Approximate previews only</td><td>Severe mosaic artefacts; significant colour shift</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="content-section">
+  <span class="section-tag">Use Cases</span>
+  <h2 class="section-title">When to Use the Quality Analyzer</h2>
+  <div class="cases-grid">
+    <div class="case-card"><div class="case-card-name">Before Re-Optimizing</div><div class="case-card-example">use → audit</div><div class="case-card-desc">Check the quality of existing JPEGs before running them through an optimizer. If a file is already at quality 75–82, re-compressing to the same level adds generation loss for no benefit. Use the analyzer to decide whether optimization is worthwhile.</div></div>
+    <div class="case-card"><div class="case-card-name">Image Source Verification</div><div class="case-card-example">use → verify</div><div class="case-card-desc">Check whether a JPEG came from a high-quality source or was already heavily compressed before you received it. A quality score below 60 on a "product photo" or "press image" is a red flag for a re-compressed asset.</div></div>
+    <div class="case-card"><div class="case-card-name">Web Performance Audit</div><div class="case-card-example">use → web perf</div><div class="case-card-desc">Scan images from a webpage or CMS to identify ones at unnecessarily high quality (e.g. 95+) that could be reduced to 80–85 for significant bandwidth savings without visible quality loss.</div></div>
+    <div class="case-card"><div class="case-card-name">Print vs Screen Suitability</div><div class="case-card-example">use → print</div><div class="case-card-desc">Verify whether a JPEG has sufficient quality for print use (typically 90+). A file at quality 70 may look fine on screen but will show JPEG artefacts when printed at high resolution.</div></div>
+    <div class="case-card"><div class="case-card-name">Comparing Encoder Output</div><div class="case-card-example">use → compare</div><div class="case-card-desc">Compare the quantization tables from different encoders (Photoshop, Lightroom, browser canvas, camera firmware) to understand differences in their output at the same nominal quality setting.</div></div>
+    <div class="case-card"><div class="case-card-name">Detecting Recompressed Images</div><div class="case-card-example">use → forensics</div><div class="case-card-desc">A JPEG that has been re-saved multiple times will have quantization tables that don't match any standard quality level precisely — the estimates will be inconsistent between luminance and chrominance tables.</div></div>
+  </div>
+</section>
+
+<section class="content-section" id="faq">
+  <span class="section-tag">FAQ</span>
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item open"><div class="faq-q">What is a JPG quality analyzer tool?</div><div class="faq-a">A JPG quality analyzer is a tool that examines JPEG images to determine their compression level and overall visual quality.</div></div><div class="faq-item"><div class="faq-q">Why is analyzing JPG quality important?</div><div class="faq-a">Analyzing image quality helps users understand how much compression has been applied and whether the image is suitable for editing or printing.</div></div><div class="faq-item"><div class="faq-q">Can this tool detect heavily compressed images?</div><div class="faq-a">Yes, JPG quality analyzers can identify compression artifacts and estimate how much the image quality has been reduced.</div></div><div class="faq-item"><div class="faq-q">Who commonly uses JPG quality analyzer tools?</div><div class="faq-a">Photographers, designers, and developers often use these tools to evaluate image quality before using them in projects.</div></div><div class="faq-item"><div class="faq-q">Does analyzing image quality change the image file?</div><div class="faq-a">No, the tool only analyzes the image and does not modify or alter the original file.</div></div><div class="faq-item"><div class="faq-q">Can JPG quality analyzers help optimize images for websites?</div><div class="faq-a">Yes, analyzing image quality helps determine the best balance between compression and visual clarity for web performance.</div></div>
+  </div>
+</section>
+
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-header"><span class="section-tag">Related Tools</span><h2 class="section-title">More Free Online Tools</h2></div>
+    <div class="related-grid">
+      <a href="/jpg-to-pdf" class="related-card">
+        <span class="related-card-icon">📄</span>
+        <div class="related-card-name">JPG to PDF</div>
+        <div class="related-card-desc">Convert JPG images to PDF documents quickly. Combine multiple photos into a single organized PDF file for easy sharing and printing.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+      <a href="/image-resizer" class="related-card">
+        <span class="related-card-icon">📐</span>
+        <div class="related-card-name">Image Resizer</div>
+        <div class="related-card-desc">Resize images to exact pixel dimensions or a percentage of their original size. Runs entirely in your browser without uploading files anywhere.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/compress-jpeg" class="related-card">
+        <span class="related-card-icon">🗜️</span>
+        <div class="related-card-name">Compress JPEG</div>
+        <div class="related-card-desc">Reduce JPEG image file size while maintaining quality. Optimize images for faster web pages and lower storage usage.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/merge-pdf" class="related-card">
+        <span class="related-card-icon">📎</span>
+        <div class="related-card-name">Merge PDF</div>
+        <div class="related-card-desc">Combine multiple PDF files into a single organized document. Drag and drop to reorder pages easily.</div>
+        <span class="related-card-tag">PDF</span>
+      </a>
+      <a href="/crop-image" class="related-card">
+        <span class="related-card-icon">✂️</span>
+        <div class="related-card-name">Crop Image</div>
+        <div class="related-card-desc">Crop images to any aspect ratio or custom dimensions. Perfect for social media thumbnails, profile photos, and banner images.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/format-converter" class="related-card">
+        <span class="related-card-icon">🔄</span>
+        <div class="related-card-name">Format Converter</div>
+        <div class="related-card-desc">Convert images between different formats instantly. Transform JPG, PNG, WebP, and other image formats quickly.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner">
+    <h2 class="cta-title">Analyze JPG Image Quality</h2>
+    <p class="cta-desc">Check JPEG compression level and image quality instantly to understand how optimized your image is.</p>
+    <div class="cta-actions"><a href="#tool" class="btn-primary"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Analyze Image</a></div>
+    <span class="cta-note">free · browser-native · no signup required</span>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<div id="footer-placeholder"></div>
+<script src="load-footer.js"></script>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ══ GLOBALS ═══════════════════════════════════════════════════════════════════
+let files = [];  // { file: File, objectUrl: string }
+
+// Standard libjpeg luminance quantization table (quality 50 base)
+const STD_LUMA = [
+  16,11,10,16,24,40,51,61,
+  12,12,14,19,26,58,60,55,
+  14,13,16,24,40,57,69,56,
+  14,17,22,29,51,87,80,62,
+  18,22,37,56,68,109,103,77,
+  24,35,55,64,81,104,113,92,
+  49,64,78,87,103,121,120,101,
+  72,92,95,98,112,100,103,99
+];
+
+const STD_CHROMA = [
+  17,18,24,47,99,99,99,99,
+  18,21,26,66,99,99,99,99,
+  24,26,56,99,99,99,99,99,
+  47,66,99,99,99,99,99,99,
+  99,99,99,99,99,99,99,99,
+  99,99,99,99,99,99,99,99,
+  99,99,99,99,99,99,99,99,
+  99,99,99,99,99,99,99,99
+];
+
+// ══ TOAST ═════════════════════════════════════════════════════════════════════
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ══ MOBILE MENU ═══════════════════════════════════════════════════════════════
+document.getElementById('mobileMenuToggle').addEventListener('click', function(){
+  this.classList.toggle('active');
+  document.getElementById('mobileNav').classList.toggle('active');
+});
+
+// ══ FILE INPUT ════════════════════════════════════════════════════════════════
+const dropZone  = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault(); dropZone.classList.remove('drag-over');
+  addFiles(Array.from(e.dataTransfer.files).filter(isJpeg));
+});
+fileInput.addEventListener('change', e => { addFiles(Array.from(e.target.files)); fileInput.value = ''; });
+document.getElementById('addMoreInput').addEventListener('change', e => { addFiles(Array.from(e.target.files)); e.target.value = ''; });
+
+function isJpeg(f) { return f.type === 'image/jpeg' || /\.(jpg|jpeg)$/i.test(f.name); }
+
+function addFiles(newFiles) {
+  newFiles.forEach(f => files.push({ file: f, objectUrl: URL.createObjectURL(f) }));
+  renderQueue();
+  if (files.length > 0) {
+    document.getElementById('fileQueueWrap').classList.add('visible');
+    document.getElementById('analyzeBtn').disabled = false;
+    document.getElementById('clearBtn').style.display = '';
+    document.getElementById('resultsArea').classList.remove('visible');
+    document.getElementById('resultCards').innerHTML = '';
+  }
+}
+
+function removeFile(idx) {
+  URL.revokeObjectURL(files[idx].objectUrl);
+  files.splice(idx, 1);
+  renderQueue();
+  if (files.length === 0) {
+    document.getElementById('fileQueueWrap').classList.remove('visible');
+    document.getElementById('analyzeBtn').disabled = true;
+    document.getElementById('clearBtn').style.display = 'none';
+    document.getElementById('resultsArea').classList.remove('visible');
+  }
+}
+
+function renderQueue() {
+  const list = document.getElementById('fqList');
+  document.getElementById('fqCount').textContent = `${files.length} file${files.length !== 1 ? 's' : ''}`;
+  list.innerHTML = '';
+  files.forEach(({ file, objectUrl }, i) => {
+    const item = document.createElement('div');
+    item.className = 'fq-item';
+    item.innerHTML = `
+      <img class="fq-thumb" src="${objectUrl}" alt="${file.name}">
+      <div class="fq-info"><div class="fq-name">${file.name}</div><div class="fq-meta">${formatSize(file.size)}</div></div>
+      <button class="fq-remove" data-idx="${i}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>`;
+    list.appendChild(item);
+  });
+  list.querySelectorAll('.fq-remove').forEach(btn =>
+    btn.addEventListener('click', () => removeFile(parseInt(btn.dataset.idx)))
+  );
+}
+
+// ══ CLEAR ═════════════════════════════════════════════════════════════════════
+document.getElementById('clearBtn').addEventListener('click', () => {
+  files.forEach(f => URL.revokeObjectURL(f.objectUrl));
+  files = [];
+  renderQueue();
+  document.getElementById('fileQueueWrap').classList.remove('visible');
+  document.getElementById('analyzeBtn').disabled = true;
+  document.getElementById('clearBtn').style.display = 'none';
+  document.getElementById('resultsArea').classList.remove('visible');
+  document.getElementById('resultCards').innerHTML = '';
+  showToast('Cleared');
+});
+
+// ══ ANALYZE ═══════════════════════════════════════════════════════════════════
+document.getElementById('analyzeBtn').addEventListener('click', () => {
+  if (!files.length) return;
+  const container = document.getElementById('resultCards');
+  container.innerHTML = '';
+  document.getElementById('resultsArea').classList.add('visible');
+
+  files.forEach(({ file, objectUrl }, i) => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      const result = analyzeJpeg(e.target.result, file);
+      container.appendChild(buildResultCard(result, file, objectUrl));
+      // Trigger gauge animation after DOM insert
+      setTimeout(() => {
+        const gaugeEl = document.getElementById(`gauge-arc-${i}`);
+        if (gaugeEl) gaugeEl.classList.add('gauge-arc-fill');
+        const qtWrap = document.getElementById(`qt-wrap-${i}`);
+        if (qtWrap) qtWrap.dataset.ready = '1';
+      }, 50);
+    };
+    reader.readAsArrayBuffer(file);
+  });
+
+  showToast(`Analyzing ${files.length} file${files.length !== 1 ? 's' : ''}…`);
+});
+
+// ══ JPEG ANALYZER ════════════════════════════════════════════════════════════
+function analyzeJpeg(buf, file) {
+  const view = new DataView(buf);
+  const result = { file, tables: [], error: null };
+
+  if (view.getUint16(0) !== 0xFFD8) {
+    result.error = 'Not a valid JPEG file';
+    return result;
+  }
+
+  let offset = 2;
+  while (offset < buf.byteLength - 4) {
+    if (view.getUint8(offset) !== 0xFF) break;
+    const marker = view.getUint16(offset);
+    const segLen = view.getUint16(offset + 2);
+
+    if (marker === 0xFFDB) { // DQT - Define Quantization Table
+      let qtOffset = offset + 4;
+      const qtEnd   = offset + 2 + segLen;
+      while (qtOffset < qtEnd) {
+        const precAndId = view.getUint8(qtOffset);
+        const precision = (precAndId >> 4) & 0xF;
+        const tableId   = precAndId & 0xF;
+        qtOffset++;
+        const tableData = [];
+        const bytesPerVal = precision === 0 ? 1 : 2;
+        for (let i = 0; i < 64; i++) {
+          tableData.push(precision === 0
+            ? view.getUint8(qtOffset + i)
+            : view.getUint16(qtOffset + i * 2, false));
+        }
+        qtOffset += 64 * bytesPerVal;
+        result.tables.push({ id: tableId, precision, data: tableData });
+      }
+    }
+
+    if (marker === 0xFFC0 || marker === 0xFFC2) { // SOF0 / SOF2
+      result.height    = view.getUint16(offset + 5);
+      result.width     = view.getUint16(offset + 7);
+      result.components = view.getUint8(offset + 9);
+      result.progressive = marker === 0xFFC2;
+    }
+
+    if (marker === 0xFFDA) break; // SOS
+    offset += 2 + segLen;
+  }
+
+  // Estimate quality from luminance table (table 0)
+  const lumaTable = result.tables.find(t => t.id === 0);
+  if (lumaTable) {
+    result.quality = estimateQuality(lumaTable.data, STD_LUMA);
+  } else if (result.tables.length > 0) {
+    result.quality = estimateQuality(result.tables[0].data, STD_LUMA);
+  } else {
+    result.quality = null;
+  }
+
+  // Stats
+  result.fileSize = file.size;
+  if (result.width && result.height) {
+    result.pixels   = result.width * result.height;
+    result.uncompressed = result.pixels * 3; // 24-bit RGB
+    result.compressionRatio = (result.uncompressed / result.fileSize).toFixed(1);
+    result.bitsPerPixel = ((result.fileSize * 8) / result.pixels).toFixed(2);
+  }
+
+  return result;
+}
+
+function estimateQuality(table, stdTable) {
+  // Compute scale factors from each entry, then average to get quality
+  let sumScale = 0, count = 0;
+  for (let i = 0; i < 64; i++) {
+    const std = stdTable[i];
+    const actual = table[i];
+    if (std === 0 || actual === 0) continue;
+    sumScale += (actual * 100) / std;
+    count++;
+  }
+  if (count === 0) return null;
+  const avgScale = sumScale / count;
+
+  let quality;
+  if (avgScale >= 100) {
+    quality = Math.round((200 - avgScale) / 2);
+  } else {
+    quality = Math.round(5000 / avgScale);
+  }
+  return Math.min(100, Math.max(1, quality));
+}
+
+// ══ TIER CONFIG ═══════════════════════════════════════════════════════════════
+function getTier(q) {
+  if (q == null) return { label:'Unknown', color:'#7a7567', bg:'#ede9df', rec: 'Could not estimate quality from this file\'s quantization tables.' };
+  if (q >= 90)  return { label:'Near-Lossless', color:'#14532d', bg:'#d4f0e0', rec: `This file is at very high quality (${q}/100). File size is large. For web delivery, re-encoding at 82–88 would reduce size by 30–50% with no visible quality difference at screen resolution.` };
+  if (q >= 75)  return { label:'High Quality',  color:'#1a8a4a', bg:'#d4f0e0', rec: `Quality ${q}/100 is in the optimal range for most web and digital uses. No re-optimization is necessary unless file size is a concern.` };
+  if (q >= 55)  return { label:'Medium Quality',color:'#854d0e', bg:'#fef3c7', rec: `Quality ${q}/100 is acceptable for thumbnails and previews but may show visible artefacts in smooth areas or on screen edges. Avoid further re-compression.` };
+  if (q >= 30)  return { label:'Low Quality',   color:'#7f1d1d', bg:'#fde8e8', rec: `Quality ${q}/100 — compression artefacts will be visible. Do not re-compress further. If this is a working copy, source a higher-quality original.` };
+  return { label:'Very Low Quality', color:'#7f1d1d', bg:'#fde8e8', rec: `Quality ${q}/100 — severe compression. Significant visual data has been lost. This file is not suitable for editing, print, or professional use. Source a better original if available.` };
+}
+
+// ══ BUILD RESULT CARD ═════════════════════════════════════════════════════════
+let cardCounter = 0;
+function buildResultCard(result, file, objectUrl) {
+  const idx   = cardCounter++;
+  const q     = result.quality;
+  const tier  = getTier(q);
+
+  const card  = document.createElement('div');
+  card.className = 'result-card';
+
+  // ── Header ──
+  const header = document.createElement('div');
+  header.className = 'rc-header';
+  header.innerHTML = `
+    <img class="rc-thumb" src="${objectUrl}" alt="${file.name}">
+    <span class="rc-filename">${file.name}</span>
+    <span class="rc-tier-badge" style="color:${tier.color};background:${tier.bg};border:1px solid ${tier.color}33;">${tier.label}</span>`;
+  card.appendChild(header);
+
+  // ── Body ──
+  const body = document.createElement('div');
+  body.className = 'rc-body';
+
+  // Gauge + details
+  const gaugeWrap = document.createElement('div');
+  gaugeWrap.className = 'quality-gauge-wrap';
+
+  const displayQ  = q != null ? q : '?';
+  const gaugeColor = tier.color;
+  const r = 40, cx = 56, cy = 56;
+  const circumference = Math.PI * r; // half-circle arc = πr
+  // Arc is drawn as a half-circle (180°)
+  // stroke-dasharray = circumference, circumference
+  // stroke-dashoffset: 0 = full arc, circumference = empty
+  const fillFraction = q != null ? (q / 100) : 0;
+  const dashOffset   = circumference * (1 - fillFraction);
+
+  gaugeWrap.innerHTML = `
+    <div class="gauge-svg-wrap">
+      <svg width="112" height="72" viewBox="0 0 112 72">
+        <path d="M16,60 A40,40 0 0,1 96,60" fill="none" stroke="#e8e4de" stroke-width="8" stroke-linecap="round"/>
+        <path id="gauge-arc-${idx}"
+          d="M16,60 A40,40 0 0,1 96,60"
+          fill="none" stroke="${gaugeColor}" stroke-width="8" stroke-linecap="round"
+          stroke-dasharray="${circumference}"
+          stroke-dashoffset="${circumference}"
+          style="--arc-start:${circumference};--arc-end:${dashOffset};transition:stroke-dashoffset .8s cubic-bezier(.34,1.2,.64,1);"
+        />
+      </svg>
+      <div class="gauge-score">
+        <div class="gauge-number" style="color:${gaugeColor};">${displayQ}</div>
+        <div class="gauge-label">/ 100</div>
+      </div>
+    </div>
+    <div class="gauge-details">
+      <div class="gauge-tier">${tier.label}</div>
+      <div class="gauge-desc">${q != null ? `Estimated JPEG quality ${q}/100 — derived from luminance quantization table values.` : 'Quality could not be estimated from the quantization tables in this file.'}</div>
+    </div>`;
+  body.appendChild(gaugeWrap);
+
+  // Trigger gauge animation
+  setTimeout(() => {
+    const arc = document.getElementById(`gauge-arc-${idx}`);
+    if (arc) arc.style.strokeDashoffset = dashOffset;
+  }, 100);
+
+  // Stats grid
+  const statsGrid = document.createElement('div');
+  statsGrid.className = 'stats-grid';
+
+  function addStat(label, val, unit) {
+    statsGrid.innerHTML += `
+      <div class="stat-box">
+        <div class="stat-box-label">${label}</div>
+        <div class="stat-box-val">${val}</div>
+        ${unit ? `<div class="stat-box-unit">${unit}</div>` : ''}
+      </div>`;
+  }
+
+  addStat('File Size', formatSize(result.fileSize), null);
+  if (result.width) addStat('Dimensions', `${result.width}×${result.height}`, `${(result.pixels/1e6).toFixed(1)} MP`);
+  if (result.compressionRatio) addStat('Compression', result.compressionRatio + '×', 'vs uncompressed');
+  if (result.bitsPerPixel) addStat('Bits/Pixel', result.bitsPerPixel, 'bpp');
+  addStat('Tables Found', result.tables.length, result.progressive ? 'progressive JPEG' : 'baseline JPEG');
+  if (result.uncompressed) addStat('Uncompressed', formatSize(result.uncompressed), '24-bit RGB');
+
+  body.appendChild(statsGrid);
+
+  // Quantization table viewer
+  if (result.tables.length > 0) {
+    const lumaTable = result.tables.find(t => t.id === 0) || result.tables[0];
+    const toggleBtn = document.createElement('button');
+    toggleBtn.className = 'qt-toggle';
+    toggleBtn.innerHTML = `<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg> View luminance quantization table`;
+
+    const qtWrap = document.createElement('div');
+    qtWrap.className = 'qt-wrap';
+    qtWrap.id = `qt-wrap-${idx}`;
+
+    // Build 8×8 table
+    const tableHtml = buildQtTable(lumaTable.data);
+    qtWrap.innerHTML = `<div class="qt-title">Luminance (Y) Quantization Table — Table ${lumaTable.id}</div>${tableHtml}`;
+
+    toggleBtn.addEventListener('click', () => {
+      toggleBtn.classList.toggle('open');
+      qtWrap.classList.toggle('visible');
+    });
+
+    body.appendChild(toggleBtn);
+    body.appendChild(qtWrap);
+  }
+
+  // Recommendation
+  const rec = document.createElement('div');
+  rec.className = 'recommendation';
+  rec.innerHTML = `
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    <div class="recommendation-text"><strong>Recommendation: </strong>${tier.rec}</div>`;
+  body.appendChild(rec);
+
+  card.appendChild(body);
+  return card;
+}
+
+function buildQtTable(data) {
+  let html = '<table class="qt-table"><tbody>';
+  for (let row = 0; row < 8; row++) {
+    html += '<tr>';
+    for (let col = 0; col < 8; col++) {
+      const val = data[row * 8 + col];
+      const cls = val <= 8 ? 'qt-low' : val <= 20 ? '' : val <= 50 ? 'qt-med' : 'qt-high';
+      html += `<td class="${cls}">${val}</td>`;
+    }
+    html += '</tr>';
+  }
+  html += '</tbody></table>';
+  return html;
+}
+
+// ══ HELPERS ═══════════════════════════════════════════════════════════════════
+function formatSize(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1024*1024) return (bytes/1024).toFixed(1) + ' KB';
+  return (bytes/(1024*1024)).toFixed(2) + ' MB';
+}
+
+// ══ FAQ ═══════════════════════════════════════════════════════════════════════
+document.querySelectorAll('.faq-q').forEach(q => q.addEventListener('click', () => {
+  const item = q.parentElement, wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}));
+</script>
+<script>
+function closeMobileMenu() {
+  document.getElementById('mobileMenuToggle').classList.remove('active');
+  document.getElementById('mobileNav').classList.remove('active');
+}
+</script>
+</body>
+</html>

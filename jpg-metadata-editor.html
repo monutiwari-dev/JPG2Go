@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>JPG Metadata Editor | Edit Image Data Online</title>
+<meta name="description" content="View and edit JPG metadata online securely. Modify EXIF data, GPS info, and image details easily while keeping your files organized.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jpg2go.com/jpg-metadata-editor">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="adsense.js"></script>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Edit JPG Metadata",
+    "url": "https://jpg2go.com/jpg-metadata-editor",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "View and edit JPG metadata online securely. Modify EXIF data, GPS info, and image details easily while keeping your files organized."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a JPG metadata editor?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A JPG metadata editor is a tool that allows users to view, edit, or remove hidden information stored inside JPEG image files."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What type of metadata is stored in JPG images?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "JPG metadata can include camera details, location coordinates, capture date, device information, and other technical image properties."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why would someone edit or remove JPG metadata?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Users may remove metadata to protect privacy, reduce file information, or clean up image data before sharing photos online."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can editing metadata affect the image quality?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No, editing or removing metadata does not change the visual quality of the image because metadata only stores additional information."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is JPG metadata useful for photographers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, photographers often use metadata to track camera settings, shooting conditions, and other technical information about their photos."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I edit JPG metadata without installing software?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, online JPG metadata editors allow users to upload images and modify metadata directly from a web browser."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+<style>
+:root{
+  --ink:#0d0d0d;--paper:#f7f4ee;--cream:#ede9df;--accent:#c84b2f;--accent-light:#e8d5cf;
+  --muted:#7a7567;--border:#d4cfc4;--white:#ffffff;
+  --shadow:0 2px 24px rgba(13,13,13,0.08);--shadow-lg:0 8px 48px rgba(13,13,13,0.12);
+  --ai-purple:#c84b2f;--ai-purple-light:#e8d5cf;
+  --green:#1a8a4a;--green-light:#d4f0e0;
+  --blue:#2563a8;--blue-light:#dbeafe;
+  --amber:#a06010;--amber-light:#fef3c7;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;min-height:100vh}
+
+/* ── HEADER ── */
+header{background:var(--ink);color:var(--paper);position:sticky;top:0;z-index:100;border-bottom:2px solid var(--accent)}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1.6rem;color:var(--paper);text-decoration:none;letter-spacing:-.02em}
+.logo span{color:var(--accent)}
+nav{display:flex;gap:2rem;align-items:center}
+nav a{color:#a8a39a;text-decoration:none;font-size:.875rem;font-weight:500;transition:color .2s}
+nav a:hover{color:var(--paper)}
+.nav-cta{background:var(--accent);color:var(--white)!important;padding:.4rem 1rem;border-radius:4px}
+.nav-cta:hover{background:#a83825!important}
+.mobile-menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem;flex-direction:column;gap:5px;align-items:center;justify-content:center;width:40px;height:40px}
+.mobile-menu-toggle span{display:block;width:24px;height:2px;background:var(--paper);transition:all .3s ease;border-radius:2px}
+.mobile-menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(6px,6px)}
+.mobile-menu-toggle.active span:nth-child(2){opacity:0}
+.mobile-menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
+.mobile-nav{display:none;position:fixed;top:64px;left:0;right:0;background:var(--ink);border-top:2px solid var(--accent);padding:1.5rem 2rem;flex-direction:column;gap:1rem;z-index:99;transform:translateY(-100%);opacity:0;transition:transform .3s ease,opacity .3s ease;visibility:hidden}
+.mobile-nav.active{display:flex;transform:translateY(0);opacity:1;visibility:visible}
+.mobile-nav a{color:#a8a39a;text-decoration:none;font-size:.95rem;font-weight:500;padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.1);transition:color .2s}
+.mobile-nav a:last-child{border-bottom:none}
+.mobile-nav a:hover{color:var(--paper)}
+.mobile-nav .nav-cta{background:var(--accent);color:var(--white)!important;padding:.75rem 1.5rem;border-radius:4px;text-align:center;border:none;margin-top:.5rem}
+
+/* ── HERO ── */
+.hero{background:var(--ink);color:var(--paper);padding:4rem 2rem 3.5rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(200,75,47,.2) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:1px;height:60px;background:linear-gradient(to bottom,transparent,rgba(200,75,47,.4))}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.12em;color:#c84b2f;text-transform:uppercase;border:1px solid rgba(200,75,47,.4);background:rgba(200,75,47,.12);padding:.3rem .9rem;border-radius:2px;margin-bottom:1.5rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5.5vw,3.6rem);font-weight:900;line-height:1.1;letter-spacing:-.03em;margin-bottom:1.25rem}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-desc{font-size:1.05rem;color:#9e9990;max-width:520px;margin:0 auto 1.75rem;font-weight:300;line-height:1.7}
+.hero-pills{display:flex;justify-content:center;flex-wrap:wrap;gap:.5rem}
+.hero-pill{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.06em;color:#a8a39a;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:.3rem .75rem;border-radius:100px}
+
+/* ── TOOL SECTION ── */
+.tool-section{max-width:1000px;margin:-1.5rem auto 0;padding:0 1.5rem 4rem;position:relative;z-index:10}
+.tool-card{background:var(--white);border-radius:12px;box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid var(--border)}
+.tool-card-header{background:var(--cream);padding:1rem 1.5rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid var(--border)}
+.dot{width:12px;height:12px;border-radius:50%;display:inline-block}
+.dot-r{background:#ff5f57}.dot-y{background:#febc2e}.dot-g{background:#28c840}
+.tool-card-title{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--muted);margin-left:.5rem;letter-spacing:.05em}
+.tool-body{padding:1.5rem}
+
+/* ── DROP ZONE ── */
+.drop-zone{border:2px dashed var(--border);border-radius:10px;padding:3rem 2rem;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;background:var(--paper);position:relative}
+.drop-zone:hover,.drop-zone.drag-over{border-color:var(--accent);background:var(--accent-light)}
+.drop-zone input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.drop-icon{width:52px;height:52px;background:var(--accent-light);border:1px solid rgba(200,75,47,.3);border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:var(--accent)}
+.drop-zone h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:.4rem}
+.drop-zone p{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+.formats-pill{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.08em;color:var(--accent);background:var(--accent-light);padding:.25rem .75rem;border-radius:100px;display:inline-block}
+
+/* ── IMAGE PREVIEW BAR ── */
+.image-preview-bar{display:none;align-items:center;gap:1rem;background:var(--paper);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;margin-top:1.25rem}
+.image-preview-bar.visible{display:flex}
+.preview-thumb{width:52px;height:52px;border-radius:6px;object-fit:cover;border:1px solid var(--border);flex-shrink:0;background:var(--cream)}
+.preview-details{flex:1;min-width:0}
+.preview-filename{font-size:.82rem;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.preview-meta{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--muted);margin-top:.15rem}
+.preview-change{background:none;border:1.5px solid var(--border);border-radius:5px;padding:.3rem .75rem;font-family:'DM Mono',monospace;font-size:.68rem;color:var(--muted);cursor:pointer;transition:all .18s;white-space:nowrap;position:relative;overflow:hidden;display:flex;align-items:center;gap:.35rem}
+.preview-change input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.preview-change:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ── METADATA DISPLAY ── */
+.metadata-area{display:none;margin-top:1.5rem}
+.metadata-area.visible{display:block}
+
+.meta-tabs{display:flex;gap:.35rem;margin-bottom:1rem;flex-wrap:wrap}
+.meta-tab{font-family:'DM Mono',monospace;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.4rem .85rem;border-radius:5px;border:1.5px solid var(--border);background:transparent;cursor:pointer;color:var(--muted);transition:all .18s}
+.meta-tab:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}
+.meta-tab.active{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+
+.meta-panel{display:none}
+.meta-panel.active{display:block}
+
+/* ── FIELD GROUPS ── */
+.field-group{margin-bottom:1.25rem}
+.field-group-title{font-family:'DM Mono',monospace;font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem}
+.field-group-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.field-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.5rem}
+.field-row{background:var(--paper);border:1px solid var(--border);border-radius:7px;padding:.6rem .85rem;display:flex;flex-direction:column;gap:.2rem;transition:border-color .15s}
+.field-row.editable{cursor:text}
+.field-row.editable:hover{border-color:var(--accent)}
+.field-row.editable:focus-within{border-color:var(--accent);background:var(--white);box-shadow:0 0 0 3px rgba(200,75,47,.08)}
+.field-label{font-family:'DM Mono',monospace;font-size:.62rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);display:flex;align-items:center;gap:.35rem}
+.editable-badge{font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.06em;color:var(--green);background:var(--green-light);border:1px solid rgba(26,138,74,.2);padding:.05rem .3rem;border-radius:2px}
+.readonly-badge{font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.06em;color:var(--muted);background:var(--cream);border:1px solid var(--border);padding:.05rem .3rem;border-radius:2px}
+.field-value{font-size:.8rem;color:var(--ink);font-weight:500;line-height:1.4}
+.field-value.empty{color:var(--muted);font-style:italic;font-weight:400}
+.field-input{font-family:'DM Sans',sans-serif;font-size:.82rem;color:var(--ink);border:none;background:transparent;outline:none;width:100%;resize:none;min-height:1.2rem;line-height:1.4;font-weight:500}
+.field-input::placeholder{color:var(--muted);font-style:italic;font-weight:400}
+
+/* GPS map link */
+.gps-link{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--blue);text-decoration:none;display:inline-flex;align-items:center;gap:.3rem;margin-top:.2rem}
+.gps-link:hover{text-decoration:underline}
+
+/* no metadata notice */
+.no-meta-notice{display:flex;align-items:flex-start;gap:.6rem;background:var(--amber-light);border:1px solid rgba(160,96,16,.25);border-radius:8px;padding:.75rem .9rem;font-family:'DM Mono',monospace;font-size:.72rem;color:#6b4010;line-height:1.6}
+.no-meta-notice svg{flex-shrink:0;color:var(--amber);margin-top:.1rem}
+
+/* ── ACTION BAR ── */
+.action-bar{display:flex;gap:.75rem;margin-top:1.25rem;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:var(--white);border:none;border-radius:6px;padding:.65rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:.875rem;font-weight:600;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:.5rem;text-decoration:none}
+.btn-primary:hover{background:#a83825;transform:translateY(-1px)}
+.btn-primary:disabled{background:var(--border);color:var(--muted);cursor:not-allowed;transform:none}
+.btn-secondary{background:transparent;color:var(--ink);border:1.5px solid var(--border);border-radius:6px;padding:.65rem 1.25rem;font-family:'DM Sans',sans-serif;font-size:.875rem;font-weight:500;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:.5rem}
+.btn-secondary:hover{border-color:var(--ink);background:var(--cream)}
+.btn-danger{background:transparent;color:#c84b2f;border:1.5px solid var(--accent-light);border-radius:6px;padding:.65rem 1.25rem;font-family:'DM Sans',sans-serif;font-size:.875rem;font-weight:500;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:.5rem}
+.btn-danger:hover{background:var(--accent-light);border-color:var(--accent)}
+
+/* ── RESULT AREA ── */
+.result-area{display:none;margin-top:1rem;background:var(--green-light);border:1px solid rgba(26,138,74,.25);border-radius:8px;padding:.85rem 1.1rem;align-items:center;gap:.75rem}
+.result-area.visible{display:flex}
+.result-area svg{color:var(--green);flex-shrink:0}
+.result-text{flex:1}
+.result-text strong{font-size:.875rem;color:var(--ink)}
+.result-text span{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--muted);display:block;margin-top:.1rem}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--ink);color:var(--paper);padding:.75rem 1.5rem;border-radius:6px;font-size:.875rem;font-weight:500;transition:transform .3s cubic-bezier(.34,1.56,.64,1);z-index:999;border-left:3px solid var(--accent);white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* ── CONTENT SECTIONS ── */
+.content-section{max-width:1000px;margin:0 auto;padding:4rem 1.5rem}
+.section-tag{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem;display:block}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;letter-spacing:-.02em;margin-bottom:1.25rem;line-height:1.2}
+.content-prose{color:#4a4640;font-size:.975rem;line-height:1.8;max-width:720px}
+.content-prose p{margin-bottom:1rem}
+.content-prose p:last-child{margin-bottom:0}
+.divider{border:none;border-top:1px solid var(--border);max-width:1000px;margin:0 auto}
+.how-to-section{background:var(--ink);color:var(--paper);padding:1.75rem 2rem;position:relative;overflow:hidden}
+.how-to-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 100%,rgba(200,75,47,.14) 0%,transparent 70%);pointer-events:none}
+.how-to-inner{max-width:1000px;margin:0 auto;position:relative}
+.how-to-header{text-align:center;margin-bottom:1.25rem}
+.how-to-header .section-tag{color:#c84b2f}
+.how-to-header .section-title{color:var(--paper);margin-bottom:.35rem}
+.how-to-subtitle{color:#9e9990;font-size:.9rem;font-weight:300}
+.steps-grid{display:flex;align-items:stretch;gap:0}
+.step-card{flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:.85rem 1rem;transition:background .25s,border-color .25s,transform .25s}
+.step-card:hover{background:rgba(200,75,47,.08);border-color:rgba(200,75,47,.35);transform:translateY(-4px)}
+.step-connector{display:flex;align-items:center;justify-content:center;padding:0 .5rem;color:rgba(200,75,47,.5);flex-shrink:0;margin-top:-1rem}
+.step-number{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:rgba(200,75,47,.25);line-height:1;margin-bottom:.35rem;letter-spacing:-.04em}
+.step-icon{width:36px;height:36px;background:rgba(200,75,47,.15);border:1px solid rgba(200,75,47,.3);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:.6rem;color:#c84b2f}
+.step-title{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:var(--paper);margin-bottom:.35rem;line-height:1.3}
+.step-desc{font-size:.8rem;color:#9e9990;line-height:1.55;margin-bottom:.6rem}
+.step-desc strong{color:#d4cfc4}
+.step-pill{display:inline-block;font-family:'DM Mono',monospace;font-size:.63rem;letter-spacing:.05em;color:#c84b2f;background:rgba(200,75,47,.12);border:1px solid rgba(200,75,47,.25);padding:.2rem .6rem;border-radius:100px}
+.how-to-cta{text-align:center;margin-top:1.25rem;display:flex;flex-direction:column;align-items:center;gap:.6rem}
+.how-to-note{font-size:.8rem;color:#7a7567;font-family:'DM Mono',monospace;letter-spacing:.03em}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:2rem}
+.feature-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.5rem 1.25rem;transition:box-shadow .2s,transform .2s}
+.feature-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.feature-icon{font-size:1.75rem;margin-bottom:.75rem;display:block}
+.feature-title{font-weight:700;font-size:.9rem;margin-bottom:.4rem}
+.feature-desc{font-size:.82rem;color:var(--muted);line-height:1.5}
+.cases-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-top:2rem}
+.case-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.25rem;transition:box-shadow .2s,transform .2s}
+.case-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.case-card-name{font-weight:700;font-size:.9rem;margin-bottom:.35rem;color:var(--ink)}
+.case-card-example{font-family:'DM Mono',monospace;font-size:.78rem;color:var(--accent);background:var(--accent-light);padding:.25rem .5rem;border-radius:4px;display:inline-block;margin-bottom:.6rem}
+.case-card-desc{font-size:.825rem;color:var(--muted);line-height:1.5}
+.faq-list{margin-top:2rem}
+.faq-item{border-bottom:1px solid var(--border);padding:1.25rem 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-weight:600;font-size:.95rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-q::after{content:'+';font-size:1.2rem;color:var(--accent);flex-shrink:0;transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-size:.9rem;color:var(--muted);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .3s ease,margin-top .3s}
+.faq-item.open .faq-a{max-height:300px;margin-top:.75rem}
+.cta-section{background:var(--ink);color:var(--paper);padding:1.5rem 2rem;text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(200,75,47,.18) 0%,transparent 70%);pointer-events:none}
+.cta-inner{max-width:640px;margin:0 auto;position:relative}
+.cta-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-bottom:1rem;color:var(--paper)}
+.cta-desc{font-size:1rem;color:#9e9990;font-weight:300;margin-bottom:1rem;line-height:1.7}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:.75rem}
+.cta-note{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.06em;color:#5a5650;margin-top:1rem;display:block}
+.related-section{background:var(--cream);padding:5rem 2rem;border-top:1px solid var(--border)}
+.related-inner{max-width:1000px;margin:0 auto}
+.related-header{margin-bottom:2.5rem}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
+.related-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-decoration:none;color:inherit;display:block;transition:box-shadow .2s,transform .2s,border-color .2s;position:relative;overflow:hidden}
+.related-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border);transition:background .2s}
+.related-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px);border-color:var(--accent)}
+.related-card:hover::before{background:var(--accent)}
+.related-card-icon{font-size:1.85rem;margin-bottom:.85rem;display:block}
+.related-card-name{font-family:'Playfair Display',serif;font-weight:700;font-size:1rem;margin-bottom:.35rem;color:var(--ink);letter-spacing:-.01em}
+.related-card-desc{font-size:.82rem;color:var(--muted);line-height:1.5;margin-bottom:1rem}
+.related-card-tag{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--accent-light);padding:.2rem .5rem;border-radius:3px;display:inline-block}
+footer{background:var(--ink);color:#9e9990;padding:4rem 2rem 2rem;margin-top:3rem;border-top:1px solid rgba(255,255,255,0.05)}
+.footer-inner{max-width:1200px;
+  margin-top: 0;
+  border-top: 1px solid rgba(255,255,255,0.05);margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid #2a2a2a}
+.footer-brand .logo{display:block;margin-bottom:.75rem}
+.footer-brand p{font-size:.85rem;line-height:1.6;max-width:240px}
+.footer-social{display:flex;margin-top:1rem}
+.social-icon{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;color:#9e9990;transition:color .2s,transform .2s;border-radius:6px}
+.social-icon:hover{color:var(--paper);transform:translateY(-2px)}
+.footer-col-title{font-family:'DM Sans',sans-serif;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--paper);font-weight:600;margin-bottom:1rem}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.footer-links a{color:#9e9990;text-decoration:none;font-size:.85rem;transition:color .2s}
+.footer-links a:hover{color:var(--paper)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;font-size:.8rem;flex-wrap:wrap;gap:.75rem}
+@media(max-width:768px){nav{display:none}.mobile-menu-toggle{display:flex}.steps-grid{flex-direction:column}.step-connector{transform:rotate(90deg);padding:.25rem 0}.footer-grid{grid-template-columns:1fr 1fr}.field-grid{grid-template-columns:1fr}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr;gap:2rem}.footer-bottom{flex-direction:column;text-align:center}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeUp .6s ease both}
+.delay-1{animation-delay:.1s}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">JPG2<span>Go</span></a>
+    <nav>
+<nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="tools.html">Tools</a>
+      <a href="#tool" class="nav-cta">Convert Now</a>
+    </nav>
+</nav>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+    <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="tools.html" onclick="closeMobileMenu()">Tools</a>
+    <a href="#tool" class="nav-cta" onclick="closeMobileMenu()">Convert Now</a>
+  </nav>
+</nav>
+</header>
+
+<section class="hero">
+  <div class="fade-up">
+    <div class="hero-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Edit Image Data Online
+    </div>
+    <h1>Edit JPG Metadata</h1>
+    <p class="hero-desc">View, edit, or remove hidden metadata from JPG images online. Manage camera details, location data, and other image information quickly and easily.</p>
+    <div class="hero-pills">
+      <span class="hero-pill">Full EXIF Display</span>
+      <span class="hero-pill">Edit Description &amp; Copyright</span>
+      <span class="hero-pill">GPS Coordinates</span>
+      <span class="hero-pill">Strip All Metadata</span>
+      <span class="hero-pill">Save with Edits</span>
+    </div>
+  </div>
+</section>
+
+<section class="tool-section" id="tool">
+  <div class="tool-card fade-up delay-1">
+    <div class="tool-card-header">
+      <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+      <span class="tool-card-title">jpg-metadata-editor · exif parser · browser-native · zero upload</span>
+    </div>
+    <div class="tool-body">
+
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" accept="image/jpeg,image/jpg,.jpg,.jpeg">
+        <div class="drop-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3>Drop a JPG image here</h3>
+        <p>Drag and drop or click to select a JPG file to inspect and edit its metadata</p>
+        <span class="formats-pill">JPG · JPEG · EXIF metadata</span>
+      </div>
+
+      <div class="image-preview-bar" id="imagePreviewBar">
+        <img class="preview-thumb" id="previewThumb" src="" alt="">
+        <div class="preview-details">
+          <div class="preview-filename" id="previewFilename">—</div>
+          <div class="preview-meta" id="previewMeta">—</div>
+        </div>
+        <label class="preview-change">
+          <input type="file" id="changeInput" accept="image/jpeg,image/jpg,.jpg,.jpeg">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+          Change file
+        </label>
+      </div>
+
+      <div class="metadata-area" id="metadataArea">
+
+        <div class="meta-tabs" id="metaTabs">
+          <button class="meta-tab active" data-panel="camera">📷 Camera</button>
+          <button class="meta-tab" data-panel="editable">✏️ Editable</button>
+          <button class="meta-tab" data-panel="gps">📍 GPS</button>
+          <button class="meta-tab" data-panel="file">📄 File</button>
+        </div>
+
+        <!-- Camera Panel (read-only) -->
+        <div class="meta-panel active" id="panel-camera">
+          <div class="field-group">
+            <div class="field-group-title">Camera &amp; Lens</div>
+            <div class="field-grid" id="fg-camera"></div>
+          </div>
+          <div class="field-group">
+            <div class="field-group-title">Exposure Settings</div>
+            <div class="field-grid" id="fg-exposure"></div>
+          </div>
+          <div class="field-group">
+            <div class="field-group-title">Timestamps</div>
+            <div class="field-grid" id="fg-timestamps-ro"></div>
+          </div>
+        </div>
+
+        <!-- Editable Panel -->
+        <div class="meta-panel" id="panel-editable">
+          <div class="field-group">
+            <div class="field-group-title">Editable Fields <span style="font-family:'DM Mono',monospace;font-size:.6rem;color:var(--green);background:var(--green-light);padding:.1rem .4rem;border-radius:3px;margin-left:.4rem;font-weight:500;text-transform:none;letter-spacing:0;">changes saved to your download</span></div>
+            <div class="field-grid" id="fg-editable"></div>
+          </div>
+        </div>
+
+        <!-- GPS Panel -->
+        <div class="meta-panel" id="panel-gps">
+          <div class="field-group">
+            <div class="field-group-title">GPS Location Data</div>
+            <div id="fg-gps-content"></div>
+          </div>
+        </div>
+
+        <!-- File Panel -->
+        <div class="meta-panel" id="panel-file">
+          <div class="field-group">
+            <div class="field-group-title">File &amp; Image Info</div>
+            <div class="field-grid" id="fg-file"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="action-bar" id="actionBar" style="display:none;">
+        <button class="btn-primary" id="saveWithEditsBtn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13"/><polyline points="7 3 7 8 15 8"/></svg>
+          Save with Edits
+        </button>
+        <button class="btn-danger" id="stripMetaBtn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
+          Strip All Metadata
+        </button>
+        <button class="btn-secondary" id="clearBtn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+          New File
+        </button>
+      </div>
+
+      <div class="result-area" id="resultArea">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        <div class="result-text">
+          <strong id="resultTitle">File ready to download</strong>
+          <span id="resultSubtitle">—</span>
+        </div>
+        <button class="btn-primary" id="downloadBtn" style="margin-left:auto;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="how-to-section" id="how-it-works">
+  <div class="how-to-inner">
+    <div class="how-to-header">
+      <span class="section-tag">Quick Guide</span>
+      <h2 class="section-title">How to Edit JPG Metadata</h2>
+      <p class="how-to-subtitle">Four steps. Fully private. No upload.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">01</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+        <div class="step-title">Upload Your JPG</div>
+        <div class="step-desc">Drop any JPG/JPEG image. The EXIF binary data is <strong>parsed in your browser</strong> — camera, GPS, timestamps, and all embedded fields appear instantly.</div>
+        <span class="step-pill">browser-native parsing</span>
+      </div>
+      <div class="step-connector"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-number">02</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="step-title">Inspect Metadata</div>
+        <div class="step-desc">Browse Camera, Editable, GPS, and File panels. See <strong>shutter speed, aperture, ISO, focal length</strong>, GPS coordinates, and all EXIF tags.</div>
+        <span class="step-pill">full EXIF display</span>
+      </div>
+      <div class="step-connector"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-number">03</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+        <div class="step-title">Edit Fields</div>
+        <div class="step-desc">Click into any <strong>green-badged field</strong> to edit: description, artist/author, copyright, software tag, user comment, and date/time.</div>
+        <span class="step-pill">inline editing</span>
+      </div>
+      <div class="step-connector"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-number">04</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+        <div class="step-title">Save or Strip</div>
+        <div class="step-desc"><strong>Save with Edits</strong> embeds your changes into a new JPEG. <strong>Strip All Metadata</strong> removes every metadata field for a privacy-clean file.</div>
+        <span class="step-pill">save or strip</span>
+      </div>
+    </div>
+    <div class="how-to-cta">
+      <a href="#tool" class="btn-primary"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Start Editing</a>
+      <span class="how-to-note">free · no signup · no upload</span>
+    </div>
+  </div>
+</section>
+
+<section class="content-section" id="about">
+  <h2 class="section-title">Why Use JPG Metadata Editor?</h2>
+  <div class="content-prose">
+    <p>A JPG metadata editor allows users to view and modify information stored inside image files. Metadata may include details such as camera settings, location data, timestamps, and copyright information.</p>
+    <p>Editing metadata can be useful when organizing image libraries or protecting privacy by removing sensitive information.</p>
+    <p>Photographers and content creators often use metadata tools to manage image information and maintain proper file documentation. Using a JPG metadata editor helps ensure that images contain accurate and controlled information.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="content-section">
+  <span class="section-tag">Features</span>
+  <h2 class="section-title">Everything You Need to Manage EXIF</h2>
+  <div class="features-grid">
+    <div class="feature-card"><span class="feature-icon">🔍</span><div class="feature-title">Full EXIF Display</div><div class="feature-desc">Parses every standard EXIF field: camera make/model, focal length, aperture, shutter speed, ISO, orientation, resolution, and more.</div></div>
+    <div class="feature-card"><span class="feature-icon">✏️</span><div class="feature-title">Inline Text Editing</div><div class="feature-desc">Click any editable field to modify it directly — description, artist, copyright, software, user comment, and date/time fields.</div></div>
+    <div class="feature-card"><span class="feature-icon">📍</span><div class="feature-title">GPS Coordinate Display</div><div class="feature-desc">Parses latitude, longitude, and altitude from GPS IFD blocks. Shows decimal and DMS formats with a Google Maps link.</div></div>
+    <div class="feature-card"><span class="feature-icon">🔒</span><div class="feature-title">Strip All Metadata</div><div class="feature-desc">Remove every metadata field in one click — GPS, camera info, timestamps, thumbnails. Essential before sharing photos publicly.</div></div>
+    <div class="feature-card"><span class="feature-icon">💾</span><div class="feature-title">Save with Edits</div><div class="feature-desc">Writes your edited fields back into a valid EXIF block embedded in the JPEG. The image quality is fully preserved.</div></div>
+    <div class="feature-card"><span class="feature-icon">🔐</span><div class="feature-title">100% Private</div><div class="feature-desc">All parsing, editing, and writing happens in your browser via the FileReader API. Your JPG never leaves your device.</div></div>
+  </div>
+</section>
+
+<section class="content-section">
+  <span class="section-tag">Use Cases</span>
+  <h2 class="section-title">Why Edit JPG Metadata?</h2>
+  <div class="cases-grid">
+    <div class="case-card"><div class="case-card-name">Privacy Before Sharing</div><div class="case-card-example">use → privacy</div><div class="case-card-desc">Before posting a photo on social media, sending it by email, or uploading it to a public platform, strip GPS coordinates to avoid revealing your home address or location.</div></div>
+    <div class="case-card"><div class="case-card-name">Copyright & Attribution</div><div class="case-card-example">use → copyright</div><div class="case-card-desc">Add your name, website URL, and copyright statement to the EXIF Artist and Copyright fields so ownership information travels with the image file wherever it goes.</div></div>
+    <div class="case-card"><div class="case-card-name">Photography Workflow</div><div class="case-card-example">use → workflow</div><div class="case-card-desc">Add image descriptions, correct wrong timestamps (e.g. after forgetting to set the camera timezone), and annotate images with subject information.</div></div>
+    <div class="case-card"><div class="case-card-name">Journalistic &amp; Legal</div><div class="case-card-example">use → evidence</div><div class="case-card-desc">Verify original capture timestamps and GPS data in photos submitted as evidence, without modifying the original file or needing specialist forensic software.</div></div>
+    <div class="case-card"><div class="case-card-name">Stock Photography</div><div class="case-card-example">use → stock</div><div class="case-card-desc">Many stock platforms require IPTC/EXIF copyright and author fields to be filled before accepting submissions. Add them here before uploading.</div></div>
+    <div class="case-card"><div class="case-card-name">File Diagnostics</div><div class="case-card-example">use → inspect</div><div class="case-card-desc">Quickly check what camera settings were used for a shot, verify the original capture date, or confirm whether a JPEG came from a specific device model.</div></div>
+  </div>
+</section>
+
+<section class="content-section" id="faq">
+  <span class="section-tag">FAQ</span>
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item open"><div class="faq-q">What is a JPG metadata editor?</div><div class="faq-a">A JPG metadata editor is a tool that allows users to view, edit, or remove hidden information stored inside JPEG image files.</div></div><div class="faq-item"><div class="faq-q">What type of metadata is stored in JPG images?</div><div class="faq-a">JPG metadata can include camera details, location coordinates, capture date, device information, and other technical image properties.</div></div><div class="faq-item"><div class="faq-q">Why would someone edit or remove JPG metadata?</div><div class="faq-a">Users may remove metadata to protect privacy, reduce file information, or clean up image data before sharing photos online.</div></div><div class="faq-item"><div class="faq-q">Can editing metadata affect the image quality?</div><div class="faq-a">No, editing or removing metadata does not change the visual quality of the image because metadata only stores additional information.</div></div><div class="faq-item"><div class="faq-q">Is JPG metadata useful for photographers?</div><div class="faq-a">Yes, photographers often use metadata to track camera settings, shooting conditions, and other technical information about their photos.</div></div><div class="faq-item"><div class="faq-q">Can I edit JPG metadata without installing software?</div><div class="faq-a">Yes, online JPG metadata editors allow users to upload images and modify metadata directly from a web browser.</div></div>
+  </div>
+</section>
+
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-header"><span class="section-tag">Related Tools</span><h2 class="section-title">More Free Online Tools</h2></div>
+    <div class="related-grid">
+      <a href="/jpg-to-pdf" class="related-card">
+        <span class="related-card-icon">📄</span>
+        <div class="related-card-name">JPG to PDF</div>
+        <div class="related-card-desc">Convert JPG images to PDF documents quickly. Combine multiple photos into a single organized PDF file for easy sharing and printing.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+      <a href="/image-resizer" class="related-card">
+        <span class="related-card-icon">📐</span>
+        <div class="related-card-name">Image Resizer</div>
+        <div class="related-card-desc">Resize images to exact pixel dimensions or a percentage of their original size. Runs entirely in your browser without uploading files anywhere.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/compress-jpeg" class="related-card">
+        <span class="related-card-icon">🗜️</span>
+        <div class="related-card-name">Compress JPEG</div>
+        <div class="related-card-desc">Reduce JPEG image file size while maintaining quality. Optimize images for faster web pages and lower storage usage.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/merge-pdf" class="related-card">
+        <span class="related-card-icon">📎</span>
+        <div class="related-card-name">Merge PDF</div>
+        <div class="related-card-desc">Combine multiple PDF files into a single organized document. Drag and drop to reorder pages easily.</div>
+        <span class="related-card-tag">PDF</span>
+      </a>
+      <a href="/crop-image" class="related-card">
+        <span class="related-card-icon">✂️</span>
+        <div class="related-card-name">Crop Image</div>
+        <div class="related-card-desc">Crop images to any aspect ratio or custom dimensions. Perfect for social media thumbnails, profile photos, and banner images.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/format-converter" class="related-card">
+        <span class="related-card-icon">🔄</span>
+        <div class="related-card-name">Format Converter</div>
+        <div class="related-card-desc">Convert images between different formats instantly. Transform JPG, PNG, WebP, and other image formats quickly.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner">
+    <h2 class="cta-title">Edit JPG Image Metadata</h2>
+    <p class="cta-desc">View, edit, or remove hidden metadata from JPG images to manage image information easily.</p>
+    <div class="cta-actions"><a href="#tool" class="btn-primary"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Edit Metadata</a></div>
+    <span class="cta-note">free · browser-native · no signup required</span>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<div id="footer-placeholder"></div>
+<script src="load-footer.js"></script>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ══ GLOBALS ══════════════════════════════════════════════════════════════════
+let currentFile = null;
+let parsedExif  = {};
+let editedFields = {};
+let outputDataUrl = null;
+
+// ══ TOAST ═══════════════════════════════════════════════════════════════════
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ══ MOBILE MENU ══════════════════════════════════════════════════════════════
+document.getElementById('mobileMenuToggle').addEventListener('click', function(){
+  this.classList.toggle('active');
+  document.getElementById('mobileNav').classList.toggle('active');
+});
+
+// ══ FILE INPUT ═══════════════════════════════════════════════════════════════
+const dropZone  = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault(); dropZone.classList.remove('drag-over');
+  const f = Array.from(e.dataTransfer.files).find(f => /\.(jpg|jpeg)$/i.test(f.name) || f.type === 'image/jpeg');
+  if (f) loadFile(f); else showToast('Please drop a JPG/JPEG file');
+});
+fileInput.addEventListener('change', e => { if (e.target.files[0]) { loadFile(e.target.files[0]); e.target.value=''; }});
+document.getElementById('changeInput').addEventListener('change', e => { if (e.target.files[0]) { loadFile(e.target.files[0]); e.target.value=''; }});
+
+// ══ LOAD & PARSE ═════════════════════════════════════════════════════════════
+function loadFile(file) {
+  currentFile = file;
+  editedFields = {};
+  outputDataUrl = null;
+  document.getElementById('resultArea').classList.remove('visible');
+
+  // Preview
+  const objUrl = URL.createObjectURL(file);
+  document.getElementById('previewThumb').src = objUrl;
+  document.getElementById('previewFilename').textContent = file.name;
+  document.getElementById('previewMeta').textContent = formatSize(file.size) + ' · JPEG';
+  document.getElementById('imagePreviewBar').classList.add('visible');
+
+  // Read file as ArrayBuffer for EXIF parsing
+  const reader = new FileReader();
+  reader.onload = e => {
+    const buf = e.target.result;
+    parsedExif = parseExif(buf);
+    renderMetadata();
+    document.getElementById('metadataArea').classList.add('visible');
+    document.getElementById('actionBar').style.display = 'flex';
+    // Also get image dimensions from the img element
+    const img = document.getElementById('previewThumb');
+    img.onload = () => {
+      document.getElementById('previewMeta').textContent =
+        `${formatSize(file.size)} · ${img.naturalWidth}×${img.naturalHeight} · JPEG`;
+      parsedExif._width  = img.naturalWidth;
+      parsedExif._height = img.naturalHeight;
+      updateFilePanel();
+    };
+  };
+  reader.readAsArrayBuffer(file);
+}
+
+// ══ EXIF PARSER ══════════════════════════════════════════════════════════════
+function parseExif(buf) {
+  const view = new DataView(buf);
+  const result = {};
+
+  // Check JPEG SOI
+  if (view.getUint16(0) !== 0xFFD8) return result;
+
+  let offset = 2;
+  while (offset < buf.byteLength - 4) {
+    if (view.getUint8(offset) !== 0xFF) break;
+    const marker = view.getUint16(offset);
+    const segLen = view.getUint16(offset + 2);
+
+    if (marker === 0xFFE1) { // APP1
+      // Check for Exif header
+      const exifHeader = String.fromCharCode(
+        view.getUint8(offset+4), view.getUint8(offset+5),
+        view.getUint8(offset+6), view.getUint8(offset+7)
+      );
+      if (exifHeader === 'Exif') {
+        parseTiff(buf, offset + 10, result);
+      }
+    }
+    if (marker === 0xFFDA) break; // SOS - start of scan, stop
+    offset += 2 + segLen;
+  }
+  return result;
+}
+
+function parseTiff(buf, tiffStart, result) {
+  const view = new DataView(buf);
+  // Byte order
+  const byteOrderMark = view.getUint16(tiffStart);
+  const le = byteOrderMark === 0x4949; // II = little endian
+
+  function r16(off) { return le ? view.getUint16(tiffStart + off, true) : view.getUint16(tiffStart + off, false); }
+  function r32(off) { return le ? view.getUint32(tiffStart + off, true) : view.getUint32(tiffStart + off, false); }
+  function rs32(off) { return le ? view.getInt32(tiffStart + off, true) : view.getInt32(tiffStart + off, false); }
+
+  function readAscii(off, len) {
+    let s = '';
+    for (let i = 0; i < len - 1; i++) {
+      const c = view.getUint8(tiffStart + off + i);
+      if (c === 0) break;
+      s += String.fromCharCode(c);
+    }
+    return s.trim();
+  }
+
+  function readRational(off) {
+    const num = r32(off);
+    const den = r32(off + 4);
+    return den === 0 ? 0 : num / den;
+  }
+
+  function readSRational(off) {
+    const num = rs32(off);
+    const den = rs32(off + 4);
+    return den === 0 ? 0 : num / den;
+  }
+
+  function readIFD(ifdOffset) {
+    const count = r16(ifdOffset);
+    const entries = {};
+    for (let i = 0; i < count; i++) {
+      const entryOff = ifdOffset + 2 + i * 12;
+      const tag  = r16(entryOff);
+      const type = r16(entryOff + 2);
+      const cnt  = r32(entryOff + 4);
+      const valOff = entryOff + 8;
+
+      let valueOffset;
+      // For values > 4 bytes, valOff holds offset from tiff start
+      const typeSize = [0,1,1,2,4,8,1,1,2,4,8,4,8][type] || 1;
+      if (typeSize * cnt > 4) {
+        valueOffset = r32(valOff);
+      } else {
+        valueOffset = valOff - tiffStart;
+      }
+
+      entries[tag] = { type, cnt, offset: valueOffset };
+    }
+    return entries;
+  }
+
+  function getTagValue(entries, tag) {
+    if (!entries[tag]) return null;
+    const { type, cnt, offset } = entries[tag];
+    if (type === 2) return readAscii(offset, cnt);
+    if (type === 3) return r16(offset);   // SHORT
+    if (type === 4) return r32(offset);   // LONG
+    if (type === 5) return readRational(offset);   // RATIONAL
+    if (type === 10) return readSRational(offset);  // SRATIONAL
+    if (type === 7) {   // UNDEFINED
+      // UserComment: first 8 bytes are charset marker
+      if (cnt <= 8) return null;
+      let s = '';
+      for (let i = 8; i < cnt; i++) {
+        const c = view.getUint8(tiffStart + offset + i);
+        if (c === 0) break;
+        s += String.fromCharCode(c);
+      }
+      return s.trim() || null;
+    }
+    if (type === 9) { // SLONG
+      const vals = [];
+      for (let i = 0; i < Math.min(cnt, 4); i++) vals.push(rs32(offset + i*4));
+      return cnt === 1 ? vals[0] : vals;
+    }
+    return null;
+  }
+
+  function getShortArray(entries, tag) {
+    if (!entries[tag]) return null;
+    const { cnt, offset } = entries[tag];
+    const vals = [];
+    for (let i = 0; i < cnt; i++) vals.push(r16(offset + i*2));
+    return vals;
+  }
+
+  function getRationalArray(entries, tag) {
+    if (!entries[tag]) return null;
+    const { cnt, offset } = entries[tag];
+    const vals = [];
+    for (let i = 0; i < cnt; i++) {
+      const num = r32(offset + i*8);
+      const den = r32(offset + i*8 + 4);
+      vals.push(den === 0 ? 0 : num / den);
+    }
+    return vals;
+  }
+
+  // IFD0 starts at offset 8 from tiff start
+  const ifd0Offset = r32(4);
+  const ifd0 = readIFD(ifd0Offset);
+
+  // Basic IFD0 tags
+  result.Make            = getTagValue(ifd0, 0x010F);
+  result.Model           = getTagValue(ifd0, 0x0110);
+  result.Orientation     = getTagValue(ifd0, 0x0112);
+  result.XResolution     = getTagValue(ifd0, 0x011A);
+  result.YResolution     = getTagValue(ifd0, 0x011B);
+  result.ResolutionUnit  = getTagValue(ifd0, 0x0128);
+  result.Software        = getTagValue(ifd0, 0x0131);
+  result.DateTime        = getTagValue(ifd0, 0x0132);
+  result.Artist          = getTagValue(ifd0, 0x013B);
+  result.ImageDescription = getTagValue(ifd0, 0x010E);
+  result.Copyright       = getTagValue(ifd0, 0x8298);
+
+  // ExifIFD
+  const exifPtr = getTagValue(ifd0, 0x8769);
+  if (exifPtr) {
+    const exifIFD = readIFD(exifPtr);
+    result.ExposureTime       = getTagValue(exifIFD, 0x829A);
+    result.FNumber            = getTagValue(exifIFD, 0x829D);
+    result.ExposureProgram    = getTagValue(exifIFD, 0x8822);
+    result.ISOSpeedRatings    = getTagValue(exifIFD, 0x8827);
+    result.DateTimeOriginal   = getTagValue(exifIFD, 0x9003);
+    result.DateTimeDigitized  = getTagValue(exifIFD, 0x9004);
+    result.ShutterSpeedValue  = getTagValue(exifIFD, 0x9201);
+    result.ApertureValue      = getTagValue(exifIFD, 0x9202);
+    result.BrightnessValue    = getTagValue(exifIFD, 0x9203);
+    result.ExposureBiasValue  = getTagValue(exifIFD, 0x9204);
+    result.MaxApertureValue   = getTagValue(exifIFD, 0x9205);
+    result.MeteringMode       = getTagValue(exifIFD, 0x9207);
+    result.LightSource        = getTagValue(exifIFD, 0x9208);
+    result.Flash              = getTagValue(exifIFD, 0x9209);
+    result.FocalLength        = getTagValue(exifIFD, 0x920A);
+    result.UserComment        = getTagValue(exifIFD, 0x9286);
+    result.ColorSpace         = getTagValue(exifIFD, 0xA001);
+    result.PixelXDimension    = getTagValue(exifIFD, 0xA002);
+    result.PixelYDimension    = getTagValue(exifIFD, 0xA003);
+    result.FocalLengthIn35mm  = getTagValue(exifIFD, 0xA405);
+    result.SceneCaptureType   = getTagValue(exifIFD, 0xA406);
+    result.WhiteBalance       = getTagValue(exifIFD, 0xA403);
+    result.DigitalZoomRatio   = getTagValue(exifIFD, 0xA404);
+    result.Contrast           = getTagValue(exifIFD, 0xA408);
+    result.Saturation         = getTagValue(exifIFD, 0xA409);
+    result.Sharpness          = getTagValue(exifIFD, 0xA40A);
+    result.LensModel          = getTagValue(exifIFD, 0xA434);
+    result.LensMake           = getTagValue(exifIFD, 0xA433);
+  }
+
+  // GPS IFD
+  const gpsPtr = getTagValue(ifd0, 0x8825);
+  if (gpsPtr) {
+    const gpsIFD = readIFD(gpsPtr);
+    const latRef  = getTagValue(gpsIFD, 0x0001);
+    const lonRef  = getTagValue(gpsIFD, 0x0003);
+    const altRef  = getTagValue(gpsIFD, 0x0005);
+    const latRat  = getRationalArray(gpsIFD, 0x0002);
+    const lonRat  = getRationalArray(gpsIFD, 0x0004);
+    const alt     = getTagValue(gpsIFD, 0x0006);
+    const timestamp = getRationalArray(gpsIFD, 0x0007);
+    const datestamp = getTagValue(gpsIFD, 0x001D);
+
+    if (latRat && latRat.length === 3) {
+      const lat = latRat[0] + latRat[1]/60 + latRat[2]/3600;
+      result.GPSLatitude = (latRef === 'S' ? -1 : 1) * lat;
+      result.GPSLatitudeDMS = `${latRat[0]}° ${latRat[1].toFixed(0)}' ${latRat[2].toFixed(3)}" ${latRef || 'N'}`;
+    }
+    if (lonRat && lonRat.length === 3) {
+      const lon = lonRat[0] + lonRat[1]/60 + lonRat[2]/3600;
+      result.GPSLongitude = (lonRef === 'W' ? -1 : 1) * lon;
+      result.GPSLongitudeDMS = `${lonRat[0]}° ${lonRat[1].toFixed(0)}' ${lonRat[2].toFixed(3)}" ${lonRef || 'E'}`;
+    }
+    if (alt != null) {
+      result.GPSAltitude = (altRef === 1 ? -1 : 1) * alt;
+    }
+    if (timestamp) {
+      result.GPSTime = `${String(Math.round(timestamp[0])).padStart(2,'0')}:${String(Math.round(timestamp[1])).padStart(2,'0')}:${String(Math.round(timestamp[2])).padStart(2,'0')} UTC`;
+    }
+    result.GPSDate = datestamp;
+  }
+}
+
+// ══ ORIENTATION LABELS ═══════════════════════════════════════════════════════
+const ORIENTATION_LABELS = {1:'Normal',2:'Flipped H',3:'Rotated 180°',4:'Flipped V',5:'Transposed',6:'Rotated 90° CW',7:'Transverse',8:'Rotated 90° CCW'};
+const METERING_LABELS    = {0:'Unknown',1:'Average',2:'Center-weighted',3:'Spot',4:'Multi-spot',5:'Multi-segment',6:'Partial'};
+const FLASH_LABELS       = {0:'No flash',1:'Flash fired',5:'Flash fired, no strobe',7:'Flash fired, strobe',9:'Flash fired, compulsory',13:'Flash fired, compulsory, no strobe',15:'Flash fired, compulsory, strobe',16:'Flash not fired, compulsory',24:'Flash not fired, auto',25:'Flash fired, auto',29:'Flash fired, auto, no strobe',31:'Flash fired, auto, strobe'};
+const WB_LABELS          = {0:'Auto',1:'Manual'};
+const SCENE_LABELS       = {0:'Standard',1:'Landscape',2:'Portrait',3:'Night'};
+const COLOR_LABELS       = {1:'sRGB',65535:'Uncalibrated'};
+const RESUNIT_LABELS     = {1:'None',2:'Inch',3:'Centimetre'};
+const EXPROG_LABELS      = {0:'Not defined',1:'Manual',2:'Normal',3:'Aperture priority',4:'Shutter priority',5:'Creative',6:'Action',7:'Portrait',8:'Landscape'};
+
+// ══ RENDER METADATA ══════════════════════════════════════════════════════════
+function renderMetadata() {
+  const x = parsedExif;
+
+  // ── Camera panel ──
+  document.getElementById('fg-camera').innerHTML = '';
+  addField('fg-camera', 'Make', x.Make, false);
+  addField('fg-camera', 'Model', x.Model, false);
+  addField('fg-camera', 'Lens Make', x.LensMake, false);
+  addField('fg-camera', 'Lens Model', x.LensModel, false);
+  addField('fg-camera', 'Orientation', x.Orientation ? (ORIENTATION_LABELS[x.Orientation] || x.Orientation) : null, false);
+
+  document.getElementById('fg-exposure').innerHTML = '';
+  addField('fg-exposure', 'Shutter Speed', x.ExposureTime != null ? formatShutter(x.ExposureTime) : null, false);
+  addField('fg-exposure', 'Aperture', x.FNumber != null ? `f/${x.FNumber.toFixed(1)}` : null, false);
+  addField('fg-exposure', 'ISO', x.ISOSpeedRatings, false);
+  addField('fg-exposure', 'Focal Length', x.FocalLength != null ? `${x.FocalLength.toFixed(1)} mm` : null, false);
+  addField('fg-exposure', 'Focal Length (35mm)', x.FocalLengthIn35mm != null ? `${x.FocalLengthIn35mm} mm` : null, false);
+  addField('fg-exposure', 'Exposure Bias', x.ExposureBiasValue != null ? `${x.ExposureBiasValue >= 0 ? '+' : ''}${x.ExposureBiasValue.toFixed(2)} EV` : null, false);
+  addField('fg-exposure', 'Metering Mode', x.MeteringMode != null ? (METERING_LABELS[x.MeteringMode] || x.MeteringMode) : null, false);
+  addField('fg-exposure', 'Flash', x.Flash != null ? (FLASH_LABELS[x.Flash] || `Code ${x.Flash}`) : null, false);
+  addField('fg-exposure', 'White Balance', x.WhiteBalance != null ? (WB_LABELS[x.WhiteBalance] || x.WhiteBalance) : null, false);
+  addField('fg-exposure', 'Exposure Program', x.ExposureProgram != null ? (EXPROG_LABELS[x.ExposureProgram] || x.ExposureProgram) : null, false);
+  addField('fg-exposure', 'Color Space', x.ColorSpace != null ? (COLOR_LABELS[x.ColorSpace] || x.ColorSpace) : null, false);
+
+  document.getElementById('fg-timestamps-ro').innerHTML = '';
+  addField('fg-timestamps-ro', 'Date Captured', x.DateTimeOriginal ? formatDateTime(x.DateTimeOriginal) : null, false);
+  addField('fg-timestamps-ro', 'Date Digitized', x.DateTimeDigitized ? formatDateTime(x.DateTimeDigitized) : null, false);
+  addField('fg-timestamps-ro', 'File Modified', x.DateTime ? formatDateTime(x.DateTime) : null, false);
+
+  // ── Editable panel ──
+  document.getElementById('fg-editable').innerHTML = '';
+  addEditableField('fg-editable', 'Description',  'ImageDescription', x.ImageDescription, 'Your image description or caption');
+  addEditableField('fg-editable', 'Artist/Author', 'Artist',           x.Artist,           'Your name or organisation');
+  addEditableField('fg-editable', 'Copyright',     'Copyright',        x.Copyright,        'e.g. © 2025 Your Name');
+  addEditableField('fg-editable', 'Software',      'Software',         x.Software,         'Application that created this file');
+  addEditableField('fg-editable', 'User Comment',  'UserComment',      x.UserComment,      'Free-text notes or remarks');
+  addEditableField('fg-editable', 'Date Modified', 'DateTime',         x.DateTime,         'YYYY:MM:DD HH:MM:SS');
+  addEditableField('fg-editable', 'Date Captured', 'DateTimeOriginal', x.DateTimeOriginal, 'YYYY:MM:DD HH:MM:SS');
+
+  // ── GPS panel ──
+  const gpsContainer = document.getElementById('fg-gps-content');
+  gpsContainer.innerHTML = '';
+  if (x.GPSLatitude != null && x.GPSLongitude != null) {
+    const grid = document.createElement('div');
+    grid.className = 'field-grid';
+    gpsContainer.appendChild(grid);
+
+    addFieldTo(grid, 'Latitude', x.GPSLatitudeDMS || x.GPSLatitude.toFixed(6), false);
+    addFieldTo(grid, 'Longitude', x.GPSLongitudeDMS || x.GPSLongitude.toFixed(6), false);
+    if (x.GPSAltitude != null) addFieldTo(grid, 'Altitude', `${x.GPSAltitude.toFixed(1)} m`, false);
+    if (x.GPSTime) addFieldTo(grid, 'GPS Time', x.GPSTime, false);
+    if (x.GPSDate) addFieldTo(grid, 'GPS Date', x.GPSDate, false);
+
+    const decimal = `${x.GPSLatitude.toFixed(6)}, ${x.GPSLongitude.toFixed(6)}`;
+    const linkRow = document.createElement('div');
+    linkRow.style.cssText = 'margin-top:.5rem;padding:.6rem .85rem;background:var(--paper);border:1px solid var(--border);border-radius:7px;';
+    linkRow.innerHTML = `
+      <div style="font-family:'DM Mono',monospace;font-size:.62rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.3rem;">Decimal Coordinates</div>
+      <div style="font-size:.82rem;font-weight:500;">${decimal}</div>
+      <a class="gps-link" href="https://www.google.com/maps?q=${decimal}" target="_blank" rel="noopener">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Open in Google Maps
+      </a>`;
+    gpsContainer.appendChild(linkRow);
+  } else {
+    gpsContainer.innerHTML = '<div class="no-meta-notice"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span>No GPS data found in this file. GPS metadata is often stripped by social media platforms, messaging apps, or by the camera\'s "save without location" setting.</span></div>';
+  }
+
+  // ── File panel ──
+  updateFilePanel();
+}
+
+function updateFilePanel() {
+  const x = parsedExif;
+  document.getElementById('fg-file').innerHTML = '';
+  addField('fg-file', 'File Name',     currentFile ? currentFile.name : null, false);
+  addField('fg-file', 'File Size',     currentFile ? formatSize(currentFile.size) : null, false);
+  addField('fg-file', 'Image Width',   x.PixelXDimension || x._width, false);
+  addField('fg-file', 'Image Height',  x.PixelYDimension || x._height, false);
+  addField('fg-file', 'X Resolution',  x.XResolution != null ? `${x.XResolution.toFixed(0)} ${RESUNIT_LABELS[x.ResolutionUnit] || 'dpi'}` : null, false);
+  addField('fg-file', 'Y Resolution',  x.YResolution != null ? `${x.YResolution.toFixed(0)} ${RESUNIT_LABELS[x.ResolutionUnit] || 'dpi'}` : null, false);
+  if (x._width && x._height) {
+    const mp = (x._width * x._height / 1000000).toFixed(1);
+    addField('fg-file', 'Megapixels', `${mp} MP`, false);
+  }
+}
+
+function addField(gridId, label, value, editable) {
+  const grid = document.getElementById(gridId);
+  addFieldTo(grid, label, value, editable);
+}
+
+function addFieldTo(grid, label, value, editable) {
+  const row = document.createElement('div');
+  row.className = 'field-row' + (editable ? ' editable' : '');
+  const badge = editable
+    ? '<span class="editable-badge">editable</span>'
+    : '<span class="readonly-badge">read-only</span>';
+  const displayVal = value != null && value !== '' ? String(value) : null;
+  row.innerHTML = `
+    <div class="field-label">${label} ${badge}</div>
+    <div class="field-value ${displayVal ? '' : 'empty'}">${displayVal || 'Not set'}</div>`;
+  grid.appendChild(row);
+}
+
+function addEditableField(gridId, label, key, value, placeholder) {
+  const grid = document.getElementById(gridId);
+  const row  = document.createElement('div');
+  row.className = 'field-row editable';
+  const displayVal = value != null && value !== '' ? String(value) : '';
+  row.innerHTML = `
+    <div class="field-label">${label} <span class="editable-badge">editable</span></div>
+    <input class="field-input" type="text" value="${displayVal.replace(/"/g,'&quot;')}" placeholder="${placeholder}" data-key="${key}">`;
+  grid.appendChild(row);
+  row.querySelector('.field-input').addEventListener('input', function(){
+    editedFields[key] = this.value;
+  });
+}
+
+// ══ TABS ═════════════════════════════════════════════════════════════════════
+document.getElementById('metaTabs').addEventListener('click', e => {
+  const tab = e.target.closest('.meta-tab');
+  if (!tab) return;
+  document.querySelectorAll('.meta-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.meta-panel').forEach(p => p.classList.remove('active'));
+  tab.classList.add('active');
+  document.getElementById('panel-' + tab.dataset.panel).classList.add('active');
+});
+
+// ══ SAVE WITH EDITS ══════════════════════════════════════════════════════════
+document.getElementById('saveWithEditsBtn').addEventListener('click', () => {
+  if (!currentFile) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const origBuf = e.target.result;
+
+    // Collect all field values (original + any edits)
+    const fields = {};
+    const inputs = document.querySelectorAll('.field-input[data-key]');
+    inputs.forEach(inp => {
+      if (inp.value.trim()) fields[inp.dataset.key] = inp.value.trim();
+    });
+
+    const newBuf = rebuildJpegWithExif(origBuf, fields);
+    const blob   = new Blob([newBuf], { type: 'image/jpeg' });
+    outputDataUrl = URL.createObjectURL(blob);
+
+    const baseName = currentFile.name.replace(/\.[^.]+$/, '');
+    document.getElementById('resultTitle').textContent   = 'Edited file ready to download';
+    document.getElementById('resultSubtitle').textContent = `${baseName}-edited.jpg · ${formatSize(blob.size)}`;
+    document.getElementById('downloadBtn').dataset.filename = `${baseName}-edited.jpg`;
+    document.getElementById('resultArea').classList.add('visible');
+    showToast('Metadata saved — click Download');
+  };
+  reader.readAsArrayBuffer(currentFile);
+});
+
+// ══ STRIP ALL METADATA ═══════════════════════════════════════════════════════
+document.getElementById('stripMetaBtn').addEventListener('click', () => {
+  if (!currentFile) return;
+  // Canvas re-encode strips all metadata natively
+  const img = document.getElementById('previewThumb');
+  const canvas = document.createElement('canvas');
+  canvas.width  = img.naturalWidth;
+  canvas.height = img.naturalHeight;
+  const ctx = canvas.getContext('2d');
+  ctx.drawImage(img, 0, 0);
+  canvas.toBlob(blob => {
+    outputDataUrl = URL.createObjectURL(blob);
+    const baseName = currentFile.name.replace(/\.[^.]+$/, '');
+    document.getElementById('resultTitle').textContent   = 'Metadata stripped — file ready';
+    document.getElementById('resultSubtitle').textContent = `${baseName}-clean.jpg · ${formatSize(blob.size)} (was ${formatSize(currentFile.size)})`;
+    document.getElementById('downloadBtn').dataset.filename = `${baseName}-clean.jpg`;
+    document.getElementById('resultArea').classList.add('visible');
+    showToast('All metadata removed');
+  }, 'image/jpeg', 0.95);
+});
+
+// ══ DOWNLOAD ═════════════════════════════════════════════════════════════════
+document.getElementById('downloadBtn').addEventListener('click', function(){
+  if (!outputDataUrl) return;
+  const a = document.createElement('a');
+  a.href     = outputDataUrl;
+  a.download = this.dataset.filename || 'output.jpg';
+  a.click();
+  showToast('Downloading…');
+});
+
+// ══ NEW FILE ═════════════════════════════════════════════════════════════════
+document.getElementById('clearBtn').addEventListener('click', () => {
+  currentFile = null; parsedExif = {}; editedFields = {}; outputDataUrl = null;
+  document.getElementById('imagePreviewBar').classList.remove('visible');
+  document.getElementById('metadataArea').classList.remove('visible');
+  document.getElementById('actionBar').style.display = 'none';
+  document.getElementById('resultArea').classList.remove('visible');
+  fileInput.value = '';
+  showToast('Ready for a new file');
+});
+
+// ══ EXIF WRITER (minimal — writes editable text fields) ══════════════════════
+function rebuildJpegWithExif(origBuf, fields) {
+  // 1. Strip all APP1 EXIF from original JPEG
+  const stripped = stripExifFromJpeg(origBuf);
+
+  // 2. Build new minimal EXIF block
+  const exifBlock = buildMinimalExif(fields);
+
+  // 3. Splice: SOI + new APP1 + rest
+  const soi  = new Uint8Array([0xFF, 0xD8]);
+  // APP1 marker + length (2 bytes) + "Exif\0\0" (6 bytes) + tiff data
+  const app1Len = 2 + 6 + exifBlock.length; // length field includes itself
+  const app1Hdr = new Uint8Array([0xFF, 0xE1, (app1Len >> 8) & 0xFF, app1Len & 0xFF, 0x45, 0x78, 0x69, 0x66, 0x00, 0x00]);
+
+  const total = soi.length + app1Hdr.length + exifBlock.length + stripped.length;
+  const out   = new Uint8Array(total);
+  let pos = 0;
+  out.set(soi, pos);      pos += soi.length;
+  out.set(app1Hdr, pos);  pos += app1Hdr.length;
+  out.set(exifBlock, pos);pos += exifBlock.length;
+  out.set(stripped, pos);
+  return out.buffer;
+}
+
+function stripExifFromJpeg(buf) {
+  const view   = new DataView(buf);
+  const chunks = [];
+  // Start after SOI (2 bytes)
+  let offset = 2;
+  while (offset < buf.byteLength - 2) {
+    if (view.getUint8(offset) !== 0xFF) break;
+    const marker = view.getUint16(offset);
+    if (marker === 0xFFDA) { // SOS — copy rest
+      chunks.push(new Uint8Array(buf, offset));
+      break;
+    }
+    const segLen = view.getUint16(offset + 2);
+    // Skip APP1 (EXIF) — keep everything else
+    if (marker !== 0xFFE1) {
+      chunks.push(new Uint8Array(buf, offset, 2 + segLen));
+    }
+    offset += 2 + segLen;
+  }
+  const total = chunks.reduce((s, c) => s + c.length, 0);
+  const out   = new Uint8Array(total);
+  let pos = 0;
+  for (const c of chunks) { out.set(c, pos); pos += c.length; }
+  return out;
+}
+
+function buildMinimalExif(fields) {
+  // Build a minimal TIFF structure with IFD0 containing our editable tags
+  // Little-endian format
+  const TEXT_TAGS = {
+    ImageDescription:  0x010E,
+    Artist:            0x013B,
+    Copyright:         0x8298,
+    Software:          0x0131,
+    DateTime:          0x0132,
+    DateTimeOriginal:  0x9003,  // Goes in ExifIFD but we put in IFD0 for simplicity
+    DateTimeDigitized: 0x9004,
+  };
+
+  // Filter to non-empty fields
+  const activeFields = Object.entries(fields).filter(([k,v]) => v && TEXT_TAGS[k]);
+  // Sort by tag number
+  activeFields.sort((a,b) => TEXT_TAGS[a[0]] - TEXT_TAGS[b[0]]);
+
+  if (activeFields.length === 0) {
+    // Write minimal valid TIFF with empty IFD0
+    const buf = new ArrayBuffer(8 + 2 + 4);
+    const dv  = new DataView(buf);
+    dv.setUint16(0, 0x4949, true); // LE
+    dv.setUint16(2, 0x002A, true); // TIFF magic
+    dv.setUint32(4, 8, true);      // IFD0 offset = 8
+    dv.setUint16(8, 0, true);      // 0 entries
+    dv.setUint32(10, 0, true);     // next IFD = 0
+    return new Uint8Array(buf);
+  }
+
+  // Each IFD entry: 12 bytes
+  // String data stored after IFD
+  const numEntries = activeFields.length;
+  const ifd0Start  = 8; // after TIFF header
+  const ifd0Size   = 2 + numEntries * 12 + 4; // count + entries + nextIFD
+  const strDataStart = ifd0Start + ifd0Size;
+
+  // Compute string offsets and lengths (include null terminator)
+  const strLengths = activeFields.map(([,v]) => v.length + 1);
+  const totalStrLen = strLengths.reduce((s,l) => s + l, 0);
+  const totalSize   = strDataStart + totalStrLen;
+
+  const buf = new ArrayBuffer(totalSize);
+  const dv  = new DataView(buf);
+  const u8  = new Uint8Array(buf);
+
+  // TIFF header
+  dv.setUint16(0, 0x4949, true); // LE
+  dv.setUint16(2, 0x002A, true);
+  dv.setUint32(4, ifd0Start, true);
+
+  // IFD0
+  dv.setUint16(ifd0Start, numEntries, true);
+  let strOffset = strDataStart;
+
+  activeFields.forEach(([key, value], i) => {
+    const entryOff = ifd0Start + 2 + i * 12;
+    const tag = TEXT_TAGS[key];
+    const len = value.length + 1;
+    dv.setUint16(entryOff,     tag,  true); // tag
+    dv.setUint16(entryOff + 2, 2,    true); // type: ASCII
+    dv.setUint32(entryOff + 4, len,  true); // count
+    if (len <= 4) {
+      // Value fits in offset field
+      for (let j = 0; j < value.length; j++) u8[entryOff + 8 + j] = value.charCodeAt(j);
+      u8[entryOff + 8 + value.length] = 0;
+    } else {
+      dv.setUint32(entryOff + 8, strOffset, true); // offset to string data
+      for (let j = 0; j < value.length; j++) u8[strOffset + j] = value.charCodeAt(j);
+      u8[strOffset + value.length] = 0;
+      strOffset += len;
+    }
+  });
+  dv.setUint32(ifd0Start + 2 + numEntries * 12, 0, true); // next IFD = 0
+
+  return new Uint8Array(buf);
+}
+
+// ══ HELPERS ══════════════════════════════════════════════════════════════════
+function formatSize(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1024*1024) return (bytes/1024).toFixed(1) + ' KB';
+  return (bytes/(1024*1024)).toFixed(2) + ' MB';
+}
+
+function formatShutter(t) {
+  if (t >= 1) return t.toFixed(1) + ' s';
+  const den = Math.round(1 / t);
+  return `1/${den} s`;
+}
+
+function formatDateTime(dt) {
+  if (!dt) return null;
+  // EXIF datetime: "YYYY:MM:DD HH:MM:SS"
+  return dt.replace(/^(\d{4}):(\d{2}):(\d{2})/, '$1-$2-$3');
+}
+
+// ══ FAQ ══════════════════════════════════════════════════════════════════════
+document.querySelectorAll('.faq-q').forEach(q => q.addEventListener('click', () => {
+  const item = q.parentElement, wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}));
+</script>
+<script>
+function closeMobileMenu() {
+  document.getElementById('mobileMenuToggle').classList.remove('active');
+  document.getElementById('mobileNav').classList.remove('active');
+}
+</script>
+</body>
+</html>

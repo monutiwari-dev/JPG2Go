@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>Add Watermark to Images | Online Watermark Maker</title>
+<meta name="description" content="Add text or logo watermarks to images online. Protect your photos instantly with customizable options while keeping quality intact.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jpg2go.com/watermark-tool">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="adsense.js"></script>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Add Watermark to Images",
+    "url": "https://jpg2go.com/watermark-image",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Add text or logo watermarks to images online. Protect your photos instantly with customizable options while keeping quality intact."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a PDF watermark tool?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A PDF watermark tool allows users to add visible text or image marks to a document. These watermarks help identify ownership, protect intellectual property, and prevent unauthorized distribution."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why should I add a watermark to my PDF documents?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Adding a watermark helps protect your content from misuse and ensures that your brand, company name, or copyright notice is visible on every page."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I add both text and image watermarks?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, most watermark tools allow users to add custom text, company logos, or image-based watermarks depending on the desired style."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can watermarks be applied to all pages of a document?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, many watermark tools allow you to apply the same watermark across all pages or select specific pages where the watermark should appear."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is watermarking useful for business documents?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, companies frequently use watermarks in invoices, contracts, reports, and confidential documents to maintain branding and security."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I control the watermark position and transparency?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Many advanced watermark tools allow users to adjust the position, rotation, size, and transparency of the watermark for better document presentation."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+
+<style>
+/* ══ ROOT TOKENS ══ */
+:root {
+  --ink: #0d0d0d;
+  --paper: #f7f4ee;
+  --cream: #ede9df;
+  --accent: #c84b2f;
+  --accent-light: #e8d5cf;
+  --muted: #7a7567;
+  --border: #d4cfc4;
+  --white: #ffffff;
+  --shadow: 0 2px 24px rgba(13,13,13,0.08);
+  --shadow-lg: 0 8px 48px rgba(13,13,13,0.12);
+  --ai-purple: #c84b2f;
+  --ai-purple-light: #e8d5cf;
+  --green: #1a8a4a;
+  --green-light: #d4f0e0;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; min-height: 100vh; }
+
+/* ══ HEADER ══ */
+header { background: var(--ink); color: var(--paper); position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--accent); }
+.header-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.logo { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.6rem; color: var(--paper); text-decoration: none; letter-spacing: -0.02em; }
+.logo span { color: var(--accent); }
+nav { display: flex; gap: 2rem; align-items: center; }
+nav a { color: #a8a39a; text-decoration: none; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.02em; transition: color 0.2s; }
+nav a:hover { color: var(--paper); }
+.nav-cta { background: var(--accent); color: var(--white) !important; padding: 0.4rem 1rem; border-radius: 4px; transition: background 0.2s !important; }
+.nav-cta:hover { background: #a83825 !important; }
+
+/* ══ MOBILE MENU ══ */
+.mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-direction: column; gap: 5px; align-items: center; justify-content: center; width: 40px; height: 40px; }
+.mobile-menu-toggle span { display: block; width: 24px; height: 2px; background: var(--paper); transition: all 0.3s ease; border-radius: 2px; }
+.mobile-menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+.mobile-menu-toggle.active span:nth-child(2) { opacity: 0; }
+.mobile-menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+.mobile-nav { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--ink); border-top: 2px solid var(--accent); padding: 1.5rem 2rem; flex-direction: column; gap: 1rem; z-index: 99; transform: translateY(-100%); opacity: 0; transition: transform 0.3s ease, opacity 0.3s ease; visibility: hidden; }
+.mobile-nav.active { display: flex; transform: translateY(0); opacity: 1; visibility: visible; }
+.mobile-nav a { color: #a8a39a; text-decoration: none; font-size: 0.95rem; font-weight: 500; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); transition: color 0.2s; }
+.mobile-nav a:last-child { border-bottom: none; }
+.mobile-nav a:hover { color: var(--paper); }
+.mobile-nav .nav-cta { background: var(--accent); color: var(--white) !important; padding: 0.75rem 1.5rem; border-radius: 4px; text-align: center; border: none; margin-top: 0.5rem; }
+
+/* ══ HERO ══ */
+.hero { background: var(--ink); color: var(--paper); padding: 4rem 2rem 3.5rem; text-align: center; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(200,75,47,0.2) 0%, transparent 70%); pointer-events: none; }
+.hero::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 60px; background: linear-gradient(to bottom, transparent, rgba(200,75,47,0.4)); }
+.hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.12em; color: #c84b2f; text-transform: uppercase; border: 1px solid rgba(200,75,47,0.4); background: rgba(200,75,47,0.12); padding: 0.3rem 0.9rem; border-radius: 2px; margin-bottom: 1.5rem; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5.5vw, 3.6rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero-desc { font-size: 1.05rem; color: #9e9990; max-width: 520px; margin: 0 auto 1.75rem; font-weight: 300; line-height: 1.7; }
+.hero-pills { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem; }
+.hero-pill { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.06em; color: #a8a39a; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); padding: 0.3rem 0.75rem; border-radius: 100px; }
+
+/* ══ TOOL SECTION ══ */
+.tool-section { max-width: 1100px; margin: -1.5rem auto 0; padding: 0 1.5rem 4rem; position: relative; z-index: 10; }
+.tool-card { background: var(--white); border-radius: 12px; box-shadow: var(--shadow-lg); overflow: hidden; border: 1px solid var(--border); }
+.tool-card-header { background: var(--cream); padding: 1rem 1.5rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid var(--border); }
+.dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+.dot-r { background: #ff5f57; } .dot-y { background: #febc2e; } .dot-g { background: #28c840; }
+.tool-card-title { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--muted); margin-left: 0.5rem; letter-spacing: 0.05em; }
+.tool-body { padding: 1.5rem; }
+
+/* ══ TWO-COLUMN LAYOUT ══ */
+.tool-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
+.tool-col-left { display: flex; flex-direction: column; gap: 1.25rem; }
+.tool-col-right { display: flex; flex-direction: column; gap: 1.25rem; }
+
+/* ══ DROP ZONE ══ */
+.drop-zone { border: 2px dashed var(--border); border-radius: 10px; padding: 2.5rem 2rem; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; background: var(--paper); position: relative; }
+.drop-zone:hover, .drop-zone.drag-over { border-color: var(--accent); background: var(--ai-purple-light); }
+.drop-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+.drop-icon { width: 48px; height: 48px; background: var(--ai-purple-light); border: 1px solid rgba(200,75,47,0.3); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.85rem; color: var(--accent); }
+.drop-zone h3 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.3rem; }
+.drop-zone p { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.85rem; }
+.formats-pill { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; color: var(--accent); background: var(--ai-purple-light); padding: 0.25rem 0.75rem; border-radius: 100px; display: inline-block; }
+
+/* ══ PANEL BOXES ══ */
+.panel-box { background: var(--paper); border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem 1.25rem; }
+.panel-box-title { font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+.panel-box-title svg { color: var(--accent); }
+
+/* ══ MODE TABS ══ */
+.mode-tabs { display: flex; gap: 0; background: var(--cream); border: 1.5px solid var(--border); border-radius: 8px; padding: 3px; margin-bottom: 1rem; width: fit-content; }
+.mode-tab { font-family: 'DM Mono', monospace; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.04em; color: var(--muted); background: transparent; border: none; padding: 0.42rem 1.1rem; border-radius: 6px; cursor: pointer; transition: all 0.18s; }
+.mode-tab.active { background: var(--white); color: var(--accent); box-shadow: 0 1px 4px rgba(13,13,13,0.1); font-weight: 600; }
+.wm-panel { display: none; }
+.wm-panel.active { display: block; }
+
+/* ══ FORM ROWS ══ */
+.form-row { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.85rem; }
+.form-row:last-child { margin-bottom: 0; }
+.form-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+.form-input { background: var(--white); border: 1.5px solid var(--border); border-radius: 6px; padding: 0.5rem 0.75rem; font-family: 'DM Sans', sans-serif; font-size: 0.875rem; color: var(--ink); outline: none; transition: border-color 0.2s; width: 100%; }
+.form-input:focus { border-color: var(--accent); }
+.form-select { background: var(--white); border: 1.5px solid var(--border); border-radius: 6px; padding: 0.42rem 2rem 0.42rem 0.75rem; font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--ink); cursor: pointer; outline: none; transition: border-color 0.2s; -webkit-appearance: none; appearance: none; background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%237a7567' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.75rem center; width: 100%; }
+.form-select:focus { border-color: var(--accent); }
+.form-row-inline { display: flex; gap: 0.75rem; margin-bottom: 0.85rem; }
+.form-row-inline .form-row { flex: 1; margin-bottom: 0; }
+
+/* Slider */
+.slider-wrap { display: flex; align-items: center; gap: 0.75rem; }
+input[type="range"].form-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 5px; background: var(--border); border-radius: 100px; outline: none; cursor: pointer; }
+input[type="range"].form-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; background: var(--accent); border-radius: 50%; cursor: pointer; box-shadow: 0 1px 6px rgba(200,75,47,0.4); transition: transform 0.15s; }
+input[type="range"].form-slider::-webkit-slider-thumb:hover { transform: scale(1.2); }
+input[type="range"].form-slider::-moz-range-thumb { width: 18px; height: 18px; background: var(--accent); border-radius: 50%; border: none; cursor: pointer; }
+.slider-val { font-family: 'DM Mono', monospace; font-size: 0.82rem; color: var(--accent); font-weight: 600; min-width: 38px; text-align: right; }
+
+/* Color swatch input */
+.color-row { display: flex; align-items: center; gap: 0.75rem; }
+input[type="color"].color-picker { width: 36px; height: 36px; border: 1.5px solid var(--border); border-radius: 6px; cursor: pointer; padding: 2px; background: var(--white); outline: none; flex-shrink: 0; }
+.color-hex { font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--ink); background: var(--white); border: 1.5px solid var(--border); border-radius: 6px; padding: 0.35rem 0.65rem; outline: none; width: 100px; transition: border-color 0.2s; }
+.color-hex:focus { border-color: var(--accent); }
+
+/* Position grid */
+.pos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; width: 108px; }
+.pos-btn { width: 34px; height: 34px; border: 1.5px solid var(--border); border-radius: 5px; background: var(--white); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+.pos-btn:hover { border-color: var(--accent); background: var(--accent-light); }
+.pos-btn.active { border-color: var(--accent); background: var(--accent-light); }
+.pos-btn svg { color: var(--muted); }
+.pos-btn.active svg { color: var(--accent); }
+.pos-row { display: flex; align-items: center; gap: 1rem; }
+.pos-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.5rem; display: block; }
+
+/* Logo upload zone */
+.logo-drop { border: 2px dashed var(--border); border-radius: 8px; padding: 1.25rem 1rem; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; background: var(--white); position: relative; }
+.logo-drop:hover { border-color: var(--accent); background: var(--accent-light); }
+.logo-drop input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+.logo-drop p { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.35rem; }
+.logo-drop .formats-pill { margin-top: 3rem.35rem; }
+.logo-preview-wrap { display: none; align-items: center; gap: 0.75rem; padding: 0.5rem 0; }
+.logo-preview-wrap.visible { display: flex; }
+.logo-preview { width: 48px; height: 48px; object-fit: contain; border-radius: 6px; border: 1px solid var(--border); background: var(--cream); }
+.logo-preview-info { flex: 1; }
+.logo-preview-name { font-size: 0.8rem; font-weight: 600; color: var(--ink); }
+.logo-preview-size { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); }
+.logo-remove-btn { background: none; border: none; cursor: pointer; color: var(--muted); transition: color 0.15s; }
+.logo-remove-btn:hover { color: var(--accent); }
+
+/* ══ LIVE PREVIEW ══ */
+.preview-panel { background: var(--ink); border-radius: 10px; overflow: hidden; position: sticky; top: 84px; }
+.preview-panel-header { padding: 0.75rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: space-between; }
+.preview-panel-title { font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #9e9990; display: flex; align-items: center; gap: 0.4rem; }
+.preview-badge { font-family: 'DM Mono', monospace; font-size: 0.6rem; background: rgba(200,75,47,0.2); color: var(--accent); border: 1px solid rgba(200,75,47,0.3); padding: 0.1rem 0.45rem; border-radius: 100px; letter-spacing: 0.06em; }
+.preview-canvas-wrap { position: relative; width: 100%; background: repeating-conic-gradient(rgba(255,255,255,0.04) 0% 25%, transparent 0% 50%) 0 0 / 16px 16px; min-height: 240px; display: flex; align-items: center; justify-content: center; }
+.preview-canvas-wrap canvas { max-width: 100%; max-height: 340px; display: block; object-fit: contain; }
+.preview-placeholder { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; padding: 3rem 2rem; }
+.preview-placeholder-icon { width: 52px; height: 52px; background: rgba(200,75,47,0.12); border: 1px solid rgba(200,75,47,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: rgba(200,75,47,0.5); }
+.preview-placeholder p { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: rgba(255,255,255,0.25); text-align: center; letter-spacing: 0.05em; }
+.preview-note { padding: 0.6rem 1rem; font-family: 'DM Mono', monospace; font-size: 0.65rem; color: rgba(255,255,255,0.25); text-align: center; letter-spacing: 0.04em; border-top: 1px solid rgba(255,255,255,0.06); }
+
+/* ══ FILE QUEUE ══ */
+.file-queue-wrap { display: none; }
+.file-queue-wrap.visible { display: block; }
+.file-queue-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 0.5rem; }
+.file-queue-label { font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+.file-queue-count { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--accent); background: var(--accent-light); padding: 0.15rem 0.5rem; border-radius: 100px; }
+.file-queue { display: flex; flex-direction: column; gap: 0.5rem; max-height: 240px; overflow-y: auto; padding-right: 2px; }
+.file-queue::-webkit-scrollbar { width: 4px; }
+.file-queue::-webkit-scrollbar-track { background: var(--cream); border-radius: 2px; }
+.file-queue::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+.file-item { display: flex; align-items: center; gap: 0.75rem; background: var(--paper); border: 1px solid var(--border); border-radius: 8px; padding: 0.55rem 0.85rem; cursor: pointer; transition: border-color 0.15s; }
+.file-item:hover { border-color: var(--accent); }
+.file-item.selected { border-color: var(--accent); background: var(--accent-light); }
+.file-thumb-wrap { width: 36px; height: 36px; border-radius: 5px; border: 1px solid var(--border); flex-shrink: 0; overflow: hidden; background: var(--cream); }
+.file-thumb { width: 100%; height: 100%; object-fit: cover; display: block; }
+.file-info { flex: 1; min-width: 0; }
+.file-name { font-size: 0.78rem; font-weight: 600; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.file-meta { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); margin-top: 0.1rem; }
+.file-remove { background: none; border: none; cursor: pointer; color: var(--muted); padding: 0.2rem; border-radius: 4px; display: flex; align-items: center; justify-content: center; transition: color 0.15s, background 0.15s; flex-shrink: 0; }
+.file-remove:hover { color: var(--accent); background: var(--accent-light); }
+.add-more-btn { display: flex; align-items: center; justify-content: center; gap: 0.5rem; border: 1.5px dashed var(--border); border-radius: 8px; padding: 0.6rem; cursor: pointer; font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.05em; color: var(--muted); background: transparent; width: 100%; margin-top: 0.5rem; transition: border-color 0.2s, color 0.2s, background 0.2s; position: relative; overflow: hidden; }
+.add-more-btn input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.add-more-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+
+/* ══ ACTION BAR ══ */
+.action-bar { display: flex; gap: 0.75rem; margin-top: 1.25rem; flex-wrap: wrap; }
+.btn-primary { background: var(--accent); color: var(--white); border: none; border-radius: 6px; padding: 0.65rem 1.5rem; font-family: 'DM Sans', sans-serif; font-size: 0.875rem; font-weight: 600; cursor: pointer; transition: all 0.18s; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; }
+.btn-primary:hover { background: #a83825; transform: translateY(-1px); }
+.btn-primary:disabled { background: var(--border); color: var(--muted); cursor: not-allowed; transform: none; }
+.btn-secondary { background: transparent; color: var(--ink); border: 1.5px solid var(--border); border-radius: 6px; padding: 0.65rem 1.25rem; font-family: 'DM Sans', sans-serif; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.18s; display: inline-flex; align-items: center; gap: 0.5rem; }
+.btn-secondary:hover { border-color: var(--ink); background: var(--cream); }
+.btn-secondary:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* ══ PROCESSING OVERLAY ══ */
+.processing-overlay { display: none; }
+.processing-overlay.active { display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; padding: 3rem; background: var(--paper); border-radius: 10px; border: 1px solid var(--border); margin-top: 1.5rem; }
+.ai-spinner { width: 48px; height: 48px; border: 3px solid var(--ai-purple-light); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.9s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.processing-text { font-family: 'DM Mono', monospace; font-size: 0.8rem; color: var(--muted); letter-spacing: 0.05em; }
+.processing-progress { width: 100%; max-width: 280px; background: var(--border); border-radius: 100px; height: 4px; overflow: hidden; }
+.processing-progress-bar { height: 100%; background: var(--accent); border-radius: 100px; transition: width 0.25s ease; width: 0%; }
+.processing-steps { display: flex; flex-direction: column; gap: 0.4rem; width: 100%; max-width: 280px; }
+.processing-step { display: flex; align-items: center; gap: 0.6rem; font-family: 'DM Mono', monospace; font-size: 0.68rem; color: #bbb; }
+.processing-step.done { color: #28c840; }
+.processing-step.active { color: var(--accent); }
+.step-dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+
+/* ══ RESULTS ══ */
+.result-area { display: none; margin-top: 1.5rem; }
+.result-area.visible { display: block; }
+.result-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem; }
+.result-title { font-family: 'DM Mono', monospace; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+.result-count-badge { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--green); background: var(--green-light); padding: 0.2rem 0.6rem; border-radius: 100px; border: 1px solid rgba(26,138,74,0.2); }
+.result-list { display: flex; flex-direction: column; gap: 0.6rem; }
+.result-row { display: flex; align-items: center; gap: 0.85rem; background: var(--paper); border: 1px solid var(--border); border-radius: 9px; padding: 0.75rem 1rem; transition: border-color 0.15s; }
+.result-row:hover { border-color: var(--green); }
+.result-thumb { width: 52px; height: 52px; border-radius: 5px; object-fit: cover; border: 1px solid var(--border); flex-shrink: 0; background: var(--cream); }
+.result-info { flex: 1; min-width: 0; }
+.result-filename { font-size: 0.82rem; font-weight: 600; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 0.2rem; }
+.result-meta { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); }
+.wm-badge { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--accent); background: var(--accent-light); border: 1px solid rgba(200,75,47,0.2); padding: 0.1rem 0.4rem; border-radius: 3px; white-space: nowrap; display: inline-block; margin-top: 3rem.15rem; }
+.result-dl { background: none; border: 1.5px solid var(--border); border-radius: 5px; padding: 0.35rem 0.65rem; cursor: pointer; color: var(--muted); font-family: 'DM Mono', monospace; font-size: 0.65rem; display: flex; align-items: center; gap: 0.3rem; transition: all 0.18s; white-space: nowrap; flex-shrink: 0; }
+.result-dl:hover { border-color: var(--green); color: var(--green); background: var(--green-light); }
+
+/* ══ TOAST ══ */
+.toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--ink); color: var(--paper); padding: 0.75rem 1.5rem; border-radius: 6px; font-size: 0.875rem; font-weight: 500; transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); z-index: 999; border-left: 3px solid var(--accent); white-space: nowrap; }
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ══ CONTENT SECTIONS ══ */
+.content-section { max-width: 1000px; margin: 0 auto; padding: 4rem 1.5rem; }
+.section-tag { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; display: block; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1.25rem; line-height: 1.2; }
+.content-prose { color: #4a4640; font-size: 0.975rem; line-height: 1.8; max-width: 720px; }
+.content-prose p { margin-bottom: 1rem; }
+.content-prose p:last-child { margin-bottom: 0; }
+.divider { border: none; border-top: 1px solid var(--border); max-width: 1000px; margin: 0 auto; }
+
+/* ══ HOW IT WORKS ══ */
+.how-section { background: var(--ink); color: var(--paper); padding: 1.75rem 2rem; position: relative; overflow: hidden; }
+.how-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 80% at 50% 100%, rgba(200,75,47,0.14) 0%, transparent 70%); pointer-events: none; }
+.how-inner { max-width: 1000px; margin: 0 auto; position: relative; }
+.how-hdr { text-align: center; margin-bottom: 1.25rem; }
+.how-hdr .section-tag { color: #c84b2f; }
+.how-hdr .section-title { color: var(--paper); margin-bottom: 0.35rem; }
+.how-sub { color: #9e9990; font-size: 0.9rem; font-weight: 300; }
+.steps-grid { display: flex; align-items: stretch; gap: 0; }
+.step-card { flex: 1; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 0.85rem 1rem; position: relative; transition: background 0.25s, border-color 0.25s, transform 0.25s; }
+.step-card:hover { background: rgba(200,75,47,0.08); border-color: rgba(200,75,47,0.35); transform: translateY(-4px); }
+.step-conn { display: flex; align-items: center; justify-content: center; padding: 0 0.5rem; color: rgba(200,75,47,0.5); flex-shrink: 0; margin-top: -1rem; }
+.step-number { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; color: rgba(200,75,47,0.25); line-height: 1; margin-bottom: 0.35rem; letter-spacing: -0.04em; }
+.step-icon { width: 36px; height: 36px; background: rgba(200,75,47,0.15); border: 1px solid rgba(200,75,47,0.3); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.6rem; color: #c84b2f; }
+.step-title { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; color: var(--paper); margin-bottom: 0.35rem; line-height: 1.3; }
+.step-desc { font-size: 0.8rem; color: #9e9990; line-height: 1.55; margin-bottom: 0.6rem; }
+.step-desc strong { color: #d4cfc4; }
+.step-pill { display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.63rem; letter-spacing: 0.05em; color: #c84b2f; background: rgba(200,75,47,0.12); border: 1px solid rgba(200,75,47,0.25); padding: 0.2rem 0.6rem; border-radius: 100px; }
+.how-cta { text-align: center; margin-top: 1.25rem; display: flex; flex-direction: column; align-items: center; gap: 0.6rem; }
+.how-note { font-size: 0.8rem; color: #7a7567; font-family: 'DM Mono', monospace; letter-spacing: 0.03em; }
+
+/* ══ FEATURES ══ */
+.features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-top: 2rem; }
+.feature-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem 1.25rem; transition: box-shadow 0.2s, transform 0.2s; }
+.feature-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+.feature-icon { font-size: 1.75rem; margin-bottom: 0.5rem; display: block; }
+.feature-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.4rem; }
+.feature-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+/* ══ USE CASES ══ */
+.use-cases-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-top: 2rem; }
+.use-case-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem 1.25rem; }
+.use-case-icon { font-size: 1.75rem; margin-bottom: 0.5rem; display: block; }
+.use-case-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.4rem; }
+.use-case-text { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+/* ══ FAQ ══ */
+.faq-list { margin-top: 2rem; }
+.faq-item { border-bottom: 1px solid var(--border); padding: 1.25rem 0; }
+.faq-item:last-child { border-bottom: none; }
+.faq-q { font-weight: 600; font-size: 0.95rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.faq-q::after { content: '+'; font-size: 1.2rem; color: var(--accent); flex-shrink: 0; transition: transform 0.2s; }
+.faq-item.open .faq-q::after { transform: rotate(45deg); }
+.faq-a { font-size: 0.9rem; color: var(--muted); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, margin-top 0.3s; }
+.faq-item.open .faq-a { max-height: 300px; margin-top: 3rem.75rem; }
+
+/* ══ CTA ══ */
+.cta-section { background: var(--ink); color: var(--paper); padding: 1.5rem 2rem; text-align: center; position: relative; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(200,75,47,0.18) 0%, transparent 70%); pointer-events: none; }
+.cta-inner { max-width: 640px; margin: 0 auto; position: relative; }
+.cta-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 0.75rem; color: var(--paper); }
+.cta-desc { font-size: 1rem; color: #9e9990; font-weight: 300; margin-bottom: 0.75rem; line-height: 1.7; }
+.cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 0.5rem; }
+.cta-note { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.06em; color: #5a5650; margin-top: 3rem.75rem; display: block; }
+
+/* ══ RELATED ══ */
+.related-section { background: var(--cream); padding: 5rem 2rem; border-top: 1px solid var(--border); }
+.related-inner { max-width: 1000px; margin: 0 auto; }
+.related-header { margin-bottom: 2.5rem; }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+.related-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-decoration: none; color: inherit; display: block; transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s; position: relative; overflow: hidden; }
+.related-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--border); transition: background 0.2s; }
+.related-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); border-color: var(--accent); }
+.related-card:hover::before { background: var(--accent); }
+.related-card-icon { font-size: 1.85rem; margin-bottom: 0.85rem; display: block; }
+.related-card-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem; color: var(--ink); letter-spacing: -0.01em; }
+.related-card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin-bottom: 1rem; }
+.related-card-tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); background: var(--accent-light); padding: 0.2rem 0.5rem; border-radius: 3px; display: inline-block; }
+
+/* ══ FOOTER ══ */
+footer { background: var(--ink); color: #9e9990; padding: 4rem 2rem 2rem; margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.05); }
+#footer-placeholder { margin-top: 3rem; }
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid #2a2a2a; }
+.footer-brand .logo { display: block; margin-bottom: 0.5rem; }
+.footer-brand p { font-size: 0.85rem; line-height: 1.6; max-width: 240px; }
+.footer-social { display: flex; gap: 0; margin-top: 1rem; }
+.social-icon { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; color: #9e9990; transition: color 0.2s, transform 0.2s; border-radius: 6px; margin-left: -8px; }
+.social-icon:first-child { margin-left: 0; }
+.social-icon:hover { color: var(--paper); transform: translateY(-2px); }
+.footer-col-title { font-family: 'DM Sans', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper); font-weight: 600; margin-bottom: 1rem; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-links a { color: #9e9990; text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+.footer-links a:hover { color: var(--paper); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; font-size: 0.8rem; flex-wrap: wrap; gap: 0.75rem; }
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 900px) {
+  .tool-columns { grid-template-columns: 1fr; }
+  .preview-panel { position: static; }
+}
+@media (max-width: 768px) {
+  nav { display: none; }
+  .mobile-menu-toggle { display: flex; }
+  .steps-grid { flex-direction: column; }
+  .step-conn { transform: rotate(90deg); padding: 0.25rem 0; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .form-row-inline { flex-direction: column; }
+}
+
+/* ══ ANIMATIONS ══ */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.fade-up { animation: fadeUp 0.6s ease both; }
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">JPG2<span>Go</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="tools.html">Tools</a>
+      <a href="#tool" class="nav-cta">Convert Now</a>
+    </nav>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="tools.html" onclick="closeMobileMenu()">Tools</a>
+    <a href="#tool" class="nav-cta" onclick="closeMobileMenu()">Convert Now</a>
+  </nav>
+</header>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="fade-up">
+    <div class="hero-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Online Watermark Maker
+    </div>
+    <h1>Add Watermark to Images</h1>
+    <p class="hero-desc">Add custom text or image watermarks to PDF documents to protect your content and maintain branding.</p>
+    <div class="hero-pills">
+      <span class="hero-pill">Text Watermarks</span>
+      <span class="hero-pill">Logo Watermarks</span>
+      <span class="hero-pill">Batch Processing</span>
+      <span class="hero-pill">9-Point Positioning</span>
+      <span class="hero-pill">Opacity &amp; Rotation</span>
+      <span class="hero-pill">Live Preview</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TOOL ══ -->
+<section class="tool-section" id="tool">
+  <div class="tool-card fade-up delay-1">
+    <div class="tool-card-header">
+      <span class="dot dot-r"></span>
+      <span class="dot dot-y"></span>
+      <span class="dot dot-g"></span>
+      <span class="tool-card-title">watermark-tool · text &amp; logo · batch · live-preview · browser-native</span>
+    </div>
+    <div class="tool-body">
+
+      <!-- Drop Zone -->
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" accept="image/jpeg,image/jpg,image/png,image/webp,.jpg,.jpeg,.png,.webp" multiple>
+        <div class="drop-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Drop your images here</h3>
+        <p>Add custom text or image watermarks to PDF documents to protect your content and maintain branding.</p>
+        <span class="formats-pill">JPG · PNG · WebP · batch supported</span>
+      </div>
+
+      <!-- Two-column layout once images loaded -->
+      <div class="tool-columns" id="toolColumns" style="display:none; margin-top:1.5rem;">
+
+        <!-- LEFT: Settings + Queue -->
+        <div class="tool-col-left">
+
+          <!-- Watermark Type Tabs -->
+          <div class="panel-box">
+            <div class="panel-box-title">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Watermark Type
+            </div>
+            <div class="mode-tabs">
+              <button class="mode-tab active" data-mode="text">Text</button>
+              <button class="mode-tab" data-mode="logo">Logo / Image</button>
+            </div>
+
+            <!-- TEXT PANEL -->
+            <div class="wm-panel active" id="panelText">
+              <div class="form-row">
+                <label class="form-label">Watermark Text</label>
+                <input type="text" class="form-input" id="wmText" placeholder="© Your Name 2025" value="© Your Name 2025">
+              </div>
+              <div class="form-row-inline">
+                <div class="form-row">
+                  <label class="form-label">Font</label>
+                  <select class="form-select" id="wmFont">
+                    <option value="sans-serif">Sans-Serif</option>
+                    <option value="serif">Serif</option>
+                    <option value="monospace">Monospace</option>
+                    <option value="Georgia, serif">Georgia</option>
+                    <option value="'Playfair Display', Georgia, serif">Playfair Display</option>
+                    <option value="Impact, sans-serif">Impact</option>
+                    <option value="'Courier New', monospace">Courier New</option>
+                  </select>
+                </div>
+                <div class="form-row">
+                  <label class="form-label">Style</label>
+                  <select class="form-select" id="wmStyle">
+                    <option value="normal">Normal</option>
+                    <option value="bold">Bold</option>
+                    <option value="italic">Italic</option>
+                    <option value="bold italic">Bold Italic</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <label class="form-label">Font Size (px)</label>
+                <div class="slider-wrap">
+                  <input type="range" class="form-slider" id="wmFontSize" min="10" max="200" value="42">
+                  <span class="slider-val" id="wmFontSizeVal">42</span>
+                </div>
+              </div>
+              <div class="form-row">
+                <label class="form-label">Colour</label>
+                <div class="color-row">
+                  <input type="color" class="color-picker" id="wmColor" value="#ffffff">
+                  <input type="text" class="color-hex" id="wmColorHex" value="#ffffff" maxlength="7" placeholder="#ffffff">
+                </div>
+              </div>
+            </div>
+
+            <!-- LOGO PANEL -->
+            <div class="wm-panel" id="panelLogo">
+              <div class="form-row">
+                <label class="form-label">Logo / Image File</label>
+                <div class="logo-drop" id="logoDrop">
+                  <input type="file" id="logoInput" accept="image/jpeg,image/jpg,image/png,image/webp,image/svg+xml,.jpg,.jpeg,.png,.webp,.svg">
+                  <div class="drop-icon" style="width:36px;height:36px;margin:0 auto 0.5rem;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                  </div>
+                  <p>Drop logo or click to browse</p>
+                  <span class="formats-pill">PNG · WebP · JPG · SVG</span>
+                </div>
+                <div class="logo-preview-wrap" id="logoPreviewWrap">
+                  <img class="logo-preview" id="logoPreviewImg" src="" alt="Logo preview">
+                  <div class="logo-preview-info">
+                    <div class="logo-preview-name" id="logoPreviewName">—</div>
+                    <div class="logo-preview-size" id="logoPreviewSize">—</div>
+                  </div>
+                  <button class="logo-remove-btn" id="logoRemoveBtn" title="Remove logo">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="form-row">
+                <label class="form-label">Logo Width (% of image)</label>
+                <div class="slider-wrap">
+                  <input type="range" class="form-slider" id="wmLogoSize" min="5" max="80" value="25">
+                  <span class="slider-val" id="wmLogoSizeVal">25%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Shared settings: opacity, rotation, position -->
+          <div class="panel-box">
+            <div class="panel-box-title">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+              Placement &amp; Style
+            </div>
+
+            <div class="form-row">
+              <label class="form-label">Opacity</label>
+              <div class="slider-wrap">
+                <input type="range" class="form-slider" id="wmOpacity" min="5" max="100" value="60">
+                <span class="slider-val" id="wmOpacityVal">60%</span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label class="form-label">Rotation</label>
+              <div class="slider-wrap">
+                <input type="range" class="form-slider" id="wmRotation" min="-180" max="180" value="-25">
+                <span class="slider-val" id="wmRotationVal">-25°</span>
+              </div>
+            </div>
+
+            <div class="form-row" style="margin-bottom:0.5rem;">
+              <label class="form-label" style="margin-bottom:0.5rem;">Position</label>
+              <div class="pos-row">
+                <div class="pos-grid" id="posGrid">
+                  <button class="pos-btn" data-pos="top-left" title="Top Left"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="8" height="8" rx="1"/></svg></button>
+                  <button class="pos-btn" data-pos="top-center" title="Top Center"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><rect x="8" y="2" width="8" height="8" rx="1"/></svg></button>
+                  <button class="pos-btn" data-pos="top-right" title="Top Right"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><rect x="14" y="2" width="8" height="8" rx="1"/></svg></button>
+                  <button class="pos-btn" data-pos="middle-left" title="Middle Left"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="8" width="8" height="8" rx="1"/></svg></button>
+                  <button class="pos-btn" data-pos="center" title="Center"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><rect x="8" y="8" width="8" height="8" rx="1"/></svg></button>
+                  <button class="pos-btn" data-pos="middle-right" title="Middle Right"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><rect x="14" y="8" width="8" height="8" rx="1"/></svg></button>
+                  <button class="pos-btn" data-pos="bottom-left" title="Bottom Left"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="14" width="8" height="8" rx="1"/></svg></button>
+                  <button class="pos-btn active" data-pos="bottom-right" title="Bottom Right (default)"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><rect x="8" y="14" width="8" height="8" rx="1"/></svg></button>
+                  <button class="pos-btn" data-pos="bottom-center" title="Bottom Center"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><rect x="14" y="14" width="8" height="8" rx="1"/></svg></button>
+                </div>
+                <div style="flex:1; padding-left:0.5rem;">
+                  <div style="font-family:'DM Mono',monospace; font-size:0.65rem; color:var(--muted); line-height:1.6;">Click a cell to set watermark position on all images.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row" style="margin-bottom:0;">
+              <label class="form-label">Margin from edge (px)</label>
+              <div class="slider-wrap">
+                <input type="range" class="form-slider" id="wmMargin" min="0" max="100" value="20">
+                <span class="slider-val" id="wmMarginVal">20</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- File Queue -->
+          <div class="file-queue-wrap visible" id="fileQueueWrap">
+            <div class="file-queue-header">
+              <span class="file-queue-label">Images queued</span>
+              <span class="file-queue-count" id="fileCount">0 files</span>
+            </div>
+            <div class="file-queue" id="fileQueue"></div>
+            <label class="add-more-btn">
+              <input type="file" id="addMoreInput" accept="image/jpeg,image/jpg,image/png,image/webp,.jpg,.jpeg,.png,.webp" multiple>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add more images
+            </label>
+          </div>
+
+          <!-- Action Bar -->
+          <div class="action-bar">
+            <button class="btn-primary" id="applyBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Apply Watermark
+            </button>
+            <button class="btn-secondary" id="clearBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
+              Clear All
+            </button>
+          </div>
+        </div>
+
+        <!-- RIGHT: Live Preview -->
+        <div class="tool-col-right">
+          <div class="preview-panel">
+            <div class="preview-panel-header">
+              <div class="preview-panel-title">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                Live Preview
+              </div>
+              <span class="preview-badge">REALTIME</span>
+            </div>
+            <div class="preview-canvas-wrap" id="previewWrap">
+              <div class="preview-placeholder" id="previewPlaceholder">
+                <div class="preview-placeholder-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                </div>
+                <p>Upload images to see<br>live watermark preview</p>
+              </div>
+              <canvas id="previewCanvas" style="display:none;"></canvas>
+            </div>
+            <div class="preview-note" id="previewNote" style="display:none;">
+              Previewing: <span id="previewFileName">—</span> · Click image in queue to switch
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Processing Overlay -->
+      <div class="processing-overlay" id="processingOverlay">
+        <div class="ai-spinner"></div>
+        <div class="processing-text" id="processingText">Loading images…</div>
+        <div class="processing-progress"><div class="processing-progress-bar" id="progressBar"></div></div>
+        <div class="processing-steps">
+          <div class="processing-step active" id="pStep1"><span class="step-dot"></span> Loading image data</div>
+          <div class="processing-step" id="pStep2"><span class="step-dot"></span> Compositing watermark</div>
+          <div class="processing-step" id="pStep3"><span class="step-dot"></span> Encoding output files</div>
+          <div class="processing-step" id="pStep4"><span class="step-dot"></span> Packaging results</div>
+        </div>
+      </div>
+
+      <!-- Result Area -->
+      <div class="result-area" id="resultArea">
+        <div class="result-header">
+          <span class="result-title">Watermarked Images</span>
+          <span class="result-count-badge" id="resultCountBadge">0 files</span>
+        </div>
+        <div class="result-list" id="resultList"></div>
+        <div class="action-bar" style="margin-top:1rem;">
+          <button class="btn-primary" id="downloadAllBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download All as ZIP
+          </button>
+          <button class="btn-secondary" id="reapplyBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+            Adjust &amp; Re-apply
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ══ -->
+<section class="how-section" id="how-it-works">
+  <div class="how-inner">
+    <div class="how-hdr">
+      <span class="section-tag">Quick Guide</span>
+      <h2 class="section-title">How to Watermark Images</h2>
+      <p class="how-sub">Four steps. Batch-ready. Live preview.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">01</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+        <div class="step-title">Upload Images</div>
+        <div class="step-desc">Drag &amp; drop <strong>one or more JPG, PNG, or WebP images</strong>. The first image instantly appears in the live preview panel on the right.</div>
+        <span class="step-pill">batch support</span>
+      </div>
+      <div class="step-conn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-number">02</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+        <div class="step-title">Design Your Watermark</div>
+        <div class="step-desc">Type a <strong>text watermark</strong> or upload a <strong>logo/image</strong>. Adjust font, size, colour, opacity, rotation, and 9-point position — preview updates instantly.</div>
+        <span class="step-pill">live preview</span>
+      </div>
+      <div class="step-conn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-number">03</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="step-title">Apply to All</div>
+        <div class="step-desc">Click <strong>Apply Watermark</strong> — the Canvas API composites your watermark onto every image at the exact position, opacity, and rotation you set.</div>
+        <span class="step-pill">instant results</span>
+      </div>
+      <div class="step-conn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-number">04</div>
+        <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+        <div class="step-title">Download</div>
+        <div class="step-desc">Save files individually or grab the entire batch as a <strong>single ZIP archive</strong>. Original filenames preserved with "-watermarked" suffix. No logo added by us, ever.</div>
+        <span class="step-pill">ZIP download</span>
+      </div>
+    </div>
+    <div class="how-cta">
+      <a href="#tool" class="btn-primary">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Start Watermarking
+      </a>
+      <span class="how-note">free · no signup · no upload</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ RELATED TOOLS ══ -->
+<section class="content-section" id="about">
+  <h2 class="section-title">Why Use Watermark Tool?</h2>
+  <div class="content-prose">
+    <p>A watermark tool helps add visible text or image marks to documents and images to indicate ownership or copyright. Watermarks are commonly used to protect digital content from unauthorized use.</p>
+    <p>By applying a watermark, creators can ensure that their brand name, logo, or copyright notice appears directly on the document or image. This discourages misuse while still allowing the content to be shared publicly.</p>
+    <p>Watermarking is widely used by photographers, designers, and businesses that distribute digital materials online. Adding a watermark helps maintain content ownership and brand recognition while sharing files across the internet.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══ FEATURES ══ -->
+<section class="content-section" id="features">
+  <span class="section-tag">Features</span>
+  <h2 class="section-title">Everything in One Watermark Tool</h2>
+  <div class="features-grid">
+    <div class="feature-card"><span class="feature-icon">✍️</span><div class="feature-title">Text Watermarks</div><div class="feature-desc">Add any text — copyright notice, name, URL, or brand. Choose font family, weight, size, and colour with full creative control.</div></div>
+    <div class="feature-card"><span class="feature-icon">🖼️</span><div class="feature-title">Logo Watermarks</div><div class="feature-desc">Upload a PNG, JPG, WebP, or SVG logo and overlay it at a percentage-based size that scales proportionally to each target image.</div></div>
+    <div class="feature-card"><span class="feature-icon">👁️</span><div class="feature-title">Live Preview</div><div class="feature-desc">See exactly how your watermark will look before applying — every setting change updates the preview in real time, no guesswork.</div></div>
+    <div class="feature-card"><span class="feature-icon">📦</span><div class="feature-title">Batch Processing</div><div class="feature-desc">Apply the same watermark to dozens of images at once — upload a full folder and watermark everything in a single click.</div></div>
+    <div class="feature-card"><span class="feature-icon">🎯</span><div class="feature-title">9-Point Positioning</div><div class="feature-desc">Place your watermark at any of nine positions — four corners, four edge centres, or dead centre — with pixel-precise margin control.</div></div>
+    <div class="feature-card"><span class="feature-icon">🔆</span><div class="feature-title">Opacity Control</div><div class="feature-desc">Set watermark opacity from 5% to 100% — subtle enough to not distract, visible enough to protect. Fully configurable per use case.</div></div>
+    <div class="feature-card"><span class="feature-icon">🔄</span><div class="feature-title">Rotation</div><div class="feature-desc">Rotate your watermark from -180° to +180° for diagonal, angled, or straight placement across any image orientation.</div></div>
+    <div class="feature-card"><span class="feature-icon">🔒</span><div class="feature-title">100% Private</div><div class="feature-desc">Everything runs in your browser. Your images are never uploaded — no server, no account, no data retention of any kind.</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══ WHO USES THIS ══ -->
+<section class="content-section">
+  <span class="section-tag">Who It's For</span>
+  <h2 class="section-title">Who Uses a Watermark Tool?</h2>
+  <div class="use-cases-grid">
+    <div class="use-case-card"><span class="use-case-icon">📸</span><div class="use-case-title">Photography</div><div class="use-case-text">Protect photos shared online or in portfolios — add your name, copyright notice, or logo before distributing your work.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🛍️</span><div class="use-case-title">E-Commerce</div><div class="use-case-text">Watermark product images before listing on marketplaces to deter unauthorised reuse of your catalogue photography.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🎨</span><div class="use-case-title">Digital Art</div><div class="use-case-text">Add a signature or logo watermark to digital artwork, illustrations, and design files before sharing previews with clients.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">📱</span><div class="use-case-title">Social Media</div><div class="use-case-text">Brand your content before posting to Instagram, Pinterest, or LinkedIn — subtle logo placement builds recognition at scale.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">📰</span><div class="use-case-title">Media &amp; Publishing</div><div class="use-case-text">Mark images as drafts, proofs, or confidential before distributing to clients, editors, or review teams.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🏢</span><div class="use-case-title">Brand Assets</div><div class="use-case-text">Apply consistent brand watermarks across entire libraries of marketing images, product shots, and campaign assets in one batch.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">📋</span><div class="use-case-title">Document Proofing</div><div class="use-case-text">Add "DRAFT", "CONFIDENTIAL", or "SAMPLE" text overlays to image documents before circulating for review or approval.</div></div>
+    <div class="use-case-card"><span class="use-case-icon">🎓</span><div class="use-case-title">Education</div><div class="use-case-text">Watermark educational materials, course images, and slide exports with institution name or course branding before distribution.</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══ FAQ ══ -->
+<section class="content-section">
+  <span class="section-tag">FAQ</span>
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">What is a PDF watermark tool?</div>
+      <div class="faq-a">A PDF watermark tool allows users to add visible text or image marks to a document. These watermarks help identify ownership, protect intellectual property, and prevent unauthorized distribution.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Why should I add a watermark to my PDF documents?</div>
+      <div class="faq-a">Adding a watermark helps protect your content from misuse and ensures that your brand, company name, or copyright notice is visible on every page.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I add both text and image watermarks?</div>
+      <div class="faq-a">Yes, most watermark tools allow users to add custom text, company logos, or image-based watermarks depending on the desired style.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can watermarks be applied to all pages of a document?</div>
+      <div class="faq-a">Yes, many watermark tools allow you to apply the same watermark across all pages or select specific pages where the watermark should appear.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is watermarking useful for business documents?</div>
+      <div class="faq-a">Yes, companies frequently use watermarks in invoices, contracts, reports, and confidential documents to maintain branding and security.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I control the watermark position and transparency?</div>
+      <div class="faq-a">Many advanced watermark tools allow users to adjust the position, rotation, size, and transparency of the watermark for better document presentation.</div>
+    </div>
+  </div>
+</section>
+
+<section class="related-section" id="tools">
+  <div class="related-inner">
+    <div class="related-header">
+      <span class="section-tag">Related Tools</span>
+      <h2 class="section-title">More Free Online Tools</h2>
+    </div>
+    <div class="related-grid">
+      <a href="/jpg-to-pdf" class="related-card">
+        <span class="related-card-icon">📄</span>
+        <div class="related-card-name">JPG to PDF</div>
+        <div class="related-card-desc">Convert JPG images to PDF documents quickly. Combine multiple photos into a single organized PDF file for easy sharing and printing.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+      <a href="/image-resizer" class="related-card">
+        <span class="related-card-icon">📐</span>
+        <div class="related-card-name">Image Resizer</div>
+        <div class="related-card-desc">Resize images to exact pixel dimensions or a percentage of their original size. Runs entirely in your browser without uploading files anywhere.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/compress-jpeg" class="related-card">
+        <span class="related-card-icon">🗜️</span>
+        <div class="related-card-name">Compress JPEG</div>
+        <div class="related-card-desc">Reduce JPEG image file size while maintaining quality. Optimize images for faster web pages and lower storage usage.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/merge-pdf" class="related-card">
+        <span class="related-card-icon">📎</span>
+        <div class="related-card-name">Merge PDF</div>
+        <div class="related-card-desc">Combine multiple PDF files into a single organized document. Drag and drop to reorder pages easily.</div>
+        <span class="related-card-tag">PDF</span>
+      </a>
+      <a href="/crop-image" class="related-card">
+        <span class="related-card-icon">✂️</span>
+        <div class="related-card-name">Crop Image</div>
+        <div class="related-card-desc">Crop images to any aspect ratio or custom dimensions. Perfect for social media thumbnails, profile photos, and banner images.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/format-converter" class="related-card">
+        <span class="related-card-icon">🔄</span>
+        <div class="related-card-name">Format Converter</div>
+        <div class="related-card-desc">Convert images between different formats instantly. Transform JPG, PNG, WebP, and other image formats quickly.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <span class="section-tag" style="color:var(--accent);">Get Started</span>
+    <h2 class="cta-title">Ready to Watermark Your Images?</h2>
+    <p class="cta-desc">Protect your documents by adding text or image watermarks quickly and easily.</p>
+    <div class="cta-actions">
+      <a href="#tool" class="btn-primary" style="font-size:1rem;padding:0.85rem 2rem;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Add Watermark</a>
+    </div>
+    <p class="cta-note">No account · No upload · No data stored · Works offline</p>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<div id="footer-placeholder"></div>
+<script src="load-footer.js"></script>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── GLOBALS ────────────────────────────────────────────────────────────────────
+let files         = [];   // { file, objectUrl }
+let results       = [];   // { dataUrl, filename, origSize, newSize }
+let logoImage     = null; // HTMLImageElement for logo mode
+let logoObjectUrl = null;
+let previewIdx    = 0;
+let mode          = 'text'; // 'text' | 'logo'
+let position      = 'bottom-right';
+let applyToken    = 0;
+
+// ── TOAST ─────────────────────────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+function isSupportedImageFile(f) {
+  if (!f) return false;
+  const name = (f.name || '').toLowerCase();
+  const type = (f.type || '').toLowerCase();
+  return type === 'image/jpeg' || type === 'image/png' || type === 'image/webp' ||
+         name.endsWith('.jpg') || name.endsWith('.jpeg') || name.endsWith('.png') || name.endsWith('.webp');
+}
+
+function sanitizeFilename(name) {
+  const base = String(name || 'file')
+    .replace(/[\\\/:*?"<>|]+/g, '-')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return base || 'file';
+}
+
+// ── MOBILE MENU ───────────────────────────────────────────────────────────────
+document.getElementById('mobileMenuToggle').addEventListener('click', function () {
+  this.classList.toggle('active');
+  document.getElementById('mobileNav').classList.toggle('active');
+});
+function closeMobileMenu() {
+  document.getElementById('mobileMenuToggle').classList.remove('active');
+  document.getElementById('mobileNav').classList.remove('active');
+}
+
+// ── MODE TABS ─────────────────────────────────────────────────────────────────
+document.querySelectorAll('.mode-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    mode = tab.dataset.mode;
+    document.getElementById('panelText').classList.toggle('active', mode === 'text');
+    document.getElementById('panelLogo').classList.toggle('active', mode === 'logo');
+    schedulePreview();
+  });
+});
+
+// ── POSITION GRID ─────────────────────────────────────────────────────────────
+document.querySelectorAll('.pos-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.pos-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    position = btn.dataset.pos;
+    schedulePreview();
+  });
+});
+
+// ── LIVE SLIDERS & INPUTS ─────────────────────────────────────────────────────
+function bindSlider(id, valId, suffix, cb) {
+  const slider = document.getElementById(id);
+  const val    = document.getElementById(valId);
+  slider.addEventListener('input', () => {
+    val.textContent = slider.value + (suffix || '');
+    if (cb) cb();
+    schedulePreview();
+  });
+}
+bindSlider('wmFontSize',  'wmFontSizeVal',  'px');
+bindSlider('wmOpacity',   'wmOpacityVal',   '%');
+bindSlider('wmRotation',  'wmRotationVal',  '°');
+bindSlider('wmMargin',    'wmMarginVal',    '');
+bindSlider('wmLogoSize',  'wmLogoSizeVal',  '%');
+
+['wmText','wmFont','wmStyle'].forEach(id => {
+  document.getElementById(id).addEventListener('input', schedulePreview);
+  document.getElementById(id).addEventListener('change', schedulePreview);
+});
+
+// Color sync
+document.getElementById('wmColor').addEventListener('input', function () {
+  document.getElementById('wmColorHex').value = this.value;
+  schedulePreview();
+});
+document.getElementById('wmColorHex').addEventListener('input', function () {
+  const v = this.value.trim();
+  if (/^#[0-9a-fA-F]{6}$/.test(v)) {
+    document.getElementById('wmColor').value = v;
+    schedulePreview();
+  }
+});
+
+// ── LOGO UPLOAD ───────────────────────────────────────────────────────────────
+document.getElementById('logoInput').addEventListener('change', function () {
+  const file = this.files[0];
+  if (!file) return;
+  if (logoObjectUrl) URL.revokeObjectURL(logoObjectUrl);
+  logoObjectUrl = URL.createObjectURL(file);
+  const img = new Image();
+  img.onload = () => {
+    logoImage = img;
+    document.getElementById('logoDrop').style.display = 'none';
+    const wrap = document.getElementById('logoPreviewWrap');
+    wrap.classList.add('visible');
+    document.getElementById('logoPreviewImg').src = logoObjectUrl;
+    document.getElementById('logoPreviewName').textContent = file.name;
+    document.getElementById('logoPreviewSize').textContent = formatSize(file.size);
+    schedulePreview();
+  };
+  img.onerror = () => {
+    showToast('Failed to load that logo/image');
+    try { URL.revokeObjectURL(logoObjectUrl); } catch (_) {}
+    logoImage = null;
+    logoObjectUrl = null;
+    document.getElementById('logoDrop').style.display = '';
+    document.getElementById('logoPreviewWrap').classList.remove('visible');
+  };
+  img.src = logoObjectUrl;
+  this.value = '';
+});
+document.getElementById('logoRemoveBtn').addEventListener('click', () => {
+  if (logoObjectUrl) URL.revokeObjectURL(logoObjectUrl);
+  logoImage = null;
+  logoObjectUrl = null;
+  document.getElementById('logoDrop').style.display = '';
+  document.getElementById('logoPreviewWrap').classList.remove('visible');
+  schedulePreview();
+});
+
+// ── DROP ZONE & FILE HANDLING ─────────────────────────────────────────────────
+const dropZone = document.getElementById('dropZone');
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => { e.preventDefault(); dropZone.classList.remove('drag-over'); handleFiles([...e.dataTransfer.files]); });
+document.getElementById('fileInput').addEventListener('change', function () { handleFiles([...this.files]); this.value = ''; });
+document.getElementById('addMoreInput').addEventListener('change', function () { handleFiles([...this.files]); this.value = ''; });
+
+function handleFiles(newFiles) {
+  const valid = newFiles.filter(f => isSupportedImageFile(f) && f.size > 0);
+  if (!valid.length) { showToast('Please select image files (JPG, PNG, WebP)'); return; }
+  const wasEmpty = files.length === 0;
+  valid.forEach(f => {
+    if (files.find(x => x.file.name === f.name && x.file.size === f.size)) return;
+    files.push({ file: f, objectUrl: URL.createObjectURL(f) });
+  });
+  renderQueue();
+  document.getElementById('toolColumns').style.display = '';
+  document.getElementById('resultArea').classList.remove('visible');
+  results = [];
+  if (wasEmpty) {
+    previewIdx = 0;
+    schedulePreview();
+  }
+}
+
+function renderQueue() {
+  const queue = document.getElementById('fileQueue');
+  queue.innerHTML = '';
+  document.getElementById('fileCount').textContent = files.length + ' file' + (files.length !== 1 ? 's' : '');
+  files.forEach((item, idx) => {
+    const el = document.createElement('div');
+    el.className = 'file-item' + (idx === previewIdx ? ' selected' : '');
+    el.dataset.idx = idx;
+    el.innerHTML = `
+      <div class="file-thumb-wrap"><img class="file-thumb" src="${item.objectUrl}" alt=""></div>
+      <div class="file-info">
+        <div class="file-name">${item.file.name}</div>
+        <div class="file-meta">${formatSize(item.file.size)}</div>
+      </div>
+      <button class="file-remove" data-idx="${idx}" aria-label="Remove">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    `;
+    // Click on row = set preview
+    el.addEventListener('click', e => {
+      if (e.target.closest('.file-remove')) return;
+      previewIdx = idx;
+      document.querySelectorAll('.file-item').forEach((r, i) => r.classList.toggle('selected', i === previewIdx));
+      schedulePreview();
+    });
+    queue.appendChild(el);
+  });
+  queue.querySelectorAll('.file-remove').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const i = parseInt(btn.dataset.idx);
+      URL.revokeObjectURL(files[i].objectUrl);
+      files.splice(i, 1);
+      if (!files.length) {
+        document.getElementById('toolColumns').style.display = 'none';
+        clearPreview();
+        results = [];
+        document.getElementById('resultArea').classList.remove('visible');
+      } else {
+        previewIdx = Math.min(previewIdx, files.length - 1);
+        schedulePreview();
+      }
+      renderQueue();
+    });
+  });
+}
+
+// ── CLEAR ─────────────────────────────────────────────────────────────────────
+document.getElementById('clearBtn').addEventListener('click', () => {
+  applyToken++;
+  files.forEach(f => URL.revokeObjectURL(f.objectUrl));
+  files = [];
+  results = [];
+  renderQueue();
+  document.getElementById('toolColumns').style.display = 'none';
+  document.getElementById('resultArea').classList.remove('visible');
+  clearPreview();
+  showToast('All files cleared');
+});
+
+// ── PREVIEW ENGINE ────────────────────────────────────────────────────────────
+let previewTimer = null;
+function schedulePreview() {
+  clearTimeout(previewTimer);
+  previewTimer = setTimeout(drawPreview, 80);
+}
+
+function clearPreview() {
+  document.getElementById('previewPlaceholder').style.display = '';
+  document.getElementById('previewCanvas').style.display = 'none';
+  document.getElementById('previewNote').style.display = 'none';
+}
+
+function drawPreview() {
+  if (!files.length) { clearPreview(); return; }
+  const item = files[previewIdx];
+  const img = new Image();
+  img.onload = () => {
+    const canvas = document.getElementById('previewCanvas');
+    // Scale for preview display
+    const maxW = 500, maxH = 340;
+    let w = img.naturalWidth, h = img.naturalHeight;
+    const ratio = Math.min(maxW / w, maxH / h, 1);
+    canvas.width  = Math.round(w * ratio);
+    canvas.height = Math.round(h * ratio);
+    const ctx = canvas.getContext('2d');
+    if (!ctx) { showToast('Canvas context not available'); return; }
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    compositeWatermark(ctx, canvas.width, canvas.height, ratio);
+    document.getElementById('previewPlaceholder').style.display = 'none';
+    canvas.style.display = 'block';
+    document.getElementById('previewNote').style.display = '';
+    document.getElementById('previewFileName').textContent = item.file.name;
+  };
+  img.onerror = () => showToast('Preview failed to load image');
+  img.src = item.objectUrl;
+}
+
+function getSettings() {
+  return {
+    text:       document.getElementById('wmText').value,
+    font:       document.getElementById('wmFont').value,
+    style:      document.getElementById('wmStyle').value,
+    fontSize:   parseInt(document.getElementById('wmFontSize').value),
+    color:      document.getElementById('wmColor').value,
+    opacity:    parseInt(document.getElementById('wmOpacity').value) / 100,
+    rotation:   parseInt(document.getElementById('wmRotation').value) * Math.PI / 180,
+    margin:     parseInt(document.getElementById('wmMargin').value),
+    logoSize:   parseInt(document.getElementById('wmLogoSize').value) / 100,
+    position,
+    mode
+  };
+}
+
+function compositeWatermark(ctx, W, H, scale) {
+  const s = getSettings();
+  ctx.save();
+  ctx.globalAlpha = s.opacity;
+
+  if (s.mode === 'text' && s.text.trim()) {
+    const fs = Math.round(s.fontSize * (scale || 1));
+    ctx.font = `${s.style} ${fs}px ${s.font}`;
+    ctx.fillStyle = s.color;
+    ctx.textBaseline = 'middle';
+    const metrics = ctx.measureText(s.text);
+    const tw = metrics.width;
+    const th = fs;
+    const m  = s.margin * (scale || 1);
+    const { x, y } = getAnchor(s.position, W, H, tw, th, m);
+    ctx.translate(x + tw / 2, y + th / 2);
+    ctx.rotate(s.rotation);
+    ctx.fillText(s.text, -tw / 2, 0);
+
+  } else if (s.mode === 'logo' && logoImage) {
+    const lw = Math.round(W * s.logoSize);
+    const lh = Math.round(logoImage.naturalHeight * (lw / logoImage.naturalWidth));
+    const m  = s.margin * (scale || 1);
+    const { x, y } = getAnchor(s.position, W, H, lw, lh, m);
+    ctx.translate(x + lw / 2, y + lh / 2);
+    ctx.rotate(s.rotation);
+    ctx.drawImage(logoImage, -lw / 2, -lh / 2, lw, lh);
+  }
+
+  ctx.restore();
+}
+
+function getAnchor(pos, W, H, tw, th, m) {
+  let x, y;
+  if (pos.includes('left'))   x = m;
+  else if (pos.includes('right'))  x = W - tw - m;
+  else                              x = (W - tw) / 2;
+
+  if (pos.includes('top'))    y = m;
+  else if (pos.includes('bottom')) y = H - th - m;
+  else                              y = (H - th) / 2;
+
+  return { x, y };
+}
+
+// ── APPLY WATERMARK ───────────────────────────────────────────────────────────
+document.getElementById('applyBtn').addEventListener('click', async () => {
+  if (!files.length) return;
+  const s = getSettings();
+  if (s.mode === 'text' && !s.text.trim()) { showToast('Please enter watermark text'); return; }
+  if (s.mode === 'logo' && !logoImage)     { showToast('Please upload a logo image'); return; }
+  const token = ++applyToken;
+
+  document.getElementById('applyBtn').disabled = true;
+  document.getElementById('resultArea').classList.remove('visible');
+  results = [];
+
+  const overlay = document.getElementById('processingOverlay');
+  overlay.classList.add('active');
+  const stepIds = ['pStep1','pStep2','pStep3','pStep4'];
+  const msgs    = ['Loading image data…','Compositing watermark…','Encoding output…','Packaging results…'];
+  setStep(stepIds, 0, msgs); setProgress(5);
+  await delay(200);
+
+  for (let i = 0; i < files.length; i++) {
+    if (token !== applyToken) break;
+    setStep(stepIds, Math.min(1 + Math.floor((i / files.length) * 2), 2), msgs);
+    setProgress(10 + Math.round((i / files.length) * 80));
+
+    try {
+      const dataUrl = await watermarkImage(files[i].file, token);
+      if (!dataUrl) continue;
+      const baseName = sanitizeFilename(files[i].file.name.replace(/\.[^.]+$/, ''));
+      const ext = (files[i].file.name.split('.').pop() || 'jpg').toLowerCase();
+      const outName = baseName + '-watermarked.' + ext;
+      const newSize = dataUrlToByteCount(dataUrl);
+      results.push({ dataUrl, filename: outName, origSize: files[i].file.size, newSize });
+    } catch (e) {
+      console.error(e);
+      showToast(`Skipped "${files[i].file.name}" — ${e.message || 'failed'}`);
+    }
+    await delay(30);
+  }
+
+  setStep(stepIds, 3, msgs); setProgress(100);
+  await delay(300);
+  overlay.classList.remove('active');
+  document.getElementById('applyBtn').disabled = false;
+  renderResults();
+  showToast('Watermark applied to ' + results.length + ' image' + (results.length !== 1 ? 's' : '') + '!');
+});
+
+function watermarkImage(file, token) {
+  return new Promise((resolve, reject) => {
+    if (!isSupportedImageFile(file)) { reject(new Error('Unsupported file type')); return; }
+    if (file.size === 0) { reject(new Error('Empty file')); return; }
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = () => {
+      try {
+        if (token !== applyToken) { URL.revokeObjectURL(url); resolve(null); return; }
+        const canvas = document.createElement('canvas');
+        canvas.width  = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) {
+          URL.revokeObjectURL(url);
+          reject(new Error('Canvas context not available'));
+          return;
+        }
+        ctx.drawImage(img, 0, 0);
+        compositeWatermark(ctx, canvas.width, canvas.height, 1);
+        URL.revokeObjectURL(url);
+        const mime = file.type || 'image/jpeg';
+        const dataUrl = canvas.toDataURL(mime, 0.92);
+        if (!dataUrl) {
+          reject(new Error('Failed to encode watermarked image'));
+          return;
+        }
+        resolve(dataUrl);
+      } catch (err) {
+        URL.revokeObjectURL(url);
+        reject(err);
+      }
+    };
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      reject(new Error('Failed to load image: ' + file.name));
+    };
+    img.src = url;
+  });
+}
+
+// ── RENDER RESULTS ────────────────────────────────────────────────────────────
+function renderResults() {
+  const list = document.getElementById('resultList');
+  list.innerHTML = '';
+  document.getElementById('resultCountBadge').textContent = results.length + ' file' + (results.length !== 1 ? 's' : '');
+  const s = getSettings();
+
+  results.forEach(r => {
+    const row = document.createElement('div');
+    row.className = 'result-row';
+    row.innerHTML = `
+      <img class="result-thumb" src="${r.dataUrl}" alt="${r.filename}">
+      <div class="result-info">
+        <div class="result-filename">${r.filename}</div>
+        <div class="result-meta">${formatSize(r.origSize)} → ${formatSize(r.newSize)}</div>
+        <div><span class="wm-badge">${s.mode === 'text' ? '✍️ Text watermark' : '🖼️ Logo watermark'} · ${Math.round(s.opacity * 100)}% opacity · ${s.position.replace('-', ' ')}</span></div>
+      </div>
+      <button class="result-dl" data-url="${r.dataUrl}" data-name="${r.filename}">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Save
+      </button>
+    `;
+    list.appendChild(row);
+  });
+
+  list.querySelectorAll('.result-dl').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const a = document.createElement('a');
+      a.href     = btn.dataset.url;
+      a.download = btn.dataset.name;
+      a.click();
+      showToast('Downloading ' + btn.dataset.name);
+    });
+  });
+
+  document.getElementById('resultArea').classList.add('visible');
+  document.getElementById('resultArea').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// ── DOWNLOAD ALL AS ZIP ───────────────────────────────────────────────────────
+document.getElementById('downloadAllBtn').addEventListener('click', () => {
+  if (!results.length) return;
+  try {
+    const fileList = results.map(r => {
+      const b64 = (String(r.dataUrl || '').split(',')[1] || '');
+      const bin = atob(b64);
+      const bytes = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      return { name: sanitizeFilename(r.filename), bytes };
+    });
+    const zip  = buildZip(fileList);
+    const blob = new Blob([zip], { type: 'application/zip' });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href     = url;
+    a.download = 'watermarked-images.zip';
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 8000);
+    showToast('Downloading ZIP…');
+  } catch (e) {
+    console.error(e);
+    showToast('ZIP failed: ' + (e.message || String(e)));
+  }
+});
+
+// ── RE-APPLY ──────────────────────────────────────────────────────────────────
+document.getElementById('reapplyBtn').addEventListener('click', () => {
+  document.getElementById('resultArea').classList.remove('visible');
+  results = [];
+  showToast('Adjust settings and apply again');
+});
+
+// ── ZIP BUILDER ───────────────────────────────────────────────────────────────
+function buildZip(fileArr) {
+  const enc = new TextEncoder(), parts = [], central = [];
+  let offset = 0;
+  function u16(n) { return [n & 0xff, (n >> 8) & 0xff]; }
+  function u32(n) { return [n & 0xff, (n >> 8) & 0xff, (n >> 16) & 0xff, (n >> 24) & 0xff]; }
+  function crc32(buf) {
+    const T = crc32._t || (crc32._t = (() => {
+      const t = new Uint32Array(256);
+      for (let i = 0; i < 256; i++) { let c = i; for (let j = 0; j < 8; j++) c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1); t[i] = c; }
+      return t;
+    })());
+    let c = 0xFFFFFFFF;
+    for (let i = 0; i < buf.length; i++) c = T[(c ^ buf[i]) & 0xff] ^ (c >>> 8);
+    return (c ^ 0xFFFFFFFF) >>> 0;
+  }
+  for (const file of fileArr) {
+    const nb = enc.encode(file.name), crc = crc32(file.bytes), size = file.bytes.length;
+    const h = new Uint8Array([0x50,0x4B,0x03,0x04,20,0,0,0,0,0,0,0,0,0,...u32(crc),...u32(size),...u32(size),...u16(nb.length),0,0,...nb]);
+    central.push({ nb, crc, size, offset });
+    parts.push(h); parts.push(file.bytes);
+    offset += h.length + size;
+  }
+  const cdStart = offset;
+  for (const { nb, crc, size, offset: fo } of central) {
+    const cd = new Uint8Array([0x50,0x4B,0x01,0x02,20,0,20,0,0,0,0,0,0,0,0,0,...u32(crc),...u32(size),...u32(size),...u16(nb.length),0,0,0,0,0,0,0,0,0,0,...u32(fo),...nb]);
+    parts.push(cd); offset += cd.length;
+  }
+  const eocd = new Uint8Array([0x50,0x4B,0x05,0x06,0,0,0,0,...u16(fileArr.length),...u16(fileArr.length),...u32(offset - cdStart),...u32(cdStart),0,0]);
+  parts.push(eocd);
+  let total = 0; for (const p of parts) total += p.length;
+  const out = new Uint8Array(total); let pos = 0;
+  for (const p of parts) { out.set(p, pos); pos += p.length; }
+  return out;
+}
+
+// ── HELPERS ───────────────────────────────────────────────────────────────────
+function formatSize(bytes) {
+  if (bytes < 1024)        return bytes + ' B';
+  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+  return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+}
+function dataUrlToByteCount(dataUrl) {
+  const b64 = (String(dataUrl || '').split(',')[1] || '');
+  if (!b64) return 0;
+  const padding = (b64.match(/=+$/) || [''])[0].length;
+  return Math.max(0, Math.round(b64.length * 0.75) - padding);
+}
+function setStep(ids, idx, msgs) {
+  ids.forEach((id, i) => {
+    const el = document.getElementById(id);
+    el.classList.remove('active','done');
+    if (i < idx) el.classList.add('done');
+    else if (i === idx) el.classList.add('active');
+  });
+  document.getElementById('processingText').textContent = msgs[idx];
+}
+function setProgress(pct) { document.getElementById('progressBar').style.width = Math.max(0, Math.min(100, pct)) + '%'; }
+function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+// ── FAQ ───────────────────────────────────────────────────────────────────────
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement, wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>eBook to PDF Converter | Convert eBooks Online</title>
+<meta name="description" content="Transform various eBook formats into PDF quickly. Keep text formatting intact, ensure compatibility, and create shareable professional documents.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jpg2go.com/ebook-to-pdf">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="adsense.js"></script>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Convert eBook to PDF",
+    "url": "https://jpg2go.com/ebook-to-pdf",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Transform various eBook formats into PDF quickly. Keep text formatting intact, ensure compatibility, and create shareable professional documents."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is an ebook to PDF converter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An ebook to PDF converter transforms ebook files into standard PDF format for easier reading and sharing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why convert ebooks to PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PDF format is widely supported and allows ebooks to be read on any device without special ebook reader software."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will the ebook formatting stay the same?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most converters try to preserve text layout, images, and chapter structure during conversion."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I convert ebooks from different formats?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, many converters support various ebook formats like EPUB, MOBI, and others."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is ebook to PDF conversion free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Many online tools provide free ebook to PDF conversion services."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I print ebooks after converting them to PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, converting to PDF makes it easier to print ebook pages like regular documents."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+
+<style>
+:root{--ink:#0d0d0d;--paper:#f7f4ee;--cream:#ede9df;--accent:#c84b2f;--accent-light:#e8d5cf;--muted:#7a7567;--border:#d4cfc4;--white:#ffffff;--shadow:0 2px 24px rgba(13,13,13,.08);--shadow-lg:0 8px 48px rgba(13,13,13,.12);--green:#1a8a4a;--green-light:#d4f0e0;--blue:#1e50a2;--blue-light:#dde8f7;--amber:#b45309;--amber-light:#fef3c7}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;min-height:100vh}
+
+/* HEADER */
+header{background:var(--ink);color:var(--paper);position:sticky;top:0;z-index:100;border-bottom:2px solid var(--accent)}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1.6rem;color:var(--paper);text-decoration:none;letter-spacing:-.02em}
+.logo span{color:var(--accent)}
+nav{display:flex;gap:2rem;align-items:center}
+nav a{color:#a8a39a;text-decoration:none;font-size:.875rem;font-weight:500;letter-spacing:.02em;transition:color .2s}
+nav a:hover{color:var(--paper)}
+.nav-cta{background:var(--accent);color:var(--white)!important;padding:.4rem 1rem;border-radius:4px;transition:background .2s!important}
+.nav-cta:hover{background:#a83825!important}
+.mobile-menu-toggle {display:none;background:none;border:none;cursor:pointer;padding:.5rem;flex-direction:column;gap:5px;align-items:center;justify-content:center;width:40px;height:40px}
+.mobile-menu-toggle span{display:block;width:24px;height:2px;background:var(--paper);transition:all .3s;border-radius:2px}
+.mobile-menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(6px,6px)}
+.mobile-menu-toggle.active span:nth-child(2){opacity:0}
+.mobile-menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
+.mobile-nav {display:none;position:fixed;top:64px;left:0;right:0;background:var(--ink);border-top:2px solid var(--accent);padding:1.5rem 2rem;flex-direction:column;gap:1rem;z-index:99;transform:translateY(-100%);opacity:0;transition:transform .3s,opacity .3s;visibility:hidden}
+.mobile-nav.active{display:flex;transform:translateY(0);opacity:1;visibility:visible}
+.mobile-nav a{color:#a8a39a;text-decoration:none;font-size:.95rem;font-weight:500;padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.1);transition:color .2s}
+.mobile-nav a:last-child{border-bottom:none}
+.mobile-nav a:hover{color:var(--paper)}
+.mobile-nav .nav-cta{background:var(--accent);color:var(--white)!important;padding:.75rem 1.5rem;border-radius:4px;text-align:center;border:none;margin-top:.5rem}
+
+/* HERO */
+.hero{background:var(--ink);color:var(--paper);padding:4rem 2rem 3.5rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(200,75,47,.2) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:1px;height:60px;background:linear-gradient(to bottom,transparent,rgba(200,75,47,.4))}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.12em;color:#c84b2f;text-transform:uppercase;border:1px solid rgba(200,75,47,.4);background:rgba(200,75,47,.12);padding:.3rem .9rem;border-radius:2px;margin-bottom:1.5rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5.5vw,3.6rem);font-weight:900;line-height:1.1;letter-spacing:-.03em;margin-bottom:1.25rem}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-desc{font-size:1.05rem;color:#9e9990;max-width:520px;margin:0 auto 1.75rem;font-weight:300;line-height:1.7}
+.hero-pills{display:flex;justify-content:center;flex-wrap:wrap;gap:.5rem}
+.hero-pill{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.06em;color:#a8a39a;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:.3rem .75rem;border-radius:100px}
+
+/* TOOL CARD */
+.tool-section{max-width:1000px;margin:-1.5rem auto 0;padding:0 1.5rem 4rem;position:relative;z-index:10}
+.tool-card{background:var(--white);border-radius:12px;box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid var(--border)}
+.tool-card-header{background:var(--cream);padding:1rem 1.5rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid var(--border)}
+.dot{width:12px;height:12px;border-radius:50%;display:inline-block}
+.dot-r{background:#ff5f57}.dot-y{background:#febc2e}.dot-g{background:#28c840}
+.tc-title{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--muted);margin-left:.5rem;letter-spacing:.05em}
+.tool-body{padding:1.5rem}
+
+/* DROP ZONE */
+.drop-zone{border:2px dashed var(--border);border-radius:10px;padding:2rem 2rem;margin-bottom:2rem;border-bottom:1px solid rgba(255,255,255,0.05);text-align:center;cursor:pointer;transition:border-color .2s,background .2s;background:var(--paper);position:relative}
+.drop-zone:hover,.drop-zone.drag-over{border-color:var(--accent);background:var(--accent-light)}
+.drop-zone input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.drop-icon{width:52px;height:52px;background:var(--accent-light);border:1px solid rgba(200,75,47,.3);border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:var(--accent)}
+.drop-zone h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:.4rem}
+.drop-zone p{font-size:.85rem;color:var(--muted);margin-bottom:0.75rem;color:var(--paper)}
+.formats-pill{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.08em;color:var(--accent);background:var(--accent-light);padding:.25rem .75rem;border-radius:100px;display:inline-block}
+
+/* FILE BAR */
+.file-bar{display:none;align-items:center;gap:.75rem;background:var(--paper);border:1.5px solid var(--border);border-radius:9px;padding:.65rem .9rem;margin-top:1.1rem}
+.file-bar.on{display:flex}
+.fb-icon{color:var(--accent);flex-shrink:0}
+.fb-info{flex:1;min-width:0}
+.fb-name{font-size:.83rem;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fb-meta{font-family:'DM Mono',monospace;font-size:.64rem;color:var(--muted);margin-top:.1rem}
+.fb-remove{background:none;border:none;cursor:pointer;color:var(--muted);padding:.25rem;border-radius:4px;display:flex;align-items:center;transition:color .15s,background .15s;flex-shrink:0}
+.fb-remove:hover{color:var(--accent);background:var(--accent-light)}
+
+/* BOOK INFO CARD */
+.book-info{display:none;background:var(--blue-light);border:1px solid rgba(30,80,162,.18);border-radius:10px;padding:1rem 1.25rem;margin-top:1.1rem;gap:1rem;align-items:flex-start}
+.book-info.on{display:flex}
+.book-cover{width:60px;min-width:60px;height:84px;border-radius:5px;object-fit:cover;border:1px solid rgba(30,80,162,.2);background:var(--blue-light);display:flex;align-items:center;justify-content:center;color:rgba(30,80,162,.4);overflow:hidden;flex-shrink:0}
+.book-cover img{width:100%;height:100%;object-fit:cover;border-radius:4px}
+.book-details{flex:1;min-width:0}
+.book-title{font-weight:700;font-size:.95rem;color:var(--ink);margin-bottom:.2rem;line-height:1.3}
+.book-author{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--blue);margin-bottom:.45rem}
+.book-chips{display:flex;flex-wrap:wrap;gap:.3rem}
+.book-chip{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--blue);background:#fff;border:1px solid rgba(30,80,162,.2);padding:.15rem .5rem;border-radius:100px}
+
+/* CHAPTER LIST */
+.chapters-section{display:none;margin-top:1.4rem}
+.chapters-section.on{display:block}
+.chapters-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.65rem;flex-wrap:wrap;gap:.5rem}
+.chapters-label{font-family:'DM Mono',monospace;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.chapters-badge{font-family:'DM Mono',monospace;font-size:.67rem;color:var(--accent);background:var(--accent-light);padding:.18rem .55rem;border-radius:100px;border:1px solid rgba(200,75,47,.2)}
+.chapter-list{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem;max-height:220px;overflow-y:auto;padding-right:.25rem}
+.chapter-list::-webkit-scrollbar{width:4px}
+.chapter-list::-webkit-scrollbar-thumb{background:var(--border);border-radius:100px}
+.chapter-row{display:flex;align-items:center;gap:.65rem;padding:.5rem .75rem;background:var(--paper);border:1.5px solid var(--border);border-radius:8px;transition:border-color .15s,background .15s;cursor:default}
+.chapter-row:hover{border-color:rgba(200,75,47,.35);background:#fff}
+.chapter-row.excluded{opacity:.45;background:var(--cream)}
+.chapter-num{font-family:'DM Mono',monospace;font-size:.65rem;font-weight:700;color:var(--accent);background:var(--accent-light);width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid rgba(200,75,47,.2)}
+.chapter-name{flex:1;font-size:.83rem;font-weight:500;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chapter-toggle{background:none;border:1.5px solid var(--border);border-radius:4px;cursor:pointer;width:22px;height:22px;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:all .15s;flex-shrink:0;font-size:.7rem}
+.chapter-toggle:hover{border-color:var(--accent);color:var(--accent)}
+.chapter-row.excluded .chapter-toggle{background:var(--border)}
+.chapters-select-row{display:flex;gap:.5rem;margin-bottom:.65rem}
+.chapters-select-btn{font-family:'DM Mono',monospace;font-size:.66rem;background:transparent;border:1px solid var(--border);border-radius:4px;padding:.2rem .55rem;cursor:pointer;color:var(--muted);transition:all .15s}
+.chapters-select-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+/* OPTIONS */
+.opts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:.85rem;margin-bottom:1.1rem}
+.opt-field{display:flex;flex-direction:column;gap:.3rem}
+.opt-lbl{font-family:'DM Mono',monospace;font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
+.opt-select{background:var(--paper);border:1.5px solid var(--border);border-radius:6px;padding:.42rem .75rem;font-family:'DM Mono',monospace;font-size:.8rem;color:var(--ink);outline:none;transition:border-color .2s;cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%237a7567' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .6rem center;padding-right:2rem}
+.opt-select:focus{border-color:var(--accent)}
+.opt-input{background:var(--paper);border:1.5px solid var(--border);border-radius:6px;padding:.42rem .75rem;font-family:'DM Mono',monospace;font-size:.8rem;color:var(--ink);outline:none;transition:border-color .2s;width:100%}
+.opt-input:focus{border-color:var(--accent)}
+
+/* STATS BAR */
+.stats-bar{display:flex;gap:1.5rem;flex-wrap:wrap;background:var(--cream);border-radius:8px;padding:.65rem 1rem;margin-bottom:1.1rem}
+.stat{font-family:'DM Mono',monospace;font-size:.69rem;color:var(--muted)}
+.stat strong{color:var(--ink);font-weight:700}
+
+/* BUTTONS */
+.action-bar{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn-p{background:var(--accent);color:var(--white);border:none;border-radius:6px;padding:.65rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:.875rem;font-weight:600;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;white-space:nowrap}
+.btn-p:hover{background:#a83825;transform:translateY(-1px)}
+.btn-p:disabled{background:var(--border);color:var(--muted);cursor:not-allowed;transform:none}
+.btn-s{background:transparent;color:var(--ink);border:1.5px solid var(--border);border-radius:6px;padding:.65rem 1.25rem;font-family:'DM Sans',sans-serif;font-size:.875rem;font-weight:500;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:.5rem;white-space:nowrap}
+.btn-s:hover{border-color:var(--ink);background:var(--cream)}
+
+/* PROGRESS */
+.prog-wrap{display:none;margin-top:1.5rem;flex-direction:column;align-items:center;gap:.85rem;background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:2rem}
+.prog-wrap.on{display:flex}
+.prog-spinner{width:44px;height:44px;border:3px solid var(--accent-light);border-top-color:var(--accent);border-radius:50%;animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.prog-lbl{font-family:'DM Mono',monospace;font-size:.78rem;color:var(--muted);text-align:center}
+.prog-bar-wrap{width:100%;max-width:300px;background:var(--border);border-radius:100px;height:5px;overflow:hidden}
+.prog-bar{height:100%;background:var(--accent);border-radius:100px;transition:width .35s ease;width:0%}
+.prog-steps{display:flex;flex-direction:column;gap:.35rem;width:100%;max-width:300px}
+.pstep{display:flex;align-items:center;gap:.5rem;font-family:'DM Mono',monospace;font-size:.65rem;color:#bbb;transition:color .2s}
+.pstep.active{color:var(--accent)}.pstep.done{color:var(--green)}
+.pstep-dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0}
+
+/* RESULT */
+.result-area{display:none;margin-top:1.5rem}
+.result-area.on{display:block}
+.result-box{background:var(--paper);border:1.5px solid var(--green);border-radius:10px;padding:1.35rem 1.5rem;display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap}
+.result-icon{width:52px;height:52px;background:var(--green-light);border:1px solid rgba(26,138,74,.25);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0}
+.result-info{flex:1;min-width:140px}
+.result-fname{font-weight:700;font-size:.95rem;color:var(--ink);margin-bottom:.2rem;word-break:break-all}
+.result-meta{font-family:'DM Mono',monospace;font-size:.67rem;color:var(--muted)}
+.result-btns{display:flex;gap:.6rem;flex-wrap:wrap}
+
+/* ERROR */
+.err-box{display:none;margin-top:1.25rem;background:#fff8f8;border:1.5px solid #fca5a5;border-radius:8px;padding:.9rem 1.1rem}
+.err-box.on{display:block}
+.err-box p{font-size:.85rem;color:#dc2626;line-height:1.6}
+
+/* CONTENT */
+.content-section{max-width:1000px;margin:0 auto;padding:4rem 1.5rem}
+.section-tag{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem;display:block}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;letter-spacing:-.02em;margin-bottom:1.25rem;line-height:1.2}
+.prose{color:#4a4640;font-size:.975rem;line-height:1.8;max-width:720px}
+.prose p{margin-bottom:0.75rem;color:var(--paper)}
+.prose p:last-child{margin-bottom:0}
+hr.divider{border:none;border-top:1px solid var(--border);max-width:1000px;margin:0 auto}
+
+/* HOW IT WORKS */
+.how-section{background:var(--ink);color:var(--paper);padding:2rem;position:relative;overflow:hidden}
+.how-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 100%,rgba(200,75,47,.14) 0%,transparent 70%);pointer-events:none}
+.how-inner{max-width:1000px;margin:0 auto;position:relative}
+.how-hdr{text-align:center;margin-bottom:1.5rem}
+.how-hdr .section-tag{color:#c84b2f}
+.how-hdr .section-title{color:var(--paper);margin-bottom:.3rem}
+.how-sub{color:#9e9990;font-size:.9rem;font-weight:300}
+.steps-grid{display:flex;align-items:stretch;gap:0}
+.step-card{flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:.9rem 1rem;transition:background .25s,border-color .25s,transform .25s}
+.step-card:hover{background:rgba(200,75,47,.08);border-color:rgba(200,75,47,.35);transform:translateY(-4px)}
+.step-conn{display:flex;align-items:center;justify-content:center;padding:0 .5rem;color:rgba(200,75,47,.5);flex-shrink:0;margin-top:-.75rem}
+.step-num{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:rgba(200,75,47,.25);line-height:1;margin-bottom:.3rem}
+.step-ico{width:36px;height:36px;background:rgba(200,75,47,.15);border:1px solid rgba(200,75,47,.3);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:.55rem;color:#c84b2f}
+.step-ttl{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:var(--paper);margin-bottom:.3rem}
+.step-dsc{font-size:.8rem;color:#9e9990;line-height:1.55;margin-bottom:.55rem}
+.step-dsc strong{color:#d4cfc4}
+.step-pill{display:inline-block;font-family:'DM Mono',monospace;font-size:.62rem;color:#c84b2f;background:rgba(200,75,47,.12);border:1px solid rgba(200,75,47,.25);padding:.18rem .55rem;border-radius:100px}
+.how-cta{text-align:center;margin-top:1.5rem;display:flex;flex-direction:column;align-items:center;gap:.55rem}
+.how-note{font-size:.8rem;color:#7a7567;font-family:'DM Mono',monospace}
+
+/* GRIDS */
+.features-grid,.use-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(218px,1fr));gap:1rem;margin-top:2rem}
+.feature-card,.use-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.4rem 1.2rem;transition:box-shadow .2s,transform .2s}
+.feature-card:hover,.use-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.f-ico,.u-ico{font-size:1.75rem;margin-bottom:.7rem;display:block}
+.f-title,.u-title{font-weight:700;font-size:.9rem;margin-bottom:.35rem}
+.f-desc,.u-desc{font-size:.82rem;color:var(--muted);line-height:1.5}
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-top:2rem}
+.tip-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.2rem;transition:box-shadow .2s,transform .2s}
+.tip-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.tip-name{font-weight:700;font-size:.9rem;margin-bottom:.3rem;color:var(--ink)}
+.tip-tag{font-family:'DM Mono',monospace;font-size:.74rem;color:var(--accent);background:var(--accent-light);padding:.2rem .5rem;border-radius:4px;display:inline-block;margin-bottom:.5rem}
+.tip-desc{font-size:.82rem;color:var(--muted);line-height:1.5}
+
+/* FAQ */
+.faq-list{margin-top:2rem}
+.faq-item{border-bottom:1px solid var(--border);padding:1.25rem 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-weight:600;font-size:.95rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-q::after{content:'+';font-size:1.2rem;color:var(--accent);flex-shrink:0;transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-size:.9rem;color:var(--muted);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .3s ease,margin-top .3s}
+.faq-item.open .faq-a{max-height:380px;margin-top:.75rem}
+
+/* CTA */
+.cta-section{background:var(--ink);color:var(--paper);padding:1.5rem 2rem;border-bottom:1px solid rgba(255,255,255,0.05);text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(200,75,47,.18) 0%,transparent 70%);pointer-events:none}
+.cta-inner{max-width:640px;margin:0 auto;position:relative}
+.cta-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-bottom:0.75rem;color:var(--paper)}
+.cta-desc{font-size:1rem;color:#9e9990;font-weight:300;margin-bottom:0.75rem;line-height:1.7}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:0.5rem}
+.cta-note{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.06em;color:#5a5650;margin-top:0.75rem;display:block}
+
+/* BUTTONS */
+.btn-primary{background:var(--accent);color:var(--white);border:none;border-radius:6px;padding:0.65rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:0.875rem;font-weight:600;cursor:pointer;transition:all 0.18s;display:inline-flex;align-items:center;gap:0.5rem;text-decoration:none}
+.btn-primary:hover{background:#a83825;transform:translateY(-1px)}
+
+/* RELATED */
+.related-section { background: var(--cream); padding: 5rem 2rem; border-top: 1px solid var(--border); }
+.related-inner { max-width: 1000px; margin: 0 auto; }
+.related-header { margin-bottom: 2.5rem; }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+.related-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-decoration: none; color: inherit; display: block; transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s; position: relative; overflow: hidden; }
+.related-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--border); transition: background 0.2s; }
+.related-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); border-color: var(--accent); }
+.related-card:hover::before { background: var(--accent); }
+.related-card-icon { font-size: 1.85rem; margin-bottom: 0.85rem; display: block; }
+.related-card-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem; color: var(--ink); letter-spacing: -0.01em; }
+.related-card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin-bottom: 1rem; }
+.related-card-tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); background: var(--accent-light); padding: 0.2rem 0.5rem; border-radius: 3px; display: inline-block; }
+
+/* FOOTER */
+footer{background:var(--ink);color:#9e9990;padding:4rem 2rem 2rem;margin-top:3rem;border-top:1px solid rgba(255,255,255,0.05)}
+.footer-inner{max-width:1200px;
+  margin-top: 0;
+  border-top: 1px solid rgba(255,255,255,0.05);margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid #2a2a2a}
+.footer-brand .logo{display:block;margin-bottom:.75rem}
+.footer-brand p{font-size:.85rem;line-height:1.6;max-width:240px}
+.footer-social{display:flex;margin-top:1rem}
+.social-icon{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;color:#9e9990;transition:color .2s,transform .2s}
+.social-icon:hover{color:var(--paper);transform:translateY(-2px)}
+.footer-col-title{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--paper);font-weight:600;margin-bottom:0.75rem;color:var(--paper)}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.footer-links a{color:#9e9990;text-decoration:none;font-size:.85rem;transition:color .2s}
+.footer-links a:hover{color:var(--paper)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;font-size:.8rem;flex-wrap:wrap;gap:.75rem}
+
+/* TOAST */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--ink);color:var(--paper);padding:.75rem 1.5rem;border-radius:6px;font-size:.875rem;font-weight:500;transition:transform .3s cubic-bezier(.34,1.56,.64,1);z-index:999;border-left:3px solid var(--accent);white-space:nowrap;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* Hidden render frame */
+#renderFrame{position:fixed;top:-9999px;left:-9999px;width:800px;height:1130px;border:none;background:#fff;visibility:hidden}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeUp .6s ease both}
+.delay-1{animation-delay:.1s}
+@media(max-width:768px){nav{display:none}.mobile-menu-toggle {display:flex}.steps-grid{flex-direction:column}.step-conn{transform:rotate(90deg);padding:.25rem 0}.footer-grid{grid-template-columns:1fr 1fr}.opts-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr;gap:2rem}.footer-bottom{flex-direction:column;text-align:center}.result-box{flex-direction:column;text-align:center}.result-btns{justify-content:center}.opts-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- Hidden render iframe for HTML→canvas -->
+<iframe id="renderFrame" sandbox="allow-same-origin allow-scripts" title="render"></iframe>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">JPG2<span>Go</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="tools.html">Tools</a>
+      <a href="#tool" class="nav-cta">Convert Now</a>
+    </nav>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="tools.html" onclick="closeMobileMenu()">Tools</a>
+    <a href="#tool" class="nav-cta" onclick="closeMobileMenu()">Convert Now</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="fade-up">
+    <div class="hero-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            Convert eBooks Online
+    </div>
+    <h1>Convert eBook to PDF</h1>
+    <p class="hero-desc">Convert various ebook formats into standard PDF files for universal compatibility, making it easier to read digital books on computers, tablets, and smartphones.</p>
+    <div class="hero-pills">
+      <span class="hero-pill">EPUB → PDF</span>
+      <span class="hero-pill">Chapter Selection</span>
+      <span class="hero-pill">Font &amp; Size Control</span>
+      <span class="hero-pill">Book Metadata</span>
+      <span class="hero-pill">100% Private</span>
+    </div>
+  </div>
+</section>
+
+<section class="tool-section" id="tool">
+  <div class="tool-card fade-up delay-1">
+    <div class="tool-card-header">
+      <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+      <span class="tc-title">ebook-to-pdf · epub · jszip + pdf-lib · chapter-select · font-control · zero upload</span>
+    </div>
+    <div class="tool-body">
+
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" accept=".epub">
+        <div class="drop-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <h3>Drop your EPUB file here</h3>
+        <p>Convert various ebook formats into standard PDF files for universal compatibility, making it easier to read digital books on computers, tablets, and smartphones.</p>
+        <span class="formats-pill">EPUB → PDF · text + images preserved</span>
+      </div>
+
+      <!-- File bar -->
+      <div class="file-bar" id="fileBar">
+        <span class="fb-icon">
+          <svg width="18" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </span>
+        <div class="fb-info">
+          <div class="fb-name" id="fbName">—</div>
+          <div class="fb-meta" id="fbMeta">—</div>
+        </div>
+        <button class="fb-remove" id="fbRemove" aria-label="Remove">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <!-- Book info -->
+      <div class="book-info" id="bookInfo">
+        <div class="book-cover" id="bookCoverWrap">
+          <svg width="24" height="30" viewBox="0 0 24 30" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 0 1 4 4v20a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v20a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <div class="book-details">
+          <div class="book-title" id="bookTitle">—</div>
+          <div class="book-author" id="bookAuthor">—</div>
+          <div class="book-chips" id="bookChips"></div>
+        </div>
+      </div>
+
+      <!-- Chapters -->
+      <div class="chapters-section" id="chaptersSection">
+        <div class="chapters-header">
+          <span class="chapters-label">Chapters</span>
+          <span class="chapters-badge" id="chaptersBadge">0 chapters</span>
+        </div>
+        <div class="chapters-select-row">
+          <button class="chapters-select-btn" id="selectAllBtn">Select all</button>
+          <button class="chapters-select-btn" id="deselectAllBtn">Deselect all</button>
+        </div>
+        <div class="chapter-list" id="chapterList"></div>
+      </div>
+
+      <!-- Options -->
+      <div class="chapters-section" id="optsSection" style="display:none">
+        <div class="chapters-header" style="margin-bottom:.85rem">
+          <span class="chapters-label">PDF Options</span>
+        </div>
+        <div class="opts-grid">
+          <div class="opt-field">
+            <span class="opt-lbl">Page Size</span>
+            <select class="opt-select" id="pageSizeSelect">
+              <option value="a4" selected>A4 (210 × 297 mm)</option>
+              <option value="letter">US Letter (8.5 × 11 in)</option>
+              <option value="a5">A5 (148 × 210 mm)</option>
+              <option value="b5">B5 (176 × 250 mm)</option>
+            </select>
+          </div>
+          <div class="opt-field">
+            <span class="opt-lbl">Font Size</span>
+            <select class="opt-select" id="fontSizeSelect">
+              <option value="12">12 pt — Compact</option>
+              <option value="14" selected>14 pt — Standard</option>
+              <option value="16">16 pt — Comfortable</option>
+              <option value="18">18 pt — Large</option>
+            </select>
+          </div>
+          <div class="opt-field">
+            <span class="opt-lbl">Font Family</span>
+            <select class="opt-select" id="fontFamilySelect">
+              <option value="serif" selected>Georgia (Serif)</option>
+              <option value="sans">Arial (Sans-serif)</option>
+              <option value="mono">Courier (Monospace)</option>
+            </select>
+          </div>
+          <div class="opt-field">
+            <span class="opt-lbl">Line Spacing</span>
+            <select class="opt-select" id="lineSpacingSelect">
+              <option value="1.4">Compact (1.4)</option>
+              <option value="1.6" selected>Normal (1.6)</option>
+              <option value="1.9">Relaxed (1.9)</option>
+              <option value="2.2">Double (2.2)</option>
+            </select>
+          </div>
+          <div class="opt-field">
+            <span class="opt-lbl">Margin</span>
+            <select class="opt-select" id="marginSelect">
+              <option value="40">Narrow (14 mm)</option>
+              <option value="56" selected>Normal (20 mm)</option>
+              <option value="72">Wide (26 mm)</option>
+            </select>
+          </div>
+          <div class="opt-field">
+            <span class="opt-lbl">Output Filename</span>
+            <input class="opt-input" id="filenameInput" type="text" value="ebook" maxlength="80">
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-bar">
+          <div class="stat">Chapters selected: <strong id="statChapters">0</strong></div>
+          <div class="stat">File size: <strong id="statSize">—</strong></div>
+          <div class="stat">Language: <strong id="statLang">—</strong></div>
+        </div>
+
+        <!-- Actions -->
+        <div class="action-bar">
+          <button class="btn-p" id="convertBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Convert to PDF
+          </button>
+          <button class="btn-s" id="clearBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
+            Clear
+          </button>
+        </div>
+      </div>
+
+      <!-- Progress -->
+      <div class="prog-wrap" id="progWrap">
+        <div class="prog-spinner"></div>
+        <div class="prog-lbl" id="progLbl">Reading EPUB…</div>
+        <div class="prog-bar-wrap"><div class="prog-bar" id="progBar"></div></div>
+        <div class="prog-steps">
+          <div class="pstep" id="ps1"><span class="pstep-dot"></span>Parsing EPUB structure</div>
+          <div class="pstep" id="ps2"><span class="pstep-dot"></span>Extracting chapter text</div>
+          <div class="pstep" id="ps3"><span class="pstep-dot"></span>Laying out PDF pages</div>
+          <div class="pstep" id="ps4"><span class="pstep-dot"></span>Writing PDF file</div>
+        </div>
+      </div>
+
+      <!-- Error -->
+      <div class="err-box" id="errBox"><p id="errText"></p></div>
+
+      <!-- Result -->
+      <div class="result-area" id="resultArea">
+        <div class="result-box">
+          <div class="result-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 12 18 15 15"/><line x1="12" y1="12" x2="12" y2="18"/></svg>
+          </div>
+          <div class="result-info">
+            <div class="result-fname" id="resultFname">ebook.pdf</div>
+            <div class="result-meta" id="resultMeta">—</div>
+          </div>
+          <div class="result-btns">
+            <button class="btn-p" id="downloadBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download PDF
+            </button>
+            <button class="btn-s" id="convertAgainBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+              Convert Again
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="how-section" id="how-it-works">
+  <div class="how-inner">
+    <div class="how-hdr">
+      <span class="section-tag">Quick Guide</span>
+      <h2 class="section-title">How to Convert EPUB to PDF</h2>
+      <p class="how-sub">Three steps. No software. No account.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+        <div class="step-ttl">Upload Your EPUB</div>
+        <div class="step-dsc">Drop or select an <strong>EPUB file</strong>. The tool immediately reads its metadata — title, author, cover, chapter list — without sending anything to a server.</div>
+        <span class="step-pill">any EPUB file</span>
+      </div>
+      <div class="step-conn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+        <div class="step-ttl">Select Chapters &amp; Style</div>
+        <div class="step-dsc">Choose <strong>which chapters to include</strong>, set page size, font family, font size, line spacing, and margins to your preference.</div>
+        <span class="step-pill">chapter select · font · layout</span>
+      </div>
+      <div class="step-conn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+        <div class="step-ttl">Download PDF</div>
+        <div class="step-dsc">Click <strong>Convert to PDF</strong>. The PDF is built locally and downloads directly — text reflowed to your chosen page size, chapters in order.</div>
+        <span class="step-pill">instant download</span>
+      </div>
+    </div>
+    <div class="how-cta">
+      <a href="#tool" class="btn-p">Convert an eBook Now</a>
+      <span class="how-note">free · no signup · no upload · no watermark</span>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="content-section" id="features">
+  <span class="section-tag">Features</span>
+  <h2 class="section-title">Everything in One Converter</h2>
+  <div class="features-grid">
+    <div class="feature-card"><span class="f-ico">📖</span><div class="f-title">EPUB Support</div><div class="f-desc">Opens any EPUB 2 or EPUB 3 file and reads its full structure — chapters, metadata, cover, and embedded images.</div></div>
+    <div class="feature-card"><span class="f-ico">📋</span><div class="f-title">Chapter Selection</div><div class="f-desc">Include or exclude individual chapters before converting — extract a single chapter or skip the introduction and appendices.</div></div>
+    <div class="feature-card"><span class="f-ico">🔤</span><div class="f-title">Font Control</div><div class="f-desc">Choose between serif (Georgia), sans-serif (Arial), and monospace (Courier) — and set font size from 12 to 18 pt.</div></div>
+    <div class="feature-card"><span class="f-ico">📐</span><div class="f-title">Page Size Options</div><div class="f-desc">A4, US Letter, A5, or B5 — text reflows to fill the chosen page size with your specified margins.</div></div>
+    <div class="feature-card"><span class="f-ico">📏</span><div class="f-title">Line Spacing &amp; Margins</div><div class="f-desc">Four line spacing options from compact to double, and three margin widths from narrow to wide for comfortable reading.</div></div>
+    <div class="feature-card"><span class="f-ico">📚</span><div class="f-title">Book Metadata Display</div><div class="f-desc">Title, author, language, and cover image are read from the EPUB and shown before conversion so you can verify the file.</div></div>
+    <div class="feature-card"><span class="f-ico">🔒</span><div class="f-title">100% Private</div><div class="f-desc">Your EPUB file never leaves your device. All parsing and PDF generation runs locally in the browser — no server, no cloud.</div></div>
+    <div class="feature-card"><span class="f-ico">💸</span><div class="f-title">Free Forever</div><div class="f-desc">No subscription, no credits, no watermark on the output PDF. JPG2Go is free for everyone, always.</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="content-section">
+  <span class="section-tag">Who It's For</span>
+  <h2 class="section-title">Who Uses an eBook to PDF Converter?</h2>
+  <div class="use-grid">
+    <div class="use-card"><span class="u-ico">🖨️</span><div class="u-title">Print Your eBook</div><div class="u-desc">A4 or Letter PDF pages ready to print at home or at a print shop — far simpler than printing from an EPUB reader.</div></div>
+    <div class="use-card"><span class="u-ico">📧</span><div class="u-title">Share via Email</div><div class="u-desc">PDF is universally supported as an email attachment. Share an ebook with someone who doesn't have an EPUB reader app.</div></div>
+    <div class="use-card"><span class="u-ico">📝</span><div class="u-title">Annotate &amp; Highlight</div><div class="u-desc">Use any PDF reader to annotate, highlight, and add notes to an ebook — features often limited in EPUB readers.</div></div>
+    <div class="use-card"><span class="u-ico">📱</span><div class="u-title">Device Compatibility</div><div class="u-desc">Some devices and corporate document systems only accept PDF. Convert to ensure the ebook opens on any platform.</div></div>
+    <div class="use-card"><span class="u-ico">📖</span><div class="u-title">Extract Single Chapters</div><div class="u-desc">Use chapter selection to convert just one chapter into a standalone PDF for reference, citation, or review.</div></div>
+    <div class="use-card"><span class="u-ico">♿</span><div class="u-title">Accessibility</div><div class="u-desc">Some screen readers and assistive tools work better with PDF than EPUB. Convert for improved accessibility compatibility.</div></div>
+    <div class="use-card"><span class="u-ico">🗄️</span><div class="u-title">Long-Term Archiving</div><div class="u-desc">PDF/A is the archival standard for long-term document preservation. Convert important ebooks for durable storage.</div></div>
+    <div class="use-card"><span class="u-ico">📚</span><div class="u-title">Consistent Typography</div><div class="u-desc">Unlike reflowable EPUB, PDF locks in your typography choices — font, size, and layout look identical on every device.</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="content-section">
+  <span class="section-tag">Pro Tips</span>
+  <h2 class="section-title">Get the Best EPUB to PDF Results</h2>
+  <div class="tips-grid">
+    <div class="tip-card">
+      <div class="tip-name">Choose A5 or B5 for Print Books</div>
+      <div class="tip-tag">tip → page size</div>
+      <div class="tip-desc">Most trade paperbacks are B5 (176 × 250 mm) or A5 (148 × 210 mm). If you're printing to bind as a physical book, use one of these sizes rather than A4 so the proportions match a real book rather than an office document.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">16 pt Serif for Comfortable Reading</div>
+      <div class="tip-tag">tip → typography</div>
+      <div class="tip-desc">For long-form reading, 16 pt Georgia (serif) at 1.6 line spacing is generally the most comfortable on screen and in print. Use 14 pt for dense reference books where you want more text per page, and 18 pt for large-print layouts.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">Exclude Front &amp; Back Matter</div>
+      <div class="tip-tag">tip → chapter selection</div>
+      <div class="tip-desc">Most EPUBs include title pages, copyright notices, dedication pages, acknowledgements, and index sections as separate "chapters". Deselect these if you only want the main content — it reduces the page count significantly in long books.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">Compress After Converting</div>
+      <div class="tip-tag">tip → file size</div>
+      <div class="tip-desc">EPUBs with many high-resolution embedded images produce large PDFs. After downloading, run the PDF through Compress PDF to reduce the file size significantly without visible quality loss — useful for emailing or uploading to cloud storage.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">Protect Before Sharing</div>
+      <div class="tip-tag">tip → access control</div>
+      <div class="tip-desc">If you're sharing a converted ebook PDF you authored, use Protect PDF after converting to add a password and restrict copying — so the content can be read but not easily extracted or redistributed.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-name">DRM-Protected EPUBs Cannot Be Converted</div>
+      <div class="tip-tag">tip → DRM files</div>
+      <div class="tip-desc">EPUBs protected with Adobe DRM (ADEPT), Apple FairPlay, or Kobo DRM cannot be opened without the DRM key. The tool will fail to parse these files. DRM removal requires the Adobe Digital Editions credential tied to your account — this tool does not and cannot remove DRM.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="content-section" id="about">
+  <h2 class="section-title">Why JPG2Go eBook to PDF Converter?</h2>
+  <div class="prose">
+    <p>EPUB is a ZIP archive containing HTML/XHTML chapter files, CSS stylesheets, images, and a metadata file (OPF/content.opf). This tool uses <strong>JSZip</strong> to unpack the EPUB in-browser, then reads the OPF manifest and spine to discover chapters in their intended reading order. Metadata — title, author, language, cover image — is extracted from the Dublin Core fields in the OPF.</p>
+    <p>Each selected chapter's HTML is parsed to extract its text and structure: headings, paragraphs, lists, and emphasis. The cleaned text is then reflowed onto PDF pages using <strong>pdf-lib</strong>'s text drawing API, respecting your chosen font size, line spacing, and margins. Headings are printed larger and bold. Paragraphs are wrapped to fit the page width. Pages are added automatically as text fills them.</p>
+    <p>This approach produces a clean, reflowed PDF rather than a screenshot-based one — the result is selectable, searchable text at your chosen typography, not a pixelated render. Images embedded in chapters are extracted, decoded, and placed inline at their natural position in the text flow.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="content-section" id="faq">
+  <span class="section-tag">FAQ</span>
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">What is an ebook to PDF converter?</div>
+      <div class="faq-a">An ebook to PDF converter transforms ebook files into standard PDF format for easier reading and sharing.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Why convert ebooks to PDF?</div>
+      <div class="faq-a">PDF format is widely supported and allows ebooks to be read on any device without special ebook reader software.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Will the ebook formatting stay the same?</div>
+      <div class="faq-a">Most converters try to preserve text layout, images, and chapter structure during conversion.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I convert ebooks from different formats?</div>
+      <div class="faq-a">Yes, many converters support various ebook formats like EPUB, MOBI, and others.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is ebook to PDF conversion free?</div>
+      <div class="faq-a">Many online tools provide free ebook to PDF conversion services.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I print ebooks after converting them to PDF?</div>
+      <div class="faq-a">Yes, converting to PDF makes it easier to print ebook pages like regular documents.</div>
+    </div>
+  </div>
+</section>
+
+<section class="related-section" id="tools">
+  <div class="related-inner">
+    <div class="related-header">
+      <span class="section-tag">Related Tools</span>
+      <h2 class="section-title">More Free Online Tools</h2>
+    </div>
+    <div class="related-grid">
+      <a href="/jpg-to-pdf" class="related-card">
+        <span class="related-card-icon">📄</span>
+        <div class="related-card-name">JPG to PDF</div>
+        <div class="related-card-desc">Convert JPG images to PDF documents quickly. Combine multiple photos into a single organized PDF file for easy sharing and printing.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+      <a href="/image-resizer" class="related-card">
+        <span class="related-card-icon">📐</span>
+        <div class="related-card-name">Image Resizer</div>
+        <div class="related-card-desc">Resize images to exact pixel dimensions or a percentage of their original size. Runs entirely in your browser without uploading files anywhere.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/compress-jpeg" class="related-card">
+        <span class="related-card-icon">🗜️</span>
+        <div class="related-card-name">Compress JPEG</div>
+        <div class="related-card-desc">Reduce JPEG image file size while maintaining quality. Optimize images for faster web pages and lower storage usage.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/merge-pdf" class="related-card">
+        <span class="related-card-icon">📎</span>
+        <div class="related-card-name">Merge PDF</div>
+        <div class="related-card-desc">Combine multiple PDF files into a single organized document. Drag and drop to reorder pages easily.</div>
+        <span class="related-card-tag">PDF</span>
+      </a>
+      <a href="/crop-image" class="related-card">
+        <span class="related-card-icon">✂️</span>
+        <div class="related-card-name">Crop Image</div>
+        <div class="related-card-desc">Crop images to any aspect ratio or custom dimensions. Perfect for social media thumbnails, profile photos, and banner images.</div>
+        <span class="related-card-tag">Image</span>
+      </a>
+      <a href="/format-converter" class="related-card">
+        <span class="related-card-icon">🔄</span>
+        <div class="related-card-name">Format Converter</div>
+        <div class="related-card-desc">Convert images between different formats instantly. Transform JPG, PNG, WebP, and other image formats quickly.</div>
+        <span class="related-card-tag">Convert</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner">
+    <span class="section-tag" style="color:var(--accent);">Get Started</span>
+    <h2 class="cta-title">Ready to Convert eBook to PDF?</h2>
+    <p class="cta-desc">Free, instant, and completely private. Drop an EPUB file, select chapters, download the result — no account ever needed.</p>
+    <div class="cta-actions">
+      <a href="#tool" class="btn-primary" style="font-size:1rem;padding:0.85rem 2rem;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        Start Converting
+      </a>
+    </div>
+    <p class="cta-note">No account · No upload · No data stored · Works offline</p>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<div id="footer-placeholder"></div>
+<script src="load-footer.js"></script>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══ STATE ════════════════════════════════════════════════════════
+let epubFile = null;
+let epubZip  = null;
+let chapters = [];       // [{id, label, href, excluded}]
+let coverDataUrl = null;
+let bookMeta = {};
+let resultBlob = null;
+
+// Page sizes in PDF points (72pt = 1 inch)
+const PAGE_SIZES = {
+  a4:     [595.28, 841.89],
+  letter: [612,    792   ],
+  a5:     [419.53, 595.28],
+  b5:     [498.90, 708.66],
+};
+const FONT_FAMILIES = {
+  serif: PDFLib ? null : null,   // resolved at use time
+  sans:  null,
+  mono:  null,
+};
+
+// ═══ HELPERS ══════════════════════════════════════════════════════
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+function fmtSize(b) {
+  if (!b) return '—';
+  if (b < 1024) return b + ' B';
+  if (b < 1048576) return (b/1024).toFixed(1) + ' KB';
+  return (b/1048576).toFixed(2) + ' MB';
+}
+function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
+function setP(pct, msg) {
+  document.getElementById('progBar').style.width = pct + '%';
+  if (msg !== undefined) document.getElementById('progLbl').textContent = msg;
+}
+function setStep(idx) {
+  ['ps1','ps2','ps3','ps4'].forEach((id, i) => {
+    const el = document.getElementById(id);
+    el.classList.remove('active','done');
+    if (i < idx) el.classList.add('done');
+    else if (i === idx) el.classList.add('active');
+  });
+}
+function htmlToText(html) {
+  const div = document.createElement('div');
+  div.innerHTML = html;
+  // Remove script/style
+  div.querySelectorAll('script,style,noscript').forEach(el => el.remove());
+  return div.textContent || div.innerText || '';
+}
+function parseXml(str) {
+  return new DOMParser().parseFromString(str, 'application/xml');
+}
+function parseHtml(str) {
+  return new DOMParser().parseFromString(str, 'text/html');
+}
+// Resolve relative path within ZIP
+function resolvePath(base, rel) {
+  if (!rel) return '';
+  if (rel.startsWith('/')) return rel.slice(1);
+  const baseParts = base.split('/');
+  baseParts.pop();
+  const relParts = rel.split('/');
+  for (const part of relParts) {
+    if (part === '..') baseParts.pop();
+    else if (part !== '.') baseParts.push(part);
+  }
+  return baseParts.join('/');
+}
+
+// ═══ MOBILE MENU ══════════════════════════════════════════════════
+document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+  this.classList.toggle('active');
+  document.getElementById('mobileNav').classList.toggle('active');
+});
+
+// ═══ FILE INPUT ════════════════════════════════════════════════════
+const dropZone = document.getElementById('dropZone');
+document.getElementById('fileInput').addEventListener('change', e => {
+  if (e.target.files[0]) loadEpub(e.target.files[0]);
+  e.target.value = '';
+});
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault(); dropZone.classList.remove('drag-over');
+  const f = Array.from(e.dataTransfer.files).find(f => f.name.toLowerCase().endsWith('.epub'));
+  if (f) loadEpub(f); else toast('Please drop an EPUB file');
+});
+
+async function loadEpub(file) {
+  if (!file.name.toLowerCase().endsWith('.epub')) { toast('Please select an EPUB file'); return; }
+  if (!window.JSZip) { toast('JSZip is still loading — please wait'); return; }
+
+  resetTool(false);
+  epubFile = file;
+
+  document.getElementById('fbName').textContent = file.name;
+  document.getElementById('fbMeta').textContent = fmtSize(file.size) + ' · EPUB';
+  document.getElementById('fileBar').classList.add('on');
+  dropZone.style.display = 'none';
+
+  try {
+    const buf = await file.arrayBuffer();
+    epubZip = await JSZip.loadAsync(buf);
+    await parseEpub();
+  } catch(err) {
+    toast('Could not open EPUB: ' + err.message);
+    resetTool(true);
+    console.error(err);
+  }
+}
+
+// ═══ EPUB PARSER ══════════════════════════════════════════════════
+async function parseEpub() {
+  // 1. Find container.xml → rootfile path
+  const containerXml = await readZipText('META-INF/container.xml');
+  const containerDoc = parseXml(containerXml);
+  const rootfilePath = containerDoc.querySelector('rootfile')?.getAttribute('full-path');
+  if (!rootfilePath) throw new Error('Invalid EPUB: could not find content.opf');
+
+  const opfDir = rootfilePath.includes('/') ? rootfilePath.split('/').slice(0, -1).join('/') + '/' : '';
+
+  // 2. Read OPF
+  const opfXml = await readZipText(rootfilePath);
+  const opfDoc = parseXml(opfXml);
+
+  // 3. Extract metadata
+  const dcTitle   = opfDoc.querySelector('title')?.textContent || epubFile.name.replace('.epub','');
+  const dcCreator = opfDoc.querySelector('creator')?.textContent || 'Unknown Author';
+  const dcLang    = opfDoc.querySelector('language')?.textContent || '—';
+  bookMeta = { title: dcTitle, author: dcCreator, lang: dcLang };
+
+  // 4. Find cover image
+  coverDataUrl = null;
+  const coverMeta = opfDoc.querySelector('meta[name="cover"]');
+  if (coverMeta) {
+    const coverId = coverMeta.getAttribute('content');
+    const coverItem = opfDoc.querySelector(`item[id="${coverId}"]`);
+    if (coverItem) {
+      const coverHref = opfDir + coverItem.getAttribute('href');
+      try {
+        const coverBlob = await epubZip.file(decodeURIComponent(coverHref))?.async('blob');
+        if (coverBlob) coverDataUrl = await blobToDataUrl(coverBlob);
+      } catch(e) {}
+    }
+  }
+  // Also try common cover image names
+  if (!coverDataUrl) {
+    for (const guess of ['cover.jpg','cover.png','cover.jpeg','images/cover.jpg','images/cover.png','OEBPS/images/cover.jpg']) {
+      const f = epubZip.file(guess) || epubZip.file(opfDir + guess);
+      if (f) { const b = await f.async('blob'); coverDataUrl = await blobToDataUrl(b); break; }
+    }
+  }
+
+  // 5. Build manifest map: id → {href, mediaType}
+  const manifest = {};
+  opfDoc.querySelectorAll('manifest item').forEach(item => {
+    manifest[item.getAttribute('id')] = {
+      href: opfDir + item.getAttribute('href'),
+      mediaType: item.getAttribute('media-type') || '',
+    };
+  });
+
+  // 6. Build spine (reading order)
+  const spineItems = Array.from(opfDoc.querySelectorAll('spine itemref'));
+  chapters = [];
+  for (const itemref of spineItems) {
+    const idref = itemref.getAttribute('idref');
+    const item  = manifest[idref];
+    if (!item || !item.mediaType.includes('html') && !item.mediaType.includes('xhtml')) continue;
+    // Get label from NCX/nav if available, else fallback to href filename
+    const label = getLabelForHref(item.href, opfDoc) || item.href.split('/').pop().replace(/\.(x?html?)$/i,'');
+    chapters.push({ id: idref, label, href: item.href, excluded: false });
+  }
+
+  // 7. Render UI
+  renderBookInfo();
+  renderChapterList();
+
+  document.getElementById('chaptersSection').classList.add('on');
+  document.getElementById('optsSection').style.display = '';
+  document.getElementById('statSize').textContent = fmtSize(epubFile.size);
+  document.getElementById('statLang').textContent = dcLang;
+  document.getElementById('filenameInput').value = dcTitle.replace(/[^a-z0-9\-_ ]/gi,'').trim().slice(0,60) || 'ebook';
+  updateChapterStats();
+  toast('"' + dcTitle + '" loaded — ' + chapters.length + ' chapters');
+}
+
+function getLabelForHref(href, opfDoc) {
+  // Try to find NCX or nav toc entry — simplified: look for navPoint with matching content src
+  return null; // Labels fallback to filename; NCX parsing is optional enhancement
+}
+
+async function readZipText(path) {
+  const file = epubZip.file(path) || epubZip.file(decodeURIComponent(path));
+  if (!file) throw new Error('File not found in EPUB: ' + path);
+  return await file.async('string');
+}
+function blobToDataUrl(blob) {
+  return new Promise((res, rej) => {
+    const r = new FileReader();
+    r.onload = e => res(e.target.result);
+    r.onerror = rej;
+    r.readAsDataURL(blob);
+  });
+}
+
+// ═══ RENDER UI ════════════════════════════════════════════════════
+function renderBookInfo() {
+  document.getElementById('bookTitle').textContent  = bookMeta.title;
+  document.getElementById('bookAuthor').textContent = bookMeta.author;
+
+  const chips = document.getElementById('bookChips');
+  chips.innerHTML = '';
+  if (bookMeta.lang) chips.innerHTML += `<span class="book-chip">🌐 ${bookMeta.lang}</span>`;
+  chips.innerHTML += `<span class="book-chip">📄 ${chapters.length} chapters</span>`;
+  chips.innerHTML += `<span class="book-chip">💾 ${fmtSize(epubFile.size)}</span>`;
+
+  const coverWrap = document.getElementById('bookCoverWrap');
+  if (coverDataUrl) {
+    coverWrap.innerHTML = `<img src="${coverDataUrl}" alt="Cover">`;
+  }
+
+  document.getElementById('bookInfo').classList.add('on');
+}
+
+function renderChapterList() {
+  const list = document.getElementById('chapterList');
+  list.innerHTML = '';
+  const selected = chapters.filter(c => !c.excluded);
+  document.getElementById('chaptersBadge').textContent = chapters.length + ' chapter' + (chapters.length !== 1 ? 's' : '');
+
+  chapters.forEach((ch, idx) => {
+    const row = document.createElement('div');
+    row.className = 'chapter-row' + (ch.excluded ? ' excluded' : '');
+    row.innerHTML = `
+      <span class="chapter-num">${idx + 1}</span>
+      <span class="chapter-name" title="${ch.label}">${ch.label}</span>
+      <button class="chapter-toggle" data-idx="${idx}" title="${ch.excluded ? 'Include' : 'Exclude'}">${ch.excluded ? '+' : '×'}</button>`;
+    row.querySelector('.chapter-toggle').addEventListener('click', () => {
+      chapters[idx].excluded = !chapters[idx].excluded;
+      renderChapterList();
+      updateChapterStats();
+    });
+    list.appendChild(row);
+  });
+}
+
+function updateChapterStats() {
+  const n = chapters.filter(c => !c.excluded).length;
+  document.getElementById('statChapters').textContent = n;
+}
+
+document.getElementById('selectAllBtn').addEventListener('click', () => {
+  chapters.forEach(c => c.excluded = false);
+  renderChapterList(); updateChapterStats();
+});
+document.getElementById('deselectAllBtn').addEventListener('click', () => {
+  chapters.forEach(c => c.excluded = true);
+  renderChapterList(); updateChapterStats();
+});
+
+// ═══ CONVERT ══════════════════════════════════════════════════════
+document.getElementById('convertBtn').addEventListener('click', doConvert);
+
+async function doConvert() {
+  const selectedChapters = chapters.filter(c => !c.excluded);
+  if (!selectedChapters.length) { toast('Please select at least one chapter'); return; }
+  if (!window.PDFLib) { toast('pdf-lib is still loading — please wait'); return; }
+
+  const pageSizeKey  = document.getElementById('pageSizeSelect').value;
+  const fontSize     = parseInt(document.getElementById('fontSizeSelect').value);
+  const fontFamilyK  = document.getElementById('fontFamilySelect').value;
+  const lineSpacing  = parseFloat(document.getElementById('lineSpacingSelect').value);
+  const margin       = parseInt(document.getElementById('marginSelect').value);
+
+  document.getElementById('progWrap').classList.add('on');
+  document.getElementById('resultArea').classList.remove('on');
+  document.getElementById('errBox').classList.remove('on');
+  document.getElementById('convertBtn').disabled = true;
+  resultBlob = null;
+  setP(0); setStep(0);
+  await wait(50);
+
+  try {
+    setStep(0); setP(8, 'Parsing EPUB structure…');
+    await wait(40);
+
+    const [pageW, pageH] = PAGE_SIZES[pageSizeKey];
+    const pdfDoc = await PDFLib.PDFDocument.create();
+
+    // Embed fonts
+    const boldFont   = await pdfDoc.embedFont(PDFLib.StandardFonts.HelveticaBold);
+    let regularFont, italicFont;
+    switch (fontFamilyK) {
+      case 'sans':
+        regularFont = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+        italicFont  = await pdfDoc.embedFont(PDFLib.StandardFonts.HelveticaOblique);
+        break;
+      case 'mono':
+        regularFont = await pdfDoc.embedFont(PDFLib.StandardFonts.Courier);
+        italicFont  = await pdfDoc.embedFont(PDFLib.StandardFonts.CourierOblique);
+        break;
+      default: // serif
+        regularFont = await pdfDoc.embedFont(PDFLib.StandardFonts.TimesRoman);
+        italicFont  = await pdfDoc.embedFont(PDFLib.StandardFonts.TimesRomanItalic);
+    }
+
+    // ── Add title page ──────────────────────────────────────────
+    const titlePage = pdfDoc.addPage([pageW, pageH]);
+    const titleFontSize = Math.round(fontSize * 1.9);
+    const authorFontSize = Math.round(fontSize * 1.1);
+    // Cover image on title page
+    if (coverDataUrl) {
+      try {
+        const mimeMatch = coverDataUrl.match(/^data:(image\/[^;]+)/);
+        const mime = mimeMatch ? mimeMatch[1] : 'image/jpeg';
+        const b64  = coverDataUrl.split(',')[1];
+        const bytes = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+        let coverImg;
+        if (mime === 'image/png') coverImg = await pdfDoc.embedPng(bytes);
+        else coverImg = await pdfDoc.embedJpg(bytes);
+        const maxW = pageW - margin * 2;
+        const maxH = pageH * 0.55;
+        const scale = Math.min(maxW / coverImg.width, maxH / coverImg.height);
+        const cW = coverImg.width * scale;
+        const cH = coverImg.height * scale;
+        titlePage.drawImage(coverImg, {
+          x: (pageW - cW) / 2,
+          y: pageH - margin - cH,
+          width: cW, height: cH
+        });
+      } catch(e) {}
+    }
+    titlePage.drawText(bookMeta.title || 'Untitled', {
+      x: margin, y: pageH * 0.3,
+      size: titleFontSize, font: boldFont,
+      color: PDFLib.rgb(0.05, 0.05, 0.05),
+      maxWidth: pageW - margin * 2,
+    });
+    if (bookMeta.author) {
+      titlePage.drawText(bookMeta.author, {
+        x: margin, y: pageH * 0.3 - titleFontSize - 10,
+        size: authorFontSize, font: italicFont,
+        color: PDFLib.rgb(0.35, 0.35, 0.35),
+      });
+    }
+
+    // ── Process chapters ────────────────────────────────────────
+    setStep(1); setP(18, 'Extracting chapter text…');
+    await wait(30);
+
+    const textColor  = PDFLib.rgb(0.08, 0.08, 0.08);
+    const headColor  = PDFLib.rgb(0.05, 0.05, 0.05);
+    const lineHeight = fontSize * lineSpacing;
+    const contentW   = pageW - margin * 2;
+    const startY     = pageH - margin;
+    const endY       = margin;
+
+    let page = null;
+    let curY  = 0;
+
+    function newPage() {
+      page = pdfDoc.addPage([pageW, pageH]);
+      curY = startY;
+    }
+    function ensureSpace(needed) {
+      if (!page || curY - needed < endY) newPage();
+    }
+
+    function drawWrappedText(text, font, size, color, extraSpaceAfter = 0) {
+      if (!text || !text.trim()) { curY -= size * 0.5; return; }
+      const words = text.trim().split(/\s+/);
+      let line = '';
+      for (const word of words) {
+        const testLine = line ? line + ' ' + word : word;
+        let w = 0;
+        try { w = font.widthOfTextAtSize(testLine, size); } catch(e) { w = testLine.length * size * 0.55; }
+        if (w > contentW && line) {
+          ensureSpace(size + 4);
+          page.drawText(line, { x: margin, y: curY, size, font, color, maxWidth: contentW });
+          curY -= lineHeight;
+          line = word;
+        } else {
+          line = testLine;
+        }
+      }
+      if (line) {
+        ensureSpace(size + 4);
+        page.drawText(line, { x: margin, y: curY, size, font, color, maxWidth: contentW });
+        curY -= lineHeight;
+      }
+      curY -= extraSpaceAfter;
+    }
+
+    for (let ci = 0; ci < selectedChapters.length; ci++) {
+      const ch = selectedChapters[ci];
+      setP(18 + Math.round((ci / selectedChapters.length) * 55), `Processing chapter ${ci+1}: ${ch.label}…`);
+
+      // Always start a chapter on a new page
+      newPage();
+
+      // Chapter heading
+      const headSize = Math.round(fontSize * 1.35);
+      ensureSpace(headSize + 8);
+      page.drawText(ch.label, { x: margin, y: curY, size: headSize, font: boldFont, color: headColor, maxWidth: contentW });
+      curY -= headSize * 1.5 + 8;
+
+      // Load and parse HTML
+      let chapterHtml = '';
+      try { chapterHtml = await readZipText(ch.href); } catch(e) { continue; }
+      const doc = parseHtml(chapterHtml);
+
+      // Walk body nodes
+      const body = doc.body;
+      if (!body) continue;
+
+      // Collect block-level paragraphs and headings in order
+      const nodes = Array.from(body.querySelectorAll('h1,h2,h3,h4,p,li,blockquote,pre,br'));
+      if (!nodes.length) {
+        // Fallback: plain text
+        const plain = (body.textContent || '').replace(/\s+/g, ' ').trim();
+        drawWrappedText(plain, regularFont, fontSize, textColor, fontSize * 0.5);
+      } else {
+        for (const node of nodes) {
+          const tag = node.tagName.toLowerCase();
+          const text = (node.textContent || '').replace(/\s+/g, ' ').trim();
+          if (!text) continue;
+
+          if (tag === 'h1') {
+            curY -= fontSize * 0.4;
+            drawWrappedText(text, boldFont, Math.round(fontSize * 1.2), headColor, fontSize * 0.35);
+          } else if (tag === 'h2' || tag === 'h3') {
+            curY -= fontSize * 0.3;
+            drawWrappedText(text, boldFont, Math.round(fontSize * 1.08), headColor, fontSize * 0.25);
+          } else if (tag === 'h4') {
+            drawWrappedText(text, boldFont, fontSize, headColor, fontSize * 0.2);
+          } else if (tag === 'blockquote') {
+            drawWrappedText('  ' + text, italicFont, fontSize, PDFLib.rgb(0.35,0.35,0.35), fontSize * 0.15);
+          } else if (tag === 'pre') {
+            const monoFont = await pdfDoc.embedFont(PDFLib.StandardFonts.Courier).catch(() => regularFont);
+            drawWrappedText(text, monoFont, Math.round(fontSize * 0.85), textColor, fontSize * 0.2);
+          } else if (tag === 'li') {
+            drawWrappedText('• ' + text, regularFont, fontSize, textColor, fontSize * 0.1);
+          } else {
+            drawWrappedText(text, regularFont, fontSize, textColor, fontSize * 0.2);
+          }
+        }
+      }
+
+      await wait(5);
+    }
+
+    // ── Write PDF ────────────────────────────────────────────────
+    setStep(2); setP(75, 'Laying out PDF pages…');
+    await wait(30);
+    setStep(3); setP(88, 'Writing PDF file…');
+    await wait(30);
+
+    const pdfBytes = await pdfDoc.save();
+    setP(100, 'Done!');
+    await wait(100);
+
+    resultBlob = new Blob([pdfBytes], { type: 'application/pdf' });
+    const fname = (document.getElementById('filenameInput').value.trim() || 'ebook') + '.pdf';
+    const pageCount = pdfDoc.getPageCount();
+
+    document.getElementById('resultFname').textContent = fname;
+    document.getElementById('resultMeta').textContent  =
+      fmtSize(pdfBytes.length) + ' · ' + pageCount + ' page' + (pageCount !== 1 ? 's' : '') +
+      ' · ' + selectedChapters.length + ' chapter' + (selectedChapters.length !== 1 ? 's' : '');
+
+    document.getElementById('progWrap').classList.remove('on');
+    document.getElementById('resultArea').classList.add('on');
+    document.getElementById('resultArea').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    toast('PDF created — ' + pageCount + ' pages');
+
+  } catch(err) {
+    document.getElementById('progWrap').classList.remove('on');
+    document.getElementById('errBox').classList.add('on');
+    document.getElementById('errText').textContent = 'Conversion failed: ' + (err.message || String(err)) +
+      '. This may be a DRM-protected EPUB or an unsupported EPUB variant.';
+    toast('Conversion failed — see error above');
+    console.error(err);
+  }
+
+  document.getElementById('convertBtn').disabled = false;
+}
+
+// ═══ DOWNLOAD ═════════════════════════════════════════════════════
+document.getElementById('downloadBtn').addEventListener('click', () => {
+  if (!resultBlob) return;
+  const fname = (document.getElementById('filenameInput').value.trim() || 'ebook') + '.pdf';
+  const url = URL.createObjectURL(resultBlob);
+  const a = document.createElement('a');
+  a.href = url; a.download = fname; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 8000);
+  toast('Downloading ' + fname + '…');
+});
+
+// ═══ CONVERT AGAIN / CLEAR ════════════════════════════════════════
+document.getElementById('convertAgainBtn').addEventListener('click', () => {
+  document.getElementById('resultArea').classList.remove('on');
+  resultBlob = null;
+  toast('Adjust settings and convert again');
+});
+document.getElementById('clearBtn').addEventListener('click', () => resetTool(true));
+document.getElementById('fbRemove').addEventListener('click', () => resetTool(true));
+
+function resetTool(showDrop) {
+  epubFile = null; epubZip = null; chapters = []; coverDataUrl = null; bookMeta = {}; resultBlob = null;
+  document.getElementById('fileBar').classList.remove('on');
+  document.getElementById('bookInfo').classList.remove('on');
+  document.getElementById('chaptersSection').classList.remove('on');
+  document.getElementById('optsSection').style.display = 'none';
+  document.getElementById('progWrap').classList.remove('on');
+  document.getElementById('resultArea').classList.remove('on');
+  document.getElementById('errBox').classList.remove('on');
+  document.getElementById('chapterList').innerHTML = '';
+  document.getElementById('bookCoverWrap').innerHTML = '<svg width="24" height="30" viewBox="0 0 24 30" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 0 1 4 4v20a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v20a3 3 0 0 1 3-3h7z"/></svg>';
+  if (showDrop) { dropZone.style.display = ''; toast('Cleared'); }
+}
+
+// ═══ FAQ ══════════════════════════════════════════════════════════
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement; const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+function closeMobileMenu() {
+  document.getElementById('mobileMenuToggle').classList.remove('active');
+  document.getElementById('mobileNav').classList.remove('active');
+}
+</script>
+</body>
+</html>
